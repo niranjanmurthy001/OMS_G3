@@ -98,7 +98,7 @@ namespace Ordermanagement_01
         DateTime dtfirsttime;
         DateTime dtsecondtime;
         static string F_Date;
-        static string T_Date;
+          static string T_Date;
         int Auto_Allocation_Scrol_Postion = 0;
         int Day_Time_Break, Night_Time_Break, Total_Break, Ideal_Day_Break, Ideal_Night_Break, Ideal_Total_Break;
         string Password;
