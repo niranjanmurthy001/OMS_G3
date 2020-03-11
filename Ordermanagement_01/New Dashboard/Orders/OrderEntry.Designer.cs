@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions13 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions14 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Window_Ui_Btn_View_List = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -43,14 +43,14 @@
             this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
-            this.lookUpEditClient = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEditSubClient = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEditProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.textEdit4 = new DevExpress.XtraEditors.LookUpEdit();
             this.textEdit5 = new DevExpress.XtraEditors.LookUpEdit();
             this.textEdit12 = new DevExpress.XtraEditors.MemoEdit();
-            this.lookUpEditState = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEditCounty = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit13 = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit14 = new DevExpress.XtraEditors.LookUpEdit();
             this.textEdit17 = new DevExpress.XtraEditors.MemoEdit();
             this.textEdit15 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit18 = new DevExpress.XtraEditors.DateEdit();
@@ -85,7 +85,6 @@
             this.lookUpEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.lookUpEdit6 = new DevExpress.XtraEditors.TextEdit();
-            this.lookUpEditDeptType = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroupOrder = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -104,6 +103,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem14 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroupLereta = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -127,7 +127,6 @@
             this.layoutControlItemReqType = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItemDeedChain = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroupAdditional = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroupTitle = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -186,14 +185,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditClient.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSubClient.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditState.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCounty.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties.CalendarTimeProperties)).BeginInit();
@@ -231,7 +230,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDeptType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupOrder)).BeginInit();
@@ -250,6 +248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupLereta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
@@ -273,7 +272,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReqType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemDeedChain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupAdditional)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupTitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
@@ -340,21 +338,21 @@
             this.Window_Ui_Btn_View_List.AppearanceButton.Pressed.Options.UseBackColor = true;
             this.Window_Ui_Btn_View_List.AppearanceButton.Pressed.Options.UseFont = true;
             this.Window_Ui_Btn_View_List.BackColor = System.Drawing.Color.Transparent;
-            windowsUIButtonImageOptions1.Image = global::Ordermanagement_01.Properties.Resources.ic_info_32;
-            windowsUIButtonImageOptions2.Image = global::Ordermanagement_01.Properties.Resources.ic_checklist_32;
-            windowsUIButtonImageOptions3.Image = global::Ordermanagement_01.Properties.Resources.ic_history;
-            windowsUIButtonImageOptions4.Image = global::Ordermanagement_01.Properties.Resources.ic_docs;
-            windowsUIButtonImageOptions5.Image = global::Ordermanagement_01.Properties.Resources.ic_link;
-            windowsUIButtonImageOptions6.Image = global::Ordermanagement_01.Properties.Resources.ic_search_32;
-            windowsUIButtonImageOptions7.Image = global::Ordermanagement_01.Properties.Resources.ic_comments;
+            windowsUIButtonImageOptions8.Image = global::Ordermanagement_01.Properties.Resources.ic_info_32;
+            windowsUIButtonImageOptions9.Image = global::Ordermanagement_01.Properties.Resources.ic_checklist_32;
+            windowsUIButtonImageOptions10.Image = global::Ordermanagement_01.Properties.Resources.ic_history;
+            windowsUIButtonImageOptions11.Image = global::Ordermanagement_01.Properties.Resources.ic_docs;
+            windowsUIButtonImageOptions12.Image = global::Ordermanagement_01.Properties.Resources.ic_link;
+            windowsUIButtonImageOptions13.Image = global::Ordermanagement_01.Properties.Resources.ic_search_32;
+            windowsUIButtonImageOptions14.Image = global::Ordermanagement_01.Properties.Resources.ic_comments;
             this.Window_Ui_Btn_View_List.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Instructions", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Instructions", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("CheckList", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "CheckList", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("History", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "History", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Docs", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Docs", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("County Links", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "County Links", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Search Links", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Search Links", -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Comments", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Comments", -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Instructions", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Instructions", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("CheckList", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "CheckList", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("History", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "History", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Docs", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Docs", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("County Links", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "County Links", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Search Links", true, windowsUIButtonImageOptions13, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Search Links", -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Comments", true, windowsUIButtonImageOptions14, DevExpress.XtraBars.Docking2010.ButtonStyle.CheckButton, "", -1, true, null, true, false, true, "Comments", -1, false)});
             this.Window_Ui_Btn_View_List.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Window_Ui_Btn_View_List.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Window_Ui_Btn_View_List.Location = new System.Drawing.Point(3, 416);
@@ -374,7 +372,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(978, 407);
-            this.splitContainerControl1.SplitterPosition = 325;
+            this.splitContainerControl1.SplitterPosition = 329;
             this.splitContainerControl1.TabIndex = 3;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -383,14 +381,14 @@
             this.layoutControl1.Controls.Add(this.textEdit11);
             this.layoutControl1.Controls.Add(this.textEdit8);
             this.layoutControl1.Controls.Add(this.textEdit16);
-            this.layoutControl1.Controls.Add(this.lookUpEditClient);
-            this.layoutControl1.Controls.Add(this.lookUpEditSubClient);
+            this.layoutControl1.Controls.Add(this.textEdit1);
+            this.layoutControl1.Controls.Add(this.textEdit2);
             this.layoutControl1.Controls.Add(this.lookUpEditProjectType);
             this.layoutControl1.Controls.Add(this.textEdit4);
             this.layoutControl1.Controls.Add(this.textEdit5);
             this.layoutControl1.Controls.Add(this.textEdit12);
-            this.layoutControl1.Controls.Add(this.lookUpEditState);
-            this.layoutControl1.Controls.Add(this.lookUpEditCounty);
+            this.layoutControl1.Controls.Add(this.textEdit13);
+            this.layoutControl1.Controls.Add(this.textEdit14);
             this.layoutControl1.Controls.Add(this.textEdit17);
             this.layoutControl1.Controls.Add(this.textEdit15);
             this.layoutControl1.Controls.Add(this.textEdit18);
@@ -425,13 +423,12 @@
             this.layoutControl1.Controls.Add(this.lookUpEdit5);
             this.layoutControl1.Controls.Add(this.checkEdit2);
             this.layoutControl1.Controls.Add(this.lookUpEdit6);
-            this.layoutControl1.Controls.Add(this.lookUpEditDeptType);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1546, 442, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(978, 325);
+            this.layoutControl1.Size = new System.Drawing.Size(978, 329);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -468,45 +465,37 @@
             this.textEdit16.StyleController = this.layoutControl1;
             this.textEdit16.TabIndex = 12;
             // 
-            // lookUpEditClient
+            // textEdit1
             // 
-            this.lookUpEditClient.EditValue = "0";
-            this.lookUpEditClient.Location = new System.Drawing.Point(132, 31);
-            this.lookUpEditClient.MinimumSize = new System.Drawing.Size(170, 25);
-            this.lookUpEditClient.Name = "lookUpEditClient";
-            this.lookUpEditClient.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditClient.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditClient.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditClient.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpEditClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEdit1.Location = new System.Drawing.Point(132, 31);
+            this.textEdit1.MinimumSize = new System.Drawing.Size(170, 25);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditClient.Properties.NullText = "";
-            this.lookUpEditClient.Size = new System.Drawing.Size(188, 25);
-            this.lookUpEditClient.StyleController = this.layoutControl1;
-            this.lookUpEditClient.TabIndex = 0;
-            this.lookUpEditClient.EditValueChanged += new System.EventHandler(this.lookUpEditClient_EditValueChanged);
+            this.textEdit1.Properties.NullText = "";
+            this.textEdit1.Size = new System.Drawing.Size(188, 25);
+            this.textEdit1.StyleController = this.layoutControl1;
+            this.textEdit1.TabIndex = 0;
             // 
-            // lookUpEditSubClient
+            // textEdit2
             // 
-            this.lookUpEditSubClient.EditValue = "0";
-            this.lookUpEditSubClient.Location = new System.Drawing.Point(446, 31);
-            this.lookUpEditSubClient.MinimumSize = new System.Drawing.Size(170, 25);
-            this.lookUpEditSubClient.Name = "lookUpEditSubClient";
-            this.lookUpEditSubClient.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditSubClient.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditSubClient.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditSubClient.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpEditSubClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEdit2.Location = new System.Drawing.Point(446, 31);
+            this.textEdit2.MinimumSize = new System.Drawing.Size(170, 25);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit2.Properties.Appearance.Options.UseFont = true;
+            this.textEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditSubClient.Properties.NullText = "";
-            this.lookUpEditSubClient.Size = new System.Drawing.Size(188, 25);
-            this.lookUpEditSubClient.StyleController = this.layoutControl1;
-            this.lookUpEditSubClient.TabIndex = 1;
-            this.lookUpEditSubClient.EditValueChanged += new System.EventHandler(this.lookUpEditSubClient_EditValueChanged);
+            this.textEdit2.Properties.NullText = "";
+            this.textEdit2.Size = new System.Drawing.Size(188, 25);
+            this.textEdit2.StyleController = this.layoutControl1;
+            this.textEdit2.TabIndex = 1;
             // 
             // lookUpEditProjectType
             // 
-            this.lookUpEditProjectType.EditValue = "0";
+            this.lookUpEditProjectType.EditValue = 0;
             this.lookUpEditProjectType.Location = new System.Drawing.Point(760, 31);
             this.lookUpEditProjectType.MinimumSize = new System.Drawing.Size(170, 25);
             this.lookUpEditProjectType.Name = "lookUpEditProjectType";
@@ -561,44 +550,33 @@
             this.textEdit12.StyleController = this.layoutControl1;
             this.textEdit12.TabIndex = 6;
             // 
-            // lookUpEditState
+            // textEdit13
             // 
-            this.lookUpEditState.EditValue = "0";
-            this.lookUpEditState.Location = new System.Drawing.Point(132, 160);
-            this.lookUpEditState.MinimumSize = new System.Drawing.Size(170, 25);
-            this.lookUpEditState.Name = "lookUpEditState";
-            this.lookUpEditState.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditState.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditState.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditState.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpEditState.Properties.AppearanceDropDownHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditState.Properties.AppearanceDropDownHeader.Options.UseFont = true;
-            this.lookUpEditState.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEdit13.Location = new System.Drawing.Point(132, 160);
+            this.textEdit13.MinimumSize = new System.Drawing.Size(170, 25);
+            this.textEdit13.Name = "textEdit13";
+            this.textEdit13.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit13.Properties.Appearance.Options.UseFont = true;
+            this.textEdit13.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditState.Properties.NullText = "";
-            this.lookUpEditState.Size = new System.Drawing.Size(188, 25);
-            this.lookUpEditState.StyleController = this.layoutControl1;
-            this.lookUpEditState.TabIndex = 7;
-            this.lookUpEditState.EditValueChanged += new System.EventHandler(this.lookUpEditState_EditValueChanged);
+            this.textEdit13.Properties.NullText = "";
+            this.textEdit13.Size = new System.Drawing.Size(188, 25);
+            this.textEdit13.StyleController = this.layoutControl1;
+            this.textEdit13.TabIndex = 7;
             // 
-            // lookUpEditCounty
+            // textEdit14
             // 
-            this.lookUpEditCounty.EditValue = "0";
-            this.lookUpEditCounty.Location = new System.Drawing.Point(446, 160);
-            this.lookUpEditCounty.MinimumSize = new System.Drawing.Size(170, 25);
-            this.lookUpEditCounty.Name = "lookUpEditCounty";
-            this.lookUpEditCounty.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditCounty.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditCounty.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditCounty.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpEditCounty.Properties.AppearanceDropDownHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditCounty.Properties.AppearanceDropDownHeader.Options.UseFont = true;
-            this.lookUpEditCounty.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEdit14.Location = new System.Drawing.Point(446, 160);
+            this.textEdit14.MinimumSize = new System.Drawing.Size(170, 25);
+            this.textEdit14.Name = "textEdit14";
+            this.textEdit14.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit14.Properties.Appearance.Options.UseFont = true;
+            this.textEdit14.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCounty.Properties.NullText = "";
-            this.lookUpEditCounty.Size = new System.Drawing.Size(189, 25);
-            this.lookUpEditCounty.StyleController = this.layoutControl1;
-            this.lookUpEditCounty.TabIndex = 8;
+            this.textEdit14.Properties.NullText = "";
+            this.textEdit14.Size = new System.Drawing.Size(189, 25);
+            this.textEdit14.StyleController = this.layoutControl1;
+            this.textEdit14.TabIndex = 8;
             // 
             // textEdit17
             // 
@@ -1066,23 +1044,6 @@
             this.lookUpEdit6.StyleController = this.layoutControl1;
             this.lookUpEdit6.TabIndex = 7;
             // 
-            // lookUpEditDeptType
-            // 
-            this.lookUpEditDeptType.EditValue = "0";
-            this.lookUpEditDeptType.Location = new System.Drawing.Point(759, 61);
-            this.lookUpEditDeptType.MinimumSize = new System.Drawing.Size(170, 25);
-            this.lookUpEditDeptType.Name = "lookUpEditDeptType";
-            this.lookUpEditDeptType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditDeptType.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditDeptType.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditDeptType.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.lookUpEditDeptType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditDeptType.Properties.NullText = "";
-            this.lookUpEditDeptType.Size = new System.Drawing.Size(191, 25);
-            this.lookUpEditDeptType.StyleController = this.layoutControl1;
-            this.lookUpEditDeptType.TabIndex = 22;
-            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1117,10 +1078,10 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.layoutControlItem5,
+            this.emptySpaceItem7,
             this.emptySpaceItem14,
             this.layoutControlGroupLereta,
-            this.layoutControlGroupOthers,
-            this.layoutControlItem18});
+            this.layoutControlGroupOthers});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.OptionsItemText.TextToControlDistance = 4;
@@ -1183,7 +1144,7 @@
             // 
             this.layoutControlItem14.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem14.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem14.Control = this.lookUpEditCounty;
+            this.layoutControlItem14.Control = this.textEdit14;
             this.layoutControlItem14.Location = new System.Drawing.Point(314, 57);
             this.layoutControlItem14.Name = "layoutControlItem14";
             this.layoutControlItem14.OptionsTableLayoutItem.ColumnIndex = 1;
@@ -1198,7 +1159,7 @@
             // 
             this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem13.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem13.Control = this.lookUpEditState;
+            this.layoutControlItem13.Control = this.textEdit13;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 57);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.OptionsTableLayoutItem.RowIndex = 1;
@@ -1288,7 +1249,7 @@
             // 
             this.layoutControlItem1.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem1.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem1.Control = this.lookUpEditClient;
+            this.layoutControlItem1.Control = this.textEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(3, 3, 3, 3);
@@ -1301,7 +1262,7 @@
             // 
             this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem2.Control = this.lookUpEditSubClient;
+            this.layoutControlItem2.Control = this.textEdit2;
             this.layoutControlItem2.Location = new System.Drawing.Point(314, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.OptionsTableLayoutItem.ColumnIndex = 1;
@@ -1353,6 +1314,16 @@
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.SupportHorzAlignment;
             this.layoutControlItem5.Text = "Batch Type";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(117, 15);
+            // 
+            // emptySpaceItem7
+            // 
+            this.emptySpaceItem7.AllowHotTrack = false;
+            this.emptySpaceItem7.Location = new System.Drawing.Point(628, 31);
+            this.emptySpaceItem7.MinSize = new System.Drawing.Size(104, 24);
+            this.emptySpaceItem7.Name = "emptySpaceItem7";
+            this.emptySpaceItem7.Size = new System.Drawing.Size(315, 31);
+            this.emptySpaceItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem14
             // 
@@ -1700,19 +1671,6 @@
             this.layoutControlItem15.Text = "Expedite";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(117, 15);
             // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutControlItem18.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem18.Control = this.lookUpEditDeptType;
-            this.layoutControlItem18.Location = new System.Drawing.Point(628, 31);
-            this.layoutControlItem18.MinSize = new System.Drawing.Size(294, 29);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(315, 31);
-            this.layoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem18.Text = "Department Type";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(117, 15);
-            // 
             // layoutControlGroupAdditional
             // 
             this.layoutControlGroupAdditional.AppearanceGroup.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1924,7 +1882,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(978, 70);
+            this.xtraTabControl1.Size = new System.Drawing.Size(978, 66);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1938,7 +1896,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(976, 41);
+            this.xtraTabPage1.Size = new System.Drawing.Size(976, 37);
             this.xtraTabPage1.Text = "Task Info";
             // 
             // gridControl2
@@ -1947,7 +1905,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(976, 41);
+            this.gridControl2.Size = new System.Drawing.Size(976, 37);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -2187,7 +2145,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
             // gridColumn5
             // 
@@ -2252,14 +2210,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditClient.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSubClient.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditState.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCounty.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties.CalendarTimeProperties)).EndInit();
@@ -2297,7 +2255,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDeptType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupOrder)).EndInit();
@@ -2316,6 +2273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupLereta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
@@ -2339,7 +2297,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemReqType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemDeedChain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupAdditional)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupTitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
@@ -2401,14 +2358,14 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemPriorDate;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditClient;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditSubClient;
+        private DevExpress.XtraEditors.LookUpEdit textEdit1;
+        private DevExpress.XtraEditors.LookUpEdit textEdit2;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditProjectType;
         private DevExpress.XtraEditors.LookUpEdit textEdit4;
         private DevExpress.XtraEditors.LookUpEdit textEdit5;
         private DevExpress.XtraEditors.MemoEdit textEdit12;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditState;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditCounty;
+        private DevExpress.XtraEditors.LookUpEdit textEdit13;
+        private DevExpress.XtraEditors.LookUpEdit textEdit14;
         private DevExpress.XtraEditors.MemoEdit textEdit17;
         private DevExpress.XtraEditors.CheckEdit textEdit15;
         private DevExpress.XtraEditors.DateEdit textEdit18;
@@ -2485,6 +2442,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit3;
@@ -2525,7 +2483,5 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem41;
         private DevExpress.XtraEditors.TextEdit lookUpEdit6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditDeptType;
     }
 }
