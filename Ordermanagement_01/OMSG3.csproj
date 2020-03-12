@@ -1780,6 +1780,12 @@
     <Compile Include="New Dashboard\LockScreen.Designer.cs">
       <DependentUpon>LockScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="New Dashboard\Orders\ImportOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Orders\ImportOrders.Designer.cs">
+      <DependentUpon>ImportOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="New Dashboard\Orders\OrderEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3682,6 +3688,7 @@
     <EmbeddedResource Include="New Dashboard\LockScreen.resx">
       <DependentUpon>LockScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New Dashboard\Orders\ImportOrders.resx" />
     <EmbeddedResource Include="New Dashboard\Orders\OrderEntry.resx" />
     <EmbeddedResource Include="New Dashboard\Settings\Clarification_Setting.resx">
       <DependentUpon>Clarification_Setting.cs</DependentUpon>
