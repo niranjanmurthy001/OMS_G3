@@ -321,7 +321,7 @@ namespace Ordermanagement_01
             }
             else if (Operation == "Update")
             {
-                Load_External_Client_Order_Client_Details();
+              Load_External_Client_Order_Client_Details();
                 Grd_Document_upload_Load();
                 Gridview_bindInhouse_Final_Document_Upload();
                 RefreshView();
