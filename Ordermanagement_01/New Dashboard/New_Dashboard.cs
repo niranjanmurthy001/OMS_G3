@@ -116,7 +116,7 @@ namespace Ordermanagement_01.New_Dashboard
             }
             catch (Exception ex)
             {
-                SplashScreenManager.CloseForm(false);
+                //SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show(ex.ToString());
                 XtraMessageBox.Show("Error Occured Please Check With Administrator");
             }
