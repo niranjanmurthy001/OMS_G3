@@ -162,6 +162,8 @@ namespace Ordermanagement_01
             htComments.Add("@Order_Id", Order_Id);
             htComments.Add("@Work_Type", Work_Type_Id);
             dtComments = dataaccess.ExecuteSP("Sp_Order_Comments", htComments);
+
+
             Grid_Comments.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.SteelBlue;
             Grid_Comments.EnableHeadersVisualStyles = false;
             Grid_Comments.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -9724,7 +9726,7 @@ namespace Ordermanagement_01
             }
 
 
-
+            timer2.Enabled = false;
         }
 
 

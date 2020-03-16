@@ -384,21 +384,17 @@ namespace Ordermanagement_01
                                 if (Operation == "Insert")
                                 {
 
-                                    Grd_TempDocument_upload_Load();
-                                }
-                                else if (Operation == "Update")
-                                {
-                                    //Load_External_Client_Order_Client_Details();
-                                    Grd_Document_upload_Load();
-                                    //Gridview_bindInhouse_Final_Document_Upload();
-                                    RefreshView();
-                                }
-                            }
-                        }
-                    }
-                }
-                dbc.BindDocumentType(ddl_Dcoument_Type);
-                dbc.BindDocumentType(ddl_Inhouse_Doc_Type);
+                Grd_TempDocument_upload_Load();
+            }
+            else if (Operation == "Update")
+            {
+                Load_External_Client_Order_Client_Details();
+                Grd_Document_upload_Load();
+                Gridview_bindInhouse_Final_Document_Upload();
+                RefreshView();
+            }
+            dbc.BindDocumentType(ddl_Dcoument_Type);
+            dbc.BindDocumentType(ddl_Inhouse_Doc_Type);
 
                 Get_Order_Type_Abb();
                 //try

@@ -1780,11 +1780,23 @@
     <Compile Include="New Dashboard\LockScreen.Designer.cs">
       <DependentUpon>LockScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="New Dashboard\Orders\ImportOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Orders\ImportOrders.Designer.cs">
+      <DependentUpon>ImportOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="New Dashboard\Orders\OrderEntry.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="New Dashboard\Orders\OrderEntry.Designer.cs">
       <DependentUpon>OrderEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\Clarification_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\Clarification_Setting.Designer.cs">
+      <DependentUpon>Clarification_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="New Dashboard\Settings\Client_Process.cs">
       <SubType>Form</SubType>
@@ -1851,6 +1863,12 @@
     </Compile>
     <Compile Include="New Dashboard\Sample.Designer.cs">
       <DependentUpon>Sample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm2.Designer.cs">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="New Dashboard\XtraForm2.cs">
       <SubType>Form</SubType>
@@ -3670,7 +3688,11 @@
     <EmbeddedResource Include="New Dashboard\LockScreen.resx">
       <DependentUpon>LockScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="New Dashboard\Orders\ImportOrders.resx" />
     <EmbeddedResource Include="New Dashboard\Orders\OrderEntry.resx" />
+    <EmbeddedResource Include="New Dashboard\Settings\Clarification_Setting.resx">
+      <DependentUpon>Clarification_Setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Settings\Client_Process.resx">
       <DependentUpon>Client_Process.cs</DependentUpon>
     </EmbeddedResource>
@@ -3701,6 +3723,9 @@
     <EmbeddedResource Include="New Dashboard\Orders\Search_NotePad.resx" />
     <EmbeddedResource Include="New Dashboard\Sample.resx">
       <DependentUpon>Sample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Dashboard\Settings\WaitForm2.resx">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\XtraForm2.resx">
       <DependentUpon>XtraForm2.cs</DependentUpon>
