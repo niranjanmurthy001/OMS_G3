@@ -90,6 +90,10 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             {
                 buttonFinish.Enabled = false;
             }
+            if (tabPane.SelectedPage.Name == "tabConfirmation")
+            {
+                buttonNext.Enabled = false;
+            }
         }
         private void buttonPrevious_Click(object sender, EventArgs e)
         {
@@ -154,6 +158,7 @@ namespace Ordermanagement_01.New_Dashboard.Orders
             if (checkConfirmation_Properties.Checked == true)
             {
                 this.buttonFinish.Enabled = true;
+                this.buttonNext.Enabled = false;              
             }
             else
             {

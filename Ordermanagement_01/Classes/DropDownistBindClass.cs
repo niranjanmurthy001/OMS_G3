@@ -8,7 +8,13 @@ using DevExpress.XtraEditors.Controls;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
-
+using DevExpress.XtraSplashScreen;
+using Ordermanagement_01.Masters;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Ordermanagement_01.Models;
+using System.Net;
+using System.Threading.Tasks;
 
 /// <summary>
 /// Summary description for DropDownistBindClass
@@ -953,17 +959,50 @@ public class DropDownistBindClass
        // ddlName.Items.Insert(0, "SELECT");
 
     }
-    public void BindDocumentType(ComboBox ddlName)
+    public async void BindDocumentType(ComboBox ddlName)
     {
 
-        Hashtable htParam = new Hashtable();
+        //Hashtable htParam = new Hashtable();
 
-        htParam.Add("@Trans", "SELECT_DOC_TYPE");
-        dt = da.ExecuteSP("Sp_Genral", htParam);
-        ddlName.DataSource = dt;
-        ddlName.DisplayMember = "Document_Type";
-        ddlName.ValueMember = "Document_Type_Id";
-       
+        //htParam.Add("@Trans", "SELECT_DOC_TYPE");
+        //dt = da.ExecuteSP("Sp_Genral", htParam);
+        //ddlName.DataSource = dt;
+        //ddlName.DisplayMember = "Document_Type";
+        //ddlName.ValueMember = "Document_Type_Id";
+        try
+        {            
+            var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans", "SELECT_DOC_TYPE" }
+                };
+            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/DocumentType", data);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        DataTable dtdocumenttype = JsonConvert.DeserializeObject<DataTable>(result);
+                        if (dtdocumenttype != null && dtdocumenttype.Rows.Count > 0)
+                        {
+                            DataRow dr = dtdocumenttype.NewRow();
+                            dr[0] = 0;
+                            dr[1] = "Select Client";
+                            dtdocumenttype.Rows.InsertAt(dr, 0);
+                        }
+                        ddlName.DataSource = dtdocumenttype;
+                        ddlName.DisplayMember = "Document_Type";
+                        ddlName.ValueMember = "Document_Type_Id";                        
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {           
+            throw ex;
+        }       
     }
 
     public void BindSubProcessName(ComboBox ddlName, int Clientid)
@@ -3391,7 +3430,6 @@ public class DropDownistBindClass
 
         return dt;
     }
-
     public DataTable Get_Month_Year()
     {
 
@@ -3401,7 +3439,6 @@ public class DropDownistBindClass
 
         return dt;
     }
-
 
     public void Bind_Document_Check_Type(DevExpress.XtraEditors.CheckedListBoxControl Chk)
     {

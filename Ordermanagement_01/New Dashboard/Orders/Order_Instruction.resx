@@ -130,22 +130,20 @@
   <data name="groupControl1.CaptionImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAAAAmJL
-        R0QAAKqNIzIAAAAHdElNRQfjDAQQLzVOH+bkAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTEyLTA0VDE2
-        OjQ3OjUzKzAwOjAwBxculgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0xMi0wNFQxNjo0Nzo1MyswMDow
-        MHZKlioAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAACoElEQVRYR83XS6gOYRzH
-        8bEgd2HjtkEuJTZIKdfsFBZslMSCbFG2ikQiWYhkQxRFKBZsWaCEYiGEOicL5RJLl9935nnOed9n/v93
-        LjnlV5/OM+88M/9/78w785ysRcbIfnki3+RrGO8T9g1pFskbuSMbZEbA+K6wb6G0ynTZ0sNW6Zc9ErMj
-        iGFfnzDXOgc2yzQp5bE8kvuOn3JCOrMx6MxJYa51DlADpbyVxcWwlMnyQybmW4MZG3RmkjCXv1aoQa2B
-        jJRZ8lG8BrjGD4phVw4FaR7K+mJYCjWoRU1qZ6/ki/wSr4HtcqsYduVokIa524phKdSgFjVf8sEf4avt
-        dQnWydNi2BWvgWeythiWQg1qUZPatRqYIN9lZr41GKuB2cLc8flWOa0aIKfkpgzLt4ocDGLYd1uY66V1
-        A6PlhZyX/OZRhgdklFyQ58JcL60bIPy0eOJ9EO7+TQFj7myekN7PL6ayAZ7p1gNkl8SsktPyLmC8UmKY
-        a51jr1Q2sECsR+gcSeP9CuaKdQ7OXdkA15RtzwiJSRtgn3VMxLkrGzgXPvNclZi0gWtiHROdlcoGmiRt
-        oE4qG1gm3ESeFRKTNsCNaB0Tce7KBnYLX6WHOzkmbYB91jERTVQ20CRpA3XyfzfAw8L66lJHhBPFBpaH
-        z6y5KWq4DRyW9MaxHJfPwiL0vfBu5zNrbooabgNNLsF8Ye3H8osnX930vASMq7CaWSLkilwuhtlSYZ91
-        TMptYHUY98LiJOZYEMM+65hO1DAbeC0HxHqJeFigwNrnoQa1Sg3slHvS+focCtTgn5mBBn7LGuHmqGuc
-        pOEza66HmtTOl1hck7o+yXVJc0PYZx3j4c3bOKx2WQWdkXkBr1lO6K2E/3mmyiXhYYSLMkUaJsv+ApSM
-        URzOKYlZAAAAAElFTkSuQmCC
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAAAB3RJ
+        TUUH4wwEEC81Th/m5AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKgSURBVFhH
+        zddLqA5hHMfxsSB3YeO2QS4lNkgp1+wUFmyUxIJsUbaKRCJZiGRDFEUoFmxZoIRiIYQ6JwvlEkuX33fm
+        ec5532f+/3cuOeVXn84z7zwz/3/vzDvznKxFxsh+eSLf5GsY7xP2DWkWyRu5IxtkRsD4rrBvobTKdNnS
+        w1bplz0SsyOIYV+fMNc6BzbLNCnlsTyS+46fckI6szHozElhrnUOUAOlvJXFxbCUyfJDJuZbgxkbdGaS
+        MJe/VqhBrYGMlFnyUbwGuMYPimFXDgVpHsr6YlgKNahFTWpnr+SL/BKvge1yqxh25WiQhrnbimEp1KAW
+        NV/ywR/hq+11CdbJ02LYFa+BZ7K2GJZCDWpRk9q1Gpgg32VmvjUYq4HZwtzx+VY5rRogp+SmDMu3ihwM
+        Yth3W5jrpXUDo+WFnJf85lGGB2SUXJDnwlwvrRsg/LR44n0Q7v5NAWPubJ6Q3s8vprIBnunWA2SXxKyS
+        0/IuYLxSYphrnWOvVDawQKxH6BxJ4/0K5op1Ds5d2QDXlG3PCIlJG2CfdUzEuSsbOBc+81yVmLSBa2Id
+        E52VygaaJG2gTiobWCbcRJ4VEpM2wI1oHRNx7soGdgtfpYc7OSZtgH3WMRFNVDbQJGkDdfJ/N8DDwvrq
+        UkeEE8UGlofPrLkpargNHJb0xrEcl8/CIvS98G7nM2tuihpuA00uwXxh7cfyiydf3fS8BIyrsJpZIuSK
+        XC6G2VJhn3VMym1gdRj3wuIk5lgQwz7rmE7UMBt4LQfEeol4WKDA2uehBrVKDeyUe9L5+hwK1OCfmYEG
+        fssa4eaoa5yk4TNrroea1M6XWFyTuj7JdUlzQ9hnHePhzds4rHZZBZ2ReQGvWU7orYT/eabKJeFhhIsy
+        RRomy/4ClIxRHM4piVkAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="richEditBarController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
