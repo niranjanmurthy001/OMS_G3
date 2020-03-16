@@ -1967,55 +1967,43 @@ namespace Ordermanagement_01
                 throw ex;
             }
         }
-        private void Check_Tax_Request()
+        private async Task Check_Tax_Request()
         {
-
-
-            Hashtable htcheck = new Hashtable();
-            DataTable dtcheck = new DataTable();
-            htcheck.Add("@Trans", "CHECK_INTERNALTAX_STATUS");
-            htcheck.Add("@Order_Id", Order_Id);
-            dtcheck = dataaccess.ExecuteSP("Sp_Tax_Order_Status", htcheck);
             int check = 0;
-            if (dtcheck.Rows.Count > 0)
+            Internal_Tax_Check = 0;
+            try
             {
-
-                check = int.Parse(dtcheck.Rows[0]["Search_Tax_Request"].ToString());
-
-
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.GetAsync($"{Base_Url.Url }/EmployeeOrderEntry/CheckInternalTaxStatus/{Order_Id}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            DataTable dtcheck = JsonConvert.DeserializeObject<DataTable>(await response.Content.ReadAsStringAsync());
+                            check = int.Parse(dtcheck.Rows[0]["Search_Tax_Request"].ToString());
+                            if (check != 2)
+                            {
+                                btn_Send_Tax_Request.Visible = true;
+                                //  btn_Cancel_Tax_Request.Visible = false;
+                            }
+                            else
+                            {
+                                //  btn_Cancel_Tax_Request.Visible = true;
+                                btn_Send_Tax_Request.Visible = false;
+                            }
+                            if (check == 2)
+                            {
+                                Internal_Tax_Check = 1;
+                            }
+                        }
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                check = 0;
+                throw ex;
             }
-
-            if (check != 2)
-            {
-
-                btn_Send_Tax_Request.Visible = true;
-                //  btn_Cancel_Tax_Request.Visible = false;
-
-            }
-
-            else
-            {
-
-                //  btn_Cancel_Tax_Request.Visible = true;
-                btn_Send_Tax_Request.Visible = false;
-            }
-
-            if (check == 2)
-            {
-
-                Internal_Tax_Check = 1;
-            }
-            else
-            {
-                Internal_Tax_Check = 0;
-
-            }
-
-
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
