@@ -16,12 +16,15 @@ using iTextSharp.text.pdf;
 using Ordermanagement_01.Tax;
 using System.Net;
 using DevExpress.XtraSplashScreen;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Ordermanagement_01.Models;
+using Ordermanagement_01.Masters;
 
 namespace Ordermanagement_01
 {
     public partial class Order_Uploads : Form
-    {
-
+    {   
         private ContextMenu contextMenu1;
         private MenuItem copyMenuItem;
         private MenuItem pasteMenuItem;
@@ -29,10 +32,8 @@ namespace Ordermanagement_01
         private string homeFolder = "";
         private string homeDisk = "";
         private FileSystemWatcher fsw;
-
         const int ALT = 32;
         const int CTRL = 8;
-
         const int SHIFT = 4;
         int OrderId;
         int userid;
@@ -52,7 +53,6 @@ namespace Ordermanagement_01
         string External_Client_Order_Number;
         Commonclass Comclass = new Commonclass();
         DataAccess dataaccess = new DataAccess();
-
         DropDownistBindClass dbc = new DropDownistBindClass();
         InfiniteProgressBar.clsProgress cProbar = new InfiniteProgressBar.clsProgress();
         string View_File_Path;
@@ -64,10 +64,8 @@ namespace Ordermanagement_01
         string extension;
         [DllImport("user32.dll")]
         static extern int GetForegroundWindow();
-
         [DllImport("user32.dll")]
         static extern short GetKeyState(VirtualKeyStates nVirtKey);
-
         int External_Clinet_Id, External_Sub_client_Id, External_Order_Id;
         int Inhouse_Client_Id, Inhosue_Sub_Client_id;
         string Package = "";
@@ -76,13 +74,10 @@ namespace Ordermanagement_01
         int Index;
         ReportDocument rptDoc = new ReportDocument();
         System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
-
         string server = "192.168.12.33";
         string database = "TITLELOGY_NEW_OMS";
         string UserID = "sa";
         string password = "password1$";
-
-
         string Client_Order_no;
 
         int User_id;
@@ -98,13 +93,11 @@ namespace Ordermanagement_01
         private string Ftp_Path;
         private string mainPath;
         private string ftpfullpath;
-
         enum VirtualKeyStates : int
         {
             VK_LBUTTON = 0x01,
             VK_RBUTTON = 0x02,
         }
-
         public Order_Uploads(string OPERATION, int Order_id, int user_id, string OrderNo, string Client, string Subclient)
         {
             InitializeComponent();
@@ -115,7 +108,6 @@ namespace Ordermanagement_01
             Sub_Client = Subclient;
             Operation = OPERATION;
         }
-
         bool IsKeyPressed(VirtualKeyStates testKey)
         {
             bool keyPressed = false;
@@ -142,7 +134,6 @@ namespace Ordermanagement_01
             StringBuilder Buff = new StringBuilder(nChars);
             handle = GetForegroundWindow();
         }
-
         private void pasteMenuItem_Click(object sender, System.EventArgs e)
         {
             IDataObject data = Clipboard.GetDataObject();
@@ -171,12 +162,10 @@ namespace Ordermanagement_01
             }
             RefreshView();
         }
-
         private void copyMenuItem_Click(object sender, System.EventArgs e)
         {
             CopyToClipboard(false);
         }
-
         /// <summary>
         /// Write files to clipboard (from http://blogs.wdevs.com/idecember/archive/2005/10/27/10979.aspx)
         /// </summary>
@@ -194,19 +183,15 @@ namespace Ordermanagement_01
                 Clipboard.SetDataObject(data);
             }
         }
-
         private void refreshMenuItem_Click(object sender, System.EventArgs e)
         {
             RefreshView();
         }
-
-
         private void Load_External_Client_Order_Client_Details()
         {
 
             Hashtable ht = new Hashtable();
             System.Data.DataTable dt = new System.Data.DataTable();
-
             ht.Add("@Trans", "GET_EXTERNAL_CLIENT_SUB_CLIENT_ORDER_ID");
             ht.Add("@Order_Id", OrderId);
             dt = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", ht);
@@ -225,213 +210,258 @@ namespace Ordermanagement_01
             }
             Gridview_bind_External_Client_Document_Upload();
         }
-
-
-
-        private void Order_Uploads_Load(object sender, EventArgs e)
+        private async void Order_Uploads_Load(object sender, EventArgs e)
         {
-
-            this.WindowState = FormWindowState.Maximized;
-
-            var dt = dbc.Get_Month_Year();
-            if (dt != null && dt.Rows.Count > 0)
+            try
             {
-                year = dt.Rows[0]["Year"].ToString();
-                month = dt.Rows[0]["Month"].ToString();
-            }
-
-            System.Data.DataTable dt_ftp_Details = dbc.Get_Ftp_Details();
-
-            if (dt_ftp_Details.Rows.Count > 0)
-            {
-                Ftp_Domain_Name = dt_ftp_Details.Rows[0]["Ftp_Host_Name"].ToString();
-
-                Ftp_User_Name = dt_ftp_Details.Rows[0]["Ftp_User_Name"].ToString();
-
-                string Ftp_pass = dt_ftp_Details.Rows[0]["Ftp_Password"].ToString();
-
-                if (Ftp_pass != "")
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                this.WindowState = FormWindowState.Maximized;
+                //var ht = new Hashtable();
+                //ht.Add("@Trans", "GET_MONTH_YEAR");
+                //dt = da.ExecuteSP("Sp_Document_Upload", ht);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                var dictionary = new Dictionary<string, object>
                 {
-                    Ftp_Password = dbc.Decrypt(Ftp_pass);
+                {"@Trans","GET_MONTH_YEAR" }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            dt = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                year = dt.Rows[0]["Year"].ToString();
+                                month = dt.Rows[0]["Month"].ToString();
+                            }
+                        }
+                    }
+                }
+                //var dt = dbc.Get_Month_Year();
+
+                System.Data.DataTable dt_ftp_Details = dbc.Get_Ftp_Details();
+
+                if (dt_ftp_Details.Rows.Count > 0)
+                {
+                    Ftp_Domain_Name = dt_ftp_Details.Rows[0]["Ftp_Host_Name"].ToString();
+
+                    Ftp_User_Name = dt_ftp_Details.Rows[0]["Ftp_User_Name"].ToString();
+
+                    string Ftp_pass = dt_ftp_Details.Rows[0]["Ftp_Password"].ToString();
+
+                    if (Ftp_pass != "")
+                    {
+                        Ftp_Password = dbc.Decrypt(Ftp_pass);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ftp File Path was not found; You cannot upload the documents please check with administrator");
+                }
+                //tabControl1.TabPages.Remove(tabPage1);           
+                //Hashtable htos = new Hashtable();
+                //System.Data.DataTable dtos = new System.Data.DataTable();
+                //htos.Add("@Trans", "GET_CURRENT_ORDER_STATUS_OF_ORDER");
+                //htos.Add("@Order_ID", OrderId);
+                //dtos = dataaccess.ExecuteSP("Sp_Document_Upload", htos);
+                //if (dtos.Rows.Count > 0)
+                //{
+                //    Order_status = dtos.Rows[0]["Order_Status"].ToString();
+                //}
+                var dictionary1 = new Dictionary<string, object>
+                {
+                {"@Trans","GET_CURRENT_ORDER_STATUS_OF_ORDER" },
+                {"@Order_ID",OrderId }
+                };
+                var data1 = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data1);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            System.Data.DataTable dt1 = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            if (dt1.Rows.Count > 0)
+                            {
+                                Order_status = dt1.Rows[0]["Order_Status"].ToString();
+                            }
+                        }
+                    }
+                }
+                Hashtable htuserrole = new Hashtable();
+                System.Data.DataTable dtuserrole = new System.Data.DataTable();
+                htuserrole.Add("@Trans", "GET_USER_ROLE");
+                htuserrole.Add("@User_Id", userid);
+                dtuserrole = dataaccess.ExecuteSP("Sp_Document_Upload", htuserrole);
+                if (dtuserrole.Rows.Count > 0)
+                {
+                    User_Role_Id = dtuserrole.Rows[0]["User_RoleId"].ToString();
+                }
+                //Hashtable htchup = new Hashtable();
+                //System.Data.DataTable dtchup = new System.Data.DataTable();
+                //htchup.Add("@Trans", "CHEK_UPLOAD_TAB_DOCUMENT_TO_SHOW");
+                //htchup.Add("@Order_ID", OrderId);
+                //htchup.Add("@order_Status", Order_status);
+                //htchup.Add("@User_Id", userid);
+                //dtchup = dataaccess.ExecuteSP("Sp_Document_Upload", htchup);
+                var dictionary2 = new Dictionary<string, object>
+                {
+                {"@Trans","CHEK_UPLOAD_TAB_DOCUMENT_TO_SHOW" },
+                {"@Order_ID",OrderId },
+                {"@order_Status",Order_status },
+                {"@User_Id",userid}
+                };
+                var data2 = new StringContent(JsonConvert.SerializeObject(dictionary2), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data2);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            System.Data.DataTable dt2 = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            if (dt2.Rows.Count > 0)
+                            {
+                                int Doccount;
+                                if (dt2.Rows.Count > 0)
+                                {
+                                    Doccount = int.Parse(dt2.Rows[0]["count"].ToString());
+                                }
+                                else
+                                {
+                                    Doccount = 0;
+                                }
+                                if (User_Role_Id == "2" && Doccount > 0)
+                                {
+                                    tabControl1.TabPages.Add(tabPage1);
+                                }
+                                else if (User_Role_Id == "1" || User_Role_Id == "6" || User_Role_Id == "4")
+                                {
+                                    tabControl1.TabPages.Add(tabPage1);
+                                }
+                                else
+                                {
+                                    tabControl1.TabPages.Remove(tabPage1);
+                                }
+                                if (Operation == "Insert")
+                                {
+                                    Grd_TempDocument_upload_Load();
+                                }
+                                else if (Operation == "Update")
+                                {
+                                    Load_External_Client_Order_Client_Details();
+                                    Grd_Document_upload_Load();
+                                    Gridview_bindInhouse_Final_Document_Upload();
+                                    RefreshView();
+                                }
+                                dbc.BindDocumentType(ddl_Dcoument_Type);
+                                dbc.BindDocumentType(ddl_Inhouse_Doc_Type);
+                                Get_Order_Type_Abb();
+                                //try
+                                //{
+                                //homeFolder = @"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId;
+                                //System.IO.Directory.CreateDirectory(homeFolder);
+                                //}
+
+                                //catch (Exception ex)
+                                //{
+                                //  MessageBox.Show(ex.Message);
+                                //}
+                                //homeDisk = Path.GetPathRoot(homeFolder).ToUpper();		// C:\ or D:\
+                                //this.Text = "Files in ";
+                                //// Raise Event handlers.
+                                //fsw = new FileSystemWatcher(homeFolder, "*.*");
+                                //fsw.IncludeSubdirectories = true;
+                                //// Monitor all changes specified in the NotifyFilters.
+                                //fsw.NotifyFilter = NotifyFilters.Attributes |
+                                //               NotifyFilters.CreationTime |
+                                //               NotifyFilters.DirectoryName |
+                                //               NotifyFilters.FileName |
+                                //               NotifyFilters.LastAccess |
+                                //               NotifyFilters.LastWrite |
+                                //               NotifyFilters.Security |
+                                //               NotifyFilters.Size;
+                                //// Watch on events.
+                                ////fsw.EnableRaisingEvents = true;
+                                //fsw.Changed += new FileSystemEventHandler(fsw_Changed);
+                                //fsw.Deleted += new FileSystemEventHandler(fsw_Changed);
+                                //fsw.Created += new FileSystemEventHandler(fsw_Changed);
+                                //  fsw.EnableRaisingEvents = true;
+                                Hashtable htordertask = new Hashtable();
+                                System.Data.DataTable dtordertask = new System.Data.DataTable();
+                                htordertask.Add("@Trans", "GET_ORDER_TASK");
+                                htordertask.Add("@Order_Id", OrderId);
+                                dtordertask = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htordertask);
+                                if (dtordertask.Rows.Count > 0)
+                                {
+                                    Tax_Order_Task = int.Parse(dtordertask.Rows[0]["Order_Task"].ToString());
+                                }
+                                Hashtable httaxcount = new Hashtable();
+                                System.Data.DataTable dttaxcount = new System.Data.DataTable();
+                                if (Tax_Order_Task == 21)
+                                {
+                                    httaxcount.Add("@Trans", "COUNT_OF_EXTERNAL_TAX_DOCUMENTS_BY_ORDER");
+                                }
+                                else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
+                                {
+                                    httaxcount.Add("@Trans", "COUNT_OF_INTERNAL_TAX_DOCUMENTS_BY_ORDER");
+                                }
+                                httaxcount.Add("@Order_Id", OrderId);
+                                dttaxcount = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", httaxcount);
+                                if (dttaxcount.Rows.Count > 0)
+                                {
+                                    tabControl1.TabPages[1].Text = "Tax  " + "(" + dttaxcount.Rows[0]["count"].ToString() + ")";
+                                }
+                                else
+                                {
+                                    tabControl1.TabPages[1].Text = "Tax  " + "(0)";
+                                }
+                                Gridview_bind_Tax_Document_Upload();
+                                Hashtable htvendoccount = new Hashtable();
+                                System.Data.DataTable dtvendocount = new System.Data.DataTable();
+                                htvendoccount.Add("@Trans", "COUNT_NO_DOC");
+                                htvendoccount.Add("@Order_Id", OrderId);
+                                dtvendocount = dataaccess.ExecuteSP("Sp_Vendor_Order_Documents", htvendoccount);
+                                if (dtvendocount.Rows.Count > 0)
+                                {
+                                    tabControl1.TabPages[3].Text = "Vendor  " + "(" + dtvendocount.Rows[0]["count"].ToString() + ")";
+                                }
+                                else
+                                {
+                                    tabControl1.TabPages[3].Text = "Vendor  " + "(0)";
+                                }
+                                Grid_Bind_VendorDocuments();
+                                if (User_Role_Id == "1" || User_Role_Id == "4" || User_Role_Id == "6")
+                                {
+                                    btn_View_package.Visible = true;
+                                }
+                                else
+                                {
+                                    btn_View_package.Visible = false;
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Ftp File Path was not found; You cannot upload the documents please check with administrator");
+                SplashScreenManager.CloseForm(false);
+                throw ex;
             }
-
-
-            //tabControl1.TabPages.Remove(tabPage1);           
-            Hashtable htos = new Hashtable();
-            System.Data.DataTable dtos = new System.Data.DataTable();
-            htos.Add("@Trans", "GET_CURRENT_ORDER_STATUS_OF_ORDER");
-            htos.Add("@Order_ID", OrderId);
-            dtos = dataaccess.ExecuteSP("Sp_Document_Upload", htos);
-            if (dtos.Rows.Count > 0)
+            finally
             {
-                Order_status = dtos.Rows[0]["Order_Status"].ToString();
-            }
-
-            Hashtable htuserrole = new Hashtable();
-            System.Data.DataTable dtuserrole = new System.Data.DataTable();
-            htuserrole.Add("@Trans", "GET_USER_ROLE");
-            htuserrole.Add("@User_Id", userid);
-            dtuserrole = dataaccess.ExecuteSP("Sp_Document_Upload", htuserrole);
-
-            if (dtuserrole.Rows.Count > 0)
-            {
-                User_Role_Id = dtuserrole.Rows[0]["User_RoleId"].ToString();
-            }
-
-            Hashtable htchup = new Hashtable();
-            System.Data.DataTable dtchup = new System.Data.DataTable();
-            htchup.Add("@Trans", "CHEK_UPLOAD_TAB_DOCUMENT_TO_SHOW");
-            htchup.Add("@Order_ID", OrderId);
-            htchup.Add("@order_Status", Order_status);
-            htchup.Add("@User_Id", userid);
-            dtchup = dataaccess.ExecuteSP("Sp_Document_Upload", htchup);
-
-            int Doccount;
-            if (dtchup.Rows.Count > 0)
-            {
-                Doccount = int.Parse(dtchup.Rows[0]["count"].ToString());
-            }
-            else
-            {
-                Doccount = 0;
-            }
-
-            if (User_Role_Id == "2" && Doccount > 0)
-            {
-                tabControl1.TabPages.Add(tabPage1);
-            }
-            else if (User_Role_Id == "1" || User_Role_Id == "6" || User_Role_Id == "4")
-            {
-                tabControl1.TabPages.Add(tabPage1);
-            }
-            else
-            {
-                tabControl1.TabPages.Remove(tabPage1);
-            }
-
-            if (Operation == "Insert")
-            {
-
-                Grd_TempDocument_upload_Load();
-            }
-            else if (Operation == "Update")
-            {
-                Load_External_Client_Order_Client_Details();
-                Grd_Document_upload_Load();
-                Gridview_bindInhouse_Final_Document_Upload();
-                RefreshView();
-            }
-            dbc.BindDocumentType(ddl_Dcoument_Type);
-            dbc.BindDocumentType(ddl_Inhouse_Doc_Type);
-
-            Get_Order_Type_Abb();
-            //try
-            //{
-            //homeFolder = @"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId;
-            //System.IO.Directory.CreateDirectory(homeFolder);
-            //}
-
-            //catch (Exception ex)
-            //{
-            //  MessageBox.Show(ex.Message);
-            //}
-
-
-            //homeDisk = Path.GetPathRoot(homeFolder).ToUpper();		// C:\ or D:\
-            //this.Text = "Files in ";
-
-
-
-            //// Raise Event handlers.
-            //fsw = new FileSystemWatcher(homeFolder, "*.*");
-
-            //fsw.IncludeSubdirectories = true;
-            //// Monitor all changes specified in the NotifyFilters.
-
-            //fsw.NotifyFilter = NotifyFilters.Attributes |
-            //               NotifyFilters.CreationTime |
-            //               NotifyFilters.DirectoryName |
-            //               NotifyFilters.FileName |
-            //               NotifyFilters.LastAccess |
-            //               NotifyFilters.LastWrite |
-            //               NotifyFilters.Security |
-            //               NotifyFilters.Size;
-            //// Watch on events.
-            ////fsw.EnableRaisingEvents = true;
-            //fsw.Changed += new FileSystemEventHandler(fsw_Changed);
-            //fsw.Deleted += new FileSystemEventHandler(fsw_Changed);
-            //fsw.Created += new FileSystemEventHandler(fsw_Changed);
-
-
-
-            //  fsw.EnableRaisingEvents = true;
-            Hashtable htordertask = new Hashtable();
-            System.Data.DataTable dtordertask = new System.Data.DataTable();
-            htordertask.Add("@Trans", "GET_ORDER_TASK");
-            htordertask.Add("@Order_Id", OrderId);
-
-
-            dtordertask = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htordertask);
-
-            if (dtordertask.Rows.Count > 0)
-            {
-                Tax_Order_Task = int.Parse(dtordertask.Rows[0]["Order_Task"].ToString());
-            }
-
-            Hashtable httaxcount = new Hashtable();
-            System.Data.DataTable dttaxcount = new System.Data.DataTable();
-            if (Tax_Order_Task == 21)
-            {
-                httaxcount.Add("@Trans", "COUNT_OF_EXTERNAL_TAX_DOCUMENTS_BY_ORDER");
-            }
-            else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
-            {
-                httaxcount.Add("@Trans", "COUNT_OF_INTERNAL_TAX_DOCUMENTS_BY_ORDER");
-            }
-            httaxcount.Add("@Order_Id", OrderId);
-            dttaxcount = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", httaxcount);
-            if (dttaxcount.Rows.Count > 0)
-            {
-                tabControl1.TabPages[1].Text = "Tax  " + "(" + dttaxcount.Rows[0]["count"].ToString() + ")";
-            }
-            else
-            {
-                tabControl1.TabPages[1].Text = "Tax  " + "(0)";
-            }
-
-            Gridview_bind_Tax_Document_Upload();
-
-            Hashtable htvendoccount = new Hashtable();
-            System.Data.DataTable dtvendocount = new System.Data.DataTable();
-            htvendoccount.Add("@Trans", "COUNT_NO_DOC");
-            htvendoccount.Add("@Order_Id", OrderId);
-            dtvendocount = dataaccess.ExecuteSP("Sp_Vendor_Order_Documents", htvendoccount);
-            if (dtvendocount.Rows.Count > 0)
-            {
-                tabControl1.TabPages[3].Text = "Vendor  " + "(" + dtvendocount.Rows[0]["count"].ToString() + ")";
-            }
-            else
-            {
-                tabControl1.TabPages[3].Text = "Vendor  " + "(0)";
-            }
-
-            Grid_Bind_VendorDocuments();
-
-            if (User_Role_Id == "1" || User_Role_Id == "4" || User_Role_Id == "6")
-            {
-                btn_View_package.Visible = true;
-            }
-            else
-            {
-                btn_View_package.Visible = false;
-            }
+                SplashScreenManager.CloseForm(false);
+            }           
         }
-
         private void CreateDirectory(string mainPath, string directoryPath)
         {
             try
@@ -512,7 +542,6 @@ namespace Ordermanagement_01
             htop.Add("@Trans", "GET_ORDER_TYPE_ABRIVATION");
             htop.Add("@Order_ID", OrderId);
             dtop = dataaccess.ExecuteSP("Sp_Document_Upload", htop);
-
             if (dtop.Rows.Count > 0)
             {
                 Sub_Process_Id = dtop.Rows[0]["Sub_ProcessId"].ToString();
@@ -571,7 +600,6 @@ namespace Ordermanagement_01
                 Invoke(new ChangeHandler(fsw_Changed), new object[] { sender, e });
                 return;
             }
-
             string[] files = Directory.GetFiles(homeFolder);
             if (files.Length != listView1.Items.Count)			// You probably want to do something better
             {
@@ -608,7 +636,7 @@ namespace Ordermanagement_01
             {
                 try
                 {
-                    SplashScreenManager.ShowForm(this, typeof(Masters.WaitForm1), true, true, false);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     Hashtable htorderkb = new Hashtable();
                     System.Data.DataTable dtorderkb = new System.Data.DataTable();
                     OpenFileDialog op1 = new OpenFileDialog();
@@ -628,7 +656,6 @@ namespace Ordermanagement_01
                         CreateDirectory(mainPath, homeFolder);
                         ftpfullpath = "ftp://" + Ftp_Domain_Name + "/Ftp_Application_Files/OMS/" + mainPath + "/" + homeFolder + "";
                         string ftpUploadFullPath = "" + ftpfullpath + "/" + f.Name + "";
-
                         FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
                         ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
                         ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
@@ -641,7 +668,6 @@ namespace Ordermanagement_01
                             files.Add(line); // Add Each Directory to the List.  
                             line = streamReader.ReadLine();
                         }
-
                         if (!files.Contains(f.Name))
                         {
                             FtpWebRequest ftpUpLoadFile = (FtpWebRequest)WebRequest.Create(ftpUploadFullPath);
@@ -668,7 +694,6 @@ namespace Ordermanagement_01
                             htorderkb.Add("@Inserted_By", userid);
                             htorderkb.Add("@Inserted_date", DateTime.Now);
                             dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
-
                         }
                         else
                         {
@@ -696,8 +721,7 @@ namespace Ordermanagement_01
                 }
             }
         }
-
-        protected void Grd_Document_upload_Load()
+        protected async void Grd_Document_upload_Load()
         {
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
             DataGridViewCheckBoxColumn chk_Inv = new DataGridViewCheckBoxColumn();
@@ -705,22 +729,176 @@ namespace Ordermanagement_01
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
             DataGridViewButtonColumn btnEdit = new DataGridViewButtonColumn();
-            Hashtable htDocument_Select = new Hashtable();
-            System.Data.DataTable dtDocument_Select = new System.Data.DataTable();
+            //Hashtable htDocument_Select = new Hashtable();6
+            //System.Data.DataTable dtDocument_Select = new System.Data.DataTable();
+            //if (User_Role_Id != "2")
+            //{
+            //    htDocument_Select.Add("@Trans", "SELECT");
+            //}
+            //else
+            //{
+
+            //    htDocument_Select.Add("@Trans", "SELECT_FOR_EMPLOYEE_ROLE");
+            //}
+
+            //htDocument_Select.Add("@Order_Id", OrderId);
+            //// htselSourceuploadkb.Add("@Tax_Type_Id", Tax_Type_Id);
+            //dtDocument_Select = dataaccess.ExecuteSP("Sp_Document_Upload", htDocument_Select);
+
+            var dict_Select = new Dictionary<string, object>();
             if (User_Role_Id != "2")
             {
-                htDocument_Select.Add("@Trans", "SELECT");
+                dict_Select.Add("@Trans", "SELECT");
             }
             else
             {
-
-                htDocument_Select.Add("@Trans", "SELECT_FOR_EMPLOYEE_ROLE");
+                dict_Select.Add("@Trans", "SELECT_FOR_EMPLOYEE_ROLE");
             }
+            dict_Select.Add("@Order_Id", OrderId);            
+            var data_Select = new StringContent(JsonConvert.SerializeObject(dict_Select), Encoding.UTF8, "application/json");
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_Select);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        System.Data.DataTable dtDocument_Select = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                        if(dtDocument_Select.Rows.Count>0)
+                        {
+                            if (dtDocument_Select.Rows.Count > 0)
+                            {
+                                Grd_Document_upload.DataSource = null;
+                                Grd_Document_upload.Columns.Clear();
+                                Grd_Document_upload.Rows.Clear();
+                                //ex2.Visible = true;
+                                Grd_Document_upload.Visible = true;
+                                Grd_Document_upload.AutoGenerateColumns = false;
+                                Grd_Document_upload.ColumnCount = 10;
+                                Grd_Document_upload.Columns[0].Name = "Instuction";
+                                Grd_Document_upload.Columns[0].HeaderText = "INSTRUCTION";
+                                Grd_Document_upload.Columns[0].DataPropertyName = "Instuction";
+                                Grd_Document_upload.Columns[0].Width = 250;
+                                Grd_Document_upload.Columns[1].Name = "DocumentPath";
+                                Grd_Document_upload.Columns[1].HeaderText = "FILE PATH";
+                                Grd_Document_upload.Columns[1].DataPropertyName = "New_Document_Path";
+                                Grd_Document_upload.Columns[1].Visible = false;
+                                Grd_Document_upload.Columns[2].Name = "FileName";
+                                Grd_Document_upload.Columns[2].HeaderText = "FILE NAME";
+                                Grd_Document_upload.Columns[2].DataPropertyName = "Document_Name";
+                                Grd_Document_upload.Columns[2].Width = 300;
+                                Grd_Document_upload.Columns[3].Name = "FileSize";
+                                Grd_Document_upload.Columns[3].HeaderText = "FILE SIZE";
+                                Grd_Document_upload.Columns[3].DataPropertyName = "File_Size";
+                                Grd_Document_upload.Columns[3].Width = 100;
+                                Grd_Document_upload.Columns[4].Name = "Inserted_date";
+                                Grd_Document_upload.Columns[4].HeaderText = "Date";
+                                Grd_Document_upload.Columns[4].DataPropertyName = "Inserted_date";
+                                Grd_Document_upload.Columns[4].Width = 120;
+                                Grd_Document_upload.Columns[5].Name = "username";
+                                Grd_Document_upload.Columns[5].HeaderText = "USER NAME";
+                                Grd_Document_upload.Columns[5].DataPropertyName = "User_Name";
+                                Grd_Document_upload.Columns[5].Width = 200;
+                                Grd_Document_upload.Columns[6].Name = "upload_id";
+                                Grd_Document_upload.Columns[6].HeaderText = "upload_id";
+                                Grd_Document_upload.Columns[6].DataPropertyName = "Document_Upload_Id";
+                                Grd_Document_upload.Columns[6].Visible = false;
+                                Grd_Document_upload.Columns[7].Name = "User_id";
+                                Grd_Document_upload.Columns[7].HeaderText = "User_id";
+                                Grd_Document_upload.Columns[7].DataPropertyName = "User_id";
+                                Grd_Document_upload.Columns[7].Visible = false;
+                                Grd_Document_upload.Columns[8].Name = "Document_Type";
+                                Grd_Document_upload.Columns[8].HeaderText = "Document_Type";
+                                Grd_Document_upload.Columns[8].DataPropertyName = "Document_Type";
+                                Grd_Document_upload.Columns[8].Visible = false;
+                                Grd_Document_upload.Columns[9].Name = "Work_Type_Id";
+                                Grd_Document_upload.Columns[9].HeaderText = "Work_Type_Id";
+                                Grd_Document_upload.Columns[9].DataPropertyName = "Work_Type_Id";
+                                Grd_Document_upload.Columns[9].Visible = false;
+                                if (User_Role_Id == "1" || User_Role_Id == "6" || User_Role_Id == "4" || User_Role_Id == "5" || User_Role_Id == "3")
+                                {
+                                    Grd_Document_upload.Columns[5].Visible = true;
+                                }
+                                else
+                                {
+                                    Grd_Document_upload.Columns[5].Visible = false;
+                                }
+                                Grd_Document_upload.Columns.Add(chk);
+                                chk.HeaderText = "UPLOAD PACKAGE";
+                                chk.Name = "check";
+                                //Grd_Document_upload.Columns[7].Width = 90;
+                                //bool ischecked=(bool).dtDocument_Select
+                                Grd_Document_upload.Columns.Add(chk_Inv);
+                                chk_Inv.HeaderText = "INVOICE";
+                                chk_Inv.Name = "check_Inv";
+                                // Grd_Document_upload.Columns[8].Width = 90;
+                                Grd_Document_upload.Columns.Add(chk_Typ);
+                                chk_Typ.HeaderText = "TYPING";
+                                chk_Typ.Name = "check_Typeing";
+                                // Grd_Document_upload.Columns[9].Width = 90;
+                                Grd_Document_upload.Columns.Add(btn);
+                                btn.HeaderText = "Open";
+                                btn.Text = "Open";
+                                btn.Name = "btn";
+                                btn.UseColumnTextForButtonValue = true;
+                                Grd_Document_upload.Columns[13].Width = 100;
+                                Grd_Document_upload.Columns.Add(btnEdit);
+                                btnEdit.HeaderText = "Edit";
+                                btnEdit.Text = "Edit";
+                                btnEdit.Name = "btnEdit";
+                                btnEdit.UseColumnTextForButtonValue = true;
+                                Grd_Document_upload.Columns[14].Width = 100;
+                                Grd_Document_upload.Columns.Add(btnDelete);
+                                btnDelete.HeaderText = "Delete";
+                                btnDelete.Text = "Delete";
+                                btnDelete.Name = "btnDelete";
+                                btnDelete.UseColumnTextForButtonValue = true;
+                                Grd_Document_upload.Columns[15].Width = 100;                            
+                                Grd_Document_upload.DataSource = dtDocument_Select;
+                            }
+                            else
+                            {
+                                Grd_Document_upload.DataSource = null;
 
-            htDocument_Select.Add("@Order_Id", OrderId);
-            // htselSourceuploadkb.Add("@Tax_Type_Id", Tax_Type_Id);
-            dtDocument_Select = dataaccess.ExecuteSP("Sp_Document_Upload", htDocument_Select);
+                            }
+                            for (int i = 0; i < dtDocument_Select.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < Grd_Document_upload.Rows.Count; j++)
+                                {
+                                    Grd_Document_upload.Rows[j].Cells[13].Value = "View";
+                                    Grd_Document_upload.Rows[j].Cells[14].Value = "Edit";
+                                    Grd_Document_upload.Rows[j].Cells[15].Value = "Delete";
+                                    if (dtDocument_Select.Rows[i]["Document_Upload_Id"].ToString() == Grd_Document_upload.Rows[j].Cells[6].Value.ToString())
+                                    {
+                                        Grd_Document_upload.Columns[6].Visible = false;
+                                        bool ischecked = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_UploadPackage"].ToString());
+                                        if (ischecked == true)
+                                        {
+                                            //chk.DataPropertyName=;
+                                            Grd_Document_upload.Rows[j].Cells[10].Value = dtDocument_Select.Rows[i]["Chk_UploadPackage"].ToString();
+                                        }
 
+                                        bool ischecked1 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString());
+                                        if (ischecked1 == true)
+                                        {
+                                            //chk.DataPropertyName=;
+                                            Grd_Document_upload.Rows[j].Cells[11].Value = dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString();
+                                        }
+
+                                        bool ischecked2 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString());
+                                        if (ischecked2 == true)
+                                        {
+                                            //chk.DataPropertyName=;
+                                            Grd_Document_upload.Rows[j].Cells[12].Value = dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             //Grd_Document_upload.Columns[0].Width = 100;
             //Grd_Document_upload.Columns[1].Width = 50;
             //Grd_Document_upload.Columns[2].Width = 200;
@@ -728,174 +906,8 @@ namespace Ordermanagement_01
             //Grd_Document_upload.Columns[4].Width = 80;
             //Grd_Document_upload.Columns[5].Width = 100;
             //Grd_Document_upload.Columns[6].Width = 50;
-            //Grd_Document_upload.Columns[7].Width = 50;
-
-            if (dtDocument_Select.Rows.Count > 0)
-            {
-
-                Grd_Document_upload.DataSource = null;
-                Grd_Document_upload.Columns.Clear();
-                Grd_Document_upload.Rows.Clear();
-                //ex2.Visible = true;
-                Grd_Document_upload.Visible = true;
-                Grd_Document_upload.AutoGenerateColumns = false;
-                Grd_Document_upload.ColumnCount = 10;
-
-                Grd_Document_upload.Columns[0].Name = "Instuction";
-                Grd_Document_upload.Columns[0].HeaderText = "INSTRUCTION";
-                Grd_Document_upload.Columns[0].DataPropertyName = "Instuction";
-                Grd_Document_upload.Columns[0].Width = 250;
-
-                Grd_Document_upload.Columns[1].Name = "DocumentPath";
-                Grd_Document_upload.Columns[1].HeaderText = "FILE PATH";
-                Grd_Document_upload.Columns[1].DataPropertyName = "New_Document_Path";
-                Grd_Document_upload.Columns[1].Visible = false;
-
-                Grd_Document_upload.Columns[2].Name = "FileName";
-                Grd_Document_upload.Columns[2].HeaderText = "FILE NAME";
-                Grd_Document_upload.Columns[2].DataPropertyName = "Document_Name";
-                Grd_Document_upload.Columns[2].Width = 300;
-
-                Grd_Document_upload.Columns[3].Name = "FileSize";
-                Grd_Document_upload.Columns[3].HeaderText = "FILE SIZE";
-                Grd_Document_upload.Columns[3].DataPropertyName = "File_Size";
-                Grd_Document_upload.Columns[3].Width = 100;
-
-                Grd_Document_upload.Columns[4].Name = "Inserted_date";
-                Grd_Document_upload.Columns[4].HeaderText = "Date";
-                Grd_Document_upload.Columns[4].DataPropertyName = "Inserted_date";
-                Grd_Document_upload.Columns[4].Width = 120;
-
-                Grd_Document_upload.Columns[5].Name = "username";
-                Grd_Document_upload.Columns[5].HeaderText = "USER NAME";
-                Grd_Document_upload.Columns[5].DataPropertyName = "User_Name";
-                Grd_Document_upload.Columns[5].Width = 200;
-
-                Grd_Document_upload.Columns[6].Name = "upload_id";
-                Grd_Document_upload.Columns[6].HeaderText = "upload_id";
-                Grd_Document_upload.Columns[6].DataPropertyName = "Document_Upload_Id";
-                Grd_Document_upload.Columns[6].Visible = false;
-
-                Grd_Document_upload.Columns[7].Name = "User_id";
-                Grd_Document_upload.Columns[7].HeaderText = "User_id";
-                Grd_Document_upload.Columns[7].DataPropertyName = "User_id";
-                Grd_Document_upload.Columns[7].Visible = false;
-
-
-                Grd_Document_upload.Columns[8].Name = "Document_Type";
-                Grd_Document_upload.Columns[8].HeaderText = "Document_Type";
-                Grd_Document_upload.Columns[8].DataPropertyName = "Document_Type";
-                Grd_Document_upload.Columns[8].Visible = false;
-
-
-                Grd_Document_upload.Columns[9].Name = "Work_Type_Id";
-                Grd_Document_upload.Columns[9].HeaderText = "Work_Type_Id";
-                Grd_Document_upload.Columns[9].DataPropertyName = "Work_Type_Id";
-                Grd_Document_upload.Columns[9].Visible = false;
-
-
-                if (User_Role_Id == "1" || User_Role_Id == "6" || User_Role_Id == "4" || User_Role_Id == "5" || User_Role_Id == "3")
-                {
-                    Grd_Document_upload.Columns[5].Visible = true;
-                }
-
-                else
-                {
-                    Grd_Document_upload.Columns[5].Visible = false;
-                }
-
-
-                Grd_Document_upload.Columns.Add(chk);
-                chk.HeaderText = "UPLOAD PACKAGE";
-                chk.Name = "check";
-                //Grd_Document_upload.Columns[7].Width = 90;
-                //bool ischecked=(bool).dtDocument_Select
-
-                Grd_Document_upload.Columns.Add(chk_Inv);
-                chk_Inv.HeaderText = "INVOICE";
-                chk_Inv.Name = "check_Inv";
-                // Grd_Document_upload.Columns[8].Width = 90;
-
-                Grd_Document_upload.Columns.Add(chk_Typ);
-                chk_Typ.HeaderText = "TYPING";
-                chk_Typ.Name = "check_Typeing";
-                // Grd_Document_upload.Columns[9].Width = 90;
-
-
-
-
-
-                Grd_Document_upload.Columns.Add(btn);
-
-                btn.HeaderText = "Open";
-                btn.Text = "Open";
-                btn.Name = "btn";
-                btn.UseColumnTextForButtonValue = true;
-                Grd_Document_upload.Columns[13].Width = 100;
-
-                Grd_Document_upload.Columns.Add(btnEdit);
-                btnEdit.HeaderText = "Edit";
-                btnEdit.Text = "Edit";
-                btnEdit.Name = "btnEdit";
-                btnEdit.UseColumnTextForButtonValue = true;
-                Grd_Document_upload.Columns[14].Width = 100;
-
-                Grd_Document_upload.Columns.Add(btnDelete);
-                btnDelete.HeaderText = "Delete";
-                btnDelete.Text = "Delete";
-                btnDelete.Name = "btnDelete";
-                btnDelete.UseColumnTextForButtonValue = true;
-                Grd_Document_upload.Columns[15].Width = 100;
-
-
-
-                Grd_Document_upload.DataSource = dtDocument_Select;
-
-            }
-            else
-            {
-                Grd_Document_upload.DataSource = null;
-
-            }
-            for (int i = 0; i < dtDocument_Select.Rows.Count; i++)
-            {
-                for (int j = 0; j < Grd_Document_upload.Rows.Count; j++)
-                {
-                    Grd_Document_upload.Rows[j].Cells[13].Value = "View";
-                    Grd_Document_upload.Rows[j].Cells[14].Value = "Edit";
-                    Grd_Document_upload.Rows[j].Cells[15].Value = "Delete";
-                    if (dtDocument_Select.Rows[i]["Document_Upload_Id"].ToString() == Grd_Document_upload.Rows[j].Cells[6].Value.ToString())
-                    {
-                        Grd_Document_upload.Columns[6].Visible = false;
-                        bool ischecked = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_UploadPackage"].ToString());
-                        if (ischecked == true)
-                        {
-                            //chk.DataPropertyName=;
-
-                            Grd_Document_upload.Rows[j].Cells[10].Value = dtDocument_Select.Rows[i]["Chk_UploadPackage"].ToString();
-                        }
-
-                        bool ischecked1 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString());
-                        if (ischecked1 == true)
-                        {
-                            //chk.DataPropertyName=;
-                            Grd_Document_upload.Rows[j].Cells[11].Value = dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString();
-                        }
-
-                        bool ischecked2 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString());
-                        if (ischecked2 == true)
-                        {
-                            //chk.DataPropertyName=;
-                            Grd_Document_upload.Rows[j].Cells[12].Value = dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString();
-                        }
-                    }
-                }
-            }
-
-
+            //Grd_Document_upload.Columns[7].Width = 50;           
         }
-
-
         protected void Grd_TempDocument_upload_Load()
         {
             DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
@@ -912,7 +924,6 @@ namespace Ordermanagement_01
             dtDocument_Select = dataaccess.ExecuteSP("Sp__Temp_Document_Upload", htDocument_Select);
             if (dtDocument_Select.Rows.Count > 0)
             {
-
                 Grd_Document_upload.DataSource = null;
                 Grd_Document_upload.Columns.Clear();
                 Grd_Document_upload.Rows.Clear();
@@ -920,100 +931,79 @@ namespace Ordermanagement_01
                 Grd_Document_upload.Visible = true;
                 Grd_Document_upload.AutoGenerateColumns = false;
                 Grd_Document_upload.ColumnCount = 8;
-
                 Grd_Document_upload.Columns[0].Name = "Instuction";
                 Grd_Document_upload.Columns[0].HeaderText = "INSTRUCTION";
                 Grd_Document_upload.Columns[0].DataPropertyName = "Instuction";
                 Grd_Document_upload.Columns[0].Width = 250;
-
                 Grd_Document_upload.Columns[1].Name = "DocumentPath";
                 Grd_Document_upload.Columns[1].HeaderText = "FILE PATH";
                 Grd_Document_upload.Columns[1].DataPropertyName = "Document_Path";
                 Grd_Document_upload.Columns[1].Visible = false;
-
                 Grd_Document_upload.Columns[2].Name = "FileName";
                 Grd_Document_upload.Columns[2].HeaderText = "FILE NAME";
                 Grd_Document_upload.Columns[2].DataPropertyName = "Document_Name";
                 Grd_Document_upload.Columns[2].Width = 300;
-
                 Grd_Document_upload.Columns[3].Name = "FileSize";
                 Grd_Document_upload.Columns[3].HeaderText = "FILE SIZE";
                 Grd_Document_upload.Columns[3].DataPropertyName = "File_Size";
                 Grd_Document_upload.Columns[3].Width = 100;
-
                 Grd_Document_upload.Columns[4].Name = "Inserted_date";
                 Grd_Document_upload.Columns[4].HeaderText = "Date";
                 Grd_Document_upload.Columns[4].DataPropertyName = "Inserted_date";
                 Grd_Document_upload.Columns[4].Width = 120;
-
                 Grd_Document_upload.Columns[5].Name = "username";
                 Grd_Document_upload.Columns[5].HeaderText = "USER NAME";
                 Grd_Document_upload.Columns[5].DataPropertyName = "User_Name";
                 Grd_Document_upload.Columns[5].Width = 200;
-
                 Grd_Document_upload.Columns[6].Name = "upload_id";
                 Grd_Document_upload.Columns[6].HeaderText = "upload_id";
                 Grd_Document_upload.Columns[6].DataPropertyName = "Document_Upload_Id";
                 Grd_Document_upload.Columns[6].Visible = false;
-
                 Grd_Document_upload.Columns[7].Name = "User_id";
                 Grd_Document_upload.Columns[7].HeaderText = "User_id";
                 Grd_Document_upload.Columns[7].DataPropertyName = "User_id";
                 Grd_Document_upload.Columns[7].Visible = false;
-
                 if (User_Role_Id == "1" || User_Role_Id == "6" || User_Role_Id == "4" || User_Role_Id == "5" || User_Role_Id == "3")
                 {
                     Grd_Document_upload.Columns[5].Visible = true;
                 }
-
                 else
                 {
                     Grd_Document_upload.Columns[5].Visible = false;
                 }
-
-
                 Grd_Document_upload.Columns.Add(chk);
                 chk.HeaderText = "UPLOAD PACKAGE";
                 chk.Name = "check";
                 //Grd_Document_upload.Columns[7].Width = 90;
                 //bool ischecked=(bool).dtDocument_Select
-
                 Grd_Document_upload.Columns.Add(chk_Inv);
                 chk_Inv.HeaderText = "INVOICE";
                 chk_Inv.Name = "check_Inv";
                 // Grd_Document_upload.Columns[8].Width = 90;
-
                 Grd_Document_upload.Columns.Add(chk_Typ);
                 chk_Typ.HeaderText = "TYPING";
                 chk_Typ.Name = "check_Typeing";
                 // Grd_Document_upload.Columns[9].Width = 90;
-
                 Grd_Document_upload.Columns.Add(btn);
-
                 btn.HeaderText = "Open";
                 btn.Text = "Open";
                 btn.Name = "btn";
                 Grd_Document_upload.Columns[10].Width = 100;
-
                 Grd_Document_upload.Columns.Add(btnEdit);
                 btnEdit.HeaderText = "Edit";
                 btnEdit.Text = "Edit";
                 btnEdit.Name = "btnEdit";
                 Grd_Document_upload.Columns[11].Width = 100;
-
                 Grd_Document_upload.Columns.Add(btnDelete);
                 btnDelete.HeaderText = "Delete";
                 btnDelete.Text = "Delete";
                 btnDelete.Name = "btnDelete";
                 Grd_Document_upload.Columns[12].Width = 100;
-
                 Grd_Document_upload.DataSource = dtDocument_Select;
-
             }
             else
             {
                 Grd_Document_upload.DataSource = null;
-
             }
             for (int i = 0; i < dtDocument_Select.Rows.Count; i++)
             {
@@ -1029,101 +1019,156 @@ namespace Ordermanagement_01
                         if (ischecked == true)
                         {
                             //chk.DataPropertyName=;
-
                             Grd_Document_upload.Rows[j].Cells[8].Value = dtDocument_Select.Rows[i]["Chk_UploadPackage"].ToString();
                         }
-
                         bool ischecked1 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString());
                         if (ischecked1 == true)
                         {
                             //chk.DataPropertyName=;
-
                             Grd_Document_upload.Rows[j].Cells[9].Value = dtDocument_Select.Rows[i]["Chk_Invoice_Pakage"].ToString();
                         }
-
                         bool ischecked2 = Convert.ToBoolean(dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString());
                         if (ischecked2 == true)
                         {
                             //chk.DataPropertyName=;
-
                             Grd_Document_upload.Rows[j].Cells[10].Value = dtDocument_Select.Rows[i]["Chk_Typing_Package"].ToString();
                         }
                     }
                 }
             }
         }
-
-        private void Grid_Bind_VendorDocuments()
+        private async void Grid_Bind_VendorDocuments()
         {
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            Hashtable ht_Vendor = new Hashtable();
-            System.Data.DataTable dt_Vendor = new System.Data.DataTable();
-            ht_Vendor.Add("@Trans", "SELECT");
-            ht_Vendor.Add("@Order_Id", OrderId);
-
-            dt_Vendor = dataaccess.ExecuteSP("Sp_Vendor_Order_Documents", ht_Vendor);
-            if (dt_Vendor.Rows.Count > 0)
+            //DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            //Hashtable ht_Vendor = new Hashtable();
+            //System.Data.DataTable dt_Vendor = new System.Data.DataTable();
+            //ht_Vendor.Add("@Trans", "VendorDocuments");
+            //ht_Vendor.Add("@Order_Id", OrderId);
+            //dt_Vendor = dataaccess.ExecuteSP("Sp_Vendor_Order_Documents", ht_Vendor);
+            try
             {
-                grd_Vendor_Documents.ColumnHeadersVisible = true;
-                grd_Vendor_Documents.Rows.Clear();
-                Document_Name.Visible = true;
-                Document_Size.Visible = true;
-                Uploaded_By.Visible = true;
-                Date.Visible = true;
-                View.Visible = true;
-                for (int i = 0; i < dt_Vendor.Rows.Count; i++)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictionary = new Dictionary<string, object>
                 {
-                    grd_Vendor_Documents.Rows.Add();
-                    grd_Vendor_Documents.Rows[i].Cells[1].Value = dt_Vendor.Rows[i]["Document_Type"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[2].Value = dt_Vendor.Rows[i]["Description"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[3].Value = dt_Vendor.Rows[i]["Document_Name"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[4].Value = dt_Vendor.Rows[i]["File_Size"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[5].Value = dt_Vendor.Rows[i]["User_Name"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[6].Value = dt_Vendor.Rows[i]["Inserted_Date"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[7].Value = "View";
-                    grd_Vendor_Documents.Rows[i].Cells[8].Value = dt_Vendor.Rows[i]["New_Document_Path"].ToString();
-                    grd_Vendor_Documents.Rows[i].Cells[9].Value = dt_Vendor.Rows[i]["Order_Document_Id"].ToString();
-
-                    string Iscopied = dt_Vendor.Rows[i]["IsCopied_To_Inhouse"].ToString();
-                    if (Iscopied == "True")
+                    {"@Trans", "SELECT" },
+                    {"@Order_Id", OrderId }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/VendorDocuments", data);
+                    if (response.IsSuccessStatusCode)
                     {
-                        grd_Vendor_Documents.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.YellowGreen;
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            System.Data.DataTable dt_Vendor = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            if (dt_Vendor != null && dt_Vendor.Rows.Count > 0)
+                            {
+                                grd_Vendor_Documents.ColumnHeadersVisible = true;
+                                grd_Vendor_Documents.Rows.Clear();
+                                Document_Name.Visible = true;
+                                Document_Size.Visible = true;
+                                Uploaded_By.Visible = true;
+                                Date.Visible = true;
+                                View.Visible = true;
+                                for (int i = 0; i < dt_Vendor.Rows.Count; i++)
+                                {
+                                    grd_Vendor_Documents.Rows.Add();
+                                    grd_Vendor_Documents.Rows[i].Cells[1].Value = dt_Vendor.Rows[i]["Document_Type"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[2].Value = dt_Vendor.Rows[i]["Description"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[3].Value = dt_Vendor.Rows[i]["Document_Name"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[4].Value = dt_Vendor.Rows[i]["File_Size"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[5].Value = dt_Vendor.Rows[i]["User_Name"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[6].Value = dt_Vendor.Rows[i]["Inserted_Date"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[7].Value = "View";
+                                    grd_Vendor_Documents.Rows[i].Cells[8].Value = dt_Vendor.Rows[i]["New_Document_Path"].ToString();
+                                    grd_Vendor_Documents.Rows[i].Cells[9].Value = dt_Vendor.Rows[i]["Order_Document_Id"].ToString();
+                                    string Iscopied = dt_Vendor.Rows[i]["IsCopied_To_Inhouse"].ToString();
+                                    if (Iscopied == "True")
+                                    {
+                                        grd_Vendor_Documents.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.YellowGreen;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                grd_Vendor_Documents.Rows.Clear();
+                            }
+                        }
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                grd_Vendor_Documents.Rows.Clear();
+                SplashScreenManager.CloseForm(false);
+                throw ex;
             }
-
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
-
         private void btn_open_Click(object sender, EventArgs e)
         {
 
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-        }
 
-        private void Grd_Document_upload_CellClick(object sender, DataGridViewCellEventArgs e)
+        }
+        private async void Grd_Document_upload_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (e.ColumnIndex == 10)
                 {
-                    Hashtable htorderkbchk = new Hashtable();
-                    System.Data.DataTable dtorderkbchk = new System.Data.DataTable();
-                    htorderkbchk.Add("@Trans", "CHKUPDATE");
-                    htorderkbchk.Add("@Order_ID", OrderId);
-                    dtorderkbchk = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbchk);
-
-                    Hashtable htorderkbup = new Hashtable();
-                    System.Data.DataTable dtorderkbup = new System.Data.DataTable();
-                    htorderkbup.Add("@Trans", "UPDATE_CHK");
-                    htorderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
-                    dtorderkbup = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbup);
+                    //Hashtable htorderkbchk = new Hashtable();
+                    //System.Data.DataTable dtorderkbchk = new System.Data.DataTable();
+                    //htorderkbchk.Add("@Trans", "CHKUPDATE");
+                    //htorderkbchk.Add("@Order_ID", OrderId);
+                    //dtorderkbchk = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbchk);
+                    var dict_orderkbchk = new Dictionary<string, object>
+                    {
+                        {"@Trans","CHKUPDATE" },
+                        {"@Order_ID", OrderId }
+                     };
+                    var data_orderkbchk = new StringContent(JsonConvert.SerializeObject(dict_orderkbchk), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_orderkbchk);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                //System.Data.DataTable dtorderkbchk = JsonConvert.DeserializeObject<System.Data.DataTable>(result);                                
+                            }
+                        }
+                    }
+                    var dict_orderkbup = new Dictionary<string, object>
+                    {
+                        {"@Trans","UPDATE_CHK" },
+                        {"@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value }
+                     };
+                    var data_orderkbup = new StringContent(JsonConvert.SerializeObject(dict_orderkbup), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_orderkbup);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                //System.Data.DataTable dtorderkbchk = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            }
+                        }
+                    }
+                    //Hashtable htorderkbup = new Hashtable();
+                    //System.Data.DataTable dtorderkbup = new System.Data.DataTable();
+                    //htorderkbup.Add("@Trans", "UPDATE_CHK");
+                    //htorderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                    //dtorderkbup = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbup);
                     Grd_Document_upload_Load();
                 }
                 if (e.ColumnIndex == 11)
@@ -1131,40 +1176,88 @@ namespace Ordermanagement_01
                     string myFilePath = Grd_Document_upload.Rows[e.RowIndex].Cells[1].Value.ToString();
                     string ext = Path.GetExtension(myFilePath);
                     bool ischeck = (bool)Grd_Document_upload[11, e.RowIndex].FormattedValue;
-                    Hashtable htupdate = new Hashtable();
-                    System.Data.DataTable dtupdate = new System.Data.DataTable();
-                    htupdate.Add("@Trans", "UPDATE_INVOICE_FALSE");
-                    htupdate.Add("Order_ID", OrderId);
-                    dtupdate = dataaccess.ExecuteSP("Sp_Document_Upload", htupdate);
+                    //Hashtable htupdate = new Hashtable();
+                    //System.Data.DataTable dtupdate = new System.Data.DataTable();
+                    //htupdate.Add("@Trans", "UPDATE_INVOICE_FALSE");
+                    //htupdate.Add("Order_ID", OrderId);
+                    //dtupdate = dataaccess.ExecuteSP("Sp_Document_Upload", htupdate);
+                    var dict_update = new Dictionary<string, object>
+                    {
+                        {"@Trans","UPDATE_INVOICE_FALSE" },
+                        {"@Order_ID", OrderId }
+                     };
+                    var data_update = new StringContent(JsonConvert.SerializeObject(dict_update), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_update);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                //System.Data.DataTable dtupdate = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            }
+                        }
+                    }
                     if (ext == ".pdf" || ext == ".PDF")
                     {
-                        Hashtable htorderkbup = new Hashtable();
-                        System.Data.DataTable dtorderkbup = new System.Data.DataTable();
-                        htorderkbup.Add("@Trans", "UPDATE_INVOICE_PACKAGE");
-
+                        string Status = null;
+                        //Hashtable htorderkbup = new Hashtable();
+                        //System.Data.DataTable dtorderkbup = new System.Data.DataTable();
+                        //htorderkbup.Add("@Trans", "UPDATE_INVOICE_PACKAGE");
+                        var dict_orderkbup = new Dictionary<string, object>();
+                        dict_orderkbup.Add("@Trans", "UPDATE_INVOICE_PACKAGE");                                                                                                 
                         string Value = Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value.ToString();
-                        Hashtable htin = new Hashtable();
-                        System.Data.DataTable dtin = new System.Data.DataTable();
-                        htin.Add("@Trans", "GET_INVOICE_UPLOAD_CHECK_BYID");
-                        htin.Add("@Document_Upload_Id", Value);
-                        dtin = dataaccess.ExecuteSP("Sp_Document_Upload", htin);
-
-                        string Status = dtin.Rows[0]["Chk_Invoice_Pakage"].ToString();
-
+                        //Hashtable htin = new Hashtable();
+                        //System.Data.DataTable dtin = new System.Data.DataTable();
+                        //htin.Add("@Trans", "GET_INVOICE_UPLOAD_CHECK_BYID");
+                        //htin.Add("@Document_Upload_Id", Value);
+                        //dtin = dataaccess.ExecuteSP("Sp_Document_Upload", htin);
+                        var dict_in = new Dictionary<string, object>
+                        {
+                            {"@Trans","GET_INVOICE_UPLOAD_CHECK_BYID" },
+                            {"@Document_Upload_Id", Value }
+                        };
+                        var data_in = new StringContent(JsonConvert.SerializeObject(dict_in), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_in);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    System.Data.DataTable dtin = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                                    if(dtin.Rows.Count>0)
+                                    {
+                                        Status = dtin.Rows[0]["Chk_Invoice_Pakage"].ToString();                                        
+                                    }
+                                }
+                            }
+                        }
                         if (Status == "True")
                         {
 
-
-                            htorderkbup.Add("@Chk_Invoice_Pakage", "False");
-
+                            dict_orderkbup.Add("@Chk_Invoice_Pakage", "False");
                         }
                         else if (Status == "False")
                         {
-                            htorderkbup.Add("@Chk_Invoice_Pakage", "True");
-
+                            dict_orderkbup.Add("@Chk_Invoice_Pakage", "True");
                         }
-                        htorderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
-                        dtorderkbup = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbup);
+                        dict_orderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                        var data_orderkbup = new StringContent(JsonConvert.SerializeObject(dict_orderkbup), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_orderkbup);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    //System.Data.DataTable dtorderkbchk = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                                }
+                            }
+                        }                                                
                         Grd_Document_upload_Load();
                     }
                     else
@@ -1191,45 +1284,108 @@ namespace Ordermanagement_01
                         //    }
 
                         //}
-
-
                     }
                 }
                 if (e.ColumnIndex == 12)
                 {
                     string myFilePath = Grd_Document_upload.Rows[e.RowIndex].Cells[1].Value.ToString();
                     string ext = Path.GetExtension(myFilePath);
-                    Hashtable htupdate = new Hashtable();
-                    System.Data.DataTable dtupdate = new System.Data.DataTable();
-                    htupdate.Add("@Trans", "UPDATE_TYPING_FALSE");
-                    htupdate.Add("Order_ID", OrderId);
-                    dtupdate = dataaccess.ExecuteSP("Sp_Document_Upload", htupdate);
+                    //Hashtable htupdate = new Hashtable();
+                    //System.Data.DataTable dtupdate = new System.Data.DataTable();
+                    //htupdate.Add("@Trans", "UPDATE_TYPING_FALSE");
+                    //htupdate.Add("Order_ID", OrderId);
+                    //dtupdate = dataaccess.ExecuteSP("Sp_Document_Upload", htupdate);
+                    var dict_update = new Dictionary<string, object>
+                    {
+                        {"@Trans","UPDATE_TYPING_FALSE" },
+                        {"@Order_ID", OrderId }
+                     };
+                    var data_update = new StringContent(JsonConvert.SerializeObject(dict_update), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_update);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                //System.Data.DataTable dtupdate = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            }
+                        }
+                    }
                     if (ext == ".doc" || ext == ".docx")
                     {
-
-                        Hashtable htorderkbup = new Hashtable();
-                        System.Data.DataTable dtorderkbup = new System.Data.DataTable();
-                        htorderkbup.Add("@Trans", "UPDATE_TYPING_PACKAGE");
-
+                        string status=null;
+                        var dict_orderkbup = new Dictionary<string, object>();
+                        dict_orderkbup.Add("@Trans", "UPDATE_TYPING_PACKAGE");
                         string Value = Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value.ToString();
-                        Hashtable htin = new Hashtable();
-                        System.Data.DataTable dtin = new System.Data.DataTable();
-                        htin.Add("@Trans", "GET_TYPING_PACKAGE_BY_ID");
-                        htin.Add("@Document_Upload_Id", Value);
-                        dtin = dataaccess.ExecuteSP("Sp_Document_Upload", htin);
-
-                        string Status = dtin.Rows[0]["Chk_Typing_Package"].ToString();
-
-                        if (Status == "True")
+                        var dtct_inn = new Dictionary<string, object>
                         {
-                            htorderkbup.Add("@Chk_Typing_Package", "False");
-                        }
-                        else if (Status == "False")
+                            {"@Trans", "GET_TYPING_PACKAGE_BY_ID" },
+                            {"@Document_Upload_Id", Value }
+                        };
+                        var data_inn = new StringContent(JsonConvert.SerializeObject(dtct_inn), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
                         {
-                            htorderkbup.Add("@Chk_Typing_Package", "True");
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_inn);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    System.Data.DataTable dtinn = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                                    if(dtinn.Rows.Count>0)
+                                    {
+                                        status = dtinn.Rows[0]["Chk_Typing_Package"].ToString();
+                                    }
+                                }
+                            }
                         }
-                        htorderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
-                        dtorderkbup = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbup);
+                        if(status == "True")
+                        {
+                            dict_orderkbup.Add("@Chk_Typing_Package", "False");
+                        }
+                        else if(status=="False")
+                        {
+                            dict_orderkbup.Add("@Chk_Typing_Package", "True");
+                        }
+                        dict_orderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                        var data_orderkbup = new StringContent(JsonConvert.SerializeObject(dict_orderkbup), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_orderkbup);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    //System.Data.DataTable dtorderkbup = JsonConvert.DeserializeObject<System.Data.DataTable>(result);                                    
+                                }
+                            }
+                        }
+                        //Hashtable htorderkbup = new Hashtable();
+                        //System.Data.DataTable dtorderkbup = new System.Data.DataTable();
+                        //htorderkbup.Add("@Trans", "UPDATE_TYPING_PACKAGE");
+
+                        //string Value = Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value.ToString();
+                        //Hashtable htin = new Hashtable();
+                        //System.Data.DataTable dtin = new System.Data.DataTable();
+                        //htin.Add("@Trans", "GET_TYPING_PACKAGE_BY_ID");
+                        //htin.Add("@Document_Upload_Id", Value);
+                        //dtin = dataaccess.ExecuteSP("Sp_Document_Upload", htin);
+
+                        //string Status = dtin.Rows[0]["Chk_Typing_Package"].ToString();
+
+                        //if (Status == "True")
+                        //{
+                        //    htorderkbup.Add("@Chk_Typing_Package", "False");
+                        //}
+                        //else if (Status == "False")
+                        //{
+                        //    htorderkbup.Add("@Chk_Typing_Package", "True");
+                        //}
+                        //htorderkbup.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                        //dtorderkbup = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkbup);
                         Grd_Document_upload_Load();
                     }
                     else
@@ -1256,7 +1412,6 @@ namespace Ordermanagement_01
                         }
                         FName = Grd_Document_upload.Rows[e.RowIndex].Cells[2].Value.ToString().Split('\\');
                         string Source_Path = Grd_Document_upload.Rows[e.RowIndex].Cells[1].Value.ToString();
-
                         // this is for only Note pad 
                         if (Document_Type == "11")
                         {
@@ -1272,20 +1427,43 @@ namespace Ordermanagement_01
                     catch (Exception ex)
                     {
                         MessageBox.Show("Problem in File Opening");
+                        throw ex;
                     }
-
                     //System.Diagnostics.Process.Start(Source_Path);
-
                 }
 
                 if (e.ColumnIndex == 14)
                 {
-                    Hashtable htEdit = new Hashtable();
-                    System.Data.DataTable dtEdit = new System.Data.DataTable();
-                    htEdit.Add("@Trans", "UPDATE");
-                    htEdit.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
-                    htEdit.Add("@Instuction", Grd_Document_upload.Rows[e.RowIndex].Cells[0].Value);
-                    dtEdit = dataaccess.ExecuteSP("Sp_Document_Upload", htEdit);
+                    //Hashtable htEdit = new Hashtable();
+                    //System.Data.DataTable dtEdit = new System.Data.DataTable();
+                    //htEdit.Add("@Trans", "UPDATE");
+                    //htEdit.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                    //htEdit.Add("@Instuction", Grd_Document_upload.Rows[e.RowIndex].Cells[0].Value);
+                    //dtEdit = dataaccess.ExecuteSP("Sp_Document_Upload", htEdit);
+                    var dict_Edit = new Dictionary<string, object>
+                    {
+                        {"@Trans","UPDATE" },
+                        {"@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value },
+                        {"@Instuction", Grd_Document_upload.Rows[e.RowIndex].Cells[0].Value }
+                     };
+                    var data_Edit = new StringContent(JsonConvert.SerializeObject(dict_Edit), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/UpdateDocuments", data_Edit);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result_update = await response.Content.ReadAsStringAsync();
+                                // System.Data.DataTable dtEdit = JsonConvert.DeserializeObject<System.Data.DataTable>(result_update);
+                                //XtraMessageBox.Show("Document Updated");
+                                //if(dtEdit.Rows.Count>1)
+                                //{
+
+                                //}
+                            }
+                        }
+                    }
                     Grd_Document_upload_Load();
                 }
                 if (e.ColumnIndex == 15)
@@ -1294,38 +1472,78 @@ namespace Ordermanagement_01
                     {
                         try
                         {
-                            Hashtable htUser = new Hashtable();
-                            System.Data.DataTable dtUser = new System.Data.DataTable();
-                            htUser.Add("@Trans", "SELPASS");
-                            htUser.Add("@User_id", userid);
-                            dtUser = dataaccess.ExecuteSP("Sp_User", htUser);
-                            if (dtUser.Rows[0]["User_Name"].ToString().ToUpper() == Grd_Document_upload.Rows[e.RowIndex].Cells[5].Value.ToString().ToUpper())
+                            //Hashtable htUser = new Hashtable();
+                            //System.Data.DataTable dtUser = new System.Data.DataTable();
+                            //htUser.Add("@Trans", "SELPASS");
+                            //htUser.Add("@User_id", userid);
+                            //dtUser = dataaccess.ExecuteSP("Sp_User", htUser);
+                            var dictionary = new Dictionary<string, object>
                             {
-                                string filePath = Grd_Document_upload.Rows[e.RowIndex].Cells[1].Value.ToString();
-                                FtpWebRequest ftRequestDelete = (FtpWebRequest)WebRequest.Create(new Uri(filePath));
-                                ftRequestDelete.Method = WebRequestMethods.Ftp.DeleteFile;
-                                ftRequestDelete.UseBinary = true;
-                                ftRequestDelete.Credentials = new NetworkCredential(Ftp_User_Name, Ftp_Password);
-                                FtpWebResponse response = (FtpWebResponse)ftRequestDelete.GetResponse();
-                                if (response.StatusCode == FtpStatusCode.FileActionOK)
+                                {"@Trans","SELPASS" },
+                                {"@User_id", userid}
+                            };
+                            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/DeleteDocument", data);
+                                if (response.IsSuccessStatusCode)
                                 {
-                                    Hashtable htdelete = new Hashtable();
-                                    System.Data.DataTable dtdelete = new System.Data.DataTable();
-                                    htdelete.Add("@Trans", "DELETE");
-                                    htdelete.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
-                                    dtdelete = dataaccess.ExecuteSP("Sp_Document_Upload", htdelete);
-                                    Grd_Document_upload_Load();
-                                    RefreshView();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Unable to delete file");
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        System.Data.DataTable dtUser = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                                        if(dtUser.Rows.Count>0)
+                                        {
+                                            if (dtUser.Rows[0]["User_Name"].ToString().ToUpper() == Grd_Document_upload.Rows[e.RowIndex].Cells[5].Value.ToString().ToUpper())
+                                            {
+                                                string filePath = Grd_Document_upload.Rows[e.RowIndex].Cells[1].Value.ToString();
+                                                FtpWebRequest ftRequestDelete = (FtpWebRequest)WebRequest.Create(new Uri(filePath));
+                                                ftRequestDelete.Method = WebRequestMethods.Ftp.DeleteFile;
+                                                ftRequestDelete.UseBinary = true;
+                                                ftRequestDelete.Credentials = new NetworkCredential(Ftp_User_Name, Ftp_Password);
+                                                FtpWebResponse response1 = (FtpWebResponse)ftRequestDelete.GetResponse();
+                                                if (response1.StatusCode == FtpStatusCode.FileActionOK)
+                                                {
+                                                    //Hashtable htdelete = new Hashtable();
+                                                    //System.Data.DataTable dtdelete = new System.Data.DataTable();
+                                                    //htdelete.Add("@Trans", "DELETE");
+                                                    //htdelete.Add("@Document_Upload_Id", Grd_Document_upload.Rows[e.RowIndex].Cells[6].Value);
+                                                    //dtdelete = dataaccess.ExecuteSP("Sp_Document_Upload", htdelete);
+                                                    var dict_delete = new Dictionary<string, object>
+                                                         {
+                                                            {"@Trans","CHKUPDATE" },
+                                                            {"@Order_ID", OrderId }
+                                                         };
+                                                    var data_delete = new StringContent(JsonConvert.SerializeObject(dict_delete), Encoding.UTF8, "application/json");
+                                                    using (var httpClient1 = new HttpClient())
+                                                    {
+                                                        var response_delete = await httpClient1.PostAsync(Base_Url.Url + "/OrderUploadDocuments/OrderUploads", data_delete);
+                                                        if (response_delete.IsSuccessStatusCode)
+                                                        {
+                                                            if (response_delete.StatusCode == HttpStatusCode.OK)
+                                                            {
+                                                                var result_delete = await response.Content.ReadAsStringAsync();
+                                                                //System.Data.DataTable dtdelete = JsonConvert.DeserializeObject<System.Data.DataTable>(result_delete);
+                                                            }
+                                                        }
+                                                    }
+                                                    Grd_Document_upload_Load();
+                                                    RefreshView();
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Unable to delete file");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("You have no permission for delete this document");
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("You have no permission for delete this document");
-                            }
+                            
                         }
                         catch (Exception ex)
                         {
@@ -1366,24 +1584,18 @@ namespace Ordermanagement_01
                 outputStream.Close();
                 response.Close();
                 System.Diagnostics.Process.Start(localPath);
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString() + "Problem in Downloading Files please Check with Administrator");
             }
         }
-
-
         private void Grd_Document_upload_DragEnter(object sender, DragEventArgs e)
         {
             //if (e.Data.GetDataPresent(typeof(DataGridViewSelectedRowCollection)))
             //{
             //    e.Effect = DragDropEffects.Move;
             //}
-
-
-
             //DataGridViewSelectedRowCollection rows = (DataGridViewSelectedRowCollection)e.Data.GetData(typeof(DataGridViewSelectedRowCollection));
             // foreach (DataGridViewRow row in rows)
             //{
@@ -1397,18 +1609,14 @@ namespace Ordermanagement_01
             //         File.Copy(dt_docpath.Rows[i]["Document_Path"].ToString(), Environment.GetFolderPath(Environment.SpecialFolder.System), true);
             //     }
             // }
-
-            // Call OpenFiles function passing array of strings to it
-
+            // Call OpenFiles function passing array of strings to it        
         }
-
         void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             Console.Write("Column Resizing");
             e.NewWidth = this.listView1.Columns[e.ColumnIndex].Width;
             e.Cancel = true;
         }
-
         private void listView1_ItemDrag(object sender, ItemDragEventArgs e)
         {
             string[] files = GetSelection();
@@ -1433,7 +1641,6 @@ namespace Ordermanagement_01
                 e.Effect = DragDropEffects.None;
                 return;
             }
-
             // Set the effect based upon the KeyState.
             // Can't get links to work - Use of Ole1 services requiring DDE windows is disabled
             //			if ((e.KeyState & (CTRL | ALT)) == (CTRL | ALT) &&
@@ -1453,7 +1660,6 @@ namespace Ordermanagement_01
                 (e.AllowedEffect & DragDropEffects.Move) == DragDropEffects.Move)
             {
                 e.Effect = DragDropEffects.Move;
-
             }
             else if ((e.KeyState & CTRL) == CTRL &&
                 (e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
@@ -1464,26 +1670,20 @@ namespace Ordermanagement_01
             {
                 // By default, the drop action should be move, if allowed.
                 e.Effect = DragDropEffects.Move;
-
                 // Implement the rather strange behaviour of explorer that if the disk
                 // is different, then default to a COPY operation
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if (files.Length > 0 && !files[0].ToUpper().StartsWith(homeDisk) &&			// Probably better ways to do this
                 (e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
-
-                    e.Effect = DragDropEffects.Copy;
-
+                e.Effect = DragDropEffects.Copy;
                 Upload_Ftp_Files(files);
             }
             else
                 e.Effect = DragDropEffects.None;
-
             // This is an example of how to get the item under the mouse
             System.Drawing.Point pt = listView1.PointToClient(new System.Drawing.Point(e.X, e.Y));
             ListViewItem itemUnder = listView1.GetItemAt(pt.X, pt.Y);
-        }
-
-
+        }  
         private void Upload_Ftp_Files(string[] Upload_Files)
         {
             try
@@ -1572,8 +1772,6 @@ namespace Ordermanagement_01
                 SplashScreenManager.CloseForm(false);
             }
         }
-
-
         private void btn_Client_Upload_Click(object sender, EventArgs e)
         {
             if (External_Clinet_Id != 0)
@@ -1585,10 +1783,8 @@ namespace Ordermanagement_01
                 op1.ShowDialog();
                 op1.Filter = "allfiles|*.xls";
                 // txt_path.Text = op1.FileName;
-
                 int count = 0;
                 int Chk = 0;
-
                 foreach (string s in op1.FileNames)
                 {
                     string file = op1.FileName.ToString();
@@ -1597,112 +1793,67 @@ namespace Ordermanagement_01
                     File_size = GetFileSize(filesize);
                     FName = s.Split('\\');
                     string Docname = f.Name;
-
-
                     homeFolder = year + "/" + month + "/" + Client_Name + " / " + OrderId + "";
                     mainPath = "Order_Files";
                     ftpfullpath = "ftp://" + Ftp_Domain_Name + "/TITLELOGY/" + mainPath + "/" + homeFolder + "";
                     CreateDirectoryTitlelogy(mainPath, homeFolder);
-
                     try
                     {
                         FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(ftpfullpath);
                         ftp.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
                         ftp.Method = WebRequestMethods.Ftp.MakeDirectory;
-
                         FtpWebResponse CreateForderResponse = (FtpWebResponse)ftp.GetResponse();
-
                         if (CreateForderResponse.StatusCode == FtpStatusCode.PathnameCreated)
                         {
-
                             //If folder created, upload file
-
                             string ftpUploadFullPath = "" + ftpfullpath + "/" + f.Name + "";
-
-
-
                             // Checking File Exit or not
-
                             FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
-
                             ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
-
-                            ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
-
+                            ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;                        
                             FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
                             StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
                             List<string> directories = new List<string>(); // create list to store directories.   
-
                             string line = streamReader.ReadLine();
-
                             while (!string.IsNullOrEmpty(line))
                             {
                                 directories.Add(line); // Add Each Directory to the List.  
                                 line = streamReader.ReadLine();
                             }
-
-
                             int File_Check = 0;
-
                             for (int i = 0; i <= directories.Count - 1; i++)
                             {
-
                                 string FileName = directories[i].ToString();
 
                                 if (FileName == f.Name)
                                 {
                                     File_Check = 1;
-
                                     break;
-
                                 }
                                 else
                                 {
-
                                     File_Check = 0;
                                 }
-
                             }
-
                             if (File_Check == 0)
                             {
-
                                 FtpWebRequest ftpUpLoadFile = (FtpWebRequest)FtpWebRequest.Create(ftpUploadFullPath);
                                 ftpUpLoadFile.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
-
                                 ftpUpLoadFile.KeepAlive = true;
-
                                 ftpUpLoadFile.UseBinary = true;
-
                                 ftpUpLoadFile.Method = WebRequestMethods.Ftp.UploadFile;
-
                                 FileStream fs = File.OpenRead(file);
-
                                 byte[] buffer = new byte[fs.Length];
-
                                 fs.Read(buffer, 0, buffer.Length);
-
                                 fs.Close();
-
                                 Stream ftpstream = ftpUpLoadFile.GetRequestStream();
-
                                 ftpstream.Write(buffer, 0, buffer.Length);
-
                                 ftpstream.Close();
-
-
-
-
-
                                 //string dest_path1 = @"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + Order_No + @"\" + FName[FName.Length - 1];
                                 //DirectoryEntry de = new DirectoryEntry(dest_path1, "administrator", "password1$");
                                 //de.Username = "administrator";
                                 //de.Password = "password1$";
-
-                                //Directory.CreateDirectory(@"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + Order_No);
-
-
+                                //Directory.CreateDirectory(@"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + Order_No)
                                 extension = Path.GetExtension(Docname);
                                 // File.Copy(s, dest_path1, true);
                                 count++;
@@ -1716,108 +1867,66 @@ namespace Ordermanagement_01
                                 htorderkb.Add("@Description", txt_Dscription.Text.ToString());
                                 htorderkb.Add("@Document_Path", ftpUploadFullPath);
                                 htorderkb.Add("@File_Size", File_size);
-
                                 htorderkb.Add("@Inserted_date", DateTime.Now);
                                 htorderkb.Add("@status", "True");
                                 dtorderkb = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htorderkb);
                                 Gridview_bind_External_Client_Document_Upload();
                             }
                             else
-                            {
-
+                            { 
                                 MessageBox.Show("File already exist");
                             }
                         }
-
                     }
                     catch (Exception)
                     {
                         string ftpUploadFullPath = "" + ftpfullpath + "/" + f.Name + "";
-
-
-
                         // Checking File Exit or not
-
                         FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
-
-                        ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
-
+                        ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials                      
                         ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
-
                         FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
                         StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
                         List<string> directories = new List<string>(); // create list to store directories.   
-
                         string line = streamReader.ReadLine();
-
                         while (!string.IsNullOrEmpty(line))
                         {
                             directories.Add(line); // Add Each Directory to the List.  
                             line = streamReader.ReadLine();
                         }
-
-
                         int File_Check = 0;
-
                         for (int i = 0; i <= directories.Count - 1; i++)
                         {
-
                             string FileName = directories[i].ToString();
-
                             if (FileName == f.Name)
                             {
                                 File_Check = 1;
-
                                 break;
-
                             }
                             else
                             {
-
                                 File_Check = 0;
                             }
-
                         }
-
                         if (File_Check == 0)
                         {
-
                             FtpWebRequest ftpUpLoadFile = (FtpWebRequest)FtpWebRequest.Create(ftpUploadFullPath);
                             ftpUpLoadFile.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
-
                             ftpUpLoadFile.KeepAlive = true;
-
                             ftpUpLoadFile.UseBinary = true;
-
                             ftpUpLoadFile.Method = WebRequestMethods.Ftp.UploadFile;
-
                             FileStream fs = File.OpenRead(file);
-
                             byte[] buffer = new byte[fs.Length];
-
                             fs.Read(buffer, 0, buffer.Length);
-
                             fs.Close();
-
                             Stream ftpstream = ftpUpLoadFile.GetRequestStream();
-
                             ftpstream.Write(buffer, 0, buffer.Length);
-
                             ftpstream.Close();
-
-
-
-
-
                             //string dest_path1 = @"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + Order_No + @"\" + FName[FName.Length - 1];
                             //DirectoryEntry de = new DirectoryEntry(dest_path1, "administrator", "password1$");
                             //de.Username = "administrator";
                             //de.Password = "password1$";
-
                             //Directory.CreateDirectory(@"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + Order_No);
-
-
                             extension = Path.GetExtension(Docname);
                             //  File.Copy(s, dest_path1, true);
                             count++;
@@ -1831,7 +1940,6 @@ namespace Ordermanagement_01
                             htorderkb.Add("@Description", txt_Dscription.Text.ToString());
                             htorderkb.Add("@Document_Path", ftpUploadFullPath);
                             htorderkb.Add("@File_Size", File_size);
-
                             htorderkb.Add("@Inserted_date", DateTime.Now);
                             htorderkb.Add("@status", "True");
                             dtorderkb = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htorderkb);
@@ -1839,18 +1947,15 @@ namespace Ordermanagement_01
                         }
                         else
                         {
-
                             MessageBox.Show("File already exist");
                         }
                     }
-
                 }
                 MessageBox.Show(Convert.ToString(count) + " File(s) copied");
             }
             else
             {
                 MessageBox.Show("Order is Not updated in Titlelogy website");
-
             }
         }
 
@@ -1864,7 +1969,6 @@ namespace Ordermanagement_01
             }
             else
             {
-
                 htselect.Add("@Trans", "GET_DOCUMENTS_FOR_INHOSE_ADMIN");
             }
             htselect.Add("@Order_Id", OrderId);
@@ -1879,11 +1983,8 @@ namespace Ordermanagement_01
                 Grid_Client_Upload.Columns[5].Width = 60;
                 Grid_Client_Upload.Columns[6].Width = 60;
                 Grid_Client_Upload.Columns[7].Width = 60;
-                Grid_Client_Upload.Columns[8].Width = 60;
-
+                Grid_Client_Upload.Columns[8].Width = 60;            
                 Grid_Client_Upload.Columns[9].Width = 60;
-
-
                 if (dtselect.Rows.Count > 0)
                 {
                     //ex2.Visible = true;
@@ -1898,39 +1999,27 @@ namespace Ordermanagement_01
                         Grid_Client_Upload.Rows[i].Cells[3].Value = dtselect.Rows[i]["File_Size"].ToString();
                         Grid_Client_Upload.Rows[i].Cells[4].Value = dtselect.Rows[i]["Document_From"].ToString();
                         Grid_Client_Upload.Rows[i].Cells[5].Value = dtselect.Rows[i]["Inserted_Date"].ToString();
-
                         Grid_Client_Upload.Rows[i].Cells[6].Value = "View";
                         Grid_Client_Upload.Rows[i].Cells[7].Value = "Edit";
                         Grid_Client_Upload.Rows[i].Cells[8].Value = "Delete";
                         Grid_Client_Upload.Rows[i].Cells[9].Value = dtselect.Rows[i]["Order_Document_Id"].ToString();
-
                         Grid_Client_Upload.Rows[i].Cells[10].Value = dtselect.Rows[i]["New_Document_Path"].ToString();
                         Grid_Client_Upload.Rows[i].Cells[12].Value = dtselect.Rows[i]["Order_Id"].ToString();
-
                     }
-
-
-
                 }
                 else
                 {
-
                     Grid_Client_Upload.Rows.Clear();
-
                     Grid_Client_Upload.DataSource = null;
-
                 }
             }
             else
             {
                 Grid_Client_Upload.Rows.Clear();
-
                 Grid_Client_Upload.DataSource = null;
-
             }
         }
-
-        private void Grid_Client_Upload_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void Grid_Client_Upload_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 6)
             {
@@ -1950,18 +2039,33 @@ namespace Ordermanagement_01
                     string Document_ID = Grid_Client_Upload.Rows[e.RowIndex].Cells[9].Value.ToString();
                     if (DeletingType == "Client")
                     {
-
                         MessageBox.Show("Client Document cannot be Delete");
-
                     }
                     else
                     {
-
-                        Hashtable htdel = new Hashtable();
-                        System.Data.DataTable dtdel = new System.Data.DataTable();
-                        htdel.Add("@Trans", "DELETE");
-                        htdel.Add("@Order_Document_Id", Document_ID.ToString());
-                        dtdel = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htdel);
+                        //Hashtable htdel = new Hashtable();
+                        //System.Data.DataTable dtdel = new System.Data.DataTable();
+                        //htdel.Add("@Trans", "DELETE");
+                        //htdel.Add("@Order_Document_Id", Document_ID.ToString());
+                        //dtdel = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htdel);
+                        var dict_del = new Dictionary<string, object>
+                        {
+                            {"@Trans","DELETE" },
+                            {"@Order_Document_Id", Document_ID.ToString() }
+                        };
+                        var data_del = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/Deletetitelogy", data_del);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result_del = await response.Content.ReadAsStringAsync();
+                                    System.Data.DataTable dtdel = JsonConvert.DeserializeObject<System.Data.DataTable>(result_del);
+                                }
+                            }
+                        }
                         Gridview_bind_External_Client_Document_Upload();
                     }
                 }
@@ -1970,8 +2074,6 @@ namespace Ordermanagement_01
                 {
                     //do something else
                 }
-
-
             }
             else if (e.ColumnIndex == 0)
             {
@@ -1981,11 +2083,9 @@ namespace Ordermanagement_01
                 string Document_ID = Grid_Client_Upload.Rows[e.RowIndex].Cells[9].Value.ToString();
                 Hashtable htupdate = new Hashtable();
                 System.Data.DataTable dtupdate = new System.Data.DataTable();
-
                 //htupdate.Add("@Trans", "UPDATE_FILE_BY_ORDER");
                 //htupdate.Add("@Order_Id", External_Order_Id);
                 //dtupdate = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htupdate);
-
                 if (ext == ".pdf" || ext == ".PDF" || ext == ".doc" || ext == ".docx")
                 {
                     htupdate.Clear();
@@ -1993,51 +2093,72 @@ namespace Ordermanagement_01
 
                     if (ischeck == false)
                     {
-
-
-                        htupdate.Add("@Trans", "UPDATE_FILE");
-                        htupdate.Add("@Order_Document_Id", Document_ID);
-                        htupdate.Add("@Check_File", "True");
-                        dtupdate = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htupdate);
+                        //htupdate.Add("@Trans", "UPDATE_FILE");
+                        //htupdate.Add("@Order_Document_Id", Document_ID);
+                        //htupdate.Add("@Check_File", "True");
+                        //dtupdate = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htupdate);
                         //  MessageBox.Show("File Status Checkd");
-
+                        var dict_Update1 = new Dictionary<string, object>
+                        {
+                            {"@Trans","UPDATE_FILE" },
+                            {"@Order_Document_Id", Document_ID },
+                            {"@Check_File", "True"}
+                        };
+                        var data_Update1 = new StringContent(JsonConvert.SerializeObject(dict_Update1), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/Updatetitelogy", data_Update1);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result_1 = await response.Content.ReadAsStringAsync();
+                                    System.Data.DataTable dtorderkbchk = JsonConvert.DeserializeObject<System.Data.DataTable>(result_1);
+                                    MessageBox.Show("File Status Checkd");
+                                }
+                            }
+                        }
                     }
                     else
                     {
-
-
-                        htupdate.Add("@Trans", "UPDATE_FILE");
-                        htupdate.Add("@Order_Document_Id", Document_ID);
-                        htupdate.Add("@Check_File", "False");
-                        dtupdate = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htupdate);
+                        //htupdate.Add("@Trans", "UPDATE_FILE");
+                        //htupdate.Add("@Order_Document_Id", Document_ID);
+                        //htupdate.Add("@Check_File", "False");
+                        //dtupdate = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htupdate);
+                        var dict_Update2 = new Dictionary<string, object>
+                        {
+                            {"@Trans","UPDATE_FILE" },
+                            {"@Order_Document_Id", Document_ID },
+                            {"@Check_File", "False"}
+                        };
+                        var data_Update2 = new StringContent(JsonConvert.SerializeObject(dict_Update2), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/Updatetitelogy", data_Update2);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result_2 = await response.Content.ReadAsStringAsync();
+                                    System.Data.DataTable dtorderkbchk = JsonConvert.DeserializeObject<System.Data.DataTable>(result_2);
+                                    MessageBox.Show("File Status Un Checkd");
+                                }
+                            }
+                        }
                         //   MessageBox.Show("File Status Un Checkd");
-
                     }
-
-
-
-
                     //foreach (DataGridViewRow dr in Grid_Client_Upload.Rows)
                     //{
                     //    dr.Cells[0].Value = false;//sıfırın
                     //}
                     //Gridview_bind_External_Client_Document_Upload();
-
-
                 }
                 else
                 {
-
                     MessageBox.Show("Select Only Pdf Files");
                     // Gridview_bind_External_Client_Document_Upload();
                 }
-
-
-
-
             }
-
-
         }
 
         private void chkItems_CheckedChanged(object sender, EventArgs e)
@@ -2068,7 +2189,6 @@ namespace Ordermanagement_01
             // txt_path.Text = op1.FileName;
             int count = 0;
             int Chk = 0;
-
             foreach (string s in op1.FileNames)
             {
                 FName = s.Split('\\');
@@ -2081,7 +2201,6 @@ namespace Ordermanagement_01
                 double filesize = f.Length;
                 File_size = GetFileSize(filesize);
                 //Directory.CreateDirectory(@"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId);
-
                 //File.Copy(s, dest_path1, true);
                 homeFolder = year + "/" + month + "/" + Client_Name + "/" + OrderId + "";
                 mainPath = "Vendor_Upload_Documents";
@@ -2090,90 +2209,55 @@ namespace Ordermanagement_01
                 try
                 {
                     // File.Copy(s, dest_path1, false);
-
                     FtpWebRequest ftp = (FtpWebRequest)WebRequest.Create(ftpfullpath);
                     ftp.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
                     ftp.Method = WebRequestMethods.Ftp.MakeDirectory;
-
                     FtpWebResponse CreateForderResponse = (FtpWebResponse)ftp.GetResponse();
-
                     if (CreateForderResponse.StatusCode == FtpStatusCode.PathnameCreated)
                     {
-
                         //If folder created, upload file
-
                         string ftpUploadFullPath = "" + ftpfullpath + "/" + f.Name + "";
-
-
-
                         // Checking File Exit or not
-
                         FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
-
                         ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
-
                         ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
-
                         FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
                         StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
                         List<string> directories = new List<string>(); // create list to store directories.   
-
                         string line = streamReader.ReadLine();
-
                         while (!string.IsNullOrEmpty(line))
                         {
                             directories.Add(line); // Add Each Directory to the List.  
                             line = streamReader.ReadLine();
                         }
-
-
                         int File_Check = 0;
-
                         for (int i = 0; i <= directories.Count - 1; i++)
                         {
-
                             string FileName = directories[i].ToString();
-
                             if (FileName == f.Name)
                             {
                                 File_Check = 1;
-
                                 break;
                                 //1111
                             }
                             else
                             {
-
                                 File_Check = 0;
                             }
-
                         }
-
                         if (File_Check == 0)
                         {
-
                             FtpWebRequest ftpUpLoadFile = (FtpWebRequest)FtpWebRequest.Create(ftpUploadFullPath);
                             ftpUpLoadFile.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
-
-                            ftpUpLoadFile.KeepAlive = true;
-
+                            ftpUpLoadFile.KeepAlive = true;                        
                             ftpUpLoadFile.UseBinary = true;
-
                             ftpUpLoadFile.Method = WebRequestMethods.Ftp.UploadFile;
-
                             FileStream fs = File.OpenRead(file);
-
                             byte[] buffer = new byte[fs.Length];
-
                             fs.Read(buffer, 0, buffer.Length);
-
                             fs.Close();
-
                             Stream ftpstream = ftpUpLoadFile.GetRequestStream();
-
                             ftpstream.Write(buffer, 0, buffer.Length);
-
                             ftpstream.Close();
                             count++;
                             htorderkb.Clear();
@@ -2184,7 +2268,6 @@ namespace Ordermanagement_01
                             htorderkb.Add("@Order_ID", OrderId);
                             htorderkb.Add("@Document_Name", op1.SafeFileName);
                             htorderkb.Add("@File_Size", File_size);
-
                             htorderkb.Add("@Document_Path", dest_path1);
                             htorderkb.Add("@Inserted_By", userid);
                             htorderkb.Add("@Inserted_date", DateTime.Now);
@@ -2198,79 +2281,48 @@ namespace Ordermanagement_01
                 }
                 catch (Exception)
                 {
-
                     string ftpUploadFullPath = "" + ftpfullpath + "/" + f.Name + "";
-
-
-
                     // Checking File Exit or not
-
-                    FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
-
+                    FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address                  
                     ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
-
                     ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
-
                     FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
                     StreamReader streamReader = new StreamReader(response.GetResponseStream());
-
-                    List<string> directories = new List<string>(); // create list to store directories.   
-
+                    List<string> directories = new List<string>(); // create list to store directories.  
                     string line = streamReader.ReadLine();
-
                     while (!string.IsNullOrEmpty(line))
                     {
                         directories.Add(line); // Add Each Directory to the List.  
                         line = streamReader.ReadLine();
-                    }
-
-
+                    }                
                     int File_Check = 0;
-
                     for (int i = 0; i <= directories.Count - 1; i++)
                     {
-
                         string FileName = directories[i].ToString();
-
                         if (FileName == f.Name)
                         {
                             File_Check = 1;
-
                             break;
                             //1111
                         }
                         else
                         {
-
                             File_Check = 0;
                         }
-
                     }
-
                     if (File_Check == 0)
                     {
-
                         FtpWebRequest ftpUpLoadFile = (FtpWebRequest)FtpWebRequest.Create(ftpUploadFullPath);
                         ftpUpLoadFile.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
-
                         ftpUpLoadFile.KeepAlive = true;
-
                         ftpUpLoadFile.UseBinary = true;
-
                         ftpUpLoadFile.Method = WebRequestMethods.Ftp.UploadFile;
-
                         FileStream fs = File.OpenRead(file);
-
                         byte[] buffer = new byte[fs.Length];
-
                         fs.Read(buffer, 0, buffer.Length);
-
                         fs.Close();
-
                         Stream ftpstream = ftpUpLoadFile.GetRequestStream();
-
                         ftpstream.Write(buffer, 0, buffer.Length);
-
                         ftpstream.Close();
                         count++;
                         htorderkb.Clear();
@@ -2281,7 +2333,6 @@ namespace Ordermanagement_01
                         htorderkb.Add("@Order_ID", OrderId);
                         htorderkb.Add("@Document_Name", op1.SafeFileName);
                         htorderkb.Add("@File_Size", File_size);
-
                         htorderkb.Add("@Document_Path", dest_path1);
                         htorderkb.Add("@Inserted_By", userid);
                         htorderkb.Add("@Inserted_date", DateTime.Now);
@@ -2292,13 +2343,10 @@ namespace Ordermanagement_01
                         MessageBox.Show("File already exist");
                     }
                 }
-
-
             }
             MessageBox.Show(Convert.ToString(count) + " File(s) copied");
             Gridview_bindInhouse_Final_Document_Upload();
         }
-
         private void Gridview_bindInhouse_Final_Document_Upload()
         {
             Hashtable htselect = new Hashtable();
@@ -2316,10 +2364,8 @@ namespace Ordermanagement_01
                 grid_Inhouse_Final_Document_Upload.Columns[5].Width = 60;
                 grid_Inhouse_Final_Document_Upload.Columns[6].Width = 60;
                 grid_Inhouse_Final_Document_Upload.Columns[7].Width = 60;
-
                 grid_Inhouse_Final_Document_Upload.Columns[8].Width = 60;
                 grid_Inhouse_Final_Document_Upload.Columns[9].Width = 60;
-
                 if (dtselect.Rows.Count > 0)
                 {
                     //ex2.Visible = true;
@@ -2336,38 +2382,26 @@ namespace Ordermanagement_01
                         grid_Inhouse_Final_Document_Upload.Rows[i].Cells[6].Value = "Edit";
                         grid_Inhouse_Final_Document_Upload.Rows[i].Cells[7].Value = "Delete";
                         grid_Inhouse_Final_Document_Upload.Rows[i].Cells[8].Value = dtselect.Rows[i]["Document_Upload_Id"].ToString();
-
                         grid_Inhouse_Final_Document_Upload.Rows[i].Cells[9].Value = dtselect.Rows[i]["Document_Path"].ToString();
 
                     }
-
-
-
                 }
             }
         }
-
         private void grid_Inhouse_Final_Document_Upload_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5)
             {
-
-
                 string Source_Path = grid_Inhouse_Final_Document_Upload.Rows[e.RowIndex].Cells[9].Value.ToString();
                 if (Source_Path != "")
                 {
                     string FileName = Path.GetFileName(Source_Path.ToString());
                     string docName = Path.GetFileName(Source_Path.ToString());
-
                     System.IO.Directory.CreateDirectory(@"C:\temp");
-
                     File.Copy(Source_Path, @"C:\temp\" + FileName, true);
-
                     System.Diagnostics.Process.Start(@"C:\temp\" + FileName);
-
                     //System.Diagnostics.Process.Start(Source_Path);
                 }
-
             }
             else if (e.ColumnIndex == 7)
             {
@@ -2376,28 +2410,21 @@ namespace Ordermanagement_01
                 {
                     string DeletingType = grid_Inhouse_Final_Document_Upload.Rows[e.RowIndex].Cells[3].Value.ToString();
                     string Document_ID = grid_Inhouse_Final_Document_Upload.Rows[e.RowIndex].Cells[8].Value.ToString();
-
-
                     Hashtable htdel = new Hashtable();
                     System.Data.DataTable dtdel = new System.Data.DataTable();
                     htdel.Add("@Trans", "DELETE");
                     htdel.Add("@Document_Upload_Id", Document_ID.ToString());
                     dtdel = dataaccess.ExecuteSP("Sp_Document_Upload", htdel);
                     Gridview_bindInhouse_Final_Document_Upload();
-
                 }
                 else if (dialogResult == DialogResult.No)
                 {
                     //do something else
                 }
-
-
             }
         }
-
         private bool Validaet_Typing_Doc()
         {
-
             Hashtable htsel = new Hashtable();
             System.Data.DataTable dtsel = new System.Data.DataTable();
             htsel.Add("@Trans", "GET_TYPING_PACKAGE_BY_ORDER_ID");
@@ -2405,44 +2432,25 @@ namespace Ordermanagement_01
             dtsel = dataaccess.ExecuteSP("Sp_Document_Upload", htsel);
             if (dtsel.Rows.Count > 0)
             {
-
-
                 Typing_Count = dtsel.Rows.Count;
-
-
                 if (Typing_Count > 1)
                 {
                     MessageBox.Show("Only one document need to select");
                     return false;
-
                 }
                 else
                 {
-
                     return true;
                 }
-
             }
             else
             {
-
                 MessageBox.Show("Please select Any one document");
-
                 return false;
             }
-
-
-
-
-
         }
-
-
-
         private void btn_Typing_Final_Report_Click(object sender, EventArgs e)
         {
-
-
             //getting the Contentent of Template_Path
             if (Validaet_Typing_Doc() != false)
             {
@@ -2454,88 +2462,50 @@ namespace Ordermanagement_01
                 dtsel = dataaccess.ExecuteSP("Sp_Document_Upload", htsel);
                 if (dtsel.Rows.Count > 0)
                 {
-
                     //get the Header Template path from Server
-
                     Hashtable htheader = new Hashtable();
-
                     System.Data.DataTable dtheader = new System.Data.DataTable();
-
                     htheader.Add("@Trans", "SELECT_PATH_BY_ORDERTYPE_WISE");
                     htheader.Add("@Sub_Client_Id", Sub_Process_Id);
                     htheader.Add("@Order_Type_Abrivation", Order_Type_Abbrivation);
                     dtheader = dataaccess.ExecuteSP("Sp_Client_Template", htheader);
-
                     if (dtheader.Rows.Count > 0)
                     {
-
                         Content_Path = dtsel.Rows[0]["Document_Path"].ToString();
                         Header_Path = dtheader.Rows[0]["Header_Template_Path"].ToString();
-
-                        Object oMissing = System.Reflection.Missing.Value;
-
+                        Object oMissing = System.Reflection.Missing.Value;                    
                         var wordApp = new Word.Application();
-
                         var ContentDoc = wordApp.Documents.Open(@Content_Path);
-
-
                         // you can do the line above by passing ReadOnly=False like this as well
-                        //var originalDoc = wordApp.Documents.Open(@oTemplatePath, oMissing, false);
-
-
+                        //var originalDoc = wordApp.Documents.Open(@oTemplatePath, oMissing, false);                    
                         ContentDoc.ActiveWindow.Selection.WholeStory();
-
-
                         ContentDoc.ActiveWindow.Selection.Copy();
                         //copy the sourcefile to Destination to  Pate
                         ContentDoc.Close();
-
-
                         //Copy File into Order file 
-
                         string Header_FileName = "Final_Property_report" + Order_No + ".docx";
 
                         string dest_path1 = @"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId + @"\" + Header_FileName;
                         DirectoryEntry de = new DirectoryEntry(dest_path1, "administrator", "password1$");
                         de.Username = "administrator";
                         de.Password = "password1$";
-
-
                         Directory.CreateDirectory(@"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId);
-
                         File.Copy(Header_Path, dest_path1, true);
-
-
-
-
                         //Need to Paste the Contents to Destination path
 
                         var Destinationdoc = wordApp.Documents.Open(@dest_path1);
 
-
                         Destinationdoc.ActiveWindow.Selection.WholeStory();
-
-
-
                         Destinationdoc.ActiveWindow.Selection.PasteAndFormat(WdRecoveryType.wdUseDestinationStylesRecovery);
-
-
 
                         Destinationdoc.SaveAs(@dest_path1);
                         Destinationdoc.Save();
                         Destinationdoc.Close();
 
-
-
                         System.Runtime.InteropServices.Marshal.ReleaseComObject(wordApp);
                         System.Runtime.InteropServices.Marshal.ReleaseComObject(ContentDoc);
-
                         System.Runtime.InteropServices.Marshal.ReleaseComObject(Destinationdoc);
                         GC.Collect();
-
-
-
-
 
                         Hashtable htdel = new Hashtable();
                         System.Data.DataTable dtdel = new System.Data.DataTable();
@@ -2557,23 +2527,15 @@ namespace Ordermanagement_01
                         dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
                         Gridview_bindInhouse_Final_Document_Upload();
                         MessageBox.Show("Final Report Submitted Check in Upload Tab");
-
                     }
                     else
                     {
-
                         MessageBox.Show("Header Template is not Added please check it");
                     }
-
-
                 }
-
                 cProbar.stopProgress();
-            }
-
-
+            }        
         }
-
         private void grd_Vendor_Documents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -2589,7 +2551,6 @@ namespace Ordermanagement_01
                     }
                 }
             }
-
         }
 
         private void Grd_Document_upload_DragDrop(object sender, DragEventArgs e)
@@ -2601,7 +2562,6 @@ namespace Ordermanagement_01
             {
                 return;
             }
-
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
             {
@@ -2614,17 +2574,14 @@ namespace Ordermanagement_01
                 double filesize = f.Length;
                 GetFileSize(filesize);
                 if (!isFolder && !isFile)                    // Ignore if it doesn't exist
-
-                    continue;
-
+                continue;
                 try
                 {
                     switch (e.Effect)
                     {
                         case DragDropEffects.Copy:
                             if (isFile)					// TODO: Need to handle folders
-                                File.Copy(file, dest, false);
-
+                            File.Copy(file, dest, false);
                             htorderkb.Add("@Trans", "INSERT");
                             htorderkb.Add("@Instuction", txt_path.Text);
                             htorderkb.Add("@Order_ID", OrderId);
@@ -2640,7 +2597,6 @@ namespace Ordermanagement_01
                             else if (userid == 0)
                             {
 
-
                             }
                             htorderkb.Add("@Inserted_date", DateTime.Now);
                             dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
@@ -2648,7 +2604,6 @@ namespace Ordermanagement_01
                         case DragDropEffects.Move:
                             if (isFile)
                                 File.Move(file, dest);
-
                             htorderkb.Add("@Trans", "INSERT");
                             htorderkb.Add("@Instuction", txt_path.Text);
                             htorderkb.Add("@Order_ID", OrderId);
@@ -2674,24 +2629,18 @@ namespace Ordermanagement_01
                             htorderkb.Add("@Inserted_date", DateTime.Now);
                             dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);// TODO: Need to handle links
                             break;
-
                     }
                 }
                 catch (IOException ex)
                 {
-
                     dialogResult = MessageBox.Show("This File Is Alerday Exist,Do you want to Replace?", "Warning", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-
-
                         switch (e.Effect)
-                        {
-
+                        { 
                             case DragDropEffects.Copy:
                                 if (isFile)					// TODO: Need to handle folders
-                                    File.Copy(file, dest, true);
-
+                                File.Copy(file, dest, true);
                                 htorderkb.Add("@Trans", "INSERT");
                                 htorderkb.Add("@Instuction", txt_path.Text);
                                 htorderkb.Add("@Order_ID", OrderId);
@@ -2710,65 +2659,99 @@ namespace Ordermanagement_01
                     {
 
                     }
-
-
-
                 }
             }
-
             RefreshView();
             Grd_Document_upload_Load();
         }
-
-
-        private void Gridview_bind_Tax_Document_Upload()
+        private async void Gridview_bind_Tax_Document_Upload()
         {
-
-
             System.Data.DataTable dt_Upload = new System.Data.DataTable();
-
-
-
-            Hashtable htselect = new Hashtable();
             System.Data.DataTable dtselect = new System.Data.DataTable();
-
+            var dict_Tax_Docmuents = new Dictionary<string, object>();
             if (Tax_Order_Task == 21)
             {
-                htselect.Add("@Trans", "GET_TAX_DOCUMENTS");
+                dict_Tax_Docmuents.Add("@Trans", "GET_TAX_DOCUMENTS");
             }
-            else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
+            else if ((Tax_Order_Task == 22 || Tax_Order_Task == 26))
             {
-                htselect.Add("@Trans", "GET_INTERNAL_TAX_DOCUMENTS");
-
+                dict_Tax_Docmuents.Add("@Trans", "GET_INTERNAL_TAX_DOCUMENTS");
             }
-            htselect.Add("@Order_Id", OrderId);
-            dtselect = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htselect);
-            if (Tax_Order_Task == 21)
+            dict_Tax_Docmuents.Add("@Order_Id", OrderId);
+            var data = new StringContent(JsonConvert.SerializeObject(dict_Tax_Docmuents), Encoding.UTF8, "application/json");
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/TaxDocuments", data);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        dtselect = JsonConvert.DeserializeObject<System.Data.DataTable>(result);                        
+                    }
+                }
+            }
+            if(Tax_Order_Task==21)
             {
                 dt_Upload = dtselect;
             }
-            else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
+            else if(Tax_Order_Task == 22 || Tax_Order_Task == 26)
             {
-
-                Hashtable htselect1 = new Hashtable();
-                System.Data.DataTable dtselect1 = new System.Data.DataTable();
-
-                htselect1.Add("@Trans", "GET_INTERNAL_TAX_DOCUMENTS_LAST_UPDTAED_TAX_DETAILS");
-
-                htselect1.Add("@Order_Id", OrderId);
-
-                dtselect1 = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htselect1);
-
-
-
-
-                dt_Upload = dtselect.Copy();
-                dt_Upload.Merge(dtselect1);
-
-
+                var dict_Internal_Doc = new Dictionary<string, object>
+                {
+                    {"@Trans", "GET_INTERNAL_TAX_DOCUMENTS_LAST_UPDTAED_TAX_DETAILS" },
+                    {"@Order_Id", OrderId }
+                };
+                var data1 = new StringContent(JsonConvert.SerializeObject(dict_Internal_Doc), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/OrderUploadDocuments/TaxDocuments", data1);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            System.Data.DataTable dtselect1 = JsonConvert.DeserializeObject<System.Data.DataTable>(result);
+                            dt_Upload = dtselect.Copy();
+                            dt_Upload.Merge(dtselect1);
+                        }
+                    }
+                }
             }
+            //System.Data.DataTable dt_Upload = new System.Data.DataTable();
+            //Hashtable htselect = new Hashtable();
+            //System.Data.DataTable dtselect = new System.Data.DataTable();
 
+            //if (Tax_Order_Task == 21)
+            //{
+            //    htselect.Add("@Trans", "GET_TAX_DOCUMENTS");
+            //}
+            //else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
+            //{
+            //    htselect.Add("@Trans", "GET_INTERNAL_TAX_DOCUMENTS");
 
+            //}
+            //htselect.Add("@Order_Id", OrderId);
+            //dtselect = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htselect);
+            //if (Tax_Order_Task == 21)
+            //{
+            //    dt_Upload = dtselect;
+            //}
+            //else if (Tax_Order_Task == 22 || Tax_Order_Task == 26)
+            //{
+
+            //    Hashtable htselect1 = new Hashtable();
+            //    System.Data.DataTable dtselect1 = new System.Data.DataTable();
+
+            //    htselect1.Add("@Trans", "GET_INTERNAL_TAX_DOCUMENTS_LAST_UPDTAED_TAX_DETAILS");
+
+            //    htselect1.Add("@Order_Id", OrderId);
+
+            //    dtselect1 = dataaccess.ExecuteSP("Sp_Tax_Orders_Documents", htselect1);
+
+            //    dt_Upload = dtselect.Copy();
+            //    dt_Upload.Merge(dtselect1);
+            //}
 
             if (dt_Upload.Rows.Count > 0)
             {
@@ -2780,9 +2763,6 @@ namespace Ordermanagement_01
                 Grid_Tax_Upload.Columns[5].Width = 60;
                 Grid_Tax_Upload.Columns[6].Width = 60;
                 Grid_Tax_Upload.Columns[7].Width = 60;
-
-
-
                 if (dt_Upload.Rows.Count > 0)
                 {
                     //ex2.Visible = true;
@@ -2791,135 +2771,88 @@ namespace Ordermanagement_01
                     {
                         Grid_Tax_Upload.Rows.Add();
                         Grid_Tax_Upload.Rows[i].Cells[0].Value = dt_Upload.Rows[i]["Instuction"].ToString();
-
-
-
                         Grid_Tax_Upload.Rows[i].Cells[1].Value = dt_Upload.Rows[i]["FileSize"].ToString();
                         Grid_Tax_Upload.Rows[i].Cells[2].Value = dt_Upload.Rows[i]["User_Name"].ToString();
                         Grid_Tax_Upload.Rows[i].Cells[3].Value = dt_Upload.Rows[i]["Inserted_date"].ToString();
-
                         Grid_Tax_Upload.Rows[i].Cells[4].Value = "View";
-
                         Grid_Tax_Upload.Rows[i].Cells[5].Value = "Delete";
                         Grid_Tax_Upload.Rows[i].Cells[6].Value = dt_Upload.Rows[i]["Tax_Document_Upload_Id"].ToString();
-
                         Grid_Tax_Upload.Rows[i].Cells[7].Value = dt_Upload.Rows[i]["New_Document_Path"].ToString();
-
                         Grid_Tax_Upload.Rows[i].Cells[8].Value = dt_Upload.Rows[i]["Document_Type_Id"].ToString();
-
                     }
-
-
-
                 }
             }
             else
             {
                 Grid_Tax_Upload.Rows.Clear();
                 Grid_Tax_Upload.DataSource = null;
-
             }
         }
-
-
-
-
         private void Grid_Tax_Upload_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4)
             {
-
-
                 string Source_Path = Grid_Tax_Upload.Rows[e.RowIndex].Cells[7].Value.ToString();
                 string Document_Type_Id = Grid_Tax_Upload.Rows[e.RowIndex].Cells[8].Value.ToString();
                 if (Source_Path != "" && Document_Type_Id != "16")
                 {
-
                     string fileName = Path.GetFileName(Source_Path).Replace("%20", " ");
                     Download_Ftp_File(fileName, Source_Path);
                     //string docName = Path.GetFileName(Source_Path.ToString());
-
                     //System.IO.Directory.CreateDirectory(@"C:\temp");
-
                     //File.Copy(Source_Path, @"C:\temp\" + docName, true);
-
                     //System.Diagnostics.Process.Start(@"C:\temp\" + docName);
                 }
                 else if (Document_Type_Id == "16")
                 {
-
                     Tax_Order_Note_Pad txnote = new Tax_Order_Note_Pad(OrderId, 0, 0, 0, "View_Tax_Details", Order_No);
                     txnote.Show();
                 }
-
             }
         }
-
         //private void Grd_Document_upload_CellContentClick(object sender, DataGridViewCellEventArgs e)
         //{
-
         //}
-
         private void chk_All_CheckedChanged(object sender, EventArgs e)
         {
             if (chk_All.Checked == true)
             {
-
                 for (int i = 0; i < grd_Vendor_Documents.Rows.Count; i++)
                 {
-
                     grd_Vendor_Documents[0, i].Value = true;
                 }
             }
             else if (chk_All.Checked == false)
             {
-
                 for (int i = 0; i < grd_Vendor_Documents.Rows.Count; i++)
                 {
-
                     grd_Vendor_Documents[0, i].Value = false;
                 }
             }
         }
-
         private void btn_Add_Click(object sender, EventArgs e)
         {
             Hashtable htorderkb = new Hashtable();
             System.Data.DataTable dtorderkb = new System.Data.DataTable();
-
             for (int i = 0; i < grd_Vendor_Documents.Rows.Count; i++)
             {
-
-
                 bool isChecked = (bool)grd_Vendor_Documents[0, i].FormattedValue;
                 if (isChecked == true)
                 {
-
-
-
-
-
                     string s = grd_Vendor_Documents.Rows[i].Cells[8].Value.ToString();
                     FName = grd_Vendor_Documents.Rows[i].Cells[3].Value.ToString().Split('\\');
                     string docname = grd_Vendor_Documents.Rows[i].Cells[3].Value.ToString();
-
                     string Doc_Size = grd_Vendor_Documents.Rows[i].Cells[4].Value.ToString();
-
-
-
                     string dest_path1 = @"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId + @"\" + FName[FName.Length - 1];
                     string Order_Document_Id = grd_Vendor_Documents.Rows[i].Cells[4].Value.ToString();
                     DirectoryEntry de = new DirectoryEntry(dest_path1, "administrator", "password1$");
                     de.Username = "administrator";
                     de.Password = "password1$";
-
-
                     Directory.CreateDirectory(@"\\192.168.12.33\oms\" + Client_Name + @"\" + Sub_Client + @"\" + OrderId);
                     try
                     {
                         if (docname != "")
                         {
-
                             File.Copy(s, dest_path1, false);
                         }
                         File_Count++;
@@ -2939,9 +2872,6 @@ namespace Ordermanagement_01
                         htorderkb.Add("@Inserted_By", userid);
                         htorderkb.Add("@Inserted_date", DateTime.Now);
                         dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
-
-
-
                         Hashtable htupdate_iscopied = new Hashtable();
                         System.Data.DataTable dtupdate_iscopied = new System.Data.DataTable();
                         htupdate_iscopied.Add("@Trans", "Update_Iscopied");
@@ -2950,8 +2880,6 @@ namespace Ordermanagement_01
                     }
                     catch (Exception ex)
                     {
-
-
                         dialogResult = MessageBox.Show("This is File Is Already Exist Do you want to Replace?", "Warning", MessageBoxButtons.YesNo);
                         Existance_File_Copied = 1;
                         if (dialogResult == DialogResult.Yes)
@@ -2977,76 +2905,48 @@ namespace Ordermanagement_01
                             htorderkb.Add("@Inserted_By", userid);
                             htorderkb.Add("@Inserted_date", DateTime.Now);
                             dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
-
                             Hashtable htupdate_iscopied = new Hashtable();
                             System.Data.DataTable dtupdate_iscopied = new System.Data.DataTable();
                             htupdate_iscopied.Add("@Trans", "Update_Iscopied");
                             htupdate_iscopied.Add("@Order_Document_Id", grd_Vendor_Documents.Rows[i].Cells[9].Value.ToString());
                             dtupdate_iscopied = dataaccess.ExecuteSP("Sp_Vendor_Order_Documents", htupdate_iscopied);
-
                         }
                         else
                         {
-
-
                         }
                     }
-
-
-
-
                 }
-
-
-
-
             }
-
-
             if (File_Count > 0)
             {
-
                 MessageBox.Show(Convert.ToString(File_Count) + " File(s) copied");
-
                 Grd_Document_upload_Load();
                 RefreshView();
                 Grid_Bind_VendorDocuments();
-
                 chk_All.Checked = false;
                 if (chk_All.Checked == true)
                 {
-
                     for (int i = 0; i < grd_Vendor_Documents.Rows.Count; i++)
                     {
-
                         grd_Vendor_Documents[0, i].Value = true;
                     }
                 }
                 else if (chk_All.Checked == false)
                 {
-
                     for (int i = 0; i < grd_Vendor_Documents.Rows.Count; i++)
                     {
-
                         grd_Vendor_Documents[0, i].Value = false;
                     }
                 }
-
-
             }
-
         }
-
         private bool Validate_Invoice_Genrated()
         {
-
             // Checking for Titlelogy vendor Db title Client Invoice is Genrated or not
             if (Inhouse_Client_Id == 33)
             {
-
                 Hashtable ht_check = new Hashtable();
                 System.Data.DataTable dt_check = new System.Data.DataTable();
-
                 ht_check.Add("@Trans", "CHECK");
                 ht_check.Add("@Order_ID", External_Order_Id);
                 dt_check = dataaccess.ExecuteSP("Sp_External_Client_Order_Invoice_Entry", ht_check);
@@ -3058,39 +2958,27 @@ namespace Ordermanagement_01
                 }
                 else
                 {
-
                     return true;
                 }
             }
             else
             {
-
                 return true;
             }
-
-
         }
-
         private void btn_View_package_Click(object sender, EventArgs e)
         {
             if (Grid_Client_Upload.Rows.Count > 0 && Validate_Invoice_Genrated() != false)
             {
                 External_Order_Id = int.Parse(Grid_Client_Upload.Rows[0].Cells[12].Value.ToString());
-
                 Export_Report();
-
                 Merge_Document_2();
             }
             else
             {
-
                 MessageBox.Show("Check Search Package");
             }
-
-
         }
-
-
         public void Export_Report()
         {
             // This is only for DB title client and vendor
@@ -3099,16 +2987,11 @@ namespace Ordermanagement_01
                 rptDoc = new InvoiceRep.InvReport.InvoiceReport_DbTitle();
                 Logon_To_Crystal();
                 rptDoc.SetParameterValue("@Order_Id", External_Order_Id);
-
-
-
-
                 Logon_To_Crystal();
                 rptDoc.SetParameterValue("@Order_ID", External_Order_Id);
                 ExportOptions CrExportOptions;
                 string Invoice_Order_Number = External_Client_Order_Number.ToString();
                 string Source = @"\\192.168.12.33\Invoice-Reports\Titlelogy_Invoice.pdf";
-
                 string File_Name = "" + External_Client_Order_Number + ".pdf";
                 //string Docname = FName[FName.Length - 1].ToString();
                 string dest_path1 = @"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + External_Client_Order_Number + @"\" + File_Name;
@@ -3116,11 +2999,9 @@ namespace Ordermanagement_01
                 de.Username = "administrator";
                 de.Password = "password1$";
 
-
                 Directory.CreateDirectory(@"\\192.168.12.33\Titlelogy\" + External_Clinet_Id + @"\" + External_Sub_client_Id + @"\" + External_Client_Order_Number);
                 extension = Path.GetExtension(File_Name);
                 File.Copy(Source, dest_path1, true);
-
 
                 Hashtable htpath = new Hashtable();
                 System.Data.DataTable dtpath = new System.Data.DataTable();
@@ -3142,8 +3023,6 @@ namespace Ordermanagement_01
                 }
                 if (check == 0)
                 {
-
-
                     htpath.Add("@Trans", "INSERT");
                     htpath.Add("@Document_Type_Id", 12);
                     htpath.Add("@Order_Id", External_Order_Id);
@@ -3152,27 +3031,21 @@ namespace Ordermanagement_01
                     htpath.Add("@Description", "Invoice");
                     htpath.Add("@Document_Path", dest_path1);
                     htpath.Add("@File_Size", File_size);
-
                     htpath.Add("@Inserted_date", DateTime.Now);
                     htpath.Add("@status", "True");
                     dtpath = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htpath);
-
                 }
-
                 Hashtable htgetpath = new Hashtable();
                 System.Data.DataTable dtgetpath = new System.Data.DataTable();
                 htgetpath.Add("@Trans", "GET_PATH");
                 htgetpath.Add("@Order_Id", External_Order_Id);
                 dtgetpath = dataaccess.ExecuteSP("Sp_External_Client_Orders_Documents", htgetpath);
-
                 if (dtgetpath.Rows.Count > 0)
                 {
                     View_File_Path = dtgetpath.Rows[0]["Document_Path"].ToString();
                 }
                 FileInfo newFile = new FileInfo(View_File_Path);
-
                 DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-
                 PdfFormatOptions CrFormatTypeOptions = new PdfFormatOptions();
                 CrDiskFileDestinationOptions.DiskFileName = newFile.ToString();
                 CrExportOptions = rptDoc.ExportOptions;
@@ -3181,18 +3054,12 @@ namespace Ordermanagement_01
                 CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                 CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 rptDoc.Export();
-
-
             }
-
-
         }
-
         private void Grd_Document_upload_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void listView1_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
         {
 
@@ -3200,13 +3067,11 @@ namespace Ordermanagement_01
 
         public void Logon_To_Crystal()
         {
-
             crConnectionInfo.ServerName = server;
             crConnectionInfo.DatabaseName = database;
             crConnectionInfo.UserID = UserID;
             crConnectionInfo.Password = password;
             CrTables = rptDoc.Database.Tables;
-
             foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
             {
                 crtableLogoninfo = CrTable.LogOnInfo;
@@ -3220,13 +3085,9 @@ namespace Ordermanagement_01
                     crtableLogoninfo = CrTable.LogOnInfo;
                     crtableLogoninfo.ConnectionInfo = crConnectionInfo;
                     CrTable.ApplyLogOnInfo(crtableLogoninfo);
-
                 }
             }
-
-
         }
-
         public void Merge_Document_2()
         {
             Hashtable htsearch = new Hashtable();
@@ -3247,7 +3108,6 @@ namespace Ordermanagement_01
             {
                 P1 = dtinvoice.Rows[0]["Document_Path"].ToString();
             }
-
             Hashtable htin = new Hashtable();
             System.Data.DataTable dtin = new System.Data.DataTable();
             htin.Add("@Trans", "CHECK_INVOICE_ENABLED_DISABLED");
@@ -3256,13 +3116,9 @@ namespace Ordermanagement_01
             if (dtin.Rows.Count > 0)
             {
                 Inv_Status = dtin.Rows[0]["Invoice_Status"].ToString();
-
             }
             DataSet ds = new DataSet();
             ds.Clear();
-
-
-
             if (Inv_Status == "True")
             {
                 //ds.Tables.Add(dtinvoice);
@@ -3270,42 +3126,30 @@ namespace Ordermanagement_01
             }
             else if (Inv_Status == "False")
             {
-
                 //  ds.Tables.Add(dtsearch);
             }
-
             if (Inv_Status == "True")
             {
                 if (dtsearch.Rows.Count > 0)
                 {
-
-
-
                     //Define a new output document and its size, type
-
                     Package = "InvoiceAndSearch";
                     Merge_Invoice_Search();
                     FName = @"\\192.168.12.33\Invoice-Reports\Titlelogy_Invoicemerge.pdf".Split('\\');
                     string Source_Path = @"\\192.168.12.33\Invoice-Reports\Titlelogy_Invoicemerge.pdf";
                     System.IO.Directory.CreateDirectory(@"C:\temp");
-
                     File.Copy(Source_Path, @"C:\temp\" + FName[FName.Length - 1], true);
                     System.Diagnostics.Process.Start(@"C:\temp\" + FName[FName.Length - 1]);
-
-
                 }
                 else
                 {
-
                     MessageBox.Show("SearchPackage is Not Added Please Check it");
-
                 }
             }
             else if (Inv_Status == "False")
             {
                 if (dtsearch.Rows.Count > 0)
                 {
-
                     Package = "Search";
                     Merge_Invoice_Search();
                     FName = @"\\192.168.12.33\Invoice-Reports\Titlelogy_Invoicemerge.pdf".Split('\\');
@@ -3316,75 +3160,55 @@ namespace Ordermanagement_01
                 }
                 else
                 {
-
                     MessageBox.Show("Search package is not uploaded check it");
                 }
-
             }
-
         }
-
         public void Merge_Invoice_Search()
         {
-
-
             //lstFiles[0] = @"C:/Users/DRNASM0001/Desktop/15-59989-Search Package.pdf";
             //lstFiles[1] = @"C:/Users/DRNASM0001/Desktop/Invoice.pdf";
             if (Inv_Status == "True" && Package == "InvoiceAndSearch")
             {
                 Index = 3;
-
             }
             else if (Inv_Status == "False" && Package == "Search")
             {
-
                 Index = 2;
             }
             string[] lstFiles = new string[Index];
             if (Inv_Status == "True" && Package == "InvoiceAndSearch")
             {
-
                 lstFiles[0] = P1;
-
                 lstFiles[1] = P2;
             }
             else if (Inv_Status == "False" && Package == "Search")
             {
-
                 lstFiles[0] = P2;
-
-
             }
             //lstFiles[2] = @"C:/pdf/3.pdf";
-
             PdfReader reader = null;
             iTextSharp.text.Document sourceDocument = null;
             PdfCopy pdfCopyProvider = null;
             PdfImportedPage importedPage;
             string outputPdfPath = @"\\192.168.12.33\Invoice-Reports\Titlelogy_Invoicemerge.pdf";
-
-
             sourceDocument = new iTextSharp.text.Document();
             pdfCopyProvider = new PdfCopy(sourceDocument, new System.IO.FileStream(outputPdfPath, System.IO.FileMode.Create));
-
             //Open the output file
             sourceDocument.Open();
-
             try
             {
                 //Loop through the files list
                 for (int f = 0; f < lstFiles.Length - 1; f++)
                 {
                     int pages = get_pageCcount(lstFiles[f]);
-
                     reader = new PdfReader(lstFiles[f]);
                     //Add pages of current file
                     for (int i = 1; i <= pages; i++)
                     {
                         importedPage = pdfCopyProvider.GetImportedPage(reader, i);
                         pdfCopyProvider.AddPage(importedPage);
-                    }
-
+                    }                
                     reader.Close();
                 }
                 //At the end save the output file
@@ -3394,22 +3218,16 @@ namespace Ordermanagement_01
             {
                 throw ex;
             }
-
         }
-
         private int get_pageCcount(string file)
         {
-
             //Regex regex = new Regex(@"/Type\s*/Page[^s]");
             //MatchCollection matches = regex.Matches(sr.ReadToEnd());
             PdfReader pdfReader = new PdfReader(File.OpenRead(file));
             int numberOfPages = pdfReader.NumberOfPages;
             //return matches.Count;
-
             return numberOfPages;
-
         }
-
         private void Grid_Client_Upload_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // if (e.ColumnIndex == 0)
@@ -3443,8 +3261,6 @@ namespace Ordermanagement_01
             //        }
             //        else
             //        {
-
-
             //            htupdate.Add("@Trans", "UPDATE_FILE");
             //            htupdate.Add("@Order_Document_Id", Document_ID);
             //            htupdate.Add("@Check_File", "False");
@@ -3452,10 +3268,6 @@ namespace Ordermanagement_01
             //            MessageBox.Show("File Status Un Checkd");
 
             //        }
-
-
-
-
             //        foreach (DataGridViewRow dr in Grid_Client_Upload.Rows)
             //        {
             //            dr.Cells[0].Value = false;//sıfırın
@@ -3470,13 +3282,8 @@ namespace Ordermanagement_01
             //        MessageBox.Show("Select Only Pdf Files");
             //       // Gridview_bind_External_Client_Document_Upload();
             //    }
-
-
-
-
             //}
         }
-
         #region Download Ftp File
 
         /// <summary>
@@ -3484,7 +3291,6 @@ namespace Ordermanagement_01
         /// </summary>
         /// <param name="FileName">Name of the File to Download</param>
         /// <param name="CurrentDirectory">CurrentDirectory (Directory from which to download on server)</param>
-
         private void Download_Ftp_File1(string p, string File_path, string Target_Path)
         {
             try
@@ -3507,16 +3313,11 @@ namespace Ordermanagement_01
                 MessageBox.Show("Problem in Downloading Files please Check with Administrator");
             }
         }
-
-
         #endregion
-
         private void CommonSaveFileDialog_FileOk(object sender, CancelEventArgs e)
         {
 
         }
-
-
     }
 }
 

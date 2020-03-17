@@ -8302,7 +8302,7 @@ namespace Ordermanagement_01
 
 
 
-        private async void Save_Check_List_New(DataTable dt_Check_List)
+        private async Task Save_Check_List_New(DataTable dt_Check_List)
         {
 
             using (var httpClient = new HttpClient())
@@ -8323,7 +8323,7 @@ namespace Ordermanagement_01
 
         }
 
-        private async void Bind_Check_List_Questions(int Ref_Checklist_Master_Type, DataGridView grd_Name, int Client_Id)
+        private async Task Bind_Check_List_Questions(int Ref_Checklist_Master_Type, DataGridView grd_Name, int Client_Id)
         {
             DataTable dtResult = new DataTable();
             DataTable dt_Check = new System.Data.DataTable();
