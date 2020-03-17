@@ -29,21 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clarification_Setting));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_ClarificationCategory = new DevExpress.XtraEditors.TextEdit();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
-            this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Submit = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.grd_Clarification_Category = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,41 +45,45 @@
             this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_ClarificationClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_ClarificationSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabNavigationPage4 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_ToEmailID = new DevExpress.XtraEditors.TextEdit();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_ToEmailClear = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_ToEmailSave = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_yourname = new DevExpress.XtraEditors.TextEdit();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gridControl1_From_Email_Address = new DevExpress.XtraGrid.GridControl();
+            this.gridControl1_From_Email = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Email_Address = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txt_Display_Name = new DevExpress.XtraEditors.TextEdit();
-            this.check_ShowPassword = new DevExpress.XtraEditors.CheckEdit();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_testconnection = new DevExpress.XtraEditors.SimpleButton();
-            this.check_connection_SSL = new DevExpress.XtraEditors.CheckEdit();
-            this.txt_OS = new DevExpress.XtraEditors.TextEdit();
-            this.txt_IS = new DevExpress.XtraEditors.TextEdit();
+            this.From_Email = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_FromEmailDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btn_FromEmailCLear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_FromEmailSave = new DevExpress.XtraEditors.SimpleButton();
+            this.txt_Display_Name = new DevExpress.XtraEditors.TextEdit();
+            this.check_ShowPassword = new DevExpress.XtraEditors.CheckEdit();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_TestConnectionSetting = new DevExpress.XtraEditors.SimpleButton();
+            this.check_connection_SSL = new DevExpress.XtraEditors.CheckEdit();
+            this.txt_OS = new DevExpress.XtraEditors.TextEdit();
+            this.txt_IS = new DevExpress.XtraEditors.TextEdit();
             this.txt_User_Name = new DevExpress.XtraEditors.TextEdit();
             this.txt_password = new DevExpress.XtraEditors.TextEdit();
             this.txt_Outgoing_server = new DevExpress.XtraEditors.TextEdit();
@@ -105,45 +101,62 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.btn_ToEmailEdit = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
-            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPage4 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.gridControl1_To_Email = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txt_ToEmailId = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_ToEmailClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_ToEmailSave = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.dropDownButton2 = new DevExpress.XtraEditors.DropDownButton();
+            this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_ClientEmailDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_ClientEmailClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_ClientEmailSave = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_ClarificationCatType = new DevExpress.XtraEditors.TextEdit();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Ordermanagement_01.Masters.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_ClarificationCategory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
-            this.flyoutPanelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Clarification_Category)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            this.tabNavigationPage3.SuspendLayout();
-            this.tabNavigationPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
-            this.panelControl6.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
-            this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_ToEmailID.Properties)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -152,8 +165,10 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_From_Email_Address)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_From_Email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Display_Name.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.check_ShowPassword.Properties)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
@@ -161,23 +176,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.check_connection_SSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_OS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_IS.Properties)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_User_Name.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_password.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Outgoing_server.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Incoming_server.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FromEmailId.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
-            this.panelControl9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
-            this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).BeginInit();
+            this.tabNavigationPage3.SuspendLayout();
+            this.tabNavigationPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_To_Email)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ToEmailId.Properties)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
+            this.panelControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
+            this.panelControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ClarificationCatType.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 500;
             // 
             // groupControl1
             // 
@@ -187,7 +219,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(573, 513);
+            this.groupControl1.Size = new System.Drawing.Size(672, 585);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Clarification Setting";
             // 
@@ -205,9 +237,9 @@
             this.tabNavigationPage2,
             this.tabNavigationPage3,
             this.tabNavigationPage4});
-            this.tabPane1.RegularSize = new System.Drawing.Size(569, 484);
+            this.tabPane1.RegularSize = new System.Drawing.Size(668, 556);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(569, 484);
+            this.tabPane1.Size = new System.Drawing.Size(668, 556);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -216,136 +248,67 @@
             this.tabNavigationPage1.Caption = "Category Setting";
             this.tabNavigationPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(551, 439);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(650, 511);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panelControl2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panelControl2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.79888F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.20112F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 439);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.610567F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.38943F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 511);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.panelControl1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panelControl3, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.73973F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.26027F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(545, 142);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.txt_ClarificationCategory);
+            this.panelControl1.Controls.Add(this.splitContainer4);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 3);
+            this.panelControl1.Location = new System.Drawing.Point(3, 47);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(539, 68);
+            this.panelControl1.Size = new System.Drawing.Size(644, 461);
             this.panelControl1.TabIndex = 0;
             // 
-            // labelControl1
+            // splitContainer4
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(14, 25);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(117, 13);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "Clarification Category :";
+            this.splitContainer4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(2, 2);
+            this.splitContainer4.Name = "splitContainer4";
             // 
-            // txt_ClarificationCategory
+            // splitContainer4.Panel1
             // 
-            this.txt_ClarificationCategory.Location = new System.Drawing.Point(131, 22);
-            this.txt_ClarificationCategory.Name = "txt_ClarificationCategory";
-            this.txt_ClarificationCategory.Size = new System.Drawing.Size(315, 20);
-            this.txt_ClarificationCategory.TabIndex = 0;
+            this.splitContainer4.Panel1.Controls.Add(this.grd_Clarification_Category);
             // 
-            // panelControl3
+            // splitContainer4.Panel2
             // 
-            this.panelControl3.Controls.Add(this.flyoutPanelControl1);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 77);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(539, 62);
-            this.panelControl3.TabIndex = 1;
-            // 
-            // flyoutPanelControl1
-            // 
-            this.flyoutPanelControl1.Controls.Add(this.btn_Clear);
-            this.flyoutPanelControl1.Controls.Add(this.btn_Submit);
-            this.flyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flyoutPanelControl1.FlyoutPanel = null;
-            this.flyoutPanelControl1.Location = new System.Drawing.Point(2, 2);
-            this.flyoutPanelControl1.Name = "flyoutPanelControl1";
-            this.flyoutPanelControl1.Size = new System.Drawing.Size(535, 58);
-            this.flyoutPanelControl1.TabIndex = 1;
-            // 
-            // btn_Clear
-            // 
-            this.btn_Clear.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_Clear.Appearance.Options.UseFont = true;
-            this.btn_Clear.Appearance.Options.UseForeColor = true;
-            this.btn_Clear.Location = new System.Drawing.Point(369, 14);
-            this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 23);
-            this.btn_Clear.TabIndex = 1;
-            this.btn_Clear.Text = "Clear";
-            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
-            // 
-            // btn_Submit
-            // 
-            this.btn_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btn_Submit.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_Submit.Appearance.Options.UseFont = true;
-            this.btn_Submit.Appearance.Options.UseForeColor = true;
-            this.btn_Submit.Location = new System.Drawing.Point(288, 14);
-            this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_Submit.TabIndex = 0;
-            this.btn_Submit.Text = "Submit";
-            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.grd_Clarification_Category);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 151);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(545, 285);
-            this.panelControl2.TabIndex = 1;
+            this.splitContainer4.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer4.Panel2.Controls.Add(this.txt_ClarificationCatType);
+            this.splitContainer4.Panel2.Controls.Add(this.labelControl1);
+            this.splitContainer4.Panel2.Controls.Add(this.flowLayoutPanel4);
+            this.splitContainer4.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer4.Size = new System.Drawing.Size(640, 457);
+            this.splitContainer4.SplitterDistance = 277;
+            this.splitContainer4.TabIndex = 4;
             // 
             // grd_Clarification_Category
             // 
             this.grd_Clarification_Category.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_Clarification_Category.Location = new System.Drawing.Point(2, 2);
+            this.grd_Clarification_Category.Location = new System.Drawing.Point(0, 0);
             this.grd_Clarification_Category.MainView = this.gridView1;
             this.grd_Clarification_Category.Name = "grd_Clarification_Category";
             this.grd_Clarification_Category.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2});
-            this.grd_Clarification_Category.Size = new System.Drawing.Size(541, 281);
+            this.grd_Clarification_Category.Size = new System.Drawing.Size(273, 453);
             this.grd_Clarification_Category.TabIndex = 0;
             this.grd_Clarification_Category.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.grd_Clarification_Category.Click += new System.EventHandler(this.grd_Clarifacation_Category_Click);
             // 
             // gridView1
             // 
@@ -357,7 +320,7 @@
             this.gridColumn3});
             this.gridView1.GridControl = this.grd_Clarification_Category;
             this.gridView1.Name = "gridView1";
-            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick_1);
             // 
             // gridColumn5
             // 
@@ -381,6 +344,7 @@
             this.gridColumn2.Caption = "Clarification Type";
             this.gridColumn2.FieldName = "Clarification_Category_Type";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 132;
@@ -398,7 +362,7 @@
             this.repositoryItemHyperLinkEdit2.AutoHeight = false;
             this.repositoryItemHyperLinkEdit2.Name = "repositoryItemHyperLinkEdit2";
             this.repositoryItemHyperLinkEdit2.NullText = "Edit";
-            this.repositoryItemHyperLinkEdit2.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit2_Click);
+            this.repositoryItemHyperLinkEdit2.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit2_Click_1);
             // 
             // gridColumn3
             // 
@@ -413,14 +377,94 @@
             this.repositoryItemHyperLinkEdit1.AutoHeight = false;
             this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
             this.repositoryItemHyperLinkEdit1.NullText = "Delete";
-            this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
+            this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click_1);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(16, 77);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(118, 13);
+            this.labelControl1.TabIndex = 48;
+            this.labelControl1.Text = "Clarification Category :";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.panel3);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel4.ForeColor = System.Drawing.Color.Black;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 409);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(355, 44);
+            this.flowLayoutPanel4.TabIndex = 47;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btn_ClarificationClear);
+            this.panel3.Controls.Add(this.btn_ClarificationSubmit);
+            this.panel3.Location = new System.Drawing.Point(184, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(168, 39);
+            this.panel3.TabIndex = 0;
+            // 
+            // btn_ClarificationClear
+            // 
+            this.btn_ClarificationClear.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btn_ClarificationClear.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClarificationClear.Appearance.Options.UseFont = true;
+            this.btn_ClarificationClear.Appearance.Options.UseForeColor = true;
+            this.btn_ClarificationClear.Location = new System.Drawing.Point(88, 5);
+            this.btn_ClarificationClear.Name = "btn_ClarificationClear";
+            this.btn_ClarificationClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationClear.TabIndex = 1;
+            this.btn_ClarificationClear.Text = "Clear";
+            this.btn_ClarificationClear.Click += new System.EventHandler(this.btn_Clear_Click_1);
+            // 
+            // btn_ClarificationSubmit
+            // 
+            this.btn_ClarificationSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btn_ClarificationSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClarificationSubmit.Appearance.Options.UseFont = true;
+            this.btn_ClarificationSubmit.Appearance.Options.UseForeColor = true;
+            this.btn_ClarificationSubmit.Location = new System.Drawing.Point(7, 5);
+            this.btn_ClarificationSubmit.Name = "btn_ClarificationSubmit";
+            this.btn_ClarificationSubmit.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationSubmit.TabIndex = 0;
+            this.btn_ClarificationSubmit.Text = "Submit";
+            this.btn_ClarificationSubmit.Click += new System.EventHandler(this.btn_Submit_Click_1);
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.label3);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(3, 3);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(644, 38);
+            this.panelControl2.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(2, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(640, 34);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Category E-mail Settings";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabNavigationPage2
             // 
             this.tabNavigationPage2.Caption = "From Email Setting";
             this.tabNavigationPage2.Controls.Add(this.panelControl4);
+            this.tabNavigationPage2.MaximumSize = new System.Drawing.Size(688, 623);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(551, 439);
+            this.tabNavigationPage2.Size = new System.Drawing.Size(650, 511);
             // 
             // panelControl4
             // 
@@ -428,121 +472,8 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(551, 439);
+            this.panelControl4.Size = new System.Drawing.Size(650, 511);
             this.panelControl4.TabIndex = 0;
-            // 
-            // tabNavigationPage3
-            // 
-            this.tabNavigationPage3.Caption = "To Email Setting";
-            this.tabNavigationPage3.Controls.Add(this.panelControl6);
-            this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(551, 439);
-            // 
-            // tabNavigationPage4
-            // 
-            this.tabNavigationPage4.Caption = "Client Email Setting";
-            this.tabNavigationPage4.Controls.Add(this.panelControl9);
-            this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(551, 439);
-            // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // panelControl6
-            // 
-            this.panelControl6.Controls.Add(this.tableLayoutPanel4);
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl6.Location = new System.Drawing.Point(0, 0);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(551, 439);
-            this.panelControl6.TabIndex = 0;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.panelControl7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panelControl8, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.16564F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.83436F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(547, 140);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Controls.Add(this.txt_ToEmailID);
-            this.panelControl7.Controls.Add(this.labelControl14);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl7.Location = new System.Drawing.Point(3, 3);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(541, 93);
-            this.panelControl7.TabIndex = 0;
-            // 
-            // panelControl8
-            // 
-            this.panelControl8.Controls.Add(this.flowLayoutPanel3);
-            this.panelControl8.Location = new System.Drawing.Point(3, 102);
-            this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(541, 35);
-            this.panelControl8.TabIndex = 1;
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.labelControl14.Appearance.Options.UseFont = true;
-            this.labelControl14.Location = new System.Drawing.Point(104, 33);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(61, 13);
-            this.labelControl14.TabIndex = 0;
-            this.labelControl14.Text = "To Email Id :";
-            // 
-            // txt_ToEmailID
-            // 
-            this.txt_ToEmailID.Location = new System.Drawing.Point(182, 33);
-            this.txt_ToEmailID.Name = "txt_ToEmailID";
-            this.txt_ToEmailID.Size = new System.Drawing.Size(305, 20);
-            this.txt_ToEmailID.TabIndex = 1;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.btn_ToEmailClear);
-            this.flowLayoutPanel3.Controls.Add(this.btn_ToEmailSave);
-            this.flowLayoutPanel3.Controls.Add(this.btn_ToEmailEdit);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(537, 31);
-            this.flowLayoutPanel3.TabIndex = 0;
-            // 
-            // btn_ToEmailClear
-            // 
-            this.btn_ToEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btn_ToEmailClear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_ToEmailClear.Appearance.Options.UseFont = true;
-            this.btn_ToEmailClear.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailClear.Location = new System.Drawing.Point(459, 3);
-            this.btn_ToEmailClear.Name = "btn_ToEmailClear";
-            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 23);
-            this.btn_ToEmailClear.TabIndex = 0;
-            this.btn_ToEmailClear.Text = "Clear";
-            // 
-            // btn_ToEmailSave
-            // 
-            this.btn_ToEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btn_ToEmailSave.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_ToEmailSave.Appearance.Options.UseFont = true;
-            this.btn_ToEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailSave.Location = new System.Drawing.Point(378, 3);
-            this.btn_ToEmailSave.Name = "btn_ToEmailSave";
-            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 23);
-            this.btn_ToEmailSave.TabIndex = 1;
-            this.btn_ToEmailSave.Text = "Save";
             // 
             // tableLayoutPanel3
             // 
@@ -556,10 +487,10 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.48218F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.51782F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.306931F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.69307F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(547, 435);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(646, 507);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // panelControl5
@@ -569,19 +500,19 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(3, 3);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(541, 39);
+            this.panelControl5.Size = new System.Drawing.Size(640, 41);
             this.panelControl5.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(537, 35);
+            this.label1.Size = new System.Drawing.Size(636, 37);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Internet E-mail Settings";
+            this.label1.Text = "Clarification From E-mail Settings";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txt_yourname
@@ -595,23 +526,23 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 48);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 50);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.gridControl1_From_Email_Address);
+            this.splitContainer1.Panel1.Controls.Add(this.gridControl1_From_Email);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.txt_Display_Name);
             this.splitContainer1.Panel2.Controls.Add(this.check_ShowPassword);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
             this.splitContainer1.Panel2.Controls.Add(this.check_connection_SSL);
             this.splitContainer1.Panel2.Controls.Add(this.txt_OS);
             this.splitContainer1.Panel2.Controls.Add(this.txt_IS);
-            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.txt_User_Name);
             this.splitContainer1.Panel2.Controls.Add(this.txt_password);
             this.splitContainer1.Panel2.Controls.Add(this.txt_Outgoing_server);
@@ -629,105 +560,240 @@
             this.splitContainer1.Panel2.Controls.Add(this.labelControl3);
             this.splitContainer1.Panel2.Controls.Add(this.labelControl2);
             this.splitContainer1.Panel2.Controls.Add(this.labelControl13);
-            this.splitContainer1.Size = new System.Drawing.Size(541, 384);
-            this.splitContainer1.SplitterDistance = 127;
-            this.splitContainer1.TabIndex = 3;
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Size = new System.Drawing.Size(640, 454);
+            this.splitContainer1.SplitterDistance = 141;
+            this.splitContainer1.TabIndex = 0;
             // 
-            // gridControl1_From_Email_Address
+            // gridControl1_From_Email
             // 
-            this.gridControl1_From_Email_Address.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1_From_Email_Address.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1_From_Email_Address.MainView = this.gridView2;
-            this.gridControl1_From_Email_Address.Name = "gridControl1_From_Email_Address";
-            this.gridControl1_From_Email_Address.Size = new System.Drawing.Size(123, 380);
-            this.gridControl1_From_Email_Address.TabIndex = 0;
-            this.gridControl1_From_Email_Address.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridControl1_From_Email.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1_From_Email.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1_From_Email.MainView = this.gridView2;
+            this.gridControl1_From_Email.Name = "gridControl1_From_Email";
+            this.gridControl1_From_Email.Size = new System.Drawing.Size(137, 450);
+            this.gridControl1_From_Email.TabIndex = 0;
+            this.gridControl1_From_Email.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
             // 
             // gridView2
             // 
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Email_Address});
-            this.gridView2.GridControl = this.gridControl1_From_Email_Address;
+            this.From_Email,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14,
+            this.gridColumn15});
+            this.gridView2.GridControl = this.gridControl1_From_Email;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
             this.gridView2.OptionsFind.AllowFindPanel = false;
             this.gridView2.OptionsFind.SearchInPreview = true;
             this.gridView2.OptionsView.ShowAutoFilterRow = true;
+            this.gridView2.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView2_RowCellClick);
             // 
-            // Email_Address
+            // From_Email
             // 
-            this.Email_Address.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_Address.AppearanceCell.Options.UseFont = true;
-            this.Email_Address.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email_Address.AppearanceHeader.Options.UseFont = true;
-            this.Email_Address.Caption = "Email_Address";
-            this.Email_Address.FieldName = "Email_Address";
-            this.Email_Address.Name = "Email_Address";
-            this.Email_Address.OptionsColumn.AllowEdit = false;
-            this.Email_Address.OptionsColumn.AllowShowHide = false;
-            this.Email_Address.Visible = true;
-            this.Email_Address.VisibleIndex = 0;
+            this.From_Email.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.From_Email.AppearanceCell.Options.UseFont = true;
+            this.From_Email.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.From_Email.AppearanceHeader.Options.UseFont = true;
+            this.From_Email.Caption = "Email_Id";
+            this.From_Email.FieldName = "From_Email_Id";
+            this.From_Email.Name = "From_Email";
+            this.From_Email.OptionsColumn.AllowEdit = false;
+            this.From_Email.OptionsColumn.AllowShowHide = false;
+            this.From_Email.Visible = true;
+            this.From_Email.VisibleIndex = 0;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Clarification_Email_From_Id";
+            this.gridColumn7.FieldName = "Clarification_Email_From_Id";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Your_Name";
+            this.gridColumn8.FieldName = "Your_Name";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Incoming_Mail_Server";
+            this.gridColumn9.FieldName = "Incoming_Mail_Server";
+            this.gridColumn9.Name = "gridColumn9";
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Outgoing_Mail_Server";
+            this.gridColumn10.FieldName = "Outgoing_Mail_Server";
+            this.gridColumn10.Name = "gridColumn10";
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Incoming_Server_Port";
+            this.gridColumn11.FieldName = "Incoming_Server_Port";
+            this.gridColumn11.Name = "gridColumn11";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Outgoing_Server_Port";
+            this.gridColumn12.FieldName = "Outgoing_Server_Port";
+            this.gridColumn12.Name = "gridColumn12";
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "User_Name";
+            this.gridColumn13.FieldName = "User_Name";
+            this.gridColumn13.Name = "gridColumn13";
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Password";
+            this.gridColumn14.FieldName = "Password";
+            this.gridColumn14.Name = "gridColumn14";
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Connection_SSL";
+            this.gridColumn15.FieldName = "Connection_SSL";
+            this.gridColumn15.Name = "gridColumn15";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 408);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(491, 42);
+            this.flowLayoutPanel1.TabIndex = 47;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btn_FromEmailDelete);
+            this.panel1.Controls.Add(this.btn_FromEmailCLear);
+            this.panel1.Controls.Add(this.btn_FromEmailSave);
+            this.panel1.Location = new System.Drawing.Point(246, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(242, 35);
+            this.panel1.TabIndex = 0;
+            // 
+            // btn_FromEmailDelete
+            // 
+            this.btn_FromEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailDelete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_FromEmailDelete.Appearance.Options.UseFont = true;
+            this.btn_FromEmailDelete.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailDelete.Location = new System.Drawing.Point(165, 3);
+            this.btn_FromEmailDelete.Name = "btn_FromEmailDelete";
+            this.btn_FromEmailDelete.Size = new System.Drawing.Size(75, 31);
+            this.btn_FromEmailDelete.TabIndex = 2;
+            this.btn_FromEmailDelete.Text = "Delete";
+            this.btn_FromEmailDelete.ToolTip = "Delete";
+            this.btn_FromEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_FromEmailDelete.Click += new System.EventHandler(this.btn_FromEmailDelete_Click);
+            // 
+            // btn_FromEmailCLear
+            // 
+            this.btn_FromEmailCLear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailCLear.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_FromEmailCLear.Appearance.Options.UseFont = true;
+            this.btn_FromEmailCLear.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailCLear.Location = new System.Drawing.Point(84, 3);
+            this.btn_FromEmailCLear.Name = "btn_FromEmailCLear";
+            this.btn_FromEmailCLear.Size = new System.Drawing.Size(75, 31);
+            this.btn_FromEmailCLear.TabIndex = 1;
+            this.btn_FromEmailCLear.Text = "Clear";
+            this.btn_FromEmailCLear.ToolTip = "Clear";
+            this.btn_FromEmailCLear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_FromEmailCLear.Click += new System.EventHandler(this.btn_FromEmailCLear_Click);
+            // 
+            // btn_FromEmailSave
+            // 
+            this.btn_FromEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_FromEmailSave.Appearance.Options.UseFont = true;
+            this.btn_FromEmailSave.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailSave.Location = new System.Drawing.Point(3, 3);
+            this.btn_FromEmailSave.Name = "btn_FromEmailSave";
+            this.btn_FromEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_FromEmailSave.TabIndex = 0;
+            this.btn_FromEmailSave.Text = "Save";
+            this.btn_FromEmailSave.ToolTip = "Save";
+            this.btn_FromEmailSave.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_FromEmailSave.Click += new System.EventHandler(this.btn_FromEmailSave_Click);
             // 
             // txt_Display_Name
             // 
-            this.txt_Display_Name.Location = new System.Drawing.Point(220, 46);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_Display_Name, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_Display_Name.Location = new System.Drawing.Point(216, 46);
             this.txt_Display_Name.Name = "txt_Display_Name";
-            this.txt_Display_Name.Properties.Leave += new System.EventHandler(this.txt_name_Properties_Leave);
             this.txt_Display_Name.Size = new System.Drawing.Size(160, 20);
-            this.txt_Display_Name.TabIndex = 1;
+            this.txt_Display_Name.TabIndex = 0;
+            this.txt_Display_Name.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Display_Name_KeyPress);
+            this.txt_Display_Name.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Display_Name_Validating);
             // 
             // check_ShowPassword
             // 
-            this.check_ShowPassword.Location = new System.Drawing.Point(386, 392);
+            this.check_ShowPassword.Location = new System.Drawing.Point(383, 373);
             this.check_ShowPassword.Name = "check_ShowPassword";
             this.check_ShowPassword.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.check_ShowPassword.Properties.Appearance.Options.UseFont = true;
             this.check_ShowPassword.Properties.Caption = "Show Password";
             this.check_ShowPassword.Size = new System.Drawing.Size(105, 19);
             this.check_ShowPassword.TabIndex = 10;
+            this.check_ShowPassword.CheckedChanged += new System.EventHandler(this.check_ShowPassword_CheckedChanged);
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.Controls.Add(this.panel2);
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(228, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(317, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(175, 32);
             this.flowLayoutPanel2.TabIndex = 46;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btn_testconnection);
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btn_TestConnectionSetting);
             this.panel2.Location = new System.Drawing.Point(0, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(172, 29);
             this.panel2.TabIndex = 0;
             // 
-            // btn_testconnection
+            // btn_TestConnectionSetting
             // 
-            this.btn_testconnection.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_testconnection.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_testconnection.Appearance.Options.UseFont = true;
-            this.btn_testconnection.Appearance.Options.UseForeColor = true;
-            this.btn_testconnection.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.btn_testconnection.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_testconnection.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btn_testconnection.Location = new System.Drawing.Point(0, 0);
-            this.btn_testconnection.Name = "btn_testconnection";
-            this.btn_testconnection.Size = new System.Drawing.Size(172, 29);
-            this.btn_testconnection.TabIndex = 48;
-            this.btn_testconnection.Text = "Test Account Settings";
-            this.btn_testconnection.ToolTip = "Text Account Settings";
-            this.btn_testconnection.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_TestConnectionSetting.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TestConnectionSetting.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_TestConnectionSetting.Appearance.Options.UseFont = true;
+            this.btn_TestConnectionSetting.Appearance.Options.UseForeColor = true;
+            this.btn_TestConnectionSetting.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.btn_TestConnectionSetting.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_TestConnectionSetting.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btn_TestConnectionSetting.Location = new System.Drawing.Point(0, 0);
+            this.btn_TestConnectionSetting.Name = "btn_TestConnectionSetting";
+            this.btn_TestConnectionSetting.Size = new System.Drawing.Size(172, 29);
+            this.btn_TestConnectionSetting.TabIndex = 0;
+            this.btn_TestConnectionSetting.Text = "Test Account Settings";
+            this.btn_TestConnectionSetting.ToolTip = "Text Account Settings";
+            this.btn_TestConnectionSetting.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_TestConnectionSetting.Click += new System.EventHandler(this.btn_TestConnectionSetting_Click);
             // 
             // check_connection_SSL
             // 
-            this.check_connection_SSL.Location = new System.Drawing.Point(28, 237);
+            this.check_connection_SSL.Location = new System.Drawing.Point(28, 227);
             this.check_connection_SSL.Name = "check_connection_SSL";
             this.check_connection_SSL.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_connection_SSL.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.check_connection_SSL.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.check_connection_SSL.Properties.Appearance.Options.UseFont = true;
             this.check_connection_SSL.Properties.Appearance.Options.UseForeColor = true;
             this.check_connection_SSL.Properties.Caption = "This server requires an encrypted connection(SSL)";
@@ -737,139 +803,98 @@
             // txt_OS
             // 
             this.txt_OS.Enabled = false;
-            this.txt_OS.Location = new System.Drawing.Point(220, 297);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_OS, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_OS.Location = new System.Drawing.Point(216, 287);
             this.txt_OS.Name = "txt_OS";
             this.txt_OS.Properties.Mask.EditMask = "n0";
             this.txt_OS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_OS.Properties.MaxLength = 4;
-            this.txt_OS.Properties.Leave += new System.EventHandler(this.txt_OS_Properties_Leave);
             this.txt_OS.Size = new System.Drawing.Size(160, 20);
-            this.txt_OS.TabIndex = 7;
+            this.txt_OS.TabIndex = 5;
+            this.txt_OS.TextChanged += new System.EventHandler(this.txt_OS_TextChanged);
+            this.txt_OS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_OS_KeyPress);
+            this.txt_OS.Validating += new System.ComponentModel.CancelEventHandler(this.txt_OS_Validating);
             // 
             // txt_IS
             // 
             this.txt_IS.Enabled = false;
-            this.txt_IS.Location = new System.Drawing.Point(220, 262);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_IS, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_IS.Location = new System.Drawing.Point(216, 252);
             this.txt_IS.Name = "txt_IS";
             this.txt_IS.Properties.Mask.EditMask = "d";
             this.txt_IS.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_IS.Properties.MaxLength = 4;
-            this.txt_IS.Properties.Leave += new System.EventHandler(this.txt_IS_Properties_Leave);
             this.txt_IS.Size = new System.Drawing.Size(160, 20);
-            this.txt_IS.TabIndex = 6;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 335);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(406, 45);
-            this.flowLayoutPanel1.TabIndex = 41;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btn_FromEmailDelete);
-            this.panel1.Controls.Add(this.btn_FromEmailCLear);
-            this.panel1.Controls.Add(this.btn_FromEmailSave);
-            this.panel1.Location = new System.Drawing.Point(161, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(242, 39);
-            this.panel1.TabIndex = 0;
-            // 
-            // btn_FromEmailDelete
-            // 
-            this.btn_FromEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FromEmailDelete.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_FromEmailDelete.Appearance.Options.UseFont = true;
-            this.btn_FromEmailDelete.Appearance.Options.UseForeColor = true;
-            this.btn_FromEmailDelete.Location = new System.Drawing.Point(165, 3);
-            this.btn_FromEmailDelete.Name = "btn_FromEmailDelete";
-            this.btn_FromEmailDelete.Size = new System.Drawing.Size(75, 31);
-            this.btn_FromEmailDelete.TabIndex = 13;
-            this.btn_FromEmailDelete.Text = "Delete";
-            this.btn_FromEmailDelete.ToolTip = "Delete";
-            this.btn_FromEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            // 
-            // btn_FromEmailCLear
-            // 
-            this.btn_FromEmailCLear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FromEmailCLear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_FromEmailCLear.Appearance.Options.UseFont = true;
-            this.btn_FromEmailCLear.Appearance.Options.UseForeColor = true;
-            this.btn_FromEmailCLear.Location = new System.Drawing.Point(84, 3);
-            this.btn_FromEmailCLear.Name = "btn_FromEmailCLear";
-            this.btn_FromEmailCLear.Size = new System.Drawing.Size(75, 31);
-            this.btn_FromEmailCLear.TabIndex = 12;
-            this.btn_FromEmailCLear.Text = "Clear";
-            this.btn_FromEmailCLear.ToolTip = "Clear";
-            this.btn_FromEmailCLear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            // 
-            // btn_FromEmailSave
-            // 
-            this.btn_FromEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FromEmailSave.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_FromEmailSave.Appearance.Options.UseFont = true;
-            this.btn_FromEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_FromEmailSave.Location = new System.Drawing.Point(3, 3);
-            this.btn_FromEmailSave.Name = "btn_FromEmailSave";
-            this.btn_FromEmailSave.Size = new System.Drawing.Size(75, 31);
-            this.btn_FromEmailSave.TabIndex = 11;
-            this.btn_FromEmailSave.Text = "Save";
-            this.btn_FromEmailSave.ToolTip = "Save";
-            this.btn_FromEmailSave.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.txt_IS.TabIndex = 4;
+            this.txt_IS.TextChanged += new System.EventHandler(this.txt_IS_TextChanged);
+            this.txt_IS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_IS_KeyPress);
+            this.txt_IS.Validating += new System.ComponentModel.CancelEventHandler(this.txt_IS_Validating);
             // 
             // txt_User_Name
             // 
-            this.txt_User_Name.Location = new System.Drawing.Point(220, 359);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_User_Name, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_User_Name.Location = new System.Drawing.Point(216, 340);
             this.txt_User_Name.Name = "txt_User_Name";
             this.txt_User_Name.Properties.ReadOnly = true;
             this.txt_User_Name.Size = new System.Drawing.Size(160, 20);
-            this.txt_User_Name.TabIndex = 8;
+            this.txt_User_Name.TabIndex = 6;
+            this.txt_User_Name.EditValueChanged += new System.EventHandler(this.txt_User_Name_EditValueChanged);
+            this.txt_User_Name.TextChanged += new System.EventHandler(this.txt_User_Name_TextChanged);
+            this.txt_User_Name.Enter += new System.EventHandler(this.txt_User_Name_Enter);
             // 
             // txt_password
             // 
             this.txt_password.EditValue = "";
-            this.txt_password.Location = new System.Drawing.Point(220, 392);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_password, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_password.Location = new System.Drawing.Point(216, 373);
             this.txt_password.Name = "txt_password";
             this.txt_password.Properties.PasswordChar = '*';
-            this.txt_password.Properties.Leave += new System.EventHandler(this.txt_password_Properties_Leave);
             this.txt_password.Size = new System.Drawing.Size(160, 20);
-            this.txt_password.TabIndex = 9;
+            this.txt_password.TabIndex = 7;
+            this.txt_password.TextChanged += new System.EventHandler(this.txt_password_TextChanged);
+            this.txt_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_password_KeyPress);
+            this.txt_password.Validating += new System.ComponentModel.CancelEventHandler(this.txt_password_Validating);
             // 
             // txt_Outgoing_server
             // 
-            this.txt_Outgoing_server.Location = new System.Drawing.Point(220, 178);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_Outgoing_server, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_Outgoing_server.Location = new System.Drawing.Point(216, 170);
             this.txt_Outgoing_server.Name = "txt_Outgoing_server";
-            this.txt_Outgoing_server.Properties.Leave += new System.EventHandler(this.txt_Outgoing_server_Properties_Leave);
             this.txt_Outgoing_server.Size = new System.Drawing.Size(160, 20);
-            this.txt_Outgoing_server.TabIndex = 4;
+            this.txt_Outgoing_server.TabIndex = 3;
+            this.txt_Outgoing_server.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Outgoing_server_KeyPress);
+            this.txt_Outgoing_server.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Outgoing_server_Validating);
             // 
             // txt_Incoming_server
             // 
-            this.txt_Incoming_server.Location = new System.Drawing.Point(220, 143);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_Incoming_server, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_Incoming_server.Location = new System.Drawing.Point(216, 135);
             this.txt_Incoming_server.Name = "txt_Incoming_server";
-            this.txt_Incoming_server.Properties.Leave += new System.EventHandler(this.txt_Incoming_server_Properties_Leave);
             this.txt_Incoming_server.Size = new System.Drawing.Size(160, 20);
-            this.txt_Incoming_server.TabIndex = 3;
+            this.txt_Incoming_server.TabIndex = 2;
+            this.txt_Incoming_server.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Incoming_server_KeyPress);
+            this.txt_Incoming_server.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Incoming_server_Validating);
             // 
             // txt_FromEmailId
             // 
-            this.txt_FromEmailId.Location = new System.Drawing.Point(220, 79);
+            this.dxErrorProvider1.SetIconAlignment(this.txt_FromEmailId, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
+            this.txt_FromEmailId.Location = new System.Drawing.Point(216, 79);
             this.txt_FromEmailId.Name = "txt_FromEmailId";
             this.txt_FromEmailId.Properties.Mask.BeepOnError = true;
-            this.txt_FromEmailId.Properties.Leave += new System.EventHandler(this.txt_Email_address_Properties_Leave);
             this.txt_FromEmailId.Size = new System.Drawing.Size(160, 20);
-            this.txt_FromEmailId.TabIndex = 2;
+            this.txt_FromEmailId.TabIndex = 1;
+            this.txt_FromEmailId.TextChanged += new System.EventHandler(this.txt_FromEmailId_TextChanged);
+            this.txt_FromEmailId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_FromEmailId_KeyPress);
+            this.txt_FromEmailId.Leave += new System.EventHandler(this.txt_FromEmailId_Leave);
+            this.txt_FromEmailId.Validating += new System.ComponentModel.CancelEventHandler(this.txt_FromEmailId_Validating);
             // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl12.Appearance.Options.UseFont = true;
             this.labelControl12.Appearance.Options.UseForeColor = true;
-            this.labelControl12.Location = new System.Drawing.Point(28, 395);
+            this.labelControl12.Location = new System.Drawing.Point(28, 376);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(55, 13);
             this.labelControl12.TabIndex = 32;
@@ -878,10 +903,10 @@
             // labelControl11
             // 
             this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl11.Appearance.Options.UseFont = true;
             this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(28, 366);
+            this.labelControl11.Location = new System.Drawing.Point(28, 347);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(61, 13);
             this.labelControl11.TabIndex = 31;
@@ -890,10 +915,10 @@
             // labelControl10
             // 
             this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl10.Appearance.Options.UseFont = true;
             this.labelControl10.Appearance.Options.UseForeColor = true;
-            this.labelControl10.Location = new System.Drawing.Point(28, 334);
+            this.labelControl10.Location = new System.Drawing.Point(28, 315);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(117, 17);
             this.labelControl10.TabIndex = 30;
@@ -902,10 +927,10 @@
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(28, 300);
+            this.labelControl9.Location = new System.Drawing.Point(28, 290);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(127, 13);
             this.labelControl9.TabIndex = 29;
@@ -914,10 +939,10 @@
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl8.Appearance.Options.UseFont = true;
             this.labelControl8.Appearance.Options.UseForeColor = true;
-            this.labelControl8.Location = new System.Drawing.Point(28, 270);
+            this.labelControl8.Location = new System.Drawing.Point(28, 260);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(124, 13);
             this.labelControl8.TabIndex = 28;
@@ -926,10 +951,10 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(28, 213);
+            this.labelControl7.Location = new System.Drawing.Point(28, 203);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(128, 17);
             this.labelControl7.TabIndex = 27;
@@ -938,10 +963,10 @@
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(28, 181);
+            this.labelControl6.Location = new System.Drawing.Point(28, 173);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(152, 13);
             this.labelControl6.TabIndex = 26;
@@ -950,10 +975,10 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(28, 151);
+            this.labelControl5.Location = new System.Drawing.Point(28, 143);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(113, 13);
             this.labelControl5.TabIndex = 25;
@@ -962,10 +987,10 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(28, 118);
+            this.labelControl4.Location = new System.Drawing.Point(28, 110);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(116, 17);
             this.labelControl4.TabIndex = 24;
@@ -974,7 +999,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(28, 82);
@@ -986,7 +1011,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.Location = new System.Drawing.Point(28, 49);
@@ -998,7 +1023,7 @@
             // labelControl13
             // 
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl13.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl13.Appearance.Options.UseFont = true;
             this.labelControl13.Appearance.Options.UseForeColor = true;
             this.labelControl13.Location = new System.Drawing.Point(28, 19);
@@ -1007,52 +1032,375 @@
             this.labelControl13.TabIndex = 21;
             this.labelControl13.Text = "User Information";
             // 
-            // btn_ToEmailEdit
+            // tabNavigationPage3
             // 
-            this.btn_ToEmailEdit.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.25F, System.Drawing.FontStyle.Bold);
-            this.btn_ToEmailEdit.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_ToEmailEdit.Appearance.Options.UseFont = true;
-            this.btn_ToEmailEdit.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailEdit.Location = new System.Drawing.Point(297, 3);
-            this.btn_ToEmailEdit.Name = "btn_ToEmailEdit";
-            this.btn_ToEmailEdit.Size = new System.Drawing.Size(75, 23);
-            this.btn_ToEmailEdit.TabIndex = 2;
-            this.btn_ToEmailEdit.Text = "Edit";
+            this.tabNavigationPage3.Caption = "To Email Setting";
+            this.tabNavigationPage3.Controls.Add(this.panelControl6);
+            this.tabNavigationPage3.MinimumSize = new System.Drawing.Size(400, 400);
+            this.tabNavigationPage3.Name = "tabNavigationPage3";
+            this.tabNavigationPage3.Size = new System.Drawing.Size(650, 511);
             // 
-            // panelControl9
+            // tabNavigationPage4
             // 
-            this.panelControl9.Controls.Add(this.splitContainerControl1);
-            this.panelControl9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl9.Location = new System.Drawing.Point(0, 0);
-            this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(551, 439);
-            this.panelControl9.TabIndex = 0;
+            this.tabNavigationPage4.Caption = "Client Email Setting";
+            this.tabNavigationPage4.Controls.Add(this.panelControl3);
+            this.tabNavigationPage4.Name = "tabNavigationPage4";
+            this.tabNavigationPage4.Size = new System.Drawing.Size(650, 511);
             // 
-            // splitContainerControl1
+            // dxErrorProvider1
             // 
-            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 2);
-            this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.checkedListBoxControl1);
-            this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(547, 435);
-            this.splitContainerControl1.SplitterPosition = 162;
-            this.splitContainerControl1.TabIndex = 0;
-            this.splitContainerControl1.Text = "splitContainerControl1";
+            this.dxErrorProvider1.ContainerControl = this;
             // 
-            // checkedListBoxControl1
+            // panelControl6
             // 
-            this.checkedListBoxControl1.Location = new System.Drawing.Point(46, 100);
-            this.checkedListBoxControl1.Name = "checkedListBoxControl1";
-            this.checkedListBoxControl1.Size = new System.Drawing.Size(120, 95);
-            this.checkedListBoxControl1.TabIndex = 0;
+            this.panelControl6.Controls.Add(this.tableLayoutPanel4);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl6.Location = new System.Drawing.Point(0, 0);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(650, 511);
+            this.panelControl6.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.splitContainer2, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.panelControl7, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.784736F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.21526F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(646, 507);
+            this.tableLayoutPanel4.TabIndex = 3;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 52);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.gridControl1_To_Email);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
+            this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
+            this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer2.Size = new System.Drawing.Size(640, 452);
+            this.splitContainer2.SplitterDistance = 147;
+            this.splitContainer2.TabIndex = 3;
+            // 
+            // gridControl1_To_Email
+            // 
+            this.gridControl1_To_Email.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1_To_Email.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1_To_Email.MainView = this.gridView3;
+            this.gridControl1_To_Email.Name = "gridControl1_To_Email";
+            this.gridControl1_To_Email.Size = new System.Drawing.Size(143, 448);
+            this.gridControl1_To_Email.TabIndex = 0;
+            this.gridControl1_To_Email.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6});
+            this.gridView3.GridControl = this.gridControl1_To_Email;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsCustomization.CustomizationFormSearchBoxVisible = true;
+            this.gridView3.OptionsFind.AllowFindPanel = false;
+            this.gridView3.OptionsFind.SearchInPreview = true;
+            this.gridView3.OptionsView.ShowAutoFilterRow = true;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceCell.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.Caption = "To EmailId";
+            this.gridColumn6.FieldName = "To_Email_Id";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsColumn.AllowShowHide = false;
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            // 
+            // txt_ToEmailId
+            // 
+            this.txt_ToEmailId.Location = new System.Drawing.Point(164, 74);
+            this.txt_ToEmailId.Name = "txt_ToEmailId";
+            this.txt_ToEmailId.Size = new System.Drawing.Size(282, 20);
+            this.txt_ToEmailId.TabIndex = 0;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl16.Appearance.Options.UseForeColor = true;
+            this.labelControl16.Location = new System.Drawing.Point(86, 77);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(59, 13);
+            this.labelControl16.TabIndex = 42;
+            this.labelControl16.Text = "To Email Id :";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.panel4);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 406);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(485, 42);
+            this.flowLayoutPanel3.TabIndex = 41;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btn_ToEmailClear);
+            this.panel4.Controls.Add(this.btn_ToEmailSave);
+            this.panel4.Location = new System.Drawing.Point(313, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(169, 39);
+            this.panel4.TabIndex = 0;
+            // 
+            // btn_ToEmailClear
+            // 
+            this.btn_ToEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToEmailClear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_ToEmailClear.Appearance.Options.UseFont = true;
+            this.btn_ToEmailClear.Appearance.Options.UseForeColor = true;
+            this.btn_ToEmailClear.Location = new System.Drawing.Point(87, 3);
+            this.btn_ToEmailClear.Name = "btn_ToEmailClear";
+            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailClear.TabIndex = 1;
+            this.btn_ToEmailClear.Text = "Clear";
+            this.btn_ToEmailClear.ToolTip = "Clear";
+            this.btn_ToEmailClear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_ToEmailClear.Click += new System.EventHandler(this.btn_ToEmailClear_Click_1);
+            // 
+            // btn_ToEmailSave
+            // 
+            this.btn_ToEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToEmailSave.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_ToEmailSave.Appearance.Options.UseFont = true;
+            this.btn_ToEmailSave.Appearance.Options.UseForeColor = true;
+            this.btn_ToEmailSave.Location = new System.Drawing.Point(5, 3);
+            this.btn_ToEmailSave.Name = "btn_ToEmailSave";
+            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailSave.TabIndex = 0;
+            this.btn_ToEmailSave.Text = "Save";
+            this.btn_ToEmailSave.ToolTip = "Save";
+            this.btn_ToEmailSave.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_ToEmailSave.Click += new System.EventHandler(this.btn_ToEmailSave_Click_1);
+            // 
+            // panelControl7
+            // 
+            this.panelControl7.Controls.Add(this.label2);
+            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl7.Location = new System.Drawing.Point(3, 3);
+            this.panelControl7.Name = "panelControl7";
+            this.panelControl7.Size = new System.Drawing.Size(640, 43);
+            this.panelControl7.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(2, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(636, 39);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Clarificaton To E-mail Setting ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.tableLayoutPanel6);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl3.Location = new System.Drawing.Point(0, 0);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(650, 511);
+            this.panelControl3.TabIndex = 0;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.splitContainer3, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.panelControl8, 0, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.29703F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.70297F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(646, 507);
+            this.tableLayoutPanel6.TabIndex = 4;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 55);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer3.Panel2.Controls.Add(this.labelControl15);
+            this.splitContainer3.Panel2.Controls.Add(this.labelControl14);
+            this.splitContainer3.Panel2.Controls.Add(this.dropDownButton2);
+            this.splitContainer3.Panel2.Controls.Add(this.dropDownButton1);
+            this.splitContainer3.Panel2.Controls.Add(this.flowLayoutPanel5);
+            this.splitContainer3.Size = new System.Drawing.Size(640, 449);
+            this.splitContainer3.SplitterDistance = 148;
+            this.splitContainer3.TabIndex = 3;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(114, 110);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(59, 13);
+            this.labelControl15.TabIndex = 45;
+            this.labelControl15.Text = "To Email Id :";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl14.Appearance.Options.UseForeColor = true;
+            this.labelControl14.Location = new System.Drawing.Point(114, 60);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(71, 13);
+            this.labelControl14.TabIndex = 44;
+            this.labelControl14.Text = "From Email Id :";
+            // 
+            // dropDownButton2
+            // 
+            this.dropDownButton2.Location = new System.Drawing.Point(198, 105);
+            this.dropDownButton2.Name = "dropDownButton2";
+            this.dropDownButton2.Size = new System.Drawing.Size(165, 23);
+            this.dropDownButton2.TabIndex = 1;
+            // 
+            // dropDownButton1
+            // 
+            this.dropDownButton1.Location = new System.Drawing.Point(198, 55);
+            this.dropDownButton1.Name = "dropDownButton1";
+            this.dropDownButton1.Size = new System.Drawing.Size(165, 23);
+            this.dropDownButton1.TabIndex = 0;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.panel5);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 401);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(484, 44);
+            this.flowLayoutPanel5.TabIndex = 41;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btn_ClientEmailDelete);
+            this.panel5.Controls.Add(this.btn_ClientEmailClear);
+            this.panel5.Controls.Add(this.btn_ClientEmailSave);
+            this.panel5.Location = new System.Drawing.Point(239, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(242, 39);
+            this.panel5.TabIndex = 0;
+            // 
+            // btn_ClientEmailDelete
+            // 
+            this.btn_ClientEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailDelete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClientEmailDelete.Appearance.Options.UseFont = true;
+            this.btn_ClientEmailDelete.Appearance.Options.UseForeColor = true;
+            this.btn_ClientEmailDelete.Location = new System.Drawing.Point(165, 3);
+            this.btn_ClientEmailDelete.Name = "btn_ClientEmailDelete";
+            this.btn_ClientEmailDelete.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailDelete.TabIndex = 2;
+            this.btn_ClientEmailDelete.Text = "Delete";
+            this.btn_ClientEmailDelete.ToolTip = "Delete";
+            this.btn_ClientEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            // 
+            // btn_ClientEmailClear
+            // 
+            this.btn_ClientEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailClear.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClientEmailClear.Appearance.Options.UseFont = true;
+            this.btn_ClientEmailClear.Appearance.Options.UseForeColor = true;
+            this.btn_ClientEmailClear.Location = new System.Drawing.Point(84, 3);
+            this.btn_ClientEmailClear.Name = "btn_ClientEmailClear";
+            this.btn_ClientEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailClear.TabIndex = 1;
+            this.btn_ClientEmailClear.Text = "Clear";
+            this.btn_ClientEmailClear.ToolTip = "Clear";
+            this.btn_ClientEmailClear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            // 
+            // btn_ClientEmailSave
+            // 
+            this.btn_ClientEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_ClientEmailSave.Appearance.Options.UseFont = true;
+            this.btn_ClientEmailSave.Appearance.Options.UseForeColor = true;
+            this.btn_ClientEmailSave.Location = new System.Drawing.Point(3, 3);
+            this.btn_ClientEmailSave.Name = "btn_ClientEmailSave";
+            this.btn_ClientEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailSave.TabIndex = 0;
+            this.btn_ClientEmailSave.Text = "Save";
+            this.btn_ClientEmailSave.ToolTip = "Save";
+            this.btn_ClientEmailSave.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            // 
+            // panelControl8
+            // 
+            this.panelControl8.Controls.Add(this.label4);
+            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl8.Location = new System.Drawing.Point(3, 3);
+            this.panelControl8.Name = "panelControl8";
+            this.panelControl8.Size = new System.Drawing.Size(640, 46);
+            this.panelControl8.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(2, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(636, 42);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Client E-mail Settings";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_ClarificationCatType
+            // 
+            this.txt_ClarificationCatType.Location = new System.Drawing.Point(150, 74);
+            this.txt_ClarificationCatType.Name = "txt_ClarificationCatType";
+            this.txt_ClarificationCatType.Size = new System.Drawing.Size(184, 20);
+            this.txt_ClarificationCatType.TabIndex = 0;
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // Clarification_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 513);
+            this.ClientSize = new System.Drawing.Size(672, 585);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1066,37 +1414,24 @@
             this.tabPane1.ResumeLayout(false);
             this.tabNavigationPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_ClarificationCategory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
-            this.flyoutPanelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            this.splitContainer4.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Clarification_Category)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.tabNavigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
-            this.tabNavigationPage3.ResumeLayout(false);
-            this.tabNavigationPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
-            this.panelControl6.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
-            this.panelControl8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txt_ToEmailID.Properties)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
@@ -1106,8 +1441,10 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_From_Email_Address)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_From_Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_Display_Name.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.check_ShowPassword.Properties)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -1115,18 +1452,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.check_connection_SSL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_OS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_IS.Properties)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_User_Name.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_password.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Outgoing_server.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Incoming_server.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_FromEmailId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
-            this.panelControl9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
-            this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).EndInit();
+            this.tabNavigationPage3.ResumeLayout(false);
+            this.tabNavigationPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1_To_Email)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ToEmailId.Properties)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
+            this.panelControl7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
+            this.panelControl8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ClarificationCatType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1137,59 +1497,25 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txt_ClarificationCategory;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraGrid.GridControl grd_Clarification_Category;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.Utils.FlyoutPanelControl flyoutPanelControl1;
-        private DevExpress.XtraEditors.SimpleButton btn_Clear;
-        private DevExpress.XtraEditors.SimpleButton btn_Submit;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage4;
-        private DevExpress.XtraEditors.PanelControl panelControl6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private DevExpress.XtraEditors.PanelControl panelControl7;
-        private DevExpress.XtraEditors.TextEdit txt_ToEmailID;
-        private DevExpress.XtraEditors.LabelControl labelControl14;
-        private DevExpress.XtraEditors.PanelControl panelControl8;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private DevExpress.XtraEditors.SimpleButton btn_ToEmailClear;
-        private DevExpress.XtraEditors.SimpleButton btn_ToEmailSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.TextEdit txt_yourname;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private DevExpress.XtraGrid.GridControl gridControl1_From_Email_Address;
+        private DevExpress.XtraGrid.GridControl gridControl1_From_Email;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn Email_Address;
+        private DevExpress.XtraGrid.Columns.GridColumn From_Email;
         private DevExpress.XtraEditors.TextEdit txt_Display_Name;
         private DevExpress.XtraEditors.CheckEdit check_ShowPassword;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
-        private DevExpress.XtraEditors.SimpleButton btn_testconnection;
+        private DevExpress.XtraEditors.SimpleButton btn_TestConnectionSetting;
         private DevExpress.XtraEditors.CheckEdit check_connection_SSL;
         private DevExpress.XtraEditors.TextEdit txt_OS;
         private DevExpress.XtraEditors.TextEdit txt_IS;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.SimpleButton btn_FromEmailDelete;
-        private DevExpress.XtraEditors.SimpleButton btn_FromEmailCLear;
-        private DevExpress.XtraEditors.SimpleButton btn_FromEmailSave;
         private DevExpress.XtraEditors.TextEdit txt_User_Name;
         private DevExpress.XtraEditors.TextEdit txt_password;
         private DevExpress.XtraEditors.TextEdit txt_Outgoing_server;
@@ -1207,9 +1533,70 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.SimpleButton btn_ToEmailEdit;
-        private DevExpress.XtraEditors.PanelControl panelControl9;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.TextEdit txt_yourname;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.SimpleButton btn_FromEmailDelete;
+        private DevExpress.XtraEditors.SimpleButton btn_FromEmailCLear;
+        private DevExpress.XtraEditors.SimpleButton btn_FromEmailSave;
         private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private DevExpress.XtraGrid.GridControl grd_Clarification_Category;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Panel panel3;
+        private DevExpress.XtraEditors.SimpleButton btn_ClarificationClear;
+        private DevExpress.XtraEditors.SimpleButton btn_ClarificationSubmit;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.PanelControl panelControl6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private DevExpress.XtraGrid.GridControl gridControl1_To_Email;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.TextEdit txt_ToEmailId;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraEditors.SimpleButton btn_ToEmailClear;
+        private DevExpress.XtraEditors.SimpleButton btn_ToEmailSave;
+        private DevExpress.XtraEditors.PanelControl panelControl7;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.DropDownButton dropDownButton2;
+        private DevExpress.XtraEditors.DropDownButton dropDownButton1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Panel panel5;
+        private DevExpress.XtraEditors.SimpleButton btn_ClientEmailDelete;
+        private DevExpress.XtraEditors.SimpleButton btn_ClientEmailClear;
+        private DevExpress.XtraEditors.SimpleButton btn_ClientEmailSave;
+        private DevExpress.XtraEditors.PanelControl panelControl8;
+        private System.Windows.Forms.Label label4;
+        private DevExpress.XtraEditors.TextEdit txt_ClarificationCatType;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

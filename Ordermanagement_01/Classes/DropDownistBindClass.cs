@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Collections;
-using System.Data;
-using System.Windows.Forms;
-using DevExpress.XtraEditors.Controls;
-using System.Security.Cryptography;
-using System.IO;
-using System.Text;
-using DevExpress.XtraSplashScreen;
-using Ordermanagement_01.Masters;
-using System.Net.Http;
+﻿using DevExpress.XtraEditors.Controls;
 using Newtonsoft.Json;
 using Ordermanagement_01.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Net;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
 
 /// <summary>
 /// Summary description for DropDownistBindClass
@@ -2571,7 +2567,7 @@ public class DropDownistBindClass
     public void Bind_Sub_ClientName_By_Search(ComboBox ddl_Search_SubClient)
     {
         Hashtable ht_SubProcess = new Hashtable();
-        DataTable dt_SubProcess = new DataTable();    
+        DataTable dt_SubProcess = new DataTable();
         ht_SubProcess.Add("@Trans", "BIND_SUBPROCESS_NAME");
         dt_SubProcess = da.ExecuteSP("Sp_Client_Order_Cost", ht_SubProcess);
         DataRow dr = dt_SubProcess.NewRow();
@@ -2707,7 +2703,7 @@ public class DropDownistBindClass
         DataRow dr = dt.NewRow();
         dr[0] = 0;
         dr[1] = "SELECT";
-        dt.Rows.InsertAt(dr, 0);    
+        dt.Rows.InsertAt(dr, 0);
         ddl_Reporting.DataSource = dt;
         ddl_Reporting.DisplayMember = "Role_Name";
         ddl_Reporting.ValueMember = "Role_Id";
@@ -2736,7 +2732,7 @@ public class DropDownistBindClass
         dt.Rows.InsertAt(dr, 0);
         ddl_Target_Matrix_User.DataSource = dt;
         ddl_Target_Matrix_User.DisplayMember = "User_Name";
-        ddl_Target_Matrix_User.ValueMember = "User_id";    
+        ddl_Target_Matrix_User.ValueMember = "User_id";
     }
     public void Bind_Rework_Client_Name(ComboBox ddl_Client_Name)
     {
@@ -3073,9 +3069,9 @@ public class DropDownistBindClass
 
     public void Bind_All_Branch(ComboBox ddlName)
     {
-        Hashtable htParam = new Hashtable();    
+        Hashtable htParam = new Hashtable();
         htParam.Add("@Trans", "BIND_BRANCH");
-        DataTable dt = da.ExecuteSP("Sp_Branch", htParam);    
+        DataTable dt = da.ExecuteSP("Sp_Branch", htParam);
         DataRow dr = dt.NewRow();
         dr[0] = 0;
         dr[1] = "SELECT";
@@ -3236,12 +3232,12 @@ public class DropDownistBindClass
     {
         IDictionary<string, object> dict_List = new Dictionary<string, object>();
         dict_List.Add("@Trans", "SELECT_DOCUMENT_TYPE");
-        dt = da.ExecuteSPNew("usp_Docuement_Check_Type", dict_List);
+        dt = da.ExecuteSPNew("usp_Clarification_category_Type", dict_List);
         if (dt.Rows.Count > 0)
         {
             Chk.DataSource = dt;
-            Chk.ValueMember = "Document_Check_Type_Id";
-            Chk.DisplayMember = "Document_Check_Type";
+            Chk.ValueMember = "Clarification_Category_Type_Id";
+            Chk.DisplayMember = "Clarification_Category_Type";
         }
     }
 }
