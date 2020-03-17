@@ -676,6 +676,7 @@
     <Compile Include="Alerts\Email_Alert.Designer.cs">
       <DependentUpon>Email_Alert.cs</DependentUpon>
     </Compile>
+    <Compile Include="async.cs" />
     <Compile Include="AutoAllocation\Auto_Alloaction_Team_Setup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1869,6 +1870,18 @@
     </Compile>
     <Compile Include="New Dashboard\Settings\WaitForm2.Designer.cs">
       <DependentUpon>WaitForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm3.Designer.cs">
+      <DependentUpon>WaitForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New Dashboard\Settings\WaitForm4.Designer.cs">
+      <DependentUpon>WaitForm4.cs</DependentUpon>
     </Compile>
     <Compile Include="New Dashboard\XtraForm2.cs">
       <SubType>Form</SubType>
@@ -3726,6 +3739,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Settings\WaitForm2.resx">
       <DependentUpon>WaitForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Dashboard\Settings\WaitForm3.resx">
+      <DependentUpon>WaitForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New Dashboard\Settings\WaitForm4.resx">
+      <DependentUpon>WaitForm4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\XtraForm2.resx">
       <DependentUpon>XtraForm2.cs</DependentUpon>
