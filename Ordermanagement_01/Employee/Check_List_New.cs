@@ -1,6 +1,9 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using DevExpress.XtraSplashScreen;
+using Newtonsoft.Json;
+using Ordermanagement_01.Masters;
+using Ordermanagement_01.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,13 +12,16 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01
 {
     public partial class Check_List_New : Form
     {
-        SqlConnection con;
+        SqlConnection con = new SqlConnection();
         Commonclass Comclass = new Commonclass();
         DataAccess dataaccess = new DataAccess();
         DropDownistBindClass dbc = new DropDownistBindClass();
@@ -130,14 +136,38 @@ namespace Ordermanagement_01
 
             // 09/08/2017
 
-            Bind_GenralView();
-            Bind_AssessorView();
-            Bind_DeedView();
-            Bind_MortgageView();
-            Bind_JudgmentLienView();
-            Bind_OthersView();
-            Grid_Bind_All_Clients();
-            Bind_Client_View();
+            // Bind_GenralView();
+
+            Bind_Check_List_Questions(1, grd_General_Checklist, 0);
+
+            // Bind_AssessorView();
+
+            Bind_Check_List_Questions(2, grd_AssessorTaxes_Chklist, 0);
+
+            //  Bind_DeedView();
+
+            Bind_Check_List_Questions(3, grd_Deed_Checklist, 0);
+
+            //Bind_MortgageView();
+
+            Bind_Check_List_Questions(4, grd_Mortgage_Checklist, 0);
+
+            //Bind_JudgmentLienView();
+
+            Bind_Check_List_Questions(5, grd_Judgment_Liens_Checklist, 0);
+
+
+            //Bind_OthersView();
+
+            Bind_Check_List_Questions(6, grd_Others_Checklist, 0);
+
+            // Grid_Bind_All_Clients();
+
+            Bind_Check_List_Questions(7, grd_Client_Specification, clientid);
+
+            // Bind_Client_View();
+
+            Bind_Check_List_Questions(7, grd_Client_Specification, clientid);
 
             var dt = dbc.Get_Month_Year();
             if (dt != null && dt.Rows.Count > 0)
@@ -292,121 +322,199 @@ namespace Ordermanagement_01
         // General
 
 
-        private void Bind_GenralView()
+        private async void Bind_GenralView()
         {
-            Hashtable ht_Check = new Hashtable();
-            DataTable dt_Check = new System.Data.DataTable();
-
-            ht_Check.Add("@Trans", "CHECK_ORDER_ID_TASK_USER_WISE");
-            ht_Check.Add("@Ref_Checklist_Master_Type_Id", 1);
-            ht_Check.Add("@Order_Id", Order_Id);
-            ht_Check.Add("@Order_Task", Order_Task);
-            ht_Check.Add("@User_id", user_ID);
-            ht_Check.Add("@Work_Type", Work_Type_Id);
-
-
-            dt_Check = dataaccess.ExecuteSP("Sp_Checklist_Detail", ht_Check);
-            if (dt_Check.Rows.Count != 0)
+            try
             {
-                General_View();
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                IDictionary<string, object> dictionary = new Dictionary<string, object>()
+            {
+                { "@Trans", "CHECK_ORDER_ID_TASK_USER_WISE" },
+                { "@Ref_Checklist_Master_Type_Id", 1 },
+                { "@Order_Id", Order_Id },
+                { "@Order_Task", Order_Task },
+                { "@User_id", user_ID },
+                { "@Work_Type", Work_Type_Id }
+            };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BindMasterTaskWise", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt.Rows.Count != 0)
+                            {
+                                General_View();
+                            }
+                            else
+                            {
+
+                                Grid_Bind_All_General();
+                            }
+                        }
+                    }
+                }
+
             }
-            else
+            catch (Exception ex)
             {
+                throw ex;
 
-                Grid_Bind_All_General();
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
-        public void Grid_Bind_All_General()
+        public async void Grid_Bind_All_General()
         {
-            Hashtable ht = new Hashtable();
-            DataTable dt = new System.Data.DataTable();
-
-            ht.Add("@Trans", "GET_ALL_DETAILS");
-            ht.Add("@Ref_Checklist_Master_Type_Id", 1);
-            ht.Add("@Order_Task", Order_Task);
-            ht.Add("@OrderType_ABS_Id", OrderType_ABS_Id);
-            dt = dataaccess.ExecuteSP("Sp_Checklist_Detail", ht);
-            if (dt.Rows.Count > 0)
+            try
             {
-                grd_General_Checklist.Rows.Clear();
-                for (int i = 0; i < dt.Rows.Count; i++)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                IDictionary dicDetails = new Dictionary<string, object>()
+            {
+
+                { "@Trans", "GET_ALL_DETAILS" },
+                { "@Ref_Checklist_Master_Type_Id", 1 },
+                { "@Order_Task", Order_Task},
+                { "@OrderType_ABS_Id", OrderType_ABS_Id}
+            };
+                var data = new StringContent(JsonConvert.SerializeObject(dicDetails), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
                 {
-                    grd_General_Checklist.Rows.Add();
-                    grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
-                    grd_General_Checklist.Rows[i].Cells[2].Value = dt.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[3].Value = dt.Rows[i]["Question"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[4].Value = dt.Rows[i]["Checklist_Id"].ToString();
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BindAllDetails", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt.Rows.Count > 0)
+                            {
+                                grd_General_Checklist.Rows.Clear();
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    grd_General_Checklist.Rows.Add();
+                                    grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
+                                    grd_General_Checklist.Rows[i].Cells[2].Value = dt.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[3].Value = dt.Rows[i]["Question"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[4].Value = dt.Rows[i]["Checklist_Id"].ToString();
 
-                    grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+                                }
+                            }
+                            else
+                            {
+                                grd_General_Checklist.Rows.Clear();
+                            }
+                        }
+
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                grd_General_Checklist.Rows.Clear();
+                throw ex;
             }
-
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
-        private void General_View()
+        private async void General_View()
         {
-            Hashtable ht_general_list = new Hashtable();
-            DataTable dt_general_list = new DataTable();
-
-            ht_general_list.Add("@Trans", "GET_ALL_VIEW");
-            ht_general_list.Add("@Ref_Checklist_Master_Type_Id", 1);
-            ht_general_list.Add("@Order_Task", Order_Task);
-            ht_general_list.Add("@Order_Id", Order_Id);
-            ht_general_list.Add("@User_Id", user_ID);
-            ht_general_list.Add("@Work_Type", Work_Type_Id);
-
-            dt_general_list = dataaccess.ExecuteSP("Sp_Checklist_Detail", ht_general_list);
-            if (dt_general_list.Rows.Count > 0)
+            //Hashtable ht_general_list = new Hashtable();
+            //DataTable dt_general_list = new DataTable();
+            try
             {
-                grd_General_Checklist.Rows.Clear();
-                for (int i = 0; i < dt_general_list.Rows.Count; i++)
+                IDictionary<string, object> dictionary = new Dictionary<string, object>()
+              {
+                 {"@Trans", "GET_ALL_VIEW" },
+                {"@Ref_Checklist_Master_Type_Id", 1 },
+                {"@Order_Task", Order_Task },
+                {"@Order_Id", Order_Id },
+                {"@User_Id", user_ID },
+                {"@Work_Type", Work_Type_Id },
+             };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
                 {
-                    grd_General_Checklist.Rows.Add();
-                    grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
-                    grd_General_Checklist.Rows[i].Cells[1].Value = dt_general_list.Rows[i]["Check_List_Tran_ID"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[2].Value = dt_general_list.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[3].Value = dt_general_list.Rows[i]["Question"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[4].Value = dt_general_list.Rows[i]["Checklist_Id"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[5].Value = dt_general_list.Rows[i]["Yes"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[6].Value = dt_general_list.Rows[i]["No"].ToString();
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BindMasterDetails", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt.Rows.Count > 0)
+                            {
+                                if (dt.Rows.Count > 0)
+                                {
+                                    grd_General_Checklist.Rows.Clear();
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+                                        grd_General_Checklist.Rows.Add();
+                                        grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
+                                        grd_General_Checklist.Rows[i].Cells[1].Value = dt.Rows[i]["Check_List_Tran_ID"].ToString();
+                                        grd_General_Checklist.Rows[i].Cells[2].Value = dt.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
+                                        grd_General_Checklist.Rows[i].Cells[3].Value = dt.Rows[i]["Question"].ToString();
+                                        grd_General_Checklist.Rows[i].Cells[4].Value = dt.Rows[i]["Checklist_Id"].ToString();
+                                        grd_General_Checklist.Rows[i].Cells[5].Value = dt.Rows[i]["Yes"].ToString();
+                                        grd_General_Checklist.Rows[i].Cells[6].Value = dt.Rows[i]["No"].ToString();
 
-                    string chk_yes = grd_General_Checklist.Rows[i].Cells[5].Value.ToString();
-                    string chk_no = grd_General_Checklist.Rows[i].Cells[6].Value.ToString();
-                    if (chk_yes == "true")
-                    {
-                        grd_General_Checklist[5, i].Value = true;
-                    }
-                    else if (chk_yes == "")
-                    {
-                        grd_General_Checklist[5, i].Value = null;
-                    }
-                    if (chk_no == "true")
-                    {
-                        grd_General_Checklist[6, i].Value = true;
-                    }
-                    else if (chk_no == "")
-                    {
-                        grd_General_Checklist[6, i].Value = null;
-                    }
-                    grd_General_Checklist.Rows[i].Cells[7].Value = dt_general_list.Rows[i]["Comments"].ToString();
+                                        string chk_yes = grd_General_Checklist.Rows[i].Cells[5].Value.ToString();
+                                        string chk_no = grd_General_Checklist.Rows[i].Cells[6].Value.ToString();
+                                        if (chk_yes == "true")
+                                        {
+                                            grd_General_Checklist[5, i].Value = true;
+                                        }
+                                        else if (chk_yes == "")
+                                        {
+                                            grd_General_Checklist[5, i].Value = null;
+                                        }
+                                        if (chk_no == "true")
+                                        {
+                                            grd_General_Checklist[6, i].Value = true;
+                                        }
+                                        else if (chk_no == "")
+                                        {
+                                            grd_General_Checklist[6, i].Value = null;
+                                        }
+                                        grd_General_Checklist.Rows[i].Cells[7].Value = dt.Rows[i]["Comments"].ToString();
 
-                    grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                        grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                        grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                        grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    }
+                                }
+                                else
+                                {
+                                    grd_General_Checklist.Rows.Clear();
+                                    Grid_Bind_All_General();
+
+                                }
+                            }
+                        }
+
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                grd_General_Checklist.Rows.Clear();
-                Grid_Bind_All_General();
+                throw ex;
+            }
+            finally
+            {
+
             }
         }
 
@@ -440,145 +548,190 @@ namespace Ordermanagement_01
         //    }
         //}
 
-        private void Save_General_List()
+        private async void Save_General_List()
         {
             int inertval = 0;
             int error = 0;
             int comm_error = 0;
             int empty = 0;
-
-
-            for (int i = 0; i < grd_General_Checklist.Rows.Count; i++)
+            try
             {
-
-                grd_General_Checklist.Rows[i].DefaultCellStyle.BackColor = SystemColors.Control;
-
-                bool chk_yes = Convert.ToBoolean(grd_General_Checklist.Rows[i].Cells["Column5"].FormattedValue);
-                bool chk_no = Convert.ToBoolean(grd_General_Checklist.Rows[i].Cells["Column7"].FormattedValue);
-
-                if (chk_yes != null && chk_yes != false)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                for (int i = 0; i < grd_General_Checklist.Rows.Count; i++)
                 {
-                    chk_yes = true;
-                }
-                else
-                {
-                    chk_yes = false;
-                }
-                if (chk_no != null && chk_no != false)
-                {
-                    chk_no = true;
-                }
-                else
-                {
-                    chk_no = false;
-                }
 
+                    grd_General_Checklist.Rows[i].DefaultCellStyle.BackColor = SystemColors.Control;
 
-                if (grd_General_Checklist[7, i].Value == null || grd_General_Checklist[7, i].Value == "")
-                {
-                    if (chk_no == true)
+                    bool chk_yes = Convert.ToBoolean(grd_General_Checklist.Rows[i].Cells["Column5"].FormattedValue);
+                    bool chk_no = Convert.ToBoolean(grd_General_Checklist.Rows[i].Cells["Column7"].FormattedValue);
+
+                    if (chk_yes != null && chk_yes != false)
                     {
-                        grd_General_Checklist[7, i].Style.BackColor = Color.Red;
-
+                        chk_yes = true;
+                    }
+                    else
+                    {
+                        chk_yes = false;
+                    }
+                    if (chk_no != null && chk_no != false)
+                    {
+                        chk_no = true;
+                    }
+                    else
+                    {
+                        chk_no = false;
                     }
 
-                    Comments = "";
 
-
-                }
-                else
-                {
-                    grd_General_Checklist[7, i].Style.BackColor = Color.White;
-                    Comments = grd_General_Checklist.Rows[i].Cells[7].Value.ToString();
-                }
-
-
-
-
-                if (grd_General_Checklist.Rows[i].Cells[5].Style.BackColor != Color.Red && grd_General_Checklist.Rows[i].Cells[6].Style.BackColor != Color.Red)
-                {
-                    if (grd_General_Checklist[7, i].Style.BackColor != Color.Red)
+                    if (grd_General_Checklist[7, i].Value == null || grd_General_Checklist[7, i].Value == "")
                     {
-                        //  Check_List_Tran_ID = int.Parse(grd_General_Checklist.Rows[i].Cells[1].Value.ToString());
-                        Ref_Checklist_Master_Type_Id = int.Parse(grd_General_Checklist.Rows[i].Cells[2].Value.ToString());
-                        Checklist_Id = int.Parse(grd_General_Checklist.Rows[i].Cells[4].Value.ToString());
-                        Question = grd_General_Checklist.Rows[i].Cells[3].Value.ToString();
-
-                        Hashtable htcheck = new Hashtable();
-                        DataTable dtcheck = new DataTable();
-                        htcheck.Add("@Trans", "CHECK");
-                        htcheck.Add("@Checklist_Id", Checklist_Id);
-                        htcheck.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-                        //  htcheck.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
-                        htcheck.Add("@User_id", user_ID);
-                        htcheck.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
-                        htcheck.Add("@Order_Id", Order_Id);
-                        htcheck.Add("@Order_Task", Order_Task);
-                        htcheck.Add("@Work_Type", Work_Type_Id);
-                        dtcheck = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck);
-
-                        if (dtcheck.Rows.Count > 0)
+                        if (chk_no == true)
                         {
-
-                            Check_List_Tran_ID = int.Parse(dtcheck.Rows[0]["Check_List_Tran_ID"].ToString());
-                            Hashtable ht_Chklist = new Hashtable();
-                            DataTable dt_Chklist = new DataTable();
-
-                            ht_Chklist.Add("@Trans", "UPDATE");
-                            ht_Chklist.Add("@Check_List_Tran_ID", Check_List_Tran_ID);
-                            ht_Chklist.Add("@Checklist_Id", Checklist_Id);
-                            ht_Chklist.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-                            //  ht_Chklist.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
-                            ht_Chklist.Add("@Yes", chk_yes);
-                            ht_Chklist.Add("@No", chk_no);
-                            ht_Chklist.Add("@Order_Id", Order_Id);
-                            ht_Chklist.Add("@Order_Task", Order_Task);
-                            ht_Chklist.Add("@Work_Type", Work_Type_Id);
-                            ht_Chklist.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
-                            ht_Chklist.Add("@Comments", Comments);
-                            ht_Chklist.Add("@Status", "True");
-                            ht_Chklist.Add("@User_id", user_ID);
-                            ht_Chklist.Add("@Modified_By", user_ID);
-                            ht_Chklist.Add("@Modified_Date", DateTime.Now);
-                            dt_Chklist = dataaccess.ExecuteSP("Sp_Checklist_Detail", ht_Chklist);
+                            grd_General_Checklist[7, i].Style.BackColor = Color.Red;
 
                         }
-                        else if (dtcheck.Rows.Count == 0)
+
+                        Comments = "";
+
+
+                    }
+                    else
+                    {
+                        grd_General_Checklist[7, i].Style.BackColor = Color.White;
+                        Comments = grd_General_Checklist.Rows[i].Cells[7].Value.ToString();
+                    }
+
+                    if (grd_General_Checklist.Rows[i].Cells[5].Style.BackColor != Color.Red && grd_General_Checklist.Rows[i].Cells[6].Style.BackColor != Color.Red)
+                    {
+                        if (grd_General_Checklist[7, i].Style.BackColor != Color.Red)
                         {
-                            Hashtable ht_Chk_list = new Hashtable();
-                            DataTable dt_Chk_list = new DataTable();
+                            //  Check_List_Tran_ID = int.Parse(grd_General_Checklist.Rows[i].Cells[1].Value.ToString());
+                            Ref_Checklist_Master_Type_Id = int.Parse(grd_General_Checklist.Rows[i].Cells[2].Value.ToString());
+                            Checklist_Id = int.Parse(grd_General_Checklist.Rows[i].Cells[4].Value.ToString());
+                            Question = grd_General_Checklist.Rows[i].Cells[3].Value.ToString();
 
-                            ht_Chk_list.Add("@Trans", "INSERT");
-                            ht_Chk_list.Add("@Checklist_Id", Checklist_Id);
-                            ht_Chk_list.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-                            //ht_Chk_list.Add("@Question", Question);
-                            ht_Chk_list.Add("@Yes", chk_yes);
-                            ht_Chk_list.Add("@No", chk_no);
-                            ht_Chk_list.Add("@Order_Id", Order_Id);
-                            ht_Chk_list.Add("@Order_Task", Order_Task);
-                            ht_Chk_list.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
-                            ht_Chk_list.Add("@Work_Type", Work_Type_Id);
-                            ht_Chk_list.Add("@Comments", Comments);
-                            ht_Chk_list.Add("@Status", "True");
-                            ht_Chk_list.Add("@User_id", user_ID);
-                            ht_Chk_list.Add("@Inserted_Date", DateTime.Now);
+                            IDictionary<string, object> dic_Check = new Dictionary<string, object>();
+                            {
 
-                            object dtcount = dataaccess.ExecuteSPForScalar("Sp_Checklist_Detail", ht_Chk_list);
+                                dic_Check.Add("@Trans", "CHECK");
+                                dic_Check.Add("@Checklist_Id", Checklist_Id);
+                                dic_Check.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+                                //  htcheck.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
+                                dic_Check.Add("@User_id", user_ID);
+                                dic_Check.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
+                                dic_Check.Add("@Order_Id", Order_Id);
+                                dic_Check.Add("@Order_Task", Order_Task);
+                                dic_Check.Add("@Work_Type", Work_Type_Id);
+                            }
 
-                            int checklistId = int.Parse(dtcount.ToString());
+                            var data = new StringContent(JsonConvert.SerializeObject(dic_Check), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckCheckList", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                        DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
 
+                                        if (dt.Rows.Count > 0)
+                                        {
+
+                                            Check_List_Tran_ID = int.Parse(dt.Rows[0]["Check_List_Tran_ID"].ToString());
+                                            //Hashtable ht_Chklist = new Hashtable();
+                                            //DataTable dt_Chklist = new DataTable();
+                                            IDictionary<string, object> dic_update = new Dictionary<string, object>();
+                                            {
+                                                dic_update.Add("@Trans", "UPDATE");
+                                                dic_update.Add("@Check_List_Tran_ID", Check_List_Tran_ID);
+                                                dic_update.Add("@Checklist_Id", Checklist_Id);
+                                                dic_update.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+                                                //  ht_Chklist.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
+                                                dic_update.Add("@Yes", chk_yes);
+                                                dic_update.Add("@No", chk_no);
+                                                dic_update.Add("@Order_Id", Order_Id);
+                                                dic_update.Add("@Order_Task", Order_Task);
+                                                dic_update.Add("@Work_Type", Work_Type_Id);
+                                                dic_update.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
+                                                dic_update.Add("@Comments", Comments);
+                                                dic_update.Add("@Status", "True");
+                                                dic_update.Add("@User_id", user_ID);
+                                                dic_update.Add("@Modified_By", user_ID);
+                                                dic_update.Add("@Modified_Date", DateTime.Now);
+                                            }
+                                            var data1 = new StringContent(JsonConvert.SerializeObject(dic_update), Encoding.UTF8, "application/json");
+                                            using (var httpClient1 = new HttpClient())
+                                            {
+                                                var response1 = await httpClient1.PutAsync(Base_Url.Url + "/Check_List/UpdateGeneralList", data1);
+                                                if (response1.IsSuccessStatusCode)
+                                                {
+                                                    if (response1.StatusCode == HttpStatusCode.OK)
+                                                    {
+                                                        var result1 = await response.Content.ReadAsStringAsync();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else if (dt.Rows.Count == 0)
+                                        {
+                                            //    Hashtable ht_Chk_list = new Hashtable();
+                                            //    DataTable dt_Chk_list = new DataTable();
+                                            IDictionary<string, object> dic_insert = new Dictionary<string, object>();
+                                            {
+                                                dic_insert.Add("@Trans", "INSERT");
+                                                dic_insert.Add("@Checklist_Id", Checklist_Id);
+                                                dic_insert.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+                                                //ht_Chk_list.Add("@Question", Question);
+                                                dic_insert.Add("@Yes", chk_yes);
+                                                dic_insert.Add("@No", chk_no);
+                                                dic_insert.Add("@Order_Id", Order_Id);
+                                                dic_insert.Add("@Order_Task", Order_Task);
+                                                dic_insert.Add("@Order_Type_Abs_Id", OrderType_ABS_Id);
+                                                dic_insert.Add("@Work_Type", Work_Type_Id);
+                                                dic_insert.Add("@Comments", Comments);
+                                                dic_insert.Add("@Status", "True");
+                                                dic_insert.Add("@User_id", user_ID);
+                                                dic_insert.Add("@Inserted_Date", DateTime.Now);
+                                            }
+                                            var data2 = new StringContent(JsonConvert.SerializeObject(dic_insert), Encoding.UTF8, "application/json");
+                                            using (var httpClient2 = new HttpClient())
+                                            {
+                                                var response2 = await httpClient2.PostAsync(Base_Url.Url + "/Check_List/InsertGeneralList", data2);
+                                                if (response2.IsSuccessStatusCode)
+                                                {
+                                                    if (response2.StatusCode == HttpStatusCode.OK)
+                                                    {
+                                                        object result2 = await response.Content.ReadAsStringAsync();
+                                                     int  checklistId = int.Parse(result2.ToString());
+
+                                                    }
+                                                }
+                                            }
+                                            //object dtcount = dataaccess.ExecuteSPForScalar("Sp_Checklist_Detail", ht_Chk_list);
+
+                                            //int checklistId = int.Parse(dtcount.ToString());
+
+                                        }
+                                    }
+                                }
+
+
+                            }
                         }
                     }
                 }
-
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
 
             }
-
-
-
-
         }
-
 
 
         //private void Get_General_Details()
@@ -611,53 +764,81 @@ namespace Ordermanagement_01
             }
         }
 
-        private bool Validate_Genral_Question()
+        private async Task<bool> Validate_Genral_Question()
         {
-            Hashtable htgetmax_num = new Hashtable();
-            DataTable dtgetmax_num = new DataTable();
-
-            htgetmax_num.Add("@Trans", "CHECK_COUNT");
-            htgetmax_num.Add("@Order_Id", Order_Id);
-            htgetmax_num.Add("@Order_Task", Order_Task);
-            htgetmax_num.Add("@Ref_Checklist_Master_Type_Id", 1);
-            htgetmax_num.Add("@Work_Type", Work_Type_Id);
-            htgetmax_num.Add("@User_id", user_ID);
-            dtgetmax_num = dataaccess.ExecuteSP("Sp_Checklist_Detail", htgetmax_num);
-
-            if (dtgetmax_num.Rows.Count > 0)
+            //Hashtable htgetmax_num = new Hashtable();
+            //DataTable dtgetmax_num = new DataTable();
+            try
             {
-                Entered_Count = int.Parse(dtgetmax_num.Rows[0]["count"].ToString());
-            }
-            else
+                IDictionary<string, object> dic_Check = new Dictionary<string, object>()
             {
-                Entered_Count = 0;
-            }
-            Question_Count = int.Parse(grd_General_Checklist.Rows.Count.ToString());
+                { "@Trans", "CHECK_COUNT" },
+                { "@Order_Id", Order_Id },
+                { "@Order_Task", Order_Task},
+                { "@Ref_Checklist_Master_Type_Id", 1 },
+                { "@Work_Type", Work_Type_Id},
+                { "@User_id", user_ID}
+           };
 
-            if (Entered_Count == Question_Count && Error_Count == 0)
-            {
+                var data = new StringContent(JsonConvert.SerializeObject(dic_Check), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CountGeneralQues", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                Entered_Count = int.Parse(dt.Rows[0]["count"].ToString());
+                            }
+                            else
+                            {
+                                Entered_Count = 0;
+                            }
+                            Question_Count = int.Parse(grd_General_Checklist.Rows.Count.ToString());
+
+                            if (Entered_Count == Question_Count && Error_Count == 0)
+                            {
+                                return true;
+                            }
+
+                            else
+                            {
+                                Error_Count = 0;
+                                Defined_Tab_Index = 1;
+                                if (Defined_Tab_Index != 0)
+                                {
+
+                                }
+                                else
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    MessageBox.Show("Need to Enter All the Fields");
+
+                                }
+
+                                return false;
+                            }
+
+                        }
+                    }
+                }
                 return true;
             }
-
-            else
+            catch (Exception ex)
             {
+                throw ex;
 
-                Error_Count = 0;
-                Defined_Tab_Index = 1;
-                if (Defined_Tab_Index != 0)
-                {
-
-                }
-                else
-                {
-                    MessageBox.Show("Need to Enter All the Fields");
-
-                }
-
-                return false;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
-
         private bool Validate_Genral_Question_New()
         {
 
@@ -772,60 +953,88 @@ namespace Ordermanagement_01
             Save_General_List();
         }
 
-        private void btn_General_View_Detail_Click(object sender, EventArgs e)
+        private async void btn_General_View_Detail_Click(object sender, EventArgs e)
         {
-
-            Hashtable ht_general_list = new Hashtable();
-            DataTable dt_general_list = new DataTable();
-
-            //ht_general_list.Add("@Trans", "ALL_GENERAL");
-            ht_general_list.Add("@Trans", "GET_ALL_VIEW");
-            ht_general_list.Add("@Ref_Checklist_Master_Type_Id", 1);
-            dt_general_list = dataaccess.ExecuteSP("Sp_Checklist_Detail", ht_general_list);
-            if (dt_general_list.Rows.Count > 0)
+            try
             {
-                grd_General_Checklist.Rows.Clear();
-                for (int i = 0; i < dt_general_list.Rows.Count; i++)
+
+                //Hashtable ht_general_list = new Hashtable();
+                //DataTable dt_general_list = new DataTable();
+
+                //ht_general_list.Add("@Trans", "ALL_GENERAL");
+                IDictionary<string, object> dictionary = new Dictionary<string, object>()
                 {
-                    grd_General_Checklist.Rows.Add();
-                    grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
-                    grd_General_Checklist.Rows[i].Cells[1].Value = dt_general_list.Rows[i]["Check_List_Tran_ID"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[2].Value = dt_general_list.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[3].Value = dt_general_list.Rows[i]["Question"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[4].Value = dt_general_list.Rows[i]["Checklist_Id"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[5].Value = dt_general_list.Rows[i]["Yes"].ToString();
-                    grd_General_Checklist.Rows[i].Cells[6].Value = dt_general_list.Rows[i]["No"].ToString();
+                    { "@Trans", "GET_ALL_VIEW" },
+                    { "@Ref_Checklist_Master_Type_Id", 1}
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BindAllViews", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt_general_list = JsonConvert.DeserializeObject<DataTable>(result);
 
-                    string chk_yes = grd_General_Checklist.Rows[i].Cells[5].Value.ToString();
-                    string chk_no = grd_General_Checklist.Rows[i].Cells[6].Value.ToString();
-                    if (chk_yes == "true")
-                    {
-                        grd_General_Checklist[5, i].Value = true;
-                    }
-                    else if (chk_yes == "")
-                    {
-                        grd_General_Checklist[5, i].Value = null;
-                    }
-                    if (chk_no == "true")
-                    {
-                        grd_General_Checklist[6, i].Value = true;
-                    }
-                    else if (chk_no == "")
-                    {
-                        grd_General_Checklist[6, i].Value = null;
-                    }
-                    grd_General_Checklist.Rows[i].Cells[7].Value = dt_general_list.Rows[i]["Comments"].ToString();
+                            if (dt_general_list.Rows.Count > 0)
+                            {
+                                grd_General_Checklist.Rows.Clear();
+                                for (int i = 0; i < dt_general_list.Rows.Count; i++)
+                                {
+                                    grd_General_Checklist.Rows.Add();
+                                    grd_General_Checklist.Rows[i].Cells[0].Value = i + 1;
+                                    grd_General_Checklist.Rows[i].Cells[1].Value = dt_general_list.Rows[i]["Check_List_Tran_ID"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[2].Value = dt_general_list.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[3].Value = dt_general_list.Rows[i]["Question"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[4].Value = dt_general_list.Rows[i]["Checklist_Id"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[5].Value = dt_general_list.Rows[i]["Yes"].ToString();
+                                    grd_General_Checklist.Rows[i].Cells[6].Value = dt_general_list.Rows[i]["No"].ToString();
 
-                    grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    string chk_yes = grd_General_Checklist.Rows[i].Cells[5].Value.ToString();
+                                    string chk_no = grd_General_Checklist.Rows[i].Cells[6].Value.ToString();
+                                    if (chk_yes == "true")
+                                    {
+                                        grd_General_Checklist[5, i].Value = true;
+                                    }
+                                    else if (chk_yes == "")
+                                    {
+                                        grd_General_Checklist[5, i].Value = null;
+                                    }
+                                    if (chk_no == "true")
+                                    {
+                                        grd_General_Checklist[6, i].Value = true;
+                                    }
+                                    else if (chk_no == "")
+                                    {
+                                        grd_General_Checklist[6, i].Value = null;
+                                    }
+                                    grd_General_Checklist.Rows[i].Cells[7].Value = dt_general_list.Rows[i]["Comments"].ToString();
+
+                                    grd_General_Checklist.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    grd_General_Checklist.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                    grd_General_Checklist.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                }
+                            }
+                            else
+                            {
+                                grd_General_Checklist.Rows.Clear();
+                                Grid_Bind_All_General();
+                            }
+                        }
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                grd_General_Checklist.Rows.Clear();
-                Grid_Bind_All_General();
+                throw ex;
             }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+
         }
 
 
@@ -6450,7 +6659,7 @@ namespace Ordermanagement_01
         }
 
         //Copying Source File Into Destional Folder
-        private void Copy_Check_List_To_Server()
+        private async void Copy_Check_List_To_Server()
         {
             try
             {
@@ -6527,28 +6736,45 @@ namespace Ordermanagement_01
                     FileStream stream = new FileStream(dirTemp + "\\Order Check List Report.pdf", FileMode.Open);
                     stream.CopyTo(ftpstream);
                     ftpstream.Close();
-                    Hashtable htorderkb = new Hashtable();
-                    DataTable dtorderkb = new DataTable();
+                    //Hashtable htorderkb = new Hashtable();
+                    //DataTable dtorderkb = new DataTable();
+                    IDictionary<string, object> dic_OrderKb = new Dictionary<string, object>();
+                    {
+                        dic_OrderKb.Add("@Trans", "INSERT");
+                        if (Work_Type_Id == 1)
+                        {
+                            dic_OrderKb.Add("@Instuction", "" + Order_Task.ToString() + "Check List Report");
+                        }
+                        else if (Work_Type_Id == 2)
+                        {
+                            dic_OrderKb.Add("@Instuction", "REWORK -" + Order_Task.ToString() + "Check List Report");
+                        }
+                        else if (Work_Type_Id == 2)
+                        {
+                            dic_OrderKb.Add("@Instuction", "SUPER QC -" + Order_Task.ToString() + "Check List Report");
+                        }
+                        dic_OrderKb.Add("@Order_ID", Order_Id);
+                        dic_OrderKb.Add("@Document_Name", File_Name);
+                        dic_OrderKb.Add("@Document_Path", ftpUploadFullPath);
+                        dic_OrderKb.Add("@Inserted_By", user_ID);
+                        dic_OrderKb.Add("@Inserted_date", DateTime.Now);
+                    }
 
-                    htorderkb.Add("@Trans", "INSERT");
-                    if (Work_Type_Id == 1)
+                    var data = new StringContent(JsonConvert.SerializeObject(dic_OrderKb), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
                     {
-                        htorderkb.Add("@Instuction", "" + Order_Task.ToString() + "Check List Report");
+                        var response1 = await httpClient.PostAsync(Base_Url.Url + "/Check_List/InsertGeneralList", data);
+                        if (response1.IsSuccessStatusCode)
+                        {
+                            if (response1.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result2 = await response1.Content.ReadAsStringAsync();
+
+
+                            }
+                        }
                     }
-                    else if (Work_Type_Id == 2)
-                    {
-                        htorderkb.Add("@Instuction", "REWORK -" + Order_Task.ToString() + "Check List Report");
-                    }
-                    else if (Work_Type_Id == 2)
-                    {
-                        htorderkb.Add("@Instuction", "SUPER QC -" + Order_Task.ToString() + "Check List Report");
-                    }
-                    htorderkb.Add("@Order_ID", Order_Id);
-                    htorderkb.Add("@Document_Name", File_Name);
-                    htorderkb.Add("@Document_Path", ftpUploadFullPath);
-                    htorderkb.Add("@Inserted_By", user_ID);
-                    htorderkb.Add("@Inserted_date", DateTime.Now);
-                    dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
+                    //dic_OrderKb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
                 }
                 else
                 {
@@ -6569,32 +6795,47 @@ namespace Ordermanagement_01
                         FileStream stream = new FileStream(dirTemp + "\\Order Check List Report.pdf", FileMode.Open);
                         stream.CopyTo(ftpstream);
                         ftpstream.Close();
-                        Hashtable htorderkb = new Hashtable();
-                        DataTable dtorderkb = new DataTable();
+                        //Hashtable htorderkb = new Hashtable();
+                        //DataTable dtorderkb = new DataTable();
+                        IDictionary<string, object> dic_insert = new Dictionary<string, object>();
+                        {
+                            dic_insert.Add("@Trans", "INSERT");
+                            if (Work_Type_Id == 1)
+                            {
+                                dic_insert.Add("@Instuction", "" + Order_Task.ToString() + "Check List Report");
+                            }
+                            else if (Work_Type_Id == 2)
+                            {
+                                dic_insert.Add("@Instuction", "REWORK -" + Order_Task.ToString() + "Check List Report");
 
-                        htorderkb.Add("@Trans", "INSERT");
-                        if (Work_Type_Id == 1)
-                        {
-                            htorderkb.Add("@Instuction", "" + Order_Task.ToString() + "Check List Report");
+                            }
+                            else if (Work_Type_Id == 2)
+                            {
+                                dic_insert.Add("@Instuction", "SUPER QC -" + Order_Task.ToString() + "Check List Report");
+                            }
+                            dic_insert.Add("@Order_ID", Order_Id);
+                            dic_insert.Add("@Document_Name", File_Name);
+                            dic_insert.Add("@Document_Path", ftpUploadFullPath);
+                            dic_insert.Add("@Inserted_By", user_ID);
+                            dic_insert.Add("@Inserted_date", DateTime.Now);
                         }
-                        else if (Work_Type_Id == 2)
+                        var data2 = new StringContent(JsonConvert.SerializeObject(dic_insert), Encoding.UTF8, "application/json");
+                        using (var httpClient2 = new HttpClient())
                         {
-                            htorderkb.Add("@Instuction", "REWORK -" + Order_Task.ToString() + "Check List Report");
-
+                            var response2 = await httpClient2.PostAsync(Base_Url.Url + "/Check_List/InsertGeneralList", data2);
+                            if (response2.IsSuccessStatusCode)
+                            {
+                                if (response2.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result2 = await response2.Content.ReadAsStringAsync();
+                                }
+                            }
                         }
-                        else if (Work_Type_Id == 2)
-                        {
-                            htorderkb.Add("@Instuction", "SUPER QC -" + Order_Task.ToString() + "Check List Report");
-                        }
-                        htorderkb.Add("@Order_ID", Order_Id);
-                        htorderkb.Add("@Document_Name", File_Name);
-                        htorderkb.Add("@Document_Path", ftpUploadFullPath);
-                        htorderkb.Add("@Inserted_By", user_ID);
-                        htorderkb.Add("@Inserted_date", DateTime.Now);
-                        dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
+                        //dic_insert = dataaccess.ExecuteSP("Sp_Document_Upload", dic_insert);
                     }
                     else
                     {
+                        SplashScreenManager.CloseForm(false);
                         throw new WebException("Unable to delete file");
                     }
                 }
@@ -6676,10 +6917,14 @@ namespace Ordermanagement_01
 
 
 
-        private void Save_General_List_New()
+        private async void Save_General_List_New()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -6693,150 +6938,184 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_General_Checklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                // string Question = row.Cells[1].Value.ToString();
-                ch_Yes = Convert.ToBoolean(row.Cells["Column5"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column7"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_General_Checklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    // string Question = row.Cells[1].Value.ToString();
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column5"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column7"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck = new Hashtable();
-            DataTable dtcheck = new DataTable();
-            htcheck.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck.Add("@User_id", User_id);
-            htcheck.Add("@Order_Id", Order_Id);
-            htcheck.Add("@Order_Task", Order_Task);
-            htcheck.Add("@Work_Type", Work_Type);
-            dtcheck = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck);
-            if (dtcheck.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
+
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt);
                 }
+                //    IDictionary<string, object> dictionary = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    { "@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id},
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task},
+                //    { "@Work_Type", Work_Type}
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck);
+                //                }
+                //            }
+                //        }
+                //    }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
 
             }
-
-
-
-
         }
+
+
+
+        //catch (Exception ex)
+        //{
+        //    // Handle exception properly
+        //}
+        //finally
+        //{
+        //    con.Close();
+        //}
+
+        //using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //{
+        //    con.Open();
+        //    //Bulk insert into temp table
+        //    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //    {
+        //        sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //        sqlBulk.ColumnMappings.Add("No", "No");
+        //        sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //        sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //        sqlBulk.ColumnMappings.Add("Status", "Status");
+
+        //        sqlBulk.BulkCopyTimeout = 3000;
+        //        sqlBulk.BatchSize = 10000;
+        //        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //        sqlBulk.WriteToServer(dt);
+        //    }
+        //}
+
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+
+
+
+
+
+
+
+
+
 
         //2
-        private void Save_Assessor_Tax_List_New()
+        private async void Save_Assessor_Tax_List_New()
         {
-            DataTable dt_Assessor = new DataTable();
-            dt_Assessor.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DataTable dt_Assessor = new DataTable();
+                dt_Assessor.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -6850,144 +7129,187 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_AssessorTaxes_Chklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column14"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column15"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_AssessorTaxes_Chklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column14"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column15"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Assessor.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_asses = new Hashtable();
-            DataTable dtcheck_asses = new DataTable();
-            htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_asses.Add("@User_id", User_id);
-            htcheck_asses.Add("@Order_Id", Order_Id);
-            htcheck_asses.Add("@Order_Task", Order_Task);
-            htcheck_asses.Add("@Work_Type", Work_Type);
-            dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
-            if (dtcheck_asses.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Assessor);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Assessor);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
+
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt_Assessor.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt_Assessor);
                 }
 
+
+                //Hashtable htcheck_asses = new Hashtable();
+                //DataTable dtcheck_asses = new DataTable();
+                //htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
+                //htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+                //htcheck_asses.Add("@User_id", User_id);
+                //htcheck_asses.Add("@Order_Id", Order_Id);
+                //htcheck_asses.Add("@Order_Task", Order_Task);
+                //htcheck_asses.Add("@Work_Type", Work_Type);
+                //dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
+
+                //IDictionary<string, object> dictionary = new Dictionary<string, object>();
+                //{
+
+                //    dictionary.Add("@Trans", "CHECK_FOR_ALL_TAB");
+                //    dictionary.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+                //    dictionary.Add("@User_id", User_id);
+                //    dictionary.Add("@Order_Id", Order_Id);
+                //    dictionary.Add("@Order_Task", Order_Task);
+                //    dictionary.Add("@Work_Type", Work_Type);
+
+                //}
+                //var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                //using (var httpClient = new HttpClient())
+                //{
+                //    var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //    if (response.IsSuccessStatusCode)
+                //    {
+                //        if (response.StatusCode == HttpStatusCode.OK)
+                //        {
+                //            var result = await response.Content.ReadAsStringAsync();
+                //            DataTable dtResult = JsonConvert.DeserializeObject<DataTable>(result);
+                //            if (dtResult.Rows.Count > 0)
+                //            {
+                //                Count = 1;
+                //            }
+                //            else
+                //            {
+                //                Count = 0;
+                //            }
+
+                //            if (Count == 0)
+                //            {
+                //                Save_Check_List_New(dtResult);
+
+                //            }
+                //        }
+                //    }
+                //}
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+                // Handle exception properly
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                con.Close();
             }
         }
+        //   using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //   {
+        //    con.Open();
+        ////Bulk insert into temp table
+        //   using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //    {
+        //    sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //    sqlBulk.ColumnMappings.Add("No", "No");
+        //    sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //    sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //    sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //    sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //    sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //    sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //    sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //    sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //    sqlBulk.ColumnMappings.Add("Status", "Status");
+        //    sqlBulk.BulkCopyTimeout = 3000;
+        //    sqlBulk.BatchSize = 10000;
+        //    sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //    sqlBulk.WriteToServer(dt_Assessor);
+        //}
+        // }
+        //}
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt_Assessor);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+        //           
+        //        }
+        //    }
+
+
+
+
+
+
+
+
 
         //3
-        private void Save_Deed_List_New()
+        private async void Save_Deed_List_New()
         {
             DataTable dt_Deed = new DataTable();
-            dt_Deed.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                dt_Deed.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -7001,144 +7323,178 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_Deed_Checklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column22"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column23"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_Deed_Checklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column22"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column23"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Deed.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_deed = new Hashtable();
-            DataTable dtcheck_deed = new DataTable();
-            htcheck_deed.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_deed.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_deed.Add("@User_id", User_id);
-            htcheck_deed.Add("@Order_Id", Order_Id);
-            htcheck_deed.Add("@Order_Task", Order_Task);
-            htcheck_deed.Add("@Work_Type", Work_Type);
-            dtcheck_deed = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_deed);
-            if (dtcheck_deed.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Deed);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Deed);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
+
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt_Deed.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt_Deed);
                 }
 
+
+                //    IDictionary<string, object> dic_Clients = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    {"@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id },
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task },
+                //    { "@Work_Type", Work_Type }
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck_deed = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck_deed.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck_deed);
+
+                //                }
+                //            }
+                //        }
+                //    }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                //con.Close();
             }
         }
+        //using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //{
+        //    con.Open();
+        //    //Bulk insert into temp table
+        //    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //    {
+        //        sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //        sqlBulk.ColumnMappings.Add("No", "No");
+        //        sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //        sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //        sqlBulk.ColumnMappings.Add("Status", "Status");
+        //        sqlBulk.BulkCopyTimeout = 3000;
+        //        sqlBulk.BatchSize = 10000;
+        //        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //        sqlBulk.WriteToServer(dt_Deed);
+        //    }
+        //}
+
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt_Deed);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Handle exception properly
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+        //    }
+
+        //}
+
+
 
         //4
-        private void Save_Mortgage_List_New()
+        private async void Save_Mortgage_List_New()
         {
             DataTable dt_Mortgage = new DataTable();
-            dt_Mortgage.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                dt_Mortgage.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -7152,144 +7508,191 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_Mortgage_Checklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column30"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column31"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_Mortgage_Checklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column30"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column31"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Mortgage.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_asses = new Hashtable();
-            DataTable dtcheck_asses = new DataTable();
-            htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_asses.Add("@User_id", User_id);
-            htcheck_asses.Add("@Order_Id", Order_Id);
-            htcheck_asses.Add("@Order_Task", Order_Task);
-            htcheck_asses.Add("@Work_Type", Work_Type);
-            dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
-            if (dtcheck_asses.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Mortgage);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Mortgage);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
-                }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
 
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt_Mortgage.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+
+                    Save_Check_List_New(dt_Mortgage);
+                }
+                //    IDictionary<string, object> dic_Clients = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    {"@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id },
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task },
+                //    { "@Work_Type", Work_Type }
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck_Mortage = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck_Mortage.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck_Mortage);
+
+                //                }
+                //            }
+                //        }
+                //    }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                //con.Close();
             }
         }
+
+
+        //if (dtcheck_asses.Rows.Count > 0)
+        //{
+        //    Count = 1;
+        //}
+        //else
+        //{
+        //    Count = 0;
+        //}
+
+        //if (Count == 0)
+        //{
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        con.Open();
+        //        //Bulk insert into temp table
+        //        using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //        {
+        //            sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //            sqlBulk.ColumnMappings.Add("No", "No");
+        //            sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //            sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //            sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //            sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //            sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //            sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //            sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //            sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //            sqlBulk.ColumnMappings.Add("Status", "Status");
+        //            sqlBulk.BulkCopyTimeout = 3000;
+        //            sqlBulk.BatchSize = 10000;
+        //            sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //            sqlBulk.WriteToServer(dt_Mortgage);
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt_Mortgage);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Handle exception properly
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+
+
+
+
+
 
         //5
-        private void Save_Judgment_Liens_List_New()
+        private async void Save_Judgment_Liens_List_New()
         {
-            DataTable dt_Judgment = new DataTable();
-            dt_Judgment.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DataTable dt_Judgment = new DataTable();
+                dt_Judgment.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -7303,144 +7706,198 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_Judgment_Liens_Checklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column38"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column39"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_Judgment_Liens_Checklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column38"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column39"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Judgment.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_asses = new Hashtable();
-            DataTable dtcheck_asses = new DataTable();
-            htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_asses.Add("@User_id", User_id);
-            htcheck_asses.Add("@Order_Id", Order_Id);
-            htcheck_asses.Add("@Order_Task", Order_Task);
-            htcheck_asses.Add("@Work_Type", Work_Type);
-            dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
-            if (dtcheck_asses.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Judgment);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Judgment);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
-                }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
 
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt_Judgment.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt_Judgment);
+                }
+                //    IDictionary<string, object> dic_Clients = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    {"@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id },
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task },
+                //    { "@Work_Type", Work_Type }
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck_Mortage = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck_Mortage.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck_Mortage);
+
+                //                }
+                //            }
+                //        }
+                //    }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                con.Close();
             }
         }
+
+
+        //Hashtable htcheck_asses = new Hashtable();
+        //DataTable dtcheck_asses = new DataTable();
+        //htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
+        //htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+        //htcheck_asses.Add("@User_id", User_id);
+        //htcheck_asses.Add("@Order_Id", Order_Id);
+        //htcheck_asses.Add("@Order_Task", Order_Task);
+        //htcheck_asses.Add("@Work_Type", Work_Type);
+        //dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
+        //if (dtcheck_asses.Rows.Count > 0)
+        //{
+        //    Count = 1;
+        //}
+        //else
+        //{
+        //    Count = 0;
+        //}
+
+        //if (Count == 0)
+        //{
+        //    //using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    //{
+        //    //    con.Open();
+        //    //    //Bulk insert into temp table
+        //    //    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //    //    {
+        //    //        sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //    //        sqlBulk.ColumnMappings.Add("No", "No");
+        //    //        sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //    //        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //    //        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //    //        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //    //        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //    //        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //    //        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //    //        sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //    //        sqlBulk.ColumnMappings.Add("Status", "Status");
+        //    //        sqlBulk.BulkCopyTimeout = 3000;
+        //    //        sqlBulk.BatchSize = 10000;
+        //    //        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //    //        sqlBulk.WriteToServer(dt_Judgment);
+        //    //    }
+        //    //}
+        //}
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt_Judgment);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Handle exception properly
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+        // }
+
+        //}
+
 
         //6
-        private void Save_Others_List_New()
+        private async void Save_Others_List_New()
         {
             DataTable dt_Others = new DataTable();
-            dt_Others.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                dt_Others.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -7454,144 +7911,198 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_Others_Checklist.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column46"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column47"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_Others_Checklist.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column46"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column47"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Others.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_asses = new Hashtable();
-            DataTable dtcheck_asses = new DataTable();
-            htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_asses.Add("@User_id", User_id);
-            htcheck_asses.Add("@Order_Id", Order_Id);
-            htcheck_asses.Add("@Order_Task", Order_Task);
-            htcheck_asses.Add("@Work_Type", Work_Type);
-            dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
-            if (dtcheck_asses.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Others);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Others);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
-                }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
 
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+
+                    dt_Others.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt_Others);
+                }
+                //    IDictionary<string, object> dic_Clients = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    {"@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id },
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task },
+                //    { "@Work_Type", Work_Type }
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck_Others = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck_Others.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck_Others);
+
+                //                }
+                //            }
+                //        }
+                //    }
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                con.Close();
             }
         }
+
+        //Hashtable htcheck_asses = new Hashtable();
+        //DataTable dtcheck_asses = new DataTable();
+        //htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
+        //htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+        //htcheck_asses.Add("@User_id", User_id);
+        //htcheck_asses.Add("@Order_Id", Order_Id);
+        //htcheck_asses.Add("@Order_Task", Order_Task);
+        //htcheck_asses.Add("@Work_Type", Work_Type);
+        //dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
+        //if (dtcheck_asses.Rows.Count > 0)
+        //{
+        //    Count = 1;
+        //}
+        //else
+        //{
+        //    Count = 0;
+        //}
+
+        //if (Count == 0)
+        //{
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        con.Open();
+        //        //Bulk insert into temp table
+        //        using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //        {
+        //            sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //            sqlBulk.ColumnMappings.Add("No", "No");
+        //            sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //            sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //            sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //            sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //            sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //            sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //            sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //            sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //            sqlBulk.ColumnMappings.Add("Status", "Status");
+        //            sqlBulk.BulkCopyTimeout = 3000;
+        //            sqlBulk.BatchSize = 10000;
+        //            sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //            sqlBulk.WriteToServer(dt_Others);
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    //update
+        //    using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //        {
+        //            try
+        //            {
+        //                con.Open();
+        //                //Creating temp table on database
+        //                command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                command.ExecuteNonQuery();
+
+        //                //Bulk insert into temp table
+        //                using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                {
+        //                    bulkcopy.BulkCopyTimeout = 660;
+        //                    bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                    bulkcopy.WriteToServer(dt_Others);
+        //                    bulkcopy.Close();
+        //                }
+
+        //                // Updating destination table, and dropping temp table
+        //                command.CommandTimeout = 300;
+        //                command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                     " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                    "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                command.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Handle exception properly
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+
+
+
+
+
 
         //7
-        private void Save_Client_List_New()
+        private async void Save_Client_List_New()
         {
             DataTable dt_Client = new DataTable();
-            dt_Client.Columns.AddRange(new DataColumn[11] {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                dt_Client.Columns.AddRange(new DataColumn[11] {
                     new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                     new DataColumn("Checklist_Id", typeof(int)),
                     new DataColumn("Yes", typeof(Boolean)),
@@ -7605,142 +8116,415 @@ namespace Ordermanagement_01
                     new DataColumn("Status",typeof(Boolean)) ,
                    });
 
-            foreach (DataGridViewRow row in grd_Client_Specification.Rows)
-            {
-                Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
-                Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
-                Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
-                ch_Yes = Convert.ToBoolean(row.Cells["Column55"].FormattedValue);
-                ch_No = Convert.ToBoolean(row.Cells["Column56"].FormattedValue);
-                Comments = row.Cells[7].Value.ToString();
-                Order_Task = int.Parse(Task_id);
-                Work_Type = Work_Type_Id;
-                Order_Type_Abs_Id = OrderType_ABS_Id;
-                User_id = user_ID;
-                //Order_ID = Order_Id;
-                Status = true;
-
-                if (ch_Yes != null && ch_Yes != false)
+                foreach (DataGridViewRow row in grd_Client_Specification.Rows)
                 {
-                    ch_Yes = true;
-                }
-                else
-                {
-                    ch_Yes = false;
-                }
-                if (ch_No != null && ch_No != false)
-                {
-                    ch_No = true;
-                }
-                else
-                {
-                    ch_No = false;
-                }
-
-                if (ch_No == true && ch_Yes == false)
-                {
+                    Check_List_Tran_ID = int.Parse(row.Cells[0].Value.ToString());
+                    Ref_Checklist_Master_Type_Id = int.Parse(row.Cells[2].Value.ToString());
+                    Checklist_Id = int.Parse(row.Cells[4].Value.ToString());
+                    ch_Yes = Convert.ToBoolean(row.Cells["Column55"].FormattedValue);
+                    ch_No = Convert.ToBoolean(row.Cells["Column56"].FormattedValue);
                     Comments = row.Cells[7].Value.ToString();
-                }
-                else
-                {
-                    Comments = row.Cells[7].Value.ToString();
-                }
+                    Order_Task = int.Parse(Task_id);
+                    Work_Type = Work_Type_Id;
+                    Order_Type_Abs_Id = OrderType_ABS_Id;
+                    User_id = user_ID;
+                    //Order_ID = Order_Id;
+                    Status = true;
 
-                dt_Client.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
-            }
-
-
-            Hashtable htcheck_asses = new Hashtable();
-            DataTable dtcheck_asses = new DataTable();
-            htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
-            htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
-            htcheck_asses.Add("@User_id", User_id);
-            htcheck_asses.Add("@Order_Id", Order_Id);
-            htcheck_asses.Add("@Order_Task", Order_Task);
-            htcheck_asses.Add("@Work_Type", Work_Type);
-            dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
-            if (dtcheck_asses.Rows.Count > 0)
-            {
-                Count = 1;
-            }
-            else
-            {
-                Count = 0;
-            }
-
-            if (Count == 0)
-            {
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    con.Open();
-                    //Bulk insert into temp table
-                    using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+                    if (ch_Yes != null && ch_Yes != false)
                     {
-                        sqlBulk.ColumnMappings.Add("Yes", "Yes");
-                        sqlBulk.ColumnMappings.Add("No", "No");
-                        sqlBulk.ColumnMappings.Add("Comments", "Comments");
-                        sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
-                        sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
-                        sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
-                        sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
-                        sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
-                        sqlBulk.ColumnMappings.Add("User_id", "User_id");
-                        sqlBulk.ColumnMappings.Add("Status", "Status");
-                        sqlBulk.BulkCopyTimeout = 3000;
-                        sqlBulk.BatchSize = 10000;
-                        sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
-                        sqlBulk.WriteToServer(dt_Client);
+                        ch_Yes = true;
                     }
-                }
-            }
-            else
-            {
-                //update
-                using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
-                {
-                    using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+                    else
                     {
-                        try
-                        {
-                            con.Open();
-                            //Creating temp table on database
-                            command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
-                            command.ExecuteNonQuery();
-
-                            //Bulk insert into temp table
-                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
-                            {
-                                bulkcopy.BulkCopyTimeout = 660;
-                                bulkcopy.DestinationTableName = "#TmpChecklist";
-                                bulkcopy.WriteToServer(dt_Client);
-                                bulkcopy.Close();
-                            }
-
-                            // Updating destination table, and dropping temp table
-                            command.CommandTimeout = 300;
-                            command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
-                                 " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
-                                "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
-                            command.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            // Handle exception properly
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                        ch_Yes = false;
                     }
+                    if (ch_No != null && ch_No != false)
+                    {
+                        ch_No = true;
+                    }
+                    else
+                    {
+                        ch_No = false;
+                    }
+
+                    if (ch_No == true && ch_Yes == false)
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    else
+                    {
+                        Comments = row.Cells[7].Value.ToString();
+                    }
+                    dt_Client.Rows.Add(Ref_Checklist_Master_Type_Id, Checklist_Id, ch_Yes, ch_No, Comments, Order_Task, Work_Type, Order_Id, Order_Type_Abs_Id, User_id, Status);
+                    Save_Check_List_New(dt_Client);
                 }
 
+
+
+                //    IDictionary<string, object> dic_Clients = new Dictionary<string, object>()
+                //{
+                //    { "@Trans", "CHECK_FOR_ALL_TAB" },
+                //    {"@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id },
+                //    { "@User_id", User_id },
+                //    { "@Order_Id", Order_Id },
+                //    { "@Order_Task", Order_Task },
+                //    { "@Work_Type", Work_Type }
+                //};
+                //    var data = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                //    using (var httpClient = new HttpClient())
+                //    {
+                //        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/CheckAllTabs", data);
+                //        if (response.IsSuccessStatusCode)
+                //        {
+                //            if (response.StatusCode == HttpStatusCode.OK)
+                //            {
+                //                var result = await response.Content.ReadAsStringAsync();
+                //                DataTable dtcheck_Clients = JsonConvert.DeserializeObject<DataTable>(result);
+
+                //                if (dtcheck_Clients.Rows.Count > 0)
+                //                {
+                //                    Count = 1;
+                //                }
+                //                else
+                //                {
+                //                    Count = 0;
+                //                }
+
+                //                if (Count == 0)
+                //                {
+
+                //                    Save_Check_List_New(dtcheck_Clients);
+
+                //                }
+                //            }
+                //        }
+                //    }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+                con.Close();
             }
         }
 
+        //    Hashtable htcheck_asses = new Hashtable();
+        //    DataTable dtcheck_asses = new DataTable();
+        //    htcheck_asses.Add("@Trans", "CHECK_FOR_ALL_TAB");
+        //    htcheck_asses.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type_Id);
+        //    htcheck_asses.Add("@User_id", User_id);
+        //    htcheck_asses.Add("@Order_Id", Order_Id);
+        //    htcheck_asses.Add("@Order_Task", Order_Task);
+        //    htcheck_asses.Add("@Work_Type", Work_Type);
+        //    dtcheck_asses = dataaccess.ExecuteSP("Sp_Checklist_Detail", htcheck_asses);
+        //    if (dtcheck_asses.Rows.Count > 0)
+        //    {
+        //        Count = 1;
+        //    }
+        //    else
+        //    {
+        //        Count = 0;
+        //    }
+
+        //    if (Count == 0)
+        //    {
+        //        using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //        {
+        //            con.Open();
+        //            //Bulk insert into temp table
+        //            using (SqlBulkCopy sqlBulk = new SqlBulkCopy(con))
+        //            {
+        //                sqlBulk.ColumnMappings.Add("Yes", "Yes");
+        //                sqlBulk.ColumnMappings.Add("No", "No");
+        //                sqlBulk.ColumnMappings.Add("Comments", "Comments");
+        //                sqlBulk.ColumnMappings.Add("Ref_Checklist_Master_Type_Id", "Ref_Checklist_Master_Type_Id");
+        //                sqlBulk.ColumnMappings.Add("Checklist_Id", "Checklist_Id");
+        //                sqlBulk.ColumnMappings.Add("Order_Id", "Order_Id");
+        //                sqlBulk.ColumnMappings.Add("Order_Task", "Order_Task");
+        //                sqlBulk.ColumnMappings.Add("Order_Type_Abs_Id", "Order_Type_Abs_Id");
+        //                sqlBulk.ColumnMappings.Add("Work_Type", "Work_Type");
+        //                sqlBulk.ColumnMappings.Add("User_id", "User_id");
+        //                sqlBulk.ColumnMappings.Add("Status", "Status");
+        //                sqlBulk.BulkCopyTimeout = 3000;
+        //                sqlBulk.BatchSize = 10000;
+        //                sqlBulk.DestinationTableName = "Tbl_CheckList_Detail";
+        //                sqlBulk.WriteToServer(dt_Client);
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //update
+        //        using (con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Con"].ConnectionString))
+        //        {
+        //            using (SqlCommand command = new SqlCommand("Sp_Checklist_Detail", con))
+        //            {
+        //                try
+        //                {
+        //                    con.Open();
+        //                    //Creating temp table on database
+        //                    command.CommandText = "IF OBJECT_ID('tempdb..#TmpChecklist') IS NOT NULL DROP TABLE #TmpChecklist ; CREATE TABLE #TmpChecklist(Ref_Checklist_Master_Type_Id int, Checklist_Id int ,Yes bit, No bit, Comments nvarchar(1000), Order_Task int , Work_Type int , Order_Id int, Order_Type_Abs_Id int , User_id int,Status bit)";
+        //                    command.ExecuteNonQuery();
+
+        //                    //Bulk insert into temp table
+        //                    using (SqlBulkCopy bulkcopy = new SqlBulkCopy(con))
+        //                    {
+        //                        bulkcopy.BulkCopyTimeout = 660;
+        //                        bulkcopy.DestinationTableName = "#TmpChecklist";
+        //                        bulkcopy.WriteToServer(dt_Client);
+        //                        bulkcopy.Close();
+        //                    }
+
+        //                    // Updating destination table, and dropping temp table
+        //                    command.CommandTimeout = 300;
+        //                    command.CommandText = "update Tbl_CheckList_Detail set Tbl_CheckList_Detail.Yes=#TmpChecklist.Yes,Tbl_CheckList_Detail.No=#TmpChecklist.No," +
+        //                         " Tbl_CheckList_Detail.Comments=#TmpChecklist.Comments " +
+        //                        "  from Tbl_CheckList_Detail inner join #TmpChecklist on Tbl_CheckList_Detail.Order_Id=#TmpChecklist.Order_Id and Tbl_CheckList_Detail.Order_Task=#TmpChecklist.Order_Task and Tbl_CheckList_Detail.User_id=#TmpChecklist.User_id  and Tbl_CheckList_Detail.Work_Type=#TmpChecklist.Work_Type and Tbl_CheckList_Detail.Checklist_Id=#TmpChecklist.Checklist_Id;";
+        //                    command.ExecuteNonQuery();
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    // Handle exception properly
+        //                }
+        //                finally
+        //                {
+        //                    con.Close();
+        //                }
+        //            }
+        //        }
+
+        //    }
+        //}
 
 
 
+        private async void Save_Check_List_New(DataTable dt_Check_List)
+        {
+
+            using (var httpClient = new HttpClient())
+            {
+
+                var data = new StringContent(JsonConvert.SerializeObject(dt_Check_List), Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BulkCheckListInsert", data);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+
+                    }
+                }
+            }
+
+        }
+
+        private async void Bind_Check_List_Questions(int Ref_Checklist_Master_Type, DataGridView grd_Name, int Client_Id)
+        {
+            DataTable dtResult = new DataTable();
+            DataTable dt_Check = new System.Data.DataTable();
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                if (Client_Id == 0)
+                {
+                    Dictionary<string, object> dic_TaskWise = new Dictionary<string, object>();
+                    dic_TaskWise.Add("@Trans", "CHECK_ORDER_ID_TASK_USER_WISE");
+                    dic_TaskWise.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type);
+                    dic_TaskWise.Add("@Order_Id", Order_Id);
+                    dic_TaskWise.Add("@Order_Task", Order_Task);
+                    dic_TaskWise.Add("@User_id", user_ID);
+                    dic_TaskWise.Add("@Work_Type", Work_Type_Id);
+                    var data = new StringContent(JsonConvert.SerializeObject(dic_TaskWise), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Check_List/BindMasterTaskWise", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dt_Check = JsonConvert.DeserializeObject<DataTable>(result);
+
+                            }
+                        }
+                    }
+
+                    if (dt_Check.Rows.Count != 0)
+                    {
+                        // One Ap1
+
+                        // resukt
+                        Dictionary<string, object> dic_All_Views = new Dictionary<string, object>();
+                        {
+                            dic_All_Views.Add("@Trans", "GET_ALL_VIEW");
+
+                            dic_All_Views.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type);
+                            dic_All_Views.Add("@Order_Task", Order_Task);
+                            dic_All_Views.Add("@Order_Id", Order_Id);
+                            dic_All_Views.Add("@User_Id", user_ID);
+                            dic_All_Views.Add("@User_Id", user_ID);
+
+                            dic_All_Views.Add("@Work_Type", Work_Type_Id);
+                        }
+                        var data1 = new StringContent(JsonConvert.SerializeObject(dic_All_Views), Encoding.UTF8, "application/json");
+                        using (var httpClient1 = new HttpClient())
+                        {
+                            var response1 = await httpClient1.PostAsync(Base_Url.Url + "/Check_List/BindAllViews", data1);
+                            if (response1.IsSuccessStatusCode)
+                            {
+                                if (response1.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result1 = await response1.Content.ReadAsStringAsync();
+                                    dtResult = JsonConvert.DeserializeObject<DataTable>(result1);
+
+                                }
+                            }
+                        }
+
+                    }
+                    else if (dt_Check.Rows.Count > 0)
+                    {
+                        // resukt
+                        Dictionary<string, object> dic_All_Details = new Dictionary<string, object>();
+                        {
+                            dic_All_Details.Add("@Trans", "GET_ALL_DETAILS");
+                            dic_All_Details.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type);
+                            dic_All_Details.Add("@Order_Task", Order_Task);
+                            dic_All_Details.Add("@Order_Id", Order_Id);
+                            dic_All_Details.Add("@User_Id", user_ID);
+                            dic_All_Details.Add("@Work_Type", Work_Type_Id);
+                        };
+                        var data2 = new StringContent(JsonConvert.SerializeObject(dic_All_Details), Encoding.UTF8, "application/json");
+                        using (var httpClient2 = new HttpClient())
+                        {
+                            var response2 = await httpClient2.PostAsync(Base_Url.Url + "/Check_List/BindMasterDetails", data2);
+                            if (response2.IsSuccessStatusCode)
+                            {
+                                if (response2.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result2 = await response2.Content.ReadAsStringAsync();
+                                    dtResult = JsonConvert.DeserializeObject<DataTable>(result2);
+
+                                }
+                            }
+                        }
+
+                    }
+                    if (dtResult.Rows.Count > 0)
+                    {
+                        grd_Name.Rows.Clear();
+                        for (int i = 0; i < dtResult.Rows.Count; i++)
+                        {
+                            grd_Name.Rows.Add();
+                            grd_Name.Rows[i].Cells[0].Value = i + 1;
+                            grd_Name.Rows[i].Cells[1].Value = dtResult.Rows[i]["Check_List_Tran_ID"].ToString();
+                            grd_Name.Rows[i].Cells[2].Value = dtResult.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
+                            grd_Name.Rows[i].Cells[3].Value = dtResult.Rows[i]["Question"].ToString();
+                            grd_Name.Rows[i].Cells[4].Value = dtResult.Rows[i]["Checklist_Id"].ToString();
+                            grd_Name.Rows[i].Cells[5].Value = dtResult.Rows[i]["Yes"].ToString();
+                            grd_Name.Rows[i].Cells[6].Value = dtResult.Rows[i]["No"].ToString();
+
+                            string chk_yes = grd_Name.Rows[i].Cells[5].Value.ToString();
+                            string chk_no = grd_Name.Rows[i].Cells[6].Value.ToString();
+                            if (chk_yes == "True")
+                            {
+                                grd_Name[5, i].Value = true;
+                            }
+                            else if (chk_yes == "")
+                            {
+                                grd_Name[5, i].Value = null;
+                            }
+                            if (chk_no == "False")
+                            {
+                                grd_Name[6, i].Value = false;
+                            }
+                            else if (chk_no == "")
+                            {
+                                grd_Name[6, i].Value = null;
+                            }
+                            grd_Name.Rows[i].Cells[7].Value = dtResult.Rows[i]["Comments"].ToString();
+
+
+                            grd_Name.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            grd_Name.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                            grd_Name.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                    }
+                    else
+                    {
+                        grd_Name.Rows.Clear();
+
+
+                    }
+                }
+
+                if (clientid > 0)
+                {
+                    Dictionary<string, object> dic_Clients = new Dictionary<string, object>();
+                    {
+                        dic_Clients.Add("@Trans", "GET_CLIENT_DETAILS");
+                        dic_Clients.Add("@Ref_Checklist_Master_Type_Id", Ref_Checklist_Master_Type);
+                        dic_Clients.Add("@Order_Task", Order_Task);
+                        dic_Clients.Add("@OrderType_ABS_Id", OrderType_ABS_Id);
+                        dic_Clients.Add("@Client_Id", clientid);
+                    }
+                    var data3 = new StringContent(JsonConvert.SerializeObject(dic_Clients), Encoding.UTF8, "application/json");
+                    using (var httpClient3 = new HttpClient())
+                    {
+                        var response3 = await httpClient3.PostAsync(Base_Url.Url + "/Check_List/BindAllClients", data3);
+                        if (response3.IsSuccessStatusCode)
+                        {
+                            if (response3.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result3 = await response3.Content.ReadAsStringAsync();
+                                DataTable dt_Clnt = JsonConvert.DeserializeObject<DataTable>(result3);
+                                if (dt_Clnt.Rows.Count > 0)
+                                {
+                                    grd_Client_Specification.Rows.Clear();
+                                    for (int i = 0; i < dt_Clnt.Rows.Count; i++)
+                                    {
+                                        grd_Client_Specification.Rows.Add();
+                                        grd_Client_Specification.Rows[i].Cells[0].Value = i + 1;
+                                        grd_Client_Specification.Rows[i].Cells[2].Value = dt_Clnt.Rows[i]["Ref_Checklist_Master_Type_Id"].ToString();
+                                        grd_Client_Specification.Rows[i].Cells[3].Value = dt_Clnt.Rows[i]["Question"].ToString();
+                                        grd_Client_Specification.Rows[i].Cells[4].Value = dt_Clnt.Rows[i]["Checklist_Id"].ToString();
+
+                                        grd_Client_Specification.Rows[i].Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                        grd_Client_Specification.Rows[i].Cells[5].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                        grd_Client_Specification.Rows[i].Cells[6].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+
+                                    }
+                                }
+                                else
+                                {
+                                    grd_Client_Specification.Rows.Clear();
+                                }
+
+                            }
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                MessageBox.Show(ex.Message.ToString());
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
 
 
 
