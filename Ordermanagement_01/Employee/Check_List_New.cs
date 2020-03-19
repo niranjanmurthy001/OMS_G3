@@ -6000,13 +6000,9 @@ namespace Ordermanagement_01
             }
             catch (Exception ex)
             {
-                SplashScreenManager.CloseForm(false);
-                MessageBox.Show(ex.Message.ToString());
+                throw ex;
             }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
+           
         }
 
         private async void UpdateModifiedDate()
