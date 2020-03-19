@@ -3232,12 +3232,12 @@ public class DropDownistBindClass
     {
         IDictionary<string, object> dict_List = new Dictionary<string, object>();
         dict_List.Add("@Trans", "SELECT_DOCUMENT_TYPE");
-        dt = da.ExecuteSPNew("usp_Clarification_category_Type", dict_List);
+        dt = da.ExecuteSPNew("usp_Docuement_Check_Type", dict_List);
         if (dt.Rows.Count > 0)
         {
             Chk.DataSource = dt;
-            Chk.ValueMember = "Clarification_Category_Type_Id";
-            Chk.DisplayMember = "Clarification_Category_Type";
+            Chk.ValueMember = "Document_Check_Type_Id";
+            Chk.DisplayMember = "Document_Check_Type";
         }
     }
 }
