@@ -1103,14 +1103,11 @@ namespace Ordermanagement_01
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 DataTable dt = new DataTable();
-                //gridExternalError.Rows.Clear();
-                //Hashtable htselect = new Hashtable();
-                //DataTable dtselect = new DataTable();
-                // dictionary = dataaccess.ExecuteSP("Sp_Error_Info", htselect);
+                IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 if (AdminStatus == 2)
                 {
+                  
                     dictionary.Add("@Trans", "SELECT_EXTERNAL");
                     dictionary.Add("@Order_ID", orderid);
                     dictionary.Add("@User_id", userid);
@@ -1191,6 +1188,7 @@ namespace Ordermanagement_01
                         }
                     }
                 }
+                
             }
             catch (Exception ex)
             { throw ex; }
@@ -1260,6 +1258,7 @@ namespace Ordermanagement_01
         {
             try
             {
+                 int  erroinfoId=Convert.ToInt32(gridExternalError.Rows[e.RowIndex].Cells[10].Value);
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.ColumnIndex == 7)
                 {
@@ -1275,8 +1274,10 @@ namespace Ordermanagement_01
                         //htdel.Add("@ErrorInfo_ID", gridExternalError.Rows[e.RowIndex].Cells[10].Value);
                         //dtdel = dataaccess.ExecuteSP("Sp_Error_Info", htdel);
                         IDictionary<string, object> dict_del = new Dictionary<string, object>();
-                        dict_del.Add("@Trans", "DELETE");
-                        dict_del.Add("@ErrorInfo_ID", gridExternalError.Rows[e.RowIndex].Cells[10].Value);
+                        {
+                            dict_del.Add("@Trans", "DELETE");
+                            dict_del.Add("@ErrorInfo_ID", erroinfoId);
+                        }
                         var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
@@ -1286,7 +1287,7 @@ namespace Ordermanagement_01
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
-                                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                   // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
 
                                 }
                             }
@@ -1305,10 +1306,10 @@ namespace Ordermanagement_01
                         IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
                         dicterr_history.Add("@Trans", "INSERT");
                         dicterr_history.Add("@Order_Id", orderid);
-                        dicterr_history.Add("@Error_Info_Id", grd_Error.Rows[e.RowIndex].Cells[10].Value);
+                        dicterr_history.Add("@Error_Info_Id", erroinfoId);
                         dicterr_history.Add("@Comments", "Error Deleted");
                         dicterr_history.Add("@User_Id", userid);
-                        var data1 = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                        var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
                         using (var httpClient1 = new HttpClient())
                         {
                             var response1 = await httpClient1.PostAsync(Base_Url.Url + "/Error/GridHistory", data1);
@@ -1317,7 +1318,7 @@ namespace Ordermanagement_01
                                 if (response1.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result1 = await response1.Content.ReadAsStringAsync();
-                                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result1);
+                                    
 
                                 }
                             }
