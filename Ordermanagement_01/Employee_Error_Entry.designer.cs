@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_ErrorCmt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.cbo_ErrorDes = new System.Windows.Forms.ComboBox();
@@ -150,8 +150,8 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label27.Location = new System.Drawing.Point(176, 228);
+            this.label27.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(294, 228);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(78, 20);
             this.label27.TabIndex = 77;
@@ -178,13 +178,14 @@
             this.cbo_ErrorCatogery.Size = new System.Drawing.Size(287, 28);
             this.cbo_ErrorCatogery.TabIndex = 1;
             this.cbo_ErrorCatogery.SelectedIndexChanged += new System.EventHandler(this.cbo_ErrorCatogery_SelectedIndexChanged);
+            this.cbo_ErrorCatogery.SelectedValueChanged += new System.EventHandler(this.cbo_ErrorCatogery_SelectedValueChanged);
             this.cbo_ErrorCatogery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_ErrorCatogery_KeyDown);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label26.Location = new System.Drawing.Point(175, 96);
+            this.label26.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(295, 96);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(77, 20);
             this.label26.TabIndex = 75;
@@ -194,7 +195,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(175, 53);
+            this.label25.Location = new System.Drawing.Point(304, 53);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(68, 20);
             this.label25.TabIndex = 74;
@@ -203,7 +204,7 @@
             // btn_ErrorSub
             // 
             this.btn_ErrorSub.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ErrorSub.Location = new System.Drawing.Point(390, 8);
+            this.btn_ErrorSub.Location = new System.Drawing.Point(509, 4);
             this.btn_ErrorSub.Name = "btn_ErrorSub";
             this.btn_ErrorSub.Size = new System.Drawing.Size(95, 30);
             this.btn_ErrorSub.TabIndex = 5;
@@ -215,7 +216,7 @@
             // btn_Clear
             // 
             this.btn_Clear.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Clear.Location = new System.Drawing.Point(507, 8);
+            this.btn_Clear.Location = new System.Drawing.Point(616, 5);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(95, 30);
             this.btn_Clear.TabIndex = 6;
@@ -228,14 +229,14 @@
             this.grd_Error.AllowUserToAddRows = false;
             this.grd_Error.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grd_Error.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grd_Error.ColumnHeadersHeight = 29;
             this.grd_Error.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SNo,
@@ -257,7 +258,7 @@
             this.grd_Error.Name = "grd_Error";
             this.grd_Error.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grd_Error.RowHeadersVisible = false;
-            this.grd_Error.Size = new System.Drawing.Size(1099, 255);
+            this.grd_Error.Size = new System.Drawing.Size(1124, 261);
             this.grd_Error.TabIndex = 82;
             this.grd_Error.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_Error_CellClick);
             // 
@@ -364,7 +365,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(410, 0);
+            this.label1.Location = new System.Drawing.Point(448, 1);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 31);
             this.label1.TabIndex = 83;
@@ -373,8 +374,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label2.Location = new System.Drawing.Point(175, 141);
+            this.label2.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(330, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 84;
@@ -390,12 +391,13 @@
             this.Cbo_Task.Size = new System.Drawing.Size(194, 28);
             this.Cbo_Task.TabIndex = 3;
             this.Cbo_Task.SelectedIndexChanged += new System.EventHandler(this.Cbo_Task_SelectedIndexChanged);
+            this.Cbo_Task.SelectedValueChanged += new System.EventHandler(this.Cbo_Task_SelectedValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label3.Location = new System.Drawing.Point(177, 183);
+            this.label3.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(329, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 20);
             this.label3.TabIndex = 86;
@@ -450,7 +452,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(175, 15);
+            this.label4.Location = new System.Drawing.Point(294, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 20);
             this.label4.TabIndex = 91;
@@ -468,11 +470,11 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.76471F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.23529F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1105, 644);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.6208F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.3792F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 266F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1130, 644);
             this.tableLayoutPanel1.TabIndex = 92;
             // 
             // panel1
@@ -482,7 +484,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1099, 33);
+            this.panel1.Size = new System.Drawing.Size(1124, 32);
             this.panel1.TabIndex = 0;
             // 
             // label45
@@ -491,7 +493,7 @@
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.Color.Red;
-            this.label45.Location = new System.Drawing.Point(914, 9);
+            this.label45.Location = new System.Drawing.Point(921, 7);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(200, 19);
             this.label45.TabIndex = 233;
@@ -518,9 +520,9 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.Cbo_Task);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 42);
+            this.panel2.Location = new System.Drawing.Point(3, 41);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1099, 288);
+            this.panel2.Size = new System.Drawing.Size(1124, 287);
             this.panel2.TabIndex = 1;
             // 
             // label7
@@ -572,18 +574,18 @@
             this.panel3.Controls.Add(this.btn_ErrorSub);
             this.panel3.Controls.Add(this.btn_Clear);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 336);
+            this.panel3.Location = new System.Drawing.Point(3, 334);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1099, 44);
+            this.panel3.Size = new System.Drawing.Size(1124, 40);
             this.panel3.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.grd_Error);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 386);
+            this.panel4.Location = new System.Drawing.Point(3, 380);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1099, 255);
+            this.panel4.Size = new System.Drawing.Size(1124, 261);
             this.panel4.TabIndex = 3;
             // 
             // tabPaneErrorEntry
@@ -598,9 +600,9 @@
             this.tabPaneErrorEntry.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabPageInternalErrorEntry,
             this.tabPageExternalErrorEntry});
-            this.tabPaneErrorEntry.RegularSize = new System.Drawing.Size(1123, 689);
+            this.tabPaneErrorEntry.RegularSize = new System.Drawing.Size(1148, 689);
             this.tabPaneErrorEntry.SelectedPage = this.tabPageExternalErrorEntry;
-            this.tabPaneErrorEntry.Size = new System.Drawing.Size(1123, 689);
+            this.tabPaneErrorEntry.Size = new System.Drawing.Size(1148, 689);
             this.tabPaneErrorEntry.TabIndex = 93;
             // 
             // tabPageInternalErrorEntry
@@ -610,7 +612,7 @@
             this.tabPageInternalErrorEntry.Caption = "Internal Error Entry";
             this.tabPageInternalErrorEntry.Controls.Add(this.tableLayoutPanel1);
             this.tabPageInternalErrorEntry.Name = "tabPageInternalErrorEntry";
-            this.tabPageInternalErrorEntry.Size = new System.Drawing.Size(1105, 644);
+            this.tabPageInternalErrorEntry.Size = new System.Drawing.Size(1130, 644);
             // 
             // tabPageExternalErrorEntry
             // 
@@ -619,7 +621,7 @@
             this.tabPageExternalErrorEntry.Caption = "External Error Entry";
             this.tabPageExternalErrorEntry.Controls.Add(this.tableLayoutPanel2);
             this.tabPageExternalErrorEntry.Name = "tabPageExternalErrorEntry";
-            this.tabPageExternalErrorEntry.Size = new System.Drawing.Size(1105, 644);
+            this.tabPageExternalErrorEntry.Size = new System.Drawing.Size(1130, 644);
             // 
             // tableLayoutPanel2
             // 
@@ -635,9 +637,9 @@
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.76471F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.23529F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1105, 644);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 271F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1130, 644);
             this.tableLayoutPanel2.TabIndex = 93;
             // 
             // panel5
@@ -647,7 +649,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1099, 33);
+            this.panel5.Size = new System.Drawing.Size(1124, 33);
             this.panel5.TabIndex = 0;
             // 
             // label8
@@ -656,7 +658,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(914, 9);
+            this.label8.Location = new System.Drawing.Point(919, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(200, 19);
             this.label8.TabIndex = 233;
@@ -667,7 +669,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Ebrima", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label9.Location = new System.Drawing.Point(409, 0);
+            this.label9.Location = new System.Drawing.Point(451, 1);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(237, 31);
             this.label9.TabIndex = 83;
@@ -696,7 +698,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 42);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1099, 288);
+            this.panel6.Size = new System.Drawing.Size(1124, 288);
             this.panel6.TabIndex = 1;
             // 
             // label10
@@ -752,7 +754,6 @@
             this.ddlExternalNewErrorType.Name = "ddlExternalNewErrorType";
             this.ddlExternalNewErrorType.Size = new System.Drawing.Size(287, 28);
             this.ddlExternalNewErrorType.TabIndex = 90;
-            this.ddlExternalNewErrorType.SelectedIndexChanged += new System.EventHandler(this.btn_ErrorSub_Click);
             // 
             // txtExternalErrorComment
             // 
@@ -792,7 +793,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(175, 53);
+            this.label16.Location = new System.Drawing.Point(304, 50);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(68, 20);
             this.label16.TabIndex = 74;
@@ -802,7 +803,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(175, 15);
+            this.label17.Location = new System.Drawing.Point(294, 11);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 20);
             this.label17.TabIndex = 91;
@@ -811,8 +812,8 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label18.Location = new System.Drawing.Point(177, 183);
+            this.label18.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(329, 185);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(43, 20);
             this.label18.TabIndex = 86;
@@ -821,8 +822,8 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label19.Location = new System.Drawing.Point(175, 96);
+            this.label19.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(295, 97);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(77, 20);
             this.label19.TabIndex = 75;
@@ -831,8 +832,8 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label20.Location = new System.Drawing.Point(176, 228);
+            this.label20.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(294, 229);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(78, 20);
             this.label20.TabIndex = 77;
@@ -841,10 +842,10 @@
             // checkBoxExternalUsername
             // 
             this.checkBoxExternalUsername.AutoSize = true;
-            this.checkBoxExternalUsername.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxExternalUsername.Location = new System.Drawing.Point(662, 138);
+            this.checkBoxExternalUsername.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxExternalUsername.Location = new System.Drawing.Point(663, 138);
             this.checkBoxExternalUsername.Name = "checkBoxExternalUsername";
-            this.checkBoxExternalUsername.Size = new System.Drawing.Size(181, 23);
+            this.checkBoxExternalUsername.Size = new System.Drawing.Size(193, 23);
             this.checkBoxExternalUsername.TabIndex = 89;
             this.checkBoxExternalUsername.Text = "Check for User/Vendor Name";
             this.checkBoxExternalUsername.UseVisualStyleBackColor = true;
@@ -861,6 +862,7 @@
             this.ddlExternalErrorCategory.Size = new System.Drawing.Size(287, 28);
             this.ddlExternalErrorCategory.TabIndex = 1;
             this.ddlExternalErrorCategory.SelectedIndexChanged += new System.EventHandler(this.ddlExternalErrorCategory_SelectedIndexChanged);
+            this.ddlExternalErrorCategory.SelectedValueChanged += new System.EventHandler(this.ddlExternalErrorCategory_SelectedValueChanged);
             this.ddlExternalErrorCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddlExternalErrorCategory_KeyDown);
             // 
             // ddlExternalErrorDesc
@@ -877,8 +879,8 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Ebrima", 9.75F);
-            this.label21.Location = new System.Drawing.Point(175, 141);
+            this.label21.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(330, 142);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(42, 20);
             this.label21.TabIndex = 84;
@@ -894,6 +896,7 @@
             this.ddlExternalTask.Size = new System.Drawing.Size(194, 28);
             this.ddlExternalTask.TabIndex = 3;
             this.ddlExternalTask.SelectedIndexChanged += new System.EventHandler(this.ddlExternalTask_SelectedIndexChanged);
+            this.ddlExternalTask.SelectedValueChanged += new System.EventHandler(this.ddlExternalTask_SelectedValueChanged);
             // 
             // panel7
             // 
@@ -902,13 +905,13 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 336);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1099, 44);
+            this.panel7.Size = new System.Drawing.Size(1124, 33);
             this.panel7.TabIndex = 2;
             // 
             // btnSubmitExternalError
             // 
             this.btnSubmitExternalError.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitExternalError.Location = new System.Drawing.Point(390, 8);
+            this.btnSubmitExternalError.Location = new System.Drawing.Point(484, 4);
             this.btnSubmitExternalError.Name = "btnSubmitExternalError";
             this.btnSubmitExternalError.Size = new System.Drawing.Size(95, 30);
             this.btnSubmitExternalError.TabIndex = 5;
@@ -920,7 +923,7 @@
             // btnClearExternalError
             // 
             this.btnClearExternalError.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearExternalError.Location = new System.Drawing.Point(507, 8);
+            this.btnClearExternalError.Location = new System.Drawing.Point(591, 4);
             this.btnClearExternalError.Name = "btnClearExternalError";
             this.btnClearExternalError.Size = new System.Drawing.Size(95, 30);
             this.btnClearExternalError.TabIndex = 6;
@@ -932,9 +935,9 @@
             // 
             this.panel8.Controls.Add(this.gridExternalError);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 386);
+            this.panel8.Location = new System.Drawing.Point(3, 375);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1099, 255);
+            this.panel8.Size = new System.Drawing.Size(1124, 266);
             this.panel8.TabIndex = 3;
             // 
             // gridExternalError
@@ -942,14 +945,14 @@
             this.gridExternalError.AllowUserToAddRows = false;
             this.gridExternalError.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.gridExternalError.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridExternalError.ColumnHeadersHeight = 29;
             this.gridExternalError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -971,7 +974,7 @@
             this.gridExternalError.Name = "gridExternalError";
             this.gridExternalError.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.gridExternalError.RowHeadersVisible = false;
-            this.gridExternalError.Size = new System.Drawing.Size(1099, 255);
+            this.gridExternalError.Size = new System.Drawing.Size(1124, 266);
             this.gridExternalError.TabIndex = 82;
             this.gridExternalError.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExternalError_CellClick);
             // 
@@ -1077,7 +1080,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 689);
+            this.ClientSize = new System.Drawing.Size(1148, 689);
             this.Controls.Add(this.tabPaneErrorEntry);
             this.Name = "Employee_Error_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
