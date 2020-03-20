@@ -48,7 +48,6 @@ namespace Ordermanagement_01
             ErrorInfo_ID = Error_Info_ID;
             Client_Id = CLIENT_ID;
             Order_Number = Order_No;
-
             //  string OrderNo = Order_Number;
             string OrderNo = "";
             if (Client_Id == 40)
@@ -67,40 +66,15 @@ namespace Ordermanagement_01
 
             if (Client_Id != 40)
             {
-                LoadOrderNum();
-                //Hashtable ht_get = new Hashtable();
-                //DataTable dt_get = new DataTable();
-                //ht_get.Add("@Trans", "GET_ORDER_ID_BY_ORDER_NUM");
-                //ht_get.Add("@Client_Order_Number", Order_Number);
-
-                //dt_get = dataaccess.ExecuteSP("Sp_Error_Info", ht_get);
-                //if (dt_get.Rows.Count > 0)
-                //{
-                //    Order_num = dt_get.Rows[0]["Client_Order_Number"].ToString();
-                //    Tilte_Exam_Order_Id = int.Parse(dt_get.Rows[0]["Order_ID"].ToString());
-                //    Sub_ProcessId = int.Parse(dt_get.Rows[0]["Sub_ProcessId"].ToString());
-                //}
+                LoadOrderNum();              
             }
 
 
             // This is for Title Exam Orders 40 Client Id
             //==================================================
-
             if (Client_Id == 40)
             {
                 LoadOrderNumbers();
-                //Hashtable ht = new Hashtable();
-                //DataTable dt = new DataTable();
-
-                //ht.Add("@Trans", "GET_ORDER_ID_BY_ORDER_NUM");
-                //ht.Add("@Client_Order_Number", OrderNo);   //OrderNo
-                //dt = dataaccess.ExecuteSP("Sp_Error_Info", ht);
-                //if (dt.Rows.Count > 0)
-                //{
-                //    Ordernumber = dt.Rows[0]["Client_Order_Number"].ToString();
-                //    Tilte_Exam_Order_Id = int.Parse(dt.Rows[0]["Order_ID"].ToString());
-                //    Sub_ProcessId = int.Parse(dt.Rows[0]["Sub_ProcessId"].ToString());
-                //}
             }
 
         }
@@ -109,13 +83,9 @@ namespace Ordermanagement_01
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                IDictionary<string, object> dict_get = new Dictionary<string, object>();
-                {
+                IDictionary<string, object> dict_get = new Dictionary<string, object>();                
                     dict_get.Add("@Trans", "GET_ORDER_ID_BY_ORDER_NUM");
                     dict_get.Add("@Client_Order_Number", Order_Number);
-
-                }
-
                 var data = new StringContent(JsonConvert.SerializeObject(dict_get), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
@@ -131,16 +101,19 @@ namespace Ordermanagement_01
                                 Order_num = dt.Rows[0]["Client_Order_Number"].ToString();
                                 Tilte_Exam_Order_Id = int.Parse(dt.Rows[0]["Order_ID"].ToString());
                                 Sub_ProcessId = int.Parse(dt.Rows[0]["Sub_ProcessId"].ToString());
-
                             }
                         }
                     }
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                throw ex;
+            }
             finally
-            { SplashScreenManager.CloseForm(false); }
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private async void LoadOrderNumbers()
@@ -149,11 +122,8 @@ namespace Ordermanagement_01
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 IDictionary<string, object> dict_order = new Dictionary<string, object>();
-                {
                     dict_order.Add("@Trans", "GET_ORDER_ID_BY_ORDER_NUM");
                     dict_order.Add("@Client_Order_Number", Order_Number);
-                }
-
                 var data = new StringContent(JsonConvert.SerializeObject(dict_order), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
@@ -192,17 +162,6 @@ namespace Ordermanagement_01
                     // BindExternalErrorEntry();
                 }
                 tabPaneErrorEntry.SelectedPage = tabPageInternalErrorEntry;
-
-                //Hashtable htuserid = new Hashtable();
-                //DataTable dtuserid = new DataTable();
-                //htuserid.Add("@Trans", "USERNAME");
-                //htuserid.Add("@User_id", userid);
-                //dtuserid = dataaccess.ExecuteSP("Sp_Error_Info", htuserid);
-                //if (dtuserid.Rows.Count > 0)
-                //{
-                //    Username = dtuserid.Rows[0]["User_Name"].ToString();
-                //}
-
                 IDictionary<string, object> dict_userid = new Dictionary<string, object>();
                 dict_userid.Add("@Trans", "USERNAME");
                 dict_userid.Add("@User_id", userid);
@@ -220,13 +179,9 @@ namespace Ordermanagement_01
                             {
                                 Username = dt1.Rows[0]["User_Name"].ToString();
                             }
-
                         }
                     }
-
                 }
-
-
                 Bind_New_ErrorType();
                 BindErrorType();
                 BindgrdError();
@@ -279,8 +234,7 @@ namespace Ordermanagement_01
 
                 ddl_User.Visible = false;
                 ddlExternalUser.Visible = false;
-               
-              
+                            
                 cbo_ErrorCatogery.Focus();
                 //Error info details
                 if (ErrorInfo_ID != 0)
@@ -301,11 +255,6 @@ namespace Ordermanagement_01
         private async void Error_Info_Details()
         {
             //Error Dispute
-            //Hashtable ht_ErrorInfo_Edit = new Hashtable();
-            //DataTable dt_ErrorInfo_Edit = new DataTable();
-            //ht_ErrorInfo_Edit.Add("@Trans", "SELECT_BY_ORDER_ID");
-            //ht_ErrorInfo_Edit.Add("@ErrorInfo_ID", ErrorInfo_ID);
-            //dt_ErrorInfo_Edit = dataaccess.ExecuteSP("Sp_Error_Info", ht_ErrorInfo_Edit);
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
@@ -344,25 +293,18 @@ namespace Ordermanagement_01
             {
                 throw ex;
             }
-            finally { SplashScreenManager.CloseForm(false); }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
-
-
-
 
         private async void BindgrdError()
         {
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                grd_Error.Rows.Clear();
-                //Hashtable htselect = new Hashtable();
-                //DataTable dtselect = new DataTable();
-                //htselect.Add("@Trans", "SELECT");
-                //htselect.Add("@Order_ID", orderid);
-                //htselect.Add("@User_id", userid);
-                //htselect.Add("@Work_Type", Work_Type_Id);
-                //dtselect = dataaccess.ExecuteSP("Sp_Error_Info", htselect);
+                grd_Error.Rows.Clear();            
                 IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 DataTable dt1 = new DataTable();
                 if (AdminStatus == 2)
@@ -386,11 +328,7 @@ namespace Ordermanagement_01
                     }
                 }
                 else
-                {
-                    //htselect.Add("@Trans", "BIND_Live");
-                    //htselect.Add("@Order_ID", orderid);
-                    //htselect.Add("@Work_Type", Work_Type_Id);
-                    //dtselect = dataaccess.ExecuteSP("Sp_Error_Info", htselect);                
+                {               
                     dictionary.Add("@Trans", "BIND_Live");
                     dictionary.Add("@Order_ID", orderid);
                     dictionary.Add("@Work_Type", Work_Type_Id);
@@ -408,7 +346,7 @@ namespace Ordermanagement_01
                         }
                     }
                 }
-                if (dt1.Rows.Count > 0)
+                if (dt1.Rows.Count >= 0)
                 {
                     for (int i = 0; i < dt1.Rows.Count; i++)
                     {
@@ -448,32 +386,23 @@ namespace Ordermanagement_01
                 }
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                throw ex;
+            }
             finally
-            { SplashScreenManager.CloseForm(false); }
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
         private async void BindErrorType()
         {
             try
             {
-                //Hashtable htselect = new Hashtable();
-                //DataTable dtselect = new DataTable();
-                //htselect.Add("@Trans", "SELECT_Error_Type");
-                //dtselect = dataaccess.ExecuteSP("Sp_Errors_Details", htselect);
-                //DataRow dr = dt1.NewRow();
-                //dr[0] = 0;
-                //dr[0] = "SELECT";
-                //dt1.Rows.InsertAt(dr, 0);
-                //cbo_ErrorCatogery.DataSource = dt1;
-                //cbo_ErrorCatogery.ValueMember = "Error_Type_Id";
-                //cbo_ErrorCatogery.DisplayMember = "Error_Type";
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 {
                     dictionary.Add("@Trans", "SELECT_Error_Type");
                 }
-
-                // api url
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
@@ -484,26 +413,25 @@ namespace Ordermanagement_01
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                            //
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
                             dr[0] = "SELECT";
                             dt1.Rows.InsertAt(dr, 0);
                             cbo_ErrorCatogery.DataSource = dt1;
                             cbo_ErrorCatogery.ValueMember = "Error_Type_Id";
-                            cbo_ErrorCatogery.DisplayMember = "Error_Type";
-
-                            //ddl_New_Error_Type.DataSource = dt1;
-                            //ddl_New_Error_Type.ValueMember = "New_Error_Type_Id";
-                            //ddl_New_Error_Type.DisplayMember = "New_Error_Type";
+                            cbo_ErrorCatogery.DisplayMember = "Error_Type";                         
                         }
                     }
-
                 }
             }
             catch (Exception ex)
-            { throw ex; }
-            finally { SplashScreenManager.CloseForm(false); }
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
 
@@ -512,18 +440,6 @@ namespace Ordermanagement_01
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true,false);
-                //Hashtable ht_select = new Hashtable();
-                //DataTable dt_select = new DataTable();
-                //ht_select.Add("@Trans", "BIND_NEW_ERROR_TYPE");
-                //dt_select = dataaccess.ExecuteSP("Sp_Error_Info", ht_select);
-                //DataRow dr = dt_select.NewRow();
-                //dr[0] = 0;
-                //dr[1] = "SELECT";
-                //dt_select.Rows.InsertAt(dr, 0);
-                //ddl_New_Error_Type.DataSource = dt_select;
-                //ddl_New_Error_Type.ValueMember = "New_Error_Type_Id";
-                //ddl_New_Error_Type.DisplayMember = "New_Error_Type";
-
                 IDictionary<string, object> dict_select = new Dictionary<string, object>();
                 {
                     dict_select.Add("@Trans", "BIND_NEW_ERROR_TYPE");
@@ -550,126 +466,79 @@ namespace Ordermanagement_01
                 }
             }
             catch (Exception ex)
-            { throw ex; }
-            finally { SplashScreenManager.CloseForm(false); }
-
-
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
+
         private async void cbo_ErrorCatogery_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    string Error_Type = cbo_ErrorCatogery.Text;
-            //    //Hashtable hterror = new Hashtable();
-            //    //DataTable dterror = new DataTable();
-            //    //hterror.Add("@Trans", "ERROR_TYPE");
-            //    //hterror.Add("@Error_Type", Error_Type);
-            //    //dterror = dataaccess.ExecuteSP("Sp_Errors_Details", hterror);
-            //    //if (dterror.Rows.Count > 0)
-            //    //{
-            //    //    result = int.Parse(dterror.Rows[0]["Error_Type_Id"].ToString());
-            //    //}
-            //    IDictionary<string, object> dicterror = new Dictionary<string, object>();
-            //    {
-            //        dicterror.Add("@Trans", "ERROR_TYPE");
-            //        dicterror.Add("@Error_Type", Error_Type);
-            //    }
-            //    var data = new StringContent(JsonConvert.SerializeObject(dicterror), Encoding.UTF8, "application/json");
-            //    using (var httpClient = new HttpClient())
-            //    {
-            //        var response = await httpClient.PostAsync(Base_Url.Url + "/Error/CboErrorCategorySelectIndexById", data);
-            //        if (response.IsSuccessStatusCode)
-            //        {
-            //            if (response.StatusCode == HttpStatusCode.OK)
-            //            {
-            //                var result = await response.Content.ReadAsStringAsync();
-            //                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-            //                if (dt.Rows.Count > 0)
-            //                {
-            //                    result = dt.Rows[0]["Error_Type_Id"].ToString();
-            //                }
-            //            }
-            //        }
-            //    }
-
-
-            //    //Hashtable htselect = new Hashtable();
-            //    //DataTable dtselect = new DataTable();
-            //    //htselect.Add("@Trans", "SELECT_Error_description");
-            //    //htselect.Add("@Error_Type_Id", result);
-            //    //dtselect = dataaccess.ExecuteSP("Sp_Errors_Details", htselect);
-            //    //DataRow dr = dtselect.NewRow();
-            //    //dr[0] = 0;
-            //    //dr[0] = "SELECT";
-            //    //dtselect.Rows.InsertAt(dr, 0);
-            //    //cbo_ErrorDes.DataSource = dtselect;
-            //    //cbo_ErrorDes.ValueMember = "Error_description_Id";
-            //    //cbo_ErrorDes.DisplayMember = "Error_description";
-            //    IDictionary<string, object> dictselect = new Dictionary<string, object>();
-            //    {
-            //        dicterror.Add("@Trans", "ERROR_TYPE");
-            //        dicterror.Add("@Error_Type", Error_Type);
-            //    }
-            //    var data1 = new StringContent(JsonConvert.SerializeObject(dictselect), Encoding.UTF8, "application/json");
-            //    using (var httpClient1 = new HttpClient())
-            //    {
-            //        var response1 = await httpClient1.PostAsync(Base_Url.Url + "/Error/CboErrorCategorySelectIndexById", data1);
-            //        if (response1.IsSuccessStatusCode)
-            //        {
-            //            if (response1.StatusCode == HttpStatusCode.OK)
-            //            {
-            //                var result = await response1.Content.ReadAsStringAsync();
-            //                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-            //                DataRow dr = dt1.NewRow();
-            //                dr[0] = 0;
-            //                dr[0] = "SELECT";
-            //                dt1.Rows.InsertAt(dr, 0);
-            //                cbo_ErrorDes.DataSource = dt1;
-            //                cbo_ErrorDes.ValueMember = "Error_description_Id";
-            //                cbo_ErrorDes.DisplayMember = "Error_description";
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{ throw ex; }
-            //finally { SplashScreenManager.CloseForm(false); }
+            
         }
         private bool Validation()
         {
             try
             {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (ddl_New_Error_Type.Text == "" || ddl_New_Error_Type.SelectedIndex == 0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select Proper  Error Type");
+                    ddl_New_Error_Type.BackColor = Color.Red;
+                    return false;
+                }
                 if (cbo_ErrorCatogery.Text == "" || cbo_ErrorCatogery.SelectedIndex == 0)
                 {
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show("Select Proper Error Tab");
                     cbo_ErrorCatogery.BackColor = Color.Red;
                     return false;
                 }
                 if (cbo_ErrorDes.Text == "" || cbo_ErrorDes.SelectedIndex == 0)
                 {
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show("Select Proper Error Field");
                     cbo_ErrorDes.BackColor = Color.Red;
                     return false;
                 }
+                if (Cbo_Task.Text == "" || Cbo_Task.SelectedIndex == 0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select Proper Task");
+                    Cbo_Task.BackColor = Color.Red;
+                    return false;
+                }
+                if (ddl_User.Visible == true)
+                {
+                    if (ddl_User.Text == "" || ddl_User.SelectedIndex == 0)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        MessageBox.Show("Select User");
+                        ddl_User.BackColor = Color.Red;
+                        return false;
+                    }
+                }
                 if (txt_ErrorCmt.Text == "")
                 {
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show("Enter Error Comments");
                     txt_ErrorCmt.BackColor = Color.Red;
                     return false;
-                }
-
-                if (ddl_New_Error_Type.Text == "" || ddl_New_Error_Type.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Select Proper  Error Type");
-                    ddl_New_Error_Type.BackColor = Color.Red;
-                    return false;
-                }
+                }                                           
                 return true;
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                throw ex;
+            }
             finally
-            { SplashScreenManager.CloseForm(false); }
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
         private async void btn_ErrorSub_Click(object sender, EventArgs e)
         {
@@ -684,29 +553,7 @@ namespace Ordermanagement_01
                         {
                             if (Error_User != 0)
                             {
-                                int Ent_error_info_Id = 0;
-                                //ErrorType = cbo_ErrorCatogery.Text;
-                                //Hashtable htinsert = new Hashtable();
-                                //DataTable dtinsert = new DataTable();
-                                //htinsert.Add("@Trans", "INSERT");
-                                //htinsert.Add("@New_Error_Type_Id", ddl_New_Error_Type.SelectedValue.ToString());  // Added one more column from master New_Error_Type_Id
-                                //htinsert.Add("@Error_Type", cbo_ErrorCatogery.SelectedValue.ToString());  // Error_Type means Error_Tab new chnages Has done
-                                //htinsert.Add("@Error_Description", cbo_ErrorDes.SelectedValue.ToString());  // error description means error Field new chnages has done
-                                //htinsert.Add("@Comments", txt_ErrorCmt.Text);
-                                //htinsert.Add("@Task", ORDERTASK);
-                                //htinsert.Add("@User_name", Username);
-                                //htinsert.Add("@Order_ID", orderid);
-                                //htinsert.Add("@Error_Task", Cbo_Task.SelectedValue.ToString());
-                                //htinsert.Add("@Error_Status", 1);//New Error
-                                //htinsert.Add("@Error_User", Error_User);
-                                //htinsert.Add("@User_ID", userid);
-                                //htinsert.Add("@Entered_Date", DateTime.Now);
-                                //htinsert.Add("@Status", "True");
-                                //htinsert.Add("@Work_Type", Work_Type_Id);
-                                //htinsert.Add("@Production_Date", Production_Date);
-                                //htinsert.Add("@External_Error", false);  //false - It is Internal Error
-                                //object Error_info_Id = dataaccess.ExecuteSPForScalar("Sp_Error_Info", htinsert);
-                                //int Ent_error_info_Id = int.Parse(Error_info_Id.ToString());
+                                int Ent_error_info_Id = 0;                               
                                 IDictionary<string, object> dict_insert = new Dictionary<string, object>();
                                 dict_insert.Add("@Trans", "INSERT");
                                 dict_insert.Add("@New_Error_Type_Id", ddl_New_Error_Type.SelectedValue.ToString());  // Added one more column from master New_Error_Type_Id
@@ -738,18 +585,7 @@ namespace Ordermanagement_01
                                             
                                         }
                                     }
-                                }
-                                //Hashtable hterror_history = new Hashtable();
-                                //DataTable dterror_history = new DataTable();
-                                //hterror_history.Add("@Trans", "INSERT");
-                                //hterror_history.Add("@Order_Id", orderid);
-                                //hterror_history.Add("@Error_Info_Id", Ent_error_info_Id);
-                                //hterror_history.Add("@Comments", "Error Created");
-                                //hterror_history.Add("@User_Id", userid);
-                                //dterror_history = dataaccess.ExecuteSP("Sp_Error_Info_History", hterror_history);
-                                //MessageBox.Show("Error Info Added Successfully");
-                                //BindgrdError();
-                                //clear();
+                                }                             
                                 IDictionary<string, object> dict_history = new Dictionary<string, object>();
                                 dict_history.Add("@Trans", "INSERT");
                                 dict_history.Add("@Order_Id", orderid);
@@ -764,8 +600,7 @@ namespace Ordermanagement_01
                                     {
                                         if (response1.StatusCode == HttpStatusCode.OK)
                                         {
-                                            var result1 = await response1.Content.ReadAsStringAsync();
-                                            //DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result1);
+                                            var result1 = await response1.Content.ReadAsStringAsync();                                          
                                             SplashScreenManager.CloseForm(false);
                                             MessageBox.Show("Error Info Added Successfully");
                                         }
@@ -786,16 +621,7 @@ namespace Ordermanagement_01
                         }
                     }
                     else if (btn_ErrorSub.Text == "Edit" && ErrorInfo_ID != 0)
-                    {
-                        //Hashtable htupdate = new Hashtable();
-                        //DataTable dtupdate = new DataTable();
-                        //htupdate.Add("@Trans", "UPDATE");
-                        //htupdate.Add("@ErrorInfo_ID", ErrorInfo_ID);
-                        //htupdate.Add("@New_Error_Type_Id", ddl_New_Error_Type.SelectedValue.ToString());
-                        //htupdate.Add("@Error_Type", cbo_ErrorCatogery.SelectedValue.ToString());
-                        //htupdate.Add("@Error_Description", cbo_ErrorDes.SelectedValue.ToString());
-                        //htupdate.Add("@Comments", txt_ErrorCmt.Text);
-                        //dtupdate = dataaccess.ExecuteSP("Sp_Error_Info", htupdate);
+                    {                     
                         IDictionary<string, object> dict_update = new Dictionary<string, object>();
                         dict_update.Add("@Trans", "UPDATE");
                         dict_update.Add("@ErrorInfo_ID", ErrorInfo_ID);
@@ -841,6 +667,7 @@ namespace Ordermanagement_01
             cbo_ErrorDes.BackColor = Color.WhiteSmoke;
             txt_ErrorCmt.BackColor = Color.WhiteSmoke;
             Cbo_Task.SelectedIndex = 0;
+            chk_Username.Visible = false;           
             Lbl_User.Text = "";
             Error_User = 0;
             btn_ErrorSub.Text = "Submit";
@@ -849,6 +676,7 @@ namespace Ordermanagement_01
         {
             try
             {
+                int Errorinfo = Convert.ToInt32(grd_Error.Rows[e.RowIndex].Cells[10].Value);
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.ColumnIndex == 7)
                 {
@@ -857,15 +685,10 @@ namespace Ordermanagement_01
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult show = MessageBox.Show(message, title, buttons);
                     if (show == DialogResult.Yes)
-                    {
-                        //Hashtable htdel = new Hashtable();
-                        //DataTable dtdel = new DataTable();
-                        //htdel.Add("@Trans", "DELETE");
-                        //htdel.Add("@ErrorInfo_ID", grd_Error.Rows[e.RowIndex].Cells[10].Value);
-                        //dtdel = dataaccess.ExecuteSP("Sp_Error_Info", htdel);
+                    {                       
                         IDictionary<string, object> dict_del = new Dictionary<string, object>();
                         dict_del.Add("@Trans", "DELETE");
-                        dict_del.Add("@ErrorInfo_ID", grd_Error.Rows[e.RowIndex].Cells[10].Value);
+                        dict_del.Add("@ErrorInfo_ID", Errorinfo);
                         var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
@@ -875,24 +698,14 @@ namespace Ordermanagement_01
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
-                                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                  
                                 }
                             }
                         }
-
-                        //Hashtable hterror_history = new Hashtable();
-                        //DataTable dterror_history = new DataTable();
-                        //hterror_history.Add("@Trans", "INSERT");
-                        //hterror_history.Add("@Order_Id", orderid);
-                        //hterror_history.Add("@Error_Info_Id", grd_Error.Rows[e.RowIndex].Cells[10].Value);
-                        //hterror_history.Add("@Comments", "Error Deleted");
-                        //hterror_history.Add("@User_Id", userid);
-                        //dterror_history = dataaccess.ExecuteSP("Sp_Error_Info_History", hterror_history);
-                        //MessageBox.Show(grd_Error.Rows[e.RowIndex].Cells[4].Value + "Deleted Successfully");
                         IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
                         dicterr_history.Add("@Trans", "INSERT");
                         dicterr_history.Add("@Order_Id", orderid);
-                        dicterr_history.Add("@Error_Info_Id", grd_Error.Rows[e.RowIndex].Cells[10].Value);
+                        dicterr_history.Add("@Error_Info_Id", Errorinfo);
                         dicterr_history.Add("@Comments", "Error Deleted");
                         dicterr_history.Add("@User_Id", userid);
                         var data1 = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
@@ -904,9 +717,6 @@ namespace Ordermanagement_01
                                 if (response1.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result1 = await response1.Content.ReadAsStringAsync();
-                                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result1);
-
-
                                 }
                             }
                         }
@@ -916,12 +726,16 @@ namespace Ordermanagement_01
                     }
 
                     else if (show == DialogResult.Yes)
-                    { SplashScreenManager.CloseForm(false); }
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
                 }
 
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                throw ex;
+            }
         }
         private void cbo_ErrorCatogery_KeyDown(object sender, KeyEventArgs e)
         {
@@ -953,101 +767,7 @@ namespace Ordermanagement_01
         }
         private async void Cbo_Task_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-            //    if (Cbo_Task.SelectedIndex != 0)
-            //    {
-            //        //Hashtable ht = new Hashtable();
-            //        //DataTable dt = new DataTable();
-            //        IDictionary<string, object> dict = new Dictionary<string, object>();
-            //        if (Work_Type_Id == 1)
-            //        {
-            //            dict.Add("@Trans", "Task_User");
-            //        }
-            //        else if (Work_Type_Id == 2)
-            //        {
-            //            dict.Add("@Trans", "REWORK_TASK_USER");
-            //        }
-            //        else if (Work_Type_Id == 3)
-            //        {
-            //            dict.Add("@Trans", "Task_User");
-            //        }
-
-            //        dict.Add("@Task", Cbo_Task.SelectedValue.ToString());
-            //        dict.Add("@Order_ID",orderid);
-
-                    
-
-            //        if (Sub_ProcessId != 330 && Sub_ProcessId > 0)
-            //        {
-            //            dict.Add("@Order_ID", Tilte_Exam_Order_Id);
-            //        }
-            //        else if (Sub_ProcessId > 0)
-            //        {
-            //            dict.Add("@Order_ID", orderid);
-            //        }
-
-            //        //              //  ht.Add("@Order_ID", Order_ID);
-            //        //dt = dataaccess.ExecuteSP("Sp_Error_Info", ht);
-            //        //if (dt.Rows.Count > 0)
-            //        //{
-            //        //    Lbl_User.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-            //        //    Error_User = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-            //        //    if (User_Role == "2")
-            //        //    {
-            //        //        Lbl_User.Text = "**********";
-            //        //    }
-            //        //}
-            //        //else
-            //        //{
-            //        //    Lbl_User.Text = "";
-            //        //    Error_User = 0;
-            //        //    chk_Username.Visible = true;
-            //        //    dbc.Bind_Users_For_Error_Info(ddl_User);
-            //        //}
-            //        var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
-            //        using (var httpClient = new HttpClient())
-            //        {
-            //            var response = await httpClient.PostAsync(Base_Url.Url + "/Error/CboTaskSelectIndex", data);
-            //            if (response.IsSuccessStatusCode)
-            //            {
-            //                if (response.StatusCode == HttpStatusCode.OK)
-            //                {
-            //                    var result = await response.Content.ReadAsStringAsync();
-            //                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-            //                    if (dt.Rows.Count > 0)
-            //                    {
-            //                        Lbl_User.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-            //                        Error_User = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-            //                        if (User_Role == "2")
-            //                        {
-            //                            Lbl_User.Text = "**********";
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        Lbl_User.Text = "";
-            //                        Error_User = 0;
-            //                        chk_Username.Visible = true;
-
-            //                        dbc.Bind_Users_For_Error_Info(ddl_User);
-            //                    }
-
-            //                }
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ddl_User.Visible = false;
-            //        Lbl_User.Text = "";
-            //        Error_User = 0;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{ throw ex; }
-            //finally { SplashScreenManager.CloseForm(false); }
+           
         }
         private void ddl_User_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1106,8 +826,7 @@ namespace Ordermanagement_01
                 DataTable dt = new DataTable();
                 IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 if (AdminStatus == 2)
-                {
-                  
+                {                 
                     dictionary.Add("@Trans", "SELECT_EXTERNAL");
                     dictionary.Add("@Order_ID", orderid);
                     dictionary.Add("@User_id", userid);
@@ -1132,8 +851,7 @@ namespace Ordermanagement_01
                 {
                     dictionary.Add("@Trans", "BIND_Live_External");
                     dictionary.Add("@Order_ID", orderid);
-                    dictionary.Add("@Work_Type", Work_Type_Id);
-                    //  dictionary = dataaccess.ExecuteSP("Sp_Error_Info", htselect);
+                    dictionary.Add("@Work_Type", Work_Type_Id);                  
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -1149,7 +867,7 @@ namespace Ordermanagement_01
                         }
                     }
                 }
-                if (dt.Rows.Count > 0)
+                if (dt.Rows.Count >= 0)
                 {
                     gridExternalError.Rows.Clear();
                     for (int i = 0; i < dt.Rows.Count; i++)
@@ -1198,19 +916,7 @@ namespace Ordermanagement_01
         {
             try
             {
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                //Hashtable htselect = new Hashtable();
-                //DataTable dtselect = new DataTable();
-                //htselect.Add("@Trans", "SELECT_Error_Type");
-                //dtselect = dataaccess.ExecuteSP("Sp_Errors_Details", htselect);
-                //DataRow dr = dtselect.NewRow();
-                //dr[0] = 0;
-                //dr[0] = "SELECT";
-                //dtselect.Rows.InsertAt(dr, 0);
-                //ddlExternalErrorCategory.DataSource = dtselect;
-                //ddlExternalErrorCategory.ValueMember = "Error_Type_Id";
-                //ddlExternalErrorCategory.DisplayMember = "Error_Type";
-
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);              
                 IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 {
                     dictionary.Add("@Trans", "SELECT_Error_Type");
@@ -1237,8 +943,12 @@ namespace Ordermanagement_01
                 }
             }
             catch (Exception ex)
-            { throw ex; }
-            finally { SplashScreenManager.CloseForm(false); }
+            {
+                throw ex;
+            }
+            finally {
+                SplashScreenManager.CloseForm(false);
+            }
         }
         private void txtExternalErrorComment_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1267,12 +977,7 @@ namespace Ordermanagement_01
                     MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                     DialogResult show = MessageBox.Show(message, title, buttons);
                     if (show == DialogResult.Yes)
-                    {
-                        //Hashtable htdel = new Hashtable();
-                        //DataTable dtdel = new DataTable();
-                        //htdel.Add("@Trans", "DELETE");
-                        //htdel.Add("@ErrorInfo_ID", gridExternalError.Rows[e.RowIndex].Cells[10].Value);
-                        //dtdel = dataaccess.ExecuteSP("Sp_Error_Info", htdel);
+                    {                       
                         IDictionary<string, object> dict_del = new Dictionary<string, object>();
                         {
                             dict_del.Add("@Trans", "DELETE");
@@ -1286,23 +991,13 @@ namespace Ordermanagement_01
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
-                                    var result = await response.Content.ReadAsStringAsync();
-                                   // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                    var result = await response.Content.ReadAsStringAsync();                                 
+                                    BindGridExternalErrors();
 
                                 }
                             }
                         }
 
-                        //Hashtable hterror_history = new Hashtable();
-                        //DataTable dterror_history = new DataTable();
-                        //hterror_history.Add("@Trans", "INSERT");
-                        //hterror_history.Add("@Order_Id", orderid);
-                        //hterror_history.Add("@Error_Info_Id", grd_Error.Rows[e.RowIndex].Cells[10].Value);
-                        //hterror_history.Add("@Comments", "Error Deleted");
-                        //hterror_history.Add("@User_Id", userid);
-                        //dterror_history = dataaccess.ExecuteSP("Sp_Error_Info_History", hterror_history);
-                        //MessageBox.Show(grd_Error.Rows[e.RowIndex].Cells[4].Value + "Deleted Successfully");
-                        //BindGridExternalErrors();
                         IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
                         dicterr_history.Add("@Trans", "INSERT");
                         dicterr_history.Add("@Order_Id", orderid);
@@ -1318,15 +1013,15 @@ namespace Ordermanagement_01
                                 if (response1.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result1 = await response1.Content.ReadAsStringAsync();
-                                    
 
+                                    BindGridExternalErrors();
                                 }
                             }
                         }
 
                         SplashScreenManager.CloseForm(false);
                         MessageBox.Show(gridExternalError.Rows[e.RowIndex].Cells[4].Value + " Deleted Successfully");
-                        BindGridExternalErrors();
+                       
                     }
 
                     else if (show == DialogResult.No)
@@ -1349,53 +1044,6 @@ namespace Ordermanagement_01
 
                     
                     int Error_Type = int.Parse(cbo_ErrorCatogery.SelectedValue.ToString());
-
-                    //Hashtable hterror = new Hashtable();
-                    //DataTable dterror = new DataTable();
-                    //hterror.Add("@Trans", "ERROR_TYPE");
-                    //hterror.Add("@Error_Type", Error_Type);
-                    //dterror = dataaccess.ExecuteSP("Sp_Errors_Details", hterror);
-                    //if (dterror.Rows.Count > 0)
-                    //{
-                    //    result = int.Parse(dterror.Rows[0]["Error_Type_Id"].ToString());
-                    //}
-                    //IDictionary<string, object> dicterror = new Dictionary<string, object>();
-                    //{
-                    //    dicterror.Add("@Trans", "ERROR_TYPE");
-                    //    dicterror.Add("@Error_Type", Error_Type);
-                    //}
-                    //var data = new StringContent(JsonConvert.SerializeObject(dicterror), Encoding.UTF8, "application/json");
-                    //using (var httpClient = new HttpClient())
-                    //{
-                    //    var response = await httpClient.PostAsync(Base_Url.Url + "/Error/BindInternalField", data);
-                    //    if (response.IsSuccessStatusCode)
-                    //    {
-                    //        if (response.StatusCode == HttpStatusCode.OK)
-                    //        {
-                    //            var result = await response.Content.ReadAsStringAsync();
-                    //            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                    //            if (dt.Rows.Count > 0)
-                    //            {
-                    //                result = dt.Rows[0]["Error_Type_Id"].ToString();
-                    //            }
-                    //        }
-                    //    }
-                    //}
-
-
-                    //Hashtable htselect = new Hashtable();
-                    //DataTable dtselect = new DataTable();
-                    //htselect.Add("@Trans", "SELECT_Error_description");
-                    //htselect.Add("@Error_Type_Id", result);
-                    //dtselect = dataaccess.ExecuteSP("Sp_Errors_Details", htselect);
-                    //DataRow dr = dtselect.NewRow();
-                    //dr[0] = 0;
-                    //dr[0] = "SELECT";
-                    //dtselect.Rows.InsertAt(dr, 0);
-                    //cbo_ErrorDes.DataSource = dtselect;
-                    //cbo_ErrorDes.ValueMember = "Error_description_Id";
-                    //cbo_ErrorDes.DisplayMember = "Error_description";
-
                     IDictionary<string, object> dictselect = new Dictionary<string, object>();
                     {
                         dictselect.Add("@Trans", "SELECT_Error_description");
@@ -1424,8 +1072,13 @@ namespace Ordermanagement_01
                 }
             }
             catch (Exception ex)
-            { throw ex; }
-            finally { SplashScreenManager.CloseForm(false); }
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         
         }
 
@@ -1437,51 +1090,7 @@ namespace Ordermanagement_01
                 //string externalErrorType = ddlExternalErrorCategory.Text;
                 if (ddlExternalErrorCategory.SelectedIndex > 0)
                 {
-                      int externalErrorType = int.Parse(ddlExternalErrorCategory.SelectedValue.ToString());
-                    ////Hashtable hterror = new Hashtable();
-                    ////DataTable dterror = new DataTable();
-                    ////hterror.Add("@Trans", "ERROR_TYPE");
-                    ////hterror.Add("@Error_Type", externalErrorType);
-                    ////dterror = dataaccess.ExecuteSP("Sp_Errors_Details", hterror);
-                    ////if (dterror.Rows.Count > 0)
-                    ////{
-                    ////    result = int.Parse(dterror.Rows[0]["Error_Type_Id"].ToString());
-                    ////}
-                    //IDictionary<string, object> dict_error = new Dictionary<string, object>();
-                    //dict_error.Add("@Trans", "ERROR_TYPE");
-                    //dict_error.Add("@Error_Type", externalErrorType);
-                    //var data = new StringContent(JsonConvert.SerializeObject(dict_error), Encoding.UTF8, "application/json");
-                    //using (var httpClient = new HttpClient())
-                    //{
-                    //    var response = await httpClient.PostAsync(Base_Url.Url + "/Error/BindExternalField", data);
-                    //    if (response.IsSuccessStatusCode)
-                    //    {
-                    //        if (response.StatusCode == HttpStatusCode.OK)
-                    //        {
-                    //            var result = await response.Content.ReadAsStringAsync();
-                    //            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                    //            if (dt.Rows.Count > 0)
-                    //            {
-                    //                result = dt.Rows[0]["Error_Type_Id"].ToString();
-                    //            }
-                    //        }
-                    //    }
-                    //}
-
-
-
-                    //Hashtable htselect = new Hashtable();
-                    //DataTable dtselect = new DataTable();
-                    //htselect.Add("@Trans", "SELECT_Error_description");
-                    //htselect.Add("@Error_Type_Id", result);
-                    //dtselect = dataaccess.ExecuteSP("Sp_Errors_Details", htselect);
-                    //DataRow dr = dtselect.NewRow();
-                    //dr[0] = 0;
-                    //dr[0] = "SELECT";
-                    //dtselect.Rows.InsertAt(dr, 0);
-                    //ddlExternalErrorDesc.DataSource = dtselect;
-                    //ddlExternalErrorDesc.ValueMember = "Error_description_Id";
-                    //ddlExternalErrorDesc.DisplayMember = "Error_description";
+                    int externalErrorType = int.Parse(ddlExternalErrorCategory.SelectedValue.ToString());                
                     IDictionary<string, object> dict_select = new Dictionary<string, object>();
                     dict_select.Add("@Trans", "SELECT_Error_description");
                     dict_select.Add("@Error_Type_Id", externalErrorType);
@@ -1520,8 +1129,7 @@ namespace Ordermanagement_01
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (Cbo_Task.SelectedIndex != 0)
                 {
-                    //Hashtable ht = new Hashtable();
-                    //DataTable dt = new DataTable();
+                  
                     IDictionary<string, object> dict = new Dictionary<string, object>();
                     if (Work_Type_Id == 1)
                     {
@@ -1548,26 +1156,7 @@ namespace Ordermanagement_01
                     else if (Sub_ProcessId > 0)
                     {
                         dict.Add("@Order_ID", orderid);
-                    }
-
-                    //              //  ht.Add("@Order_ID", Order_ID);
-                    //dt = dataaccess.ExecuteSP("Sp_Error_Info", ht);
-                    //if (dt.Rows.Count > 0)
-                    //{
-                    //    Lbl_User.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-                    //    Error_User = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-                    //    if (User_Role == "2")
-                    //    {
-                    //        Lbl_User.Text = "**********";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Lbl_User.Text = "";
-                    //    Error_User = 0;
-                    //    chk_Username.Visible = true;
-                    //    dbc.Bind_Users_For_Error_Info(ddl_User);
-                    //}
+                    }              
                     var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -1628,8 +1217,7 @@ namespace Ordermanagement_01
             {
                 if (ddlExternalTask.SelectedIndex != 0)
                 {
-                    //Hashtable ht = new Hashtable();
-                    //DataTable dt = new DataTable();
+                  
                     IDictionary<string, object> dict = new Dictionary<string, object>();
                     if (Work_Type_Id == 1)
                     {
@@ -1656,17 +1244,6 @@ namespace Ordermanagement_01
                         dict.Add("@Order_ID", orderid);
                     }
 
-                    // //          //  ht.Add("@Order_ID", Order_ID);
-                    //dt = dataaccess.ExecuteSP("Sp_Error_Info", ht);
-                    //if (dt.Rows.Count > 0)
-                    //{
-                    //    lblExternalUser.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-                    //    externalErrorUser = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-                    //    if (User_Role == "2")
-                    //    {
-                    //        lblExternalUser.Text = "**********";
-                    //    }
-                    //}
                     var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -1720,92 +1297,7 @@ namespace Ordermanagement_01
 
         private async void ddlExternalTask_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (ddlExternalTask.SelectedIndex != 0)
-            //    {
-            //        //Hashtable ht = new Hashtable();
-            //        //DataTable dt = new DataTable();
-            //        IDictionary<string, object> dict = new Dictionary<string, object>();
-            //        if (Work_Type_Id == 1)
-            //        {
-            //            dict.Add("@Trans", "Task_User");
-            //        }
-            //        else if (Work_Type_Id == 2)
-            //        {
-            //            dict.Add("@Trans", "REWORK_TASK_USER");
-            //        }
-            //        else if (Work_Type_Id == 3)
-            //        {
-            //            dict.Add("@Trans", "Task_User");
-            //        }
-
-            //        dict.Add("@Task", ddlExternalTask.SelectedValue.ToString());
-
-            //        //         // ht.Add("@Order_ID", orderid);
-
-            //        if (Sub_ProcessId != 330 && Sub_ProcessId > 0)
-            //        {
-            //            dict.Add("@Order_ID", Tilte_Exam_Order_Id);
-            //        }
-            //        else if (Sub_ProcessId > 0)
-            //        {
-            //            dict.Add("@Order_ID", orderid);
-            //        }
-
-            //        // //          //  ht.Add("@Order_ID", Order_ID);
-            //        //dt = dataaccess.ExecuteSP("Sp_Error_Info", ht);
-            //        //if (dt.Rows.Count > 0)
-            //        //{
-            //        //    lblExternalUser.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-            //        //    externalErrorUser = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-            //        //    if (User_Role == "2")
-            //        //    {
-            //        //        lblExternalUser.Text = "**********";
-            //        //    }
-            //        //}
-            //        var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
-            //        using (var httpClient = new HttpClient())
-            //        {
-            //            var response = await httpClient.PostAsync(Base_Url.Url + "/Error/BindExternalUser", data);
-            //            if (response.IsSuccessStatusCode)
-            //            {
-            //                if (response.StatusCode == HttpStatusCode.OK)
-            //                {
-            //                    var result = await response.Content.ReadAsStringAsync();
-            //                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-            //                    if (dt.Rows.Count > 0)
-            //                     {
-            //                        lblExternalUser.Text = dt.Rows[dt.Rows.Count - 1]["User_Name"].ToString();
-            //                        externalErrorUser = int.Parse(dt.Rows[dt.Rows.Count - 1]["User_id"].ToString());
-            //                        if (User_Role == "2")
-            //                        {
-            //                            lblExternalUser.Text = "**********";
-            //                        }
-            //                        else
-            //                        {
-            //                            lblExternalUser.Text = "";
-            //                            Error_User = 0;
-            //                            checkBoxExternalUsername.Visible = true;
-            //                            dbc.Bind_Users_For_Error_Info(ddlExternalUser);
-            //                        }
-            //                    }
-
-            //                }
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ddlExternalUser.Visible = false;
-            //        lblExternalUser.Text = "";
-            //        externalErrorUser = 0;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{ throw ex;}
-            //finally
-            //{ SplashScreenManager.CloseForm(false); }
+           
         }
         private void ddlExternalUser_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1836,20 +1328,7 @@ namespace Ordermanagement_01
         {
             try
             {
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                //    Hashtable ht_select = new Hashtable();
-                //    DataTable dt_select = new DataTable();
-                //    ht_select.Add("@Trans", "BIND_NEW_ERROR_TYPE");
-                //    dt_select = dataaccess.ExecuteSP("Sp_Error_Info", ht_select);
-                //    DataRow dr = dt_select.NewRow();
-                //    dr[0] = 0;
-                //    dr[1] = "SELECT";
-                //    dt_select.Rows.InsertAt(dr, 0);
-                //    ddlExternalNewErrorType.DataSource = dt_select;
-                //    ddlExternalNewErrorType.ValueMember = "New_Error_Type_Id";
-                //    ddlExternalNewErrorType.DisplayMember = "New_Error_Type";
-
-
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);             
                 IDictionary<string, object> dictionary = new Dictionary<string, object>();
                 {
                     dictionary.Add("@Trans", "BIND_NEW_ERROR_TYPE");
@@ -1924,6 +1403,10 @@ namespace Ordermanagement_01
             txtExternalErrorComment.BackColor = Color.WhiteSmoke;
             ddlExternalTask.SelectedIndex = 0;
             lblExternalUser.Text = "";
+            checkBoxExternalUsername.Visible = false;
+            //ddlExternalUser.Visible = false;
+            //ddlExternalUser.SelectedIndex = 0;
+            //ddlExternalUser.BackColor = Color.WhiteSmoke;
             externalErrorUser = 0;
             btnSubmitExternalError.Text = "Submit";
         }
@@ -2035,34 +1518,12 @@ namespace Ordermanagement_01
 
                             if (externalErrorUser != 0)
                             {
-                                int Error_info_Id = 0;
-                               // externalErrorType = ddlExternalErrorCategory.Text;
-                                //Hashtable htinsert = new Hashtable();
-                                //DataTable dtinsert = new DataTable();
-                                //htinsert.Add("@Trans", "INSERT");
-                                //htinsert.Add("@New_Error_Type_Id", ddlExternalNewErrorType.SelectedValue.ToString());  // Added one more column from master New_Error_Type_Id
-                                //htinsert.Add("@Error_Type", ddlExternalErrorCategory.SelectedValue.ToString());  // Error_Type means Error_Tab new chnages Has done
-                                //htinsert.Add("@Error_Description", ddlExternalErrorDesc.SelectedValue.ToString());  // error description means error Field new chnages has done
-                                //htinsert.Add("@Comments", txtExternalErrorComment.Text);
-                                //htinsert.Add("@Task", ddlExternalTask.SelectedValue);
-                                //htinsert.Add("@User_name", Username);
-                                //htinsert.Add("@Order_ID", orderid);
-                                //htinsert.Add("@Error_Task", ddlExternalTask.SelectedValue.ToString());
-                                //htinsert.Add("@Error_Status", 1);//New Error
-                                //htinsert.Add("@Error_User", externalErrorUser);
-                                //htinsert.Add("@User_ID", userid);
-                                //htinsert.Add("@Entered_Date", DateTime.Now);
-                                //htinsert.Add("@Status", "True");
-                                //htinsert.Add("@Work_Type", Work_Type_Id);
-                                //htinsert.Add("@Production_Date", Production_Date);
-                                //htinsert.Add("@External_Error", true); //ture - It is External Error
-                                //object Error_info_Id = dataaccess.ExecuteSPForScalar("Sp_Error_Info", htinsert);
-                                //int Ent_error_info_Id = int.Parse(Error_info_Id.ToString());
+                                int Error_info_Id = 0;                            
                                 IDictionary<string, object> dict_insert = new Dictionary<string, object>();
                                 dict_insert.Add("@Trans", "INSERT");
                                 dict_insert.Add("@New_Error_Type_Id", ddlExternalNewErrorType.SelectedValue.ToString());  // Added one more column from master New_Error_Type_Id
                                 dict_insert.Add("@Error_Type", ddlExternalErrorCategory.SelectedValue.ToString());  // Error_Type means Error_Tab new chnages Has done
-                                dict_insert.Add("@Error_Description", ddlExternalErrorDesc.SelectedValue.ToString());  // error description means error Field new chnages has done
+                                 dict_insert.Add("@Error_Description", ddlExternalErrorDesc.SelectedValue.ToString());  // error description means error Field new chnages has done
                                 dict_insert.Add("@Comments", txtExternalErrorComment.Text);
                                 dict_insert.Add("@Task", ddlExternalTask.SelectedValue);
                                 dict_insert.Add("@User_name", Username);
@@ -2090,16 +1551,6 @@ namespace Ordermanagement_01
                                     }
                                 }
 
-
-                                //Hashtable hterror_history = new Hashtable();
-                                //DataTable dterror_history = new DataTable();
-                                //hterror_history.Add("@Trans", "INSERT");
-                                //hterror_history.Add("@Order_Id", orderid);
-                                //hterror_history.Add("@Error_Info_Id", Ent_error_info_Id);
-                                //hterror_history.Add("@Comments", "Error Created");
-                                //hterror_history.Add("@User_Id", userid);
-                                //dterror_history = dataaccess.ExecuteSP("Sp_Error_Info_History", hterror_history);
-                                //MessageBox.Show("Error Info Added Successfully");
                                 IDictionary<string, object> dict_history = new Dictionary<string, object>();
                                 dict_history.Add("@Trans", "INSERT");
                                 dict_history.Add("@Order_Id", orderid);
@@ -2127,21 +1578,13 @@ namespace Ordermanagement_01
                         }
                         else
                         {
+                            SplashScreenManager.CloseForm(false);
+
                             MessageBox.Show("Select user");
                         }
                     }
                     else if (btnSubmitExternalError.Text == "Edit" && externalErrorInfoId != 0)
-                    {
-                        //Hashtable htupdate = new Hashtable();
-                        //DataTable dtupdate = new DataTable();
-                        //htupdate.Add("@Trans", "UPDATE");
-                        //htupdate.Add("@ErrorInfo_ID", externalErrorInfoId);
-                        //htupdate.Add("@New_Error_Type_Id", ddlExternalNewErrorType.SelectedValue.ToString());
-                        //htupdate.Add("@Error_Type", ddlExternalErrorCategory.SelectedValue.ToString());
-                        //htupdate.Add("@Error_Description", ddlExternalErrorDesc.SelectedValue.ToString());
-                        //htupdate.Add("@Comments", txtExternalErrorComment.Text);
-                        //dtupdate = dataaccess.ExecuteSP("Sp_Error_Info", htupdate);                   
-                        //MessageBox.Show("Error Info Updated Successfully");
+                    {              
                         IDictionary<string, object> dict_update = new Dictionary<string, object>();
                         dict_update.Add("@Trans", "UPDATE");
                         dict_update.Add("@ErrorInfo_ID", externalErrorInfoId);
@@ -2171,6 +1614,10 @@ namespace Ordermanagement_01
             }
             catch (Exception ex)
             { throw ex; }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_ErrorCmt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.cbo_ErrorDes = new System.Windows.Forms.ComboBox();
@@ -227,16 +227,17 @@
             // grd_Error
             // 
             this.grd_Error.AllowUserToAddRows = false;
+            this.grd_Error.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grd_Error.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grd_Error.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grd_Error.ColumnHeadersHeight = 29;
             this.grd_Error.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SNo,
@@ -258,7 +259,7 @@
             this.grd_Error.Name = "grd_Error";
             this.grd_Error.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.grd_Error.RowHeadersVisible = false;
-            this.grd_Error.Size = new System.Drawing.Size(1124, 261);
+            this.grd_Error.Size = new System.Drawing.Size(1188, 261);
             this.grd_Error.TabIndex = 82;
             this.grd_Error.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd_Error_CellClick);
             // 
@@ -267,7 +268,6 @@
             this.SNo.FillWeight = 29.68796F;
             this.SNo.HeaderText = "S. No";
             this.SNo.Name = "SNo";
-            this.SNo.Width = 50;
             // 
             // Column9
             // 
@@ -288,7 +288,6 @@
             this.Column2.HeaderText = "FIELD";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 120;
             // 
             // Column3
             // 
@@ -296,7 +295,6 @@
             this.Column3.HeaderText = "COMMENTS";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
             // 
             // Column4
             // 
@@ -304,7 +302,6 @@
             this.Column4.HeaderText = "TASK";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 75;
             // 
             // User_Name
             // 
@@ -318,7 +315,6 @@
             this.Column8.FillWeight = 37.01456F;
             this.Column8.HeaderText = "REMOVE";
             this.Column8.Name = "Column8";
-            this.Column8.Width = 75;
             // 
             // Column5
             // 
@@ -474,7 +470,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.3792F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 266F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1130, 644);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1194, 644);
             this.tableLayoutPanel1.TabIndex = 92;
             // 
             // panel1
@@ -484,7 +480,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1124, 32);
+            this.panel1.Size = new System.Drawing.Size(1188, 32);
             this.panel1.TabIndex = 0;
             // 
             // label45
@@ -522,7 +518,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 41);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1124, 287);
+            this.panel2.Size = new System.Drawing.Size(1188, 287);
             this.panel2.TabIndex = 1;
             // 
             // label7
@@ -576,7 +572,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 334);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1124, 40);
+            this.panel3.Size = new System.Drawing.Size(1188, 40);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -585,7 +581,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 380);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1124, 261);
+            this.panel4.Size = new System.Drawing.Size(1188, 261);
             this.panel4.TabIndex = 3;
             // 
             // tabPaneErrorEntry
@@ -600,9 +596,9 @@
             this.tabPaneErrorEntry.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabPageInternalErrorEntry,
             this.tabPageExternalErrorEntry});
-            this.tabPaneErrorEntry.RegularSize = new System.Drawing.Size(1148, 689);
+            this.tabPaneErrorEntry.RegularSize = new System.Drawing.Size(1212, 689);
             this.tabPaneErrorEntry.SelectedPage = this.tabPageExternalErrorEntry;
-            this.tabPaneErrorEntry.Size = new System.Drawing.Size(1148, 689);
+            this.tabPaneErrorEntry.Size = new System.Drawing.Size(1212, 689);
             this.tabPaneErrorEntry.TabIndex = 93;
             // 
             // tabPageInternalErrorEntry
@@ -612,7 +608,7 @@
             this.tabPageInternalErrorEntry.Caption = "Internal Error Entry";
             this.tabPageInternalErrorEntry.Controls.Add(this.tableLayoutPanel1);
             this.tabPageInternalErrorEntry.Name = "tabPageInternalErrorEntry";
-            this.tabPageInternalErrorEntry.Size = new System.Drawing.Size(1130, 644);
+            this.tabPageInternalErrorEntry.Size = new System.Drawing.Size(1194, 644);
             // 
             // tabPageExternalErrorEntry
             // 
@@ -621,7 +617,7 @@
             this.tabPageExternalErrorEntry.Caption = "External Error Entry";
             this.tabPageExternalErrorEntry.Controls.Add(this.tableLayoutPanel2);
             this.tabPageExternalErrorEntry.Name = "tabPageExternalErrorEntry";
-            this.tabPageExternalErrorEntry.Size = new System.Drawing.Size(1130, 644);
+            this.tabPageExternalErrorEntry.Size = new System.Drawing.Size(1194, 644);
             // 
             // tableLayoutPanel2
             // 
@@ -639,7 +635,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.23529F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 271F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1130, 644);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1194, 644);
             this.tableLayoutPanel2.TabIndex = 93;
             // 
             // panel5
@@ -649,7 +645,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1124, 33);
+            this.panel5.Size = new System.Drawing.Size(1188, 33);
             this.panel5.TabIndex = 0;
             // 
             // label8
@@ -658,7 +654,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Ebrima", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(919, 8);
+            this.label8.Location = new System.Drawing.Point(917, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(200, 19);
             this.label8.TabIndex = 233;
@@ -698,7 +694,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 42);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1124, 288);
+            this.panel6.Size = new System.Drawing.Size(1188, 288);
             this.panel6.TabIndex = 1;
             // 
             // label10
@@ -905,7 +901,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 336);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1124, 33);
+            this.panel7.Size = new System.Drawing.Size(1188, 33);
             this.panel7.TabIndex = 2;
             // 
             // btnSubmitExternalError
@@ -937,22 +933,23 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 375);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1124, 266);
+            this.panel8.Size = new System.Drawing.Size(1188, 266);
             this.panel8.TabIndex = 3;
             // 
             // gridExternalError
             // 
             this.gridExternalError.AllowUserToAddRows = false;
+            this.gridExternalError.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridExternalError.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.gridExternalError.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gridExternalError.ColumnHeadersHeight = 29;
             this.gridExternalError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -974,7 +971,7 @@
             this.gridExternalError.Name = "gridExternalError";
             this.gridExternalError.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.gridExternalError.RowHeadersVisible = false;
-            this.gridExternalError.Size = new System.Drawing.Size(1124, 266);
+            this.gridExternalError.Size = new System.Drawing.Size(1188, 266);
             this.gridExternalError.TabIndex = 82;
             this.gridExternalError.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridExternalError_CellClick);
             // 
@@ -983,7 +980,6 @@
             this.dataGridViewTextBoxColumn1.FillWeight = 29.68796F;
             this.dataGridViewTextBoxColumn1.HeaderText = "S. No";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -1004,7 +1000,6 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "FIELD";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 120;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -1012,7 +1007,6 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "COMMENTS";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 300;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -1020,7 +1014,6 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "TASK";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -1034,7 +1027,6 @@
             this.dataGridViewButtonColumn1.FillWeight = 37.01456F;
             this.dataGridViewButtonColumn1.HeaderText = "REMOVE";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.Width = 75;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -1080,7 +1072,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 689);
+            this.ClientSize = new System.Drawing.Size(1212, 689);
             this.Controls.Add(this.tabPaneErrorEntry);
             this.Name = "Employee_Error_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
