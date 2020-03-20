@@ -849,6 +849,7 @@ namespace Ordermanagement_01
                                 btnEdit.Name = "btnEdit";
                                 btnEdit.UseColumnTextForButtonValue = true;
                                 Grd_Document_upload.Columns[14].Width = 100;
+                                Grd_Document_upload.Columns[14].Visible = false;
                                 Grd_Document_upload.Columns.Add(btnDelete);
                                 btnDelete.HeaderText = "Delete";
                                 btnDelete.Text = "Delete";
@@ -1216,7 +1217,7 @@ namespace Ordermanagement_01
                         var dict_in = new Dictionary<string, object>
                         {
                             {"@Trans","GET_INVOICE_UPLOAD_CHECK_BYID" },
-                            {"@Document_Upload_Id", Value }
+                            { "@Document_Upload_Id", Value }
                         };
                         var data_in = new StringContent(JsonConvert.SerializeObject(dict_in), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())

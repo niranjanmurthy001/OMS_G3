@@ -324,7 +324,7 @@
             this.label4.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(11, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 24);
+            this.label4.Size = new System.Drawing.Size(137, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Client Documents:";
             // 
@@ -335,7 +335,7 @@
             this.ddl_Dcoument_Type.FormattingEnabled = true;
             this.ddl_Dcoument_Type.Location = new System.Drawing.Point(125, 41);
             this.ddl_Dcoument_Type.Name = "ddl_Dcoument_Type";
-            this.ddl_Dcoument_Type.Size = new System.Drawing.Size(193, 28);
+            this.ddl_Dcoument_Type.Size = new System.Drawing.Size(193, 25);
             this.ddl_Dcoument_Type.TabIndex = 14;
             // 
             // txt_Dscription
@@ -352,7 +352,7 @@
             this.label5.Font = new System.Drawing.Font("Ebrima", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(11, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 22);
+            this.label5.Size = new System.Drawing.Size(109, 19);
             this.label5.TabIndex = 10;
             this.label5.Text = "Document Type:";
             // 
@@ -362,7 +362,7 @@
             this.label6.Font = new System.Drawing.Font("Ebrima", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(325, 44);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 22);
+            this.label6.Size = new System.Drawing.Size(78, 19);
             this.label6.TabIndex = 11;
             this.label6.Text = "Description";
             // 
@@ -390,7 +390,7 @@
             this.listView1.Location = new System.Drawing.Point(1162, 3);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(44, 570);
+            this.listView1.Size = new System.Drawing.Size(44, 574);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -409,7 +409,7 @@
             this.label1.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 24);
+            this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Comments :";
             // 
@@ -454,10 +454,10 @@
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.txt_Dscription);
             this.tabPage2.Controls.Add(this.ddl_Dcoument_Type);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1221, 638);
+            this.tabPage2.Size = new System.Drawing.Size(1221, 642);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Titlelogy Documents";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -476,10 +476,10 @@
             // Inhouse
             // 
             this.Inhouse.Controls.Add(this.panel1);
-            this.Inhouse.Location = new System.Drawing.Point(4, 26);
+            this.Inhouse.Location = new System.Drawing.Point(4, 22);
             this.Inhouse.Name = "Inhouse";
             this.Inhouse.Padding = new System.Windows.Forms.Padding(3);
-            this.Inhouse.Size = new System.Drawing.Size(1221, 638);
+            this.Inhouse.Size = new System.Drawing.Size(1221, 642);
             this.Inhouse.TabIndex = 0;
             this.Inhouse.Text = "Inhouse";
             this.Inhouse.UseVisualStyleBackColor = true;
@@ -490,7 +490,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1215, 632);
+            this.panel1.Size = new System.Drawing.Size(1215, 636);
             this.panel1.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -506,7 +506,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1215, 632);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1215, 636);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -515,7 +515,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1209, 576);
+            this.panel2.Size = new System.Drawing.Size(1209, 580);
             this.panel2.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -530,7 +530,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1209, 576);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1209, 580);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // Grd_Document_upload
@@ -566,7 +566,7 @@
             this.Grd_Document_upload.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.Grd_Document_upload.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Grd_Document_upload.RowTemplate.Height = 25;
-            this.Grd_Document_upload.Size = new System.Drawing.Size(1153, 570);
+            this.Grd_Document_upload.Size = new System.Drawing.Size(1153, 574);
             this.Grd_Document_upload.TabIndex = 2;
             this.Grd_Document_upload.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grd_Document_upload_CellClick);
             this.Grd_Document_upload.DragDrop += new System.Windows.Forms.DragEventHandler(this.Grd_Document_upload_DragDrop);
@@ -614,10 +614,10 @@
             // 
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.Grid_Tax_Upload);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1221, 638);
+            this.tabPage4.Size = new System.Drawing.Size(1221, 642);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Tax";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -628,7 +628,7 @@
             this.label10.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(488, 13);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 24);
+            this.label10.Size = new System.Drawing.Size(122, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "Tax Documents:";
             // 
@@ -739,9 +739,9 @@
             this.tabPage3.Controls.Add(this.btn_Add);
             this.tabPage3.Controls.Add(this.chk_All);
             this.tabPage3.Controls.Add(this.grd_Vendor_Documents);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1221, 638);
+            this.tabPage3.Size = new System.Drawing.Size(1221, 642);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Vendor";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -766,7 +766,7 @@
             this.chk_All.Font = new System.Drawing.Font("Ebrima", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_All.Location = new System.Drawing.Point(12, 13);
             this.chk_All.Name = "chk_All";
-            this.chk_All.Size = new System.Drawing.Size(80, 24);
+            this.chk_All.Size = new System.Drawing.Size(79, 21);
             this.chk_All.TabIndex = 10;
             this.chk_All.Text = "Check All";
             this.chk_All.UseVisualStyleBackColor = true;
@@ -882,10 +882,10 @@
             this.tabPage1.Controls.Add(this.ddl_Inhouse_Doc_Type);
             this.tabPage1.Controls.Add(this.grid_Inhouse_Final_Document_Upload);
             this.tabPage1.Controls.Add(this.pictureBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1221, 638);
+            this.tabPage1.Size = new System.Drawing.Size(1221, 642);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Upload";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -896,7 +896,7 @@
             this.label11.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(863, 6);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(219, 17);
+            this.label11.Size = new System.Drawing.Size(218, 13);
             this.label11.TabIndex = 155;
             this.label11.Text = "Inhouse Copied Files Shows in this Color";
             // 
@@ -906,7 +906,7 @@
             this.label9.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(6, 6);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(127, 24);
+            this.label9.Size = new System.Drawing.Size(126, 20);
             this.label9.TabIndex = 102;
             this.label9.Text = "Final Documents";
             // 
@@ -927,7 +927,7 @@
             this.label7.Font = new System.Drawing.Font("Ebrima", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(324, 40);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 22);
+            this.label7.Size = new System.Drawing.Size(78, 19);
             this.label7.TabIndex = 17;
             this.label7.Text = "Description";
             // 
@@ -937,7 +937,7 @@
             this.label8.Font = new System.Drawing.Font("Ebrima", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(10, 40);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 22);
+            this.label8.Size = new System.Drawing.Size(109, 19);
             this.label8.TabIndex = 16;
             this.label8.Text = "Document Type:";
             // 
@@ -956,7 +956,7 @@
             this.ddl_Inhouse_Doc_Type.FormattingEnabled = true;
             this.ddl_Inhouse_Doc_Type.Location = new System.Drawing.Point(124, 37);
             this.ddl_Inhouse_Doc_Type.Name = "ddl_Inhouse_Doc_Type";
-            this.ddl_Inhouse_Doc_Type.Size = new System.Drawing.Size(193, 28);
+            this.ddl_Inhouse_Doc_Type.Size = new System.Drawing.Size(193, 25);
             this.ddl_Inhouse_Doc_Type.TabIndex = 19;
             // 
             // grid_Inhouse_Final_Document_Upload
