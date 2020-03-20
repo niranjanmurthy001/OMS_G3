@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_ErrorCmt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.cbo_ErrorDes = new System.Windows.Forms.ComboBox();
@@ -178,6 +178,7 @@
             this.cbo_ErrorCatogery.Size = new System.Drawing.Size(287, 28);
             this.cbo_ErrorCatogery.TabIndex = 1;
             this.cbo_ErrorCatogery.SelectedIndexChanged += new System.EventHandler(this.cbo_ErrorCatogery_SelectedIndexChanged);
+            this.cbo_ErrorCatogery.SelectedValueChanged += new System.EventHandler(this.cbo_ErrorCatogery_SelectedValueChanged);
             this.cbo_ErrorCatogery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbo_ErrorCatogery_KeyDown);
             // 
             // label26
@@ -228,14 +229,14 @@
             this.grd_Error.AllowUserToAddRows = false;
             this.grd_Error.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.grd_Error.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grd_Error.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.grd_Error.ColumnHeadersHeight = 29;
             this.grd_Error.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SNo,
@@ -390,6 +391,7 @@
             this.Cbo_Task.Size = new System.Drawing.Size(194, 28);
             this.Cbo_Task.TabIndex = 3;
             this.Cbo_Task.SelectedIndexChanged += new System.EventHandler(this.Cbo_Task_SelectedIndexChanged);
+            this.Cbo_Task.SelectedValueChanged += new System.EventHandler(this.Cbo_Task_SelectedValueChanged);
             // 
             // label3
             // 
@@ -752,7 +754,6 @@
             this.ddlExternalNewErrorType.Name = "ddlExternalNewErrorType";
             this.ddlExternalNewErrorType.Size = new System.Drawing.Size(287, 28);
             this.ddlExternalNewErrorType.TabIndex = 90;
-            this.ddlExternalNewErrorType.SelectedIndexChanged += new System.EventHandler(this.btn_ErrorSub_Click);
             // 
             // txtExternalErrorComment
             // 
@@ -861,6 +862,7 @@
             this.ddlExternalErrorCategory.Size = new System.Drawing.Size(287, 28);
             this.ddlExternalErrorCategory.TabIndex = 1;
             this.ddlExternalErrorCategory.SelectedIndexChanged += new System.EventHandler(this.ddlExternalErrorCategory_SelectedIndexChanged);
+            this.ddlExternalErrorCategory.SelectedValueChanged += new System.EventHandler(this.ddlExternalErrorCategory_SelectedValueChanged);
             this.ddlExternalErrorCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddlExternalErrorCategory_KeyDown);
             // 
             // ddlExternalErrorDesc
@@ -894,6 +896,7 @@
             this.ddlExternalTask.Size = new System.Drawing.Size(194, 28);
             this.ddlExternalTask.TabIndex = 3;
             this.ddlExternalTask.SelectedIndexChanged += new System.EventHandler(this.ddlExternalTask_SelectedIndexChanged);
+            this.ddlExternalTask.SelectedValueChanged += new System.EventHandler(this.ddlExternalTask_SelectedValueChanged);
             // 
             // panel7
             // 
@@ -942,14 +945,14 @@
             this.gridExternalError.AllowUserToAddRows = false;
             this.gridExternalError.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.gridExternalError.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridExternalError.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.gridExternalError.ColumnHeadersHeight = 29;
             this.gridExternalError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
