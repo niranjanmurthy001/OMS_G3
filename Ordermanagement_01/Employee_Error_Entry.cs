@@ -512,23 +512,24 @@ namespace Ordermanagement_01
                     Cbo_Task.BackColor = Color.Red;
                     return false;
                 }
-                if (ddl_User.Visible == true)
+                if (chk_Username.Visible == true)
                 {
-                    if (ddl_User.Text == "" || ddl_User.SelectedIndex == 0)
+                    if (ddl_User.Visible == true || ddl_User.Text == "" || ddl_User.SelectedIndex == 0)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            MessageBox.Show("Select User");
+                            ddl_User.BackColor = Color.Red;
+                            return false;
+                        }
+                    }
+                    if (txt_ErrorCmt.Text == "")
                     {
                         SplashScreenManager.CloseForm(false);
-                        MessageBox.Show("Select User");
-                        ddl_User.BackColor = Color.Red;
+                        MessageBox.Show("Enter Error Comments");
+                        txt_ErrorCmt.BackColor = Color.Red;
                         return false;
                     }
-                }
-                if (txt_ErrorCmt.Text == "")
-                {
-                    SplashScreenManager.CloseForm(false);
-                    MessageBox.Show("Enter Error Comments");
-                    txt_ErrorCmt.BackColor = Color.Red;
-                    return false;
-                }                                           
+                                                        
                 return true;
             }
             catch (Exception ex)
@@ -721,7 +722,7 @@ namespace Ordermanagement_01
                             }
                         }
                         SplashScreenManager.CloseForm(false);
-                        MessageBox.Show(grd_Error.Rows[e.RowIndex].Cells[4].Value + "Deleted Successfully");
+                        MessageBox.Show(grd_Error.Rows[e.RowIndex].Cells[4].Value + "  Deleted Successfully");
                         BindgrdError();
                     }
 
@@ -1362,31 +1363,65 @@ namespace Ordermanagement_01
         }
         private bool ValidateExternalErrors()
         {
-            if (ddlExternalErrorCategory.SelectedIndex == 0)
+            try
             {
-                MessageBox.Show("Select error tab");
-                ddlExternalErrorCategory.BackColor = Color.Red;
-                return false;
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (ddlExternalNewErrorType.Text=="" || ddlExternalNewErrorType.SelectedIndex == 0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select error type");
+                    ddlExternalNewErrorType.BackColor = Color.Red;
+                    return false;
+                }
+                if (ddlExternalErrorCategory.Text=="" || ddlExternalErrorCategory.SelectedIndex == 0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select error tab");
+                    ddlExternalErrorCategory.BackColor = Color.Red;
+                    return false;
+                }
+                if (ddlExternalErrorDesc.Text=="" || ddlExternalErrorDesc.SelectedIndex == 0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select error field");
+                    ddlExternalErrorDesc.BackColor = Color.Red;
+                    return false;
+                }
+                if(ddlExternalTask.Text=="" || ddlExternalTask.SelectedIndex==0)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Select task");
+                    ddlExternalTask.BackColor = Color.Red;
+                    return false; 
+                }
+                if(checkBoxExternalUsername.Visible==true)
+                {
+                    
+                        if(ddlExternalUser.Visible == true||ddlExternalUser.Text==""|| ddlExternalUser.SelectedIndex==0)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            MessageBox.Show("Select User");
+                            ddlExternalUser.BackColor = Color.Red;
+                        return false;
+
+                    }
+
+                }
+                // if (string.IsNullOrEmpty(txtExternalErrorComment.Text.Trim())  lblExternalUser)
+                if (txtExternalErrorComment.Text=="")
+                {
+                    SplashScreenManager.CloseForm(false);
+                    MessageBox.Show("Enter error comments");
+                    txtExternalErrorComment.BackColor = Color.Red;
+                    return false;
+                }
+
+                return true;
             }
-            if (ddlExternalErrorDesc.SelectedIndex == 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Select error field");
-                ddlExternalErrorDesc.BackColor = Color.Red;
-                return false;
+                throw ex;
             }
-            if (string.IsNullOrEmpty(txtExternalErrorComment.Text.Trim()))
-            {
-                MessageBox.Show("Enter error comments");
-                txtExternalErrorComment.BackColor = Color.Red;
-                return false;
-            }
-            if (ddlExternalNewErrorType.SelectedIndex == 0)
-            {
-                MessageBox.Show("Select error type");
-                ddlExternalNewErrorType.BackColor = Color.Red;
-                return false;
-            }
-            return true;
         }
         private void btnClearExternalError_Click(object sender, EventArgs e)
         {
