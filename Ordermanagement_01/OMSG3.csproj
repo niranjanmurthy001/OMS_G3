@@ -4826,6 +4826,7 @@
     <Folder Include="Abstractor\Abstractor_Reports\Payment Report\" />
     <Folder Include="bin\Debug\fr\" />
     <Folder Include="bin\Debug\ru\" />
+    <Folder Include="Opp\Opp_Master\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
