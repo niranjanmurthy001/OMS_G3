@@ -289,7 +289,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
+                                SplashScreenManager.CloseForm(false);                               
                                 XtraMessageBox.Show("Client Updated Successfully");
                                 grid_Client_Details();
                                 Clear();
