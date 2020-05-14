@@ -19,6 +19,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
 
+
 namespace Ordermanagement_01.New_Dashboard.Settings
 {
     public partial class Clarification_Setting : DevExpress.XtraEditors.XtraForm
@@ -26,12 +27,19 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         int ID = 0;
         DataAccess dataccess = new DataAccess();
         Hashtable ht = new Hashtable();
+        DropDownistBindClass dbc = new DropDownistBindClass();
         private int emailId;
         int Email_Type;
+        int userid;
+        string User_Role;
+        string ClientName;
+        string ClientId;
 
-        public Clarification_Setting()
+        public Clarification_Setting(int User_id, string USER_ROLE)
         {
             InitializeComponent();
+                userid = User_id;
+            User_Role = USER_ROLE;
             splashScreenManager1.ShowWaitForm();
         }
 
@@ -72,6 +80,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show(ex.Message.ToString());
             }
 
@@ -179,7 +188,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             }
             catch (Exception ex)
             {
-                
+                SplashScreenManager.CloseForm(false);
                 MessageBox.Show(ex.Message.ToString());
             }
             finally
@@ -237,7 +246,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 }
                 catch (Exception ex)
                 {
-                  
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
@@ -265,7 +274,11 @@ namespace Ordermanagement_01.New_Dashboard.Settings
            
             CategoryBindData();
             grid_Email_Address_list();
-          
+            ToEmailBindData();
+            Bind_From_Email();
+            Bind_To_Email();
+            BindClient();
+
             txt_IS.Enabled = true;
             txt_OS.Enabled = true;
             this.ActiveControl = txt_Display_Name;
@@ -339,7 +352,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 }
                 finally
                 {
-                   
+                    SplashScreenManager.CloseForm(false);
                 }
             }
 
@@ -415,7 +428,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailSelect", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailBindData", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -1041,7 +1054,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dictionarybind), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/ToEmailInsert", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailBindData", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -1050,13 +1063,13 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt.Rows.Count >= 0)
                             {
-                                grd_Clarification_Category.DataSource = dt;
-                                grd_Clarification_Category.ForceInitialize();
+                                gridControl1_To_Email.DataSource = dt;
+                                gridControl1_To_Email.ForceInitialize();
 
                             }
                             else
                             {
-                                grd_Clarification_Category.DataSource = null;
+                                gridControl1_To_Email.DataSource = null;
                             }
                         }
                     }
@@ -1088,14 +1101,14 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionaryinsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/ToEmailInsert", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailInsert", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show(txt_ToEmailId.Text + " Updated Successfully ");
+                                XtraMessageBox.Show(txt_ToEmailId.Text + " Inserted Successfully ");
                                 ToEmailBindData();
                                 txt_ToEmailId.Text = "";
                             }
@@ -1122,6 +1135,364 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             txt_ToEmailId.Text = "";
         }
 
-     
+        private void splitContainer3_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // Client Email Settings Tab
+
+        private async void Bind_From_Email()
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                IDictionary<string, object> dict_select = new Dictionary<string, object>();
+                {
+                    dict_select.Add("@Trans", "Bind_From_Email");
+                }
+                var data = new StringContent(JsonConvert.SerializeObject(dict_select), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/BindEmailId", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            //DataRow dr = dt.NewRow();
+                            //dr[0] = "SELECT";
+                           // dt.Rows.InsertAt(dr, 0);
+                            lookupedit_Client_FromId.Properties.DataSource = dt;
+                            lookupedit_Client_FromId.Properties.ValueMember = "From_Email_Id";
+                            lookupedit_Client_FromId.Properties.DisplayMember = "From_Email_Id";
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+
+        private async void Bind_To_Email()
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                IDictionary<string, object> dict_select = new Dictionary<string, object>();
+                {
+                    dict_select.Add("@Trans", "Bind_To_Email");
+                }
+                var data = new StringContent(JsonConvert.SerializeObject(dict_select), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/BindEmailId", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            //DataRow dr = dt.NewRow();
+                            //dr[0] = "SELECT";
+                            //dt.Rows.InsertAt(dr, 0);
+                            lookupedit_Client_ToEmail.Properties.DataSource = dt;
+                            lookupedit_Client_ToEmail.Properties.ValueMember = "To_Email_Id";
+                            lookupedit_Client_ToEmail.Properties.DisplayMember = "To_Email_Id";
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+
+       
+        private async void BindClient()
+        {
+            try
+            {
+               // SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (User_Role == "2")
+                {
+                    var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_CLIENT" }
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/BindClient", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt != null && dt.Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+                                        checkedboxlist_Client.DataSource = dt;
+                                        checkedboxlist_Client.DisplayMember = "Client_Number";
+                                        checkedboxlist_Client.ValueMember = "Client_Id";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+              else  if (User_Role == "1")
+                {
+                    var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_CLIENT" }
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/BindClient", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt != null && dt.Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+                                        checkedboxlist_Client.DataSource = dt;
+                                        checkedboxlist_Client.DisplayMember = "Client_Name";
+                                        checkedboxlist_Client.ValueMember = "Client_Id";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+              //  SplashScreenManager.CloseForm(false);
+            }
+        }
+        private void ddl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool validateClient()
+        {
+            if (checkedboxlist_Client.CheckedItems.Count == 0)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Select Client");
+                return false;
+            }
+            //if (Convert.ToInt32(lookupedit_Client_FromId.EditValue) == 0)
+            //{
+            //    XtraMessageBox.Show("Select From Email Id");
+            //    return false;
+            //}
+            //if (Convert.ToInt32(lookupedit_Client_ToEmail.EditValue) == 0)
+            //{
+            //    XtraMessageBox.Show("Select To Email Id");
+            //    return false;
+            //}
+
+            return true;
+        }
+
+        private void ClearClient()
+        {
+            
+            checkedboxlist_Client.UnCheckAll();
+           
+            lookupedit_Client_FromId.EditValue = 0;
+            lookupedit_Client_ToEmail.ItemIdex = 0;
+        }
+
+        private async void grid_Client()
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictionary = new Dictionary<string, object>()
+                    {
+                        { "@Trans", "SELECT_CLIENT"}
+                    };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailBindData", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt.Rows.Count > 0)
+                            {
+                                gridControl_Client.DataSource = dt;
+                                gridView4.BestFitColumns();
+                            }
+                            else
+                            {
+                                gridControl_Client.DataSource = null;
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        private async void btn_ClientEmailSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int Client = 0;
+                if (btn_ClientEmailSave.Text == "Save" && validateClient() != false)
+                {
+                    DataRowView r1 = checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex) as DataRowView;
+                    Client = Convert.ToInt32(r1["Client_Id"]);
+
+                    var dictionary = new Dictionary<string, object>
+                    {
+                        {"@Trans","Insert_Client" },
+                        {"@Client_Id",Client},
+                        {"@From_Email_Id", lookupedit_Client_FromId.EditValue.ToString()},
+                        {"@To_Email_Id" ,lookupedit_Client_ToEmail.EditValue.ToString()},
+                        {"@Inserted_By",User_Role }
+
+                    };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailInsert", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Client Inserted Successfully");
+                                // grid_Client_Details();
+                                ClearClient();
+                            }
+                        }
+                    }
+                }
+                else if (btn_ClientEmailSave.Text == "Edit" && validateClient() != false)
+                {
+                    DataRowView r1 = checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex) as DataRowView;
+                    Client = Convert.ToInt32(r1["Client_Id"]);
+
+                    var dictionary = new Dictionary<string, object>
+                    {
+                        {"@Trans","Update_Client" },
+                        {"@Client_Id",Client},
+                        {"@From_Email_Id", lookupedit_Client_FromId.EditValue.ToString()},
+                        {"@To_Email_Id" ,lookupedit_Client_ToEmail.EditValue.ToString()},
+                        {"@Inserted_By",User_Role }
+
+                    };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/Clarification_Setting/FromEmailUpdate", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                SplashScreenManager.CloseForm(false);
+                                MessageBox.Show("Client Updated Successfully");
+                                btn_ClientEmailSave.Text = "Save";
+
+                                ClearClient();
+
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+            }
+
+        private void gridView4_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            //        try
+            //        {
+            //            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+            //            if (e.Column.FieldName == "Client_Id")
+            //            {
+            //                btn_ClientEmailSave.Text = "Edit";
+            //                GridView view = gridControl_Client.MainView as GridView;
+            //                var index = view.GetDataRow(view.GetSelectedRows()[0]);
+            //                ddl_Client_Names.EditValue = index.ItemArray[4];
+            //                int _client = Convert.ToInt32(ddl_Client_Names.EditValue);
+            //                Bind_Sub_Clients1(_client);
+            //                Selected_Sub_Client = Convert.ToInt32(index.ItemArray[5]);
+            //                int PT = Convert.ToInt32(index.ItemArray[6]);
+            //                int DT = Convert.ToInt32(index.ItemArray[7]);
+            //                checkedListBox_Subclients.SelectedValue = Selected_Sub_Client;
+            //                checkedListBox_ProjectType.SelectedValue = PT;
+            //                checkedListBox_DeptType.SelectedValue = DT;
+            //            }
+            //            _subclient = checkedListBox_Subclients.SelectedIndex;
+            //            _Projecttype = checkedListBox_ProjectType.SelectedIndex;
+            //            _departmenttype = checkedListBox_DeptType.SelectedIndex;
+            //            checkedListBox_Subclients.SetItemChecked(_subclient, true);
+            //            checkedListBox_ProjectType.SetItemChecked(_Projecttype, true);
+            //            checkedListBox_DeptType.SetItemChecked(_departmenttype, true);
+            //        }
+            //        catch (Exception ex){}
+
+        }
+
+
+
     }
-}
+    }

@@ -750,6 +750,7 @@
             this.ddlExternalNewErrorType.Name = "ddlExternalNewErrorType";
             this.ddlExternalNewErrorType.Size = new System.Drawing.Size(287, 28);
             this.ddlExternalNewErrorType.TabIndex = 90;
+            this.ddlExternalNewErrorType.SelectedIndexChanged += new System.EventHandler(this.ddlExternalNewErrorType_SelectedIndexChanged);
             // 
             // txtExternalErrorComment
             // 
