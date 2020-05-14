@@ -2650,7 +2650,7 @@ namespace Ordermanagement_01
                                 //htorderkb.Add("@Chk_UploadPackage", chk_Upload.Checked);
                                 // htorderkb.Add("@Extension", extension);
                                 htorderkb.Add("@Document_Path", dest);
-                                htorderkb.Add("@Inserted_By", userid);
+                                htorderkb.Add("@Inserted_By", userid);                              
                                 htorderkb.Add("@Inserted_date", DateTime.Now);
                                 dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
                                 break;
@@ -2892,6 +2892,7 @@ namespace Ordermanagement_01
                             File_Count++;
                             htorderkb.Clear();
                             dtorderkb.Clear();
+
                             htorderkb.Add("@Trans", "INSERT");
                             htorderkb.Add("@Instuction", grd_Vendor_Documents.Rows[i].Cells[1].Value.ToString() + " - " + grd_Vendor_Documents.Rows[i].Cells[2].Value.ToString());
                             htorderkb.Add("@Order_ID", OrderId);
