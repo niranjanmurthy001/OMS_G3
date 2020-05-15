@@ -21,6 +21,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
     public partial class Project_Type_OrderTask : DevExpress.XtraEditors.XtraForm
     {
         int Project_type, Task;
+        DataTable _dtLoad = new DataTable();
         public Project_Type_OrderTask()
         {
             InitializeComponent();
@@ -80,11 +81,24 @@ namespace Ordermanagement_01.Opp.Opp_Master
             BindDepartmentType();
             grid_Project_Type_Details();
         }
-
+        private bool Validates()
+        {
+            if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
+            {
+                XtraMessageBox.Show("Select Project_Type");
+                return false;
+            }
+            if (checkedListBoxControl_Task.CheckedItems.Count == 0)
+            {
+                XtraMessageBox.Show("Select Task Type");
+                return false;
+            }
+            return true;
+        }
         private async void btn_Save_Click(object sender, EventArgs e)
         {
             Project_type = Convert.ToInt32(ddl_Project_Type.EditValue);
-            if (btn_Save.Text == "Submit")
+            if (btn_Save.Text == "Submit" && Validates() != false)
             {
                 try
                 {
@@ -136,7 +150,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Update")
+            else if (btn_Save.Text == "Update" && Validates()!=false)
             {
                 try
                 {
@@ -244,8 +258,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if(e.Column.FieldName=="Project_Type")
                 {
                     btn_Save.Text = "Update";
-                    GridView view = grd_projectType.MainView as GridView;
-                    var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                    ddl_Project_Type.Enabled = false;
+                   // GridView view = grd_projectType.MainView as GridView;
+                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                    var row = _dtLoad.AsEnumerable().Where(dr => dr.Field<string>("Project_Type") == e.CellValue.ToString());
+                    var index = row.FirstOrDefault();
                     ddl_Project_Type.EditValue = index.ItemArray[2];
                     int _client = Convert.ToInt32(ddl_Project_Type.EditValue);
                     int Task = Convert.ToInt32(index.ItemArray[3]);
@@ -271,6 +288,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBoxControl_Task.UnCheckAll();
             checkedListBoxControl_Task.SelectedIndex = 0;
             btn_Save.Text = "Submit";
+            ddl_Project_Type.Enabled = true;
         }
 
         private async void grid_Project_Type_Details()
@@ -291,10 +309,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt.Rows.Count > 0)
+                            _dtLoad = JsonConvert.DeserializeObject<DataTable>(result);
+                            //DataTable uniqueCols = dt.DefaultView.ToTable(true, dt.Columns[0].ColumnName);
+                            if (_dtLoad.Rows.Count > 0)
                             {
-                                grd_projectType.DataSource = dt;
+                                //.DefaultView.ToTable(true,dt.Columns[0].ColumnName,dt.Columns[2].ColumnName)
+                                
+                               
+                                grd_projectType.DataSource = _dtLoad.DefaultView.ToTable(true, _dtLoad.Columns[0].ColumnName);
                                 gridView1.BestFitColumns();
                             }
                             else
@@ -319,7 +341,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
         {
-            
+            //btn_Save.Text = "Submit";
             Getdata();
             checkedListBoxControl_Task.UnCheckAll();
             //btn_Clear_Click(sender, e);

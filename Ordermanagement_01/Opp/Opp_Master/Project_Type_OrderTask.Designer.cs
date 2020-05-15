@@ -71,9 +71,9 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(421, 274);
+            this.groupControl1.Size = new System.Drawing.Size(585, 327);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Project_Type_OrderTask";
+            this.groupControl1.Text = "Project_Type_OrderTask_Settings";
             // 
             // tableLayoutPanel1
             // 
@@ -87,7 +87,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(417, 251);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(581, 304);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // grd_projectType
@@ -96,7 +96,7 @@
             this.grd_projectType.Location = new System.Drawing.Point(3, 3);
             this.grd_projectType.MainView = this.gridView1;
             this.grd_projectType.Name = "grd_projectType";
-            this.grd_projectType.Size = new System.Drawing.Size(136, 245);
+            this.grd_projectType.Size = new System.Drawing.Size(193, 298);
             this.grd_projectType.TabIndex = 0;
             this.grd_projectType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -137,9 +137,9 @@
             // 
             this.panelControl1.Controls.Add(this.tableLayoutPanel2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(145, 3);
+            this.panelControl1.Location = new System.Drawing.Point(202, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(269, 245);
+            this.panelControl1.Size = new System.Drawing.Size(376, 298);
             this.panelControl1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -152,11 +152,11 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.3278F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.6722F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.03401F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.96599F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 241);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(372, 294);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelControl2
@@ -168,12 +168,12 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(259, 189);
+            this.panelControl2.Size = new System.Drawing.Size(366, 243);
             this.panelControl2.TabIndex = 0;
             // 
             // ddl_Project_Type
             // 
-            this.ddl_Project_Type.Location = new System.Drawing.Point(103, 31);
+            this.ddl_Project_Type.Location = new System.Drawing.Point(111, 31);
             this.ddl_Project_Type.Name = "ddl_Project_Type";
             this.ddl_Project_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_Project_Type.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -182,7 +182,7 @@
             this.ddl_Project_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Project_Type.Properties.NullText = "Select";
-            this.ddl_Project_Type.Size = new System.Drawing.Size(149, 20);
+            this.ddl_Project_Type.Size = new System.Drawing.Size(227, 20);
             this.ddl_Project_Type.TabIndex = 9;
             this.ddl_Project_Type.EditValueChanged += new System.EventHandler(this.ddl_Project_Type_EditValueChanged);
             // 
@@ -193,9 +193,9 @@
             this.checkedListBoxControl_Task.Appearance.Options.UseFont = true;
             this.checkedListBoxControl_Task.Appearance.Options.UseForeColor = true;
             this.checkedListBoxControl_Task.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedListBoxControl_Task.Location = new System.Drawing.Point(103, 77);
+            this.checkedListBoxControl_Task.Location = new System.Drawing.Point(111, 77);
             this.checkedListBoxControl_Task.Name = "checkedListBoxControl_Task";
-            this.checkedListBoxControl_Task.Size = new System.Drawing.Size(149, 95);
+            this.checkedListBoxControl_Task.Size = new System.Drawing.Size(227, 123);
             this.checkedListBoxControl_Task.TabIndex = 8;
             // 
             // lbl_task
@@ -204,7 +204,7 @@
             this.lbl_task.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.lbl_task.Appearance.Options.UseFont = true;
             this.lbl_task.Appearance.Options.UseForeColor = true;
-            this.lbl_task.Location = new System.Drawing.Point(6, 108);
+            this.lbl_task.Location = new System.Drawing.Point(14, 108);
             this.lbl_task.Name = "lbl_task";
             this.lbl_task.Size = new System.Drawing.Size(36, 17);
             this.lbl_task.TabIndex = 6;
@@ -216,7 +216,7 @@
             this.lbl_Projecttype.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.lbl_Projecttype.Appearance.Options.UseFont = true;
             this.lbl_Projecttype.Appearance.Options.UseForeColor = true;
-            this.lbl_Projecttype.Location = new System.Drawing.Point(4, 31);
+            this.lbl_Projecttype.Location = new System.Drawing.Point(12, 31);
             this.lbl_Projecttype.Name = "lbl_Projecttype";
             this.lbl_Projecttype.Size = new System.Drawing.Size(86, 17);
             this.lbl_Projecttype.TabIndex = 5;
@@ -228,9 +228,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 198);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 252);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(259, 40);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(366, 39);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -239,7 +239,8 @@
             this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
-            this.btn_Clear.Location = new System.Drawing.Point(181, 3);
+            this.btn_Clear.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_Clear.Location = new System.Drawing.Point(288, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(75, 32);
             this.btn_Clear.TabIndex = 0;
@@ -252,7 +253,8 @@
             this.btn_Save.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
-            this.btn_Save.Location = new System.Drawing.Point(100, 3);
+            this.btn_Save.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_Save.Location = new System.Drawing.Point(207, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 32);
             this.btn_Save.TabIndex = 1;
@@ -267,8 +269,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 274);
+            this.ClientSize = new System.Drawing.Size(585, 327);
             this.Controls.Add(this.groupControl1);
+            this.MaximumSize = new System.Drawing.Size(601, 365);
+            this.MinimumSize = new System.Drawing.Size(601, 365);
             this.Name = "Project_Type_OrderTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project_Type_OrderTask";
