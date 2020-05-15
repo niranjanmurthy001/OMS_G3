@@ -1296,6 +1296,11 @@ namespace Ordermanagement_01
             { SplashScreenManager.CloseForm(false); }
         }
 
+        private void ddlExternalNewErrorType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private async void ddlExternalTask_SelectedIndexChanged(object sender, EventArgs e)
         {
            
