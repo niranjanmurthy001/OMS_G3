@@ -1931,6 +1931,12 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\OrderStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\OrderStatus.Designer.cs">
+      <DependentUpon>OrderStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order_Check_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3770,6 +3776,9 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\OrderStatus.resx">
+      <DependentUpon>OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Order_Check_List.resx">
       <DependentUpon>Order_Check_List.cs</DependentUpon>
     </EmbeddedResource>
@@ -4592,6 +4601,7 @@
     <None Include="Resources\logout icon.png" />
     <None Include="Resources\Notificationorange.png" />
     <None Include="Resources\Notification%28w%29.png" />
+    <None Include="Resources\orderStatus.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
@@ -4826,7 +4836,6 @@
     <Folder Include="Abstractor\Abstractor_Reports\Payment Report\" />
     <Folder Include="bin\Debug\fr\" />
     <Folder Include="bin\Debug\ru\" />
-    <Folder Include="Opp\Opp_Master\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
