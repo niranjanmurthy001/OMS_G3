@@ -39,6 +39,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ddlProductType = new DevExpress.XtraEditors.LookUpEdit();
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.chkOrderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -51,7 +52,6 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.ddlProductType = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -61,6 +61,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOrderStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -68,7 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -173,6 +173,17 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(376, 296);
             this.panelControl1.TabIndex = 0;
+            // 
+            // ddlProductType
+            // 
+            this.ddlProductType.Location = new System.Drawing.Point(142, 77);
+            this.ddlProductType.Name = "ddlProductType";
+            this.ddlProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlProductType.Properties.NullText = "Select";
+            this.ddlProductType.Size = new System.Drawing.Size(168, 20);
+            this.ddlProductType.TabIndex = 4;
+            this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating_1);
             // 
             // ddlProjectType
             // 
@@ -308,17 +319,6 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // ddlProductType
-            // 
-            this.ddlProductType.Location = new System.Drawing.Point(142, 77);
-            this.ddlProductType.Name = "ddlProductType";
-            this.ddlProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddlProductType.Properties.NullText = "Select";
-            this.ddlProductType.Size = new System.Drawing.Size(168, 20);
-            this.ddlProductType.TabIndex = 4;
-            this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating_1);
-            // 
             // OrderStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOrderStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -349,7 +350,6 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
