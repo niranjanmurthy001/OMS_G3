@@ -123,6 +123,12 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.gridControl_Client = new DevExpress.XtraGrid.GridControl();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.U_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Client_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Client_Number = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Client_Name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.From_Email_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.To_Email_Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lookupedit_Client_ToEmail = new DevExpress.XtraEditors.LookUpEdit();
             this.lookupedit_Client_FromId = new DevExpress.XtraEditors.LookUpEdit();
             this.label5 = new System.Windows.Forms.Label();
@@ -138,9 +144,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Ordermanagement_01.Masters.WaitForm1), true, true);
-            this.Client_Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.From_Email_Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.To_Email_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
@@ -243,16 +247,16 @@
             this.tabPane1.Controls.Add(this.tabNavigationPage3);
             this.tabPane1.Controls.Add(this.tabNavigationPage4);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Location = new System.Drawing.Point(2, 27);
+            this.tabPane1.Location = new System.Drawing.Point(2, 31);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1,
             this.tabNavigationPage2,
             this.tabNavigationPage3,
             this.tabNavigationPage4});
-            this.tabPane1.RegularSize = new System.Drawing.Size(668, 556);
+            this.tabPane1.RegularSize = new System.Drawing.Size(668, 552);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(668, 556);
+            this.tabPane1.Size = new System.Drawing.Size(668, 552);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -394,20 +398,20 @@
             // 
             // txt_ClarificationCatType
             // 
-            this.txt_ClarificationCatType.Location = new System.Drawing.Point(150, 74);
+            this.txt_ClarificationCatType.Location = new System.Drawing.Point(150, 33);
             this.txt_ClarificationCatType.Name = "txt_ClarificationCatType";
-            this.txt_ClarificationCatType.Size = new System.Drawing.Size(184, 20);
+            this.txt_ClarificationCatType.Size = new System.Drawing.Size(186, 20);
             this.txt_ClarificationCatType.TabIndex = 0;
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(16, 77);
+            this.labelControl1.Location = new System.Drawing.Point(16, 36);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(118, 13);
+            this.labelControl1.Size = new System.Drawing.Size(117, 13);
             this.labelControl1.TabIndex = 48;
             this.labelControl1.Text = "Clarification Category :";
             // 
@@ -1103,6 +1107,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Size = new System.Drawing.Size(640, 446);
             this.splitContainer2.SplitterDistance = 147;
             this.splitContainer2.TabIndex = 3;
@@ -1145,18 +1150,20 @@
             // 
             // txt_ToEmailId
             // 
-            this.txt_ToEmailId.Location = new System.Drawing.Point(164, 74);
+            this.txt_ToEmailId.Location = new System.Drawing.Point(110, 35);
             this.txt_ToEmailId.Name = "txt_ToEmailId";
             this.txt_ToEmailId.Size = new System.Drawing.Size(282, 20);
             this.txt_ToEmailId.TabIndex = 0;
             // 
             // labelControl16
             // 
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.labelControl16.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl16.Appearance.Options.UseFont = true;
             this.labelControl16.Appearance.Options.UseForeColor = true;
-            this.labelControl16.Location = new System.Drawing.Point(86, 77);
+            this.labelControl16.Location = new System.Drawing.Point(32, 38);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(59, 13);
+            this.labelControl16.Size = new System.Drawing.Size(61, 13);
             this.labelControl16.TabIndex = 42;
             this.labelControl16.Text = "To Email Id :";
             // 
@@ -1235,7 +1242,7 @@
             this.tabNavigationPage4.Caption = "Client Email Setting";
             this.tabNavigationPage4.Controls.Add(this.panelControl3);
             this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(650, 511);
+            this.tabNavigationPage4.Size = new System.Drawing.Size(650, 507);
             // 
             // panelControl3
             // 
@@ -1243,7 +1250,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(650, 511);
+            this.panelControl3.Size = new System.Drawing.Size(650, 507);
             this.panelControl3.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -1262,14 +1269,14 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.70297F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(646, 507);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(646, 503);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 55);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 54);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -1287,8 +1294,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.labelControl14);
             this.splitContainer3.Panel2.Controls.Add(this.flowLayoutPanel5);
             this.splitContainer3.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel2_Paint);
-            this.splitContainer3.Size = new System.Drawing.Size(640, 449);
-            this.splitContainer3.SplitterDistance = 148;
+            this.splitContainer3.Size = new System.Drawing.Size(640, 446);
+            this.splitContainer3.SplitterDistance = 242;
             this.splitContainer3.TabIndex = 3;
             // 
             // gridControl_Client
@@ -1297,7 +1304,7 @@
             this.gridControl_Client.Location = new System.Drawing.Point(0, 0);
             this.gridControl_Client.MainView = this.gridView4;
             this.gridControl_Client.Name = "gridControl_Client";
-            this.gridControl_Client.Size = new System.Drawing.Size(144, 445);
+            this.gridControl_Client.Size = new System.Drawing.Size(238, 442);
             this.gridControl_Client.TabIndex = 0;
             this.gridControl_Client.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1305,73 +1312,126 @@
             // gridView4
             // 
             this.gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.U_Id,
             this.Client_Id,
+            this.Client_Number,
+            this.Client_Name,
             this.From_Email_Id,
             this.To_Email_Id});
             this.gridView4.GridControl = this.gridControl_Client;
             this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsBehavior.Editable = false;
             this.gridView4.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView4_RowCellClick);
+            // 
+            // U_Id
+            // 
+            this.U_Id.Caption = "U_Id";
+            this.U_Id.FieldName = "U_Id";
+            this.U_Id.Name = "U_Id";
+            // 
+            // Client_Id
+            // 
+            this.Client_Id.Caption = "Client_Id";
+            this.Client_Id.FieldName = "Client_Id";
+            this.Client_Id.Name = "Client_Id";
+            this.Client_Id.Visible = true;
+            this.Client_Id.VisibleIndex = 0;
+            // 
+            // Client_Number
+            // 
+            this.Client_Number.Caption = "Client_Number";
+            this.Client_Number.FieldName = "Client_Number";
+            this.Client_Number.Name = "Client_Number";
+            this.Client_Number.Visible = true;
+            this.Client_Number.VisibleIndex = 1;
+            // 
+            // Client_Name
+            // 
+            this.Client_Name.Caption = "Client_Name";
+            this.Client_Name.FieldName = "Client_Name";
+            this.Client_Name.Name = "Client_Name";
+            this.Client_Name.Visible = true;
+            this.Client_Name.VisibleIndex = 2;
+            // 
+            // From_Email_Id
+            // 
+            this.From_Email_Id.Caption = "From_Email_Id";
+            this.From_Email_Id.FieldName = "From_Email_Id";
+            this.From_Email_Id.Name = "From_Email_Id";
+            // 
+            // To_Email_Id
+            // 
+            this.To_Email_Id.Caption = "To_Email_Id";
+            this.To_Email_Id.FieldName = "To_Email_Id";
+            this.To_Email_Id.Name = "To_Email_Id";
             // 
             // lookupedit_Client_ToEmail
             // 
-            this.lookupedit_Client_ToEmail.Location = new System.Drawing.Point(130, 245);
+            this.lookupedit_Client_ToEmail.Location = new System.Drawing.Point(109, 211);
             this.lookupedit_Client_ToEmail.Name = "lookupedit_Client_ToEmail";
-            this.lookupedit_Client_ToEmail.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookupedit_Client_ToEmail.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.lookupedit_Client_ToEmail.Properties.Appearance.Options.UseFont = true;
             this.lookupedit_Client_ToEmail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupedit_Client_ToEmail.Properties.NullText = "Select";
             this.lookupedit_Client_ToEmail.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookupedit_Client_ToEmail.Size = new System.Drawing.Size(218, 26);
+            this.lookupedit_Client_ToEmail.Size = new System.Drawing.Size(218, 20);
             this.lookupedit_Client_ToEmail.TabIndex = 94;
             // 
             // lookupedit_Client_FromId
             // 
-            this.lookupedit_Client_FromId.Location = new System.Drawing.Point(130, 195);
+            this.lookupedit_Client_FromId.Location = new System.Drawing.Point(109, 161);
             this.lookupedit_Client_FromId.Name = "lookupedit_Client_FromId";
-            this.lookupedit_Client_FromId.Properties.Appearance.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookupedit_Client_FromId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.lookupedit_Client_FromId.Properties.Appearance.Options.UseFont = true;
             this.lookupedit_Client_FromId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookupedit_Client_FromId.Properties.NullText = "Select";
             this.lookupedit_Client_FromId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookupedit_Client_FromId.Size = new System.Drawing.Size(218, 26);
+            this.lookupedit_Client_FromId.Size = new System.Drawing.Size(218, 20);
             this.lookupedit_Client_FromId.TabIndex = 93;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(43, 43);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.label5.Location = new System.Drawing.Point(22, 38);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 47;
             this.label5.Text = "Client :";
             // 
             // checkedboxlist_Client
             // 
+            this.checkedboxlist_Client.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.checkedboxlist_Client.Appearance.Options.UseFont = true;
             this.checkedboxlist_Client.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedboxlist_Client.Location = new System.Drawing.Point(130, 43);
+            this.checkedboxlist_Client.Location = new System.Drawing.Point(109, 38);
             this.checkedboxlist_Client.Name = "checkedboxlist_Client";
             this.checkedboxlist_Client.Size = new System.Drawing.Size(218, 95);
             this.checkedboxlist_Client.TabIndex = 46;
             // 
             // labelControl15
             // 
+            this.labelControl15.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl15.Appearance.Options.UseFont = true;
             this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(46, 252);
+            this.labelControl15.Location = new System.Drawing.Point(25, 218);
             this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(59, 13);
+            this.labelControl15.Size = new System.Drawing.Size(61, 13);
             this.labelControl15.TabIndex = 45;
             this.labelControl15.Text = "To Email Id :";
             // 
             // labelControl14
             // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.labelControl14.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Appearance.Options.UseForeColor = true;
-            this.labelControl14.Location = new System.Drawing.Point(46, 202);
+            this.labelControl14.Location = new System.Drawing.Point(25, 168);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(71, 13);
+            this.labelControl14.Size = new System.Drawing.Size(75, 13);
             this.labelControl14.TabIndex = 44;
             this.labelControl14.Text = "From Email Id :";
             // 
@@ -1380,9 +1440,9 @@
             this.flowLayoutPanel5.Controls.Add(this.panel5);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 401);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 398);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(484, 44);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(390, 44);
             this.flowLayoutPanel5.TabIndex = 41;
             // 
             // panel5
@@ -1390,7 +1450,7 @@
             this.panel5.Controls.Add(this.btn_ClientEmailDelete);
             this.panel5.Controls.Add(this.btn_ClientEmailClear);
             this.panel5.Controls.Add(this.btn_ClientEmailSave);
-            this.panel5.Location = new System.Drawing.Point(239, 3);
+            this.panel5.Location = new System.Drawing.Point(145, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(242, 39);
             this.panel5.TabIndex = 0;
@@ -1408,6 +1468,7 @@
             this.btn_ClientEmailDelete.Text = "Delete";
             this.btn_ClientEmailDelete.ToolTip = "Delete";
             this.btn_ClientEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_ClientEmailDelete.Click += new System.EventHandler(this.btn_ClientEmailDelete_Click);
             // 
             // btn_ClientEmailClear
             // 
@@ -1422,6 +1483,7 @@
             this.btn_ClientEmailClear.Text = "Clear";
             this.btn_ClientEmailClear.ToolTip = "Clear";
             this.btn_ClientEmailClear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_ClientEmailClear.Click += new System.EventHandler(this.btn_ClientEmailClear_Click);
             // 
             // btn_ClientEmailSave
             // 
@@ -1444,7 +1506,7 @@
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl8.Location = new System.Drawing.Point(3, 3);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(640, 46);
+            this.panelControl8.Size = new System.Drawing.Size(640, 45);
             this.panelControl8.TabIndex = 4;
             // 
             // label4
@@ -1454,10 +1516,11 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(2, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(636, 42);
+            this.label4.Size = new System.Drawing.Size(636, 41);
             this.label4.TabIndex = 2;
             this.label4.Text = "Client E-mail Settings";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // dxErrorProvider1
             // 
@@ -1467,25 +1530,10 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // Client_Id
+            // contextMenuStrip1
             // 
-            this.Client_Id.Caption = "Client_Id";
-            this.Client_Id.FieldName = "Client_Id";
-            this.Client_Id.Name = "Client_Id";
-            this.Client_Id.Visible = true;
-            this.Client_Id.VisibleIndex = 0;
-            // 
-            // From_Email_Id
-            // 
-            this.From_Email_Id.Caption = "From_Email_Id";
-            this.From_Email_Id.FieldName = "From_Email_Id";
-            this.From_Email_Id.Name = "From_Email_Id";
-            // 
-            // To_Email_Id
-            // 
-            this.To_Email_Id.Caption = "To_Email_Id";
-            this.To_Email_Id.FieldName = "To_Email_Id";
-            this.To_Email_Id.Name = "To_Email_Id";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Clarification_Setting
             // 
@@ -1700,7 +1748,11 @@
         private DevExpress.XtraGrid.GridControl gridControl_Client;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Columns.GridColumn Client_Id;
+        private DevExpress.XtraGrid.Columns.GridColumn Client_Name;
+        private DevExpress.XtraGrid.Columns.GridColumn Client_Number;
+        private DevExpress.XtraGrid.Columns.GridColumn U_Id;
         private DevExpress.XtraGrid.Columns.GridColumn From_Email_Id;
         private DevExpress.XtraGrid.Columns.GridColumn To_Email_Id;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
