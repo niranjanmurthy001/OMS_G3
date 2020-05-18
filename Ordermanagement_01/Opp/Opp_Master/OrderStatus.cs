@@ -36,6 +36,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             BindOrderStatusGrid();
             BindProjectType();
+            BindOrderStatus();
 
 
         }
@@ -121,9 +122,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             ddlProductType.Properties.DataSource = dt;
                             ddlProductType.Properties.DisplayMember = "Product_Type";
                             ddlProductType.Properties.ValueMember = "Product_Type_Id";
-                            DevExpress.XtraEditors.Controls.LookUpColumnInfo column;
-                            column = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                            ddlProductType.Properties.Columns.Add(column);
+                            DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                            ddlProductType.Properties.Columns.Add(col);
 
 
 
@@ -165,9 +166,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null & dt.Rows.Count > 0)
                             {
-                                chkOrderStatus.DataSource = dt;
-                                chkOrderStatus.DisplayMember = "Progress_Status";
-                                chkOrderStatus.ValueMember = "Order_Progress_Id";
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    chkOrderStatus.DataSource = dt;
+                                    chkOrderStatus.DisplayMember = "Progress_Status";
+                                    chkOrderStatus.ValueMember = "Order_Progress_Id";
+                                }
 
                             }
 
@@ -304,14 +308,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btnadd.Text == "Edit" && Validate() != false)
+            else if (btnadd.Text == "Edit" /*&& Validate() != false*/)
             {
                 try
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                    DataRowView row = chkOrderStatus.GetItem(chkOrderStatus.SelectedIndex) as DataRowView;
-                    OrderStatusvalue = Convert.ToInt32(row["Order_Progress_Id"]);
+                    //DataRowView row = chkOrderStatus.GetItem(chkOrderStatus.SelectedIndex) as DataRowView;
+                    //OrderStatusvalue = Convert.ToInt32(row["Order_Progress_Id"]);
                     DataTable dtUpdate = new DataTable();
                     dtUpdate.Columns.AddRange(new DataColumn[7]
                       {
@@ -347,51 +351,39 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 BindOrderStatusGrid();
                                 Clear();
                             }
-                            //var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
-                            //using (var httpclient = new HttpClient())
-                            //{
-                            //    var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
-                            //    if (response.IsSuccessStatusCode)
-                            //    {
-                            //        if (response.StatusCode == HttpStatusCode.OK)
+                            ////        }
+
+                            //        var dictionary1 = new Dictionary<string, object>();
                             //        {
-                            //            var result = await response.Content.ReadAsStringAsync();
+                            //            dictionary1.Add("@Trans", "Update");
+                            //            dictionary1.Add("@Product_Type_Id", Productvalue);
+                            //            dictionary1.Add("@User_Id", 1);
+                            //            dictionary1.Add("@Role_Id", 2);
+                            //            dictionary1.Add("@Project_Type_Id", Projectvalue);
+                            //            dictionary1.Add("@OrderStatus_Id", OrderStatusvalue);
 
-                            //            SplashScreenManager.CloseForm(false);
-                            //            XtraMessageBox.Show("OrderStatus Updated Successfully");
-                            //            BindOrderStatusGrid();
-                            //            Clear();
-                            //        }
-
-                            //var dictionary1 = new Dictionary<string, object>();
-                            //{
-                            //    dictionary1.Add("@Trans", "Update");
-                            //    dictionary1.Add("@Product_Type_Id", Productvalue);
-                            //    dictionary1.Add("@User_Id", 1);
-                            //    dictionary1.Add("@Role_Id", 2);
-                            //    dictionary1.Add("@Project_Type_Id", Projectvalue);
-                            //    dictionary1.Add("@OrderStatus_Id", OrderStatusvalue);
-
-                            //};
-                            //var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
-                            //using (var httpclient = new HttpClient())
-                            //{
-                            //    var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
-                            //    if (response.IsSuccessStatusCode)
-                            //    {
-                            //        if (response.StatusCode == HttpStatusCode.OK)
+                            //        };
+                            //        var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
+                            //        using (var httpclient = new HttpClient())
                             //        {
-                            //            var result = await response.Content.ReadAsStringAsync();
+                            //            var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
+                            //            if (response.IsSuccessStatusCode)
+                            //            {
+                            //                if (response.StatusCode == HttpStatusCode.OK)
+                            //                {
+                            //                    var result = await response.Content.ReadAsStringAsync();
 
-                            //            SplashScreenManager.CloseForm(false);
-                            //            XtraMessageBox.Show("OrderStatus Updated Successfully");
-                            //            BindOrderStatusGrid();
-                            //            Clear();
-                            //        }
+                            //                    SplashScreenManager.CloseForm(false);
+                            //                    XtraMessageBox.Show("OrderStatus Updated Successfully");
+                            //                    BindOrderStatusGrid();
+                            //                    Clear();
+                            //                }
 
 
-                            //  }
+                            //          }
 
+
+                            //}
                         }
                     }
                 }
@@ -479,18 +471,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddlProductType.EditValue = index.ItemArray[3];
 
                     int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
-                   // BindProdctType(Project_Id);
+                    BindProdctType(Project_Id);
                     OrderChk = Convert.ToInt32(index.ItemArray[4]);
                     //    object item = view.GetDataRow(view.)
                     //int ordervalve = chkOrderStatus.Items.IndexOf(OrderChk);
                     //    // chkOrderStatus.SetItemCheckState(OrderChk, CheckState.Checked);
-
-                    // chkOrderStatus.SelectedValue = OrderChk;
+                    //int _ordrChk = chkOrderStatus.SelectedIndex;
+                    chkOrderStatus.SelectedValue = OrderChk;
 
                 }
 
-                // _OrderStatus = chkOrderStatus.SelectedIndex;
-                // chkOrderStatus.SetItemChecked(_OrderStatus, true);
+                _OrderStatus = chkOrderStatus.SelectedIndex;
+                chkOrderStatus.SetItemChecked(_OrderStatus, true);
                 ////    var row = dtload.AsEnumerable().Where(dr => dr.Field<string>("Product_Type_Id") == e.CellValue.ToString());
                 ////    var index = row.FirstOrDefault();
                 ////    ddlProjectType.EditValue = index.ItemArray[5];
