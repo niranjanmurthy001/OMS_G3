@@ -69,7 +69,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(554, 413);
+            this.groupControl1.Size = new System.Drawing.Size(630, 413);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Project_Type_Order_Task_Settings";
             // 
@@ -85,7 +85,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(550, 390);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(626, 390);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // grd_projectType
@@ -94,7 +94,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.grd_projectType.Location = new System.Drawing.Point(3, 3);
             this.grd_projectType.MainView = this.gridView1;
             this.grd_projectType.Name = "grd_projectType";
-            this.grd_projectType.Size = new System.Drawing.Size(162, 384);
+            this.grd_projectType.Size = new System.Drawing.Size(185, 384);
             this.grd_projectType.TabIndex = 0;
             this.grd_projectType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -135,12 +135,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.tableLayoutPanel2.Controls.Add(this.panelControl1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(171, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(194, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.9375F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.0625F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(376, 384);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(429, 384);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panelControl1
@@ -152,7 +152,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(370, 324);
+            this.panelControl1.Size = new System.Drawing.Size(423, 324);
             this.panelControl1.TabIndex = 0;
             // 
             // checkedListBoxControl_Task
@@ -164,7 +164,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.checkedListBoxControl_Task.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedListBoxControl_Task.Location = new System.Drawing.Point(156, 129);
             this.checkedListBoxControl_Task.Name = "checkedListBoxControl_Task";
-            this.checkedListBoxControl_Task.Size = new System.Drawing.Size(191, 137);
+            this.checkedListBoxControl_Task.Size = new System.Drawing.Size(243, 137);
             this.checkedListBoxControl_Task.TabIndex = 3;
             // 
             // ddl_Project_Type
@@ -178,7 +178,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.ddl_Project_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Project_Type.Properties.NullText = "Select";
-            this.ddl_Project_Type.Size = new System.Drawing.Size(191, 20);
+            this.ddl_Project_Type.Size = new System.Drawing.Size(243, 20);
             this.ddl_Project_Type.TabIndex = 2;
             this.ddl_Project_Type.EditValueChanged += new System.EventHandler(this.ddl_Project_Type_EditValueChanged);
             // 
@@ -214,7 +214,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 333);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(370, 48);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(423, 48);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -224,7 +224,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_Clear.Location = new System.Drawing.Point(292, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(345, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(75, 41);
             this.btn_Clear.TabIndex = 0;
@@ -238,7 +238,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
             this.btn_Save.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_Save.Location = new System.Drawing.Point(211, 3);
+            this.btn_Save.Location = new System.Drawing.Point(264, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 41);
             this.btn_Save.TabIndex = 1;
@@ -253,9 +253,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 413);
+            this.ClientSize = new System.Drawing.Size(630, 413);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(570, 451);
+            this.MinimumSize = new System.Drawing.Size(646, 451);
             this.Name = "Project_Type_Order_Task";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project_Type_Order_Task";
