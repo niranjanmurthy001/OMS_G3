@@ -26,6 +26,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
     {
         int ID = 0;
         int UID = 0;
+        int _Client;
         DataAccess dataccess = new DataAccess();
         Hashtable ht = new Hashtable();
         DropDownistBindClass dbc = new DropDownistBindClass();
@@ -59,7 +60,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dictionarybind), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindCategory", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindType", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -141,7 +142,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         var data = new StringContent(JsonConvert.SerializeObject(dictionaryinsert), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CategoryInsert", data);
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/InsertType", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
@@ -170,7 +171,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         var data = new StringContent(JsonConvert.SerializeObject(dictionaryedit), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PutAsync(Base_Url.Url + "/ClarificationSetting/CategoryEdit", data);
+                            var response = await httpClient.PutAsync(Base_Url.Url + "/ClarificationSetting/UpdateType", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
@@ -231,7 +232,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionarydelete), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CategoryDelete", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/DeleteType", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -434,7 +435,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailBindData", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindFromEmail", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -477,7 +478,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailCheck", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CheckEmail", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -891,7 +892,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailInsert", data);
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/InsertFromEmail", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
@@ -929,7 +930,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PutAsync(Base_Url.Url + "/ClarificationSetting/FromEmailUpdate", data);
+                            var response = await httpClient.PutAsync(Base_Url.Url + "/ClarificationSetting/UpdateFromEmail", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
@@ -979,7 +980,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailDelete", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/DeleteEmail", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -999,7 +1000,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 else
                 {
 
-                    XtraMessageBox.Show("Please Enter the Email Address");
+                    XtraMessageBox.Show("Please Select the Email Address");
                 }
 
             }
@@ -1060,7 +1061,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dictionarybind), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailBindData", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindToEmail", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -1088,7 +1089,10 @@ namespace Ordermanagement_01.New_Dashboard.Settings
 
         }
 
-
+        private void txt_ToEmailId_Validating_1(object sender, CancelEventArgs e)
+        {
+            Txt_EmailAddress();
+        }
 
         private async void btn_ToEmailSave_Click_1(object sender, EventArgs e)
         {
@@ -1107,7 +1111,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionaryinsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailInsert", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/InsertToEmail", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -1160,7 +1164,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dict_select), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindEmailId", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindFromEmail", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -1201,7 +1205,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 var data = new StringContent(JsonConvert.SerializeObject(dict_select), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindEmailId", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindToEmail", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -1413,7 +1417,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailInsert", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/InsertClient", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -1445,14 +1449,14 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailUpdate", data);
+                        var response = await httpClient.PutAsync(Base_Url.Url + "/ClarificationSetting/UpdateClient", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                MessageBox.Show("Client Updated Successfully");
+                                XtraMessageBox.Show("Client Updated Successfully");
                                 btn_ClientEmailSave.Text = "Save";
                                 BindClientGrid();
                                 ClearClient();
@@ -1479,9 +1483,9 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                if (e.Column.FieldName == "Client_Id")
+                if (e.Column.FieldName == "Client_Name")
                 {
-
+                    checkedboxlist_Client.UnCheckAll();
                     DataRow row = gridView4.GetDataRow(e.RowHandle);
                     UID = int.Parse(row["U_Id"].ToString());
                     btn_ClientEmailSave.Text = "Edit";
@@ -1491,6 +1495,8 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     ////checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex)= row["Client_Name"];
                     //GridView view = gridControl_Client.MainView as GridView;
                     //var index = view.GetDataRow(view.GetSelectedRows()[1]);
+                    //GridView view = gridControl_Client.MainView as GridView;
+                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
                     //int Client = Convert.ToInt32(index.ItemArray[5]);
                     //checkedboxlist_Client.SelectedValue = Convert.ToInt32(Client);
                     //int  _Client = Convert.ToInt32(checkedboxlist_Client.SelectedIndex);
@@ -1519,29 +1525,33 @@ namespace Ordermanagement_01.New_Dashboard.Settings
 
                                     // checkedboxlist_Client.SetItemChecked(1, true);
 
-                                    for (int i = 0; i < checkedboxlist_Client.ItemCount; i++)
-                                    {
+                                    //for (int i = 0; i < checkedboxlist_Client.ItemCount; i++)
+                                    //{
+                                    //if (int.Parse(checkedboxlist_Client.Items[i].Value.ToString()) == ClientID)
+                                    //{
+                                    //    checkedboxlist_Client.SetItemChecked(i, true);
+                                    //}
 
 
+                                    //}
 
-                                        if (int.Parse(checkedboxlist_Client.Items[i].Value.ToString()) == ClientID)
-                                        {
-                                            checkedboxlist_Client.SetItemChecked(i, true);
+                                   
+                                        checkedboxlist_Client.SelectedValue = ClientID;
+                                        _Client = checkedboxlist_Client.SelectedIndex;
+                                        checkedboxlist_Client.SetItemChecked(_Client, true);
+                                    
+                                     
 
-
-
-                                        }
-
-                                    }
-
-
+                                    //int _Client=Convert.ToInt32()
                                 }
                             }
                         }
 
                     }
+                   
 
                 }
+               
             }
             catch (Exception ex)
             {
@@ -1580,7 +1590,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/FromEmailDelete", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/DeleteClient", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -1625,5 +1635,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
 
         }
+
+       
     }
 }
