@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraSplashScreen;
 using Newtonsoft.Json;
@@ -101,6 +102,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Trans" ,"Select_Product_Type"},
                     {"@Project_Type_Id",Project_Id }
                 };
+                //ddlProductType.Properties.DataSource = null;
+                ddlProductType.Properties.Columns.Clear();
+                
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -112,20 +116,23 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null & dt.Rows.Count > 0)
+                           
+                            if (dt != null && dt.Rows.Count > 0)
                             {
                                 DataRow dr = dt.NewRow();
-                                dr[0] = "Select";
                                 dr[1] = 0;
+                                dr[0] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
                             }
+
                             ddlProductType.Properties.DataSource = dt;
                             ddlProductType.Properties.DisplayMember = "Product_Type";
-                            ddlProductType.Properties.ValueMember = "Product_Type_Id";
+                            ddlProductType.Properties.ValueMember = "ProductType_Id";
+                           // ddlProductType.Properties.KeyMember = "Product_Type_Id";
                             DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
                             col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
                             ddlProductType.Properties.Columns.Add(col);
-
+                          
 
 
                         }
@@ -564,6 +571,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+        private void ddlProductType_EditValueChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
