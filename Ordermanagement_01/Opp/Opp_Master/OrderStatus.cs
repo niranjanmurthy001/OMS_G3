@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraSplashScreen;
 using Newtonsoft.Json;
 using Ordermanagement_01.Masters;
@@ -7,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -24,7 +24,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int OrderChk;
         int _OrderStatus;
         int Order_Id;
-        DataTable dtload;
+        DataTable dtload = new DataTable();
         DateTime date = DateTime.Now;
         public OrderStatus()
         {
@@ -228,7 +228,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Select ProjectType");
                 return false;
             }
-            if (Convert.ToInt32(ddlProductType.EditValue) == 0)
+            if (Convert.ToInt32(ddlProductType.ItemIndex) == 0)
             {
                 XtraMessageBox.Show("Please Select ProductType");
                 return false;
@@ -246,8 +246,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private async void btnadd_Click(object sender, EventArgs e)
         {
             Projectvalue = Convert.ToInt32(ddlProjectType.EditValue);
-            Productvalue = Convert.ToInt32(ddlProductType.EditValue);
-
+            Productvalue = Convert.ToInt32(ddlProductType.ItemIndex);
+            int StatusId;
 
             if (btnadd.Text == "Add" && Validate() != false)
             {
@@ -285,6 +285,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
+
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Order Status is Submitted");
                                 BindOrderStatusGrid();
@@ -311,20 +312,30 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     DataRowView row = chkOrderStatus.GetItem(chkOrderStatus.SelectedIndex) as DataRowView;
                     OrderStatusvalue = Convert.ToInt32(row["Order_Progress_Id"]);
-                    var dictionary1 = new Dictionary<string, object>();
+                    DataTable dtUpdate = new DataTable();
+                    dtUpdate.Columns.AddRange(new DataColumn[7]
+                      {
+                        new DataColumn("Product_Type_Id",typeof(int)),
+                        new DataColumn("User_Id",typeof(int)),
+                        new DataColumn("Role_Id",typeof(int)),
+                        new DataColumn("Project_Type_Id",typeof(int)),
+                        new DataColumn("OrderStatus_Id",typeof(int)),
+                        new DataColumn("Status",typeof(int)),
+                        new DataColumn("InsertedDate",typeof(DateTime))
+                    });
+                    foreach (object item in chkOrderStatus.CheckedItems)
                     {
-                        dictionary1.Add("@Trans", "Update");
-                        dictionary1.Add("@Product_Type_Id", Productvalue);
-                        dictionary1.Add("@User_Id", 1);
-                        dictionary1.Add("@Role_Id", 2);
-                        dictionary1.Add("@Project_Type_Id", Projectvalue);
-                        dictionary1.Add("@OrderStatus_Id", OrderStatusvalue);
+                        DataRowView castedItem = item as DataRowView;
+                        string sub = castedItem["Progress_Status"].ToString();
+                        int OrdStatus = Convert.ToInt32(castedItem["Order_Progress_Id"]);
 
-                    };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
+                        dtUpdate.Rows.Add(Productvalue, User_Id, Role_Id, Projectvalue, OrdStatus, 1, date);
+                    }
+
+                    var data = new StringContent(JsonConvert.SerializeObject(dtUpdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
                     {
-                        var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
+                        var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/UpdateOrderStatus", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -336,10 +347,52 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 BindOrderStatusGrid();
                                 Clear();
                             }
+                            //var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
+                            //using (var httpclient = new HttpClient())
+                            //{
+                            //    var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
+                            //    if (response.IsSuccessStatusCode)
+                            //    {
+                            //        if (response.StatusCode == HttpStatusCode.OK)
+                            //        {
+                            //            var result = await response.Content.ReadAsStringAsync();
 
+                            //            SplashScreenManager.CloseForm(false);
+                            //            XtraMessageBox.Show("OrderStatus Updated Successfully");
+                            //            BindOrderStatusGrid();
+                            //            Clear();
+                            //        }
+
+                            //var dictionary1 = new Dictionary<string, object>();
+                            //{
+                            //    dictionary1.Add("@Trans", "Update");
+                            //    dictionary1.Add("@Product_Type_Id", Productvalue);
+                            //    dictionary1.Add("@User_Id", 1);
+                            //    dictionary1.Add("@Role_Id", 2);
+                            //    dictionary1.Add("@Project_Type_Id", Projectvalue);
+                            //    dictionary1.Add("@OrderStatus_Id", OrderStatusvalue);
+
+                            //};
+                            //var data = new StringContent(JsonConvert.SerializeObject(dictionary1), Encoding.UTF8, "application/json");
+                            //using (var httpclient = new HttpClient())
+                            //{
+                            //    var response = await httpclient.PutAsync(Base_Url.Url + "/OrderStatus/Update", data);
+                            //    if (response.IsSuccessStatusCode)
+                            //    {
+                            //        if (response.StatusCode == HttpStatusCode.OK)
+                            //        {
+                            //            var result = await response.Content.ReadAsStringAsync();
+
+                            //            SplashScreenManager.CloseForm(false);
+                            //            XtraMessageBox.Show("OrderStatus Updated Successfully");
+                            //            BindOrderStatusGrid();
+                            //            Clear();
+                            //        }
+
+
+                            //  }
 
                         }
-
                     }
                 }
                 catch (Exception ex)
@@ -418,34 +471,35 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if (e.Column.FieldName == "Product_Type")
                 {
                     btnadd.Text = "Edit";
-                    //GridView view = grdOrderStatus.MainView as GridView;
-                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
-                    var row = dtload.AsEnumerable().Where(dr => dr.Field<string>("Product_Type_Id") == e.CellValue.ToString());
-                    var index = row.FirstOrDefault();
+                    GridView view = grdOrderStatus.MainView as GridView;
+                    var index = view.GetDataRow(view.GetSelectedRows()[0]);
+
+
                     ddlProjectType.EditValue = index.ItemArray[5];
                     ddlProductType.EditValue = index.ItemArray[3];
-                    int OrderChk = Convert.ToInt32(index.ItemArray[4]);
-                    chkOrderStatus.SelectedValue = OrderChk;
+
+                    int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
+                   // BindProdctType(Project_Id);
+                    OrderChk = Convert.ToInt32(index.ItemArray[4]);
+                    //    object item = view.GetDataRow(view.)
+                    //int ordervalve = chkOrderStatus.Items.IndexOf(OrderChk);
+                    //    // chkOrderStatus.SetItemCheckState(OrderChk, CheckState.Checked);
+
+                    // chkOrderStatus.SelectedValue = OrderChk;
+
                 }
-                int _task = chkOrderStatus.SelectedIndex;
-                chkOrderStatus.SetItemChecked(_task, true);
 
-                //ddlProjectType.EditValue = index.ItemArray[5];
-                //ddlProductType.EditValue = index.ItemArray[3];
-
-                //int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
-                //BindProdctType(Project_Id);
-                //OrderChk = Convert.ToInt32(index.ItemArray[4]);
-                //object item = view.GetDataRow(view.)
-                //int ordervalve = chkOrderStatus.Items.IndexOf(OrderChk);
-                //// chkOrderStatus.SetItemCheckState(OrderChk, CheckState.Checked);
-
-                //chkOrderStatus.SelectedValue = OrderChk;
-
-
-                //_OrderStatus = chkOrderStatus.SelectedIndex;
-                //chkOrderStatus.SetItemChecked(_OrderStatus, true);
-
+                // _OrderStatus = chkOrderStatus.SelectedIndex;
+                // chkOrderStatus.SetItemChecked(_OrderStatus, true);
+                ////    var row = dtload.AsEnumerable().Where(dr => dr.Field<string>("Product_Type_Id") == e.CellValue.ToString());
+                ////    var index = row.FirstOrDefault();
+                ////    ddlProjectType.EditValue = index.ItemArray[5];
+                ////    ddlProductType.EditValue = index.ItemArray[3];
+                ////    int OrderChk = Convert.ToInt32(index.ItemArray[4]);
+                ////    chkOrderStatus.SelectedValue = OrderChk;
+                ////}
+                ////    int _task = chkOrderStatus.SelectedIndex;
+                ////chkOrderStatus.SetItemChecked(_task, true);
 
             }
             catch (Exception ex)

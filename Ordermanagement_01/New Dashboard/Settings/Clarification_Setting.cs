@@ -1332,7 +1332,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             checkedboxlist_Client.UnCheckAll();
            
             lookupedit_Client_FromId.EditValue = 0;
-            lookupedit_Client_ToEmail.ItemIdex = 0;
+            lookupedit_Client_ToEmail.EditValue= 0;
         }
 
         private async void grid_Client()
