@@ -1107,7 +1107,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
+            //this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Size = new System.Drawing.Size(640, 446);
             this.splitContainer2.SplitterDistance = 147;
             this.splitContainer2.TabIndex = 3;
@@ -1468,7 +1468,7 @@
             this.btn_ClientEmailDelete.Text = "Delete";
             this.btn_ClientEmailDelete.ToolTip = "Delete";
             this.btn_ClientEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            this.btn_ClientEmailDelete.Click += new System.EventHandler(this.btn_ClientEmailDelete_Click);
+            //this.btn_ClientEmailDelete.Click += new System.EventHandler(this.btn_ClientEmailDelete_Click);
             // 
             // btn_ClientEmailClear
             // 
@@ -1483,7 +1483,7 @@
             this.btn_ClientEmailClear.Text = "Clear";
             this.btn_ClientEmailClear.ToolTip = "Clear";
             this.btn_ClientEmailClear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            this.btn_ClientEmailClear.Click += new System.EventHandler(this.btn_ClientEmailClear_Click);
+            //this.btn_ClientEmailClear.Click += new System.EventHandler(this.btn_ClientEmailClear_Click);
             // 
             // btn_ClientEmailSave
             // 
@@ -1520,7 +1520,7 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Client E-mail Settings";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            //this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // dxErrorProvider1
             // 

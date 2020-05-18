@@ -1937,6 +1937,12 @@
     <Compile Include="Opp\Opp_Master\OrderStatus.Designer.cs">
       <DependentUpon>OrderStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.Designer.cs">
+      <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order_Check_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3778,6 +3784,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\OrderStatus.resx">
       <DependentUpon>OrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">
+      <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order_Check_List.resx">
       <DependentUpon>Order_Check_List.cs</DependentUpon>
