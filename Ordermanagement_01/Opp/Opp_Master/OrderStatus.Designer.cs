@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.grdOrderStatus = new DevExpress.XtraGrid.GridControl();
@@ -51,7 +50,7 @@
             this.btnadd = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -73,6 +72,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.orderStatus;
             this.groupControl1.Controls.Add(this.splitContainerControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
@@ -84,13 +84,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 20);
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 37);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.grdOrderStatus);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(575, 411);
+            this.splitContainerControl1.Size = new System.Drawing.Size(575, 394);
             this.splitContainerControl1.SplitterPosition = 188;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -101,7 +101,7 @@
             this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
             this.grdOrderStatus.MainView = this.gridView1;
             this.grdOrderStatus.Name = "grdOrderStatus";
-            this.grdOrderStatus.Size = new System.Drawing.Size(188, 411);
+            this.grdOrderStatus.Size = new System.Drawing.Size(188, 394);
             this.grdOrderStatus.TabIndex = 7;
             this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -157,7 +157,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48864F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.51136F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(382, 411);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(382, 394);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -169,9 +169,9 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 54);
+            this.panelControl1.Location = new System.Drawing.Point(3, 51);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(376, 296);
+            this.panelControl1.Size = new System.Drawing.Size(376, 282);
             this.panelControl1.TabIndex = 0;
             // 
             // ddlProductType
@@ -203,7 +203,7 @@
             this.chkOrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.chkOrderStatus.Location = new System.Drawing.Point(142, 118);
             this.chkOrderStatus.Name = "chkOrderStatus";
-            this.chkOrderStatus.Size = new System.Drawing.Size(168, 172);
+            this.chkOrderStatus.Size = new System.Drawing.Size(168, 159);
             this.chkOrderStatus.TabIndex = 3;
             this.chkOrderStatus.Validating += new System.ComponentModel.CancelEventHandler(this.chkOrderStatus_Validating);
             // 
@@ -249,7 +249,7 @@
             this.panelControl2.Controls.Add(this.btnClear);
             this.panelControl2.Controls.Add(this.btnadd);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 356);
+            this.panelControl2.Location = new System.Drawing.Point(3, 339);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(376, 52);
             this.panelControl2.TabIndex = 1;
@@ -299,7 +299,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 3);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(376, 45);
+            this.panelControl3.Size = new System.Drawing.Size(376, 42);
             this.panelControl3.TabIndex = 2;
             // 
             // lblHeader
