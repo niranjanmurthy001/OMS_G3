@@ -72,7 +72,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2010 Silver";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // groupControl1
             // 
@@ -80,7 +80,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(579, 433);
+            this.groupControl1.Size = new System.Drawing.Size(944, 433);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "OrderStatus";
             // 
@@ -93,7 +93,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(575, 410);
+            this.splitContainerControl1.Size = new System.Drawing.Size(940, 410);
             this.splitContainerControl1.SplitterPosition = 235;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -160,11 +160,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48864F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.51136F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(334, 410);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(693, 410);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
             // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.panelControl1.Controls.Add(this.ddlProductType);
             this.panelControl1.Controls.Add(this.ddlProjectType);
             this.panelControl1.Controls.Add(this.chkOrderStatus);
@@ -174,7 +175,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 56);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(328, 308);
+            this.panelControl1.Size = new System.Drawing.Size(687, 308);
             this.panelControl1.TabIndex = 0;
             // 
             // ddlProductType
@@ -186,7 +187,6 @@
             this.ddlProductType.Properties.NullText = "Select";
             this.ddlProductType.Size = new System.Drawing.Size(168, 20);
             this.ddlProductType.TabIndex = 4;
-           // this.ddlProductType.EditValueChanged += new System.EventHandler(this.ddlProductType_EditValueChanged);
             this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating_1);
             // 
             // ddlProjectType
@@ -255,7 +255,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 370);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(328, 37);
+            this.panelControl2.Size = new System.Drawing.Size(687, 37);
             this.panelControl2.TabIndex = 1;
             // 
             // btn_Delete
@@ -265,7 +265,7 @@
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Delete.Location = new System.Drawing.Point(229, 2);
+            this.btn_Delete.Location = new System.Drawing.Point(588, 2);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(97, 33);
             this.btn_Delete.TabIndex = 6;
@@ -278,7 +278,7 @@
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
-            this.btnClear.Location = new System.Drawing.Point(116, 2);
+            this.btnClear.Location = new System.Drawing.Point(119, 2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 33);
             this.btnClear.TabIndex = 5;
@@ -305,7 +305,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 3);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(328, 47);
+            this.panelControl3.Size = new System.Drawing.Size(687, 47);
             this.panelControl3.TabIndex = 2;
             // 
             // lblHeader
@@ -315,7 +315,7 @@
             this.lblHeader.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.lblHeader.Appearance.Options.UseFont = true;
             this.lblHeader.Appearance.Options.UseForeColor = true;
-            this.lblHeader.Location = new System.Drawing.Point(84, 11);
+            this.lblHeader.Location = new System.Drawing.Point(263, 11);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(200, 23);
             this.lblHeader.TabIndex = 0;
@@ -329,10 +329,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 433);
+            this.ClientSize = new System.Drawing.Size(944, 433);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(595, 471);
-            this.MinimumSize = new System.Drawing.Size(557, 471);
+            this.MaximumSize = new System.Drawing.Size(960, 471);
+            this.MinimumSize = new System.Drawing.Size(607, 471);
             this.Name = "Project_Type_OrderStatus_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderStatus";
