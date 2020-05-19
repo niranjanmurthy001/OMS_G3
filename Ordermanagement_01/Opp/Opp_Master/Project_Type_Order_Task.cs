@@ -22,6 +22,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
     {
         int Project_type, Task;
         DataTable _dtLoad = new DataTable();
+        int _Inserted_By;
+        DateTime _Inserted_Date;    
         public Project_Type_Order_Task()
         {
             InitializeComponent();
@@ -105,11 +107,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     DataRowView r1 = checkedListBoxControl_Task.GetItem(checkedListBoxControl_Task.SelectedIndex) as DataRowView;
                     Task = Convert.ToInt32(r1["Order_Status_ID"]);
                     DataTable dtmulti = new DataTable();
-                    dtmulti.Columns.AddRange(new DataColumn[4]
+                    dtmulti.Columns.AddRange(new DataColumn[5]
                     {
                         new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Order_Task_ID",typeof(int)),
                         new  DataColumn("Status",typeof(int)),
+                        new DataColumn("Inserted_By",typeof(int)),
                         new DataColumn("Inserted_Date",typeof(DateTime))
                     });
                     foreach (object itemChecked in checkedListBoxControl_Task.CheckedItems)
@@ -119,8 +122,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int Task = Convert.ToInt32(castedItem["Order_Status_ID"]);
                         int projecttype = Project_type;
                         int status = 1;
+                        int _Inserted_By = 1;
                         DateTime date = DateTime.Now;
-                        dtmulti.Rows.Add(projecttype, Task, status, date);
+                        dtmulti.Rows.Add(projecttype, Task, status, _Inserted_By, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
@@ -163,10 +167,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     //{"@Order_Task_Id", Task}
                     //};
                     DataTable dtmulti1 = new DataTable();
-                    dtmulti1.Columns.AddRange(new DataColumn[3]
+                    dtmulti1.Columns.AddRange(new DataColumn[7]
                     {
                         new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Order_Task_ID",typeof(int)),
+                        new DataColumn("Status",typeof(int)),
+                        new DataColumn("Inserted_By",typeof(int)),
+                        new DataColumn("Inserted_Date",typeof(DateTime)),
+                         new DataColumn ("Modified_By",typeof(int)),
                         new DataColumn("Modified_Date",typeof(DateTime))
                     });
                     foreach (object itemChecked in checkedListBoxControl_Task.CheckedItems)
@@ -175,8 +183,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         string sub = castedItem["Order_Status"].ToString();
                         int Task = Convert.ToInt32(castedItem["Order_Status_ID"]);
                         int projecttype = Project_type;
+                        int _status = 1;
+                        int User_Id = _Inserted_By;
+                        DateTime _Inerted_date = _Inserted_Date;
                         DateTime date = DateTime.Now;
-                        dtmulti1.Rows.Add(projecttype, Task, date);
+                        int _Modified_By = 0;
+                        dtmulti1.Rows.Add(projecttype, Task,_status, User_Id,_Inerted_date, _Modified_By, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti1), Encoding.UTF8, "application/json");
@@ -317,6 +329,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
 
                                 grd_projectType.DataSource = _dtLoad.DefaultView.ToTable(true, _dtLoad.Columns[0].ColumnName);
+                                _Inserted_By = Convert.ToInt32(_dtLoad.Rows[0]["Inserted_By"].ToString());
+                                _Inserted_Date = Convert.ToDateTime(_dtLoad.Rows[0]["Inserted_Date"].ToString());
                                 gridView1.BestFitColumns();
                             }
                             else
