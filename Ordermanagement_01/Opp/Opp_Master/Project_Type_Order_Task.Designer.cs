@@ -81,11 +81,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.tableLayoutPanel1.Controls.Add(this.grd_projectType, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 22);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(626, 389);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(626, 390);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // grd_projectType
@@ -94,7 +94,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.grd_projectType.Location = new System.Drawing.Point(3, 3);
             this.grd_projectType.MainView = this.gridView1;
             this.grd_projectType.Name = "grd_projectType";
-            this.grd_projectType.Size = new System.Drawing.Size(185, 383);
+            this.grd_projectType.Size = new System.Drawing.Size(185, 384);
             this.grd_projectType.TabIndex = 0;
             this.grd_projectType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -140,7 +140,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.9375F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.0625F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(429, 383);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(429, 384);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panelControl1
@@ -152,7 +152,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(423, 323);
+            this.panelControl1.Size = new System.Drawing.Size(423, 324);
             this.panelControl1.TabIndex = 0;
             // 
             // checkedListBoxControl_Task
@@ -212,7 +212,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 332);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 333);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(423, 48);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -244,6 +244,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save.TabIndex = 1;
             this.btn_Save.Text = "Submit";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2010 Silver";
             // 
             // Project_Type_Order_Task
             // 

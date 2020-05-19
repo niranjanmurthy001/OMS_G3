@@ -1931,11 +1931,11 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_Master\OrderStatus.cs">
+    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Opp\Opp_Master\OrderStatus.Designer.cs">
-      <DependentUpon>OrderStatus.cs</DependentUpon>
+    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.Designer.cs">
+      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.cs">
       <SubType>Form</SubType>
@@ -3782,8 +3782,8 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\OrderStatus.resx">
-      <DependentUpon>OrderStatus.cs</DependentUpon>
+    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx">
+      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
