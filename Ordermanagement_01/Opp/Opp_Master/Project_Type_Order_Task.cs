@@ -23,7 +23,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Project_type, Task;
         DataTable _dtLoad = new DataTable();
         int _Inserted_By;
-        DateTime _Inserted_Date;
+        DateTime _Inserted_Date;    
         public Project_Type_Order_Task()
         {
             InitializeComponent();
