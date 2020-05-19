@@ -130,7 +130,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             {
                 if (ValidateCategory() != false)
                 {
-                    if (btn_ClarificationSubmit.Text == "Submit")
+                    if (btn_ClarificationSubmit.Text == "Save")
                     {
                         // splashScreenManager1.ShowWaitForm();
                         var dictionaryinsert = new Dictionary<string, object>();
@@ -149,7 +149,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show(txt_ClarificationCatType.Text + " Updated Successfully ");
+                                    XtraMessageBox.Show(txt_ClarificationCatType.Text + " Inserted Successfully ");
                                     BindCategory();
                                     ClearCategory();
                                 }
@@ -179,7 +179,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show(" Edited Successfully ");
-                                    btn_ClarificationSubmit.Text = "Submit";
+                                    btn_ClarificationSubmit.Text = "Save";
                                     BindCategory();
                                     ClearCategory();
 
@@ -205,7 +205,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         private void btn_Clear_Click_1(object sender, EventArgs e)
         {
             ClearCategory();
-            btn_ClarificationSubmit.Text = "Submit";
+            btn_ClarificationSubmit.Text = "Save";
         }
 
         private async void repositoryItemHyperLinkEdit1_Click_1(object sender, EventArgs e)
@@ -286,14 +286,16 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             if (User_Role == "1")
             {
                 gridView4.Columns[1].Visible = true;
+                gridView4.Columns[3].Visible = true;
                 gridView4.Columns[2].Visible = false;
 
 
             }
             if (User_Role == "2")
             {
+                gridView4.Columns[1].Visible = true;
                 gridView4.Columns[2].Visible = true;
-                gridView4.Columns[1].Visible = false;
+                gridView4.Columns[3].Visible = false;
 
 
             }
@@ -586,7 +588,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             return true;
         }
 
-
+        
 
         private void btn_TestConnectionSetting_Click(object sender, EventArgs e)
         {
@@ -1049,6 +1051,48 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             Txt_ToEmailAddress();
         }
 
+
+        public async Task<bool> CheckEmail()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+
+                if (txt_FromEmailId.Text != "")
+                {
+                    var dictionary = new Dictionary<string, object>()
+                {
+                    { "@Trans", "To_EmailCheck" },
+                    { "@To_Email_Id", txt_ToEmailId.Text.Trim()}
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CheckEmail", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                if (count > 0)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("E-mail Already Exists");
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private async void ToEmailBindData()
         {
             try
@@ -1094,11 +1138,22 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             Txt_EmailAddress();
         }
 
+        private bool validateToEmail()
+        {
+             if (txt_ToEmailId.Text == "")
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Enter Email_Address");
+                txt_ToEmailId.Focus();
+                return false;
+            }
+            return true;
+        }
         private async void btn_ToEmailSave_Click_1(object sender, EventArgs e)
         {
             try
             {
-                if (txt_ToEmailId.Text != "")
+                if (validateToEmail()!=false && (await Usercheck()) != false)
                 {
 
 
@@ -1156,6 +1211,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             try
             {
+                
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 IDictionary<string, object> dict_select = new Dictionary<string, object>();
                 {
@@ -1197,6 +1253,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             try
             {
+                
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 IDictionary<string, object> dict_select = new Dictionary<string, object>();
                 {
@@ -1239,6 +1296,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             try
             {
+                
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (User_Role == "2")
                 {
@@ -1324,11 +1382,13 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             }
             if (lookupedit_Client_FromId.EditValue == null)
             {
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Select From Email Id");
                 return false;
             }
             if (lookupedit_Client_ToEmail.EditValue == null)
             {
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Select To Email Id");
                 return false;
             }
@@ -1483,24 +1543,12 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                if (e.Column.FieldName == "Client_Name")
+                if (e.Column.FieldName == "Client_Id")
                 {
                     checkedboxlist_Client.UnCheckAll();
-                    DataRow row = gridView4.GetDataRow(e.RowHandle);
-                    UID = int.Parse(row["U_Id"].ToString());
                     btn_ClientEmailSave.Text = "Edit";
-
-                    // checkedboxlist_Client.SelectedValue = row["Client_Name"];
-                    ////checkedboxlist_Client.SelectedValue = row["Client_Name"];
-                    ////checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex)= row["Client_Name"];
-                    //GridView view = gridControl_Client.MainView as GridView;
-                    //var index = view.GetDataRow(view.GetSelectedRows()[1]);
-                    //GridView view = gridControl_Client.MainView as GridView;
-                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
-                    //int Client = Convert.ToInt32(index.ItemArray[5]);
-                    //checkedboxlist_Client.SelectedValue = Convert.ToInt32(Client);
-                    //int  _Client = Convert.ToInt32(checkedboxlist_Client.SelectedIndex);
-                    //checkedboxlist_Client.SetItemChecked(_Client, true);
+                    DataRow row = gridView4.GetDataRow(e.RowHandle);
+                    UID = int.Parse(row["U_Id"].ToString());             
                     int ClientID = int.Parse(row["Client_Id"].ToString());
                     var dictionary = new Dictionary<string, object>
                     {
@@ -1531,18 +1579,11 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                     //{
                                     //    checkedboxlist_Client.SetItemChecked(i, true);
                                     //}
-
-
-                                    //}
-
-                                   
+                                    //}                                   
                                         checkedboxlist_Client.SelectedValue = ClientID;
                                         _Client = checkedboxlist_Client.SelectedIndex;
                                         checkedboxlist_Client.SetItemChecked(_Client, true);
-                                    
-                                     
 
-                                    //int _Client=Convert.ToInt32()
                                 }
                             }
                         }
@@ -1563,14 +1604,15 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 SplashScreenManager.CloseForm(false);
             }
 
-        }
+        } 
 
-        private void btn_ClientEmailClear_Click(object sender, EventArgs e)
+        private async void btn_ClientEmailClear_Click_1(object sender, EventArgs e)
         {
+            BindClientGrid();
             ClearClient();
         }
 
-        private async void btn_ClientEmailDelete_Click(object sender, EventArgs e)
+        private async void btn_ClientEmailDelete_Click_1(object sender, EventArgs e)
         {
             string message = "Do you want to delete?";
             string title = "Close Window";
@@ -1625,17 +1667,5 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 this.Close();
             }
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-       
     }
 }
