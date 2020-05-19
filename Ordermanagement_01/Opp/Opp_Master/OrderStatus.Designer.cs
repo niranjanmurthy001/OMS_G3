@@ -71,6 +71,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
             // groupControl1
             // 
             this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.orderStatus;
@@ -85,13 +89,13 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 47);
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 41);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.grdOrderStatus);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(575, 384);
+            this.splitContainerControl1.Size = new System.Drawing.Size(575, 390);
             this.splitContainerControl1.SplitterPosition = 188;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -102,7 +106,7 @@
             this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
             this.grdOrderStatus.MainView = this.gridView1;
             this.grdOrderStatus.Name = "grdOrderStatus";
-            this.grdOrderStatus.Size = new System.Drawing.Size(188, 384);
+            this.grdOrderStatus.Size = new System.Drawing.Size(188, 390);
             this.grdOrderStatus.TabIndex = 7;
             this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -158,7 +162,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48864F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.51136F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(382, 384);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 390);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -170,9 +174,9 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 50);
+            this.panelControl1.Location = new System.Drawing.Point(3, 51);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(376, 273);
+            this.panelControl1.Size = new System.Drawing.Size(369, 278);
             this.panelControl1.TabIndex = 0;
             // 
             // ddlProductType
@@ -251,9 +255,9 @@
             this.panelControl2.Controls.Add(this.btnClear);
             this.panelControl2.Controls.Add(this.btnadd);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 329);
+            this.panelControl2.Location = new System.Drawing.Point(3, 335);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(376, 52);
+            this.panelControl2.Size = new System.Drawing.Size(369, 52);
             this.panelControl2.TabIndex = 1;
             // 
             // btn_Delete
@@ -301,7 +305,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 3);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(376, 41);
+            this.panelControl3.Size = new System.Drawing.Size(369, 42);
             this.panelControl3.TabIndex = 2;
             // 
             // lblHeader
@@ -311,7 +315,7 @@
             this.lblHeader.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.lblHeader.Appearance.Options.UseFont = true;
             this.lblHeader.Appearance.Options.UseForeColor = true;
-            this.lblHeader.Location = new System.Drawing.Point(108, 11);
+            this.lblHeader.Location = new System.Drawing.Point(104, 11);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(200, 23);
             this.lblHeader.TabIndex = 0;
