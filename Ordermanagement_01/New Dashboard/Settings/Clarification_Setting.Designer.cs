@@ -247,16 +247,16 @@
             this.tabPane1.Controls.Add(this.tabNavigationPage3);
             this.tabPane1.Controls.Add(this.tabNavigationPage4);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Location = new System.Drawing.Point(2, 33);
+            this.tabPane1.Location = new System.Drawing.Point(2, 27);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1,
             this.tabNavigationPage2,
             this.tabNavigationPage3,
             this.tabNavigationPage4});
-            this.tabPane1.RegularSize = new System.Drawing.Size(668, 552);
+            this.tabPane1.RegularSize = new System.Drawing.Size(668, 556);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(668, 550);
+            this.tabPane1.Size = new System.Drawing.Size(668, 556);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -1107,7 +1107,6 @@
             this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
-            //this.splitContainer2.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel2_Paint);
             this.splitContainer2.Size = new System.Drawing.Size(640, 446);
             this.splitContainer2.SplitterDistance = 147;
             this.splitContainer2.TabIndex = 3;
@@ -1465,7 +1464,6 @@
             this.btn_ClientEmailDelete.Text = "Delete";
             this.btn_ClientEmailDelete.ToolTip = "Delete";
             this.btn_ClientEmailDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            //this.btn_ClientEmailDelete.Click += new System.EventHandler(this.btn_ClientEmailDelete_Click);
             // 
             // btn_ClientEmailClear
             // 
@@ -1480,7 +1478,6 @@
             this.btn_ClientEmailClear.Text = "Clear";
             this.btn_ClientEmailClear.ToolTip = "Clear";
             this.btn_ClientEmailClear.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            //this.btn_ClientEmailClear.Click += new System.EventHandler(this.btn_ClientEmailClear_Click);
             // 
             // btn_ClientEmailSave
             // 
@@ -1517,7 +1514,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Client E-mail Settings";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // dxErrorProvider1
             // 

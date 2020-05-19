@@ -347,7 +347,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             //btn_Clear_Click(sender, e);
         }
 
-      
         private async void Getdata()
         {
             int INdex = Convert.ToInt32(ddl_Project_Type.EditValue);
