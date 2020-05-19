@@ -23,12 +23,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Role_Id;
         int OrderChk;
         int _OrderStatus;
-        int Order_Id;
-        DataTable dtload = new DataTable();
+      
+      
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
-        public Project_Type_OrderStatus_Settings()
+        public Project_Type_OrderStatus_Settings(int user_id,int roleid)
         {
+            User_Id = user_id;
+            Role_Id = roleid;
             InitializeComponent();
 
         }
