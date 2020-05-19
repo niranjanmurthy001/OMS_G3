@@ -49,6 +49,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -122,7 +124,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.Order_Task});
+            this.Order_Task,
+            this.gridColumn2,
+            this.gridColumn3});
             this.gridView1.GridControl = this.grd_projectType;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
@@ -281,6 +285,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Inserted By";
+            this.gridColumn2.FieldName = "Inserted_By";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Inserted Date";
+            this.gridColumn3.FieldName = "Inserted_Date";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
             // Project_Type_Order_Task
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,5 +347,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }
