@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControlImport = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -43,7 +42,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnErrors = new DevExpress.XtraEditors.SimpleButton();
             this.btnImport = new DevExpress.XtraEditors.SimpleButton();
-            //this.xtraFileDialog = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlImport)).BeginInit();
             this.groupControlImport.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -77,13 +75,13 @@
             this.tableLayoutPanel1.Controls.Add(this.gridControlOrders, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panelControl2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(980, 459);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(980, 456);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -106,7 +104,7 @@
             this.labelControlProjectType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControlProjectType.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControlProjectType.Appearance.Options.UseFont = true;
-            this.labelControlProjectType.Location = new System.Drawing.Point(587, 9);
+            this.labelControlProjectType.Location = new System.Drawing.Point(587, 8);
             this.labelControlProjectType.Name = "labelControlProjectType";
             this.labelControlProjectType.Size = new System.Drawing.Size(77, 17);
             this.labelControlProjectType.TabIndex = 27;
@@ -189,7 +187,7 @@
             this.gridControlOrders.Location = new System.Drawing.Point(3, 45);
             this.gridControlOrders.MainView = this.gridViewOrders;
             this.gridControlOrders.Name = "gridControlOrders";
-            this.gridControlOrders.Size = new System.Drawing.Size(974, 369);
+            this.gridControlOrders.Size = new System.Drawing.Size(974, 366);
             this.gridControlOrders.TabIndex = 1;
             this.gridControlOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewOrders});
@@ -204,7 +202,7 @@
             this.panelControl2.Controls.Add(this.btnErrors);
             this.panelControl2.Controls.Add(this.btnImport);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 420);
+            this.panelControl2.Location = new System.Drawing.Point(3, 417);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(974, 36);
             this.panelControl2.TabIndex = 2;
@@ -232,12 +230,6 @@
             this.btnImport.Size = new System.Drawing.Size(80, 25);
             this.btnImport.TabIndex = 23;
             this.btnImport.Text = "Import";
-            // 
-            // xtraFileDialog
-            // 
-            //this.xtraFileDialog.FileName = null;
-            //this.xtraFileDialog.InitialDirectory = "C:";
-            //this.xtraFileDialog.RestoreDirectory = true;
             // 
             // ImportOrders
             // 

@@ -32,6 +32,10 @@ namespace Ordermanagement_01.New_Dashboard.Orders
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 await BindClients();
                 GetProcessSettings();
+
+
+
+
             }
             catch (Exception ex)
             {

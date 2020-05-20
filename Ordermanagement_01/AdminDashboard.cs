@@ -98,7 +98,7 @@ namespace Ordermanagement_01
         DateTime dtfirsttime;
         DateTime dtsecondtime;
         static string F_Date;
-          static string T_Date;
+        static string T_Date;
         int Auto_Allocation_Scrol_Postion = 0;
         int Day_Time_Break, Night_Time_Break, Total_Break, Ideal_Day_Break, Ideal_Night_Break, Ideal_Total_Break;
         string Password;
@@ -32144,6 +32144,54 @@ namespace Ordermanagement_01
         {
             Ordermanagement_01.Tax.Tax_Summary ts = new Tax.Tax_Summary(Convert.ToInt32(userid), User_Role_Id);
             ts.Show();
+        }
+
+        private void orderTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
+            try
+            {
+                Ordermanagement_01.Opp.Opp_Master.Project_Type_Order_Task pt = new Opp.Opp_Master.Project_Type_Order_Task();
+                pt.Show();
+            }
+            catch (Exception ex)
+            {
+
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+
+                MessageBox.Show("Error Occured Please Check With Administrator");
+            }
+            finally
+            {
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+            }
+
+        }
+
+        private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
+            try
+            {
+                Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
+
+                os.Show();
+            }
+            catch (Exception ex)
+            {
+
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+
+                MessageBox.Show("Error Occured Please Check With Administrator");
+            }
+            finally
+            {
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
