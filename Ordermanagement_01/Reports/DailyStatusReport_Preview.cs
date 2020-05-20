@@ -8101,10 +8101,15 @@ namespace Ordermanagement_01
                 if (userRoleId == 1)
                 {
                     gridViewAllClientProduction.Columns[0].FieldName = "Client";
+
                 }
                 else
                 {
                     gridViewAllClientProduction.Columns[0].FieldName = "Client_Number";
+                    gridViewAllClientProduction.Columns.ColumnByFieldName("Client_Number").FilterMode = ColumnFilterMode.DisplayText;
+                   // foreach (GridColumn column in ((DevExpress.XtraGrid.Views.Base.ColumnView)gridControlAllClientProduction.Views[0]).Columns)
+                 
+
                 }
                 gridViewAllClientProduction.Columns.ColumnByFieldName("R_Current_Day").Caption = "R-" + Todate.ToShortDateString();
                 gridViewAllClientProduction.Columns.ColumnByFieldName("C_Current_Day").Caption = "C-" + Todate.ToShortDateString();
@@ -8595,7 +8600,9 @@ namespace Ordermanagement_01
                 }
                 else
                 {
+
                     gridViewMyClientProduction.Columns[0].FieldName = "Client_Number";
+                    gridViewMyClientProduction.Columns.ColumnByFieldName("Client_Number").FilterMode = ColumnFilterMode.DisplayText;
                 }
                 gridViewMyClientProduction.Columns.ColumnByFieldName("R_Current_Day").Caption = "R-" + Todate.ToShortDateString();
                 gridViewMyClientProduction.Columns.ColumnByFieldName("C_Current_Day").Caption = "C-" + Todate.ToShortDateString();

@@ -460,7 +460,12 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
@@ -482,7 +487,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     {
                         var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CheckEmail", data);
                         if (response.IsSuccessStatusCode)
-                        {
+                        {                    
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
@@ -507,7 +512,12 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
@@ -1051,14 +1061,13 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             Txt_ToEmailAddress();
         }
 
-
         public async Task<bool> CheckEmail()
         {
             DataTable dt = new DataTable();
             try
             {
 
-                if (txt_FromEmailId.Text != "")
+                if (txt_ToEmailId.Text != "")
                 {
                     var dictionary = new Dictionary<string, object>()
                 {
@@ -1082,17 +1091,29 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                     XtraMessageBox.Show("E-mail Already Exists");
                                     return false;
                                 }
+
                             }
+
+
                         }
+
                     }
+
                 }
                 return true;
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 throw ex;
             }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
+   
+
         private async void ToEmailBindData()
         {
             try
@@ -1153,7 +1174,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             try
             {
-                if (validateToEmail()!=false && (await Usercheck()) != false)
+                if (validateToEmail()!=false && (await CheckEmail()) != false)
                 {
 
 
@@ -1367,10 +1388,61 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private void ddl_SelectedIndexChanged(object sender, EventArgs e)
+        public async Task<bool> CheckClient()
         {
+            DataTable dt = new DataTable();
+            try
+            {
 
+
+                if (checkedboxlist_Client.SelectedValue != null)
+                {
+                    DataRowView r1 = checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex) as DataRowView;
+                    int Client = Convert.ToInt32(r1["Client_Id"]);
+                    var dictionary = new Dictionary<string, object>()
+                {
+                    { "@Trans", "Check_Client" },
+                    { "@Client_Id", Client}
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/CheckClient", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                if (count > 0)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Client Already Exists");
+                                    return false;
+                                }
+
+                            }
+
+
+                        }
+
+                    }
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
+
 
         private bool validateClient()
         {
@@ -1460,7 +1532,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 int Client = 0;
-                if (btn_ClientEmailSave.Text == "Save" && validateClient() != false)
+                if (btn_ClientEmailSave.Text == "Save" && validateClient() != false && (await CheckClient()) != false)
                 {
                     DataRowView r1 = checkedboxlist_Client.GetItem(checkedboxlist_Client.SelectedIndex) as DataRowView;
                     Client = Convert.ToInt32(r1["Client_Id"]);
