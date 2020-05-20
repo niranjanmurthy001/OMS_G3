@@ -339,7 +339,7 @@
             this.btn_Refresh_All.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Refresh_All.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Refresh_All.ForeColor = System.Drawing.Color.SeaShell;
-            this.btn_Refresh_All.Location = new System.Drawing.Point(1185, 0);
+            this.btn_Refresh_All.Location = new System.Drawing.Point(1186, 2);
             this.btn_Refresh_All.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Refresh_All.Name = "btn_Refresh_All";
             this.btn_Refresh_All.Size = new System.Drawing.Size(33, 31);
@@ -2297,7 +2297,7 @@
             this.btn_Client_Sumbit.UseVisualStyleBackColor = true;
             this.btn_Client_Sumbit.Click += new System.EventHandler(this.btn_Client_Sumbit_Click);
             // 
-            // CheckList
+            // Check_List_New
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2305,7 +2305,7 @@
             this.ClientSize = new System.Drawing.Size(1233, 571);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "CheckList";
+            this.Name = "Check_List_New";
             this.Text = "CheckList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CheckList_Load);

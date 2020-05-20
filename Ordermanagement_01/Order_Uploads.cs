@@ -849,6 +849,7 @@ namespace Ordermanagement_01
                                 btnEdit.Name = "btnEdit";
                                 btnEdit.UseColumnTextForButtonValue = true;
                                 Grd_Document_upload.Columns[14].Width = 100;
+                                Grd_Document_upload.Columns[14].Visible = false;
                                 Grd_Document_upload.Columns.Add(btnDelete);
                                 btnDelete.HeaderText = "Delete";
                                 btnDelete.Text = "Delete";
@@ -1216,7 +1217,7 @@ namespace Ordermanagement_01
                         var dict_in = new Dictionary<string, object>
                         {
                             {"@Trans","GET_INVOICE_UPLOAD_CHECK_BYID" },
-                            {"@Document_Upload_Id", Value }
+                            { "@Document_Upload_Id", Value }
                         };
                         var data_in = new StringContent(JsonConvert.SerializeObject(dict_in), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -2649,7 +2650,7 @@ namespace Ordermanagement_01
                                 //htorderkb.Add("@Chk_UploadPackage", chk_Upload.Checked);
                                 // htorderkb.Add("@Extension", extension);
                                 htorderkb.Add("@Document_Path", dest);
-                                htorderkb.Add("@Inserted_By", userid);
+                                htorderkb.Add("@Inserted_By", userid);                              
                                 htorderkb.Add("@Inserted_date", DateTime.Now);
                                 dtorderkb = dataaccess.ExecuteSP("Sp_Document_Upload", htorderkb);
                                 break;
@@ -2891,6 +2892,7 @@ namespace Ordermanagement_01
                             File_Count++;
                             htorderkb.Clear();
                             dtorderkb.Clear();
+
                             htorderkb.Add("@Trans", "INSERT");
                             htorderkb.Add("@Instuction", grd_Vendor_Documents.Rows[i].Cells[1].Value.ToString() + " - " + grd_Vendor_Documents.Rows[i].Cells[2].Value.ToString());
                             htorderkb.Add("@Order_ID", OrderId);

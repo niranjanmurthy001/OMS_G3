@@ -1843,21 +1843,44 @@ public class DropDownistBindClass
         //ddlName.DataBind();
         //   ddlName.Items.Insert(0, "SELECT");
     }
-    public void Bind_Users_For_Error_Info(ComboBox ddlName)
+    public async void Bind_Users_For_Error_Info(ComboBox ddlName)
     {
-        Hashtable htParam = new Hashtable();
+        //Hashtable htParam = new Hashtable();
+        //htParam.Add("@Trans", "GET_USER");
+        //dt = da.ExecuteSP("Sp_Error_Info", htParam);
+        //DataRow dr = dt.NewRow();
+        //dr[0] = 0;
+        //dr[1] = "SELECT";
+        //dt.Rows.InsertAt(dr, 0);
+        //ddlName.DataSource = dt;
+        //ddlName.DisplayMember = "User_Name";
+        //ddlName.ValueMember = "User_id";
+        ////ddlName.DataBind();
+        ////   ddlName.Items.Insert(0, "SELECT");
+        IDictionary<string, object> dictParam = new Dictionary<string, object>();
+        dictParam.Add("@Trans", "GET_USER");
+        var data = new StringContent(JsonConvert.SerializeObject(dictParam), Encoding.UTF8, "application/json");
+        using (var httpClient = new HttpClient())
+        {
+            var response = await httpClient.PostAsync(Base_Url.Url + "/Error/BindUsers", data);
+            if (response.IsSuccessStatusCode)
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                    DataRow dr = dt.NewRow();
+                    dr[0] = 0;
+                    dr[1] = "SELECT";
+                    dt.Rows.InsertAt(dr, 0);
+                    ddlName.DataSource = dt;
+                    ddlName.DisplayMember = "User_Name";
+                    ddlName.ValueMember = "User_id";
+                }
+            }
+        }
 
-        htParam.Add("@Trans", "GET_USER");
-        dt = da.ExecuteSP("Sp_Error_Info", htParam);
-        DataRow dr = dt.NewRow();
-        dr[0] = 0;
-        dr[1] = "SELECT";
-        dt.Rows.InsertAt(dr, 0);
-        ddlName.DataSource = dt;
-        ddlName.DisplayMember = "User_Name";
-        ddlName.ValueMember = "User_id";
-        //ddlName.DataBind();
-        //   ddlName.Items.Insert(0, "SELECT");
+
     }
 
     public void Bind_BreakMode_Type(ComboBox ddlName, int User_Id)
@@ -3232,12 +3255,12 @@ public class DropDownistBindClass
     {
         IDictionary<string, object> dict_List = new Dictionary<string, object>();
         dict_List.Add("@Trans", "SELECT_DOCUMENT_TYPE");
-        dt = da.ExecuteSPNew("usp_Clarification_category_Type", dict_List);
+        dt = da.ExecuteSPNew("usp_Docuement_Check_Type", dict_List);
         if (dt.Rows.Count > 0)
         {
             Chk.DataSource = dt;
-            Chk.ValueMember = "Clarification_Category_Type_Id";
-            Chk.DisplayMember = "Clarification_Category_Type";
+            Chk.ValueMember = "Document_Check_Type_Id";
+            Chk.DisplayMember = "Document_Check_Type";
         }
     }
 }
