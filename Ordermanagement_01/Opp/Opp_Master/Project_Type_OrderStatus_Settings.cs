@@ -358,16 +358,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
 
-                                //_dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                //if (_dt.Rows.Count > 0)
-                                //{
-                                //    grdOrderStatus.DataSource = _dt.DefaultView.ToTable(true, _dt.Columns[1].ColumnName, _dt.Columns[0].ColumnName);
-                                //    gridView1.BestFitColumns();
-                                //}
-                                //else
-                                //{
-                                //    grdOrderStatus.DataSource = null;
-                                //}
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("OrderStatus Updated Successfully");
                                 BindOrderStatusGrid();

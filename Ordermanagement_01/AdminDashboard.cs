@@ -32194,6 +32194,12 @@ namespace Ordermanagement_01
             }
         }
 
+        private void projectTypeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
+            pr.Show();
+        }
+
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
