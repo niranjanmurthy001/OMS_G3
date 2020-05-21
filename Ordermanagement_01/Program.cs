@@ -27,8 +27,8 @@ namespace Ordermanagement_01
             //Application.Run(new Employee_Error_Entry(1, "1", "3", 1, 1, 1, "", "",0, 1));
             //Application.Run(new New_Dashboard.Settings.Process_Settings());
             //Application.Run(new Opp.Opp_Master.Project_Type_Order_Task());
-            //Application.Run(new Opp.Opp_Master.Project_Type_OrderStatus_Settings(1,1));
-            Application.Run(new Opp.Opp_Master.Product_Type_Settings());
+            Application.Run(new Opp.Opp_Master.Project_Type_OrderStatus_Settings(1,1));
+            //Application.Run(new Opp.Opp_Master.Product_Type_Settings());
                
           
         }

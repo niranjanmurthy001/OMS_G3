@@ -77,7 +77,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(643, 394);
+            this.groupControl1.Size = new System.Drawing.Size(607, 394);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "ProductType";
             // 
@@ -93,7 +93,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.39892F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.60108F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(639, 371);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 371);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -105,7 +105,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(633, 320);
+            this.splitContainerControl1.Size = new System.Drawing.Size(597, 320);
             this.splitContainerControl1.SplitterPosition = 231;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -176,7 +176,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.41033F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.58967F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(390, 320);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(354, 320);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panelControl2
@@ -188,7 +188,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(384, 267);
+            this.panelControl2.Size = new System.Drawing.Size(348, 267);
             this.panelControl2.TabIndex = 2;
             // 
             // txtProductType
@@ -234,13 +234,13 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.btnSubmit);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 276);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(106, 276);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 41);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // btnSubmit
@@ -285,7 +285,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(633, 39);
+            this.panelControl1.Size = new System.Drawing.Size(597, 39);
             this.panelControl1.TabIndex = 1;
             // 
             // labelControl1
@@ -295,7 +295,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(226, 2);
+            this.labelControl1.Location = new System.Drawing.Point(208, 2);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(217, 30);
             this.labelControl1.TabIndex = 0;
@@ -305,10 +305,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 394);
+            this.ClientSize = new System.Drawing.Size(607, 394);
             this.Controls.Add(this.groupControl1);
+            this.MaximumSize = new System.Drawing.Size(863, 432);
+            this.MinimumSize = new System.Drawing.Size(623, 432);
             this.Name = "Product_Type_Settings";
             this.Text = "Product_Type_Settings";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Product_Type_Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
