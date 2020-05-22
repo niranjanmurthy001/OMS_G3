@@ -215,22 +215,35 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBox_ProductType.SelectedIndex = 0;
             btn_SubmitType.Text = "Submit";
             txt_ErrorType.Text = "";
+        } 
+
+        private bool Validate()
+        {
+            if (checkedListBox_ProductType.CheckedItems.Count == 0)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Select Product Type");
+                return false;
+            }
+            if (lookUpEdit1_ProjectType.EditValue == null)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Select Project Type");
+                return false;
+            }
+            if (txt_ErrorType.Text=="")
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Enter Error Type");
+                return false;
+            }
+
+            return true;
+
         }
-
-     
-
-        private void panelControl7_Paint(object sender, PaintEventArgs e)
+        private async void btn_SubmitType_Click_1(object sender, EventArgs e)
         {
 
-        }
-
-        private void labelControl17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void btn_SubmitType_Click(object sender, EventArgs e)
-        { 
             _Errortype = txt_ErrorType.Text;
             _ProjectType = Convert.ToInt32(lookUpEdit1_ProjectType.EditValue);
             int StatusId;
@@ -310,8 +323,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         new DataColumn("Product_Type_Id",typeof(int)),
                         new DataColumn("New_Error_Type",typeof(string)),
                         new DataColumn("Status",typeof(int)),
-                        new DataColumn("Inserted_By",typeof(int)),
-                        new DataColumn("Instered_Date",typeof(DateTime))
+                        new DataColumn("Modified_By",typeof(int)),
+                        new DataColumn("Modified_Date",typeof(DateTime))
                     });
                     foreach (object itemChecked in checkedListBox_ProductType.CheckedItems)
                     {
@@ -328,7 +341,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var data = new StringContent(JsonConvert.SerializeObject(dt_error_update), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/UpdateType", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/UpdateErrorType", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -336,7 +349,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error Type is Edited successfully");
+                                XtraMessageBox.Show("Error Type edited successfully");
                                 BindErrorDetails();
                                 Clear();
                             }
@@ -355,14 +368,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private void btn_Clear_Type_Click(object sender, EventArgs e)
-        {
-            Clear();
-        }
+       
 
-        private async void repositoryItemHyperLinkEdit3_Click_1(object sender, EventArgs e)
+        private void repositoryItemHyperLinkEdit3_Click(object sender, EventArgs e)
         {
-        
+
+          //  checkedListBox_ProductType.Sele
             GridView view = grd_Error_Type.MainView as GridView;
             var index = view.GetDataRow(view.GetSelectedRows()[0]);
             btn_SubmitType.Text = "Edit";
@@ -376,8 +387,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBox_ProductType.SetItemChecked(_erroe, true);
         }
 
-        private async void repositoryItemHyperLinkEdit4_Click_1(object sender, EventArgs e)
+        private async void repositoryItemHyperLinkEdit4_Click(object sender, EventArgs e)
         {
+
             string message = "Do you want to delete?";
             string title = "Close Window";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -393,7 +405,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var dictionary = new Dictionary<string, object>()
                 {
                    { "@Trans", "DELETE" },
-                    { "@U_Id", Error_Id }
+                    { "@New_Error_Type_Id", Error_Id }
                 };
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
@@ -429,7 +441,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 this.Close();
             }
-        
-    }
+
+        }
+
+        private void btn_ClearType_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
     }
 }
