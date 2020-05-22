@@ -29,7 +29,8 @@ namespace Ordermanagement_01
             //Application.Run(new Opp.Opp_Master.Project_Type_Order_Task());
             //Application.Run(new Opp.Opp_Master.Project_Type_OrderStatus_Settings(1,1));
             //Application.Run(new Opp.Opp_Master.Product_Type_Settings());
-            Application.Run(new Masters.Error_Field());
+           // Application.Run(new Masters.Error_Field());
+            Application.Run(new Opp.Opp_Master.Error_Setting(1, 1));
           
         }
     }
