@@ -14,6 +14,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -165,11 +166,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             var result = await response.Content.ReadAsStringAsync();
                             _dtError = JsonConvert.DeserializeObject<DataTable>(result);                          
                             if (_dtError.Rows.Count > 0)
-                            {                                                 
-                                grd_Error_Type.DataSource = _dtError.DefaultView.ToTable(true, _dtError.Columns[0].ColumnName);
+                            {
+                                grd_Error_Type.DataSource = _dtError;
                                // _Inserted_By = Convert.ToInt32(_dtError.Rows[0]["Inserted_By"].ToString());
                                // _Inserted_Date = Convert.ToDateTime(_dtError.Rows[0]["Inserted_Date"].ToString());
-                                gridView1.BestFitColumns();
+                                
                             }
                             else
                             {
@@ -190,13 +191,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-  
-
         private void Tile_Error_Type_ItemClick(object sender, TileItemEventArgs e)
         {
             navigationFrame1.SelectedPage = navigationPage1_Type;
@@ -211,97 +205,125 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             navigationFrame1.SelectedPage = navigationPage3_Field;
         }
+        private void Clear()
+        {
+            lookUpEdit1_ProjectType.ItemIndex = 0;
+            lookUpEdit1_ProjectType.EditValue = null;
+            checkedListBox_ProductType.UnCheckAll();
+            checkedListBox_ProductType.SelectedIndex = 0;
+            btn_SubmitType.Text = "Submit";
+            txt_ErrorType.Text = "";
+        }
 
-        private async void btn_SubmitType_Click_1(object sender, EventArgs e)
+     
+
+        private void panelControl7_Paint(object sender, PaintEventArgs e)
         {
 
-    _Errortype = txt_ErrorType.Text;
-    _ProjectType = Convert.ToInt32(lookUpEdit1_ProjectType.EditValue);
-    int StatusId;
-    if (btn_SubmitType.Text == "Submit" && Validate() != false)
-    {
-        try
+        }
+
+        private void labelControl17_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-            DataRowView row = checkedListBox_ProductType.GetItem(checkedListBox_ProductType.SelectedIndex) as DataRowView;
-            _ProductType = Convert.ToInt32(row["ProductType_Id"]);
-            DataTable dtproducttype = new DataTable();
-            dtproducttype.Columns.AddRange(new DataColumn[6]
-              {
 
-                        new DataColumn("Project_Type",typeof(string)),
-                        new DataColumn("Product_Type",typeof(string)),
-                        new DataColumn("New_Error_Type",typeof(string)),
-                        new DataColumn("Status",typeof(bool)),
-                        new DataColumn("Inserted_By",typeof(int)),
-                        new DataColumn("InsertedDate",typeof(DateTime))
-            });
-            foreach (object itemChecked in checkedListBox_ProductType.CheckedItems)
-            {
-                DataRowView castedItem = itemChecked as DataRowView;
-                string sub = castedItem["Product_Type"].ToString();
-                int productid = Convert.ToInt32(castedItem["ProductType_Id"]);
+        }
 
-                dtproducttype.Rows.Add(_ProjectType, productid, _Errortype, true, User_Id, date);
-            }
-            var data = new StringContent(JsonConvert.SerializeObject(dtproducttype), Encoding.UTF8, "application/json");
-            using (var httpClient = new HttpClient())
+        private async void btn_SubmitType_Click(object sender, EventArgs e)
+        { 
+            _Errortype = txt_ErrorType.Text;
+            _ProjectType = Convert.ToInt32(lookUpEdit1_ProjectType.EditValue);
+            int StatusId;
+            if (btn_SubmitType.Text == "Submit" && Validate() != false)
             {
-                var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/InsertType", data);
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        var result = await response.Content.ReadAsStringAsync();
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    DataRowView row = checkedListBox_ProductType.GetItem(checkedListBox_ProductType.SelectedIndex) as DataRowView;
+                    _ProductType = Convert.ToInt32(row["ProductType_Id"]);
+                    DataTable dtproducttype = new DataTable();
+                    dtproducttype.Columns.AddRange(new DataColumn[6]
+                      {
 
-                        SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Error Type is Submitted");
-                                BindErrorDetails();
-                            Clear();
-                            }
-                        }
-            }
-        }
-        catch (Exception ex)
-        {
-            SplashScreenManager.CloseForm(false);
-            throw ex;
-        }
-        finally
-        {
-            SplashScreenManager.CloseForm(false);
-        }
-
-    }
-    else if (btn_SubmitType.Text == "Edit" && Validate() != false)
-    {
-        //    int projectId = Convert.ToInt32(ddlProjectType.EditValue);
-        try
-        {
-
-            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-            DataRowView row = checkedListBox_ProductType.GetItem(checkedListBox_ProductType.SelectedIndex) as DataRowView;
-            _ProductType = Convert.ToInt32(row["ProductType_Id"]);
-            DataTable dtproducttypeupdate = new DataTable();
-            dtproducttypeupdate.Columns.AddRange(new DataColumn[6]
-              {
-                        new DataColumn("Project_Type",typeof(string)),
-                        new DataColumn("Product_Type",typeof(string)),
+                        new DataColumn("Project_Type_Id",typeof(int)),
+                        new DataColumn("Product_Type_Id",typeof(int)),
                         new DataColumn("New_Error_Type",typeof(string)),
-                        new DataColumn("Status",typeof(bool)),
+                        new DataColumn("Status",typeof(int)),
                         new DataColumn("Inserted_By",typeof(int)),
-                        new DataColumn("InsertedDate",typeof(DateTime))
-            });
-            foreach (object itemChecked in checkedListBox_ProductType.CheckedItems)
-            {
+                        new DataColumn("Instered_Date",typeof(DateTime))
+                    });
+                    foreach (object itemChecked in checkedListBox_ProductType.CheckedItems)
+                    {
                         DataRowView castedItem = itemChecked as DataRowView;
                         string sub = castedItem["Product_Type"].ToString();
                         int productid = Convert.ToInt32(castedItem["ProductType_Id"]);
-
-                        dtproducttypeupdate.Rows.Add(_ProjectType, productid, _Errortype, true, User_Id, date);
+                        int _Statsu = 1;
+                        User_Id = 1;
+                        DateTime _Insertdate = DateTime.Now;
+                        _Errortype = txt_ErrorType.Text;
+                        int _ProjectId = Convert.ToInt32(lookUpEdit1_ProjectType.EditValue);
+                        dtproducttype.Rows.Add(_ProjectId, productid, _Errortype, _Statsu, User_Id, _Insertdate);
                     }
+                    var data = new StringContent(JsonConvert.SerializeObject(dtproducttype), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/InsertType", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
 
-                    var data = new StringContent(JsonConvert.SerializeObject(dtproducttypeupdate), Encoding.UTF8, "application/json");
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Error Type is Submited");
+                                BindErrorDetails();
+                                Clear();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    throw ex;
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
+
+            }
+            else if (btn_SubmitType.Text == "Edit" && Validate() != false)
+            {
+                //    int projectId = Convert.ToInt32(ddlProjectType.EditValue);
+                try
+                {
+
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    DataRowView r1 = checkedListBox_ProductType.GetItem(checkedListBox_ProductType.SelectedIndex) as DataRowView;
+                    int _Product_Id = Convert.ToInt32(r1["ProductType_Id"]);
+
+                    DataTable dt_error_update = new DataTable();
+                    dt_error_update.Columns.AddRange(new DataColumn[6]
+                      {
+                         new DataColumn("Project_Type_Id",typeof(int)),
+                        new DataColumn("Product_Type_Id",typeof(int)),
+                        new DataColumn("New_Error_Type",typeof(string)),
+                        new DataColumn("Status",typeof(int)),
+                        new DataColumn("Inserted_By",typeof(int)),
+                        new DataColumn("Instered_Date",typeof(DateTime))
+                    });
+                    foreach (object itemChecked in checkedListBox_ProductType.CheckedItems)
+                    {
+                        DataRowView castedItem = itemChecked as DataRowView;
+                        string sub = castedItem["Product_Type"].ToString();
+                        int productid = Convert.ToInt32(castedItem["ProductType_Id"]);
+                        int _Statsu = 1;
+                        User_Id = 1;
+                        DateTime _Insertdate = DateTime.Now;
+                        _Errortype = txt_ErrorType.Text;
+                        int _ProjectId = Convert.ToInt32(lookUpEdit1_ProjectType.EditValue);
+                        dt_error_update.Rows.Add(_ProjectId, productid, _Errortype, _Statsu, User_Id, _Insertdate);
+                    }
+                    var data = new StringContent(JsonConvert.SerializeObject(dt_error_update), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
                         var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/UpdateType", data);
@@ -312,7 +334,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error Type is Submitted");
+                                XtraMessageBox.Show("Error Type is Edited successfully");
                                 BindErrorDetails();
                                 Clear();
                             }
@@ -331,70 +353,28 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private void btn_Clear_Type_Click_1(object sender, EventArgs e)
+        private void btn_Clear_Type_Click(object sender, EventArgs e)
         {
             Clear();
-
         }
-        private void Clear()
+
+        private async void repositoryItemHyperLinkEdit3_Click_1(object sender, EventArgs e)
         {
-            lookUpEdit1_ProjectType.ItemIndex = 0;
-            checkedListBox_ProductType.UnCheckAll();
-            checkedListBox_ProductType.SelectedIndex = 0;
-            btn_SubmitType.Text = "Submit";
-            txt_ErrorType.Text = "";
-        }
-
-        private async void repositoryItemHyperLinkEdit3_Click(object sender, EventArgs e)
-        {           
-          try
-            {
-            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-            System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
+        
+            GridView view = grd_Error_Type.MainView as GridView;
+            var index = view.GetDataRow(view.GetSelectedRows()[0]);
             btn_SubmitType.Text = "Edit";
-            
-            checkedListBox_ProducType.UnCheckAll();                 
-            var dictionary = new Dictionary<string, object>
-                    {
-                        {"@Trans","View" },
-                        {"@New_Error_Type_Id",Error_Id}
+            lookUpEdit1_ProjectType.EditValue = index.ItemArray[1];
 
-                    };
-            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-            using (var httpClient = new HttpClient())
-            {
-                var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/ViewError", data);
-                if (response.IsSuccessStatusCode)
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        var result = await response.Content.ReadAsStringAsync();
-                        DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                        if (dt != null && dt.Rows.Count > 0)
-                        {
-                            lookUpEdit1_ProjectType.EditValue = dt.Rows[0]["From_Email_Id"];                              
-                            //checkedListBox_ProducType.SelectedValue = ClientID;
-                            //_Client = checkedListBox_ProducType.SelectedIndex;
-                            //checkedListBox_ProducType.SetItemChecked(_Client, true);
-                            txt_ErrorType.Text = dt.Rows[0]["New_Error_Type"].ToString();
-                            }
-                    }
-                }
-            }        
-         }
-         catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                throw ex;
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }          
+            txt_ErrorType.Text = index.ItemArray[3].ToString();
+
+            int _ET = Convert.ToInt32(index.ItemArray[2]);
+            checkedListBox_ProductType.SelectedValue = _ET;
+            int _erroe = checkedListBox_ProductType.SelectedIndex;
+            checkedListBox_ProductType.SetItemChecked(_erroe, true);
         }
 
-        private async void repositoryItemHyperLinkEdit4_Click(object sender, EventArgs e)
+        private async void repositoryItemHyperLinkEdit4_Click_1(object sender, EventArgs e)
         {
             string message = "Do you want to delete?";
             string title = "Close Window";
@@ -404,7 +384,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
 
                 try
-                {                 
+                {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
                     Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
@@ -447,7 +427,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 this.Close();
             }
-        }
-    
+        
+    }
     }
 }
