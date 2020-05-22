@@ -23,8 +23,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Role_Id;
         int OrderChk;
         int _OrderStatus;
-      
-      
+
+
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
         public Project_Type_OrderStatus_Settings(int user_id,int roleid)
