@@ -248,9 +248,33 @@ namespace Ordermanagement_01.Masters
             }
         }
 
+        private bool Validates()
+        {
+            if (Convert.ToInt32(ddl_ProjectType.EditValue) == 0)
+            {
+                XtraMessageBox.Show("Select Project_Type");
+                return false;
+            }
+            if (Convert.ToInt32(ddl_ProductType.EditValue) == 0)
+            {
+                XtraMessageBox.Show("Select Product_Type");
+                return false;
+            }
+            if (checkedListBoxControl_Errortab.CheckedItems.Count == 0)
+            {
+                XtraMessageBox.Show("Select Error Type");
+                return false;
+            }
+            if(txt_Errorfield.Text=="")
+            {
+                XtraMessageBox.Show("Error Field Must not be Empty");
+                return false;
+            }
+            return true;
+        }
         private async void btn_Save_Click(object sender, EventArgs e)
         {
-            if (btn_Save.Text == "Save")
+            if (btn_Save.Text == "Save" && Validates() !=false)
             {
                 try
                 {
@@ -309,7 +333,7 @@ namespace Ordermanagement_01.Masters
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Update")
+            else if (btn_Save.Text == "Update" && Validates() != false)
             {
                 try
                 {
