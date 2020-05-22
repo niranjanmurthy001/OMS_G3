@@ -427,10 +427,10 @@ namespace Ordermanagement_01.Masters
                 var index = view.GetDataRow(view.GetSelectedRows()[0]);
                 //e.Column.ColumnEdit.NullText = "Edit";
                 btn_Save.Text = "Update";
-                ddl_ProjectType.EditValue = index.ItemArray[5];
+                ddl_ProjectType.EditValue = index.ItemArray[7];
                 //int Pro = Convert.ToInt32(ddl_ProjectType.EditValue);
                 //BindProdctType(Pro);
-                ddl_ProductType.EditValue= index.ItemArray[6];
+                ddl_ProductType.EditValue= index.ItemArray[8];
                 txt_Errorfield.Text = index.ItemArray[0].ToString();
                 int _ET=Convert.ToInt32 (index.ItemArray[3]);
                 checkedListBoxControl_Errortab.SelectedValue = _ET;

@@ -50,8 +50,8 @@
             this.Grd_ErrorDes = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SNO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Project_Type_Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Product_Type_Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Project_Type = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Product_Type = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Error_Description = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Error_Type_Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,6 +59,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -341,12 +343,14 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.SNO,
-            this.Project_Type_Id,
-            this.Product_Type_Id,
+            this.Project_Type,
+            this.Product_Type,
             this.Error_Description,
             this.Error_Type_Id,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn1,
+            this.gridColumn2});
             this.gridView1.GridControl = this.Grd_ErrorDes;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
@@ -368,39 +372,39 @@
             this.SNO.Visible = true;
             this.SNO.VisibleIndex = 0;
             // 
-            // Project_Type_Id
+            // Project_Type
             // 
-            this.Project_Type_Id.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Project_Type_Id.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.Project_Type_Id.AppearanceCell.Options.UseFont = true;
-            this.Project_Type_Id.AppearanceCell.Options.UseForeColor = true;
-            this.Project_Type_Id.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Project_Type_Id.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.Project_Type_Id.AppearanceHeader.Options.UseFont = true;
-            this.Project_Type_Id.AppearanceHeader.Options.UseForeColor = true;
-            this.Project_Type_Id.Caption = "Project Type";
-            this.Project_Type_Id.FieldName = "Project_Type";
-            this.Project_Type_Id.Name = "Project_Type_Id";
-            this.Project_Type_Id.OptionsColumn.AllowEdit = false;
-            this.Project_Type_Id.Visible = true;
-            this.Project_Type_Id.VisibleIndex = 1;
+            this.Project_Type.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Project_Type.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Project_Type.AppearanceCell.Options.UseFont = true;
+            this.Project_Type.AppearanceCell.Options.UseForeColor = true;
+            this.Project_Type.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Project_Type.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Project_Type.AppearanceHeader.Options.UseFont = true;
+            this.Project_Type.AppearanceHeader.Options.UseForeColor = true;
+            this.Project_Type.Caption = "Project Type";
+            this.Project_Type.FieldName = "Project_Type";
+            this.Project_Type.Name = "Project_Type";
+            this.Project_Type.OptionsColumn.AllowEdit = false;
+            this.Project_Type.Visible = true;
+            this.Project_Type.VisibleIndex = 1;
             // 
-            // Product_Type_Id
+            // Product_Type
             // 
-            this.Product_Type_Id.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Type_Id.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.Product_Type_Id.AppearanceCell.Options.UseFont = true;
-            this.Product_Type_Id.AppearanceCell.Options.UseForeColor = true;
-            this.Product_Type_Id.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Product_Type_Id.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.Product_Type_Id.AppearanceHeader.Options.UseFont = true;
-            this.Product_Type_Id.AppearanceHeader.Options.UseForeColor = true;
-            this.Product_Type_Id.Caption = "Product Type";
-            this.Product_Type_Id.FieldName = "Product_Type";
-            this.Product_Type_Id.Name = "Product_Type_Id";
-            this.Product_Type_Id.OptionsColumn.AllowEdit = false;
-            this.Product_Type_Id.Visible = true;
-            this.Product_Type_Id.VisibleIndex = 2;
+            this.Product_Type.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Product_Type.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Product_Type.AppearanceCell.Options.UseFont = true;
+            this.Product_Type.AppearanceCell.Options.UseForeColor = true;
+            this.Product_Type.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Product_Type.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Product_Type.AppearanceHeader.Options.UseFont = true;
+            this.Product_Type.AppearanceHeader.Options.UseForeColor = true;
+            this.Product_Type.Caption = "Product Type";
+            this.Product_Type.FieldName = "Product_Type";
+            this.Product_Type.Name = "Product_Type";
+            this.Product_Type.OptionsColumn.AllowEdit = false;
+            this.Product_Type.Visible = true;
+            this.Product_Type.VisibleIndex = 2;
             // 
             // Error_Description
             // 
@@ -481,6 +485,18 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Project Type Id";
+            this.gridColumn1.FieldName = "Project_Type_Id";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Product_Type_Id";
+            this.gridColumn2.FieldName = "Product_Type_Id";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
             // Error_Field
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,13 +563,15 @@
         private DevExpress.XtraGrid.GridControl Grd_ErrorDes;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn SNO;
-        private DevExpress.XtraGrid.Columns.GridColumn Project_Type_Id;
-        private DevExpress.XtraGrid.Columns.GridColumn Product_Type_Id;
+        private DevExpress.XtraGrid.Columns.GridColumn Project_Type;
+        private DevExpress.XtraGrid.Columns.GridColumn Product_Type;
         private DevExpress.XtraGrid.Columns.GridColumn Error_Description;
         private DevExpress.XtraGrid.Columns.GridColumn Error_Type_Id;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }
