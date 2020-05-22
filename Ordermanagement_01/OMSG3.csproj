@@ -1581,6 +1581,12 @@
     <Compile Include="Masters\Employee_Search_Order_Source.designer.cs">
       <DependentUpon>Employee_Search_Order_Source.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Error_Field.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Error_Field.Designer.cs">
+      <DependentUpon>Error_Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Error_Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1936,6 +1942,12 @@
     </Compile>
     <Compile Include="Opp\Opp_Master\ErrorTabSetting.Designer.cs">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
+      <DependentUpon>Error_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
@@ -3637,6 +3649,9 @@
     <EmbeddedResource Include="Masters\Employee_Search_Order_Source.resx">
       <DependentUpon>Employee_Search_Order_Source.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Error_Field.resx">
+      <DependentUpon>Error_Field.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Masters\Error_Info.resx">
       <DependentUpon>Error_Info.cs</DependentUpon>
     </EmbeddedResource>
@@ -3796,6 +3811,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ErrorTabSetting.resx">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
+      <DependentUpon>Error_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>

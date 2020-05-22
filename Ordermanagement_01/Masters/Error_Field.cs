@@ -101,7 +101,7 @@ namespace Ordermanagement_01.Masters
                 using (var httpclient = new HttpClient())
 
                 {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTab/BindErrors", data);
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTab/BindErrorfield", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)

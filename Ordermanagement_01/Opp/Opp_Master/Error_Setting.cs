@@ -198,12 +198,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Tile_Error_Tab_ItemClick(object sender, TileItemEventArgs e)
         {
-            navigationFrame1.SelectedPage = navigationPage2_Tab;
+            Ordermanagement_01.Opp.Opp_Master.ErrorTabSetting _Error_tab = new ErrorTabSetting();
+            _Error_tab.Show();
         }
 
         private void Tile_Error_Field_ItemClick(object sender, TileItemEventArgs e)
         {
-            navigationFrame1.SelectedPage = navigationPage3_Field;
+            Ordermanagement_01.Masters.Error_Field _errorfield = new Error_Field();
+            _errorfield.Show();
         }
         private void Clear()
         {
