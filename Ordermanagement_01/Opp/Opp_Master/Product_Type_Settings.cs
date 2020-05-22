@@ -251,7 +251,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
 
-        
+
         private void gridView1_RowCellClick_1(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
@@ -264,7 +264,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var index = row.FirstOrDefault();
                     ddlProjectType.EditValue = index.ItemArray[3];
                     txtProductType.Text = index.ItemArray[0].ToString();
-                    productid = Convert.ToInt32(index.ItemArray[2]); 
+                    productid = Convert.ToInt32(index.ItemArray[2]);
                 }
             }
             catch (Exception ex)
@@ -294,7 +294,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     { "@Trans", "Delete" },
 
-                    { "@Product_Type", txtProductType.Text}
+                    { "@Product_Type_Id", productid}
 
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
