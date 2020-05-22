@@ -32200,6 +32200,12 @@ namespace Ordermanagement_01
             pr.Show();
         }
 
+        private void errorTabSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.Error_Setting _errorsetting = new Opp.Opp_Master.Error_Setting(userid, int.Parse(User_Role_Id.ToString()));
+            _errorsetting.Show();
+        }
+
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
