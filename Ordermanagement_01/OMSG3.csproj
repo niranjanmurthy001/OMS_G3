@@ -1937,6 +1937,12 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
+      <DependentUpon>Error_Setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3797,6 +3803,9 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
+      <DependentUpon>Error_Setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -4629,6 +4638,7 @@
     <None Include="Resources\Notificationorange.png" />
     <None Include="Resources\Notification%28w%29.png" />
     <None Include="Resources\orderStatus.png" />
+    <None Include="Resources\Upload.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
