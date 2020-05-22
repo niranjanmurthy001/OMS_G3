@@ -17,8 +17,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
     {
         private DataTable _dt;
         int ProjectValue;
-       
-        
+        int projectId;
+
+        int productid;
+
 
         public object ProductValue { get; private set; }
 
@@ -160,7 +162,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      new DataColumn("Product_Type",typeof(string))
 
                     });
-                    dtproduct.Rows.Add(ProjectValue,ProductValue);
+                    dtproduct.Rows.Add(ProjectValue, ProductValue);
                     var data = new StringContent(JsonConvert.SerializeObject(dtproduct), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -170,11 +172,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
-                            
-                              
+                                //DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
 
+                                //ProductId = Convert.ToInt32(dt.Rows[0]["ProductType_Id"].ToString());
 
-                                 SplashScreenManager.CloseForm(false);
+                                SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("product Type is Submitted");
                                 BindProductTypeGrid();
                                 Clear();
@@ -194,7 +196,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
 
             }
-            else if(btnSubmit.Text=="Edit" && Validate()!=false)
+            else if (btnSubmit.Text == "Edit" && Validate() != false)
             {
                 try
                 {
@@ -202,11 +204,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var dictionary = new Dictionary<string, object>()
                     {
                         {"@Trans" ,"Update"},
-                        {"@Project_Type_Id" ,ProjectValue},
+                        {"@Product_Type_Id" ,productid},
                         {"@Product_Type",txtProductType.Text }
                     };
-                   
-                  
+
+
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
                     {
@@ -248,8 +250,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             btnSubmit.Text = "Submit";
         }
 
-      
 
+        
         private void gridView1_RowCellClick_1(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
@@ -260,9 +262,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     btnSubmit.Text = "Edit";
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
                     var index = row.FirstOrDefault();
-                    ddlProjectType.EditValue = index.ItemArray[2];
+                    ddlProjectType.EditValue = index.ItemArray[3];
                     txtProductType.Text = index.ItemArray[0].ToString();
-
+                    productid = Convert.ToInt32(index.ItemArray[2]); 
                 }
             }
             catch (Exception ex)
@@ -282,7 +284,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-         
+
             try
             {
                 int projectId = Convert.ToInt32(ddlProjectType.EditValue);
@@ -291,7 +293,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 var dictionary = new Dictionary<string, object>
                 {
                     { "@Trans", "Delete" },
-                    
+
                     { "@Product_Type", txtProductType.Text}
 
                 };
@@ -326,5 +328,5 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
     }
-    }
+}
 

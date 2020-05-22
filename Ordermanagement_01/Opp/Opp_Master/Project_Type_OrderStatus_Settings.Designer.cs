@@ -263,10 +263,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnadd);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(313, 41);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnadd
@@ -275,6 +275,7 @@
             this.btnadd.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Appearance.Options.UseFont = true;
             this.btnadd.Appearance.Options.UseForeColor = true;
+            this.btnadd.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnadd.Location = new System.Drawing.Point(3, 3);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(97, 33);
@@ -288,6 +289,7 @@
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClear.Location = new System.Drawing.Point(106, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 33);
@@ -301,6 +303,7 @@
             this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_Delete.Location = new System.Drawing.Point(209, 3);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(97, 33);
