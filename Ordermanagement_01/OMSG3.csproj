@@ -1581,6 +1581,12 @@
     <Compile Include="Masters\Employee_Search_Order_Source.designer.cs">
       <DependentUpon>Employee_Search_Order_Source.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Error_Field.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Error_Field.Designer.cs">
+      <DependentUpon>Error_Field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Error_Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3630,6 +3636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Employee_Search_Order_Source.resx">
       <DependentUpon>Employee_Search_Order_Source.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Error_Field.resx">
+      <DependentUpon>Error_Field.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Error_Info.resx">
       <DependentUpon>Error_Info.cs</DependentUpon>
