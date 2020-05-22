@@ -205,7 +205,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      new DataColumn("Product_Type_Id",typeof(int)),
                      new DataColumn("Error_Type",typeof(string)),
                      new DataColumn("Inserted_By",typeof(int)),
-                     new DataColumn("Inserted_Date",typeof(DateTime)),
+                     new DataColumn("Instered_Date",typeof(DateTime)),
                      new DataColumn("Status",typeof(bool)),
                     });
                     foreach (object itemchecked in chkProductType.CheckedItems)
@@ -226,7 +226,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                                 InsertedByvalue = Convert.ToInt32(dt.Rows[0]["Inserted_By"]);
 
-                              InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Inserted_Date"]);
+                              InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
 
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Error Type is Submitted Sucessfully");
@@ -263,7 +263,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      new DataColumn("Product_Type_Id",typeof(int)),
                      new DataColumn("Error_Type",typeof(string)),
                      new DataColumn("Inserted_By",typeof(int)),
-                     new DataColumn("Inserted_Date",typeof(DateTime)),
+                     new DataColumn("Instered_Date",typeof(DateTime)),
                      new DataColumn("Status",typeof(bool)),
                      new DataColumn("Modified_By",typeof(int)),
 
