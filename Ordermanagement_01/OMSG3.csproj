@@ -1949,6 +1949,12 @@
     <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
       <DependentUpon>Error_Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.Designer.cs">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3815,6 +3821,9 @@
     <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
       <DependentUpon>Error_Setting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Settings.resx">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -4558,6 +4567,7 @@
     <None Include="Resources\buttonLogout.ImageOptions.Image.png" />
     <None Include="Resources\checklist.png" />
     <Content Include="Ordermanagement_01.exe" />
+    <None Include="Resources\addicon.png" />
     <Content Include="Resources\close.bmp" />
     <None Include="Resources\dashboard_1_32.png" />
     <None Include="Resources\dashboard_1_64.png" />
@@ -4605,6 +4615,8 @@
     <None Include="Resources\ic_comments.png" />
     <None Include="Resources\ic_refresh.png" />
     <None Include="Resources\icons8-synchronize-64.png" />
+    <None Include="Resources\icons8-settings-50.png" />
+    <None Include="Resources\icons8-settings-25.png" />
     <Content Include="Resources\list.png" />
     <None Include="Resources\list1.png" />
     <None Include="Resources\New_Refresh.png" />
@@ -4647,6 +4659,7 @@
     <None Include="Resources\Notificationorange.png" />
     <None Include="Resources\Notification%28w%29.png" />
     <None Include="Resources\orderStatus.png" />
+    <None Include="Resources\Plus icon.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
