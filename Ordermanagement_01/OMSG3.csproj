@@ -1955,6 +1955,12 @@
     <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
       <DependentUpon>Error_Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.Designer.cs">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Error_Settingspanels.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1978,12 +1984,6 @@
     </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.Designer.cs">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Opp\Opp_Master\TEst1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Opp_Master\TEst1.Designer.cs">
-      <DependentUpon>TEst1.cs</DependentUpon>
     </Compile>
     <Compile Include="Order_Check_List.cs">
       <SubType>Form</SubType>
@@ -3836,6 +3836,9 @@
     <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
       <DependentUpon>Error_Setting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Settings.resx">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Error_Settingspanels.resx">
       <DependentUpon>Error_Settingspanels.cs</DependentUpon>
     </EmbeddedResource>
@@ -3847,9 +3850,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\TEst1.resx">
-      <DependentUpon>TEst1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order_Check_List.resx">
       <DependentUpon>Order_Check_List.cs</DependentUpon>

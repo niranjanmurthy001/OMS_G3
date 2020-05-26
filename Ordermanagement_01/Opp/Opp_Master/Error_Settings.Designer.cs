@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame1 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame2 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame3 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame4 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame5 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemFrame tileItemFrame6 = new DevExpress.XtraEditors.TileItemFrame();
-            DevExpress.XtraEditors.TileItemElement tileItemElement9 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement19 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame13 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement20 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame14 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement21 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement22 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame15 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement23 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame16 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement24 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement25 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame17 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement26 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame18 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement27 = new DevExpress.XtraEditors.TileItemElement();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -86,8 +86,10 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.linkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemHyperLinkEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.linkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.linkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.grd_Error_Type = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -127,6 +129,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdErrorTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linkEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linkDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Error_Type)).BeginInit();
@@ -159,9 +163,9 @@
             // 
             this.panelControl1.Controls.Add(this.tableLayoutPanel1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(2, 28);
+            this.panelControl1.Location = new System.Drawing.Point(2, 22);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(817, 585);
+            this.panelControl1.Size = new System.Drawing.Size(817, 591);
             this.panelControl1.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -180,7 +184,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 378F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 581);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 587);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -189,7 +193,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.Black;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 532);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 538);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(807, 46);
             this.flowLayoutPanel1.TabIndex = 282;
@@ -285,113 +289,113 @@
             this.Tile_Item_ErrorType.AppearanceItem.Selected.Options.UseFont = true;
             this.Tile_Item_ErrorType.AppearanceItem.Selected.Options.UseForeColor = true;
             this.Tile_Item_ErrorType.CurrentFrameIndex = 1;
-            tileItemElement1.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
-            tileItemElement1.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement1.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement1.Appearance.Hovered.Options.UseTextOptions = true;
-            tileItemElement1.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement1.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement1.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement1.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement1.Appearance.Normal.Options.UseFont = true;
-            tileItemElement1.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement1.Appearance.Normal.Options.UseTextOptions = true;
-            tileItemElement1.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement1.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement1.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement1.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement1.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement1.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement1.Appearance.Selected.Options.UseFont = true;
-            tileItemElement1.Appearance.Selected.Options.UseTextOptions = true;
-            tileItemElement1.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement1.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement1.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement1.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileItemElement1.MaxWidth = 100;
-            tileItemElement1.Text = "Error Type";
-            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement1.TextLocation = new System.Drawing.Point(4, 4);
-            this.Tile_Item_ErrorType.Elements.Add(tileItemElement1);
-            tileItemFrame1.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
-            tileItemFrame1.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame1.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
-            tileItemFrame1.Appearance.Font = new System.Drawing.Font("Segoe UI Light", 9F);
-            tileItemFrame1.Appearance.ForeColor = System.Drawing.Color.Black;
-            tileItemFrame1.Appearance.Options.UseBackColor = true;
-            tileItemFrame1.Appearance.Options.UseBorderColor = true;
-            tileItemFrame1.Appearance.Options.UseFont = true;
-            tileItemFrame1.Appearance.Options.UseForeColor = true;
-            tileItemElement2.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
-            tileItemElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement2.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement2.Appearance.Hovered.Options.UseTextOptions = true;
-            tileItemElement2.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement2.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement2.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement2.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement2.Appearance.Normal.Options.UseFont = true;
-            tileItemElement2.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement2.Appearance.Normal.Options.UseTextOptions = true;
-            tileItemElement2.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement2.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement2.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement2.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement2.Appearance.Selected.Options.UseFont = true;
-            tileItemElement2.Appearance.Selected.Options.UseTextOptions = true;
-            tileItemElement2.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement2.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement2.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement2.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileItemElement2.MaxWidth = 100;
-            tileItemElement2.Text = "Error Type";
-            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement2.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame1.Elements.Add(tileItemElement2);
-            tileItemFrame2.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
-            tileItemFrame2.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame2.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
-            tileItemFrame2.Appearance.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemFrame2.Appearance.ForeColor = System.Drawing.Color.Black;
-            tileItemFrame2.Appearance.Options.UseBackColor = true;
-            tileItemFrame2.Appearance.Options.UseBorderColor = true;
-            tileItemFrame2.Appearance.Options.UseFont = true;
-            tileItemFrame2.Appearance.Options.UseForeColor = true;
-            tileItemElement3.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
-            tileItemElement3.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement3.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement3.Appearance.Hovered.Options.UseTextOptions = true;
-            tileItemElement3.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement3.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement3.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement3.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileItemElement3.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement3.Appearance.Normal.Options.UseTextOptions = true;
-            tileItemElement3.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement3.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement3.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement3.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement3.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement3.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tileItemElement3.Appearance.Selected.Options.UseFont = true;
-            tileItemElement3.Appearance.Selected.Options.UseTextOptions = true;
-            tileItemElement3.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            tileItemElement3.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
-            tileItemElement3.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
-            tileItemElement3.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
-            tileItemElement3.MaxWidth = 100;
-            tileItemElement3.Text = "Error Type";
-            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement3.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame2.Elements.Add(tileItemElement3);
-            this.Tile_Item_ErrorType.Frames.Add(tileItemFrame1);
-            this.Tile_Item_ErrorType.Frames.Add(tileItemFrame2);
+            tileItemElement19.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement19.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement19.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement19.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement19.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement19.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement19.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement19.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement19.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement19.Appearance.Normal.Options.UseFont = true;
+            tileItemElement19.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement19.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement19.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement19.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement19.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement19.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement19.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement19.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement19.Appearance.Selected.Options.UseFont = true;
+            tileItemElement19.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement19.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement19.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement19.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement19.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement19.MaxWidth = 100;
+            tileItemElement19.Text = "Error Type";
+            tileItemElement19.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement19.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_ErrorType.Elements.Add(tileItemElement19);
+            tileItemFrame13.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame13.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame13.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
+            tileItemFrame13.Appearance.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            tileItemFrame13.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame13.Appearance.Options.UseBackColor = true;
+            tileItemFrame13.Appearance.Options.UseBorderColor = true;
+            tileItemFrame13.Appearance.Options.UseFont = true;
+            tileItemFrame13.Appearance.Options.UseForeColor = true;
+            tileItemElement20.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement20.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement20.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement20.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement20.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement20.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement20.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement20.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement20.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement20.Appearance.Normal.Options.UseFont = true;
+            tileItemElement20.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement20.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement20.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement20.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement20.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement20.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement20.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement20.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement20.Appearance.Selected.Options.UseFont = true;
+            tileItemElement20.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement20.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement20.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement20.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement20.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement20.MaxWidth = 100;
+            tileItemElement20.Text = "Error Type";
+            tileItemElement20.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement20.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame13.Elements.Add(tileItemElement20);
+            tileItemFrame14.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
+            tileItemFrame14.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame14.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
+            tileItemFrame14.Appearance.Font = new System.Drawing.Font("Segoe UI Light", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemFrame14.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame14.Appearance.Options.UseBackColor = true;
+            tileItemFrame14.Appearance.Options.UseBorderColor = true;
+            tileItemFrame14.Appearance.Options.UseFont = true;
+            tileItemFrame14.Appearance.Options.UseForeColor = true;
+            tileItemElement21.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement21.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement21.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement21.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement21.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement21.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement21.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement21.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement21.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement21.Appearance.Normal.Options.UseFont = true;
+            tileItemElement21.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement21.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement21.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement21.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement21.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement21.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement21.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement21.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement21.Appearance.Selected.Options.UseFont = true;
+            tileItemElement21.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement21.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement21.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement21.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement21.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement21.MaxWidth = 100;
+            tileItemElement21.Text = "Error Type";
+            tileItemElement21.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement21.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame14.Elements.Add(tileItemElement21);
+            this.Tile_Item_ErrorType.Frames.Add(tileItemFrame13);
+            this.Tile_Item_ErrorType.Frames.Add(tileItemFrame14);
             this.Tile_Item_ErrorType.Id = 1;
             this.Tile_Item_ErrorType.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.Tile_Item_ErrorType.Name = "Tile_Item_ErrorType";
@@ -424,42 +428,42 @@
             this.Tile_Item_ErrorTab.AppearanceItem.Selected.Options.UseFont = true;
             this.Tile_Item_ErrorTab.AppearanceItem.Selected.Options.UseForeColor = true;
             this.Tile_Item_ErrorTab.CurrentFrameIndex = 1;
-            tileItemElement4.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement4.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement4.Appearance.Normal.Options.UseFont = true;
-            tileItemElement4.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement4.Text = "Error Tab";
-            tileItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement4.TextLocation = new System.Drawing.Point(4, 4);
-            this.Tile_Item_ErrorTab.Elements.Add(tileItemElement4);
-            tileItemFrame3.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
-            tileItemFrame3.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame3.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
-            tileItemFrame3.Appearance.ForeColor = System.Drawing.Color.Black;
-            tileItemFrame3.Appearance.Options.UseBackColor = true;
-            tileItemFrame3.Appearance.Options.UseBorderColor = true;
-            tileItemFrame3.Appearance.Options.UseForeColor = true;
-            tileItemElement5.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement5.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement5.Appearance.Normal.Options.UseFont = true;
-            tileItemElement5.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement5.Text = "Error Tab";
-            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement5.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame3.Elements.Add(tileItemElement5);
-            tileItemFrame4.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
-            tileItemFrame4.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame4.Appearance.Options.UseBackColor = true;
-            tileItemElement6.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement6.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
-            tileItemElement6.Appearance.Normal.Options.UseFont = true;
-            tileItemElement6.Appearance.Normal.Options.UseForeColor = true;
-            tileItemElement6.Text = "Error Tab";
-            tileItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement6.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame4.Elements.Add(tileItemElement6);
-            this.Tile_Item_ErrorTab.Frames.Add(tileItemFrame3);
-            this.Tile_Item_ErrorTab.Frames.Add(tileItemFrame4);
+            tileItemElement22.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement22.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement22.Appearance.Normal.Options.UseFont = true;
+            tileItemElement22.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement22.Text = "Error Tab";
+            tileItemElement22.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement22.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_ErrorTab.Elements.Add(tileItemElement22);
+            tileItemFrame15.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame15.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame15.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
+            tileItemFrame15.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame15.Appearance.Options.UseBackColor = true;
+            tileItemFrame15.Appearance.Options.UseBorderColor = true;
+            tileItemFrame15.Appearance.Options.UseForeColor = true;
+            tileItemElement23.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement23.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement23.Appearance.Normal.Options.UseFont = true;
+            tileItemElement23.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement23.Text = "Error Tab";
+            tileItemElement23.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement23.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame15.Elements.Add(tileItemElement23);
+            tileItemFrame16.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
+            tileItemFrame16.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame16.Appearance.Options.UseBackColor = true;
+            tileItemElement24.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement24.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement24.Appearance.Normal.Options.UseFont = true;
+            tileItemElement24.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement24.Text = "Error Tab";
+            tileItemElement24.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement24.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame16.Elements.Add(tileItemElement24);
+            this.Tile_Item_ErrorTab.Frames.Add(tileItemFrame15);
+            this.Tile_Item_ErrorTab.Frames.Add(tileItemFrame16);
             this.Tile_Item_ErrorTab.Id = 2;
             this.Tile_Item_ErrorTab.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.Tile_Item_ErrorTab.Name = "Tile_Item_ErrorTab";
@@ -491,36 +495,37 @@
             this.Tile_Item_ErrorField.AppearanceItem.Selected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.Tile_Item_ErrorField.AppearanceItem.Selected.Options.UseFont = true;
             this.Tile_Item_ErrorField.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement7.Appearance.Normal.Options.UseFont = true;
-            tileItemElement7.Text = "Error Field";
-            tileItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement7.TextLocation = new System.Drawing.Point(4, 4);
-            this.Tile_Item_ErrorField.Elements.Add(tileItemElement7);
-            tileItemFrame5.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
-            tileItemFrame5.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame5.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
-            tileItemFrame5.Appearance.ForeColor = System.Drawing.Color.Black;
-            tileItemFrame5.Appearance.Options.UseBackColor = true;
-            tileItemFrame5.Appearance.Options.UseBorderColor = true;
-            tileItemFrame5.Appearance.Options.UseForeColor = true;
-            tileItemElement8.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement8.Appearance.Normal.Options.UseFont = true;
-            tileItemElement8.Text = "Error Field";
-            tileItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement8.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame5.Elements.Add(tileItemElement8);
-            tileItemFrame6.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
-            tileItemFrame6.Appearance.BackColor = System.Drawing.Color.White;
-            tileItemFrame6.Appearance.Options.UseBackColor = true;
-            tileItemElement9.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
-            tileItemElement9.Appearance.Normal.Options.UseFont = true;
-            tileItemElement9.Text = "Error Field";
-            tileItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileItemElement9.TextLocation = new System.Drawing.Point(4, 4);
-            tileItemFrame6.Elements.Add(tileItemElement9);
-            this.Tile_Item_ErrorField.Frames.Add(tileItemFrame5);
-            this.Tile_Item_ErrorField.Frames.Add(tileItemFrame6);
+            this.Tile_Item_ErrorField.CurrentFrameIndex = 1;
+            tileItemElement25.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement25.Appearance.Normal.Options.UseFont = true;
+            tileItemElement25.Text = "Error Field";
+            tileItemElement25.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement25.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_ErrorField.Elements.Add(tileItemElement25);
+            tileItemFrame17.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame17.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame17.Appearance.BorderColor = System.Drawing.Color.Gainsboro;
+            tileItemFrame17.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame17.Appearance.Options.UseBackColor = true;
+            tileItemFrame17.Appearance.Options.UseBorderColor = true;
+            tileItemFrame17.Appearance.Options.UseForeColor = true;
+            tileItemElement26.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement26.Appearance.Normal.Options.UseFont = true;
+            tileItemElement26.Text = "Error Field";
+            tileItemElement26.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement26.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame17.Elements.Add(tileItemElement26);
+            tileItemFrame18.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
+            tileItemFrame18.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame18.Appearance.Options.UseBackColor = true;
+            tileItemElement27.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement27.Appearance.Normal.Options.UseFont = true;
+            tileItemElement27.Text = "Error Field";
+            tileItemElement27.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement27.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame18.Elements.Add(tileItemElement27);
+            this.Tile_Item_ErrorField.Frames.Add(tileItemFrame17);
+            this.Tile_Item_ErrorField.Frames.Add(tileItemFrame18);
             this.Tile_Item_ErrorField.Id = 3;
             this.Tile_Item_ErrorField.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.Tile_Item_ErrorField.Name = "Tile_Item_ErrorField";
@@ -572,6 +577,7 @@
             this.btn_AddError.Text = "Add Error";
             this.btn_AddError.ToolTip = "Save";
             this.btn_AddError.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_AddError.Click += new System.EventHandler(this.btn_AddError_Click);
             // 
             // btn_Import
             // 
@@ -628,6 +634,7 @@
             this.gridColumn20});
             this.gridView5.GridControl = this.Grd_ErrorDes;
             this.gridView5.Name = "gridView5";
+            this.gridView5.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView5_RowCellClick);
             // 
             // SNO
             // 
@@ -643,8 +650,6 @@
             this.SNO.FieldName = "Error_description_Id";
             this.SNO.Name = "SNO";
             this.SNO.OptionsColumn.AllowEdit = false;
-            this.SNO.Visible = true;
-            this.SNO.VisibleIndex = 0;
             // 
             // Project_Type
             // 
@@ -661,7 +666,7 @@
             this.Project_Type.Name = "Project_Type";
             this.Project_Type.OptionsColumn.AllowEdit = false;
             this.Project_Type.Visible = true;
-            this.Project_Type.VisibleIndex = 1;
+            this.Project_Type.VisibleIndex = 0;
             // 
             // Product_Type
             // 
@@ -678,7 +683,7 @@
             this.Product_Type.Name = "Product_Type";
             this.Product_Type.OptionsColumn.AllowEdit = false;
             this.Product_Type.Visible = true;
-            this.Product_Type.VisibleIndex = 2;
+            this.Product_Type.VisibleIndex = 1;
             // 
             // Error_Description
             // 
@@ -695,7 +700,7 @@
             this.Error_Description.Name = "Error_Description";
             this.Error_Description.OptionsColumn.AllowEdit = false;
             this.Error_Description.Visible = true;
-            this.Error_Description.VisibleIndex = 3;
+            this.Error_Description.VisibleIndex = 2;
             // 
             // Error_Type_Id
             // 
@@ -711,8 +716,6 @@
             this.Error_Type_Id.FieldName = "Error_Type";
             this.Error_Type_Id.Name = "Error_Type_Id";
             this.Error_Type_Id.OptionsColumn.AllowEdit = false;
-            this.Error_Type_Id.Visible = true;
-            this.Error_Type_Id.VisibleIndex = 4;
             // 
             // gridColumn17
             // 
@@ -725,7 +728,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 5;
+            this.gridColumn17.VisibleIndex = 3;
             // 
             // repositoryItemHyperLinkEdit1
             // 
@@ -742,11 +745,10 @@
             this.gridColumn18.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn18.Caption = "Delete";
             this.gridColumn18.ColumnEdit = this.repositoryItemHyperLinkEdit5;
-            this.gridColumn18.FieldName = "Delete";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.VisibleIndex = 4;
             // 
             // repositoryItemHyperLinkEdit5
             // 
@@ -775,7 +777,9 @@
             this.grdErrorTab.Name = "grdErrorTab";
             this.grdErrorTab.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.linkEdit,
-            this.linkDelete});
+            this.linkDelete,
+            this.repositoryItemHyperLinkEdit6,
+            this.repositoryItemHyperLinkEdit7});
             this.grdErrorTab.Size = new System.Drawing.Size(803, 368);
             this.grdErrorTab.TabIndex = 5;
             this.grdErrorTab.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -797,18 +801,24 @@
             // 
             // gridColumn9
             // 
+            this.gridColumn9.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn9.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn9.AppearanceCell.Options.UseFont = true;
+            this.gridColumn9.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn9.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn9.AppearanceHeader.Options.UseFont = true;
             this.gridColumn9.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn9.Caption = "SNO";
+            this.gridColumn9.Caption = "Error_Type_Id";
             this.gridColumn9.FieldName = "Error_Type_Id";
             this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 0;
             // 
             // gridColumn10
             // 
+            this.gridColumn10.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn10.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn10.AppearanceCell.Options.UseFont = true;
+            this.gridColumn10.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn10.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn10.AppearanceHeader.Options.UseFont = true;
@@ -818,7 +828,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.VisibleIndex = 0;
             // 
             // gridColumn11
             // 
@@ -833,6 +843,10 @@
             // 
             // gridColumn12
             // 
+            this.gridColumn12.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn12.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn12.AppearanceCell.Options.UseFont = true;
+            this.gridColumn12.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn12.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn12.AppearanceHeader.Options.UseFont = true;
@@ -842,7 +856,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.VisibleIndex = 1;
             // 
             // gridColumn13
             // 
@@ -857,6 +871,10 @@
             // 
             // gridColumn14
             // 
+            this.gridColumn14.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn14.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn14.AppearanceCell.Options.UseFont = true;
+            this.gridColumn14.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn14.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn14.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn14.AppearanceHeader.Options.UseFont = true;
@@ -866,42 +884,63 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 3;
+            this.gridColumn14.VisibleIndex = 2;
             // 
             // gridColumn15
             // 
+            this.gridColumn15.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn15.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn15.AppearanceCell.Options.UseFont = true;
+            this.gridColumn15.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn15.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn15.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn15.AppearanceHeader.Options.UseFont = true;
             this.gridColumn15.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn15.Caption = "View";
-            this.gridColumn15.ColumnEdit = this.linkEdit;
-            this.gridColumn15.DisplayFormat.FormatString = "View";
+            this.gridColumn15.ColumnEdit = this.repositoryItemHyperLinkEdit7;
             this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.ToolTip = "Double Click On View";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.VisibleIndex = 3;
+            // 
+            // repositoryItemHyperLinkEdit7
+            // 
+            this.repositoryItemHyperLinkEdit7.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit7.Caption = "View";
+            this.repositoryItemHyperLinkEdit7.Name = "repositoryItemHyperLinkEdit7";
+            this.repositoryItemHyperLinkEdit7.NullText = "View";
+            this.repositoryItemHyperLinkEdit7.SingleClick = true;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn16.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn16.AppearanceCell.Options.UseFont = true;
+            this.gridColumn16.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn16.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn16.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn16.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn16.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn16.Caption = "Delete";
+            this.gridColumn16.ColumnEdit = this.repositoryItemHyperLinkEdit6;
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 4;
+            // 
+            // repositoryItemHyperLinkEdit6
+            // 
+            this.repositoryItemHyperLinkEdit6.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit6.Caption = "Delete";
+            this.repositoryItemHyperLinkEdit6.Name = "repositoryItemHyperLinkEdit6";
+            this.repositoryItemHyperLinkEdit6.NullText = "Delete";
+            this.repositoryItemHyperLinkEdit6.SingleClick = true;
+            this.repositoryItemHyperLinkEdit6.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit6_Click);
             // 
             // linkEdit
             // 
             this.linkEdit.AutoHeight = false;
             this.linkEdit.Name = "linkEdit";
             this.linkEdit.NullText = "View";
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn16.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn16.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn16.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn16.Caption = "Delete";
-            this.gridColumn16.ColumnEdit = this.linkDelete;
-            this.gridColumn16.DisplayFormat.FormatString = "Delete";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.OptionsColumn.AllowEdit = false;
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 5;
             // 
             // linkDelete
             // 
@@ -939,6 +978,10 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn1.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn1.AppearanceCell.Options.UseFont = true;
+            this.gridColumn1.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
@@ -953,6 +996,10 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
@@ -967,6 +1014,10 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn3.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn3.AppearanceCell.Options.UseFont = true;
+            this.gridColumn3.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
@@ -979,6 +1030,10 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn4.AppearanceCell.Options.UseFont = true;
+            this.gridColumn4.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
@@ -997,6 +1052,10 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn5.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.gridColumn5.AppearanceCell.Options.UseFont = true;
+            this.gridColumn5.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
@@ -1012,6 +1071,7 @@
             this.repositoryItemHyperLinkEdit4.AutoHeight = false;
             this.repositoryItemHyperLinkEdit4.Name = "repositoryItemHyperLinkEdit4";
             this.repositoryItemHyperLinkEdit4.NullText = "Detele";
+            this.repositoryItemHyperLinkEdit4.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit4_Click);
             // 
             // gridColumn6
             // 
@@ -1054,6 +1114,10 @@
             // 
             this.gridView4.Name = "gridView4";
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
             // Error_Settings
             // 
             this.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -1089,6 +1153,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdErrorTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linkEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linkDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Error_Type)).EndInit();
@@ -1167,5 +1233,7 @@
         private DevExpress.XtraEditors.SimpleButton btn_AddError;
         private DevExpress.XtraEditors.SimpleButton btn_Import;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit6;
     }
 }

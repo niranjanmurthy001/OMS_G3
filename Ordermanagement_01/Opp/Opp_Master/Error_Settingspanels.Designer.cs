@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.txtErrorTab = new DevExpress.XtraEditors.TextEdit();
             this.chkProductType = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -36,7 +37,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             this.Clear = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -56,7 +56,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013 Light Gray";
             // 
             // txtErrorTab
             // 
@@ -146,18 +146,6 @@
             this.Clear.Text = "Clear";
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_Delete.Appearance.Options.UseFont = true;
-            this.btn_Delete.Appearance.Options.UseForeColor = true;
-            this.btn_Delete.Location = new System.Drawing.Point(167, 3);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete.TabIndex = 2;
-            this.btn_Delete.Text = "Delete";
-            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -203,7 +191,6 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Close);
             this.flowLayoutPanel1.Controls.Add(this.Clear);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Controls.Add(this.btnSubmit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -218,7 +205,7 @@
             this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
-            this.btnSubmit.Location = new System.Drawing.Point(81, 3);
+            this.btnSubmit.Location = new System.Drawing.Point(167, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 40);
             this.btnSubmit.TabIndex = 3;
@@ -239,7 +226,7 @@
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Error_Field";
             // 
-            // Error_Settings
+            // Error_Settingspanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,7 +236,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(432, 324);
             this.MinimumSize = new System.Drawing.Size(432, 324);
-            this.Name = "Error_Settings";
+            this.Name = "Error_Settingspanels";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Settings";
             this.Load += new System.EventHandler(this.Error_Settings_Load);
@@ -277,7 +264,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton btn_Close;
         private DevExpress.XtraEditors.SimpleButton Clear;
-        private DevExpress.XtraEditors.SimpleButton btn_Delete;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;

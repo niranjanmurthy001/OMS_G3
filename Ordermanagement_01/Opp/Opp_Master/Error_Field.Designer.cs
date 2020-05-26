@@ -42,7 +42,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -206,7 +205,6 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Close);
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
@@ -241,25 +239,13 @@
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.btn_Delete.Appearance.Options.UseFont = true;
-            this.btn_Delete.Appearance.Options.UseForeColor = true;
-            this.btn_Delete.Location = new System.Drawing.Point(167, 3);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete.TabIndex = 2;
-            this.btn_Delete.Text = "Delete";
-            // 
             // btn_Save
             // 
             this.btn_Save.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
-            this.btn_Save.Location = new System.Drawing.Point(81, 3);
+            this.btn_Save.Location = new System.Drawing.Point(167, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(80, 40);
             this.btn_Save.TabIndex = 3;
@@ -316,7 +302,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_Close;
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
-        private DevExpress.XtraEditors.SimpleButton btn_Delete;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }

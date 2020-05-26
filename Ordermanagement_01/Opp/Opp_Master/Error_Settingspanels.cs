@@ -25,11 +25,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int InsertedByvalue;
         DateTime InsertedDatevalue;
         private DataTable _dt;
-        string Operation_Type = "";
+        string Operation_Type;
         int ProjectId;
-        public Error_Settingspanels()
+        public Error_Settingspanels(string _OperationType, string Boxname)
         {
             InitializeComponent();
+            Operation_Type = _OperationType;
+            string _boxnmae = Boxname;
+            Error_label.Text = _boxnmae;
+
         }
 
         private void Error_Settings_Load(object sender, EventArgs e)
@@ -209,7 +213,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         var data = new StringContent(JsonConvert.SerializeObject(dtproducttype), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/InsertType", data);
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/InsertType", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)

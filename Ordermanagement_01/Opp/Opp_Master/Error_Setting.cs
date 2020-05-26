@@ -201,14 +201,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Tile_Error_Tab_ItemClick(object sender, TileItemEventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Master.ErrorTabSetting _Error_tab = new ErrorTabSetting();
-            _Error_tab.Show();
+            //Ordermanagement_01.Opp.Opp_Master.ErrorTabSetting _Error_tab = new ErrorTabSetting();
+            //_Error_tab.Show();
         }
 
         private void Tile_Error_Field_ItemClick(object sender, TileItemEventArgs e)
         {
-            Ordermanagement_01.Masters.Error_Field _errorfield = new Error_Field();
-            _errorfield.Show();
+            //Ordermanagement_01.Masters.Error_Field _errorfield = new Error_Field();
+            //_errorfield.Show();
         }
         private void Clear()
         {
