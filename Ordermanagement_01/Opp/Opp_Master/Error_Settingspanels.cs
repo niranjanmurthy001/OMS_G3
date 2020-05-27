@@ -27,20 +27,43 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private DataTable _dt;
         string Operation_Type;
         int ProjectId;
-        public Error_Settingspanels(string _OperationType, string Boxname)
+        string _btnname;
+        int _Projectid;
+        int _productid;
+        string errortext;
+        
+        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name)
         {
             InitializeComponent();
             Operation_Type = _OperationType;
             string _boxnmae = Boxname;
             Error_label.Text = _boxnmae;
+            _Projectid = _Pro;
+            _productid = _product;
+            _btnname = _btn_name;
+            txtErrorTab.Text = _text;
 
         }
 
         private void Error_Settings_Load(object sender, EventArgs e)
         {
             BindProjectType();
-           // Bind_Error_Tab_Grid();
-            BindProdctType(ProjectId);
+            // Bind_Error_Tab_Grid();
+            BindProdctType(_Projectid);
+
+            if (Operation_Type=="Error Type")
+            {
+                btnSubmit.Text = _btnname;
+                ddlProjectType.EditValue = _Projectid;
+                groupControl1.Text = "Error Type";
+            }
+            else if(Operation_Type == "Error Tab")
+            {
+                btnSubmit.Text = _btnname;
+                groupControl1.Text = "Error Tab";
+                ddlProjectType.EditValue = _Projectid;
+
+            }
         }
        
         private void btn_Close_Click(object sender, EventArgs e)
@@ -92,9 +115,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                    InsertedByvalue = Convert.ToInt32(dt.Rows[0]["Inserted_By"]);
+                                    //InsertedByvalue = Convert.ToInt32(dt.Rows[0]["Inserted_By"]);
 
-                                    InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
+                                    //InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
 
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Error Type is Submitted Sucessfully");
@@ -125,13 +148,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
 
                         DataTable dtupdate = new DataTable();
-                        dtupdate.Columns.AddRange(new DataColumn[8]
+                        dtupdate.Columns.AddRange(new DataColumn[7]
                         {
                     new DataColumn("Project_Type_Id",typeof(int)),
                      new DataColumn("Product_Type_Id",typeof(int)),
                      new DataColumn("Error_Type",typeof(string)),
                      new DataColumn("Inserted_By",typeof(int)),
-                     new DataColumn("Instered_Date",typeof(DateTime)),
                      new DataColumn("Status",typeof(bool)),
                      new DataColumn("Modified_By",typeof(int)),
 
@@ -145,7 +167,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                             int projecttype = ProjectValue;
 
-                            dtupdate.Rows.Add(ProjectValue, Productval, ErrorTypeTxt, InsertedByvalue, InsertedDatevalue, "True", User_Id, DateTime.Now);
+                            dtupdate.Rows.Add(ProjectValue, Productval, ErrorTypeTxt, InsertedByvalue, "True", User_Id, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                         using (var httpclient = new HttpClient())
@@ -161,6 +183,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     XtraMessageBox.Show("ErrorTab Updated Successfully");
                                     //Bind_Error_Tab_Grid();
                                     clear();
+                                   // btnSubmit.Text = "Submit";
                                 }
                             }
                         }
@@ -285,6 +308,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     XtraMessageBox.Show("Error Type edited successfully");
                                     //BindErrorDetails();
                                     clear();
+                                   // btnSubmit.Text = "Submit";
                                 }
                             }
                         }
@@ -460,11 +484,20 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
 
-                            if (dt != null && dt.Rows.Count > 0)
+                            if (dt != null && dt.Rows.Count > 0 && Operation_Type == "Error Type"  && Operation_Type=="Error Tab") 
                             {
                                 chkProductType.DataSource = dt;
                                 chkProductType.DisplayMember = "Product_Type";
                                 chkProductType.ValueMember = "ProductType_Id";
+                            }
+                            else if(dt != null && dt.Rows.Count > 0 )
+                            {
+                                chkProductType.DataSource = dt;
+                                chkProductType.DisplayMember = "Product_Type";
+                                chkProductType.ValueMember = "ProductType_Id";
+                                chkProductType.SelectedValue = _productid;
+                                int _erroe = chkProductType.SelectedIndex;
+                                chkProductType.SetItemChecked(_erroe, true);
                             }
                         }
 

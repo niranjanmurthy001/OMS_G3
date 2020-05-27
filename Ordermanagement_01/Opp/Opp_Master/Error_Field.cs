@@ -19,15 +19,43 @@ namespace Ordermanagement_01.Opp.Opp_Master
 {
     public partial class Error_Field : DevExpress.XtraEditors.XtraForm
     {
-        public Error_Field()
+        string _btnname;
+        int _Projectid;
+        int _productid;
+        string errortext;
+        int checkederror;
+        string Operation_Type;
+        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror)
         {
             InitializeComponent();
+            _btnname = btnname;
+            _Projectid = _pro;
+            _productid = _prd;
+            errortext = _text;
+            checkederror = _Cerror;
+            Operation_Type = _operationType;
+            
         }
 
         private void Error_Field_Load(object sender, EventArgs e)
-        {
+            {
             BindErrordetails();
             BindProjectType();
+            if (Operation_Type == "Error Field")
+            {
+                
+            }
+            else
+            {
+                
+                btn_Save.Text = _btnname;
+                ddl_ProjectType.EditValue = _Projectid;
+                BindProdctType(_Projectid);
+                ddl_ProductType.EditValue = _productid;
+                txt_Errorfield.Text = errortext;
+              
+            }
+
         }
 
         private async void btn_Save_Click(object sender, EventArgs e)
@@ -235,15 +263,28 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null & dt.Rows.Count > 0)
+                            if (dt != null & dt.Rows.Count > 0 && Operation_Type=="Error Field")
+                            { 
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    checkedListBoxControl_Errortab.DataSource = dt;
+                                    checkedListBoxControl_Errortab.DisplayMember = "Error_Type";
+                                    checkedListBoxControl_Errortab.ValueMember = "Error_Type_Id";
+                                    
+                                }
+
+                            }
+                            else if(dt != null & dt.Rows.Count > 0)
                             {
                                 for (int i = 0; i < dt.Rows.Count; i++)
                                 {
                                     checkedListBoxControl_Errortab.DataSource = dt;
                                     checkedListBoxControl_Errortab.DisplayMember = "Error_Type";
                                     checkedListBoxControl_Errortab.ValueMember = "Error_Type_Id";
+                                    checkedListBoxControl_Errortab.SelectedValue = checkederror;
+                                    int _erroe = checkedListBoxControl_Errortab.SelectedIndex;
+                                    checkedListBoxControl_Errortab.SetItemChecked(_erroe, true);
                                 }
-
                             }
 
                         }
