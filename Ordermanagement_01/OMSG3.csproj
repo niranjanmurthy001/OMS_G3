@@ -4595,6 +4595,7 @@
     <None Include="Resources\Final_Qc_32.png" />
     <None Include="Resources\Exception_32.png" />
     <None Include="Resources\Employee.png" />
+    <None Include="Resources\error_Settings_24.png" />
     <Content Include="Resources\groupControlAccuracy.CaptionImageOptions.Image.png" />
     <None Include="Resources\groupControlAccuracy.CaptionImageOptions.Image1.png" />
     <Content Include="Resources\iconfinder_Windows_View_Detail_52792.png" />

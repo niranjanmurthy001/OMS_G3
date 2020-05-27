@@ -733,6 +733,16 @@ namespace Ordermanagement_01.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error_Settings_24 {
+            get {
+                object obj = ResourceManager.GetObject("error_Settings_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exception_32 {
             get {
                 object obj = ResourceManager.GetObject("Exception_32", resourceCulture);

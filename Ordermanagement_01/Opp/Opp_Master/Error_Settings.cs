@@ -33,25 +33,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void Error_Settings_Load(object sender, EventArgs e)
         {
 
-            grd_Error_Type.Visible = true;
-            Grd_ErrorDes.Visible = false;
-            grdErrorTab.Visible = false;
-            Tile_Item_ErrorType.Checked = true;
             BindErrorDetails();
             BindErrorGrid();
             Bind_Error_Tab_Grid();
-
-
         }
         private void Tile_Item_ErrorType_ItemClick(object sender, TileItemEventArgs e)
         {
+                      
             Tile_Item_ErrorType.Checked = true;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = false;
+            navigationFrame1.SelectedPage = navigationPage1;
             BindErrorDetails(); ;
-            grd_Error_Type.Visible = true;
-            Grd_ErrorDes.Visible = false;
-            grdErrorTab.Visible = false;
+
         }
 
         private void Tile_Item_ErrorTab_ItemClick(object sender, TileItemEventArgs e)
@@ -59,9 +53,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = true;
             Tile_Item_ErrorField.Checked = false;
-            grdErrorTab.Visible = true;
-            grd_Error_Type.Visible = false;
-            Grd_ErrorDes.Visible = false;
+            navigationFrame1.SelectedPage = navigationPage2;
             Bind_Error_Tab_Grid();
 
         }
@@ -71,9 +63,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = true;
-            Grd_ErrorDes.Visible = true;
-            grdErrorTab.Visible = false;
-            grd_Error_Type.Visible = false;
+            navigationFrame1.SelectedPage = navigationPage3;
             BindErrorGrid();
 
         }
@@ -412,6 +402,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 this.Close();
             }
+        }
+
+        private void Tile_Item_ErrorType_CheckedChanged(object sender, TileItemEventArgs e)
+        {
+            Tile_Item_ErrorField.AppearanceItem.Selected.BackColor = Color.Blue;
         }
     }
 
