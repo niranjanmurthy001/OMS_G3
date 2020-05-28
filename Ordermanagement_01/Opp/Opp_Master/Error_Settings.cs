@@ -22,6 +22,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
     {
         string OperationType;
         int User_Id;
+        string _btnname;
+        int _Projectid;
+        int _productid;
+        string errortext;
+        int checkederror;
         public Error_Settings()
         {
             InitializeComponent();
@@ -32,26 +37,20 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Error_Settings_Load(object sender, EventArgs e)
         {
-
-            grd_Error_Type.Visible = true;
-            Grd_ErrorDes.Visible = false;
-            grdErrorTab.Visible = false;
             Tile_Item_ErrorType.Checked = true;
             BindErrorDetails();
             BindErrorGrid();
             Bind_Error_Tab_Grid();
-
-
         }
         private void Tile_Item_ErrorType_ItemClick(object sender, TileItemEventArgs e)
         {
+                      
             Tile_Item_ErrorType.Checked = true;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = false;
-            BindErrorDetails(); ;
-            grd_Error_Type.Visible = true;
-            Grd_ErrorDes.Visible = false;
-            grdErrorTab.Visible = false;
+            navigationFrame1.SelectedPage = navigationPage1;
+            BindErrorDetails(); 
+
         }
 
         private void Tile_Item_ErrorTab_ItemClick(object sender, TileItemEventArgs e)
@@ -59,9 +58,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = true;
             Tile_Item_ErrorField.Checked = false;
-            grdErrorTab.Visible = true;
-            grd_Error_Type.Visible = false;
-            Grd_ErrorDes.Visible = false;
+            navigationFrame1.SelectedPage = navigationPage2;
             Bind_Error_Tab_Grid();
 
         }
@@ -71,19 +68,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = true;
-            Grd_ErrorDes.Visible = true;
-            grdErrorTab.Visible = false;
-            grd_Error_Type.Visible = false;
+            navigationFrame1.SelectedPage = navigationPage3;
             BindErrorGrid();
 
         }
 
         private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Grd_ErrorDes_Click(object sender, EventArgs e)
         {
 
         }
@@ -94,7 +84,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 OperationType = "Error Type";
                 string Boxname = "Error Type";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType,Boxname);
+                _btnname = "Submit";
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType,Boxname,_Projectid,_productid,errortext,_btnname);
                 ErrorTypes.Show();
 
             }
@@ -102,13 +93,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 OperationType = "Error Tab";
                 string _boxname = "Error Tab";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname);
+                _btnname = "Submit";
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname,_Projectid, _productid, errortext, _btnname);
                 ErrorTypes.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
-
-                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field();
+                OperationType = "Error Field";
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType,_btnname, _Projectid,_productid,errortext,checkederror);
                 ErrorField.Show();
             }
         }
@@ -307,10 +299,47 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
 
             }
+            if (e.Column.Caption == "View")
+            {
+                GridView view = Grd_ErrorDes.MainView as GridView;
+                var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                //e.Column.ColumnEdit.NullText = "Edit";
+                 _btnname = "Update";
+                OperationType = "";
+                _Projectid = Convert.ToInt32(index.ItemArray[7]);
+                //int Pro = Convert.ToInt32(ddl_ProjectType.EditValue);
+                //BindProdctType(Pro);
+                _productid = Convert.ToInt32(index.ItemArray[8]);
+                errortext = index.ItemArray[0].ToString();
+                checkederror = Convert.ToInt32(index.ItemArray[3]);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType,_btnname, _Projectid, _productid, errortext,checkederror);
+                _Efield.Show();
+                
+            }
         }
 
-        private async void repositoryItemHyperLinkEdit4_Click(object sender, EventArgs e)
+
+        private void Tile_Item_ErrorType_CheckedChanged(object sender, TileItemEventArgs e)
         {
+            Tile_Item_ErrorField.AppearanceItem.Selected.BackColor = Color.Blue;
+        }
+
+        private void repositoryItemHyperLinkEdit9_Click(object sender, EventArgs e)
+        {
+            GridView view = grd_Error_Type.MainView as GridView;
+            var index = view.GetDataRow(view.GetSelectedRows()[0]);
+            OperationType = "Error Type";
+            _btnname = "Edit";
+            _Projectid = Convert.ToInt32(index.ItemArray[1]);
+            errortext = index.ItemArray[3].ToString();
+             checkederror = Convert.ToInt32(index.ItemArray[2]);
+            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType,"Error Type",_Projectid,checkederror,errortext,_btnname);
+            _Espanels.Show();
+        }
+
+        private async void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
+        {
+
             string message = "Do you want to delete?";
             string title = "Close Window";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -322,7 +351,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-                    int Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
+                   int Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
                     var dictionary = new Dictionary<string, object>()
                 {
                    { "@Trans", "DELETE" },
@@ -340,7 +369,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Record Deleted Successfully");
                                 BindErrorDetails();
-                               
 
                             }
                         }
@@ -364,7 +392,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private async void repositoryItemHyperLinkEdit6_Click(object sender, EventArgs e)
+        private async void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
         {
             string message = "Do you want to delete?";
             string title = "Close Window";
@@ -376,7 +404,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 try
                 {
-                    System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
+                    System.Data.DataRow row = gridView3.GetDataRow(gridView1.FocusedRowHandle);
                     int ID = int.Parse(row["Error_Type_Id"].ToString());
                     var dictionarydelete = new Dictionary<string, object>();
                     {
@@ -412,6 +440,24 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 this.Close();
             }
+        }
+
+        private void repositoryItemHyperLinkEdit7_Click(object sender, EventArgs e)
+        {
+           
+            GridView view = grdErrorTab.MainView as GridView;
+            var index = view.GetDataRow(view.GetSelectedRows()[0]);
+            _Projectid = Convert.ToInt32(index.ItemArray[4]);
+           errortext = index.ItemArray[3].ToString();
+            checkederror = Convert.ToInt32(index.ItemArray[5]);
+            _btnname = "Edit";
+            OperationType = "Error Tab";
+
+            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _Projectid, checkederror, errortext, _btnname);
+            _etab.Show();
+            //chkProductType.SelectedValue = ProductChk;
+            //int _task = chkProductType.SelectedIndex;
+            //chkProductType.SetItemChecked(_task, true);
         }
     }
 
