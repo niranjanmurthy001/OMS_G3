@@ -32,8 +32,10 @@ namespace Ordermanagement_01
             //Application.Run(new Masters.Error_Field());
             //Application.Run(new Opp.Opp_Master.Error_Setting(1, 1));
             // Application.Run(new Opp.Opp_Master.TEst1());
-            Application.Run(new Opp.Opp_Master.Error_Settings());
+            //Application.Run(new Opp.Opp_Master.Error_Settings());
             //Application.Run(new Opp.Opp_Master.ErrorTabSetting());
+            //Application.Run(new Masters.Error_Info(1, "vj"));
+            Application.Run(new Opp.Opp_Master.ImportErrorInfo("Error Tab"));
         }
     }
 
