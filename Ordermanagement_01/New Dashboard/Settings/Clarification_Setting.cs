@@ -1684,59 +1684,74 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             ClearClient();
         }
 
+        private bool _ValidateClient()
+        {
+            if (checkedboxlist_Client.CheckedItems.Count == 0||lookupedit_Client_FromId.EditValue==null||lookupedit_Client_ToEmail.EditValue==null)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Select Client details to delete");
+                return false;
+            }
+            return true;
+        }
+
         private async void btn_ClientEmailDelete_Click_1(object sender, EventArgs e)
         {
-            string message = "Do you want to delete?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
-            if (show == DialogResult.Yes)
+            if (_ValidateClient() != false)
             {
 
-                try
+                string message = "Do you want to delete?";
+                string title = "Close Window";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult show = XtraMessageBox.Show(message, title, buttons);
+                if (show == DialogResult.Yes)
                 {
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictionary = new Dictionary<string, object>()
+
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        var dictionary = new Dictionary<string, object>()
                 {
                    { "@Trans", "CLIENT_DELETE" },
                     { "@U_Id", UID }
                 };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/DeleteClient", data);
-                        if (response.IsSuccessStatusCode)
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/DeleteClient", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                gridControl1_From_Email.DataSource = dt;
-                                int count = dt.Rows.Count;
-                                grid_Email_Address_list();
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                    gridControl1_From_Email.DataSource = dt;
+                                    int count = dt.Rows.Count;
+                                    grid_Email_Address_list();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                    BindClientGrid();
+                                    ClearClient();
+                                }
+                            }
+                            else
+                            {
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Record Deleted Successfully");
-                                BindClientGrid();
-                                ClearClient();
+                                XtraMessageBox.Show("Please Select Client To Delete");
                             }
                         }
-                        else
-                        {
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("Please Select Client To Delete");
-                        }
-                    }
 
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        throw ex;
+                    }
                 }
-                catch (Exception ex)
+                else if (show == DialogResult.No)
                 {
-                    SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    this.Close();
                 }
-            }
-            else if (show == DialogResult.No)
-            {
-                this.Close();
             }
         }
     }
