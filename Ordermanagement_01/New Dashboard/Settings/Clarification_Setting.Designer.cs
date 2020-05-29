@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clarification_Setting));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
@@ -138,10 +139,10 @@
             this.btn_ClientEmailSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.label4 = new System.Windows.Forms.Label();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Ordermanagement_01.Masters.WaitForm1), true, true);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
@@ -1052,7 +1053,7 @@
             this.tabNavigationPage3.Controls.Add(this.panelControl6);
             this.tabNavigationPage3.MinimumSize = new System.Drawing.Size(400, 400);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(660, 505);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(660, 511);
             // 
             // panelControl6
             // 
@@ -1060,7 +1061,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(660, 505);
+            this.panelControl6.Size = new System.Drawing.Size(660, 511);
             this.panelControl6.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -1077,7 +1078,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.784736F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.21526F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 501);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 507);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // splitContainer2
@@ -1097,7 +1098,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(650, 446);
+            this.splitContainer2.Size = new System.Drawing.Size(650, 452);
             this.splitContainer2.SplitterDistance = 240;
             this.splitContainer2.TabIndex = 3;
             // 
@@ -1107,7 +1108,7 @@
             this.gridControl1_To_Email.Location = new System.Drawing.Point(0, 0);
             this.gridControl1_To_Email.MainView = this.gridView3;
             this.gridControl1_To_Email.Name = "gridControl1_To_Email";
-            this.gridControl1_To_Email.Size = new System.Drawing.Size(236, 442);
+            this.gridControl1_To_Email.Size = new System.Drawing.Size(236, 448);
             this.gridControl1_To_Email.TabIndex = 0;
             this.gridControl1_To_Email.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1162,7 +1163,7 @@
             this.flowLayoutPanel3.Controls.Add(this.panel4);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 400);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 406);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(402, 42);
             this.flowLayoutPanel3.TabIndex = 41;
@@ -1232,7 +1233,7 @@
             this.tabNavigationPage4.Caption = "Client Email Setting";
             this.tabNavigationPage4.Controls.Add(this.panelControl3);
             this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(660, 505);
+            this.tabNavigationPage4.Size = new System.Drawing.Size(660, 511);
             // 
             // panelControl3
             // 
@@ -1240,7 +1241,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(660, 505);
+            this.panelControl3.Size = new System.Drawing.Size(660, 511);
             this.panelControl3.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -1259,14 +1260,14 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.70297F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(656, 501);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(656, 507);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 54);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 55);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -1284,7 +1285,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.labelControl14);
             this.splitContainer3.Panel2.Controls.Add(this.flowLayoutPanel5);
             this.splitContainer3.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel2_Paint);
-            this.splitContainer3.Size = new System.Drawing.Size(650, 444);
+            this.splitContainer3.Size = new System.Drawing.Size(650, 449);
             this.splitContainer3.SplitterDistance = 266;
             this.splitContainer3.TabIndex = 3;
             // 
@@ -1294,7 +1295,7 @@
             this.gridControl_Client.Location = new System.Drawing.Point(0, 0);
             this.gridControl_Client.MainView = this.gridView4;
             this.gridControl_Client.Name = "gridControl_Client";
-            this.gridControl_Client.Size = new System.Drawing.Size(262, 440);
+            this.gridControl_Client.Size = new System.Drawing.Size(262, 445);
             this.gridControl_Client.TabIndex = 0;
             this.gridControl_Client.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1350,7 +1351,7 @@
             this.lookupedit_Client_ToEmail.Properties.NullText = "Select";
             this.lookupedit_Client_ToEmail.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookupedit_Client_ToEmail.Size = new System.Drawing.Size(218, 20);
-            this.lookupedit_Client_ToEmail.TabIndex = 94;
+            this.lookupedit_Client_ToEmail.TabIndex = 2;
             // 
             // lookupedit_Client_FromId
             // 
@@ -1363,7 +1364,7 @@
             this.lookupedit_Client_FromId.Properties.NullText = "Select";
             this.lookupedit_Client_FromId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookupedit_Client_FromId.Size = new System.Drawing.Size(218, 20);
-            this.lookupedit_Client_FromId.TabIndex = 93;
+            this.lookupedit_Client_FromId.TabIndex = 1;
             // 
             // label5
             // 
@@ -1383,7 +1384,7 @@
             this.checkedboxlist_Client.Location = new System.Drawing.Point(109, 38);
             this.checkedboxlist_Client.Name = "checkedboxlist_Client";
             this.checkedboxlist_Client.Size = new System.Drawing.Size(218, 95);
-            this.checkedboxlist_Client.TabIndex = 46;
+            this.checkedboxlist_Client.TabIndex = 0;
             // 
             // labelControl15
             // 
@@ -1414,7 +1415,7 @@
             this.flowLayoutPanel5.Controls.Add(this.panel5);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 396);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 401);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(376, 44);
             this.flowLayoutPanel5.TabIndex = 41;
@@ -1480,7 +1481,7 @@
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl8.Location = new System.Drawing.Point(3, 3);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(650, 45);
+            this.panelControl8.Size = new System.Drawing.Size(650, 46);
             this.panelControl8.TabIndex = 4;
             // 
             // label4
@@ -1490,7 +1491,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(2, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(646, 41);
+            this.label4.Size = new System.Drawing.Size(646, 42);
             this.label4.TabIndex = 2;
             this.label4.Text = "Client E-mail Settings";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

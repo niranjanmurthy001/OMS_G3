@@ -1979,6 +1979,12 @@
     <Compile Include="Opp\Opp_Master\Error_Settingspanels.Designer.cs">
       <DependentUpon>Error_Settingspanels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\ImportErrorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ImportErrorInfo.Designer.cs">
+      <DependentUpon>ImportErrorInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3859,6 +3865,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Error_Settingspanels.resx">
       <DependentUpon>Error_Settingspanels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\ImportErrorInfo.resx">
+      <DependentUpon>ImportErrorInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
