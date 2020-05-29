@@ -1937,6 +1937,18 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.Designer.cs">
+      <DependentUpon>Category_Salary_Bracket_EntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.Designer.cs">
+      <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\ErrorTabSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3826,6 +3838,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.resx">
+      <DependentUpon>Category_Salary_Bracket_EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.resx">
+      <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ErrorTabSetting.resx">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.txtErrorTab = new DevExpress.XtraEditors.TextEdit();
             this.chkProductType = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -56,27 +55,27 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013 Light Gray";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // txtErrorTab
             // 
             this.txtErrorTab.Location = new System.Drawing.Point(136, 194);
             this.txtErrorTab.Name = "txtErrorTab";
-            this.txtErrorTab.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtErrorTab.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtErrorTab.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.txtErrorTab.Properties.Appearance.Options.UseFont = true;
             this.txtErrorTab.Properties.Appearance.Options.UseForeColor = true;
-            this.txtErrorTab.Size = new System.Drawing.Size(243, 20);
+            this.txtErrorTab.Size = new System.Drawing.Size(243, 24);
             this.txtErrorTab.TabIndex = 7;
             // 
             // chkProductType
             // 
-            this.chkProductType.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkProductType.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkProductType.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.chkProductType.Appearance.Options.UseFont = true;
             this.chkProductType.Appearance.Options.UseForeColor = true;
             this.chkProductType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chkProductType.Location = new System.Drawing.Point(136, 64);
+            this.chkProductType.Location = new System.Drawing.Point(136, 67);
             this.chkProductType.Name = "chkProductType";
             this.chkProductType.Size = new System.Drawing.Size(243, 105);
             this.chkProductType.TabIndex = 6;
@@ -85,76 +84,76 @@
             // 
             this.ddlProjectType.Location = new System.Drawing.Point(136, 20);
             this.ddlProjectType.Name = "ddlProjectType";
-            this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.ddlProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddlProjectType.Properties.Appearance.Options.UseForeColor = true;
             this.ddlProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProjectType.Properties.NullText = "Select";
-            this.ddlProjectType.Size = new System.Drawing.Size(243, 20);
+            this.ddlProjectType.Size = new System.Drawing.Size(243, 24);
             this.ddlProjectType.TabIndex = 4;
             this.ddlProjectType.EditValueChanged += new System.EventHandler(this.ddlProjectType_EditValueChanged);
             // 
             // Error_label
             // 
-            this.Error_label.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Error_label.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Error_label.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.Error_label.Appearance.Options.UseFont = true;
             this.Error_label.Appearance.Options.UseForeColor = true;
             this.Error_label.Location = new System.Drawing.Point(24, 194);
             this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(38, 17);
+            this.Error_label.Size = new System.Drawing.Size(37, 17);
             this.Error_label.TabIndex = 3;
             this.Error_label.Text = "Error :";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.Location = new System.Drawing.Point(24, 90);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(90, 17);
+            this.labelControl2.Size = new System.Drawing.Size(84, 17);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Product Type :";
             // 
             // btn_Close
             // 
-            this.btn_Close.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_Close.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Close.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Close.Appearance.Options.UseFont = true;
             this.btn_Close.Appearance.Options.UseForeColor = true;
             this.btn_Close.Location = new System.Drawing.Point(339, 3);
             this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(80, 40);
+            this.btn_Close.Size = new System.Drawing.Size(80, 38);
             this.btn_Close.TabIndex = 0;
             this.btn_Close.Text = "Close";
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // Clear
             // 
-            this.Clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.Clear.Appearance.Options.UseFont = true;
             this.Clear.Appearance.Options.UseForeColor = true;
             this.Clear.Location = new System.Drawing.Point(253, 3);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(80, 40);
+            this.Clear.Size = new System.Drawing.Size(80, 38);
             this.Clear.TabIndex = 1;
             this.Clear.Text = "Clear";
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Location = new System.Drawing.Point(24, 20);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(85, 17);
+            this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Project Type :";
             // 
@@ -201,21 +200,21 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
             this.btnSubmit.Location = new System.Drawing.Point(167, 3);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(80, 40);
+            this.btnSubmit.Size = new System.Drawing.Size(80, 38);
             this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // groupControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
@@ -224,7 +223,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(432, 324);
             this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "Error_Field";
+            this.groupControl1.Text = "Error";
             // 
             // Error_Settingspanels
             // 
