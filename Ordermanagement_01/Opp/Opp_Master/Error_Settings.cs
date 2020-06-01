@@ -310,17 +310,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             if (e.Column.Caption == "View")
             {
-                GridView view = Grd_ErrorDes.MainView as GridView;
-                var index = view.GetDataRow(view.GetSelectedRows()[0]);
-                //e.Column.ColumnEdit.NullText = "Edit";
+                System.Data.DataRow row = gridView5.GetDataRow(gridView5.FocusedRowHandle);
+                _Projectid = int.Parse(row["Project_Type_Id"].ToString());
+                _productid = int.Parse(row["Product_Type_Id"].ToString());
+                errortext = row["Error_description"].ToString();
+                checkederror = int.Parse(row["Error_Type_Id"].ToString());
+                //GridView view = Grd_ErrorDes.MainView as GridView;
+                //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                ////e.Column.ColumnEdit.NullText = "Edit";
                 _btnname = "Update";
                 OperationType = "";
-                _Projectid = Convert.ToInt32(index.ItemArray[7]);
-                //int Pro = Convert.ToInt32(ddl_ProjectType.EditValue);
-                //BindProdctType(Pro);
-                _productid = Convert.ToInt32(index.ItemArray[8]);
-                errortext = index.ItemArray[0].ToString();
-                checkederror = Convert.ToInt32(index.ItemArray[3]);
+                //_Projectid = Convert.ToInt32(index.ItemArray[7]);
+                
+                //_productid = Convert.ToInt32(index.ItemArray[8]);
+                //errortext = index.ItemArray[0].ToString();
+                //checkederror = Convert.ToInt32(index.ItemArray[3]);
                 Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror);
                 _Efield.Show();
 
@@ -335,13 +339,16 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void repositoryItemHyperLinkEdit9_Click(object sender, EventArgs e)
         {
-            GridView view = grd_Error_Type.MainView as GridView;
-            var index = view.GetDataRow(view.GetSelectedRows()[0]);
+            System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+            _Projectid = int.Parse(row["Project_Type_Id"].ToString());
+            //_productid = int.Parse(row["Product_Type_Id"].ToString());
+            errortext = row["New_Error_Type"].ToString();
+            checkederror = int.Parse(row["Product_Type_Id"].ToString());
             OperationType = "Error Type";
             _btnname = "Edit";
-            _Projectid = Convert.ToInt32(index.ItemArray[1]);
-            errortext = index.ItemArray[3].ToString();
-            checkederror = Convert.ToInt32(index.ItemArray[2]);
+            //_Projectid = Convert.ToInt32(index.ItemArray[1]);
+            //errortext = index.ItemArray[3].ToString();
+            //checkederror = Convert.ToInt32(index.ItemArray[2]);
             Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname);
             _Espanels.Show();
         }
@@ -454,11 +461,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void repositoryItemHyperLinkEdit7_Click(object sender, EventArgs e)
         {
 
-            GridView view = grdErrorTab.MainView as GridView;
-            var index = view.GetDataRow(view.GetSelectedRows()[0]);
-            _Projectid = Convert.ToInt32(index.ItemArray[4]);
-            errortext = index.ItemArray[3].ToString();
-            checkederror = Convert.ToInt32(index.ItemArray[5]);
+            System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
+            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+            //GridView view = grdErrorTab.MainView as GridView;
+            //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+            //_Projectid = Convert.ToInt32(index.ItemArray[4]);
+            //errortext = index.ItemArray[3].ToString();
+            //checkederror = Convert.ToInt32(index.ItemArray[5]);
+            errortext = row["Error_Type"].ToString();
+            checkederror = int.Parse(row["Product_Type_Id"].ToString());
             _btnname = "Edit";
             OperationType = "Error Tab";
 
