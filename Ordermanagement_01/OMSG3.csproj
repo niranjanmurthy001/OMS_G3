@@ -1973,6 +1973,18 @@
     <Compile Include="Opp\Opp_Master\ImportErrorInfo.Designer.cs">
       <DependentUpon>ImportErrorInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_Entry.Designer.cs">
+      <DependentUpon>Order_SourceType_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_View.Designer.cs">
+      <DependentUpon>Order_SourceType_View.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3850,6 +3862,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ImportErrorInfo.resx">
       <DependentUpon>ImportErrorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Order_SourceType_Entry.resx">
+      <DependentUpon>Order_SourceType_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Order_SourceType_View.resx">
+      <DependentUpon>Order_SourceType_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
