@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
             this.btn_addnew = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.bnt_Submit = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.Grd_Category_Salary = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,7 +45,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,7 +64,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 477);
+            this.groupControl1.Size = new System.Drawing.Size(782, 496);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Category Salary Bracket View";
             // 
@@ -76,10 +79,10 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.85714F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.6701F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.3299F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 375F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 454);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 473);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -90,21 +93,36 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(772, 33);
+            this.label1.Size = new System.Drawing.Size(772, 54);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Salary Bracket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.btn_Refresh);
             this.flowLayoutPanel1.Controls.Add(this.btn_addnew);
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton1);
+            this.flowLayoutPanel1.Controls.Add(this.bnt_Submit);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 57);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 39);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 37);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btn_Refresh
+            // 
+            this.btn_Refresh.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_Refresh.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Refresh.Appearance.Options.UseFont = true;
+            this.btn_Refresh.Appearance.Options.UseForeColor = true;
+            this.btn_Refresh.Location = new System.Drawing.Point(689, 3);
+            this.btn_Refresh.Name = "btn_Refresh";
+            this.btn_Refresh.Size = new System.Drawing.Size(80, 30);
+            this.btn_Refresh.TabIndex = 3;
+            this.btn_Refresh.Text = "Refresh";
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // btn_addnew
             // 
@@ -112,30 +130,45 @@
             this.btn_addnew.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_addnew.Appearance.Options.UseFont = true;
             this.btn_addnew.Appearance.Options.UseForeColor = true;
-            this.btn_addnew.Location = new System.Drawing.Point(689, 3);
+            this.btn_addnew.Location = new System.Drawing.Point(603, 3);
             this.btn_addnew.Name = "btn_addnew";
             this.btn_addnew.Size = new System.Drawing.Size(80, 30);
             this.btn_addnew.TabIndex = 0;
             this.btn_addnew.Text = "Add New";
             this.btn_addnew.Click += new System.EventHandler(this.btn_addnew_Click);
             // 
-            // simpleButton1
+            // bnt_Submit
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(603, 3);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(80, 30);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Submit";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.bnt_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.bnt_Submit.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.bnt_Submit.Appearance.Options.UseFont = true;
+            this.bnt_Submit.Appearance.Options.UseForeColor = true;
+            this.bnt_Submit.Location = new System.Drawing.Point(517, 3);
+            this.bnt_Submit.Name = "bnt_Submit";
+            this.bnt_Submit.Size = new System.Drawing.Size(80, 30);
+            this.bnt_Submit.TabIndex = 1;
+            this.bnt_Submit.Text = "Update";
+            this.bnt_Submit.Visible = false;
+            this.bnt_Submit.Click += new System.EventHandler(this.bnt_Submit_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Delete.Appearance.Options.UseFont = true;
+            this.btn_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_Delete.Location = new System.Drawing.Point(431, 3);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(80, 30);
+            this.btn_Delete.TabIndex = 2;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.Visible = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // Grd_Category_Salary
             // 
             this.Grd_Category_Salary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 81);
+            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 100);
             this.Grd_Category_Salary.MainView = this.gridView1;
             this.Grd_Category_Salary.Name = "Grd_Category_Salary";
             this.Grd_Category_Salary.Size = new System.Drawing.Size(772, 370);
@@ -153,7 +186,18 @@
             this.gridColumn5,
             this.gridColumn6});
             this.gridView1.GridControl = this.Grd_Category_Salary;
+            this.gridView1.IndicatorWidth = 30;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
+            this.gridView1.OptionsSelection.InvertSelection = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView1_CustomRowCellEdit);
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
+            this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
             // 
             // gridColumn1
             // 
@@ -168,8 +212,9 @@
             this.gridColumn1.Caption = "Project Type";
             this.gridColumn1.FieldName = "Project_Type";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             // 
             // gridColumn2
             // 
@@ -177,6 +222,8 @@
             this.gridColumn2.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn2.AppearanceCell.Options.UseFont = true;
             this.gridColumn2.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
@@ -184,8 +231,9 @@
             this.gridColumn2.Caption = "Category";
             this.gridColumn2.FieldName = "Category_Name";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             // 
             // gridColumn3
             // 
@@ -193,6 +241,8 @@
             this.gridColumn3.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn3.AppearanceCell.Options.UseFont = true;
             this.gridColumn3.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
@@ -201,7 +251,7 @@
             this.gridColumn3.FieldName = "Salary_From";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 3;
             // 
             // gridColumn4
             // 
@@ -209,6 +259,8 @@
             this.gridColumn4.AppearanceCell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn4.AppearanceCell.Options.UseFont = true;
             this.gridColumn4.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
@@ -217,7 +269,7 @@
             this.gridColumn4.FieldName = "Salary_To";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -239,10 +291,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 477);
+            this.ClientSize = new System.Drawing.Size(782, 496);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(798, 515);
-            this.MinimumSize = new System.Drawing.Size(798, 515);
+            this.MaximumSize = new System.Drawing.Size(798, 534);
+            this.MinimumSize = new System.Drawing.Size(798, 534);
             this.Name = "Category_Salary_Bracket_ProjectWise";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category_Salary_Bracket_ProjectWise";
@@ -264,7 +316,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_addnew;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton bnt_Submit;
         private DevExpress.XtraGrid.GridControl Grd_Category_Salary;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
@@ -275,5 +327,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraEditors.SimpleButton btn_Refresh;
     }
 }
