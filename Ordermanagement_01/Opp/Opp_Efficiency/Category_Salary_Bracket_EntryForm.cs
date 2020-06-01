@@ -19,7 +19,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
     public partial class Category_Salary_Bracket_EntryForm : DevExpress.XtraEditors.XtraForm
     {
-        int User_Id, Project_Type_Id;
+        int User_Id, Project_Type_Id, _projectid,_Category;
+       
+
         public Category_Salary_Bracket_EntryForm()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void Category_Salary_Bracket_EntryForm_Load(object sender, EventArgs e)
         {
             BindProjectType();
+            
         }
         private async void BindProjectType()
         {
@@ -84,7 +87,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             try
             {
-                if (btn_Submit.Text == "Submit" && Validation() == true)
+                if (btn_Submit.Text == "Submit" && Validation() == true  && (await BindCategorySalaryBracketProjectwise()) != false)
                 {
                     User_Id = 1;
                     Project_Type_Id = Convert.ToInt32(ddl_Project_Type.EditValue);
@@ -138,7 +141,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private bool Validation()
         {
-            if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
+            if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0 )
             {
                 XtraMessageBox.Show("Select Project_Type");
                 ddl_Project_Type.Focus();
@@ -162,7 +165,59 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 txt_SalaryTo.Focus();
                 return false;
             }
+           
             return true;
+        }
+
+        private async Task<bool> BindCategorySalaryBracketProjectwise()
+        {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","SELECT" }
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CategorySalaryBracket/BindGrid", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            int numberofrows = _dt.Rows.Count;
+                            for (int i = 0; i < numberofrows; i++)
+                            {
+                                //for each row, get the 3rd column
+                                 _projectid = Convert.ToInt32(_dt.Rows[i]["Project_Type_Id"]);
+                                _Category = Convert.ToInt32(_dt.Rows[i]["Category_Name"]);
+                                if(txt_Category.Text==_Category.ToString() && Convert.ToInt32(ddl_Project_Type.EditValue)==_projectid)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Project_Type and Category are Already Exists");
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+
+            }
         }
     }
 }

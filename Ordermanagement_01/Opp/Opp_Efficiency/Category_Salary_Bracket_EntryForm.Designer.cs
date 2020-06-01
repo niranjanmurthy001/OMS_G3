@@ -64,9 +64,9 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(379, 306);
+            this.groupControl1.Size = new System.Drawing.Size(379, 430);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Category Salary Bracket Entry";
+            this.groupControl1.Text = "Add Category Salary Bracket ";
             // 
             // tableLayoutPanel1
             // 
@@ -78,9 +78,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.61873F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.38127F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 283);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.68059F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.31941F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 407);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -96,7 +96,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(369, 236);
+            this.panelControl1.Size = new System.Drawing.Size(369, 358);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_SalaryTo
@@ -198,9 +198,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 245);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 367);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 35);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 37);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -233,10 +233,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 306);
+            this.ClientSize = new System.Drawing.Size(379, 430);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(395, 344);
-            this.MinimumSize = new System.Drawing.Size(395, 344);
+            this.MaximumSize = new System.Drawing.Size(395, 468);
+            this.MinimumSize = new System.Drawing.Size(395, 468);
             this.Name = "Category_Salary_Bracket_EntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category_Salary_Bracket_EntryForm";
