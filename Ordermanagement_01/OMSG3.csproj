@@ -1949,6 +1949,18 @@
     <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.Designer.cs">
       <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Import_Category_Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Import_Category_Salary.Designer.cs">
+      <DependentUpon>Import_Category_Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Settings.Designer.cs">
+      <DependentUpon>Efficiency_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\ErrorTabSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3862,6 +3874,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.resx">
       <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Import_Category_Salary.resx">
+      <DependentUpon>Import_Category_Salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Settings.resx">
+      <DependentUpon>Efficiency_Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ErrorTabSetting.resx">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>
