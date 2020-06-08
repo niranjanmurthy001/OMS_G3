@@ -309,6 +309,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Open XML SDK\V2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="expertxls, Version=6.0.2.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpertXls.ExcelLibrary.6.0.2\lib\net40\expertxls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\..\Html Remove Tags\Net40\HtmlAgilityPack.dll</HintPath>
