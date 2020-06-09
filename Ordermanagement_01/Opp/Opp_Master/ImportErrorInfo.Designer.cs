@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportErrorInfo));
+            this.groupContError = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.bbtnSampleFormat = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.lbl_Uploadfilename = new DevExpress.XtraEditors.LabelControl();
             this.bthChooseFile = new DevExpress.XtraEditors.SimpleButton();
-            this.bbtnSampleFormat = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -53,7 +55,6 @@
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.gridErrorImport = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,13 +68,15 @@
             this.grdError_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Exist_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Duplicate_Count = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            ((System.ComponentModel.ISupportInitialize)(this.groupContError)).BeginInit();
+            this.groupContError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -89,28 +92,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupControl1
+            // groupContError
             // 
-            this.groupControl1.Controls.Add(this.splitContainerControl1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(804, 494);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "groupControl1";
+            this.groupContError.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupContError.AppearanceCaption.Options.UseFont = true;
+            this.groupContError.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupContError.CaptionImageOptions.Image")));
+            this.groupContError.Controls.Add(this.splitContainerControl1);
+            this.groupContError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupContError.Location = new System.Drawing.Point(0, 0);
+            this.groupContError.Name = "groupContError";
+            this.groupContError.Size = new System.Drawing.Size(781, 494);
+            this.groupContError.TabIndex = 0;
+            this.groupContError.Text = "Import Errors";
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 21);
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 27);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(800, 471);
-            this.splitContainerControl1.SplitterPosition = 122;
+            this.splitContainerControl1.Size = new System.Drawing.Size(777, 465);
+            this.splitContainerControl1.SplitterPosition = 107;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -125,37 +131,58 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.125F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 122);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 107);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.flowLayoutPanel2);
             this.panelControl3.Controls.Add(this.panelControl2);
-            this.panelControl3.Controls.Add(this.bbtnSampleFormat);
             this.panelControl3.Controls.Add(this.labelControl1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 71);
+            this.panelControl3.Location = new System.Drawing.Point(3, 62);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(794, 48);
+            this.panelControl3.Size = new System.Drawing.Size(771, 42);
             this.panelControl3.TabIndex = 2;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.bbtnSampleFormat);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(582, 2);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(187, 38);
+            this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // bbtnSampleFormat
+            // 
+            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnSampleFormat.Appearance.Options.UseFont = true;
+            this.bbtnSampleFormat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bbtnSampleFormat.Location = new System.Drawing.Point(3, 3);
+            this.bbtnSampleFormat.Name = "bbtnSampleFormat";
+            this.bbtnSampleFormat.Size = new System.Drawing.Size(181, 33);
+            this.bbtnSampleFormat.TabIndex = 0;
+            this.bbtnSampleFormat.Text = "Download Sample Format";
+            this.bbtnSampleFormat.Click += new System.EventHandler(this.bbtnSampleFormat_Click);
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.lbl_Uploadfilename);
             this.panelControl2.Controls.Add(this.bthChooseFile);
-            this.panelControl2.Location = new System.Drawing.Point(282, 5);
+            this.panelControl2.Location = new System.Drawing.Point(127, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(281, 35);
+            this.panelControl2.Size = new System.Drawing.Size(450, 35);
             this.panelControl2.TabIndex = 1;
             // 
             // lbl_Uploadfilename
             // 
             this.lbl_Uploadfilename.Location = new System.Drawing.Point(108, 11);
             this.lbl_Uploadfilename.Name = "lbl_Uploadfilename";
-            this.lbl_Uploadfilename.Size = new System.Drawing.Size(71, 13);
+            this.lbl_Uploadfilename.Size = new System.Drawing.Size(77, 13);
             this.lbl_Uploadfilename.TabIndex = 1;
-            this.lbl_Uploadfilename.Text = "No File Chosen";
+            this.lbl_Uploadfilename.Text = "No File Choosen";
             // 
             // bthChooseFile
             // 
@@ -168,26 +195,15 @@
             this.bthChooseFile.Text = "Upload";
             this.bthChooseFile.Click += new System.EventHandler(this.bthChooseFile_Click);
             // 
-            // bbtnSampleFormat
-            // 
-            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbtnSampleFormat.Appearance.Options.UseFont = true;
-            this.bbtnSampleFormat.Location = new System.Drawing.Point(580, 8);
-            this.bbtnSampleFormat.Name = "bbtnSampleFormat";
-            this.bbtnSampleFormat.Size = new System.Drawing.Size(181, 29);
-            this.bbtnSampleFormat.TabIndex = 0;
-            this.bbtnSampleFormat.Text = "DownLoad Sample Format";
-            this.bbtnSampleFormat.Click += new System.EventHandler(this.bbtnSampleFormat_Click);
-            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(170, 13);
+            this.labelControl1.Location = new System.Drawing.Point(17, 13);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(106, 14);
+            this.labelControl1.Size = new System.Drawing.Size(102, 14);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Select Excel File  :";
+            this.labelControl1.Text = "Select Excel File :";
             // 
             // groupControl2
             // 
@@ -195,7 +211,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(3, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(794, 62);
+            this.groupControl2.Size = new System.Drawing.Size(771, 53);
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Note :";
             // 
@@ -213,14 +229,14 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(2, 21);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(790, 39);
+            this.panelControl1.Size = new System.Drawing.Size(767, 30);
             this.panelControl1.TabIndex = 0;
             // 
             // lblTotalErrors
             // 
             this.lblTotalErrors.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalErrors.Appearance.Options.UseFont = true;
-            this.lblTotalErrors.Location = new System.Drawing.Point(578, 9);
+            this.lblTotalErrors.Location = new System.Drawing.Point(601, 9);
             this.lblTotalErrors.Name = "lblTotalErrors";
             this.lblTotalErrors.Size = new System.Drawing.Size(16, 14);
             this.lblTotalErrors.TabIndex = 253;
@@ -230,7 +246,7 @@
             // 
             this.lblDuplicateRecordCount.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuplicateRecordCount.Appearance.Options.UseFont = true;
-            this.lblDuplicateRecordCount.Location = new System.Drawing.Point(350, 9);
+            this.lblDuplicateRecordCount.Location = new System.Drawing.Point(399, 9);
             this.lblDuplicateRecordCount.Name = "lblDuplicateRecordCount";
             this.lblDuplicateRecordCount.Size = new System.Drawing.Size(16, 14);
             this.lblDuplicateRecordCount.TabIndex = 252;
@@ -240,7 +256,7 @@
             // 
             this.lblExistingRecordCount.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExistingRecordCount.Appearance.Options.UseFont = true;
-            this.lblExistingRecordCount.Location = new System.Drawing.Point(157, 9);
+            this.lblExistingRecordCount.Location = new System.Drawing.Point(206, 9);
             this.lblExistingRecordCount.Name = "lblExistingRecordCount";
             this.lblExistingRecordCount.Size = new System.Drawing.Size(16, 14);
             this.lblExistingRecordCount.TabIndex = 251;
@@ -250,10 +266,10 @@
             // 
             this.pictureBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.Location = new System.Drawing.Point(467, 8);
+            this.pictureBox2.Location = new System.Drawing.Point(486, 8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 17);
+            this.pictureBox2.Size = new System.Drawing.Size(28, 14);
             this.pictureBox2.TabIndex = 249;
             this.pictureBox2.TabStop = false;
             // 
@@ -262,7 +278,7 @@
             this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(277, 9);
+            this.label3.Location = new System.Drawing.Point(326, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 17);
             this.label3.TabIndex = 250;
@@ -273,7 +289,7 @@
             this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(501, 9);
+            this.label7.Location = new System.Drawing.Point(524, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 17);
             this.label7.TabIndex = 248;
@@ -283,10 +299,10 @@
             // 
             this.pictureBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox4.BackColor = System.Drawing.Color.Cyan;
-            this.pictureBox4.Location = new System.Drawing.Point(246, 8);
+            this.pictureBox4.Location = new System.Drawing.Point(294, 8);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(28, 17);
+            this.pictureBox4.Size = new System.Drawing.Size(26, 14);
             this.pictureBox4.TabIndex = 247;
             this.pictureBox4.TabStop = false;
             // 
@@ -294,10 +310,10 @@
             // 
             this.pictureBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox3.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox3.Location = new System.Drawing.Point(21, 8);
+            this.pictureBox3.Location = new System.Drawing.Point(68, 8);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(28, 17);
+            this.pictureBox3.Size = new System.Drawing.Size(24, 14);
             this.pictureBox3.TabIndex = 242;
             this.pictureBox3.TabStop = false;
             // 
@@ -306,7 +322,7 @@
             this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(52, 9);
+            this.label2.Location = new System.Drawing.Point(101, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 17);
             this.label2.TabIndex = 241;
@@ -322,9 +338,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.05341F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.94659F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 337);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.99422F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.00578F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 346);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -333,14 +349,14 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnExport);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(465, 293);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 303);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 40);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
@@ -354,7 +370,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
@@ -368,7 +384,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
@@ -380,17 +396,13 @@
             this.btnExport.Text = "Export";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
             // gridErrorImport
             // 
             this.gridErrorImport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridErrorImport.Location = new System.Drawing.Point(3, 3);
             this.gridErrorImport.MainView = this.gridView1;
             this.gridErrorImport.Name = "gridErrorImport";
-            this.gridErrorImport.Size = new System.Drawing.Size(794, 284);
+            this.gridErrorImport.Size = new System.Drawing.Size(771, 294);
             this.gridErrorImport.TabIndex = 2;
             this.gridErrorImport.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -433,51 +445,63 @@
             // 
             // gridColProjectType
             // 
+            this.gridColProjectType.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColProjectType.AppearanceHeader.Options.UseFont = true;
             this.gridColProjectType.Caption = "Project Type";
             this.gridColProjectType.FieldName = "Project_Type";
             this.gridColProjectType.Name = "gridColProjectType";
             this.gridColProjectType.Visible = true;
-            this.gridColProjectType.VisibleIndex = 1;
+            this.gridColProjectType.VisibleIndex = 0;
             // 
             // gridColProductType
             // 
+            this.gridColProductType.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColProductType.AppearanceHeader.Options.UseFont = true;
             this.gridColProductType.Caption = "Product Type";
             this.gridColProductType.FieldName = "Product_Type";
             this.gridColProductType.Name = "gridColProductType";
             this.gridColProductType.Visible = true;
-            this.gridColProductType.VisibleIndex = 2;
+            this.gridColProductType.VisibleIndex = 1;
             // 
             // gridColErrorType
             // 
+            this.gridColErrorType.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColErrorType.AppearanceHeader.Options.UseFont = true;
             this.gridColErrorType.Caption = "Error Type";
             this.gridColErrorType.FieldName = "Error_Type";
             this.gridColErrorType.Name = "gridColErrorType";
             this.gridColErrorType.Visible = true;
-            this.gridColErrorType.VisibleIndex = 3;
+            this.gridColErrorType.VisibleIndex = 2;
             // 
             // gridColErrorTab
             // 
+            this.gridColErrorTab.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColErrorTab.AppearanceHeader.Options.UseFont = true;
             this.gridColErrorTab.Caption = "Error Tab";
             this.gridColErrorTab.FieldName = "Error_Tab";
             this.gridColErrorTab.Name = "gridColErrorTab";
             this.gridColErrorTab.Visible = true;
-            this.gridColErrorTab.VisibleIndex = 4;
+            this.gridColErrorTab.VisibleIndex = 3;
             // 
             // gridColErrorDescrip
             // 
+            this.gridColErrorDescrip.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColErrorDescrip.AppearanceHeader.Options.UseFont = true;
             this.gridColErrorDescrip.Caption = "Error Description";
             this.gridColErrorDescrip.FieldName = "Error_Description";
             this.gridColErrorDescrip.Name = "gridColErrorDescrip";
             this.gridColErrorDescrip.Visible = true;
-            this.gridColErrorDescrip.VisibleIndex = 5;
+            this.gridColErrorDescrip.VisibleIndex = 4;
             // 
             // grdError_Status
             // 
+            this.grdError_Status.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdError_Status.AppearanceHeader.Options.UseFont = true;
             this.grdError_Status.Caption = "Error Status";
             this.grdError_Status.FieldName = "Error_Status";
             this.grdError_Status.Name = "grdError_Status";
             this.grdError_Status.Visible = true;
-            this.grdError_Status.VisibleIndex = 6;
+            this.grdError_Status.VisibleIndex = 5;
             // 
             // Exist_Count
             // 
@@ -491,23 +515,29 @@
             this.Duplicate_Count.FieldName = "Duplicate_Count";
             this.Duplicate_Count.Name = "Duplicate_Count";
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
             // ImportErrorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 494);
-            this.Controls.Add(this.groupControl1);
+            this.ClientSize = new System.Drawing.Size(781, 494);
+            this.Controls.Add(this.groupContError);
+            this.MinimumSize = new System.Drawing.Size(797, 532);
             this.Name = "ImportErrorInfo";
             this.Text = "ImportErrorInfo";
             this.Load += new System.EventHandler(this.ImportErrorInfo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupContError)).EndInit();
+            this.groupContError.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
@@ -529,7 +559,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl groupContError;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
@@ -568,5 +598,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdError_Status;
         private DevExpress.XtraGrid.Columns.GridColumn Exist_Count;
         private DevExpress.XtraGrid.Columns.GridColumn Duplicate_Count;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
