@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.repositoryItemHyperLinkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -42,12 +44,14 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemHyperLinkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -56,9 +60,26 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_SourceType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // repositoryItemHyperLinkEdit
+            // 
+            this.repositoryItemHyperLinkEdit.AccessibleName = "Edit";
+            this.repositoryItemHyperLinkEdit.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit.Caption = "Edit";
+            this.repositoryItemHyperLinkEdit.LookAndFeel.SkinName = "Office 2013";
+            this.repositoryItemHyperLinkEdit.Name = "repositoryItemHyperLinkEdit";
+            this.repositoryItemHyperLinkEdit.NullText = "Edit";
+            // 
+            // repositoryItemHyperLinkDelete
+            // 
+            this.repositoryItemHyperLinkDelete.AccessibleName = "Delete";
+            this.repositoryItemHyperLinkDelete.AutoHeight = false;
+            this.repositoryItemHyperLinkDelete.Caption = "Delete";
+            this.repositoryItemHyperLinkDelete.Name = "repositoryItemHyperLinkDelete";
+            this.repositoryItemHyperLinkDelete.NullText = "Delete";
             // 
             // defaultLookAndFeel1
             // 
@@ -71,7 +92,7 @@
             this.groupControl1.Appearance.Options.UseFont = true;
             this.groupControl1.Appearance.Options.UseForeColor = true;
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
@@ -111,7 +132,7 @@
             // btn_Add_NewSource
             // 
             this.btn_Add_NewSource.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Add_NewSource.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_Add_NewSource.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Add_NewSource.Appearance.Options.UseFont = true;
             this.btn_Add_NewSource.Appearance.Options.UseForeColor = true;
             this.btn_Add_NewSource.Location = new System.Drawing.Point(556, 3);
@@ -124,7 +145,7 @@
             // btn_Delete_MultipleSource
             // 
             this.btn_Delete_MultipleSource.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Delete_MultipleSource.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_Delete_MultipleSource.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Delete_MultipleSource.Appearance.Options.UseFont = true;
             this.btn_Delete_MultipleSource.Appearance.Options.UseForeColor = true;
             this.btn_Delete_MultipleSource.Location = new System.Drawing.Point(470, 3);
@@ -150,8 +171,8 @@
             this.grd_SourceType.MainView = this.gridViewSource;
             this.grd_SourceType.Name = "grd_SourceType";
             this.grd_SourceType.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemHyperLinkEdit,
-            this.repositoryItemHyperLinkDelete});
+            this.repositoryItemHyperLinkEdit1,
+            this.repositoryItemHyperLinkEdit2});
             this.grd_SourceType.Size = new System.Drawing.Size(635, 664);
             this.grd_SourceType.TabIndex = 0;
             this.grd_SourceType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -182,6 +203,10 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn1.Caption = "Project Type";
             this.gridColumn1.FieldName = "Project_Type";
             this.gridColumn1.Name = "gridColumn1";
@@ -192,6 +217,10 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn2.Caption = "Product Type";
             this.gridColumn2.FieldName = "Product_Type";
             this.gridColumn2.Name = "gridColumn2";
@@ -202,6 +231,10 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn3.Caption = "Source ";
             this.gridColumn3.FieldName = "Employee_source";
             this.gridColumn3.Name = "gridColumn3";
@@ -212,39 +245,29 @@
             // 
             // gridColumn8
             // 
+            this.gridColumn8.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn8.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumn8.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn8.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn8.Caption = "Edit";
-            this.gridColumn8.ColumnEdit = this.repositoryItemHyperLinkEdit;
+            this.gridColumn8.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 4;
             this.gridColumn8.Width = 47;
             // 
-            // repositoryItemHyperLinkEdit
-            // 
-            this.repositoryItemHyperLinkEdit.AccessibleName = "Edit";
-            this.repositoryItemHyperLinkEdit.AutoHeight = false;
-            this.repositoryItemHyperLinkEdit.Caption = "Edit";
-            this.repositoryItemHyperLinkEdit.Name = "repositoryItemHyperLinkEdit";
-            this.repositoryItemHyperLinkEdit.NullText = "Edit";
-            this.repositoryItemHyperLinkEdit.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit_Click);
-            // 
             // gridColumn7
             // 
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn7.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn7.Caption = "Delete";
-            this.gridColumn7.ColumnEdit = this.repositoryItemHyperLinkDelete;
+            this.gridColumn7.ColumnEdit = this.repositoryItemHyperLinkEdit2;
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
             this.gridColumn7.Width = 50;
-            // 
-            // repositoryItemHyperLinkDelete
-            // 
-            this.repositoryItemHyperLinkDelete.AccessibleName = "Delete";
-            this.repositoryItemHyperLinkDelete.AutoHeight = false;
-            this.repositoryItemHyperLinkDelete.Caption = "Delete";
-            this.repositoryItemHyperLinkDelete.Name = "repositoryItemHyperLinkDelete";
-            this.repositoryItemHyperLinkDelete.NullText = "Delete";
-            this.repositoryItemHyperLinkDelete.Click += new System.EventHandler(this.repositoryItemHyperLinkDelete_Click);
             // 
             // gridColumn4
             // 
@@ -264,6 +287,22 @@
             this.gridColumn6.FieldName = "Employee_Source_id";
             this.gridColumn6.Name = "gridColumn6";
             // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AccessibleName = "Edit";
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            this.repositoryItemHyperLinkEdit1.NullText = "Edit";
+            this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
+            // 
+            // repositoryItemHyperLinkEdit2
+            // 
+            this.repositoryItemHyperLinkEdit2.AccessibleName = "Delete";
+            this.repositoryItemHyperLinkEdit2.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit2.Name = "repositoryItemHyperLinkEdit2";
+            this.repositoryItemHyperLinkEdit2.NullText = "Delete";
+            this.repositoryItemHyperLinkEdit2.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit2_Click);
+            // 
             // Order_SourceType_View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +314,8 @@
             this.Text = "Order_SourceType_View";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Order_SourceType_View_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -283,8 +324,8 @@
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_SourceType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +351,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkDelete;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
     }
 }
