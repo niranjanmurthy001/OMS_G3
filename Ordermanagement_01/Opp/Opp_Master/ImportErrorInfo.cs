@@ -33,9 +33,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
         bool IsRowColorRed = true;
         DataTable dtErrorData = new DataTable();
         DataTable dtImportData = new DataTable();
-        DataTable dataTableErrors = new DataTable();
-        DataTable dataTableExportToDb = new DataTable();
-        DataTable dataTableImportExcel = new DataTable();
+        int temperrors = 0;
+        int ExistingCount = 0;
+        int duplicateCount = 0;
+        int total = 0;
         string OperationType;
         private DataAccess da;
         private SqlConnection con;
@@ -59,13 +60,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     gridColErrorTab.Visible = false;
-                    gridColErrorDescrip.Visible = false;
+                    errorDescription.Visible = false;
                     groupContError.Text = "Import Error Type";
                 }
                 else if (OperationType == "Error Tab")
                 {
                     gridColErrorType.Visible = false;
-                    gridColErrorDescrip.Visible = false;
+                    errorDescription.Visible = false;
                     groupContError.Text = "Import Error Tab";
                 }
                 else if (OperationType == "Error Field")
@@ -109,7 +110,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     if (OperationType == "Error Type")
                     {
                         gridColErrorTab.Visible = false;
-                        gridColErrorDescrip.Visible = false;
+                        errorDescription.Visible = false;
                         ImportErrorTypeData(txtFilename);
                     }
 
@@ -117,7 +118,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {
 
                         gridColErrorType.Visible = false;
-                        gridColErrorDescrip.Visible = false;
+                        errorDescription.Visible = false;
                         ImportErrorTab(txtFilename);
                     }
                     else if (OperationType == "Error Field")
@@ -256,6 +257,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
+                    dtImportData.Rows.Clear();
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     String name = "Sheet1";
                     String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtFilename + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
@@ -265,7 +267,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
                     sda.Fill(dtImportData);
-
+                    ErrorType_Id = 0;
                     deleteExistingTableData();
                     dtErrorFieldData.Columns.AddRange(new DataColumn[]
                           {
@@ -278,83 +280,28 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     for (int i = 0; i < dtImportData.Rows.Count; i++)
                     {
-                        string errortypeId = dtImportData.Rows[i][2].ToString();
 
-                        // CheckkErrorTypeId(errortypeId);
-                        try
+
+                        string prjvalue = dtImportData.Rows[i][0].ToString();
+                        string prdvalue = dtImportData.Rows[i][1].ToString();
+                        string errortab = dtImportData.Rows[i][2].ToString();
+                        string errDes = dtImportData.Rows[i][3].ToString();
+                        dtErrorFieldData.Rows.Add(prjvalue, prdvalue, errortab, errDes);
+
+                        var data = new StringContent(JsonConvert.SerializeObject(dtErrorFieldData), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
                         {
-                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                            var dictionary = new Dictionary<string, object>()
-                         {
-                           {"@Trans","Check_ERROR_TYPE_Id" },
-                            {"@Error_Type",errortypeId }
-
-                           };
-                            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "Application/Json");
-                            using (var httpclient = new HttpClient())
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorImport/InsertErrorFieldData", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorImport/CheckId", data);
-                                if (response.IsSuccessStatusCode)
+                                if (response.StatusCode == HttpStatusCode.OK)
                                 {
-                                    if (response.StatusCode == HttpStatusCode.OK)
-                                    {
-                                        var result = await response.Content.ReadAsStringAsync();
-                                        DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                        if (dt.Rows.Count > 0)
-                                        {
-                                            ErrorType_Id = Convert.ToInt32(dt.Rows[0]["Error_Type_Id"]);
-                                        }
-                                        else
-                                        {
-                                            ErrorType_Id = 0;
-                                        }
+                                    var result = await response.Content.ReadAsStringAsync();
 
-                                    }
+
                                 }
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("An Error Occured ! Check With Adminstrator");
-                        }
-                        finally
-                        {
-                            SplashScreenManager.CloseForm(false);
-                        }
-
-                        if (ErrorType_Id != 0)
-                        {
-
-
-                            string prjvalue = dtImportData.Rows[i][0].ToString();
-                            string prdvalue = dtImportData.Rows[i][1].ToString();
-                            string errortab = dtImportData.Rows[i][2].ToString();
-                            string errDes = dtImportData.Rows[i][3].ToString();
-                            dtErrorFieldData.Rows.Add(prjvalue, prdvalue, errortab, errDes);
-
-                            var data = new StringContent(JsonConvert.SerializeObject(dtErrorFieldData), Encoding.UTF8, "application/json");
-                            using (var httpClient = new HttpClient())
-                            {
-                                var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorImport/InsertErrorFieldData", data);
-                                if (response.IsSuccessStatusCode)
-                                {
-                                    if (response.StatusCode == HttpStatusCode.OK)
-                                    {
-                                        var result = await response.Content.ReadAsStringAsync();
-
-
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            XtraMessageBox.Show("Please Enter Valid Error Tab");
-                        }
-
-
-
                     }
                     SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Uploaded Successfully");
@@ -425,10 +372,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             try
             {
+
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictionary = new Dictionary<string, object>()
                 {
-                    {"@Trans","SelectErrorFieldData"}
+                    {"@Trans","BindErrorfieldData"}
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
@@ -444,7 +392,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 dtErrorData.Columns.Add("Error_Status", typeof(string));
                                 gridErrorImport.DataSource = dtErrorData;
-
+                                for (int i = 0; i < dtErrorData.Rows.Count; i++)
+                                {
+                                    Noofrecords = dtErrorData.Rows[i]["Error_Status"].ToString();
+                                }
 
                             }
                             ValidateErrors();
@@ -860,31 +811,34 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     }
                 }
-                else if (OperationType == "ErrorField")
+                else if (OperationType == "Error Field")
                 {
                     try
                     {
                         SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                         DataTable dtmulti = new DataTable();
+
+
                         dtmulti.Columns.AddRange(new DataColumn[7]
                         {
                         new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Product_Type_Id",typeof(int)),
-                        new  DataColumn("Error_Type_Id",typeof(string)),
+                        new  DataColumn("Error_Type_Id",typeof(int)),
                         new DataColumn("Error_description",typeof(string)),
-                        new DataColumn("Status",typeof(int)),
+                        new DataColumn("Status",typeof(bool)),
                         new DataColumn("Inserted_By",typeof(int)),
                         new DataColumn("Instered_Date",typeof(DateTime))
                         });
                         for (int i = 0; i < dtErrorData.Rows.Count; i++)
                         {
+                            int errortype = Convert.ToInt32(dtErrorData.Rows[i][4]);
+
                             int projid = Convert.ToInt32(dtErrorData.Rows[i][0]);
-                            int prodid = Convert.ToInt32(dtErrorData.Rows[i][1]);
-                            int errorTypeId = Convert.ToInt32(dtErrorData.Rows[i][2]);
-                            string errordes = dtErrorData.Rows[i][3].ToString();
-                            dtmulti.Rows.Add(projid, prodid, errorTypeId, errordes, "True", User_Id, DateTime.Now);
+                            int prodid = Convert.ToInt32(dtErrorData.Rows[i][2]);
+
+                            string errordes = dtErrorData.Rows[i][5].ToString();
+                            dtmulti.Rows.Add(projid, prodid, errortype, errordes, "True", User_Id, DateTime.Now);
                         }
-                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                         var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
@@ -894,14 +848,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
-
-                                    SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Inserted  Sucessfully");
-
                                 }
-                                Clear();
+
                             }
                         }
+
+
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Inserted  Sucessfully");
+                        Clear();
                     }
                     catch (Exception ex)
                     {
@@ -1028,10 +983,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void ValidateErrors()
         {
 
-            int temperrors = 0;
-            int ExistingCount = 0;
-            int duplicateCount = 0;
-            int total = 0;
+
 
             try
             {
@@ -1048,18 +1000,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         //  gridView1.SetRowCellValue(i, "Error_Message", "Existing");
 
                     }
-                    else if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Duplicate_Count"))) > 0)
+                    if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Duplicate_Count"))) > 0)
                     {
                         duplicateCount += 1;
                         gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Duplicate");
                     }
 
-                    else if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Project_Type")).ToString()))
+                    if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Project_Type")).ToString()))
                     {
                         temperrors += 1;
                         gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Project Type Not Found");
                     }
-                    else if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Product_Type")).ToString()))
+                    if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Product_Type")).ToString()))
                     {
                         temperrors += 1;
                         gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Product Type Not Found");
@@ -1067,12 +1019,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     if (OperationType == "Error Field")
                     {
-                        if (string.IsNullOrWhiteSpace(gridView1.Columns.ColumnByFieldName("Error_Description").ToString()))
+                        if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Tab")).ToString()))
+                        {
+                            temperrors += 1;
+                            gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Error Tab Not Found");
+                        }
+                        if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Description")).ToString()))
                         {
                             temperrors += 1;
                             gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Error Description Not Found");
-
                         }
+
                     }
                     else if (OperationType == "Error Type")
                     {
@@ -1094,6 +1051,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
 
                 }
+
                 total = ExistingCount + duplicateCount + temperrors;
                 lblDuplicateRecordCount.Text = duplicateCount.ToString();
                 lblExistingRecordCount.Text = ExistingCount.ToString();
@@ -1137,6 +1095,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 GridView view = sender as GridView;
                 if (view == null) return;
+
+
+                // var index = view.GetDataRow(view.RowCount["Error_Status"]);
                 if (e.RowHandle >= 0)
                 {
                     string error = view.GetRowCellValue(e.RowHandle, view.Columns["Error_Status"]).ToString();

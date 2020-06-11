@@ -64,7 +64,7 @@
             this.gridColProductType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColErrorType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColErrorTab = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColErrorDescrip = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.errorDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdError_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Exist_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Duplicate_Count = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -417,7 +417,7 @@
             this.gridColProductType,
             this.gridColErrorType,
             this.gridColErrorTab,
-            this.gridColErrorDescrip,
+            this.errorDescription,
             this.grdError_Status,
             this.Exist_Count,
             this.Duplicate_Count});
@@ -483,15 +483,15 @@
             this.gridColErrorTab.Visible = true;
             this.gridColErrorTab.VisibleIndex = 3;
             // 
-            // gridColErrorDescrip
+            // errorDescription
             // 
-            this.gridColErrorDescrip.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColErrorDescrip.AppearanceHeader.Options.UseFont = true;
-            this.gridColErrorDescrip.Caption = "Error Description";
-            this.gridColErrorDescrip.FieldName = "Error_Description";
-            this.gridColErrorDescrip.Name = "gridColErrorDescrip";
-            this.gridColErrorDescrip.Visible = true;
-            this.gridColErrorDescrip.VisibleIndex = 4;
+            this.errorDescription.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorDescription.AppearanceHeader.Options.UseFont = true;
+            this.errorDescription.Caption = "Error Description";
+            this.errorDescription.FieldName = "Error_Description";
+            this.errorDescription.Name = "errorDescription";
+            this.errorDescription.Visible = true;
+            this.errorDescription.VisibleIndex = 4;
             // 
             // grdError_Status
             // 
@@ -594,7 +594,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColProductType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColErrorType;
         private DevExpress.XtraGrid.Columns.GridColumn gridColErrorTab;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColErrorDescrip;
+        private DevExpress.XtraGrid.Columns.GridColumn errorDescription;
         private DevExpress.XtraGrid.Columns.GridColumn grdError_Status;
         private DevExpress.XtraGrid.Columns.GridColumn Exist_Count;
         private DevExpress.XtraGrid.Columns.GridColumn Duplicate_Count;
