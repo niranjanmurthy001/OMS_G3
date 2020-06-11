@@ -452,7 +452,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Submitted Sucessfully","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);                                
+                                XtraMessageBox.Show("Submitted Sucessfully","Success",MessageBoxButtons.OK);                                
                                 Clear();
                                 this.Mainfrom.BindGrid();
                                 this.Close();

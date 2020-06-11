@@ -58,6 +58,7 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_delete_multiple = new DevExpress.XtraEditors.SimpleButton();
             this.btn_AddError = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Import = new DevExpress.XtraEditors.SimpleButton();
@@ -110,7 +111,6 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -657,6 +657,23 @@
             this.panel2.Size = new System.Drawing.Size(364, 39);
             this.panel2.TabIndex = 0;
             // 
+            // btn_Export
+            // 
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Export.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Export.Location = new System.Drawing.Point(282, 0);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(82, 39);
+            this.btn_Export.TabIndex = 12;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.ToolTip = "Export";
+            this.btn_Export.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click_1);
+            // 
             // btn_delete_multiple
             // 
             this.btn_delete_multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -669,7 +686,7 @@
             this.btn_delete_multiple.Size = new System.Drawing.Size(82, 39);
             this.btn_delete_multiple.TabIndex = 11;
             this.btn_delete_multiple.Text = "Delete";
-            this.btn_delete_multiple.ToolTip = "Save";
+            this.btn_delete_multiple.ToolTip = "Delete";
             this.btn_delete_multiple.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             this.btn_delete_multiple.Click += new System.EventHandler(this.btn_delete_multiple_Click);
             // 
@@ -686,7 +703,7 @@
             this.btn_AddError.Size = new System.Drawing.Size(94, 39);
             this.btn_AddError.TabIndex = 10;
             this.btn_AddError.Text = "Add New";
-            this.btn_AddError.ToolTip = "Save";
+            this.btn_AddError.ToolTip = "Add New";
             this.btn_AddError.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             this.btn_AddError.Click += new System.EventHandler(this.btn_AddError_Click);
             // 
@@ -702,7 +719,7 @@
             this.btn_Import.Size = new System.Drawing.Size(82, 39);
             this.btn_Import.TabIndex = 8;
             this.btn_Import.Text = "Import";
-            this.btn_Import.ToolTip = "Save";
+            this.btn_Import.ToolTip = "Import";
             this.btn_Import.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
             // panelControl4
@@ -1311,23 +1328,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
-            // btn_Export
-            // 
-            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Export.Appearance.Options.UseFont = true;
-            this.btn_Export.Appearance.Options.UseForeColor = true;
-            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Export.Location = new System.Drawing.Point(282, 0);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(82, 39);
-            this.btn_Export.TabIndex = 12;
-            this.btn_Export.Text = "Export";
-            this.btn_Export.ToolTip = "Save";
-            this.btn_Export.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click_1);
             // 
             // Error_Settings
             // 
