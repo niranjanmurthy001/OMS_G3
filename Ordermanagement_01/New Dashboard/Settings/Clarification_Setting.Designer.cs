@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clarification_Setting));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
@@ -139,10 +138,10 @@
             this.btn_ClientEmailSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.label4 = new System.Windows.Forms.Label();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Ordermanagement_01.Masters.WaitForm1), true, true);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
@@ -429,9 +428,9 @@
             // 
             this.panel3.Controls.Add(this.btn_ClarificationClear);
             this.panel3.Controls.Add(this.btn_ClarificationSubmit);
-            this.panel3.Location = new System.Drawing.Point(190, 3);
+            this.panel3.Location = new System.Drawing.Point(202, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(168, 39);
+            this.panel3.Size = new System.Drawing.Size(156, 39);
             this.panel3.TabIndex = 0;
             // 
             // btn_ClarificationClear
@@ -440,11 +439,13 @@
             this.btn_ClarificationClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClarificationClear.Appearance.Options.UseFont = true;
             this.btn_ClarificationClear.Appearance.Options.UseForeColor = true;
-            this.btn_ClarificationClear.Location = new System.Drawing.Point(88, 5);
+            this.btn_ClarificationClear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ClarificationClear.Location = new System.Drawing.Point(81, 0);
             this.btn_ClarificationClear.Name = "btn_ClarificationClear";
-            this.btn_ClarificationClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationClear.Size = new System.Drawing.Size(75, 39);
             this.btn_ClarificationClear.TabIndex = 1;
             this.btn_ClarificationClear.Text = "Clear";
+            this.btn_ClarificationClear.ToolTip = "Clear";
             this.btn_ClarificationClear.Click += new System.EventHandler(this.btn_Clear_Click_1);
             // 
             // btn_ClarificationSubmit
@@ -453,11 +454,13 @@
             this.btn_ClarificationSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClarificationSubmit.Appearance.Options.UseFont = true;
             this.btn_ClarificationSubmit.Appearance.Options.UseForeColor = true;
-            this.btn_ClarificationSubmit.Location = new System.Drawing.Point(7, 5);
+            this.btn_ClarificationSubmit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ClarificationSubmit.Location = new System.Drawing.Point(0, 0);
             this.btn_ClarificationSubmit.Name = "btn_ClarificationSubmit";
-            this.btn_ClarificationSubmit.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationSubmit.Size = new System.Drawing.Size(75, 39);
             this.btn_ClarificationSubmit.TabIndex = 0;
             this.btn_ClarificationSubmit.Text = "Save";
+            this.btn_ClarificationSubmit.ToolTip = "Save";
             this.btn_ClarificationSubmit.Click += new System.EventHandler(this.btn_Submit_Click_1);
             // 
             // panelControl2
@@ -1172,9 +1175,9 @@
             // 
             this.panel4.Controls.Add(this.btn_ToEmailClear);
             this.panel4.Controls.Add(this.btn_ToEmailSave);
-            this.panel4.Location = new System.Drawing.Point(230, 3);
+            this.panel4.Location = new System.Drawing.Point(243, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(169, 39);
+            this.panel4.Size = new System.Drawing.Size(156, 39);
             this.panel4.TabIndex = 0;
             // 
             // btn_ToEmailClear
@@ -1183,9 +1186,10 @@
             this.btn_ToEmailClear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btn_ToEmailClear.Appearance.Options.UseFont = true;
             this.btn_ToEmailClear.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailClear.Location = new System.Drawing.Point(87, 3);
+            this.btn_ToEmailClear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ToEmailClear.Location = new System.Drawing.Point(81, 0);
             this.btn_ToEmailClear.Name = "btn_ToEmailClear";
-            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 39);
             this.btn_ToEmailClear.TabIndex = 1;
             this.btn_ToEmailClear.Text = "Clear";
             this.btn_ToEmailClear.ToolTip = "Clear";
@@ -1198,9 +1202,10 @@
             this.btn_ToEmailSave.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.btn_ToEmailSave.Appearance.Options.UseFont = true;
             this.btn_ToEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailSave.Location = new System.Drawing.Point(5, 3);
+            this.btn_ToEmailSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ToEmailSave.Location = new System.Drawing.Point(0, 0);
             this.btn_ToEmailSave.Name = "btn_ToEmailSave";
-            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 39);
             this.btn_ToEmailSave.TabIndex = 0;
             this.btn_ToEmailSave.Text = "Save";
             this.btn_ToEmailSave.ToolTip = "Save";
@@ -1425,9 +1430,9 @@
             this.panel5.Controls.Add(this.btn_ClientEmailDelete);
             this.panel5.Controls.Add(this.btn_ClientEmailClear);
             this.panel5.Controls.Add(this.btn_ClientEmailSave);
-            this.panel5.Location = new System.Drawing.Point(131, 3);
+            this.panel5.Location = new System.Drawing.Point(139, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(242, 39);
+            this.panel5.Size = new System.Drawing.Size(234, 39);
             this.panel5.TabIndex = 0;
             // 
             // btn_ClientEmailDelete
@@ -1436,9 +1441,10 @@
             this.btn_ClientEmailDelete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailDelete.Appearance.Options.UseFont = true;
             this.btn_ClientEmailDelete.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailDelete.Location = new System.Drawing.Point(165, 3);
+            this.btn_ClientEmailDelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ClientEmailDelete.Location = new System.Drawing.Point(159, 0);
             this.btn_ClientEmailDelete.Name = "btn_ClientEmailDelete";
-            this.btn_ClientEmailDelete.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailDelete.Size = new System.Drawing.Size(75, 39);
             this.btn_ClientEmailDelete.TabIndex = 2;
             this.btn_ClientEmailDelete.Text = "Delete";
             this.btn_ClientEmailDelete.ToolTip = "Delete";
@@ -1451,9 +1457,9 @@
             this.btn_ClientEmailClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailClear.Appearance.Options.UseFont = true;
             this.btn_ClientEmailClear.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailClear.Location = new System.Drawing.Point(84, 3);
+            this.btn_ClientEmailClear.Location = new System.Drawing.Point(80, 0);
             this.btn_ClientEmailClear.Name = "btn_ClientEmailClear";
-            this.btn_ClientEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailClear.Size = new System.Drawing.Size(75, 38);
             this.btn_ClientEmailClear.TabIndex = 1;
             this.btn_ClientEmailClear.Text = "Clear";
             this.btn_ClientEmailClear.ToolTip = "Clear";
@@ -1466,9 +1472,10 @@
             this.btn_ClientEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailSave.Appearance.Options.UseFont = true;
             this.btn_ClientEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailSave.Location = new System.Drawing.Point(3, 3);
+            this.btn_ClientEmailSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ClientEmailSave.Location = new System.Drawing.Point(0, 0);
             this.btn_ClientEmailSave.Name = "btn_ClientEmailSave";
-            this.btn_ClientEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailSave.Size = new System.Drawing.Size(75, 39);
             this.btn_ClientEmailSave.TabIndex = 0;
             this.btn_ClientEmailSave.Text = "Save";
             this.btn_ClientEmailSave.ToolTip = "Save";

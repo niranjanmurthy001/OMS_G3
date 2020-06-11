@@ -29,16 +29,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string _SourceType;
         int _ProductId;
         string _Operaion_Id;
+        private Order_SourceType_View Mainform = null;
 
 
-        public Order_SourceType_Entry(string _Oid,int ProjId, int ProdId, string SrcType, string btnname,int User_Role)
+        public Order_SourceType_Entry(string _Oid,int ProjId, int ProdId, string SrcType, string btnname,int User_Role, Form CallingForm)
         {
             InitializeComponent();
             _ProjectId = ProjId;
             _ProductId = ProdId;
             _SourceType = SrcType;
             _BtnName = btnname;
-            _Operaion_Id = _Oid;                      
+            _Operaion_Id = _Oid;
+            Mainform = CallingForm as Order_SourceType_View;                      
         }
 
         private void Order_SourceType_Entry_Load(object sender, EventArgs e)
@@ -112,8 +114,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Trans" ,"SELECT_PRODUCT_TYPE"},
                     {"@Project_Type_Id",Project_Id }
                 };               
-                //checkbox_Product_Type.UnCheckAll();
-
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -127,10 +127,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null && dt.Rows.Count > 0 )
                             {
-                                DataRow dr = dt.NewRow();
-                                //dr[1] = 0;
-                                //dr[0] = "Select";
-                                //dt.Rows.InsertAt(dr, 0);
+                                DataRow dr = dt.NewRow();                              
                                 if (_Operaion_Id == "View")
                                 {
                                     checkbox_Product_Type.DataSource = dt;
@@ -189,25 +186,25 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if(lookUpEdit_Project_Type.EditValue==null)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Select Project Type");
+                XtraMessageBox.Show("Please Select Project Type","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
-            if(checkbox_Product_Type.CheckedItems==null)
+            if(checkbox_Product_Type.CheckedItems==null|| checkbox_Product_Type.CheckedItemsCount==0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Select Product Type");
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(txt_Source_Type.Text=="")
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Enter Source Type");
+                XtraMessageBox.Show("Please Enter Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
 
-        private async void btn_SaveSource_Click(object sender, EventArgs e)
+        public async void btn_SaveSource_Click(object sender, EventArgs e)
         {
            
             SourceTypeTxt = txt_Source_Type.Text;
@@ -224,7 +221,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      new DataColumn("Employee_source",typeof(string)),
                      new DataColumn("Inserted_by",typeof(int)),
                      new DataColumn("Inserted_date",typeof(DateTime)),
-                     new DataColumn("Status",typeof(int)),
+                     new DataColumn("Status",typeof(bool)),
                     });
                     foreach (object itemchecked in checkbox_Product_Type.CheckedItems)
                     {
@@ -232,7 +229,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         Productvalue = Convert.ToInt32(CastedItems["ProductType_Id"]);
                     }
                     int _status = 1;
-                    dtinsert.Rows.Add(ProjectValue, Productvalue, SourceTypeTxt, User_Id, DateTime.Now, _status);
+                    dtinsert.Rows.Add(ProjectValue, Productvalue, SourceTypeTxt, User_Id, DateTime.Now, "True");
                     var data = new StringContent(JsonConvert.SerializeObject(dtinsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -244,9 +241,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                            
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Source Type Submitted Sucessfully");
-                               // OrderSourceView.BindSourceTypes();
-                                Clear();                          
+                                XtraMessageBox.Show("Submitted Sucessfully");                             
+                                Clear();
+                                this.Mainform.BindSourceTypes();
+                                this.Close();                        
                             }
                         }
                     }
@@ -277,7 +275,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      new DataColumn("Employee_source",typeof(string)),
                      //new DataColumn("Inserted_by",typeof(int)),
                      //new DataColumn("Inserted_date",typeof(DateTime)),
-                     new DataColumn("Status",typeof(int)),
+                     new DataColumn("Status",typeof(bool)),
                      new DataColumn("Modified_by",typeof(int)),
                      new DataColumn("Modified_date",typeof(DateTime))
                     });
@@ -287,7 +285,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int Productval = Convert.ToInt32(castedItem["ProductType_Id"]);
                         int projecttype = ProjectValue;
                         int _Status = 1;
-                        dtupdate.Rows.Add(ProjectValue, Productval, SourceTypeTxt, _Status, User_Id, DateTime.Now);
+                        dtupdate.Rows.Add(ProjectValue, Productval, SourceTypeTxt, "True", User_Id, DateTime.Now);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
@@ -299,9 +297,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Source Type Edited Successfully");
-                                //Bind_Error_Tab_Grid();
-                                Clear();                               
+                                XtraMessageBox.Show("Edited Successfully");
+                                Clear();
+                                this.Mainform.BindSourceTypes();
+                                this.Close();
                             }
                         }
                     }
@@ -318,5 +317,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+      
     }
 }
