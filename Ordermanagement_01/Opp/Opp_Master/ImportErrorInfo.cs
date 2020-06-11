@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using ClosedXML.Excel;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraPrintingLinks;
@@ -9,7 +10,6 @@ using Ordermanagement_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -44,6 +44,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         public object Errorvalue { get; private set; }
         public object Error_descriptionId { get; private set; }
         public object ErrorTypeDescription { get; private set; }
+        public int Noofrecords { get; private set; }
 
         public ImportErrorInfo(string _operationType)
         {
@@ -151,15 +152,55 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 try
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    dtImportData.Columns.Clear();
+                    dtImportData.Rows.Clear();
+                    var app = new Microsoft.Office.Interop.Excel.Application();
+                    var workbook = app.Workbooks.Open(Filename, ReadOnly: true);
 
-                    String name = "Sheet1";
-                    String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtFilename + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
-                    System.Data.OleDb.OleDbConnection conn = new OleDbConnection(constr);
-                    OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", conn);
-                    conn.Open();
+                    using (XLWorkbook workBook = new XLWorkbook(Filename))
+                    {
+                        IXLWorksheet worksheet = workBook.Worksheet(1);
 
-                    OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-                    sda.Fill(dtImportData);
+                        DataTable dt = new DataTable();
+
+                        //Loop through the Worksheet rows.
+                        bool firstRow = true;
+                        foreach (IXLRow row in worksheet.Rows())
+                        {
+
+                            if (firstRow)
+                            {
+                                foreach (IXLCell cell in row.Cells())
+                                {
+                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
+                                }
+                                firstRow = false;
+                            }
+                            else
+                            {
+                                if (row.IsEmpty())
+                                    continue;
+                                dtImportData.Rows.Add();
+
+                                int i = 0;
+                                try
+                                {
+                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    {
+                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                        i++;
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
 
 
                     deleteExistingTableData();
@@ -257,17 +298,58 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
-                    dtImportData.Rows.Clear();
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    String name = "Sheet1";
-                    String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtFilename + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
-                    System.Data.OleDb.OleDbConnection conn = new OleDbConnection(constr);
-                    OleDbCommand oconn = new OleDbCommand("Select * From [" + name + "$]", conn);
-                    conn.Open();
 
-                    OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-                    sda.Fill(dtImportData);
-                    ErrorType_Id = 0;
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    dtImportData.Columns.Clear();
+                    dtImportData.Rows.Clear();
+                    var app = new Microsoft.Office.Interop.Excel.Application();
+                    var workbook = app.Workbooks.Open(Filename, ReadOnly: true);
+
+                    using (XLWorkbook workBook = new XLWorkbook(Filename))
+                    {
+                        IXLWorksheet worksheet = workBook.Worksheet(1);
+
+                        DataTable dt = new DataTable();
+
+                        //Loop through the Worksheet rows.
+                        bool firstRow = true;
+                        foreach (IXLRow row in worksheet.Rows())
+                        {
+
+                            if (firstRow)
+                            {
+                                foreach (IXLCell cell in row.Cells())
+                                {
+                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
+                                }
+                                firstRow = false;
+                            }
+                            else
+                            {
+                                if (row.IsEmpty())
+                                    continue;
+                                dtImportData.Rows.Add();
+
+                                int i = 0;
+                                try
+                                {
+                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    {
+                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                        i++;
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+
                     deleteExistingTableData();
                     dtErrorFieldData.Columns.AddRange(new DataColumn[]
                           {
@@ -392,10 +474,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 dtErrorData.Columns.Add("Error_Status", typeof(string));
                                 gridErrorImport.DataSource = dtErrorData;
-                                for (int i = 0; i < dtErrorData.Rows.Count; i++)
-                                {
-                                    Noofrecords = dtErrorData.Rows[i]["Error_Status"].ToString();
-                                }
+
 
                             }
                             ValidateErrors();
@@ -461,23 +540,65 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
 
-        private async void ImportErrorTab(string txtFileName)
+        private async void ImportErrorTab(string FileName)
         {
             DataTable dtimport = new DataTable();
-            if (txtFileName != string.Empty)
+            if (FileName != string.Empty)
             {
                 try
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                    String name = "Sheet1";
-                    String constr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + txtFilename + ";Extended Properties='Excel 12.0 XML;HDR=YES;';";
-                    System.Data.OleDb.OleDbConnection conn = new OleDbConnection(constr);
-                    OleDbCommand oconn = new OleDbCommand("Select * From  [" + name + "$]", conn);
-                    conn.Open();
+                    dtImportData.Columns.Clear();
+                    dtImportData.Rows.Clear();
+                    var app = new Microsoft.Office.Interop.Excel.Application();
+                    var workbook = app.Workbooks.Open(FileName, ReadOnly: true);
 
-                    OleDbDataAdapter sda = new OleDbDataAdapter(oconn);
-                    sda.Fill(dtImportData);
+                    using (XLWorkbook workBook = new XLWorkbook(FileName))
+                    {
+                        IXLWorksheet worksheet = workBook.Worksheet(1);
+
+                        DataTable dt = new DataTable();
+
+                        //Loop through the Worksheet rows.
+                        bool firstRow = true;
+                        foreach (IXLRow row in worksheet.Rows())
+                        {
+
+                            if (firstRow)
+                            {
+                                foreach (IXLCell cell in row.Cells())
+                                {
+                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
+                                }
+                                firstRow = false;
+                            }
+                            else
+                            {
+                                if (row.IsEmpty())
+                                    continue;
+                                dtImportData.Rows.Add();
+
+                                int i = 0;
+                                try
+                                {
+                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    {
+                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                        i++;
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+
 
 
                     deleteExistingTableData();
@@ -695,8 +816,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (lblTotalErrors.Text != "0")
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Invalid!,Upload Proper New Error Types");
-
+                XtraMessageBox.Show("Invalid!,Upload Proper New Error Types", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -719,9 +839,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         });
                         for (int i = 0; i < dtErrorData.Rows.Count; i++)
                         {
-                            ProjectType = Convert.ToInt32(dtErrorData.Rows[i][1]);
-                            ProductType = Convert.ToInt32(dtErrorData.Rows[i][3]);
-                            ErrorTab = dtErrorData.Rows[i][6].ToString();
+                            ProjectType = Convert.ToInt32(dtErrorData.Rows[i][0]);
+                            ProductType = Convert.ToInt32(dtErrorData.Rows[i][2]);
+                            ErrorTab = dtErrorData.Rows[i][4].ToString();
 
                             dtins_ErrorTab.Rows.Add(ProjectType, ProductType, ErrorTab, "true", User_Id, DateTime.Now);
                         }
@@ -775,9 +895,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         });
                         for (int i = 0; i < dtErrorData.Rows.Count; i++)
                         {
-                            int projid = Convert.ToInt32(dtErrorData.Rows[i][1]);
-                            int prodid = Convert.ToInt32(dtErrorData.Rows[i][4]);
-                            string errorType = dtErrorData.Rows[i][6].ToString();
+                            int projid = Convert.ToInt32(dtErrorData.Rows[i][0]);
+                            int prodid = Convert.ToInt32(dtErrorData.Rows[i][2]);
+                            string errorType = dtErrorData.Rows[i][4].ToString();
 
                             dtInsError_Type.Rows.Add(projid, prodid, errorType, User_Id, DateTime.Now, "True");
                         }
@@ -819,7 +939,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         DataTable dtmulti = new DataTable();
 
 
-                        dtmulti.Columns.AddRange(new DataColumn[7]
+                        dtmulti.Columns.AddRange(new DataColumn[]
                         {
                         new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Product_Type_Id",typeof(int)),
@@ -831,13 +951,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         });
                         for (int i = 0; i < dtErrorData.Rows.Count; i++)
                         {
-                            int errortype = Convert.ToInt32(dtErrorData.Rows[i][4]);
+                            int errortype_Id = Convert.ToInt32(dtErrorData.Rows[i][4]);
 
                             int projid = Convert.ToInt32(dtErrorData.Rows[i][0]);
                             int prodid = Convert.ToInt32(dtErrorData.Rows[i][2]);
 
                             string errordes = dtErrorData.Rows[i][5].ToString();
-                            dtmulti.Rows.Add(projid, prodid, errortype, errordes, "True", User_Id, DateTime.Now);
+                            dtmulti.Rows.Add(projid, prodid, errortype_Id, errordes, "True", User_Id, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -1051,8 +1171,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
 
                 }
+                //for (int i=0;i< dtErrorData.Rows.Count;i++)
+                //{
+                //    Noofrecords = int.Parse(dtErrorData.Rows[0][8].ToString());
+                //}
+                /// UserCount = int.Parse(Results.Rows[0][0].ToString());
 
                 total = ExistingCount + duplicateCount + temperrors;
+                // total = Noofrecords;
                 lblDuplicateRecordCount.Text = duplicateCount.ToString();
                 lblExistingRecordCount.Text = ExistingCount.ToString();
                 lblTotalErrors.Text = total.ToString();
