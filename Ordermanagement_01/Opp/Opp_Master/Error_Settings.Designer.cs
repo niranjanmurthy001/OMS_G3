@@ -659,7 +659,7 @@
             // 
             // btn_Export
             // 
-            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
@@ -676,7 +676,7 @@
             // 
             // btn_delete_multiple
             // 
-            this.btn_delete_multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete_multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_delete_multiple.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_delete_multiple.Appearance.Options.UseFont = true;
             this.btn_delete_multiple.Appearance.Options.UseForeColor = true;
@@ -692,7 +692,7 @@
             // 
             // btn_AddError
             // 
-            this.btn_AddError.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddError.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_AddError.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_AddError.Appearance.Options.UseFont = true;
             this.btn_AddError.Appearance.Options.UseForeColor = true;
@@ -709,7 +709,7 @@
             // 
             // btn_Import
             // 
-            this.btn_Import.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Import.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_Import.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Import.Appearance.Options.UseFont = true;
             this.btn_Import.Appearance.Options.UseForeColor = true;
@@ -721,6 +721,7 @@
             this.btn_Import.Text = "Import";
             this.btn_Import.ToolTip = "Import";
             this.btn_Import.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
+            this.btn_Import.Click += new System.EventHandler(this.btn_Import_Click);
             // 
             // panelControl4
             // 
@@ -841,6 +842,7 @@
             this.gridColumn23.Caption = "Error Type";
             this.gridColumn23.FieldName = "New_Error_Type";
             this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 3;
             this.gridColumn23.Width = 289;
@@ -1339,6 +1341,7 @@
             this.ClientSize = new System.Drawing.Size(902, 695);
             this.Controls.Add(this.groupControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimumSize = new System.Drawing.Size(918, 726);
             this.Name = "Error_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Settings";

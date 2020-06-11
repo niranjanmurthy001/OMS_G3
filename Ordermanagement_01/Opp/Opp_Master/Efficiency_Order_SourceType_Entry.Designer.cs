@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,7 +45,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -71,7 +72,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(431, 436);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Efficiency Order Source Type Entry";
+            this.groupControl1.Text = "Efficiency Order Source Type ";
             // 
             // tableLayoutPanel1
             // 
@@ -108,6 +109,7 @@
             this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
+            this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Clear.Location = new System.Drawing.Point(335, 3);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Clear.Name = "btn_Clear";
@@ -123,6 +125,7 @@
             this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
+            this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Save.Location = new System.Drawing.Point(247, 3);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Save.Name = "btn_Save";

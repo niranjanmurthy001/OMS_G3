@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
 using DevExpress.XtraGrid.Views.Grid;
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -232,6 +233,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry SourceEntry = new Order_SourceType_Entry(operation_Type, _projectId, _productId, _sourceType, _btnName, user_Id, this);
             SourceEntry.Show();
 
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            string filePath = @"C:\Order Source Type\";
+            string fileName = filePath + "Order Source Type-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            grd_SourceType.ExportToXlsx(fileName);
+            System.Diagnostics.Process.Start(fileName);
         }
     }
 }

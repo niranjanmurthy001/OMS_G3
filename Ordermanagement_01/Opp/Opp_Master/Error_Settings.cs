@@ -276,7 +276,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {"@Error_description_Id",_error_D_id }
 
                     };
-                    var op = XtraMessageBox.Show("Do You Want to Delete the Error Description", "Delete Confirmation", MessageBoxButtons.YesNo);
+                    var op = XtraMessageBox.Show("Do You Want to Delete the Error Description", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (op == DialogResult.Yes)
                     {
                         var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -355,11 +355,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
         {
-
-            string message = "Do you want to delete?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
 
@@ -404,16 +400,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             else if (show == DialogResult.No)
             {
-                this.Close();
+               
             }
         }
 
         private async void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
-        {
-            string message = "Do you want to delete?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
+        {        
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
 
@@ -454,7 +447,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             else if (show == DialogResult.No)
             {
-                this.Close();
+               
             }
         }
 
@@ -502,11 +495,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
         private async void btn_delete_multiple_Click(object sender, EventArgs e)
-        {
-            string message = "Do you want to delete?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
+        { 
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
 
@@ -644,7 +634,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             else if (show == DialogResult.No)
             {
-                this.Close();
+               
             }
 
 
@@ -725,6 +715,29 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 System.Diagnostics.Process.Start(fileName);
             }
 
+
+        }
+
+        private void btn_Import_Click(object sender, EventArgs e)
+        {
+            if (Tile_Item_ErrorType.Checked == true)
+            {
+                OperationType = "Error Type";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Import.Show();
+            }
+            else if (Tile_Item_ErrorTab.Checked == true)
+            {
+                OperationType = "Error Tab";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Import.Show();
+            }
+            else if (Tile_Item_ErrorField.Checked == true)
+            {
+                OperationType = "Error Field";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Import.Show();
+            }
 
         }
     }
