@@ -17,7 +17,7 @@ using System.Net;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
-    public partial class Efficiency_Settings : DevExpress.XtraEditors.XtraForm
+    public partial class Efficiency_Create : DevExpress.XtraEditors.XtraForm
     {
         DataTable _dtcol;
         int _ProjectId;
@@ -26,7 +26,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         int _ordertype, _ordersourcetype, _ClientName, _ordertask, order_type, _categoryid;
         DataTable dt = new DataTable();
         DataTable dtmulti = new DataTable();
-        public Efficiency_Settings()
+        public Efficiency_Create()
         {
             InitializeComponent();
         }
@@ -364,10 +364,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 if (gridView1.Columns[i].ToString() == colName)
                 {
                      _clodata = gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
-                    //if (clodata.ToString() == "")
+                    //if (clodata.tostring() == "")
                     //{
-                    //    //SplashScreenManager.CloseForm();
-                    //    XtraMessageBox.Show("Cells values must not be empty");
+                    //    //splashscreenmanager.closeform();
+                    //    xtramessagebox.show("cells values must not be empty");
                     //    return false;
                     //}
                     //else

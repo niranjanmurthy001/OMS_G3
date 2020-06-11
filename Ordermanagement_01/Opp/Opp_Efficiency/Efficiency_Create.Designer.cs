@@ -1,6 +1,6 @@
 ﻿namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
-    partial class Efficiency_Settings
+    partial class Efficiency_Create
     {
         /// <summary>
         /// Required designer variable.
@@ -71,7 +71,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
@@ -81,7 +81,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(734, 568);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Import Category Salary";
+            this.groupControl1.Text = "Efficiency_Create";
             // 
             // tableLayoutPanel1
             // 
@@ -331,15 +331,15 @@
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
-            // Efficiency_Settings
+            // Efficiency_Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 568);
             this.Controls.Add(this.groupControl1);
-            this.Name = "Efficiency_Settings";
+            this.Name = "Efficiency_Create";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Import_Category_Salary_Entry";
+            this.Text = "Efficiency_Create";
             this.Load += new System.EventHandler(this.Import_Category_Salary_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
