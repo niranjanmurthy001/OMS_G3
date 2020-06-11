@@ -69,6 +69,8 @@
             this.Exist_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Duplicate_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).BeginInit();
             this.groupContError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -90,6 +92,9 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridErrorImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupContError
@@ -101,7 +106,7 @@
             this.groupContError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupContError.Location = new System.Drawing.Point(0, 0);
             this.groupContError.Name = "groupContError";
-            this.groupContError.Size = new System.Drawing.Size(781, 494);
+            this.groupContError.Size = new System.Drawing.Size(781, 519);
             this.groupContError.TabIndex = 0;
             this.groupContError.Text = "Import Errors";
             // 
@@ -115,8 +120,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(777, 465);
-            this.splitContainerControl1.SplitterPosition = 107;
+            this.splitContainerControl1.Size = new System.Drawing.Size(777, 490);
+            this.splitContainerControl1.SplitterPosition = 122;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -132,16 +137,15 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 107);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 122);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.tableLayoutPanel3);
             this.panelControl3.Controls.Add(this.flowLayoutPanel2);
-            this.panelControl3.Controls.Add(this.panelControl2);
-            this.panelControl3.Controls.Add(this.labelControl1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 62);
+            this.panelControl3.Location = new System.Drawing.Point(3, 77);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(771, 42);
             this.panelControl3.TabIndex = 2;
@@ -171,9 +175,10 @@
             // 
             this.panelControl2.Controls.Add(this.lbl_Uploadfilename);
             this.panelControl2.Controls.Add(this.bthChooseFile);
-            this.panelControl2.Location = new System.Drawing.Point(127, 3);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(131, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(450, 35);
+            this.panelControl2.Size = new System.Drawing.Size(446, 32);
             this.panelControl2.TabIndex = 1;
             // 
             // lbl_Uploadfilename
@@ -188,7 +193,7 @@
             // 
             this.bthChooseFile.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bthChooseFile.Appearance.Options.UseFont = true;
-            this.bthChooseFile.Location = new System.Drawing.Point(5, 5);
+            this.bthChooseFile.Location = new System.Drawing.Point(5, 4);
             this.bthChooseFile.Name = "bthChooseFile";
             this.bthChooseFile.Size = new System.Drawing.Size(94, 25);
             this.bthChooseFile.TabIndex = 2;
@@ -199,7 +204,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(17, 13);
+            this.labelControl1.Location = new System.Drawing.Point(15, 9);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(102, 14);
             this.labelControl1.TabIndex = 0;
@@ -211,7 +216,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(3, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(771, 53);
+            this.groupControl2.Size = new System.Drawing.Size(771, 68);
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Note :";
             // 
@@ -229,7 +234,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(2, 21);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(767, 30);
+            this.panelControl1.Size = new System.Drawing.Size(767, 45);
             this.panelControl1.TabIndex = 0;
             // 
             // lblTotalErrors
@@ -340,7 +345,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.99422F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.00578F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 346);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 356);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -349,9 +354,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnExport);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 303);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 312);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 40);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 41);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSubmit
@@ -402,7 +407,7 @@
             this.gridErrorImport.Location = new System.Drawing.Point(3, 3);
             this.gridErrorImport.MainView = this.gridView1;
             this.gridErrorImport.Name = "gridErrorImport";
-            this.gridErrorImport.Size = new System.Drawing.Size(771, 294);
+            this.gridErrorImport.Size = new System.Drawing.Size(771, 303);
             this.gridErrorImport.TabIndex = 2;
             this.gridErrorImport.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -519,15 +524,40 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.24138F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.75862F));
+            this.tableLayoutPanel3.Controls.Add(this.panelControl2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panelControl4, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 38);
+            this.tableLayoutPanel3.TabIndex = 3;
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.labelControl1);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(3, 3);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(122, 32);
+            this.panelControl4.TabIndex = 2;
+            // 
             // ImportErrorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 494);
+            this.ClientSize = new System.Drawing.Size(781, 519);
             this.Controls.Add(this.groupContError);
-            this.MinimumSize = new System.Drawing.Size(797, 532);
+            this.MinimumSize = new System.Drawing.Size(797, 557);
             this.Name = "ImportErrorInfo";
             this.Text = "ImportErrorInfo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.ImportErrorInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).EndInit();
             this.groupContError.ResumeLayout(false);
@@ -536,7 +566,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -553,6 +582,10 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridErrorImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -599,5 +632,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Exist_Count;
         private DevExpress.XtraGrid.Columns.GridColumn Duplicate_Count;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
     }
 }

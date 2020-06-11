@@ -154,8 +154,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
-                    var app = new Microsoft.Office.Interop.Excel.Application();
-                    var workbook = app.Workbooks.Open(Filename, ReadOnly: true);
+
 
                     using (XLWorkbook workBook = new XLWorkbook(Filename))
                     {
@@ -302,8 +301,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
-                    var app = new Microsoft.Office.Interop.Excel.Application();
-                    var workbook = app.Workbooks.Open(Filename, ReadOnly: true);
+
 
                     using (XLWorkbook workBook = new XLWorkbook(Filename))
                     {
@@ -551,8 +549,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
-                    var app = new Microsoft.Office.Interop.Excel.Application();
-                    var workbook = app.Workbooks.Open(FileName, ReadOnly: true);
+
 
                     using (XLWorkbook workBook = new XLWorkbook(FileName))
                     {
@@ -813,7 +810,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private async void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            if (lblTotalErrors.Text != "0")
+            if (lblTotalErrors.Text != "0" && gridView1.DataRowCount == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Invalid!,Upload Proper New Error Types", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
