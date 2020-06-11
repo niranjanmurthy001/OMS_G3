@@ -14,6 +14,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -65,7 +66,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void Efficiency_Order_SourceType_View_Load(object sender, EventArgs e)
         {
             BindGrid();
-            btn_Delete_Multiple.Visible = true;
+            btn_Delete_Multiple.Visible = false;
+            User_Id = User_Role;
         }
         public async void BindGrid()
         {
@@ -124,57 +126,75 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void btn_Delete_Multiple_Click(object sender, EventArgs e)
         {
-            string message = "Do you want to delete?";
-            string title = "Delete Record";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
-            if (show == DialogResult.Yes)
+            if (gridView_Efficiency_Src.SelectedRowsCount != 0)
             {
-                try
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
                 {
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    List<int> gridViewSelectedRows = gridView_Efficiency_Src.GetSelectedRows().ToList();
-                    for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                    try
                     {
-                        DataRow row = gridView_Efficiency_Src.GetDataRow(gridViewSelectedRows[i]);
-                        int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
-                        var dictionary = new Dictionary<string, object>()
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        List<int> gridViewSelectedRows = gridView_Efficiency_Src.GetSelectedRows().ToList();
+                        for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                        {
+                            DataRow row = gridView_Efficiency_Src.GetDataRow(gridViewSelectedRows[i]);
+                            int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
+                            var dictionary = new Dictionary<string, object>()
                 {
                     { "@Trans", "DELETE" },
                     { "@EmpEff_OrderSourceType_Id", Source_Id }
                 };
-                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                        using (var httpClient = new HttpClient())
-                        {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/Delete", data);
-                            if (response.IsSuccessStatusCode)
+                            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
                             {
-                                if (response.StatusCode == HttpStatusCode.OK)
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/Delete", data);
+                                if (response.IsSuccessStatusCode)
                                 {
-                                    var result = await response.Content.ReadAsStringAsync();
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                    }
                                 }
                             }
                         }
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Record Deleted Successfully");
+                        BindGrid();
                     }
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Record Deleted Successfully");
-                    BindGrid();
-                }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    throw ex;
-                }
-                finally
-                {
-                    SplashScreenManager.CloseForm(false);
-                }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        throw ex;
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
 
+                }
+                else if (show == DialogResult.No)
+                {
+
+                }
             }
-            else if (show == DialogResult.No)
+            else
             {
-               
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Select Any Record To Delete");
             }
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            string filePath = @"C:\Efficiency Order Source Type\";
+            string fileName = filePath + "Efficiency Order Source Type-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            gridView_Efficiency_Src.ExportToXlsx(fileName);
+            System.Diagnostics.Process.Start(fileName);
         }
     }
 }

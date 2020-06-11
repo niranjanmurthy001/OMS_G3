@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.chk_All = new System.Windows.Forms.CheckBox();
             this.chk_County = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddl_State = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Source_Type = new DevExpress.XtraEditors.LookUpEdit();
@@ -44,7 +44,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.chk_All = new System.Windows.Forms.CheckBox();
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -129,7 +129,7 @@
             this.btn_Save.Size = new System.Drawing.Size(80, 40);
             this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Save";
-            this.btn_Save.ToolTip = "Save";
+            this.btn_Save.ToolTip = "Save/Update";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // panelControl1
@@ -148,6 +148,17 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(421, 355);
             this.panelControl1.TabIndex = 0;
+            // 
+            // chk_All
+            // 
+            this.chk_All.AutoSize = true;
+            this.chk_All.Location = new System.Drawing.Point(141, 154);
+            this.chk_All.Name = "chk_All";
+            this.chk_All.Size = new System.Drawing.Size(69, 17);
+            this.chk_All.TabIndex = 6;
+            this.chk_All.Text = "Check All";
+            this.chk_All.UseVisualStyleBackColor = true;
+            this.chk_All.CheckedChanged += new System.EventHandler(this.chk_All_CheckedChanged);
             // 
             // chk_County
             // 
@@ -237,16 +248,9 @@
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Project Type :";
             // 
-            // chk_All
+            // alertControl1
             // 
-            this.chk_All.AutoSize = true;
-            this.chk_All.Location = new System.Drawing.Point(141, 154);
-            this.chk_All.Name = "chk_All";
-            this.chk_All.Size = new System.Drawing.Size(69, 17);
-            this.chk_All.TabIndex = 6;
-            this.chk_All.Text = "Check All";
-            this.chk_All.UseVisualStyleBackColor = true;
-            this.chk_All.CheckedChanged += new System.EventHandler(this.chk_All_CheckedChanged);
+            this.alertControl1.FormLocation = DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight;
             // 
             // Efficiency_Order_SourceType_Entry
             // 
@@ -294,5 +298,6 @@
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.XtraEditors.CheckedListBoxControl chk_County;
         private System.Windows.Forms.CheckBox chk_All;
+        private DevExpress.XtraBars.Alerter.AlertControl alertControl1;
     }
 }

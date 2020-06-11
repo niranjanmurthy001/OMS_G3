@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
 using DevExpress.XtraLayout.Helpers;
+using DevExpress.XtraBars.Alerter;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -27,30 +28,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int StateId;
         int CountyId;
         int User_Id;
+        int Task;
 
         private Efficiency_Order_SourceType_View Mainfrom = null;
         private int county_Id;
-
-        // string _Operaion_Id;
-        // string _BtnName;
-        //// int User_Role;
-        // int _ProjectId;
-        // int _SourceId;
-        // int _StateId;
-        // //int _CountyId;
+        private int User_Role;
 
         public Efficiency_Order_SourceType_Entry(int User_Role,Form CallingFrom)
         {
             Mainfrom= CallingFrom as Efficiency_Order_SourceType_View;
             InitializeComponent();
-            //_Operaion_Id = O_Id;
-            //_ProjectId = _projectId;
-            //_SourceId = _sourceId;
-            //_StateId = _stateId;
-            //_BtnName = _btnName;
-            // User_Id = User_Role;
-            //_CountyId = _countyId;
-            //string O_Id, int _projectId,int _sourceId,int _stateId,int _countyId, string _btnName,int User_Role
+            User_Id = User_Role;       
         }
 
 
@@ -58,22 +46,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             BindProjectType();
             BindState();
-            btn_Save.Text = "Save";
-           // BindSourceType(Project_Id);
-          //  BindCounty(State_Id);
-            //if (_Operaion_Id == "View")
-            //{
-            //    btn_Save.Text = _BtnName;
-            //    ddl_Project_Type.EditValue = _ProjectId;
-            //    ddl_Source_Type.EditValue = _SourceId;
-            //    Project_Id = Convert.ToInt32(ddl_Project_Type.EditValue);
-            //    BindSourceType(Project_Id);
-            //    ddl_State.EditValue = _StateId;
-            //    State_Id= Convert.ToInt32(ddl_Source_Type.EditValue);
-            //    BindCounty(State_Id);
-            //    //  User_Id = User_Role;
-            //}
-       
+            btn_Save.Text = "Save";       
         }
 
 
@@ -242,8 +215,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     {"@Trans" ,"SELECT_COUNTY"},
                     {"@State_ID",State_Id }                  
-                };
-                //checkbox_Product_Type.UnCheckAll();
+                };             
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -256,21 +228,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null && dt.Rows.Count > 0)
-                            {
-                                // DataRow dr = dt.NewRow();
-                                //dr[1] = 0;
-                                //dr[0] = "Select";
-                                //dt.Rows.InsertAt(dr, 0); 
-                                // chk_County.CheckAll();  
-                                //if (_Operaion_Id == "View")
-                                //{
-                                //    chk_County.DataSource = dt;
-                                //    chk_County.DisplayMember = "County";
-                                //    chk_County.ValueMember = "County_ID";
-                                //    chk_County.SelectedValue = _CountyId;
-                                //    int _County = chk_County.SelectedIndex;
-                                //    chk_County.SetItemChecked(_County, true);
-                                //}
+                            {                          
                                 for (int i = 0; i < dt.Rows.Count; i++)
                                 {
                                     chk_County.DataSource = dt;
@@ -388,7 +346,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                         chk_County.SelectedValue = county_Id;
                                         int _task = chk_County.SelectedIndex;
                                         chk_County.SetItemChecked(_task, true);
-                                        btn_Save.Text = "Edit";
+                                        btn_Save.Text = "Update";
                                     }
                                 }                                                                                                                              
                               }
@@ -421,26 +379,26 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if(ddl_Project_Type.EditValue==null)
             {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show( "Please Select Project Type");
+                SplashScreenManager.CloseForm(false);              
+                XtraMessageBox.Show("Please Select Project Type", "Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
             if (ddl_Source_Type.EditValue == null)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Source Type");
+                XtraMessageBox.Show("Please Select Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (ddl_State.EditValue == null)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select State");
+                XtraMessageBox.Show("Please Select State", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (chk_County.CheckedItems == null)
+            if (chk_County.CheckedItems == null|| chk_County.CheckedItems.Count==0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Check any of the County");
+                XtraMessageBox.Show("Please Check any of the County", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);                           
                 return false;
             }
             return true;
@@ -451,10 +409,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ProjectValue = Convert.ToInt32(ddl_Project_Type.EditValue);
             SourceValue = Convert.ToInt32(ddl_Source_Type.EditValue);
             StateId = Convert.ToInt32(ddl_State.EditValue);
+            User_Id = 1;
             if (btn_Save.Text == "Save" && Validate() != false)
             {
                 try
                 {
+                    DataRowView r1 = chk_County.GetItem(chk_County.SelectedIndex) as DataRowView;
+                    CountyId = Convert.ToInt32(r1["County_ID"]);                    
                     DataTable dtinsert = new DataTable();
                     dtinsert.Columns.AddRange(new DataColumn[7]
                     {
@@ -468,11 +429,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     });
                     foreach (object itemchecked in chk_County.CheckedItems)
                     {
-                        DataRowView CastedItems = itemchecked as DataRowView;
-                        CountyId = Convert.ToInt32(CastedItems["County_ID"]);
+                        //DataRowView CastedItems = itemchecked as DataRowView;
+                        //CountyId = Convert.ToInt32(CastedItems["County_ID"]);
+
+                        DataRowView castedItem = itemchecked as DataRowView;
+                        string sub = castedItem["County"].ToString();
+                        int CountyId = Convert.ToInt32(castedItem["County_ID"]);
+                        int projecttype = ProjectValue;
+                        int sourcetype = SourceValue;
+                        int state = StateId;
+                        dtinsert.Rows.Add(projecttype, sourcetype, state, CountyId, User_Id, DateTime.Now, "True");
                     }                   
-                        dtinsert.Rows.Add(ProjectValue, SourceValue, StateId, CountyId, User_Id, DateTime.Now, "True");                   
-                    // int _status = 1;                  
+                     //   dtinsert.Rows.Add(ProjectValue, SourceValue, StateId, CountyId, User_Id, DateTime.Now, "True");                                    
                     var data = new StringContent(JsonConvert.SerializeObject(dtinsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
@@ -484,7 +452,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Submitted Sucessfully");                                
+                                XtraMessageBox.Show("Submitted Sucessfully","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);                                
                                 Clear();
                                 this.Mainfrom.BindGrid();
                                 this.Close();
@@ -503,10 +471,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
 
             }
-            else if (btn_Save.Text == "Edit" && Validate() != false)
+            else if (btn_Save.Text == "Update" && Validate() != false)
             {
                 try
                 {
+
+                    DataRowView r1 = chk_County.GetItem(chk_County.SelectedIndex) as DataRowView;
+                    CountyId = Convert.ToInt32(r1["County_ID"]);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     DataTable dtupdate = new DataTable();
                     dtupdate.Columns.AddRange(new DataColumn[7]
@@ -538,7 +509,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Edited Successfully");
+                                XtraMessageBox.Show("Updated Successfully");
                                 Clear();
                                 this.Mainfrom.BindGrid();
                                 this.Close();
@@ -554,7 +525,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 finally
                 {
                     SplashScreenManager.CloseForm(false);
-
                 }
             }
         }

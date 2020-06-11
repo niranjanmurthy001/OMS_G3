@@ -114,8 +114,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Trans" ,"SELECT_PRODUCT_TYPE"},
                     {"@Project_Type_Id",Project_Id }
                 };               
-                //checkbox_Product_Type.UnCheckAll();
-
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -129,10 +127,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null && dt.Rows.Count > 0 )
                             {
-                                DataRow dr = dt.NewRow();
-                                //dr[1] = 0;
-                                //dr[0] = "Select";
-                                //dt.Rows.InsertAt(dr, 0);
+                                DataRow dr = dt.NewRow();                              
                                 if (_Operaion_Id == "View")
                                 {
                                     checkbox_Product_Type.DataSource = dt;
@@ -191,19 +186,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if(lookUpEdit_Project_Type.EditValue==null)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Project Type");
+                XtraMessageBox.Show("Please Select Project Type","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
-            if(checkbox_Product_Type.CheckedItems==null)
+            if(checkbox_Product_Type.CheckedItems==null|| checkbox_Product_Type.CheckedItemsCount==0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Product Type");
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if(txt_Source_Type.Text=="")
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Enter Source Type");
+                XtraMessageBox.Show("Please Enter Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
