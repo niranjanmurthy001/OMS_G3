@@ -26,6 +26,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         int _ordertype, _ordersourcetype, _ClientName, _ordertask, order_type, _categoryid;
         DataTable dt = new DataTable();
         DataTable dtmulti = new DataTable();
+
         public Efficiency_Create()
         {
             InitializeComponent();
@@ -465,6 +466,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                             SplashScreenManager.CloseForm(false);
                                             XtraMessageBox.Show("Efficiency is Submitted Successfully");
                                             btn_Clear_Click(sender, e);
+
                                         }
                                     }
                                 }

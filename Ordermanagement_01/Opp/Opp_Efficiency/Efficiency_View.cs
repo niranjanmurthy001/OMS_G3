@@ -14,6 +14,7 @@ using System.Net;
 using Ordermanagement_01.Models;
 using System.Net.Http;
 using Ordermanagement_01.Masters;
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -30,6 +31,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
         {
+            ddl_ProjectType.EditValue = 1;
             BindProjectType();
             
         }
@@ -238,6 +240,27 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
         }
 
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            if (grd_Efficiency_Form.DataSource != null)
+            {
+                string filePath = @"C:\OMS\";
+                string fileName = filePath + "Efficiency-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                grd_Efficiency_Form.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+                XtraMessageBox.Show("Exported Successfully");
+            }
+            else
+            {
+                XtraMessageBox.Show("Select Project Type to Export");
+            }
+        }
+
         private bool IsAllColumnExist(DataTable tableNameToCheck, List<string> columnsNames)
         {
             if (tableNameToCheck != null)
@@ -254,50 +277,6 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             return false;
         }
 
-        //private async void BindRows()
-        //{
-        //    try
-        //    {
-                
-        //        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-        //        var dictonary = new Dictionary<string, object>()
-        //        {
-        //            {"@Trans","BIND_COLUMNS" },
-        //            {"@Project_Type_Id" ,_ProjectId}
-
-        //        };
-        //        this.grd_Efficiency_Form.DataSource = new DataTable();
-        //        var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-        //        using (var httpclient = new HttpClient())
-        //        {
-        //            var response = await httpclient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindColumns", data);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                if (response.StatusCode == HttpStatusCode.OK)
-        //                {
-        //                    var result = await response.Content.ReadAsStringAsync();
-        //                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                            
-        //                    for (int i = 0; i < dt1.Rows.Count; i++)
-        //                    {
-        //                        count = dt1.Rows.Count;
-
-        //                    }
-                           
-
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        SplashScreenManager.CloseForm(false);
-        //        XtraMessageBox.Show("Please contact with Admin");
-        //    }
-        //    finally
-        //    {
-        //        SplashScreenManager.CloseForm(false);
-        //    }
-        //}
+      
     }
 }

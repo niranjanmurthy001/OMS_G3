@@ -20,10 +20,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     public partial class Category_Salary_Bracket_EntryForm : DevExpress.XtraEditors.XtraForm
     {
         int User_Id, Project_Type_Id, _projectid,_Category;
-       
+        private Category_Salary_Bracket_ProjectWise Mainform = null;
 
-        public Category_Salary_Bracket_EntryForm()
+        public Category_Salary_Bracket_EntryForm(Form CallingForm)
         {
+            Mainform = CallingForm as Category_Salary_Bracket_ProjectWise;
             InitializeComponent();
         }
 
@@ -115,6 +116,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show(" Project Wise Category Salary Bracket Submitted Successfully ");
                                 btn_Clear_Click(sender, e);
+                                this.Mainform.BindCategorySalaryBracket();
+                                this.Close();
                             }
                         }
                     }

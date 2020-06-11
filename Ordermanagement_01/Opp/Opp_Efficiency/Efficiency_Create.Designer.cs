@@ -81,7 +81,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(734, 568);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Efficiency_Create";
+            this.groupControl1.Text = "Efficiency Settings";
             // 
             // tableLayoutPanel1
             // 

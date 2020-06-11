@@ -66,7 +66,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(796, 473);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Efficiency_View";
+            this.groupControl1.Text = "Efficiency Settings";
             // 
             // tableLayoutPanel1
             // 
@@ -123,6 +123,7 @@
             this.btn_Export.Size = new System.Drawing.Size(80, 32);
             this.btn_Export.TabIndex = 0;
             this.btn_Export.Text = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
             // btn_Addnew
             // 
@@ -213,13 +214,13 @@
             this.label1.Text = "Efficiency View";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Efficiency_Entry
+            // Efficiency_View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 473);
             this.Controls.Add(this.groupControl1);
-            this.Name = "Efficiency_Entry";
+            this.Name = "Efficiency_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_View";
             this.Load += new System.EventHandler(this.Efficiency_Entry_Load);

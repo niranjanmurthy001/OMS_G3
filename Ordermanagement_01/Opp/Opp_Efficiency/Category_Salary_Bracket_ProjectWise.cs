@@ -30,11 +30,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void btn_addnew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Efficiency.Category_Salary_Bracket_EntryForm EF = new Category_Salary_Bracket_EntryForm();
+            Ordermanagement_01.Opp.Opp_Efficiency.Category_Salary_Bracket_EntryForm EF = new Category_Salary_Bracket_EntryForm(this);
             EF.Show();
         }
 
-        private async void BindCategorySalaryBracket()
+        public async void BindCategorySalaryBracket()
         {
             try
             {
