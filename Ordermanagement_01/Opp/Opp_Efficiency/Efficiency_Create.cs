@@ -146,13 +146,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             try
             {
+                ddl_Order_task.Properties.Columns.Clear();
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","SELECT_ORDER_TASK_BASEDON_PROJECTID" },
                     {"@Project_Type_Id", _Protid }
                 };
-                ddl_Order_task.Properties.Columns.Clear();
+               
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -162,15 +163,15 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null && dt.Rows.Count > 0)
+                            DataTable dt1= JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt1 != null && dt1.Rows.Count > 0)
                             {
-                                DataRow dr = dt.NewRow();
+                                DataRow dr = dt1.NewRow();
                                 dr[0] = 0;
                                 dr[1] = "Select";
-                                dt.Rows.InsertAt(dr, 0);
+                                dt1.Rows.InsertAt(dr, 0);
                             }
-                            ddl_Order_task.Properties.DataSource = dt;
+                            ddl_Order_task.Properties.DataSource = dt1;
                             ddl_Order_task.Properties.DisplayMember = "Order_Status";
                             ddl_Order_task.Properties.ValueMember = "Order_Status_ID";
                             DevExpress.XtraEditors.Controls.LookUpColumnInfo col;

@@ -18,7 +18,7 @@ namespace Ordermanagement_01
             //Application.Run(new New_Dashboard.Settings.Process_Settings());
             //Application.Run(new New_Dashboard.Settings.EmailSetting());
             // Application.Run(new Vendors.Keywords(1));
-            // Application.Run(new New_Dashboard.NewLogin());
+              Application.Run(new New_Dashboard.NewLogin());
             //Application.Run(new DailyStatusReport_Preview(1,"2",""));
             //  Application.Run(new New_Dashboard.New_Dashboard(0058, 2));
             // Application.Run(new New_Dashboard.Settings.Clarification_Setting(1,"1"));
@@ -32,11 +32,11 @@ namespace Ordermanagement_01
             //Application.Run(new Masters.Error_Field());
             //Application.Run(new Opp.Opp_Master.Error_Setting(1, 1));
             // Application.Run(new Opp.Opp_Master.TEst1());
-            // Application.Run(new Opp.Opp_Master.Error_Settings());
+            //Application.Run(new Opp.Opp_Master.Error_Settings());
             //Application.Run(new Opp.Opp_Master.ErrorTabSetting());
             // Application.Run(new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise());
-             Application.Run(new Opp.Opp_Efficiency.Efficiency_View ());
-            
+            //Application.Run(new Opp.Opp_Master.ImportErrorInfo("Error Type"));
+            //Application.Run(new Opp.Opp_Efficiency.Efficiency_View());
            // Application.Run(new Opp.Opp_Master.Order_SourceType_View( 1));
 
         }

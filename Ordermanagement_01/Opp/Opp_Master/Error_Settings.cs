@@ -264,10 +264,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
-                    GridView view = Grd_ErrorDes.MainView as GridView;
-                    var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                    //GridView view = Grd_ErrorDes.MainView as GridView;
+                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                    System.Data.DataRow row = gridView5.GetDataRow(gridView5.FocusedRowHandle);
                     //_pid = Convert.ToInt32(index.ItemArray[5]);
-                    int _error_D_id = Convert.ToInt32(index.ItemArray[1]);
+                    int _error_D_id = int.Parse(row["Error_description_Id"].ToString());
 
                     var dictonary = new Dictionary<string, object>()
                      {
