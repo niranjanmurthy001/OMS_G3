@@ -68,7 +68,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(364, 370);
             this.groupControl1.TabIndex = 1;
-            this.groupControl1.Text = "Order Source Type Entry";
+            this.groupControl1.Text = "Order Source Type ";
             // 
             // tableLayoutPanel1
             // 
@@ -106,6 +106,7 @@
             this.btn_ClearSource.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClearSource.Appearance.Options.UseFont = true;
             this.btn_ClearSource.Appearance.Options.UseForeColor = true;
+            this.btn_ClearSource.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_ClearSource.Location = new System.Drawing.Point(268, 3);
             this.btn_ClearSource.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_ClearSource.Name = "btn_ClearSource";
@@ -120,6 +121,7 @@
             this.btn_SaveSource.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_SaveSource.Appearance.Options.UseFont = true;
             this.btn_SaveSource.Appearance.Options.UseForeColor = true;
+            this.btn_SaveSource.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_SaveSource.Location = new System.Drawing.Point(180, 3);
             this.btn_SaveSource.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_SaveSource.Name = "btn_SaveSource";
