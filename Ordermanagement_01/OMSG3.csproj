@@ -4757,6 +4757,7 @@
     <None Include="Resources\Notificationorange.png" />
     <None Include="Resources\Notification%28w%29.png" />
     <None Include="Resources\orderStatus.png" />
+    <None Include="Resources\productSetting.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />

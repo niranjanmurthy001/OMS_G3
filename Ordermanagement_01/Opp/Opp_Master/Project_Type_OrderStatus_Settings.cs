@@ -27,7 +27,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
-        public Project_Type_OrderStatus_Settings(int user_id,int roleid)
+        public Project_Type_OrderStatus_Settings(int user_id, int roleid)
         {
             User_Id = user_id;
             Role_Id = roleid;
@@ -300,7 +300,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Status is Submitted");
+                                XtraMessageBox.Show("Order Status Submitted Sucessfully");
                                 BindOrderStatusGrid();
                                 Clear();
                             }

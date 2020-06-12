@@ -32159,27 +32159,10 @@ namespace Ordermanagement_01
 
         private void orderTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
-            try
-            {
+           
                 Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
-
-                os.Show();
-            }
-            catch (Exception ex)
-            {
-
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-
-                MessageBox.Show("Error Occured Please Check With Administrator");
-            }
-            finally
-            {
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-            }
-
+            os.Show();
+           
         }
 
         private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -32211,10 +32194,9 @@ namespace Ordermanagement_01
 
         private void orderEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
-            //pr.Show();
+            
             Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
-           pr.Show();
+             pr.Show();
         }
 
         private void Error_Settings_Click(object sender, EventArgs e)

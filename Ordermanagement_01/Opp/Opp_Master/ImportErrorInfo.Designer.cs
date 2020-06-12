@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportErrorInfo));
             this.groupContError = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bbtnSampleFormat = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.lbl_Uploadfilename = new DevExpress.XtraEditors.LabelControl();
             this.bthChooseFile = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.bbtnSampleFormat = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblTotalErrors = new DevExpress.XtraEditors.LabelControl();
@@ -68,9 +71,7 @@
             this.grdError_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Exist_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Duplicate_Count = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).BeginInit();
             this.groupContError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -78,9 +79,12 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -92,9 +96,6 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridErrorImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
-            this.panelControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupContError
@@ -150,35 +151,29 @@
             this.panelControl3.Size = new System.Drawing.Size(771, 42);
             this.panelControl3.TabIndex = 2;
             // 
-            // flowLayoutPanel2
+            // tableLayoutPanel3
             // 
-            this.flowLayoutPanel2.Controls.Add(this.bbtnSampleFormat);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(582, 2);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(187, 38);
-            this.flowLayoutPanel2.TabIndex = 2;
-            // 
-            // bbtnSampleFormat
-            // 
-            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbtnSampleFormat.Appearance.Options.UseFont = true;
-            this.bbtnSampleFormat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bbtnSampleFormat.Location = new System.Drawing.Point(3, 3);
-            this.bbtnSampleFormat.Name = "bbtnSampleFormat";
-            this.bbtnSampleFormat.Size = new System.Drawing.Size(181, 33);
-            this.bbtnSampleFormat.TabIndex = 0;
-            this.bbtnSampleFormat.Text = "Download Sample Format";
-            this.bbtnSampleFormat.Click += new System.EventHandler(this.bbtnSampleFormat_Click);
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.24138F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.75862F));
+            this.tableLayoutPanel3.Controls.Add(this.panelControl2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panelControl4, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 38);
+            this.tableLayoutPanel3.TabIndex = 3;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.lbl_Uploadfilename);
             this.panelControl2.Controls.Add(this.bthChooseFile);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(131, 3);
+            this.panelControl2.Location = new System.Drawing.Point(132, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(446, 32);
+            this.panelControl2.Size = new System.Drawing.Size(445, 32);
             this.panelControl2.TabIndex = 1;
             // 
             // lbl_Uploadfilename
@@ -200,6 +195,15 @@
             this.bthChooseFile.Text = "Upload";
             this.bthChooseFile.Click += new System.EventHandler(this.bthChooseFile_Click);
             // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.labelControl1);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(3, 3);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(123, 32);
+            this.panelControl4.TabIndex = 2;
+            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,6 +213,27 @@
             this.labelControl1.Size = new System.Drawing.Size(102, 14);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Select Excel File :";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.bbtnSampleFormat);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(582, 2);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(187, 38);
+            this.flowLayoutPanel2.TabIndex = 2;
+            // 
+            // bbtnSampleFormat
+            // 
+            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnSampleFormat.Appearance.Options.UseFont = true;
+            this.bbtnSampleFormat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bbtnSampleFormat.Location = new System.Drawing.Point(3, 3);
+            this.bbtnSampleFormat.Name = "bbtnSampleFormat";
+            this.bbtnSampleFormat.Size = new System.Drawing.Size(181, 33);
+            this.bbtnSampleFormat.TabIndex = 0;
+            this.bbtnSampleFormat.Text = "Download Sample Format";
+            this.bbtnSampleFormat.Click += new System.EventHandler(this.bbtnSampleFormat_Click);
             // 
             // groupControl2
             // 
@@ -524,30 +549,6 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.24138F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.75862F));
-            this.tableLayoutPanel3.Controls.Add(this.panelControl2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panelControl4, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 38);
-            this.tableLayoutPanel3.TabIndex = 3;
-            // 
-            // panelControl4
-            // 
-            this.panelControl4.Controls.Add(this.labelControl1);
-            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(3, 3);
-            this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(122, 32);
-            this.panelControl4.TabIndex = 2;
-            // 
             // ImportErrorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -557,7 +558,6 @@
             this.MinimumSize = new System.Drawing.Size(797, 557);
             this.Name = "ImportErrorInfo";
             this.Text = "ImportErrorInfo";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.ImportErrorInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).EndInit();
             this.groupContError.ResumeLayout(false);
@@ -566,10 +566,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -582,10 +586,6 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridErrorImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
-            this.panelControl4.ResumeLayout(false);
-            this.panelControl4.PerformLayout();
             this.ResumeLayout(false);
 
         }

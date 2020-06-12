@@ -44,7 +44,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
-                    {"@Trans","Select_ProductType" }
+                    {"@Trans","BindGridData" }
 
 
                 };

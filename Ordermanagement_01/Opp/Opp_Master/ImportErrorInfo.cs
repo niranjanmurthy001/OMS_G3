@@ -1016,7 +1016,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                    {
                     LinkErrorData
                    });
-                    string ReportName = "Error Data";
+                    string ReportName = "ErrorImport_Data";
                     string FolderPath = "C:\\Temp\\";
                     string Path = FolderPath + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + "-" + ReportName + ".xlsx";
                     compositeLink.CreatePageForEachLink();
@@ -1028,7 +1028,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 // throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something went wrong");
+                XtraMessageBox.Show("Something Went Wrong");
             }
             finally
             {
@@ -1065,7 +1065,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something went wrong");
+                XtraMessageBox.Show("Something went Wrong");
                 // throw ex;
             }
             finally
@@ -1188,7 +1188,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 // throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something went wrong");
+                XtraMessageBox.Show("Something Went Wrong");
 
             }
             finally
@@ -1254,7 +1254,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 //throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something went wrong");
+                XtraMessageBox.Show("Something Went Wrong");
             }
 
         }
