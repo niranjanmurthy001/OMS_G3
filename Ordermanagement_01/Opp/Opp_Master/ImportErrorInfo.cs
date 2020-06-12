@@ -686,6 +686,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("File DownLoaded SucessFully");
 
                                 if (Directory.Exists(filePath))
                                 {
@@ -698,8 +700,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
+                               
                             }
                         }
                     }
@@ -748,6 +749,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("File DownLoaded SucessFully");
                                 if (Directory.Exists(filePath))
                                 {
                                     Directory.CreateDirectory(filePath);
@@ -759,8 +762,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
+                               
                             }
                         }
                     }
@@ -810,6 +812,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("File DownLoaded SucessFully");
                                 if (Directory.Exists(filePath))
                                 {
                                     Directory.CreateDirectory(filePath);
@@ -821,8 +825,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
+                               
                             }
                         }
                     }
