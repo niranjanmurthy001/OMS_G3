@@ -32223,6 +32223,12 @@ namespace Ordermanagement_01
             importorder.Show();
         }
 
+        private void OrderEntrytoolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Ordermanagement_01.New_Dashboard.Orders.OrderEntry orderentry = new New_Dashboard.Orders.OrderEntry();
+            orderentry.Show();
+        }
+
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);

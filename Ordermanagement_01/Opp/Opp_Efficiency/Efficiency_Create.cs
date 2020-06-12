@@ -129,6 +129,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                         }
                     }
+                    else
+                    {
+                        ddl_Client_Name.Properties.DataSource = null;
+                    }
                 }
 
             }
@@ -153,11 +157,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     {"@Trans","SELECT_ORDER_TASK_BASEDON_PROJECTID" },
                     {"@Project_Type_Id", _Protid }
                 };
-               
+                ddl_Order_task.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindProject", data);
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindOrderTask", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -179,6 +183,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             ddl_Order_task.Properties.Columns.Add(col);
 
                         }
+                    }
+                    else
+                    {
+                        ddl_Order_task.Properties.DataSource = null;
                     }
                 }
 
@@ -328,6 +336,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 SplashScreenManager.CloseForm(false);
             }
+        }
+
+        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+           
+           
         }
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
@@ -514,6 +528,16 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 XtraMessageBox.Show("Please Select Order Source Type");
                 return false;
+            }
+            for (int i = 0; i < gridView1.Columns.Count; i++)
+            {
+                string data= gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
+                if (data == "")
+                {
+                    XtraMessageBox.Show("Column value must not be Empty");
+                     gridView1.Columns[i].AppearanceCell.BackColor=Color.Red;
+                    return false;
+                }
             }
             return true;
         }

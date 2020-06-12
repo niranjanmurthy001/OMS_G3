@@ -32,7 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Refresh = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_addnew = new DevExpress.XtraEditors.SimpleButton();
             this.bnt_Submit = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
@@ -65,12 +65,12 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(782, 496);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Category Salary Bracket View";
+            this.groupControl1.Text = "Category Salary Bracket";
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.Grd_Category_Salary, 0, 2);
@@ -78,9 +78,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.6701F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.3299F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 375F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142218F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.668077F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.35518F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 473);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -92,36 +92,36 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(772, 54);
+            this.label1.Size = new System.Drawing.Size(772, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Salary Bracket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Refresh);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
             this.flowLayoutPanel1.Controls.Add(this.btn_addnew);
             this.flowLayoutPanel1.Controls.Add(this.bnt_Submit);
             this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 57);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 34);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // btn_Refresh
+            // btn_Export
             // 
-            this.btn_Refresh.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btn_Refresh.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Refresh.Appearance.Options.UseFont = true;
-            this.btn_Refresh.Appearance.Options.UseForeColor = true;
-            this.btn_Refresh.Location = new System.Drawing.Point(689, 3);
-            this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.Size = new System.Drawing.Size(80, 30);
-            this.btn_Refresh.TabIndex = 3;
-            this.btn_Refresh.Text = "Refresh";
-            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.Location = new System.Drawing.Point(689, 3);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(80, 30);
+            this.btn_Export.TabIndex = 0;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
             // btn_addnew
             // 
@@ -167,10 +167,10 @@
             // Grd_Category_Salary
             // 
             this.Grd_Category_Salary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 100);
+            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 76);
             this.Grd_Category_Salary.MainView = this.gridView1;
             this.Grd_Category_Salary.Name = "Grd_Category_Salary";
-            this.Grd_Category_Salary.Size = new System.Drawing.Size(772, 370);
+            this.Grd_Category_Salary.Size = new System.Drawing.Size(772, 394);
             this.Grd_Category_Salary.TabIndex = 2;
             this.Grd_Category_Salary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -292,7 +292,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 496);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(798, 534);
+            this.MaximumSize = new System.Drawing.Size(798, 700);
             this.MinimumSize = new System.Drawing.Size(798, 534);
             this.Name = "Category_Salary_Bracket_ProjectWise";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -327,6 +327,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton btn_Delete;
-        private DevExpress.XtraEditors.SimpleButton btn_Refresh;
+        private DevExpress.XtraEditors.SimpleButton btn_Export;
     }
 }

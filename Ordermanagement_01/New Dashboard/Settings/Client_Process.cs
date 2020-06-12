@@ -34,6 +34,9 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             BindProjectType();
             BindDepartmentType();
             grid_Client_Details();
+
+           // this.gridView1.SetRowExpanded(Client, true);
+                // bool Expand = hi.CellInfo.IsFieldValueExpanded(pivotGridField18);
         }
         private async void Bindclients()
         {
@@ -474,5 +477,6 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             ValidateList();
         }
+
     }
 }
