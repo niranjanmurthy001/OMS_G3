@@ -307,6 +307,7 @@
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Delete.Enabled = false;
             this.btn_Delete.Location = new System.Drawing.Point(209, 3);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(97, 33);
