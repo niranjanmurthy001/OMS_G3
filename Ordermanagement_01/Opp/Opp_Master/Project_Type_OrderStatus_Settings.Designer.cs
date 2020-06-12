@@ -142,6 +142,8 @@
             this.gridColumn2.FieldName = "Product_Type";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             // 
             // gridColumn3
             // 

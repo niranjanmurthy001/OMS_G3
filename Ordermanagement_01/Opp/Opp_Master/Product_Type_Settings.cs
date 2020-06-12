@@ -33,6 +33,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             BindProjectType();
             BindProductTypeGrid();
+            btnDelete.Enabled = false;
 
         }
 
@@ -141,7 +142,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             if (txtProductType.Text == "")
             {
-                XtraMessageBox.Show("Please Enter ProductTypeValue");
+                XtraMessageBox.Show("Please Enter ProductType Value");
                 return false;
             }
             return true;
@@ -151,7 +152,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             ProjectValue = Convert.ToInt32(ddlProjectType.EditValue);
             ProductValue = txtProductType.Text;
-            if (btnSubmit.Text == "Submit" && Validate() != false)
+
+            if (btnSubmit.Text == "Submit" && validate() != false)
             {
                 try
                 {
@@ -248,6 +250,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddlProjectType.ItemIndex = 0;
             txtProductType.Text = "";
             btnSubmit.Text = "Submit";
+            btnDelete.Enabled = false;
         }
 
 
@@ -259,6 +262,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    btnDelete.Enabled = true;
                     btnSubmit.Text = "Edit";
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
                     var index = row.FirstOrDefault();
@@ -310,6 +314,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             SplashScreenManager.CloseForm(false);
                             XtraMessageBox.Show("productType Deleted Successfully");
                             BindProductTypeGrid();
+                            btnDelete.Enabled = false;
                             Clear();
                         }
 

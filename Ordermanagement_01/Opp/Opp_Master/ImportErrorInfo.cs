@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -677,6 +678,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
                                 StreamWriter wr = new StreamWriter(fileName);
 
+
                                 for (int i = 0; i < dtCol.Columns.Count; i++)
                                 {
                                     wr.Write(dtCol.Columns[i].ToString() + "\t");
@@ -684,6 +686,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+
+                                if (Directory.Exists(filePath))
+                                {
+                                    Directory.CreateDirectory(filePath);
+                                    //File.Copy(fileName, temppath, true);
+                                    Process.Start(fileName);
+
+                                }
+                                else
+                                {
+                                    Process.Start(filePath);
+                                }
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
                             }
@@ -734,6 +748,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+                                if (Directory.Exists(filePath))
+                                {
+                                    Directory.CreateDirectory(filePath);
+                                    //File.Copy(fileName, temppath, true);
+                                    Process.Start(fileName);
+
+                                }
+                                else
+                                {
+                                    Process.Start(filePath);
+                                }
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
                             }
@@ -785,6 +810,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
+                                if (Directory.Exists(filePath))
+                                {
+                                    Directory.CreateDirectory(filePath);
+                                    //File.Copy(fileName, temppath, true);
+                                    Process.Start(fileName);
+
+                                }
+                                else
+                                {
+                                    Process.Start(filePath);
+                                }
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
                             }

@@ -37,10 +37,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void OrderStatus_Load(object sender, EventArgs e)
         {
+            btn_Delete.Enabled = false;
             BindOrderStatusGrid();
             BindProjectType();
             BindOrderStatus();
-
+            
 
         }
         private async void BindProjectType()
@@ -234,7 +235,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private bool Validate()
+        private bool validate()
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
@@ -262,7 +263,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Productvalue = Convert.ToInt32(ddlProductType.EditValue);
             int StatusId;
 
-            if (btnadd.Text == "Submit" && Validate() != false)
+            if (btnadd.Text == "Submit" && validate() != false)
             {
                 try
                 {
@@ -436,6 +437,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddlProjectType.ItemIndex = 0;
             //chkOrderStatus.DataSource = null;
             btnadd.Text = "Submit";
+            btn_Delete.Enabled = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -451,6 +453,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    btn_Delete.Enabled = true;
                     btnadd.Text = "Edit";
 
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
@@ -505,6 +508,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             SplashScreenManager.CloseForm(false);
                             XtraMessageBox.Show("OrderStatus Deleted Successfully");
                             BindOrderStatusGrid();
+                            btn_Delete.Enabled = false;
                             Clear();
                         }
 

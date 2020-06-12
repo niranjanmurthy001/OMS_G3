@@ -122,7 +122,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(777, 490);
-            this.splitContainerControl1.SplitterPosition = 122;
+            this.splitContainerControl1.SplitterPosition = 114;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -137,8 +137,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.125F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 122);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 114);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl3
@@ -146,9 +146,9 @@
             this.panelControl3.Controls.Add(this.tableLayoutPanel3);
             this.panelControl3.Controls.Add(this.flowLayoutPanel2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 77);
+            this.panelControl3.Location = new System.Drawing.Point(3, 67);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(771, 42);
+            this.panelControl3.Size = new System.Drawing.Size(771, 44);
             this.panelControl3.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -163,7 +163,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 38);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(580, 40);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // panelControl2
@@ -173,7 +173,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(132, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(445, 32);
+            this.panelControl2.Size = new System.Drawing.Size(445, 34);
             this.panelControl2.TabIndex = 1;
             // 
             // lbl_Uploadfilename
@@ -201,7 +201,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(3, 3);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(123, 32);
+            this.panelControl4.Size = new System.Drawing.Size(123, 34);
             this.panelControl4.TabIndex = 2;
             // 
             // labelControl1
@@ -220,7 +220,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(582, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(187, 38);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(187, 40);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
             // bbtnSampleFormat
@@ -241,7 +241,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(3, 3);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(771, 68);
+            this.groupControl2.Size = new System.Drawing.Size(771, 58);
             this.groupControl2.TabIndex = 4;
             this.groupControl2.Text = "Note :";
             // 
@@ -259,14 +259,14 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(2, 21);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(767, 45);
+            this.panelControl1.Size = new System.Drawing.Size(767, 35);
             this.panelControl1.TabIndex = 0;
             // 
             // lblTotalErrors
             // 
             this.lblTotalErrors.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalErrors.Appearance.Options.UseFont = true;
-            this.lblTotalErrors.Location = new System.Drawing.Point(601, 9);
+            this.lblTotalErrors.Location = new System.Drawing.Point(622, 9);
             this.lblTotalErrors.Name = "lblTotalErrors";
             this.lblTotalErrors.Size = new System.Drawing.Size(16, 14);
             this.lblTotalErrors.TabIndex = 253;
@@ -276,7 +276,7 @@
             // 
             this.lblDuplicateRecordCount.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuplicateRecordCount.Appearance.Options.UseFont = true;
-            this.lblDuplicateRecordCount.Location = new System.Drawing.Point(399, 9);
+            this.lblDuplicateRecordCount.Location = new System.Drawing.Point(420, 9);
             this.lblDuplicateRecordCount.Name = "lblDuplicateRecordCount";
             this.lblDuplicateRecordCount.Size = new System.Drawing.Size(16, 14);
             this.lblDuplicateRecordCount.TabIndex = 252;
@@ -286,7 +286,7 @@
             // 
             this.lblExistingRecordCount.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExistingRecordCount.Appearance.Options.UseFont = true;
-            this.lblExistingRecordCount.Location = new System.Drawing.Point(206, 9);
+            this.lblExistingRecordCount.Location = new System.Drawing.Point(227, 9);
             this.lblExistingRecordCount.Name = "lblExistingRecordCount";
             this.lblExistingRecordCount.Size = new System.Drawing.Size(16, 14);
             this.lblExistingRecordCount.TabIndex = 251;
@@ -296,7 +296,7 @@
             // 
             this.pictureBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.Location = new System.Drawing.Point(486, 8);
+            this.pictureBox2.Location = new System.Drawing.Point(507, 8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(28, 14);
@@ -308,7 +308,7 @@
             this.label3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(326, 8);
+            this.label3.Location = new System.Drawing.Point(347, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 17);
             this.label3.TabIndex = 250;
@@ -319,7 +319,7 @@
             this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(524, 8);
+            this.label7.Location = new System.Drawing.Point(545, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 17);
             this.label7.TabIndex = 248;
@@ -329,7 +329,7 @@
             // 
             this.pictureBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox4.BackColor = System.Drawing.Color.Cyan;
-            this.pictureBox4.Location = new System.Drawing.Point(294, 8);
+            this.pictureBox4.Location = new System.Drawing.Point(315, 8);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(26, 14);
@@ -340,7 +340,7 @@
             // 
             this.pictureBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox3.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox3.Location = new System.Drawing.Point(68, 8);
+            this.pictureBox3.Location = new System.Drawing.Point(89, 8);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(24, 14);
@@ -352,7 +352,7 @@
             this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Ebrima", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(101, 8);
+            this.label2.Location = new System.Drawing.Point(122, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 17);
             this.label2.TabIndex = 241;
@@ -370,7 +370,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.99422F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.00578F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 356);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 364);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -379,9 +379,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnExport);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 312);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 319);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 42);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSubmit
@@ -432,7 +432,7 @@
             this.gridErrorImport.Location = new System.Drawing.Point(3, 3);
             this.gridErrorImport.MainView = this.gridView1;
             this.gridErrorImport.Name = "gridErrorImport";
-            this.gridErrorImport.Size = new System.Drawing.Size(771, 303);
+            this.gridErrorImport.Size = new System.Drawing.Size(771, 310);
             this.gridErrorImport.TabIndex = 2;
             this.gridErrorImport.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -527,7 +527,7 @@
             // 
             this.grdError_Status.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdError_Status.AppearanceHeader.Options.UseFont = true;
-            this.grdError_Status.Caption = "Error Status";
+            this.grdError_Status.Caption = "Error Message";
             this.grdError_Status.FieldName = "Error_Status";
             this.grdError_Status.Name = "grdError_Status";
             this.grdError_Status.Visible = true;
@@ -557,6 +557,7 @@
             this.Controls.Add(this.groupContError);
             this.MinimumSize = new System.Drawing.Size(797, 557);
             this.Name = "ImportErrorInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImportErrorInfo";
             this.Load += new System.EventHandler(this.ImportErrorInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).EndInit();
