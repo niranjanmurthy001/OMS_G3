@@ -41,6 +41,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             this.gridView1.GridControl = this.grd_Efficiency_Form;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
             // 
             // panelControl2
             // 
@@ -211,8 +213,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(782, 39);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Efficiency View";
+            this.label1.Text = "Efficiency Settings";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // Efficiency_View
             // 
@@ -255,5 +261,6 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

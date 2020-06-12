@@ -19,7 +19,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
     public partial class Category_Salary_Bracket_EntryForm : DevExpress.XtraEditors.XtraForm
     {
-        int User_Id, Project_Type_Id, _projectid,_Category;
+        int User_Id, Project_Type_Id, _projectid;
+        double _Category;
         private Category_Salary_Bracket_ProjectWise Mainform = null;
 
         public Category_Salary_Bracket_EntryForm(Form CallingForm)
@@ -123,7 +124,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
                 throw;
@@ -198,7 +199,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 //for each row, get the 3rd column
                                  _projectid = Convert.ToInt32(_dt.Rows[i]["Project_Type_Id"]);
-                                _Category = Convert.ToInt32(_dt.Rows[i]["Category_Name"]);
+                                _Category = Convert.ToDouble(_dt.Rows[i]["Category_Name"]);
                                 if(txt_Category.Text==_Category.ToString() && Convert.ToInt32(ddl_Project_Type.EditValue)==_projectid)
                                 {
                                     SplashScreenManager.CloseForm(false);

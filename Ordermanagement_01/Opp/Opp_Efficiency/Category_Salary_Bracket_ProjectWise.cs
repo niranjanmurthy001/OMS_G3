@@ -16,6 +16,7 @@ using System.Net;
 using Ordermanagement_01.Masters;
 using System.Web.UI.WebControls;
 using System.Collections;
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -23,6 +24,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     {
         DataTable _dtUpdate = new DataTable();
         DataTable _dtUpdatecell = new DataTable();
+         
         public Category_Salary_Bracket_ProjectWise()
         {
             InitializeComponent();
@@ -223,10 +225,6 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
         }
 
-        private void btn_Refresh_Click(object sender, EventArgs e)
-        {
-            BindCategorySalaryBracket();
-        }
 
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
@@ -254,6 +252,20 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             
 
 
+        }
+
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            string filePath = @"C:\OMS\";
+            string fileName = filePath + "Category Salary Bracket" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            Grd_Category_Salary.ExportToXlsx(fileName);
+            System.Diagnostics.Process.Start(fileName);
+            XtraMessageBox.Show("Exported Successfully");
         }
     }
 }

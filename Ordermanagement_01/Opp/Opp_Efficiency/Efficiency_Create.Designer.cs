@@ -293,6 +293,7 @@
             this.gridView1.OptionsSelection.InvertSelection = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanging);
             // 
             // flowLayoutPanel1
             // 
