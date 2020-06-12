@@ -46,6 +46,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         public object Error_descriptionId { get; private set; }
         public object ErrorTypeDescription { get; private set; }
         public int Noofrecords { get; private set; }
+        public object Excel { get; private set; }
 
         public ImportErrorInfo(string _operationType)
         {
@@ -145,6 +146,25 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+
+//        private void closeExcelFile()
+//        {
+//            using Excel = Microsoft.Office.Interop.Excel;
+
+
+//            Excel.Application xl = new Microsoft.Office.Interop.Excel.Application();
+
+//# open a file
+//            Excel.Workbook wb = xl.Workbooks.Open("some_file.xlsx");
+
+//# do stuff ....
+
+//# close the file
+//            wb.Close();
+
+//# close the application and release resources
+//            xl.Quit();
+//        }
         private async void ImportErrorTypeData(string Filename)
         {
             DataTable dtImportErrorType = new DataTable();
@@ -152,11 +172,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
+                    Stream s = File.Open(Filename, FileMode.Open, FileAccess.Read, FileShare.None);
+
+                    s.Close();
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
-
-
+ 
                     using (XLWorkbook workBook = new XLWorkbook(Filename))
                     {
                         IXLWorksheet worksheet = workBook.Worksheet(1);

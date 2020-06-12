@@ -107,7 +107,7 @@
             this.groupContError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupContError.Location = new System.Drawing.Point(0, 0);
             this.groupContError.Name = "groupContError";
-            this.groupContError.Size = new System.Drawing.Size(781, 536);
+            this.groupContError.Size = new System.Drawing.Size(781, 519);
             this.groupContError.TabIndex = 0;
             this.groupContError.Text = "Import Errors";
             // 
@@ -121,7 +121,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(777, 507);
+            this.splitContainerControl1.Size = new System.Drawing.Size(777, 490);
             this.splitContainerControl1.SplitterPosition = 114;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -370,7 +370,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.99422F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.00578F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 381);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 364);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -379,9 +379,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnExport);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 334);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(442, 319);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(332, 42);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSubmit
@@ -432,7 +432,7 @@
             this.gridErrorImport.Location = new System.Drawing.Point(3, 3);
             this.gridErrorImport.MainView = this.gridView1;
             this.gridErrorImport.Name = "gridErrorImport";
-            this.gridErrorImport.Size = new System.Drawing.Size(771, 325);
+            this.gridErrorImport.Size = new System.Drawing.Size(771, 310);
             this.gridErrorImport.TabIndex = 2;
             this.gridErrorImport.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -553,7 +553,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 536);
+            this.ClientSize = new System.Drawing.Size(781, 519);
             this.Controls.Add(this.groupContError);
             this.MinimumSize = new System.Drawing.Size(797, 557);
             this.Name = "ImportErrorInfo";
