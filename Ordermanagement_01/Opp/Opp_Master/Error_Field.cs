@@ -25,7 +25,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string errortext;
         int checkederror;
         string Operation_Type;
-        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror)
+        private Error_Settings Mainform = null;
+        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror,Form Callingform)
         {
             InitializeComponent();
             _btnname = btnname;
@@ -34,7 +35,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             errortext = _text;
             checkederror = _Cerror;
             Operation_Type = _operationType;
-            
+            Mainform = Callingform as Error_Settings;
+
+
         }
 
         private void Error_Field_Load(object sender, EventArgs e)
@@ -102,9 +105,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error details are Submitted");
+                                XtraMessageBox.Show("Error details are Submitted","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                 // BindErrorGrid();
                                 btn_Clear_Click(sender, e);
+                                this.Mainform.BindErrorGrid();
                             }
                         }
                     }
@@ -161,9 +165,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error is Updated");
+                                XtraMessageBox.Show("Error is Updated","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                 // BindErrorGrid();
                                 btn_Clear_Click(sender, e);
+                                this.Mainform.BindErrorGrid();
+
                             }
                         }
                     }
@@ -404,22 +410,22 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (Convert.ToInt32(ddl_ProjectType.EditValue) == 0)
             {
-                XtraMessageBox.Show("Select Project_Type");
+                XtraMessageBox.Show("Select Project_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (Convert.ToInt32(ddl_ProductType.EditValue) == 0)
             {
-                XtraMessageBox.Show("Select Product_Type");
+                XtraMessageBox.Show("Select Product_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBoxControl_Errortab.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Error Type");
+                XtraMessageBox.Show("Select Error Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txt_Errorfield.Text == "")
             {
-                XtraMessageBox.Show("Error Field Must not be Empty");
+                XtraMessageBox.Show("Error Field Must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -435,9 +441,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
     }
 }

@@ -31,8 +31,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int _Projectid;
         int _productid;
         string errortext;
-        
-        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name)
+        private Error_Settings Mainform = null;
+
+        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name,Form Callingform)
         {
             InitializeComponent();
             Operation_Type = _OperationType;
@@ -42,8 +43,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             _productid = _product;
             _btnname = _btn_name;
             txtErrorTab.Text = _text;
+            Mainform=Callingform as Error_Settings;
 
-        }
+
+
+    }
 
         private void Error_Settings_Load(object sender, EventArgs e)
         {
@@ -65,12 +69,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
             }
         }
-       
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+      
         private void Clear_Click(object sender, EventArgs e)
         {
             clear();
@@ -120,10 +119,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     //InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type is Submitted Sucessfully");
+                                    XtraMessageBox.Show("Error Type is Submitted Sucessfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     // Bind_Error_Tab_Grid();
                                     clear();
                                     Error_Type_Id = 0;
+                                    this.Mainform.BindErrorDetails();
+                                    this.Mainform.Bind_Error_Tab_Grid();
 
                                 }
                             }
@@ -180,10 +181,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("ErrorTab Updated Successfully");
+                                    XtraMessageBox.Show("ErrorTab Updated Successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     //Bind_Error_Tab_Grid();
                                     clear();
-                                   // btnSubmit.Text = "Submit";
+                                    this.Mainform.BindErrorDetails();
+                                    this.Mainform.Bind_Error_Tab_Grid();
+                                    // btnSubmit.Text = "Submit";
                                 }
                             }
                         }
@@ -244,7 +247,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type is Submited");
+                                    XtraMessageBox.Show("Error Type is Submited","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     //BindErrorDetails();
                                     clear();
                                 }
@@ -305,7 +308,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type edited successfully");
+                                    XtraMessageBox.Show("Error Type Updated successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     //BindErrorDetails();
                                     clear();
                                    // btnSubmit.Text = "Submit";
@@ -337,17 +340,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
-                XtraMessageBox.Show("Plese Select ProjectType");
+                XtraMessageBox.Show("Plese Select ProjectType", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chkProductType.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Please select ProductType");
+                XtraMessageBox.Show("Please select ProductType", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txtErrorTab.Text == "")
             {
-                XtraMessageBox.Show("Please Enter ErrorTab");
+                XtraMessageBox.Show("Please Enter ErrorTab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
