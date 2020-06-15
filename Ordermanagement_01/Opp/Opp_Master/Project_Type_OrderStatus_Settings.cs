@@ -26,6 +26,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int _OrderStatus;
         int Statusid;
 
+        int product_id;
+
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
         public Project_Type_OrderStatus_Settings(int user_id, int roleid)
@@ -463,7 +465,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddlProductType.EditValue = index.ItemArray[3];
                     int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
                     GetcheckedOrderStatusData(Project_Id);
-
+                    product_id=Convert.ToInt32(ddlProductType.EditValue);
                     int OrderChk = Convert.ToInt32(index.ItemArray[4]);
                     Statusid = Convert.ToInt32(index.ItemArray[6]);
                     chkOrderStatus.SelectedValue = OrderChk;
@@ -497,7 +499,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var dictionary = new Dictionary<string, object>
                 {
                     { "@Trans", "Delete" },
-                    { "@Status_Id", Statusid}
+                    { "@Product_Type_Id", product_id}
 
                 };
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
