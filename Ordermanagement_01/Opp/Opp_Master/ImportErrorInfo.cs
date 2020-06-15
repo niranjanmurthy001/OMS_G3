@@ -18,6 +18,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -91,6 +92,42 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
 
         }
+       
+
+        private void CloseRunningExcel(string FileName)
+        {
+            try
+            {
+                 FileStream fs;
+                try
+                {
+                    fs =File.Open(FileName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Read, System.IO.FileShare.None);
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                //Excel.Application xl = new Excel.Application();
+
+
+
+                //Excel.Workbook wb = xl.Workbooks.Open(FileName);
+
+                //wb.Save();
+
+                //wb.Close();
+
+
+                //xl.Quit();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         private void bthChooseFile_Click(object sender, EventArgs e)
         {
@@ -147,24 +184,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
 
-//        private void closeExcelFile()
-//        {
-//            using Excel = Microsoft.Office.Interop.Excel;
-
-
-//            Excel.Application xl = new Microsoft.Office.Interop.Excel.Application();
-
-//# open a file
-//            Excel.Workbook wb = xl.Workbooks.Open("some_file.xlsx");
-
-//# do stuff ....
-
-//# close the file
-//            wb.Close();
-
-//# close the application and release resources
-//            xl.Quit();
-//        }
+       
         private async void ImportErrorTypeData(string Filename)
         {
             DataTable dtImportErrorType = new DataTable();
@@ -172,9 +192,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
-                    Stream s = File.Open(Filename, FileMode.Open, FileAccess.Read, FileShare.None);
+                    //Stream s = File.Open(Filename, FileMode.Open, FileAccess.Read, FileShare.None);
 
-                    s.Close();
+                    //s.Close();
+                   // CloseRunningExcel(Filename);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
