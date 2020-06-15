@@ -528,7 +528,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     {
                                         var result = await response.Content.ReadAsStringAsync();
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("Record Deleted Successfully");
+                                        XtraMessageBox.Show("Record Deleted Successfully","Deleted",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                         BindErrorDetails();
 
                                     }
@@ -536,7 +536,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 else
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Please Select Client To Delete");
+                                    XtraMessageBox.Show("Please Select Client To Delete","Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
 
@@ -567,7 +567,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     {
                                         var result = await response.Content.ReadAsStringAsync();
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("Record Deleted Successfully");
+                                        XtraMessageBox.Show("Record Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         Bind_Error_Tab_Grid();
 
 
@@ -608,7 +608,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                         {
                                             var result = await response.Content.ReadAsStringAsync();
 
-                                            XtraMessageBox.Show("Deleted Successfully");
+                                            XtraMessageBox.Show("Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                             BindErrorGrid();
 
                                         }

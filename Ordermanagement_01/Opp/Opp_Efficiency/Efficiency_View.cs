@@ -253,7 +253,6 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 }
                 grd_Efficiency_Form.ExportToXlsx(fileName);
                 System.Diagnostics.Process.Start(fileName);
-                XtraMessageBox.Show("Exported Successfully");
             }
             else
             {

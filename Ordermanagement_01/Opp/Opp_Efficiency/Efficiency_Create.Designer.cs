@@ -315,7 +315,7 @@
             this.btn_Clear.Location = new System.Drawing.Point(641, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 33);
-            this.btn_Clear.TabIndex = 2;
+            this.btn_Clear.TabIndex = 7;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
@@ -328,7 +328,7 @@
             this.btn_Submit.Location = new System.Drawing.Point(555, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(80, 33);
-            this.btn_Submit.TabIndex = 1;
+            this.btn_Submit.TabIndex = 6;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 

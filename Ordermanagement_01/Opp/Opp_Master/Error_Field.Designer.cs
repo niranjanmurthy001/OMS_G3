@@ -80,7 +80,7 @@
             this.txt_Errorfield.Properties.Appearance.Options.UseFont = true;
             this.txt_Errorfield.Properties.Appearance.Options.UseForeColor = true;
             this.txt_Errorfield.Size = new System.Drawing.Size(243, 24);
-            this.txt_Errorfield.TabIndex = 7;
+            this.txt_Errorfield.TabIndex = 4;
             // 
             // checkedListBoxControl_Errortab
             // 
@@ -92,7 +92,7 @@
             this.checkedListBoxControl_Errortab.Location = new System.Drawing.Point(136, 117);
             this.checkedListBoxControl_Errortab.Name = "checkedListBoxControl_Errortab";
             this.checkedListBoxControl_Errortab.Size = new System.Drawing.Size(243, 105);
-            this.checkedListBoxControl_Errortab.TabIndex = 6;
+            this.checkedListBoxControl_Errortab.TabIndex = 3;
             // 
             // ddl_ProductType
             // 
@@ -106,7 +106,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProductType.Properties.NullText = "Select";
             this.ddl_ProductType.Size = new System.Drawing.Size(243, 24);
-            this.ddl_ProductType.TabIndex = 5;
+            this.ddl_ProductType.TabIndex = 2;
             // 
             // ddl_ProjectType
             // 
@@ -120,7 +120,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
             this.ddl_ProjectType.Size = new System.Drawing.Size(243, 24);
-            this.ddl_ProjectType.TabIndex = 4;
+            this.ddl_ProjectType.TabIndex = 1;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
             // labelControl4
@@ -220,7 +220,7 @@
             this.btn_Clear.Location = new System.Drawing.Point(323, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 37);
-            this.btn_Clear.TabIndex = 1;
+            this.btn_Clear.TabIndex = 6;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
@@ -233,7 +233,7 @@
             this.btn_Save.Location = new System.Drawing.Point(237, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(80, 37);
-            this.btn_Save.TabIndex = 3;
+            this.btn_Save.TabIndex = 5;
             this.btn_Save.Text = "Save";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
