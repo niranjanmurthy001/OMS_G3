@@ -142,6 +142,8 @@
             this.gridColumn2.FieldName = "Product_Type";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             // 
             // gridColumn3
             // 
@@ -305,6 +307,7 @@
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Delete.Enabled = false;
             this.btn_Delete.Location = new System.Drawing.Point(209, 3);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(97, 33);

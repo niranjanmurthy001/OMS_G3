@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -33,6 +34,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             BindProjectType();
             BindProductTypeGrid();
+            btnDelete.Enabled = false;
 
         }
 
@@ -141,7 +143,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             if (txtProductType.Text == "")
             {
-                XtraMessageBox.Show("Please Enter ProductTypeValue");
+                XtraMessageBox.Show("Please Enter ProductType Value");
                 return false;
             }
             return true;
@@ -151,7 +153,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             ProjectValue = Convert.ToInt32(ddlProjectType.EditValue);
             ProductValue = txtProductType.Text;
-            if (btnSubmit.Text == "Submit" && Validate() != false)
+
+            if (btnSubmit.Text == "Submit" && validate() != false)
             {
                 try
                 {
@@ -248,6 +251,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddlProjectType.ItemIndex = 0;
             txtProductType.Text = "";
             btnSubmit.Text = "Submit";
+            btnDelete.Enabled = false;
         }
 
 
@@ -259,6 +263,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    btnDelete.Enabled = true;
                     btnSubmit.Text = "Edit";
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
                     var index = row.FirstOrDefault();
@@ -287,37 +292,48 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
             try
             {
-                int projectId = Convert.ToInt32(ddlProjectType.EditValue);
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
 
-                var dictionary = new Dictionary<string, object>
+                    int projectId = Convert.ToInt32(ddlProjectType.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                    var dictionary = new Dictionary<string, object>
                 {
                     { "@Trans", "Delete" },
 
                     { "@Product_Type_Id", productid}
 
                 };
-                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                using (var httpclient = new HttpClient())
-                {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/ProdutTypeSettings/Delete", data);
-                    if (response.IsSuccessStatusCode)
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/ProdutTypeSettings/Delete", data);
+                        if (response.IsSuccessStatusCode)
                         {
-                            var result = await response.Content.ReadAsStringAsync();
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
 
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("productType Deleted Successfully");
-                            BindProductTypeGrid();
-                            Clear();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("productType Deleted Successfully");
+                                BindProductTypeGrid();
+                                btnDelete.Enabled = false;
+                                Clear();
+                            }
+
+
                         }
 
-
                     }
+                }
+                else if (show==DialogResult.No)
+                {
 
                 }
             }
+           
             catch (Exception ex)
             {
                 throw ex;

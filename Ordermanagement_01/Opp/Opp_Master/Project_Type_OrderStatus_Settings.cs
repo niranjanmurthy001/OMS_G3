@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -23,7 +24,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Role_Id;
         int OrderChk;
         int _OrderStatus;
-
+        int Statusid;
 
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
@@ -37,6 +38,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void OrderStatus_Load(object sender, EventArgs e)
         {
+            btn_Delete.Enabled = false;
             BindOrderStatusGrid();
             BindProjectType();
             BindOrderStatus();
@@ -234,7 +236,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private bool Validate()
+        private bool validate()
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
@@ -262,7 +264,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Productvalue = Convert.ToInt32(ddlProductType.EditValue);
             int StatusId;
 
-            if (btnadd.Text == "Submit" && Validate() != false)
+            if (btnadd.Text == "Submit" && validate() != false)
             {
                 try
                 {
@@ -436,6 +438,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddlProjectType.ItemIndex = 0;
             //chkOrderStatus.DataSource = null;
             btnadd.Text = "Submit";
+            btn_Delete.Enabled = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -451,6 +454,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    btn_Delete.Enabled = true;
                     btnadd.Text = "Edit";
 
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
@@ -461,6 +465,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     GetcheckedOrderStatusData(Project_Id);
 
                     int OrderChk = Convert.ToInt32(index.ItemArray[4]);
+                    Statusid = Convert.ToInt32(index.ItemArray[6]);
                     chkOrderStatus.SelectedValue = OrderChk;
                 }
                 int _task = chkOrderStatus.SelectedIndex;
@@ -483,33 +488,42 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             try
             {
-                int ProductType = Convert.ToInt32(ddlProductType.EditValue);
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+                    //int ProductType = Convert.ToInt32(ddlProductType.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                var dictionary = new Dictionary<string, object>
+                    var dictionary = new Dictionary<string, object>
                 {
                     { "@Trans", "Delete" },
-                    { "@Product_Type_Id", ProductType}
+                    { "@Status_Id", Statusid}
 
                 };
-                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                using (var httpclient = new HttpClient())
-                {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/OrderStatus/Delete", data);
-                    if (response.IsSuccessStatusCode)
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/OrderStatus/Delete", data);
+                        if (response.IsSuccessStatusCode)
                         {
-                            var result = await response.Content.ReadAsStringAsync();
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
 
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("OrderStatus Deleted Successfully");
-                            BindOrderStatusGrid();
-                            Clear();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("OrderStatus Deleted Successfully");
+                                BindOrderStatusGrid();
+                                btn_Delete.Enabled = false;
+                                Clear();
+                            }
+
+
                         }
 
-
                     }
+                }
+                else if (show == DialogResult.No)
+                {
 
                 }
             }
