@@ -40,7 +40,6 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
@@ -69,7 +68,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(422, 297);
+            this.panelControl1.Size = new System.Drawing.Size(406, 287);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_Errorfield
@@ -182,7 +181,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(432, 376);
+            this.groupControl1.Size = new System.Drawing.Size(416, 364);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Error Field";
             // 
@@ -198,33 +197,19 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.99075F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.00924F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(428, 353);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 341);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Close);
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 306);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 296);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(422, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(406, 42);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Close.Appearance.Options.UseFont = true;
-            this.btn_Close.Appearance.Options.UseForeColor = true;
-            this.btn_Close.Location = new System.Drawing.Point(339, 3);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(80, 37);
-            this.btn_Close.TabIndex = 0;
-            this.btn_Close.Text = "Close";
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // btn_Clear
             // 
@@ -232,7 +217,7 @@
             this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
-            this.btn_Clear.Location = new System.Drawing.Point(253, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(323, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 37);
             this.btn_Clear.TabIndex = 1;
@@ -245,7 +230,7 @@
             this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
-            this.btn_Save.Location = new System.Drawing.Point(167, 3);
+            this.btn_Save.Location = new System.Drawing.Point(237, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(80, 37);
             this.btn_Save.TabIndex = 3;
@@ -260,13 +245,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 376);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(416, 364);
             this.Controls.Add(this.groupControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(432, 376);
-            this.MinimumSize = new System.Drawing.Size(432, 376);
+            this.MaximumSize = new System.Drawing.Size(432, 402);
+            this.MinimumSize = new System.Drawing.Size(432, 402);
             this.Name = "Error_Field";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Field";
@@ -300,7 +283,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevExpress.XtraEditors.SimpleButton btn_Close;
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;

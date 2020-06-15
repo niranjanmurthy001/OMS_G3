@@ -34,7 +34,6 @@
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.Error_label = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.btn_Close = new DevExpress.XtraEditors.SimpleButton();
             this.Clear = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -119,26 +118,13 @@
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Product Type :";
             // 
-            // btn_Close
-            // 
-            this.btn_Close.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Close.Appearance.Options.UseFont = true;
-            this.btn_Close.Appearance.Options.UseForeColor = true;
-            this.btn_Close.Location = new System.Drawing.Point(339, 3);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(80, 38);
-            this.btn_Close.TabIndex = 0;
-            this.btn_Close.Text = "Close";
-            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            // 
             // Clear
             // 
             this.Clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.Clear.Appearance.Options.UseFont = true;
             this.Clear.Appearance.Options.UseForeColor = true;
-            this.Clear.Location = new System.Drawing.Point(253, 3);
+            this.Clear.Location = new System.Drawing.Point(323, 3);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(80, 38);
             this.Clear.TabIndex = 1;
@@ -169,7 +155,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.05648F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.94352F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(428, 301);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 287);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -183,19 +169,18 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(422, 244);
+            this.panelControl1.Size = new System.Drawing.Size(406, 232);
             this.panelControl1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Close);
             this.flowLayoutPanel1.Controls.Add(this.Clear);
             this.flowLayoutPanel1.Controls.Add(this.btnSubmit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 253);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 241);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(422, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(406, 43);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnSubmit
@@ -204,7 +189,7 @@
             this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
-            this.btnSubmit.Location = new System.Drawing.Point(167, 3);
+            this.btnSubmit.Location = new System.Drawing.Point(237, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 38);
             this.btnSubmit.TabIndex = 3;
@@ -221,7 +206,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(432, 324);
+            this.groupControl1.Size = new System.Drawing.Size(416, 310);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Error";
             // 
@@ -229,12 +214,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 324);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(416, 310);
             this.Controls.Add(this.groupControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(432, 324);
-            this.MinimumSize = new System.Drawing.Size(432, 324);
+            this.MaximumSize = new System.Drawing.Size(432, 348);
+            this.MinimumSize = new System.Drawing.Size(432, 348);
             this.Name = "Error_Settingspanels";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Settings";
@@ -261,7 +244,6 @@
         private DevExpress.XtraEditors.LookUpEdit ddlProjectType;
         private DevExpress.XtraEditors.LabelControl Error_label;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SimpleButton btn_Close;
         private DevExpress.XtraEditors.SimpleButton Clear;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

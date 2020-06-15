@@ -94,7 +94,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Type";
                 string Boxname = "Error Type";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname,this);
                 ErrorTypes.Show();
 
             }
@@ -103,18 +103,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
                 string _boxname = "Error Tab";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname,this);
                 ErrorTypes.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror,this);
                 ErrorField.Show();
             }
         }
 
-        private async void BindErrorDetails()
+        public async void BindErrorDetails()
         {
             try
             {
@@ -160,7 +160,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private async void BindErrorGrid()
+        public async void BindErrorGrid()
         {
             try
             {
@@ -209,7 +209,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private async void Bind_Error_Tab_Grid()
+        public async void Bind_Error_Tab_Grid()
         {
             try
             {
@@ -326,7 +326,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //_productid = Convert.ToInt32(index.ItemArray[8]);
                 //errortext = index.ItemArray[0].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[3]);
-                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror,this);
                 _Efield.Show();
 
             }
@@ -350,7 +350,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             //_Projectid = Convert.ToInt32(index.ItemArray[1]);
             //errortext = index.ItemArray[3].ToString();
             //checkederror = Convert.ToInt32(index.ItemArray[2]);
-            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname);
+            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname,this);
             _Espanels.Show();
         }
 
@@ -467,7 +467,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             _btnname = "Edit";
             OperationType = "Error Tab";
 
-            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _Projectid, checkederror, errortext, _btnname);
+            Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _Projectid, checkederror, errortext, _btnname,this);
             _etab.Show();
             //chkProductType.SelectedValue = ProductChk;
             //int _task = chkProductType.SelectedIndex;
