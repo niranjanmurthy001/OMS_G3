@@ -96,7 +96,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(369, 346);
+            this.panelControl1.Size = new System.Drawing.Size(369, 347);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_SalaryTo
@@ -107,6 +107,7 @@
             this.txt_SalaryTo.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.txt_SalaryTo.Properties.Appearance.Options.UseFont = true;
             this.txt_SalaryTo.Properties.Appearance.Options.UseForeColor = true;
+            this.txt_SalaryTo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_SalaryTo.Size = new System.Drawing.Size(213, 24);
             this.txt_SalaryTo.TabIndex = 4;
             // 
@@ -118,6 +119,7 @@
             this.txt_salryfrom.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.txt_salryfrom.Properties.Appearance.Options.UseFont = true;
             this.txt_salryfrom.Properties.Appearance.Options.UseForeColor = true;
+            this.txt_salryfrom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_salryfrom.Size = new System.Drawing.Size(213, 24);
             this.txt_salryfrom.TabIndex = 3;
             // 
@@ -198,9 +200,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 355);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 356);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 49);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 48);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
