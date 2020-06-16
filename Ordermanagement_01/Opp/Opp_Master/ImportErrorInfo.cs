@@ -280,8 +280,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Uploaded Successfully");
+                                //SplashScreenManager.CloseForm(false);
+                               // XtraMessageBox.Show("Uploaded Successfully");
                             }
                             BindErrorTypeData();
 
@@ -408,9 +408,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
                     catch (Exception ex)
                     {
-                        string title = "Alert!";
+                       
                         SplashScreenManager.CloseForm(false);
-                        MessageBox.Show("File is Opened, Please Close and Upload it", title);
+                        XtraMessageBox.Show("File is Opened, Please Close and Upload It", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     finally
                     {
@@ -438,6 +438,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         string errortab = dtImportData.Rows[i][2].ToString();
                         string errDes = dtImportData.Rows[i][3].ToString();
                         dtErrorFieldData.Rows.Add(prjvalue, prdvalue, errortab, errDes);
+                    }
 
                         var data = new StringContent(JsonConvert.SerializeObject(dtErrorFieldData), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -453,9 +454,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 }
                             }
                         }
-                    }
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Uploaded Successfully");
+                    
+                    //SplashScreenManager.CloseForm(false);
+                    //XtraMessageBox.Show("Uploaded Successfully");
                     BindErrorFieldData();
 
 
@@ -707,8 +708,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
                                 var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Uploaded Successfully");
+                                //SplashScreenManager.CloseForm(false);
+                                //XtraMessageBox.Show("Uploaded Successfully");
                             }
                             bindErrorData();
                             // ValidateErrors();
@@ -757,7 +758,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
                                 string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
                                 StreamWriter wr = new StreamWriter(fileName);
 
 
@@ -768,12 +769,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
+                                //SplashScreenManager.CloseForm(false);
+                                //XtraMessageBox.Show("File DownLoaded SucessFully");
 
 
                                 Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xlsx";
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xls";
                                 if (!Directory.Exists(temppath))
                                 {
 
@@ -793,9 +794,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 catch (Exception ex)
                 {
-                    string title = "Alert!";
+                   
                     SplashScreenManager.CloseForm(false);
-                    MessageBox.Show("File is Opened, Please Close and Export it", title);
+                    XtraMessageBox.Show("Something Went Wrong");
                 }
                 finally
                 {
@@ -824,7 +825,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
                                 string filePath = @"C:\temp\";
-                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
                                 StreamWriter wr = new StreamWriter(fileName);
 
                                 for (int i = 0; i < dtCol.Columns.Count; i++)
@@ -834,11 +835,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
+                                //SplashScreenManager.CloseForm(false);
+                                //XtraMessageBox.Show("File DownLoaded SucessFully");
 
                                 Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xlsx";
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xls";
                                 if (!Directory.Exists(temppath))
                                 {
                                    
@@ -858,9 +859,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 catch (Exception ex)
                 {
-                    string title = "Alert!";
+                    
                     SplashScreenManager.CloseForm(false);
-                    MessageBox.Show("File is Opened, Please Close and Export it", title);
+                    XtraMessageBox.Show("Something Went Wrong");
                 }
                 finally
                 {
@@ -890,7 +891,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
                                 string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
                                 StreamWriter wr = new StreamWriter(fileName);
 
                                 for (int i = 0; i < dtCol.Columns.Count; i++)
@@ -900,10 +901,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 wr.WriteLine();
                                 wr.Close();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("File DownLoaded SucessFully");
-                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Field_Data.xlsx";
+                                //SplashScreenManager.CloseForm(false);
+                                //XtraMessageBox.Show("File DownLoaded SucessFully");
+                                Directory.CreateDirectory(@"c:\OMS_Error_Imports_Excels\");
+                                string temppath = @"c:\OMS_Error_Imports_Excels\Import_Error_Field_Data.xls";
                                 if (!Directory.Exists(temppath))
                                 {
 
@@ -924,10 +925,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("File is Opened, Please Close and Export it", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //string title = "Alert!";
-                    //SplashScreenManager.CloseForm(false);
-                    //MessageBox.Show("File is Opened, Please Close and Export it", title);
+                    XtraMessageBox.Show("Error in opening file");
                 }
                 finally
                 {
@@ -941,10 +939,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private async void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            if (lblTotalErrors.Text != "0" && gridView1.DataRowCount == 0)
+            if (lblTotalErrors.Text != "0" || gridView1.DataRowCount == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Invalid!,Upload Proper New Error Types", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Invalid!,Upload Proper New Error Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -1154,6 +1152,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     compositeLink.PrintingSystem.ExportToXlsx(Path, new XlsxExportOptions() { ExportMode = XlsxExportMode.SingleFilePageByPage, ExportHyperlinks = false, TextExportMode = TextExportMode.Value, IgnoreErrors = XlIgnoreErrors.NumberStoredAsText });
                     System.Diagnostics.Process.Start(Path);
                 }
+                else
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Upload a Valid Data File To Export");
+                }
+            
             }
             catch (Exception ex)
             {
