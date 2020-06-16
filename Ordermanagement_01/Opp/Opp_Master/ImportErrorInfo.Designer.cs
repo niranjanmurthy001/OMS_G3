@@ -186,13 +186,17 @@
             // 
             // bthChooseFile
             // 
-            this.bthChooseFile.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bthChooseFile.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bthChooseFile.Appearance.ForeColor = System.Drawing.Color.Black;
             this.bthChooseFile.Appearance.Options.UseFont = true;
+            this.bthChooseFile.Appearance.Options.UseForeColor = true;
+            this.bthChooseFile.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.bthChooseFile.Location = new System.Drawing.Point(5, 4);
             this.bthChooseFile.Name = "bthChooseFile";
             this.bthChooseFile.Size = new System.Drawing.Size(94, 25);
             this.bthChooseFile.TabIndex = 2;
             this.bthChooseFile.Text = "Upload";
+            this.bthChooseFile.ToolTip = "Upload File";
             this.bthChooseFile.Click += new System.EventHandler(this.bthChooseFile_Click);
             // 
             // panelControl4
@@ -225,8 +229,11 @@
             // 
             // bbtnSampleFormat
             // 
-            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnSampleFormat.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbtnSampleFormat.Appearance.ForeColor = System.Drawing.Color.Black;
             this.bbtnSampleFormat.Appearance.Options.UseFont = true;
+            this.bbtnSampleFormat.Appearance.Options.UseForeColor = true;
+            this.bbtnSampleFormat.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.bbtnSampleFormat.Dock = System.Windows.Forms.DockStyle.Top;
             this.bbtnSampleFormat.Location = new System.Drawing.Point(3, 3);
             this.bbtnSampleFormat.Name = "bbtnSampleFormat";
@@ -386,10 +393,11 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
+            this.btnSubmit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSubmit.Location = new System.Drawing.Point(3, 3);
             this.btnSubmit.Name = "btnSubmit";
@@ -400,10 +408,11 @@
             // 
             // btnClear
             // 
-            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
+            this.btnClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClear.Location = new System.Drawing.Point(113, 3);
             this.btnClear.Name = "btnClear";
@@ -414,10 +423,11 @@
             // 
             // btnExport
             // 
-            this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.Appearance.Options.UseForeColor = true;
+            this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnExport.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnExport.Location = new System.Drawing.Point(223, 3);
             this.btnExport.Name = "btnExport";
