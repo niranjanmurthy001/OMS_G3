@@ -208,15 +208,17 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     XtraMessageBox.Show("Project_Type and Category are Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return false;
                                 }
-                                if((Convert.ToDouble(txt_salryfrom.Text) > _SalaryTo || Convert.ToDouble(txt_SalaryTo.Text)>_SalaryFrom)) 
+                                if((Convert.ToDouble(txt_salryfrom.Text) < _SalaryTo || Convert.ToDouble(txt_SalaryTo.Text)< (Convert.ToDouble(txt_salryfrom.Text))) )
                                 {
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Salary From and Salary To Must not be greater than the previous values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
                                 }
                                 if((Convert.ToInt32(txt_SalaryTo.Text) == _SalaryTo) && (Convert.ToInt32(txt_salryfrom.Text)==_SalaryFrom))
                                 {
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Salary from And Salary_To Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
                                 }
                             }
                         }

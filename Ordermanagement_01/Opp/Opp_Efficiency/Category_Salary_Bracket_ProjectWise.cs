@@ -150,7 +150,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
-
+                                    
                                     BindCategorySalaryBracket();
                                     btn_Delete.Visible = false;
 
@@ -164,7 +164,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         }
 
                     }
-                    XtraMessageBox.Show("Record Deleted Successfully");
+                    XtraMessageBox.Show("Record Deleted Successfully", "Record Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
                 {
@@ -265,7 +265,6 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
             Grd_Category_Salary.ExportToXlsx(fileName);
             System.Diagnostics.Process.Start(fileName);
-            XtraMessageBox.Show("Exported Successfully");
         }
     }
 }

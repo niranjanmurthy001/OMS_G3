@@ -84,7 +84,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 ErrorTypeTxt = txtErrorTab.Text;
                 ProjectValue = Convert.ToInt32(ddlProjectType.EditValue);
                 Error_Type_Id = 0;
-                if (btnSubmit.Text == "Submit" && validate() != false)
+                if (btnSubmit.Text == "Submit" && Validation() != false)
                 {
                     try
                     {
@@ -141,7 +141,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
 
                 }
-                else if (btnSubmit.Text == "Edit" && validate() != false)
+                else if (btnSubmit.Text == "Edit" && Validation() != false)
                 {
                     try
                     {
@@ -206,7 +206,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 Error_label.Text = "Error Type";
                 string Errortype = txtErrorTab.Text;
                 
-                if (btnSubmit.Text == "Submit" && Validate() != false)
+                if (btnSubmit.Text == "Submit" && Validation() != false)
                 {
                     try
                     {
@@ -265,7 +265,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
 
                 }
-                else if (btnSubmit.Text == "Edit" && Validate() != false)
+                else if (btnSubmit.Text == "Edit" && Validation() != false)
                 {
                     //    int projectId = Convert.ToInt32(ddlProjectType.EditValue);
                     try
@@ -336,7 +336,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             chkProductType.DataSource = null;
         }
 
-        public bool validate()
+        private bool Validation()
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {

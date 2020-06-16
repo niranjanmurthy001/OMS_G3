@@ -65,7 +65,7 @@
             this.txtErrorTab.Properties.Appearance.Options.UseFont = true;
             this.txtErrorTab.Properties.Appearance.Options.UseForeColor = true;
             this.txtErrorTab.Size = new System.Drawing.Size(243, 24);
-            this.txtErrorTab.TabIndex = 7;
+            this.txtErrorTab.TabIndex = 3;
             // 
             // chkProductType
             // 
@@ -77,7 +77,7 @@
             this.chkProductType.Location = new System.Drawing.Point(136, 67);
             this.chkProductType.Name = "chkProductType";
             this.chkProductType.Size = new System.Drawing.Size(243, 105);
-            this.chkProductType.TabIndex = 6;
+            this.chkProductType.TabIndex = 2;
             // 
             // ddlProjectType
             // 
@@ -91,7 +91,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProjectType.Properties.NullText = "Select";
             this.ddlProjectType.Size = new System.Drawing.Size(243, 24);
-            this.ddlProjectType.TabIndex = 4;
+            this.ddlProjectType.TabIndex = 1;
             this.ddlProjectType.EditValueChanged += new System.EventHandler(this.ddlProjectType_EditValueChanged);
             // 
             // Error_label
@@ -127,7 +127,7 @@
             this.Clear.Location = new System.Drawing.Point(323, 3);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(80, 38);
-            this.Clear.TabIndex = 1;
+            this.Clear.TabIndex = 5;
             this.Clear.Text = "Clear";
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
@@ -192,7 +192,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(237, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 38);
-            this.btnSubmit.TabIndex = 3;
+            this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
