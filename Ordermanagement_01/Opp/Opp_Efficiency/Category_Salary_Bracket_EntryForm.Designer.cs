@@ -66,7 +66,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(379, 430);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Add Category Salary Bracket ";
+            this.groupControl1.Text = "Category Salary Bracket ";
             // 
             // tableLayoutPanel1
             // 
@@ -78,8 +78,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.68059F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.31941F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.73219F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.26781F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(375, 407);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -96,7 +96,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(369, 358);
+            this.panelControl1.Size = new System.Drawing.Size(369, 347);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_SalaryTo
@@ -107,6 +107,7 @@
             this.txt_SalaryTo.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.txt_SalaryTo.Properties.Appearance.Options.UseFont = true;
             this.txt_SalaryTo.Properties.Appearance.Options.UseForeColor = true;
+            this.txt_SalaryTo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_SalaryTo.Size = new System.Drawing.Size(213, 24);
             this.txt_SalaryTo.TabIndex = 4;
             // 
@@ -118,6 +119,7 @@
             this.txt_salryfrom.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.txt_salryfrom.Properties.Appearance.Options.UseFont = true;
             this.txt_salryfrom.Properties.Appearance.Options.UseForeColor = true;
+            this.txt_salryfrom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txt_salryfrom.Size = new System.Drawing.Size(213, 24);
             this.txt_salryfrom.TabIndex = 3;
             // 
@@ -150,7 +152,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(19, 176);
+            this.labelControl4.Location = new System.Drawing.Point(49, 176);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(68, 20);
             this.labelControl4.TabIndex = 11;
@@ -162,7 +164,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(19, 129);
+            this.labelControl3.Location = new System.Drawing.Point(32, 129);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(85, 20);
             this.labelControl3.TabIndex = 10;
@@ -174,7 +176,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(19, 79);
+            this.labelControl2.Location = new System.Drawing.Point(50, 79);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(67, 20);
             this.labelControl2.TabIndex = 9;
@@ -186,7 +188,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(19, 29);
+            this.labelControl1.Location = new System.Drawing.Point(28, 29);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(89, 20);
             this.labelControl1.TabIndex = 8;
@@ -198,9 +200,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 367);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 356);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(369, 48);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -209,9 +211,10 @@
             this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
+            this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Clear.Location = new System.Drawing.Point(291, 3);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 30);
+            this.btn_Clear.Size = new System.Drawing.Size(75, 41);
             this.btn_Clear.TabIndex = 6;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
@@ -222,9 +225,10 @@
             this.btn_Submit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
+            this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Submit.Location = new System.Drawing.Point(210, 3);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(75, 30);
+            this.btn_Submit.Size = new System.Drawing.Size(75, 41);
             this.btn_Submit.TabIndex = 5;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
@@ -235,7 +239,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 430);
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(395, 468);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(395, 468);
             this.Name = "Category_Salary_Bracket_EntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

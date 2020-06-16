@@ -87,12 +87,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
             {
-                XtraMessageBox.Show("Select Project_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBoxControl_Task.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Task Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Task Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -137,7 +137,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Task is Submitted","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Submitted Sucessfully");
                                 grid_Project_Type_Details();
                                 btn_Clear_Click(sender, e);
                             }
@@ -201,7 +201,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Task is Updated","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Updated Sucessfully");
                                 grid_Project_Type_Details();
                                 btn_Clear_Click(sender, e);
                             }

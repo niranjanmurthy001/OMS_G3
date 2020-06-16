@@ -119,11 +119,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
 
         private async void btn_Delete_Click(object sender, EventArgs e)
-        {
-            string message = "Do you want to delete?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
+        {         
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
 
@@ -159,12 +156,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             else
                             {
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Please Select Type To Delete");
+                                XtraMessageBox.Show("Please Select Any Record To Delete");
                             }
                         }
 
                     }
-                    XtraMessageBox.Show("Record Deleted Successfully", "Record Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    XtraMessageBox.Show("Record Deleted Successfully");
                 }
                 catch (Exception ex)
                 {
@@ -208,7 +205,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             BindCategorySalaryBracket();
                             //_dtUpdate.Columns.Clear();
                             _dtUpdate.Columns.Clear();
-                            XtraMessageBox.Show("Category Salary Bracket is Updated Succesfully");
+                            XtraMessageBox.Show("Updated Successfully");
                             bnt_Submit.Visible = false;
                         }
                     }
