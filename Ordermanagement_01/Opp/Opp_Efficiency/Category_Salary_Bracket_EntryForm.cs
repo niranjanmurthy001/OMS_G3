@@ -115,7 +115,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show(" Project Wise Category Salary Bracket Submitted Successfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Submitted Successfully");
                                 btn_Clear_Click(sender, e);
                                 this.Mainform.BindCategorySalaryBracket();
                                 this.Close();
@@ -147,25 +147,25 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0 )
             {
-                XtraMessageBox.Show("Select Project_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Project_Type.Focus();
                 return false;
             }
             if (txt_Category.Text == "")
             {
-                XtraMessageBox.Show("Category Field Must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Enter Category", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Category.Focus();
                 return false;
             }
             if(txt_salryfrom.Text=="")
             {
-                XtraMessageBox.Show("Salary From Field Must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Enter Salary From", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_salryfrom.Focus();
                 return false;
             }
             if (txt_SalaryTo.Text == "")
             {
-                XtraMessageBox.Show("Salary To Field Must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Enter Salary To", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_SalaryTo.Focus();
                 return false;
             }
@@ -205,19 +205,19 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 if(txt_Category.Text==_Category.ToString() && Convert.ToInt32(ddl_Project_Type.EditValue)==_projectid )
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Project_Type and Category are Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Project_Type and Category Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return false;
                                 }
                                 if((Convert.ToDouble(txt_salryfrom.Text) < _SalaryTo || Convert.ToDouble(txt_SalaryTo.Text)< (Convert.ToDouble(txt_salryfrom.Text))) )
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Salary From and Salary To Must not be greater than the previous values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Salary From and Salary To should not be greater than previous values", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return false;
                                 }
                                 if((Convert.ToInt32(txt_SalaryTo.Text) == _SalaryTo) && (Convert.ToInt32(txt_salryfrom.Text)==_SalaryFrom))
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Salary from And Salary_To Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Salary From and Salary To Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return false;
                                 }
                             }

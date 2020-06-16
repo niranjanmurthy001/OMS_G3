@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -55,7 +56,7 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
@@ -63,7 +64,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(782, 496);
+            this.groupControl1.Size = new System.Drawing.Size(782, 662);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Category Salary Bracket";
             // 
@@ -79,9 +80,9 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.142218F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.668077F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.35518F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 473);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.294209F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.66354F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 639);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -92,7 +93,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(772, 33);
+            this.label1.Size = new System.Drawing.Size(772, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Salary Bracket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,73 +105,81 @@
             this.flowLayoutPanel1.Controls.Add(this.bnt_Submit);
             this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 36);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(772, 46);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Export
             // 
-            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Export.Location = new System.Drawing.Point(689, 3);
             this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(80, 30);
+            this.btn_Export.Size = new System.Drawing.Size(80, 40);
             this.btn_Export.TabIndex = 0;
             this.btn_Export.Text = "Export";
+            this.btn_Export.ToolTip = "Export";
             this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
             // btn_addnew
             // 
-            this.btn_addnew.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addnew.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_addnew.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_addnew.Appearance.Options.UseFont = true;
             this.btn_addnew.Appearance.Options.UseForeColor = true;
+            this.btn_addnew.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_addnew.Location = new System.Drawing.Point(603, 3);
             this.btn_addnew.Name = "btn_addnew";
-            this.btn_addnew.Size = new System.Drawing.Size(80, 30);
+            this.btn_addnew.Size = new System.Drawing.Size(80, 40);
             this.btn_addnew.TabIndex = 0;
             this.btn_addnew.Text = "Add New";
+            this.btn_addnew.ToolTip = "Add New";
             this.btn_addnew.Click += new System.EventHandler(this.btn_addnew_Click);
             // 
             // bnt_Submit
             // 
-            this.bnt_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.bnt_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.bnt_Submit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.bnt_Submit.Appearance.Options.UseFont = true;
             this.bnt_Submit.Appearance.Options.UseForeColor = true;
+            this.bnt_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.bnt_Submit.Location = new System.Drawing.Point(517, 3);
             this.bnt_Submit.Name = "bnt_Submit";
-            this.bnt_Submit.Size = new System.Drawing.Size(80, 30);
+            this.bnt_Submit.Size = new System.Drawing.Size(80, 40);
             this.bnt_Submit.TabIndex = 1;
             this.bnt_Submit.Text = "Update";
+            this.bnt_Submit.ToolTip = "Update";
             this.bnt_Submit.Visible = false;
             this.bnt_Submit.Click += new System.EventHandler(this.bnt_Submit_Click);
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Delete.Location = new System.Drawing.Point(431, 3);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(80, 30);
+            this.btn_Delete.Size = new System.Drawing.Size(80, 40);
             this.btn_Delete.TabIndex = 2;
             this.btn_Delete.Text = "Delete";
+            this.btn_Delete.ToolTip = "Delete";
             this.btn_Delete.Visible = false;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // Grd_Category_Salary
             // 
             this.Grd_Category_Salary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 76);
+            this.Grd_Category_Salary.Location = new System.Drawing.Point(3, 100);
             this.Grd_Category_Salary.MainView = this.gridView1;
             this.Grd_Category_Salary.Name = "Grd_Category_Salary";
-            this.Grd_Category_Salary.Size = new System.Drawing.Size(772, 394);
+            this.Grd_Category_Salary.Size = new System.Drawing.Size(772, 536);
             this.Grd_Category_Salary.TabIndex = 2;
             this.Grd_Category_Salary.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -290,13 +299,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 496);
+            this.ClientSize = new System.Drawing.Size(782, 662);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(798, 700);
-            this.MinimumSize = new System.Drawing.Size(798, 534);
+            this.MinimumSize = new System.Drawing.Size(798, 700);
             this.Name = "Category_Salary_Bracket_ProjectWise";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Category_Salary_Bracket_ProjectWise";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Category_Salary_Bracket_ProjectWise_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
