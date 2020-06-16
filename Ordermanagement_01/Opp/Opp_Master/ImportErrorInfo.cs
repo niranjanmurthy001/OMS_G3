@@ -18,7 +18,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -35,10 +34,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         bool IsRowColorRed = true;
         DataTable dtErrorData = new DataTable();
         DataTable dtImportData = new DataTable();
-        int temperrors = 0;
-        int ExistingCount = 0;
-        int duplicateCount = 0;
-        int total = 0;
+
         string OperationType;
         private DataAccess da;
         private SqlConnection con;
@@ -92,16 +88,16 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
 
         }
-       
+
 
         private void CloseRunningExcel(string FileName)
         {
             try
             {
-                 FileStream fs;
+                FileStream fs;
                 try
                 {
-                    fs =File.Open(FileName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Read, System.IO.FileShare.None);
+                    fs = File.Open(FileName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Read, System.IO.FileShare.None);
                     fs.Close();
                 }
                 catch (Exception ex)
@@ -122,7 +118,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 //xl.Quit();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -152,6 +148,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         gridColErrorTab.Visible = false;
                         errorDescription.Visible = false;
                         ImportErrorTypeData(txtFilename);
+                        Application.DoEvents();
                     }
 
                     else if (OperationType == "Error Tab")
@@ -160,12 +157,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         gridColErrorType.Visible = false;
                         errorDescription.Visible = false;
                         ImportErrorTab(txtFilename);
+                        Application.DoEvents();
                     }
                     else if (OperationType == "Error Field")
                     {
                         gridColErrorType.Visible = false;
                         gridColErrorTab.Visible = true;
                         ImportErrorFieldData(txtFilename);
+                        Application.DoEvents();
                     }
                     lbl_Uploadfilename.Text = txtFilename;
                     System.Windows.Forms.Application.DoEvents();
@@ -184,7 +183,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
 
-       
+
         private async void ImportErrorTypeData(string Filename)
         {
             DataTable dtImportErrorType = new DataTable();
@@ -195,54 +194,66 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     //Stream s = File.Open(Filename, FileMode.Open, FileAccess.Read, FileShare.None);
 
                     //s.Close();
-                   // CloseRunningExcel(Filename);
+                    // CloseRunningExcel(Filename);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
- 
-                    using (XLWorkbook workBook = new XLWorkbook(Filename))
+                    try
                     {
-                        IXLWorksheet worksheet = workBook.Worksheet(1);
-
-                        DataTable dt = new DataTable();
-
-                        //Loop through the Worksheet rows.
-                        bool firstRow = true;
-                        foreach (IXLRow row in worksheet.Rows())
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        using (XLWorkbook workBook = new XLWorkbook(Filename))
                         {
+                            IXLWorksheet worksheet = workBook.Worksheet(1);
 
-                            if (firstRow)
-                            {
-                                foreach (IXLCell cell in row.Cells())
-                                {
-                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
-                                }
-                                firstRow = false;
-                            }
-                            else
-                            {
-                                if (row.IsEmpty())
-                                    continue;
-                                dtImportData.Rows.Add();
+                            DataTable dt = new DataTable();
 
-                                int i = 0;
-                                try
+                            //Loop through the Worksheet rows.
+                            bool firstRow = true;
+                            foreach (IXLRow row in worksheet.Rows())
+                            {
+
+                                if (firstRow)
                                 {
-                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    foreach (IXLCell cell in row.Cells())
                                     {
-                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
-                                        i++;
+                                        dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
                                     }
-
+                                    firstRow = false;
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
-                                    break;
+                                    if (row.IsEmpty())
+                                        continue;
+                                    dtImportData.Rows.Add();
+
+                                    int i = 0;
+                                    try
+                                    {
+                                        foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                        {
+                                            dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                            i++;
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("File is Opened, Please Close and Upload It", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
                     }
 
 
@@ -281,6 +292,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
+                   
                     XtraMessageBox.Show("Something went wrong");
                     //throw ex;
                 }
@@ -346,52 +358,67 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
 
-
-                    using (XLWorkbook workBook = new XLWorkbook(Filename))
+                    try
                     {
-                        IXLWorksheet worksheet = workBook.Worksheet(1);
-
-                        DataTable dt = new DataTable();
-
-                        //Loop through the Worksheet rows.
-                        bool firstRow = true;
-                        foreach (IXLRow row in worksheet.Rows())
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        using (XLWorkbook workBook = new XLWorkbook(Filename))
                         {
+                            IXLWorksheet worksheet = workBook.Worksheet(1);
 
-                            if (firstRow)
-                            {
-                                foreach (IXLCell cell in row.Cells())
-                                {
-                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
-                                }
-                                firstRow = false;
-                            }
-                            else
-                            {
-                                if (row.IsEmpty())
-                                    continue;
-                                dtImportData.Rows.Add();
+                            DataTable dt = new DataTable();
 
-                                int i = 0;
-                                try
+                            //Loop through the Worksheet rows.
+                            bool firstRow = true;
+                            foreach (IXLRow row in worksheet.Rows())
+                            {
+
+                                if (firstRow)
                                 {
-                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    foreach (IXLCell cell in row.Cells())
                                     {
-                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
-                                        i++;
+                                        dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
                                     }
-
+                                    firstRow = false;
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
-                                    break;
+                                    if (row.IsEmpty())
+                                        continue;
+                                    dtImportData.Rows.Add();
+
+                                    int i = 0;
+                                    try
+                                    {
+                                        foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                        {
+                                            dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                            i++;
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                        break;
+                                    }
                                 }
                             }
+
                         }
-
                     }
+                    catch (Exception ex)
+                    {
+                        string title = "Alert!";
+                        SplashScreenManager.CloseForm(false);
+                        MessageBox.Show("File is Opened, Please Close and Upload it", title);
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
+                    
 
+                    
                     deleteExistingTableData();
                     dtErrorFieldData.Columns.AddRange(new DataColumn[]
                           {
@@ -595,49 +622,61 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     dtImportData.Rows.Clear();
 
 
-                    using (XLWorkbook workBook = new XLWorkbook(FileName))
+                    try
                     {
-                        IXLWorksheet worksheet = workBook.Worksheet(1);
-
-                        DataTable dt = new DataTable();
-
-                        //Loop through the Worksheet rows.
-                        bool firstRow = true;
-                        foreach (IXLRow row in worksheet.Rows())
+                        using (XLWorkbook workBook = new XLWorkbook(FileName))
                         {
+                            IXLWorksheet worksheet = workBook.Worksheet(1);
 
-                            if (firstRow)
-                            {
-                                foreach (IXLCell cell in row.Cells())
-                                {
-                                    dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
-                                }
-                                firstRow = false;
-                            }
-                            else
-                            {
-                                if (row.IsEmpty())
-                                    continue;
-                                dtImportData.Rows.Add();
+                            DataTable dt = new DataTable();
 
-                                int i = 0;
-                                try
+                            //Loop through the Worksheet rows.
+                            bool firstRow = true;
+                            foreach (IXLRow row in worksheet.Rows())
+                            {
+
+                                if (firstRow)
                                 {
-                                    foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                    foreach (IXLCell cell in row.Cells())
                                     {
-                                        dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
-                                        i++;
+                                        dtImportData.Columns.Add(cell.Value.ToString(), typeof(string));
                                     }
-
+                                    firstRow = false;
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
-                                    break;
+                                    if (row.IsEmpty())
+                                        continue;
+                                    dtImportData.Rows.Add();
+
+                                    int i = 0;
+                                    try
+                                    {
+                                        foreach (IXLCell cell in row.Cells(row.FirstCellUsed().Address.ColumnNumber, row.LastCellUsed().Address.ColumnNumber))
+                                        {
+                                            dtImportData.Rows[dtImportData.Rows.Count - 1][i] = cell.Value.ToString();
+                                            i++;
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        dtImportData.Rows.RemoveAt(dtImportData.Rows.Count - 1);
+                                        break;
+                                    }
                                 }
                             }
-                        }
 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("File is Opened, Please Close and Upload It", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
                     }
 
 
@@ -718,7 +757,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
                                 string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
+                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
                                 StreamWriter wr = new StreamWriter(fileName);
 
 
@@ -732,10 +771,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
 
-                                if (Directory.Exists(filePath))
+
+                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xlsx";
+                                if (!Directory.Exists(temppath))
                                 {
-                                    Directory.CreateDirectory(filePath);
-                                    //File.Copy(fileName, temppath, true);
+
+                                    File.Copy(fileName, temppath, true);
                                     Process.Start(fileName);
 
                                 }
@@ -743,17 +785,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                               
+
                             }
                         }
                     }
                 }
 
                 catch (Exception ex)
-
                 {
+                    string title = "Alert!";
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something went wrong");
+                    MessageBox.Show("File is Opened, Please Close and Export it", title);
                 }
                 finally
                 {
@@ -781,8 +823,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
-                                string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
+                                string filePath = @"C:\temp\";
+                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
                                 StreamWriter wr = new StreamWriter(fileName);
 
                                 for (int i = 0; i < dtCol.Columns.Count; i++)
@@ -794,10 +836,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 wr.Close();
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
-                                if (Directory.Exists(filePath))
+
+                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xlsx";
+                                if (!Directory.Exists(temppath))
                                 {
-                                    Directory.CreateDirectory(filePath);
-                                    //File.Copy(fileName, temppath, true);
+                                   
+                                    File.Copy(fileName, temppath, true);
                                     Process.Start(fileName);
 
                                 }
@@ -805,17 +850,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                               
+
                             }
                         }
                     }
                 }
 
                 catch (Exception ex)
-
                 {
+                    string title = "Alert!";
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something went wrong");
+                    MessageBox.Show("File is Opened, Please Close and Export it", title);
                 }
                 finally
                 {
@@ -845,7 +890,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
                                 string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
+                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
                                 StreamWriter wr = new StreamWriter(fileName);
 
                                 for (int i = 0; i < dtCol.Columns.Count; i++)
@@ -857,10 +902,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 wr.Close();
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("File DownLoaded SucessFully");
-                                if (Directory.Exists(filePath))
+                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Field_Data.xlsx";
+                                if (!Directory.Exists(temppath))
                                 {
-                                    Directory.CreateDirectory(filePath);
-                                    //File.Copy(fileName, temppath, true);
+
+                                    File.Copy(fileName, temppath, true);
                                     Process.Start(fileName);
 
                                 }
@@ -868,17 +915,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     Process.Start(filePath);
                                 }
-                               
+
                             }
                         }
                     }
                 }
 
                 catch (Exception ex)
-
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something went wrong");
+                    XtraMessageBox.Show("File is Opened, Please Close and Export it", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //string title = "Alert!";
+                    //SplashScreenManager.CloseForm(false);
+                    //MessageBox.Show("File is Opened, Please Close and Export it", title);
                 }
                 finally
                 {
@@ -1098,7 +1147,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                    {
                     LinkErrorData
                    });
-                    string ReportName = "ErrorImport_Data";
+                    string ReportName = "Error_Export_Data";
                     string FolderPath = "C:\\Temp\\";
                     string Path = FolderPath + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + "-" + ReportName + ".xlsx";
                     compositeLink.CreatePageForEachLink();
@@ -1181,7 +1230,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void ValidateErrors()
         {
-
+            int temperrors = 0;
+            int ExistingCount = 0;
+            int duplicateCount = 0;
+            int total = 0;
 
 
             try
@@ -1232,7 +1284,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
                     else if (OperationType == "Error Type")
                     {
-                        if (string.IsNullOrWhiteSpace(gridView1.Columns.ColumnByFieldName("Error_Type").ToString()))
+                        if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Type")).ToString()))
                         {
                             temperrors += 1;
                             gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Error Type Not Found");
