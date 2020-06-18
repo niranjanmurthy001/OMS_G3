@@ -986,7 +986,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                         XtraMessageBox.Show("Inserted Successfully ");
                                     }
                                     Clear();
-                                   
+
                                     this.mainform.BindErrorGrid();
                                     this.mainform.Bind_Error_Tab_Grid();
                                     this.Close();
@@ -1046,7 +1046,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 Clear();
                                 this.mainform.BindErrorDetails();
                                 this.Close();
-                                
+
                             }
                         }
                     }
@@ -1335,7 +1335,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 // throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something Went Wrong");
+                XtraMessageBox.Show("Invalid!,Upload Proper New Error Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             finally
