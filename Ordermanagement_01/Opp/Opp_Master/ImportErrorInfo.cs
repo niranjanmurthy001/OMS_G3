@@ -191,10 +191,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
-                    //Stream s = File.Open(Filename, FileMode.Open, FileAccess.Read, FileShare.None);
 
-                    //s.Close();
-                    // CloseRunningExcel(Filename);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     dtImportData.Columns.Clear();
                     dtImportData.Rows.Clear();
@@ -1151,6 +1148,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     compositeLink.CreatePageForEachLink();
                     compositeLink.PrintingSystem.ExportToXlsx(Path, new XlsxExportOptions() { ExportMode = XlsxExportMode.SingleFilePageByPage, ExportHyperlinks = false, TextExportMode = TextExportMode.Value, IgnoreErrors = XlIgnoreErrors.NumberStoredAsText });
                     System.Diagnostics.Process.Start(Path);
+                    Clear();
                 }
                 else
                 {
@@ -1395,6 +1393,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Something Went Wrong");
             }
 
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
     }
 }

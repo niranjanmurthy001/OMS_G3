@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportErrorInfo));
             this.groupContError = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -71,7 +70,7 @@
             this.grdError_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Exist_Count = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Duplicate_Count = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupContError)).BeginInit();
             this.groupContError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -303,10 +302,10 @@
             // 
             this.pictureBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.Location = new System.Drawing.Point(507, 8);
+            this.pictureBox2.Location = new System.Drawing.Point(515, 8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 14);
+            this.pictureBox2.Size = new System.Drawing.Size(26, 14);
             this.pictureBox2.TabIndex = 249;
             this.pictureBox2.TabStop = false;
             // 
@@ -462,7 +461,9 @@
             this.Exist_Count,
             this.Duplicate_Count});
             this.gridView1.GridControl = this.gridErrorImport;
+            this.gridView1.IndicatorWidth = 30;
             this.gridView1.Name = "gridView1";
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle_1);
             // 
             // gridColumn1
