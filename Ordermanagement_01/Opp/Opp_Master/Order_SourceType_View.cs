@@ -171,10 +171,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void repositoryItemHyperLinkEdit2_Click(object sender, EventArgs e)
         {
-            string message = "Do you want to delete?";
-            string title = "Delete Record";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult show = XtraMessageBox.Show(message, title, buttons);
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
                 try
@@ -208,11 +205,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                     throw ex;
                 }
-            }
-            else if (show == DialogResult.No)
-            {
-            }
-
+            }           
         }
 
         private async void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)

@@ -14,6 +14,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -21,91 +22,24 @@ namespace Ordermanagement_01.Opp.Opp_Master
     {
         string Operation_Type;
         int Project_Id;
+        int _UserId;
+        int User_Id;
 
-        public Sub_Product_Type_View()
+        public Sub_Product_Type_View(int User_Id)
         {
             InitializeComponent();
+            _UserId = User_Id;
         }
 
         private void Sub_Product_Type_View_Load(object sender, EventArgs e)
         {
-            btn_delete_Multiple_Abs.Visible = false;
+            btn_Delete_Multiple.Visible = false;
             BindGridType();
             BindGridAbs();
-            btn_Delete_MultipleType.Visible = false;
-            //if (tabPane1.SelectedPage == tabNavigationPage1)
-            //{
-               
-            //}
-            //else if (tabPane1.SelectedPage==tabNavigationPage2)
-            //{
-               
-            //}
+            Tile_Item_ProductType.Checked = true;
+            navigationFrame1.SelectedPage = navigationPage1;
         }
-
-        private void btn_Add_New_Type_Click(object sender, EventArgs e)
-        {
-            Operation_Type = "Sub Product Type";
-            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type);
-            SPT.Show();
-        }
-
-        private void btn_Add_New_Abs_Click_1(object sender, EventArgs e)
-        {
-            Operation_Type = "Sub Product Type Abbreviation";
-            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type);
-            SPT.Show();
-        }
-        //public async void BindProjectType()
-        //{
-        //    try
-        //    {
-        //        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-        //        var dictonary = new Dictionary<string, object>()
-        //        {
-        //            {"@Trans","SELECT_PROJECT_TYPE" }
-        //        };
-
-        //        var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-        //        using (var httpclient = new HttpClient())
-        //        {
-        //            var response = await httpclient.PostAsync(Base_Url.Url + "/SubProductType/BindProjectType", data);
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                if (response.StatusCode == HttpStatusCode.OK)
-        //                {
-        //                    var result = await response.Content.ReadAsStringAsync();
-        //                    DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-        //                    if (dt != null && dt.Rows.Count > 0)
-        //                    {
-        //                        DataRow dr = dt.NewRow();
-        //                        dr[0] = 0;
-        //                        dr[1] = "Select";
-        //                        dt.Rows.InsertAt(dr, 0);
-        //                    }
-
-        //                    ddl_Project_Type.Properties.DataSource = dt;
-        //                    ddl_Project_Type.Properties.DisplayMember = "Project_Type";
-        //                    ddl_Project_Type.Properties.ValueMember = "Project_Type_Id";
-        //                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-        //                    col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
-        //                    ddl_Project_Type.Properties.Columns.Add(col);
-        //                }
-        //            }
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        SplashScreenManager.CloseForm(false);
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        SplashScreenManager.CloseForm(false);
-        //    }
-        //}
-
+       
         public async void BindGridType()
         {
             try
@@ -189,17 +123,223 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.CloseForm(false);
             }
         }
+      
+        private async void btn_Delete_MultipleType_Click_1(object sender, EventArgs e)
+        {
+            if(Tile_Item_ProductType.Checked==true)
+            {
 
-        private void gridView_Type_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+                if (gridView_Type.SelectedRowsCount != 0)
+                {
+                    DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (show == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            List<int> gridViewSelectedRows = gridView_Type.GetSelectedRows().ToList();
+                            for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                            {
+                                DataRow row = gridView_Type.GetDataRow(gridViewSelectedRows[i]);
+                                int OrderTypeId = int.Parse(row["Order_Type_ID"].ToString());
+                                var dictionary = new Dictionary<string, object>()
+                                {
+                                      { "@Trans", "DELETE_TYPE" },
+                                      { "@Order_Type_ID", OrderTypeId }
+                                };
+                                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                                using (var httpClient = new HttpClient())
+                                {
+                                    var response = await httpClient.PostAsync(Base_Url.Url + "/SubProductType/Delete", data);
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        if (response.StatusCode == HttpStatusCode.OK)
+                                        {
+                                            var result = await response.Content.ReadAsStringAsync();
+                                        }
+                                    }
+                                }
+                            }
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Record Deleted Successfully");
+                            BindGridType();
+                        }
+                        catch (Exception ex)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            throw ex;
+                        }
+                        finally
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+
+                    }
+                }
+                else
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Please Select Any Record To Delete");
+                }
+            }
+            else if(Tile_Item_ProductAbs.Checked==true)
+            {
+
+                if (gridView_Abs.SelectedRowsCount != 0)
+                {
+                    DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (show == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            List<int> gridViewSelectedRows = gridView_Abs.GetSelectedRows().ToList();
+                            for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                            {
+                                DataRow row = gridView_Abs.GetDataRow(gridViewSelectedRows[i]);
+                                int OrderTypeAbsId = int.Parse(row["OrderType_ABS_Id"].ToString());
+                                var dictionary = new Dictionary<string, object>()
+                                {
+                                      { "@Trans", "DELETE_ABS" },
+                                      { "@OrderType_ABS_Id", OrderTypeAbsId }
+                                };
+                                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                                using (var httpClient = new HttpClient())
+                                {
+                                    var response = await httpClient.PostAsync(Base_Url.Url + "/SubProductType/Delete", data);
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        if (response.StatusCode == HttpStatusCode.OK)
+                                        {
+                                            var result = await response.Content.ReadAsStringAsync();
+                                        }
+                                    }
+                                }
+                            }
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Record Deleted Successfully");
+                            BindGridType();
+                        }
+                        catch (Exception ex)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            throw ex;
+                        }
+                        finally
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+
+                    }
+                }
+                else
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Please Select Any Record To Delete");
+                }
+            }
+        }
+
+        public void btn_Add_New_Type_Click_1(object sender, EventArgs e)
+        {
+            if(Tile_Item_ProductType.Checked==true)
+            {
+                Operation_Type = "Sub Product Type";
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, _UserId, this);
+                SPT.Show();
+            }
+            else if(Tile_Item_ProductAbs.Checked==true)
+            {
+                Operation_Type = "Sub Product Type Abbreviation";
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, _UserId, this);
+                SPT.Show();
+            }
+        }
+
+        private void btn_Export_Type_Click_1(object sender, EventArgs e)
+        {
+            if(Tile_Item_ProductType.Checked==true)
+            {
+                string filePath = @"C:\Sub Product Type\";
+                string fileName = filePath + "Sub Product Type-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                grd_Type.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+            else if(Tile_Item_ProductAbs.Checked==true)
+            {
+                string filePath = @"C:\Sub Product Type Abbreviation\";
+                string fileName = filePath + "Sub Product Type Abbreviation-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                grd_Abs.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+
+        }
+
+        private void Tile_Item_ProductType_ItemClick(object sender, TileItemEventArgs e)
+        {
+            Tile_Item_ProductType.Checked = true;           
+            Tile_Item_ProductAbs.Checked = false;
+            navigationFrame1.SelectedPage = navigationPage1;
+            BindGridType();
+            Operation_Type = "Sub Product Type";
+        }
+
+        private void Tile_Item_ProductAbs_ItemClick(object sender, TileItemEventArgs e)
+        {
+            Tile_Item_ProductAbs.Checked = true;      
+            Tile_Item_ProductType.Checked = false;
+            navigationFrame1.SelectedPage = navigationPage2;
+            BindGridAbs();
+            Operation_Type = "Sub Product Type Abbreviation";
+        }
+
+        private void gridView_Type_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
-        private void gridView_Abs_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        private void gridView_Abs_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
+
+        private void gridView_Type_SelectionChanged_1(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+
+            if (gridView_Type.SelectedRowsCount != 0)
+            {
+                btn_Delete_Multiple.Visible = true;
+            }
+            else if (gridView_Type.SelectedRowsCount == 0)
+            {
+                btn_Delete_Multiple.Visible = false;
+            }
+        }
+
+        private void gridView_Abs_SelectionChanged_1(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if (gridView_Abs.SelectedRowsCount != 0)
+            {
+                btn_Delete_Multiple.Visible = true;
+            }
+            else if (gridView_Abs.SelectedRowsCount == 0)
+            {
+                btn_Delete_Multiple.Visible = false;
+            }
+        }
+
+      
     }
 }

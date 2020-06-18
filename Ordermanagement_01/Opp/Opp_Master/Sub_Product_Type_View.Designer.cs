@@ -29,54 +29,56 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.TileItemElement tileItemElement22 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame13 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement23 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement24 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame14 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement25 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement26 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame15 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement27 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemFrame tileItemFrame16 = new DevExpress.XtraEditors.TileItemFrame();
+            DevExpress.XtraEditors.TileItemElement tileItemElement28 = new DevExpress.XtraEditors.TileItemElement();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Tile_Errors = new DevExpress.XtraEditors.TileControl();
+            this.tileGroup17 = new DevExpress.XtraEditors.TileGroup();
+            this.Tile_Item_ProductType = new DevExpress.XtraEditors.TileItem();
+            this.tileGroup18 = new DevExpress.XtraEditors.TileGroup();
+            this.Tile_Item_ProductAbs = new DevExpress.XtraEditors.TileItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Export_Type = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Add_New_Type = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Delete_MultipleType = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Add_New = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete_Multiple = new DevExpress.XtraEditors.SimpleButton();
+            this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
+            this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.grd_Type = new DevExpress.XtraGrid.GridControl();
             this.gridView_Type = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.grd_Abs = new DevExpress.XtraGrid.GridControl();
-            this.gridView_Abs = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Export_Abs = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Add_New_Abs = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_delete_Multiple_Abs = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.label1 = new System.Windows.Forms.Label();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.grd_Abs = new DevExpress.XtraGrid.GridControl();
+            this.gridView_Abs = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Tile_Item_SubProductType = new DevExpress.XtraEditors.TileItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
-            this.tabPane1.SuspendLayout();
-            this.tabNavigationPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
+            this.navigationFrame1.SuspendLayout();
+            this.navigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Type)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Type)).BeginInit();
-            this.tabNavigationPage2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Abs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Abs)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -89,139 +91,325 @@
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
-            this.groupControl1.Controls.Add(this.tabPane1);
+            this.groupControl1.Controls.Add(this.tableLayoutPanel1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(696, 489);
+            this.groupControl1.Size = new System.Drawing.Size(826, 523);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Sub Product Type";
-            // 
-            // tabPane1
-            // 
-            this.tabPane1.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.tabPane1.Appearance.Options.UseForeColor = true;
-            this.tabPane1.Controls.Add(this.tabNavigationPage1);
-            this.tabPane1.Controls.Add(this.tabNavigationPage2);
-            this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Font = new System.Drawing.Font("Rod", 8.25F);
-            this.tabPane1.Location = new System.Drawing.Point(2, 21);
-            this.tabPane1.Name = "tabPane1";
-            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNavigationPage1,
-            this.tabNavigationPage2});
-            this.tabPane1.RegularSize = new System.Drawing.Size(692, 466);
-            this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(692, 466);
-            this.tabPane1.TabIndex = 0;
-            this.tabPane1.Text = "tabPane1";
-            // 
-            // tabNavigationPage1
-            // 
-            this.tabNavigationPage1.Caption = "Sub Product Type";
-            this.tabNavigationPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(674, 421);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.Tile_Errors, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.grd_Type, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.navigationFrame1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(674, 421);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 500);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // Tile_Errors
+            // 
+            this.Tile_Errors.AllowItemHover = true;
+            this.Tile_Errors.AppearanceText.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Errors.AppearanceText.Options.UseFont = true;
+            this.Tile_Errors.BackColor = System.Drawing.Color.Transparent;
+            this.Tile_Errors.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Tile_Errors.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Tile_Errors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Tile_Errors.Groups.Add(this.tileGroup17);
+            this.Tile_Errors.Groups.Add(this.tileGroup18);
+            this.Tile_Errors.IndentBetweenGroups = 10;
+            this.Tile_Errors.IndentBetweenItems = 50;
+            this.Tile_Errors.ItemContentAnimation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            this.Tile_Errors.ItemSize = 70;
+            this.Tile_Errors.ItemTextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Hover;
+            this.Tile_Errors.Location = new System.Drawing.Point(2, 2);
+            this.Tile_Errors.Margin = new System.Windows.Forms.Padding(2);
+            this.Tile_Errors.MaxId = 15;
+            this.Tile_Errors.Name = "Tile_Errors";
+            this.Tile_Errors.OptionsAdaptiveLayout.ItemMinSize = new System.Drawing.Size(100, 100);
+            this.Tile_Errors.Padding = new System.Windows.Forms.Padding(8, 1, 8, 1);
+            this.Tile_Errors.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Tile_Errors.SelectionColor = System.Drawing.Color.Transparent;
+            this.Tile_Errors.Size = new System.Drawing.Size(818, 86);
+            this.Tile_Errors.TabIndex = 9;
+            this.Tile_Errors.Text = "Dashboard";
+            this.Tile_Errors.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Center;
+            // 
+            // tileGroup17
+            // 
+            this.tileGroup17.Items.Add(this.Tile_Item_ProductType);
+            this.tileGroup17.Name = "tileGroup17";
+            // 
+            // Tile_Item_ProductType
+            // 
+            this.Tile_Item_ProductType.AllowAnimation = false;
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.Options.UseBorderColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.Options.UseFont = true;
+            this.Tile_Item_ProductType.AppearanceItem.Hovered.Options.UseForeColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductType.AppearanceItem.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductType.AppearanceItem.Normal.Options.UseFont = true;
+            this.Tile_Item_ProductType.AppearanceItem.Normal.Options.UseForeColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Pressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductType.AppearanceItem.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductType.AppearanceItem.Pressed.Options.UseFont = true;
+            this.Tile_Item_ProductType.AppearanceItem.Pressed.Options.UseForeColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.BackColor = System.Drawing.Color.Blue;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.Blue;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductType.AppearanceItem.Selected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductType.AppearanceItem.Selected.Options.UseBackColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.Options.UseBorderColor = true;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.Options.UseFont = true;
+            this.Tile_Item_ProductType.AppearanceItem.Selected.Options.UseForeColor = true;
+            tileItemElement22.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement22.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement22.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement22.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement22.Appearance.Normal.Options.UseFont = true;
+            tileItemElement22.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement22.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement22.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement22.Appearance.Pressed.BorderColor = System.Drawing.Color.Black;
+            tileItemElement22.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement22.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement22.Appearance.Pressed.Options.UseBorderColor = true;
+            tileItemElement22.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement22.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement22.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement22.Appearance.Selected.BorderColor = System.Drawing.Color.Black;
+            tileItemElement22.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement22.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement22.Appearance.Selected.Options.UseBorderColor = true;
+            tileItemElement22.Appearance.Selected.Options.UseFont = true;
+            tileItemElement22.Text = "Sub Product Type";
+            tileItemElement22.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement22.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_ProductType.Elements.Add(tileItemElement22);
+            tileItemFrame13.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame13.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame13.Appearance.BorderColor = System.Drawing.Color.Silver;
+            tileItemFrame13.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemFrame13.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame13.Appearance.Options.UseBackColor = true;
+            tileItemFrame13.Appearance.Options.UseBorderColor = true;
+            tileItemFrame13.Appearance.Options.UseFont = true;
+            tileItemFrame13.Appearance.Options.UseForeColor = true;
+            tileItemElement23.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileItemElement23.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement23.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement23.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement23.Appearance.Normal.Options.UseFont = true;
+            tileItemElement23.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement23.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement23.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement23.Appearance.Pressed.BorderColor = System.Drawing.Color.Black;
+            tileItemElement23.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement23.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement23.Appearance.Pressed.Options.UseBorderColor = true;
+            tileItemElement23.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement23.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement23.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement23.Appearance.Selected.BorderColor = System.Drawing.Color.Black;
+            tileItemElement23.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            tileItemElement23.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement23.Appearance.Selected.Options.UseBorderColor = true;
+            tileItemElement23.Appearance.Selected.Options.UseFont = true;
+            tileItemElement23.Text = "Sub Product Type";
+            tileItemElement23.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement23.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame13.Elements.Add(tileItemElement23);
+            this.Tile_Item_ProductType.Frames.Add(tileItemFrame13);
+            this.Tile_Item_ProductType.Id = 2;
+            this.Tile_Item_ProductType.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.Tile_Item_ProductType.Name = "Tile_Item_ProductType";
+            this.Tile_Item_ProductType.TextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Always;
+            this.Tile_Item_ProductType.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.Tile_Item_ProductType_ItemClick);
+            // 
+            // tileGroup18
+            // 
+            this.tileGroup18.Items.Add(this.Tile_Item_ProductAbs);
+            this.tileGroup18.Name = "tileGroup18";
+            // 
+            // Tile_Item_ProductAbs
+            // 
+            this.Tile_Item_ProductAbs.AllowAnimation = false;
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.Options.UseBorderColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.Options.UseFont = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Hovered.Options.UseForeColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Normal.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductAbs.AppearanceItem.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductAbs.AppearanceItem.Normal.Options.UseFont = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Normal.Options.UseForeColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Pressed.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductAbs.AppearanceItem.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductAbs.AppearanceItem.Pressed.Options.UseFont = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Pressed.Options.UseForeColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.BackColor = System.Drawing.Color.Blue;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.Blue;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.Options.UseBackColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.Options.UseBorderColor = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.Options.UseFont = true;
+            this.Tile_Item_ProductAbs.AppearanceItem.Selected.Options.UseForeColor = true;
+            tileItemElement24.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement24.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement24.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement24.Appearance.Normal.Options.UseFont = true;
+            tileItemElement24.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement24.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement24.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement24.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement24.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement24.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement24.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement24.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement24.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement24.Appearance.Selected.Options.UseFont = true;
+            tileItemElement24.Text = "Sub Product Type Abs";
+            tileItemElement24.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement24.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_ProductAbs.Elements.Add(tileItemElement24);
+            tileItemFrame14.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame14.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame14.Appearance.BorderColor = System.Drawing.Color.Silver;
+            tileItemFrame14.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemFrame14.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame14.Appearance.Options.UseBackColor = true;
+            tileItemFrame14.Appearance.Options.UseBorderColor = true;
+            tileItemFrame14.Appearance.Options.UseFont = true;
+            tileItemFrame14.Appearance.Options.UseForeColor = true;
+            tileItemElement25.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement25.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement25.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement25.Appearance.Normal.Options.UseFont = true;
+            tileItemElement25.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement25.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement25.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement25.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement25.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement25.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement25.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement25.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement25.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement25.Appearance.Selected.Options.UseFont = true;
+            tileItemElement25.Text = "Sub Product Type Abs";
+            tileItemElement25.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement25.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame14.Elements.Add(tileItemElement25);
+            this.Tile_Item_ProductAbs.Frames.Add(tileItemFrame14);
+            this.Tile_Item_ProductAbs.Id = 3;
+            this.Tile_Item_ProductAbs.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.Tile_Item_ProductAbs.Name = "Tile_Item_ProductAbs";
+            this.Tile_Item_ProductAbs.TextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Always;
+            this.Tile_Item_ProductAbs.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.Tile_Item_ProductAbs_ItemClick);
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Export_Type);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Add_New_Type);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Delete_MultipleType);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Add_New);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Delete_Multiple);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 50);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 93);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(668, 48);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(816, 44);
+            this.flowLayoutPanel1.TabIndex = 7;
             // 
-            // btn_Export_Type
+            // btn_Export
             // 
-            this.btn_Export_Type.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export_Type.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Export_Type.Appearance.Options.UseFont = true;
-            this.btn_Export_Type.Appearance.Options.UseForeColor = true;
-            this.btn_Export_Type.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export_Type.Location = new System.Drawing.Point(585, 3);
-            this.btn_Export_Type.Name = "btn_Export_Type";
-            this.btn_Export_Type.Size = new System.Drawing.Size(80, 40);
-            this.btn_Export_Type.TabIndex = 4;
-            this.btn_Export_Type.Text = "Export";
-            this.btn_Export_Type.ToolTip = "Export";
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Export.Location = new System.Drawing.Point(733, 3);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(80, 40);
+            this.btn_Export.TabIndex = 4;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.ToolTip = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Type_Click_1);
             // 
-            // btn_Add_New_Type
+            // btn_Add_New
             // 
-            this.btn_Add_New_Type.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_Add_New_Type.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Add_New_Type.Appearance.Options.UseFont = true;
-            this.btn_Add_New_Type.Appearance.Options.UseForeColor = true;
-            this.btn_Add_New_Type.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New_Type.Location = new System.Drawing.Point(499, 3);
-            this.btn_Add_New_Type.Name = "btn_Add_New_Type";
-            this.btn_Add_New_Type.Size = new System.Drawing.Size(80, 40);
-            this.btn_Add_New_Type.TabIndex = 3;
-            this.btn_Add_New_Type.Text = "Add New";
-            this.btn_Add_New_Type.Click += new System.EventHandler(this.btn_Add_New_Type_Click);
+            this.btn_Add_New.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Add_New.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Add_New.Appearance.Options.UseFont = true;
+            this.btn_Add_New.Appearance.Options.UseForeColor = true;
+            this.btn_Add_New.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Add_New.Location = new System.Drawing.Point(647, 3);
+            this.btn_Add_New.Name = "btn_Add_New";
+            this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
+            this.btn_Add_New.TabIndex = 3;
+            this.btn_Add_New.Text = "Add New";
+            this.btn_Add_New.ToolTip = "Add New";
+            this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Type_Click_1);
             // 
-            // btn_Delete_MultipleType
+            // btn_Delete_Multiple
             // 
-            this.btn_Delete_MultipleType.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_Delete_MultipleType.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Delete_MultipleType.Appearance.Options.UseFont = true;
-            this.btn_Delete_MultipleType.Appearance.Options.UseForeColor = true;
-            this.btn_Delete_MultipleType.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_MultipleType.Location = new System.Drawing.Point(413, 3);
-            this.btn_Delete_MultipleType.Name = "btn_Delete_MultipleType";
-            this.btn_Delete_MultipleType.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete_MultipleType.TabIndex = 1;
-            this.btn_Delete_MultipleType.Text = "Delete";
+            this.btn_Delete_Multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Delete_Multiple.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Delete_Multiple.Appearance.Options.UseFont = true;
+            this.btn_Delete_Multiple.Appearance.Options.UseForeColor = true;
+            this.btn_Delete_Multiple.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Delete_Multiple.Location = new System.Drawing.Point(561, 3);
+            this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
+            this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
+            this.btn_Delete_Multiple.TabIndex = 1;
+            this.btn_Delete_Multiple.Text = "Delete";
+            this.btn_Delete_Multiple.ToolTip = "Delete";
+            this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_MultipleType_Click_1);
             // 
-            // panelControl1
+            // navigationFrame1
             // 
-            this.panelControl1.Controls.Add(this.label4);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 3);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(668, 41);
-            this.panelControl1.TabIndex = 0;
+            this.navigationFrame1.Controls.Add(this.navigationPage1);
+            this.navigationFrame1.Controls.Add(this.navigationPage2);
+            this.navigationFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navigationFrame1.Location = new System.Drawing.Point(3, 143);
+            this.navigationFrame1.Name = "navigationFrame1";
+            this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.navigationPage1,
+            this.navigationPage2});
+            this.navigationFrame1.SelectedPage = this.navigationPage1;
+            this.navigationFrame1.Size = new System.Drawing.Size(816, 354);
+            this.navigationFrame1.TabIndex = 8;
+            this.navigationFrame1.Text = "navigationFrame1";
             // 
-            // label4
+            // navigationPage1
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(2, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(664, 37);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Sub Product Type";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.navigationPage1.Caption = "navigationPage1";
+            this.navigationPage1.Controls.Add(this.grd_Type);
+            this.navigationPage1.Name = "navigationPage1";
+            this.navigationPage1.Size = new System.Drawing.Size(816, 354);
             // 
             // grd_Type
             // 
             this.grd_Type.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_Type.Location = new System.Drawing.Point(3, 104);
+            this.grd_Type.Location = new System.Drawing.Point(0, 0);
             this.grd_Type.MainView = this.gridView_Type;
             this.grd_Type.Name = "grd_Type";
-            this.grd_Type.Size = new System.Drawing.Size(668, 314);
-            this.grd_Type.TabIndex = 4;
+            this.grd_Type.Size = new System.Drawing.Size(816, 354);
+            this.grd_Type.TabIndex = 5;
             this.grd_Type.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Type});
             // 
@@ -235,40 +423,76 @@
             this.gridView_Type.GridControl = this.grd_Type;
             this.gridView_Type.IndicatorWidth = 30;
             this.gridView_Type.Name = "gridView_Type";
-            this.gridView_Type.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Type_CustomDrawRowIndicator);
+            this.gridView_Type.OptionsFind.AlwaysVisible = true;
+            this.gridView_Type.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
+            this.gridView_Type.OptionsSelection.InvertSelection = true;
+            this.gridView_Type.OptionsSelection.MultiSelect = true;
+            this.gridView_Type.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView_Type.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView_Type.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Type_CustomDrawRowIndicator_1);
+            this.gridView_Type.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_Type_SelectionChanged_1);
             // 
-            // tabNavigationPage2
+            // gridColumn1
             // 
-            this.tabNavigationPage2.Caption = "Sub Product Type Abbreviation";
-            this.tabNavigationPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(674, 421);
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn1.Caption = "Project Type";
+            this.gridColumn1.FieldName = "Project_Type";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
             // 
-            // tableLayoutPanel2
+            // gridColumn2
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.grd_Abs, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panelControl2, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.39798F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.73904F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.86299F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(674, 421);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn2.Caption = "Sub Product Type";
+            this.gridColumn2.FieldName = "Order_Type";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 2;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn3.Caption = "Sub Product Type Abbreviation";
+            this.gridColumn3.FieldName = "Order_Type_Abrivation";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 3;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn4.Caption = "ID";
+            this.gridColumn4.FieldName = "Order_Type_ID";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // navigationPage2
+            // 
+            this.navigationPage2.Caption = "navigationPage2";
+            this.navigationPage2.Controls.Add(this.grd_Abs);
+            this.navigationPage2.Name = "navigationPage2";
+            this.navigationPage2.Size = new System.Drawing.Size(816, 354);
             // 
             // grd_Abs
             // 
             this.grd_Abs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_Abs.Location = new System.Drawing.Point(3, 105);
+            this.grd_Abs.Location = new System.Drawing.Point(0, 0);
             this.grd_Abs.MainView = this.gridView_Abs;
             this.grd_Abs.Name = "grd_Abs";
-            this.grd_Abs.Size = new System.Drawing.Size(660, 296);
-            this.grd_Abs.TabIndex = 10;
+            this.grd_Abs.Size = new System.Drawing.Size(816, 354);
+            this.grd_Abs.TabIndex = 11;
             this.grd_Abs.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Abs});
             // 
@@ -281,127 +505,14 @@
             this.gridView_Abs.GridControl = this.grd_Abs;
             this.gridView_Abs.IndicatorWidth = 30;
             this.gridView_Abs.Name = "gridView_Abs";
-            this.gridView_Abs.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Abs_CustomDrawRowIndicator);
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.btn_Export_Abs);
-            this.flowLayoutPanel2.Controls.Add(this.btn_Add_New_Abs);
-            this.flowLayoutPanel2.Controls.Add(this.btn_delete_Multiple_Abs);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 50);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(668, 43);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
-            // btn_Export_Abs
-            // 
-            this.btn_Export_Abs.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export_Abs.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Export_Abs.Appearance.Options.UseFont = true;
-            this.btn_Export_Abs.Appearance.Options.UseForeColor = true;
-            this.btn_Export_Abs.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export_Abs.Location = new System.Drawing.Point(585, 3);
-            this.btn_Export_Abs.Name = "btn_Export_Abs";
-            this.btn_Export_Abs.Size = new System.Drawing.Size(80, 40);
-            this.btn_Export_Abs.TabIndex = 4;
-            this.btn_Export_Abs.Text = "Export";
-            this.btn_Export_Abs.ToolTip = "Export";
-            // 
-            // btn_Add_New_Abs
-            // 
-            this.btn_Add_New_Abs.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_Add_New_Abs.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Add_New_Abs.Appearance.Options.UseFont = true;
-            this.btn_Add_New_Abs.Appearance.Options.UseForeColor = true;
-            this.btn_Add_New_Abs.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New_Abs.Location = new System.Drawing.Point(499, 3);
-            this.btn_Add_New_Abs.Name = "btn_Add_New_Abs";
-            this.btn_Add_New_Abs.Size = new System.Drawing.Size(80, 40);
-            this.btn_Add_New_Abs.TabIndex = 3;
-            this.btn_Add_New_Abs.Text = "Add New";
-            this.btn_Add_New_Abs.Click += new System.EventHandler(this.btn_Add_New_Abs_Click_1);
-            // 
-            // btn_delete_Multiple_Abs
-            // 
-            this.btn_delete_Multiple_Abs.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_delete_Multiple_Abs.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_delete_Multiple_Abs.Appearance.Options.UseFont = true;
-            this.btn_delete_Multiple_Abs.Appearance.Options.UseForeColor = true;
-            this.btn_delete_Multiple_Abs.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_delete_Multiple_Abs.Location = new System.Drawing.Point(413, 3);
-            this.btn_delete_Multiple_Abs.Name = "btn_delete_Multiple_Abs";
-            this.btn_delete_Multiple_Abs.Size = new System.Drawing.Size(80, 40);
-            this.btn_delete_Multiple_Abs.TabIndex = 1;
-            this.btn_delete_Multiple_Abs.Text = "Delete";
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.label1);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 3);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(668, 41);
-            this.panelControl2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(2, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(664, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sub Product Type Abbreviation";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn1.Caption = "Project Type";
-            this.gridColumn1.FieldName = "Project_Type";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn2.Caption = "Sub Product Type";
-            this.gridColumn2.FieldName = "Order_Type";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn3.Caption = "Sub Product Type Abbreviation";
-            this.gridColumn3.FieldName = "Order_Type_Abrivation";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn4.Caption = "ID";
-            this.gridColumn4.FieldName = "Order_Type_ID";
-            this.gridColumn4.Name = "gridColumn4";
+            this.gridView_Abs.OptionsFind.AlwaysVisible = true;
+            this.gridView_Abs.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
+            this.gridView_Abs.OptionsSelection.InvertSelection = true;
+            this.gridView_Abs.OptionsSelection.MultiSelect = true;
+            this.gridView_Abs.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView_Abs.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView_Abs.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Abs_CustomDrawRowIndicator_1);
+            this.gridView_Abs.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_Abs_SelectionChanged_1);
             // 
             // gridColumn5
             // 
@@ -413,7 +524,7 @@
             this.gridColumn5.FieldName = "Project_Type";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 0;
+            this.gridColumn5.VisibleIndex = 1;
             // 
             // gridColumn6
             // 
@@ -425,7 +536,7 @@
             this.gridColumn6.FieldName = "Order_Type_Abbreviation";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.VisibleIndex = 2;
             // 
             // gridColumn7
             // 
@@ -437,11 +548,170 @@
             this.gridColumn7.FieldName = "OrderType_ABS_Id";
             this.gridColumn7.Name = "gridColumn7";
             // 
+            // Tile_Item_SubProductType
+            // 
+            this.Tile_Item_SubProductType.AllowAnimation = false;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.BackColor = System.Drawing.Color.White;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.Options.UseBackColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.Options.UseBorderColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.Options.UseFont = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Hovered.Options.UseForeColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.Tile_Item_SubProductType.AppearanceItem.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_SubProductType.AppearanceItem.Normal.Options.UseFont = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Normal.Options.UseForeColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.BackColor = System.Drawing.Color.White;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.BackColor2 = System.Drawing.Color.White;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.Options.UseBackColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.Options.UseBorderColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.Options.UseFont = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Pressed.Options.UseForeColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.BackColor = System.Drawing.Color.Blue;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.White;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.BorderColor = System.Drawing.Color.Black;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.ForeColor = System.Drawing.Color.White;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.Options.UseBackColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.Options.UseBorderColor = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.Options.UseFont = true;
+            this.Tile_Item_SubProductType.AppearanceItem.Selected.Options.UseForeColor = true;
+            tileItemElement26.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement26.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement26.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement26.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement26.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement26.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement26.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement26.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement26.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement26.Appearance.Normal.Options.UseFont = true;
+            tileItemElement26.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement26.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement26.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement26.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement26.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement26.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement26.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement26.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement26.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement26.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement26.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement26.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement26.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement26.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement26.Appearance.Selected.Options.UseFont = true;
+            tileItemElement26.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement26.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement26.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement26.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement26.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement26.MaxWidth = 100;
+            tileItemElement26.Text = "Sub Product Type";
+            tileItemElement26.TextLocation = new System.Drawing.Point(4, 4);
+            this.Tile_Item_SubProductType.Elements.Add(tileItemElement26);
+            tileItemFrame15.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollLeft;
+            tileItemFrame15.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame15.Appearance.BorderColor = System.Drawing.Color.Silver;
+            tileItemFrame15.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemFrame15.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame15.Appearance.Options.UseBackColor = true;
+            tileItemFrame15.Appearance.Options.UseBorderColor = true;
+            tileItemFrame15.Appearance.Options.UseFont = true;
+            tileItemFrame15.Appearance.Options.UseForeColor = true;
+            tileItemElement27.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement27.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement27.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement27.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement27.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement27.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement27.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement27.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement27.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement27.Appearance.Normal.Options.UseFont = true;
+            tileItemElement27.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement27.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement27.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement27.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement27.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement27.Appearance.Pressed.BackColor = System.Drawing.Color.White;
+            tileItemElement27.Appearance.Pressed.BackColor2 = System.Drawing.Color.White;
+            tileItemElement27.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement27.Appearance.Pressed.Options.UseBackColor = true;
+            tileItemElement27.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement27.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement27.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement27.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement27.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement27.Appearance.Selected.Options.UseFont = true;
+            tileItemElement27.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement27.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement27.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement27.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement27.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement27.MaxWidth = 100;
+            tileItemElement27.Text = "Error Type";
+            tileItemElement27.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement27.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame15.Elements.Add(tileItemElement27);
+            tileItemFrame16.Animation = DevExpress.XtraEditors.TileItemContentAnimationType.ScrollDown;
+            tileItemFrame16.Appearance.BackColor = System.Drawing.Color.White;
+            tileItemFrame16.Appearance.BorderColor = System.Drawing.Color.Silver;
+            tileItemFrame16.Appearance.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemFrame16.Appearance.ForeColor = System.Drawing.Color.Black;
+            tileItemFrame16.Appearance.Options.UseBackColor = true;
+            tileItemFrame16.Appearance.Options.UseBorderColor = true;
+            tileItemFrame16.Appearance.Options.UseFont = true;
+            tileItemFrame16.Appearance.Options.UseForeColor = true;
+            tileItemElement28.AnimateTransition = DevExpress.Utils.DefaultBoolean.True;
+            tileItemElement28.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement28.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement28.Appearance.Hovered.Options.UseTextOptions = true;
+            tileItemElement28.Appearance.Hovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement28.Appearance.Hovered.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement28.Appearance.Hovered.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement28.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement28.Appearance.Normal.ForeColor = System.Drawing.Color.Black;
+            tileItemElement28.Appearance.Normal.Options.UseFont = true;
+            tileItemElement28.Appearance.Normal.Options.UseForeColor = true;
+            tileItemElement28.Appearance.Normal.Options.UseTextOptions = true;
+            tileItemElement28.Appearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement28.Appearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement28.Appearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement28.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement28.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement28.Appearance.Selected.BackColor = System.Drawing.Color.Blue;
+            tileItemElement28.Appearance.Selected.BackColor2 = System.Drawing.Color.Blue;
+            tileItemElement28.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 11F);
+            tileItemElement28.Appearance.Selected.Options.UseBackColor = true;
+            tileItemElement28.Appearance.Selected.Options.UseFont = true;
+            tileItemElement28.Appearance.Selected.Options.UseTextOptions = true;
+            tileItemElement28.Appearance.Selected.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            tileItemElement28.Appearance.Selected.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisCharacter;
+            tileItemElement28.Appearance.Selected.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+            tileItemElement28.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.Manual;
+            tileItemElement28.MaxWidth = 100;
+            tileItemElement28.Text = "Error Type";
+            tileItemElement28.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileItemElement28.TextLocation = new System.Drawing.Point(4, 4);
+            tileItemFrame16.Elements.Add(tileItemElement28);
+            this.Tile_Item_SubProductType.Frames.Add(tileItemFrame15);
+            this.Tile_Item_SubProductType.Frames.Add(tileItemFrame16);
+            this.Tile_Item_SubProductType.Id = 1;
+            this.Tile_Item_SubProductType.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.Tile_Item_SubProductType.Name = "Tile_Item_SubProductType";
+            this.Tile_Item_SubProductType.TextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Always;
+            // 
             // Sub_Product_Type_View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 489);
+            this.ClientSize = new System.Drawing.Size(826, 523);
             this.Controls.Add(this.groupControl1);
             this.MinimumSize = new System.Drawing.Size(712, 527);
             this.Name = "Sub_Product_Type_View";
@@ -451,22 +721,16 @@
             this.Load += new System.EventHandler(this.Sub_Product_Type_View_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
-            this.tabPane1.ResumeLayout(false);
-            this.tabNavigationPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
+            this.navigationFrame1.ResumeLayout(false);
+            this.navigationPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Type)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Type)).EndInit();
-            this.tabNavigationPage2.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Abs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Abs)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -475,33 +739,30 @@
 
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevExpress.XtraEditors.SimpleButton btn_Export_Type;
-        private DevExpress.XtraEditors.SimpleButton btn_Add_New_Type;
-        private DevExpress.XtraEditors.SimpleButton btn_Delete_MultipleType;
+        private DevExpress.XtraEditors.SimpleButton btn_Export;
+        private DevExpress.XtraEditors.SimpleButton btn_Add_New;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete_Multiple;
+        private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage2;
         private DevExpress.XtraGrid.GridControl grd_Type;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Type;
-        private DevExpress.XtraGrid.GridControl grd_Abs;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_Abs;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private DevExpress.XtraEditors.SimpleButton btn_Export_Abs;
-        private DevExpress.XtraEditors.SimpleButton btn_Add_New_Abs;
-        private DevExpress.XtraEditors.SimpleButton btn_delete_Multiple_Abs;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.GridControl grd_Abs;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_Abs;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.TileItem Tile_Item_SubProductType;
+        private DevExpress.XtraEditors.TileControl Tile_Errors;
+        private DevExpress.XtraEditors.TileGroup tileGroup17;
+        private DevExpress.XtraEditors.TileItem Tile_Item_ProductType;
+        private DevExpress.XtraEditors.TileGroup tileGroup18;
+        private DevExpress.XtraEditors.TileItem Tile_Item_ProductAbs;
     }
 }
