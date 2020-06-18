@@ -44,11 +44,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         public object ErrorTypeDescription { get; private set; }
         public int Noofrecords { get; private set; }
         public object Excel { get; private set; }
-
-        public ImportErrorInfo(string _operationType)
+        private Error_Settings mainform = null;
+        public ImportErrorInfo(string _operationType, Form CallingForm)
         {
             InitializeComponent();
             this.OperationType = _operationType;
+            mainform = CallingForm as Error_Settings;
         }
 
         private void ImportErrorInfo_Load(object sender, EventArgs e)
@@ -985,6 +986,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                         XtraMessageBox.Show("Inserted Successfully ");
                                     }
                                     Clear();
+                                   
+                                    this.mainform.BindErrorGrid();
+                                    this.mainform.Bind_Error_Tab_Grid();
+                                    this.Close();
                                 }
                             }
                         }
@@ -1039,6 +1044,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 }
                                 Clear();
+                                this.mainform.BindErrorDetails();
+                                this.Close();
+                                
                             }
                         }
                     }
@@ -1100,6 +1108,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         SplashScreenManager.CloseForm(false);
                         XtraMessageBox.Show("Inserted  Sucessfully");
                         Clear();
+                        this.mainform.BindErrorGrid();
+                        this.mainform.Bind_Error_Tab_Grid();
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
