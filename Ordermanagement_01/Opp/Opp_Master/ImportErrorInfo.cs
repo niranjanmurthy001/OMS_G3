@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
@@ -18,7 +19,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
-
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+    
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -44,11 +47,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         public object ErrorTypeDescription { get; private set; }
         public int Noofrecords { get; private set; }
         public object Excel { get; private set; }
-
-        public ImportErrorInfo(string _operationType)
+        private Error_Settings mainform = null;
+        public ImportErrorInfo(string _operationType, Form CallingForm)
         {
             InitializeComponent();
             this.OperationType = _operationType;
+            mainform = CallingForm as Error_Settings;
         }
 
         private void ImportErrorInfo_Load(object sender, EventArgs e)
@@ -135,7 +139,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 fileup.Title = "Select Error Import File";
                 fileup.InitialDirectory = @"c:\";
 
-                fileup.Filter = "Excel Sheet(*.xlsx)|*.xlsx|Excel Sheet(*.xls)|*.xls|All Files(*.*)|*.*";
+                fileup.Filter = "Excel Sheet(*.xlsx)|*.xlsx";
                 fileup.FilterIndex = 1;
                 fileup.RestoreDirectory = true;
                 // var txtFileName = fileup.FileName;
@@ -739,54 +743,50 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictonary = new Dictionary<string, object>()
-                {
-                    {"@Trans","ColumnsToExcelOf_Error_Type" }
-
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                    using (var httpclient = new HttpClient())
-                    {
-                        var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorImport/SelectError_TypeColumns", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
-                                string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
-                                StreamWriter wr = new StreamWriter(fileName);
-
-
-                                for (int i = 0; i < dtCol.Columns.Count; i++)
-                                {
-                                    wr.Write(dtCol.Columns[i].ToString() + "\t");
-                                }
-
-                                wr.WriteLine();
-                                wr.Close();
-                                //SplashScreenManager.CloseForm(false);
-                                //XtraMessageBox.Show("File DownLoaded SucessFully");
-
-
+                  
+                               
                                 Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xls";
-                                if (!Directory.Exists(temppath))
-                                {
+                                string filePath = @"c:\OMS_Error_Imports\";
+                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                                    File.Copy(fileName, temppath, true);
-                                    Process.Start(fileName);
-
-                                }
-                                else
+                                Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                                if(xlapp==null)
                                 {
-                                    Process.Start(filePath);
+                                    XtraMessageBox.Show("Excel is not properly Installed !!");
+                                    return;
                                 }
 
-                            }
-                        }
-                    }
+                                Excel.Workbook xlworkbook;
+                                Excel.Worksheet xlworksheet;
+                                object misvalue = System.Reflection.Missing.Value;
+                                xlworkbook = xlapp.Workbooks.Add(misvalue);
+                                xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
+                                xlworksheet.Cells[1, 1] = "Project_Type";
+                                xlworksheet.Cells[1, 2] = "Product_Type";
+                                xlworksheet.Cells[1, 3] = "Error_Type";
+                                xlworkbook.SaveAs(fileName);
+                                xlworkbook.Close(true, misvalue, misvalue);
+                                xlapp.Quit();
+
+                                Marshal.ReleaseComObject(xlworksheet);
+                                Marshal.ReleaseComObject(xlworkbook);
+                                Marshal.ReleaseComObject(xlapp);
+                            
+                                 
+
+                                  
+                                   string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xlsx";
+                                    if (!Directory.Exists(temppath))
+                                    {
+
+                                        File.Copy(fileName, temppath, true);
+                                        Process.Start(fileName);
+
+                                    }
+                                    else
+                                    {
+                                        Process.Start(filePath);
+                                    }
                 }
 
                 catch (Exception ex)
@@ -806,37 +806,35 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictonary = new Dictionary<string, object>()
-                {
-                    {"@Trans","ColumnsToExcelOf_Error_Tab" }
+                  
+                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                                string filePath = @"c:\OMS_Error_Imports\";
+                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                    using (var httpclient = new HttpClient())
-                    {
-                        var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorImport/SelectError_TabColumns", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
-                                string filePath = @"C:\temp\";
-                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
-                                StreamWriter wr = new StreamWriter(fileName);
-
-                                for (int i = 0; i < dtCol.Columns.Count; i++)
+                                Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                                if (xlapp == null)
                                 {
-                                    wr.Write(dtCol.Columns[i].ToString() + "\t");
+                                    XtraMessageBox.Show("Excel is not properly Installed !!");
+                                    return;
                                 }
 
-                                wr.WriteLine();
-                                wr.Close();
-                                //SplashScreenManager.CloseForm(false);
-                                //XtraMessageBox.Show("File DownLoaded SucessFully");
+                                Excel.Workbook xlworkbook;
+                                Excel.Worksheet xlworksheet;
+                                object misvalue = System.Reflection.Missing.Value;
+                                xlworkbook = xlapp.Workbooks.Add(misvalue);
+                                xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
+                                xlworksheet.Cells[1, 1] = "Project_Type";
+                                xlworksheet.Cells[1, 2] = "Product_Type";
+                                xlworksheet.Cells[1, 3] = "Error_Tab";
+                                xlworkbook.SaveAs(fileName);
+                                xlworkbook.Close(true, misvalue, misvalue);
+                                xlapp.Quit();
 
-                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xls";
+                                Marshal.ReleaseComObject(xlworksheet);
+                                Marshal.ReleaseComObject(xlworkbook);
+                                Marshal.ReleaseComObject(xlapp);
+
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xlsx";
                                 if (!Directory.Exists(temppath))
                                 {
 
@@ -849,9 +847,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     Process.Start(filePath);
                                 }
 
-                            }
-                        }
-                    }
+                            
+                        
+                    
                 }
 
                 catch (Exception ex)
@@ -872,36 +870,34 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictonary = new Dictionary<string, object>()
-                {
-                    {"@Trans","ColumnsToExcelOf_Error_Field" }
-
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                    using (var httpclient = new HttpClient())
+                    Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                    string filePath = @"C:\OMS_Error_Imports\";
+                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                    Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                    if (xlapp == null)
                     {
-                        var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorImport/SelectError_FieldColumns", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dtCol = JsonConvert.DeserializeObject<DataTable>(result);
-                                string filePath = @"C:\Temp\";
-                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xls";
-                                StreamWriter wr = new StreamWriter(fileName);
+                        XtraMessageBox.Show("Excel is not properly Installed !!");
+                        return;
+                    }
 
-                                for (int i = 0; i < dtCol.Columns.Count; i++)
-                                {
-                                    wr.Write(dtCol.Columns[i].ToString() + "\t");
-                                }
+                    Excel.Workbook xlworkbook;
+                    Excel.Worksheet xlworksheet;
+                    object misvalue = System.Reflection.Missing.Value;
+                    xlworkbook = xlapp.Workbooks.Add(misvalue);
+                    xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
+                    xlworksheet.Cells[1, 1] = "Project_Type";
+                    xlworksheet.Cells[1, 2] = "Product_Type";
+                    xlworksheet.Cells[1, 3] = "Error_Tab";
+                    xlworksheet.Cells[1, 4] = "Error_Description";
+                    xlworkbook.SaveAs(fileName);
+                    xlworkbook.Close(true, misvalue, misvalue);
+                    xlapp.Quit();
 
-                                wr.WriteLine();
-                                wr.Close();
-                                //SplashScreenManager.CloseForm(false);
-                                //XtraMessageBox.Show("File DownLoaded SucessFully");
-                                Directory.CreateDirectory(@"c:\OMS_Error_Imports_Excels\");
-                                string temppath = @"c:\OMS_Error_Imports_Excels\Import_Error_Field_Data.xls";
+                    Marshal.ReleaseComObject(xlworksheet);
+                    Marshal.ReleaseComObject(xlworkbook);
+                    Marshal.ReleaseComObject(xlapp);
+                    
+                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Field_Data.xlsx";
                                 if (!Directory.Exists(temppath))
                                 {
 
@@ -914,9 +910,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     Process.Start(filePath);
                                 }
 
-                            }
-                        }
-                    }
+                            
                 }
 
                 catch (Exception ex)
@@ -985,6 +979,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                         XtraMessageBox.Show("Inserted Successfully ");
                                     }
                                     Clear();
+
+                                    this.mainform.BindErrorGrid();
+                                    this.mainform.Bind_Error_Tab_Grid();
+                                    this.Close();
                                 }
                             }
                         }
@@ -1039,6 +1037,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                                 }
                                 Clear();
+                                this.mainform.BindErrorDetails();
+                                this.Close();
+
                             }
                         }
                     }
@@ -1100,6 +1101,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         SplashScreenManager.CloseForm(false);
                         XtraMessageBox.Show("Inserted  Sucessfully");
                         Clear();
+                        this.mainform.BindErrorGrid();
+                        this.mainform.Bind_Error_Tab_Grid();
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
@@ -1324,7 +1328,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 // throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something Went Wrong");
+                XtraMessageBox.Show("Invalid!,Fill Valid Error Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             finally
