@@ -215,7 +215,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             int _projectId = int.Parse(row["Project_Type_Id"].ToString());
             int _productId = int.Parse(row["ProductType_Id"].ToString());
             string _sourceType = row["Employee_source"].ToString();
-            int user_Id = User_Role;
+            int user_Id = User_Id;
             string operation_Type = "View";
             //GridView view = grd_SourceType.MainView as GridView;
             //var index = view.GetDataRow(view.GetSelectedRows()[0]);          

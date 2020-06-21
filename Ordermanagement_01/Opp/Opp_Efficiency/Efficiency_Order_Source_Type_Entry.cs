@@ -36,13 +36,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         public Efficiency_Order_Source_Type_Entry(int User_Role, Form CallingFrom)
         {
             InitializeComponent();
-            Mainfrom = CallingFrom as Efficiency_Order_Source_Type;
-            InitializeComponent();
+            Mainfrom = CallingFrom as Efficiency_Order_Source_Type;          
             User_Id = User_Role;
         }
 
         private void Efficiency_Order_Source_Type_Entry_Load(object sender, EventArgs e)
-        {
+        {         
             BindProjectType();
             BindState();
             btn_Save.Text = "Save";
@@ -71,16 +70,17 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 DataRow dr = dt.NewRow();
-                                dr[1] = "Select";
                                 dr[0] = 0;
+                                dr[1] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
-                                ddl_Project_Type.Properties.DataSource = dt;
-                                ddl_Project_Type.Properties.DisplayMember = "Project_Type";
-                                ddl_Project_Type.Properties.ValueMember = "Project_Type_Id";
-                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
-                                ddl_Project_Type.Properties.Columns.Add(col);
                             }
+
+                            ddl_ProjectType.Properties.DataSource = dt;
+                            ddl_ProjectType.Properties.DisplayMember = "Project_Type";
+                            ddl_ProjectType.Properties.ValueMember = "Project_Type_Id";
+                            DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
+                            ddl_ProjectType.Properties.Columns.Add(col);
                         }
                     }
                 }
@@ -96,16 +96,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
-        {
-            if (ddl_Project_Type.ItemIndex > 0)
-            {
-                Project_Id = Convert.ToInt32(ddl_Project_Type.EditValue);
-                BindSourceType(Project_Id);
-            }
-        }
+     
 
-        public async void BindSourceType(int Project_Id)
+        private async void BindSourceType(int Project_Id)
         {
             try
             {
@@ -161,7 +154,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
         }
 
-        public async void BindState()
+        private async void BindState()
         {
             try
             {
@@ -211,14 +204,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
         }
 
-        private void ddl_State_EditValueChanged(object sender, EventArgs e)
-        {
-            if (ddl_State.ItemIndex > 0)
-            {
-                State_Id = Convert.ToInt32(ddl_State.EditValue);
-                BindCounty(State_Id);
-            }
-        }
+      
         private async void BindCounty(int State_Id)
         {
             try
@@ -275,7 +261,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 {
                     { "@Trans", "StateExist" },
                     { "@State_ID", ddl_State.EditValue },
-                    { "@Project_Type_Id", ddl_Project_Type.EditValue },
+                    { "@Project_Type_Id", ddl_ProjectType.EditValue },
                     { "@Order_Source_Type_ID", ddl_Source_Type.EditValue}
                 };
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
@@ -314,20 +300,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private void chk_All_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chk_All.Checked == true)
-            {
-                chk_County.CheckAll();
-            }
-            if (chk_All.Checked == false)
-            {
-                chk_County.UnCheckAll();
-            }
-        }
+     
         private bool Validate()
         {
-            if (ddl_Project_Type.EditValue == null)
+            if (ddl_ProjectType.EditValue == null)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -355,7 +331,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
         private void Clear()
         {
-            ddl_Project_Type.EditValue = null;
+            ddl_ProjectType.EditValue = null;
             ddl_Source_Type.EditValue = null;
             ddl_State.EditValue = null;
             chk_County.UnCheckAll();
@@ -364,7 +340,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
         private async void btn_Save_Click(object sender, EventArgs e)
         {
-            ProjectValue = Convert.ToInt32(ddl_Project_Type.EditValue);
+            ProjectValue = Convert.ToInt32(ddl_ProjectType.EditValue);
             SourceValue = Convert.ToInt32(ddl_Source_Type.EditValue);
             StateId = Convert.ToInt32(ddl_State.EditValue);
             User_Id = 1;
@@ -491,7 +467,37 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             Clear();
         }
+     
+        private void ddl_State_EditValueChanged_1(object sender, EventArgs e)
+        {
 
-       
+            if (ddl_State.ItemIndex > 0)
+            {
+                State_Id = Convert.ToInt32(ddl_State.EditValue);
+                BindCounty(State_Id);
+            }
+        }
+
+        private void chk_All_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+            if (chk_All.Checked == true)
+            {
+                chk_County.CheckAll();
+            }
+            if (chk_All.Checked == false)
+            {
+                chk_County.UnCheckAll();
+            }
+        }
+
+        private void ddl_ProjectType_EditValueChanged(object sender, EventArgs e)
+        {
+            if (ddl_ProjectType.ItemIndex > 0)
+            {
+                Project_Id = Convert.ToInt32(ddl_ProjectType.EditValue);
+                BindSourceType(Project_Id);
+            }
+        }
     }
 }

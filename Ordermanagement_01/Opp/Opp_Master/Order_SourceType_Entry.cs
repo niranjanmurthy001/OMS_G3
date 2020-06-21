@@ -59,7 +59,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             
         }
-        public async void BindProjectType()
+        private async void BindProjectType()
         {
             try
             {

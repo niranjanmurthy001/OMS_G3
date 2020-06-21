@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -37,6 +38,16 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.grd_Efficiency_Src = new DevExpress.XtraGrid.GridControl();
             this.gridView_Efficiency_Src = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -57,7 +68,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(699, 525);
+            this.groupControl1.Size = new System.Drawing.Size(798, 564);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Efficiency Order Source Type";
             // 
@@ -73,7 +84,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.15936F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.84064F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(695, 502);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 541);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // flowLayoutPanel1
@@ -85,7 +96,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(689, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(788, 48);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Export
@@ -95,7 +106,7 @@
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
             this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Location = new System.Drawing.Point(606, 3);
+            this.btn_Export.Location = new System.Drawing.Point(705, 3);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(80, 40);
             this.btn_Export.TabIndex = 4;
@@ -110,7 +121,7 @@
             this.btn_Add_New.Appearance.Options.UseFont = true;
             this.btn_Add_New.Appearance.Options.UseForeColor = true;
             this.btn_Add_New.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New.Location = new System.Drawing.Point(520, 3);
+            this.btn_Add_New.Location = new System.Drawing.Point(619, 3);
             this.btn_Add_New.Name = "btn_Add_New";
             this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
             this.btn_Add_New.TabIndex = 3;
@@ -124,7 +135,7 @@
             this.btn_Delete_Multiple.Appearance.Options.UseFont = true;
             this.btn_Delete_Multiple.Appearance.Options.UseForeColor = true;
             this.btn_Delete_Multiple.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_Multiple.Location = new System.Drawing.Point(434, 3);
+            this.btn_Delete_Multiple.Location = new System.Drawing.Point(533, 3);
             this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
             this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
             this.btn_Delete_Multiple.TabIndex = 1;
@@ -135,9 +146,9 @@
             // 
             this.panelControl1.Controls.Add(this.grd_Efficiency_Src);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 54);
+            this.panelControl1.Location = new System.Drawing.Point(3, 57);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(689, 445);
+            this.panelControl1.Size = new System.Drawing.Size(788, 481);
             this.panelControl1.TabIndex = 0;
             // 
             // grd_Efficiency_Src
@@ -146,13 +157,23 @@
             this.grd_Efficiency_Src.Location = new System.Drawing.Point(2, 2);
             this.grd_Efficiency_Src.MainView = this.gridView_Efficiency_Src;
             this.grd_Efficiency_Src.Name = "grd_Efficiency_Src";
-            this.grd_Efficiency_Src.Size = new System.Drawing.Size(685, 441);
+            this.grd_Efficiency_Src.Size = new System.Drawing.Size(784, 477);
             this.grd_Efficiency_Src.TabIndex = 0;
             this.grd_Efficiency_Src.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Efficiency_Src});
             // 
             // gridView_Efficiency_Src
             // 
+            this.gridView_Efficiency_Src.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9});
             this.gridView_Efficiency_Src.GridControl = this.grd_Efficiency_Src;
             this.gridView_Efficiency_Src.IndicatorWidth = 50;
             this.gridView_Efficiency_Src.Name = "gridView_Efficiency_Src";
@@ -165,14 +186,99 @@
             this.gridView_Efficiency_Src.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Efficiency_Src_CustomDrawRowIndicator);
             this.gridView_Efficiency_Src.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_Efficiency_Src_SelectionChanged);
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "EmpEff_OrderSourceType_Id";
+            this.gridColumn1.FieldName = "EmpEff_OrderSourceType_Id";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Project_Type_Id";
+            this.gridColumn2.FieldName = "Project_Type_Id";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn3.Caption = "Project Type";
+            this.gridColumn3.FieldName = "Project_Type";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Employee_Source_id";
+            this.gridColumn4.FieldName = "Employee_Source_id";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn5.Caption = "Employee Source";
+            this.gridColumn5.FieldName = "Employee_source";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "State_ID";
+            this.gridColumn6.FieldName = "State_ID";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn7.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn7.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn7.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn7.Caption = "State";
+            this.gridColumn7.FieldName = "State";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 3;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "County_ID";
+            this.gridColumn8.FieldName = "County_ID";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn9.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn9.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn9.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn9.Caption = "County";
+            this.gridColumn9.FieldName = "County";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 4;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
             // Efficiency_Order_Source_Type
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 525);
+            this.ClientSize = new System.Drawing.Size(798, 564);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(814, 602);
             this.Name = "Efficiency_Order_Source_Type";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Order_Source_Type";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Efficiency_Order_Source_Type_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -197,5 +303,15 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl grd_Efficiency_Src;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Efficiency_Src;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }
