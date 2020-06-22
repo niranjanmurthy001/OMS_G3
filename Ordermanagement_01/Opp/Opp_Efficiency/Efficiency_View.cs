@@ -21,9 +21,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     public partial class Efficiency_View : DevExpress.XtraEditors.XtraForm
     {
         DataTable _dtcol;
-        string Col_Name;
+        string Col_Name, Client_Name;
         int _ProjectId;
-        DataTable _dt, dt;
+        DataTable _dt, dt, _dtcopy;
+        int client_id;
         public Efficiency_View()
         {
             InitializeComponent();
@@ -120,6 +121,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             _dtcol.Columns.Add("Order_Task");
                             _dtcol.Columns.Add("Order_Type");
                             _dtcol.Columns.Add("Order_Source_Type");
+                            _dtcol.Columns.Add("Client_Id");
+                            _dtcol.Columns.Add("Order_Task_Id");
+                            _dtcol.Columns.Add("Order_Type_Id");
+                            _dtcol.Columns.Add("Order_Source_Type_Id");
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
                                 Col_Name = Convert.ToDouble(dt.Rows[i]["Category_Name"]).ToString();
@@ -128,6 +133,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                             }
                             grd_Efficiency_Form.DataSource = _dtcol;
+                            gridView1.Columns[4].Visible = false;
+                            gridView1.Columns[5].Visible = false;
+                            gridView1.Columns[6].Visible = false;
+                            gridView1.Columns[7].Visible = false;
+
 
                         }
                     }
@@ -177,47 +187,15 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                           
                             if (_dt.Rows.Count > 0)
                             {
-                                DataView dv = new DataView(_dt);
-                                DataTable _dtcolumns = dv.ToTable(true, "Category_Name", "Allocated_Time");
-                                DataTable dtcol = dv.ToTable(true, "Category_Name");
-                                DataTable _dtrows = dv.ToTable(true, "Client_Name", "Order_Task", "Order_Type", "Order_Source_Type");
-                               // _dtcolumns = dv.ToTable(true, "Allocated_Time");
-                                for (int i = 0; i < dtcol.Rows.Count; i++)
+                                foreach (var column in _dt.Columns.Cast<DataColumn>().ToArray())
                                 {
-                                    Col_Name = Convert.ToDouble(dtcol.Rows[i]["Category_Name"]).ToString();
-
-                                    List<string> myList = new List<string>();
-                                    foreach (DataColumn column in dtcol.Columns)
-                                    {
-                                        myList.Add(column.ColumnName);
-                                    }
-                                    myList.Add(Col_Name);
-                                    if (IsAllColumnExist(dtcol, myList))
-                                    {
-                                        _dtrows.Columns.Add(Col_Name.ToString());
-                                        // int  index =0;
-                                    }
+                                    if (_dt.AsEnumerable().All(dr => dr.IsNull(column)))
+                                        _dt.Columns.Remove(column);
                                 }
-                                for (int i = 0; i < _dtrows.Rows.Count; i++)
-                                {
-                                    for (int j = 0; j < _dtcolumns.Rows.Count; j++)
-                                    {
-                                        Col_Name = Convert.ToDouble(_dtcolumns.Rows[j]["Category_Name"]).ToString();
-
-                                        if (_dtrows.Rows[i][Col_Name].ToString() == "")
-                                        {
-                                            _dtrows.Rows[i][Col_Name] = (_dtcolumns.Rows[j]["Allocated_Time"]).ToString();
-                                        }
-                                        else
-                                        {
-                                            i = i + 1;
-                                            _dtrows.Rows[i][Col_Name] = (_dtcolumns.Rows[j]["Allocated_Time"]).ToString();
-                                        }
-                                    }
-                                }
-                                grd_Efficiency_Form.DataSource = _dtrows;
+                                grd_Efficiency_Form.DataSource = _dt;
 
                             }
                             else
@@ -258,6 +236,32 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 XtraMessageBox.Show("Select Project Type to Export");
             }
+        }
+
+        private void btn_Copy_Click(object sender, EventArgs e)
+        {
+           
+            List<int> gridViewSelectedRows = gridView1.GetSelectedRows().ToList();
+            for (int i = 0; i < gridViewSelectedRows.Count; i++)
+            {
+                DataRow row = gridView1.GetDataRow(gridViewSelectedRows[i]);
+                //int Category_Id = int.Parse(row["Category_ID"].ToString());
+                Client_Name = row.ItemArray[0].ToString();
+                client_id = Convert.ToInt32(row.ItemArray[4]);
+            }
+            //_dtcopy.Columns.Remove("Client_Name");
+            //_dtcopy.Columns.Remove("Order_Task");
+            //_dtcopy.Columns.Remove("Order_Type");
+            //_dtcopy.Columns.Remove("Order_Source_Type");
+            //_dtcopy.Columns.Remove("Client_Id");
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Copy Efficiecnycopy = new Efficiency_Copy(_ProjectId, Client_Name, client_id);
+            Efficiecnycopy.Show();
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
         private bool IsAllColumnExist(DataTable tableNameToCheck, List<string> columnsNames)

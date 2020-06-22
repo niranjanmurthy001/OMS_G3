@@ -197,7 +197,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             int numberofrows = _dt.Rows.Count;
                             for (int i = 0; i < numberofrows; i++)
                             {
-                                //for each row, get the 3rd column
+                                
                                  _projectid = Convert.ToInt32(_dt.Rows[i]["Project_Type_Id"]);
                                 _Category = Convert.ToDouble(_dt.Rows[i]["Category_Name"]);
                                 _SalaryFrom=Convert.ToDouble(_dt.Rows[i]["Salary_From"]);

@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Addnew = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Copy = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -41,7 +43,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -106,6 +108,7 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Export);
             this.flowLayoutPanel1.Controls.Add(this.btn_Addnew);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Copy);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(359, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -138,6 +141,19 @@
             this.btn_Addnew.TabIndex = 1;
             this.btn_Addnew.Text = "Add New";
             this.btn_Addnew.Click += new System.EventHandler(this.btn_Addnew_Click);
+            // 
+            // btn_Copy
+            // 
+            this.btn_Copy.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Copy.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Copy.Appearance.Options.UseFont = true;
+            this.btn_Copy.Appearance.Options.UseForeColor = true;
+            this.btn_Copy.Location = new System.Drawing.Point(169, 3);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(80, 32);
+            this.btn_Copy.TabIndex = 2;
+            this.btn_Copy.Text = "Copy To";
+            this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
             // 
             // panel1
             // 
@@ -192,8 +208,13 @@
             // gridView1
             // 
             this.gridView1.GridControl = this.grd_Efficiency_Form;
+            this.gridView1.IndicatorWidth = 30;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsSelection.InvertSelection = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // panelControl2
             // 
@@ -262,5 +283,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraEditors.SimpleButton btn_Copy;
     }
 }
