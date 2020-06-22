@@ -159,13 +159,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 try
                 {
                     DataTable dtproduct = new DataTable();
-                    dtproduct.Columns.AddRange(new DataColumn[2]
+                    dtproduct.Columns.AddRange(new DataColumn[3]
                     {
                     new DataColumn("Project_Type_Id",typeof(int)),
-                     new DataColumn("Product_Type",typeof(string))
-
+                     new DataColumn("Product_Type",typeof(string)),
+                     new  DataColumn("Status",typeof(bool))
                     });
-                    dtproduct.Rows.Add(ProjectValue, ProductValue);
+                    dtproduct.Rows.Add(ProjectValue, ProductValue,true);
                     var data = new StringContent(JsonConvert.SerializeObject(dtproduct), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {

@@ -471,6 +471,7 @@
             this.gridColumn1.Caption = "SNO";
             this.gridColumn1.FieldName = "Import_Data_Id";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             // 
             // gridColumn2
             // 
@@ -491,6 +492,7 @@
             this.gridColProjectType.Caption = "Project Type";
             this.gridColProjectType.FieldName = "Project_Type";
             this.gridColProjectType.Name = "gridColProjectType";
+            this.gridColProjectType.OptionsColumn.AllowEdit = false;
             this.gridColProjectType.Visible = true;
             this.gridColProjectType.VisibleIndex = 0;
             // 
@@ -501,6 +503,7 @@
             this.gridColProductType.Caption = "Product Type";
             this.gridColProductType.FieldName = "Product_Type";
             this.gridColProductType.Name = "gridColProductType";
+            this.gridColProductType.OptionsColumn.AllowEdit = false;
             this.gridColProductType.Visible = true;
             this.gridColProductType.VisibleIndex = 1;
             // 
@@ -511,6 +514,7 @@
             this.gridColErrorType.Caption = "Error Type";
             this.gridColErrorType.FieldName = "Error_Type";
             this.gridColErrorType.Name = "gridColErrorType";
+            this.gridColErrorType.OptionsColumn.AllowEdit = false;
             this.gridColErrorType.Visible = true;
             this.gridColErrorType.VisibleIndex = 2;
             // 
@@ -521,6 +525,7 @@
             this.gridColErrorTab.Caption = "Error Tab";
             this.gridColErrorTab.FieldName = "Error_Tab";
             this.gridColErrorTab.Name = "gridColErrorTab";
+            this.gridColErrorTab.OptionsColumn.AllowEdit = false;
             this.gridColErrorTab.Visible = true;
             this.gridColErrorTab.VisibleIndex = 3;
             // 
@@ -531,6 +536,7 @@
             this.errorDescription.Caption = "Error Description";
             this.errorDescription.FieldName = "Error_Description";
             this.errorDescription.Name = "errorDescription";
+            this.errorDescription.OptionsColumn.AllowEdit = false;
             this.errorDescription.Visible = true;
             this.errorDescription.VisibleIndex = 4;
             // 
@@ -541,6 +547,7 @@
             this.grdError_Status.Caption = "Error Message";
             this.grdError_Status.FieldName = "Error_Status";
             this.grdError_Status.Name = "grdError_Status";
+            this.grdError_Status.OptionsColumn.AllowEdit = false;
             this.grdError_Status.Visible = true;
             this.grdError_Status.VisibleIndex = 5;
             // 
