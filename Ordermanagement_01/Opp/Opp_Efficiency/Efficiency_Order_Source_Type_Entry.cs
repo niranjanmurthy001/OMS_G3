@@ -282,7 +282,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         chk_County.SelectedValue = county_Id;
                                         int _task = chk_County.SelectedIndex;
                                         chk_County.SetItemChecked(_task, true);
-                                        btn_Save.Text = "Update";
+                                     //   btn_Save.Text = "Update";
                                     }
                                 }
                             }
