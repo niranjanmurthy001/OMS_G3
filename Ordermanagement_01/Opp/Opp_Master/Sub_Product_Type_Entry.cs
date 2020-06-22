@@ -45,6 +45,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             btn_Save_Type.Text = "Save";
             ClearType();
             ClearAbs();
+            BindProjectType();
+            BindProdctType(ProjectId);
+            BindTypeAbs(ProjectId);
             if (Operation_Type == "Sub Product Type")
             {
                 pannelControl_Type.Visible = true;
@@ -70,9 +73,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     txt_Abs.Text = SubproductType;
                 }
             }           
-            BindProjectType();
-            //BindProdctType(ProjectId);
-            //BindTypeAbs(ProjectId);
+           
         }
         public async void BindProjectType()
         {
@@ -135,16 +136,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
         private void ddl_ProjectType_Type_EditValueChanged(object sender, EventArgs e)
-        {
-            if (ddl_ProjectType_Type.ItemIndex >0)
-            {
-                ProjectId_ = Convert.ToInt32(ddl_ProjectType_Type.EditValue);
-                ddl_Product_Type.Properties.Columns.Clear();
-                ddl_Type_Abs.Properties.Columns.Clear();
-                BindProdctType(ProjectId_);
-                BindTypeAbs(ProjectId_);
-
-            }
+        {           
+                if (ddl_ProjectType_Type.ItemIndex > 0)
+                {
+                    ProjectId_ = Convert.ToInt32(ddl_ProjectType_Type.EditValue);
+                    ddl_Product_Type.Properties.Columns.Clear();
+                    ddl_Type_Abs.Properties.Columns.Clear();
+                    BindProdctType(ProjectId_);
+                    BindTypeAbs(ProjectId_);
+                }
         }
         private async void BindProdctType(int ProjectId_)
         {
@@ -156,6 +156,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Trans" ,"GET_PRODUCT_TYPE"},
                     {"@Project_Type_Id",ProjectId_ }
                 };
+                ddl_Product_Type.Properties.Columns.Clear();
+                ddl_Product_Type_Abs.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -186,12 +188,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     ddl_Product_Type.Properties.Columns.Add(col);
                                     ddl_Product_Type.EditValue = ProductId;
                                 }
-                                ddl_Product_Type.Properties.DataSource = dt;
-                                ddl_Product_Type.Properties.DisplayMember = "Product_Type";
-                                ddl_Product_Type.Properties.ValueMember = "ProductType_Id";
-                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col1;
-                                col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                                ddl_Product_Type.Properties.Columns.Add(col1);
+                                else
+                                {
+                                    ddl_Product_Type.Properties.DataSource = dt;
+                                    ddl_Product_Type.Properties.DisplayMember = "Product_Type";
+                                    ddl_Product_Type.Properties.ValueMember = "ProductType_Id";
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col1;
+                                    col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                                    ddl_Product_Type.Properties.Columns.Add(col1);
+                                }
                             }
                             else if (Operation_Type == "Sub Product Type Abbreviation")
                             {
@@ -200,17 +205,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     ddl_Product_Type_Abs.Properties.DataSource = dt;
                                     ddl_Product_Type_Abs.Properties.DisplayMember = "Product_Type";
                                     ddl_Product_Type_Abs.Properties.ValueMember = "ProductType_Id";
-                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                                    col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                                    ddl_Product_Type_Abs.Properties.Columns.Add(col);
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col3;
+                                    col3 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                                    ddl_Product_Type_Abs.Properties.Columns.Add(col3);
                                     ddl_Product_Type_Abs.EditValue = ProductId;
                                 }
-                                ddl_Product_Type_Abs.Properties.DataSource = dt;
-                                ddl_Product_Type_Abs.Properties.DisplayMember = "Product_Type";
-                                ddl_Product_Type_Abs.Properties.ValueMember = "ProductType_Id";
-                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col1;
-                                col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                                ddl_Product_Type_Abs.Properties.Columns.Add(col1);
+                                else
+                                {
+                                    ddl_Product_Type_Abs.Properties.DataSource = dt;
+                                    ddl_Product_Type_Abs.Properties.DisplayMember = "Product_Type";
+                                    ddl_Product_Type_Abs.Properties.ValueMember = "ProductType_Id";
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col4;
+                                    col4 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                                    ddl_Product_Type_Abs.Properties.Columns.Add(col4);
+                                }
+                            
                             }                        
                         }
                     }
@@ -266,12 +275,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     ddl_Type_Abs.Properties.Columns.Add(col);
                                     ddl_Type_Abs.EditValue = SubproductTypeAbsId;
                                 }
-                                ddl_Type_Abs.Properties.DataSource = dt;
-                                ddl_Type_Abs.Properties.DisplayMember = "Order_Type_Abbreviation";
-                                ddl_Type_Abs.Properties.ValueMember = "OrderType_ABS_Id";
-                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col1;
-                                col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Type_Abbreviation");
-                                ddl_Type_Abs.Properties.Columns.Add(col1);
+                                else
+                                {
+                                    ddl_Type_Abs.Properties.DataSource = dt;
+                                    ddl_Type_Abs.Properties.DisplayMember = "Order_Type_Abbreviation";
+                                    ddl_Type_Abs.Properties.ValueMember = "OrderType_ABS_Id";
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col1;
+                                    col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Type_Abbreviation");
+                                    ddl_Type_Abs.Properties.Columns.Add(col1);
+                                }
                             }
                         }
                     }
@@ -471,11 +483,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void ddl_ProjectType_Abs_EditValueChanged(object sender, EventArgs e)
         {
-            if (Operation_Type == "Sub Product Type Abbreviation")
+            if (ddl_Product_Type_Abs.ItemIndex > 0)
             {
-                ProjectId_ = Convert.ToInt32(ddl_ProjectType_Abs.EditValue);
-                ddl_Product_Type_Abs.Properties.Columns.Clear();
-                BindProdctType(ProjectId_);
+                if (Operation_Type == "Sub Product Type Abbreviation")
+                {
+                    ProjectId_ = Convert.ToInt32(ddl_ProjectType_Abs.EditValue);
+                    ddl_Product_Type_Abs.Properties.Columns.Clear();
+                    BindProdctType(ProjectId_);
+                }
             }
         }
 
@@ -486,27 +501,27 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private bool ValidateType()
         {
-            if(ddl_ProjectType_Type.EditValue==null)
+            if(ddl_ProjectType_Type.ItemIndex==0)
             {
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Type.Focus();
                 return false;
             }
-            if (ddl_Product_Type.EditValue == null)
+            if (ddl_Product_Type.ItemIndex == 0)
             {
-                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type.Focus();
                 return false;
             }
             if (txt_Type.Text =="")
             {
-                XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Type.Focus();
                 return false;
             }
-            if (ddl_Type_Abs.EditValue == null)
+            if (ddl_Type_Abs.ItemIndex == 0)
             {
-                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Type_Abs.Focus();
                 return false;
             }
@@ -515,21 +530,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private bool ValidateAbs()
         {
 
-            if (ddl_ProjectType_Abs.EditValue == null)
+            if (ddl_ProjectType_Abs.ItemIndex==0)
             {
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Abs.Focus();
                 return false;
             }
-            if (ddl_Product_Type_Abs.EditValue == null)
+            if (ddl_Product_Type_Abs.ItemIndex == 0)
             {
-                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type_Abs.Focus();
                 return false;
             }
             if (txt_Abs.Text =="")
             {
-                XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Abs.Focus();
                 return false;
             }
