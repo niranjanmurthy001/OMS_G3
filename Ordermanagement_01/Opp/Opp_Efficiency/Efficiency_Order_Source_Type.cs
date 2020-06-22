@@ -114,6 +114,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         SplashScreenManager.CloseForm(false);
                         XtraMessageBox.Show("Record Deleted Successfully");
                         BindGrid();
+                        btn_Delete_Multiple.Visible = false;
                     }
                     catch (Exception ex)
                     {

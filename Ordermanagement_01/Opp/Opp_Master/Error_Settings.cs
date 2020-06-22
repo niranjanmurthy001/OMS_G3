@@ -724,19 +724,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (Tile_Item_ErrorType.Checked == true)
             {
                 OperationType = "Error Type";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
                 Import.Show();
             }
             else if (Tile_Item_ErrorTab.Checked == true)
             {
                 OperationType = "Error Tab";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
                 Import.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
                 Import.Show();
             }
 

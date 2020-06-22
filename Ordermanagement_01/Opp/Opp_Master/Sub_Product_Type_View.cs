@@ -21,9 +21,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
     public partial class Sub_Product_Type_View : DevExpress.XtraEditors.XtraForm
     {
         string Operation_Type;
-        int Project_Id;
+        int Project_Id,ID;
         int _UserId;
         int User_Id;
+        string operation, _subproductType, _btnName;
+        int _projectId, _productId, _subproductTypeAbsId;
 
         public Sub_Product_Type_View(int User_Id)
         {
@@ -245,13 +247,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if(Tile_Item_ProductType.Checked==true)
             {
                 Operation_Type = "Sub Product Type";
-                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, _UserId, this);
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeAbsId, _btnName, _UserId,ID, this);
                 SPT.Show();
             }
             else if(Tile_Item_ProductAbs.Checked==true)
             {
                 Operation_Type = "Sub Product Type Abbreviation";
-                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, _UserId, this);
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeAbsId, _btnName, _UserId,ID, this);
                 SPT.Show();
             }
         }
@@ -340,6 +342,36 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-      
+        private void repositoryItemHyperLinkEdit_Click(object sender, EventArgs e)
+        {
+            System.Data.DataRow row = gridView_Type.GetDataRow(gridView_Type.FocusedRowHandle);
+            string _btnName = "Edit";
+            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+            int _productId = int.Parse(row["ProductType_Id"].ToString());
+            string _subproductType = row["Order_Type"].ToString();
+            int _subproductTypeAbsId = int.Parse(row["OrderType_ABS_Id"].ToString());
+            int user_Id = _UserId;
+            string operation = "View";
+            string Operation_Type = "Sub Product Type";
+            int ID = int.Parse(row["Order_Type_ID"].ToString());
+            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type,operation, _projectId, _productId, _subproductType, _subproductTypeAbsId,_btnName, user_Id,ID, this);
+            SourceEntry.Show();
+        }
+
+        private void repositoryItemHyperLinkEdit_Abs_Click(object sender, EventArgs e)
+        {
+            System.Data.DataRow row = gridView_Abs.GetDataRow(gridView_Abs.FocusedRowHandle);
+            string _btnName = "Edit";
+            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+            int _productId = int.Parse(row["ProductType_Id"].ToString());
+            string _subproductType = row["Order_Type_Abbreviation"].ToString();            
+            int user_Id = _UserId;
+            string operation = "View";
+            int _subproductTypeid=0;
+            string Operation_Type = "Sub Product Type Abbreviation";
+            int ID = int.Parse(row["OrderType_ABS_Id"].ToString());
+            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeid, _btnName, user_Id,ID, this);
+            SourceEntry.Show();
+        }
     }
 }
