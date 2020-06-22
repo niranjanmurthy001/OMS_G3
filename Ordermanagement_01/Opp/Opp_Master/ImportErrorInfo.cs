@@ -1250,18 +1250,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 lblDuplicateRecordCount.Text = "";
                 for (int i = 0; i < gridView1.DataRowCount; i++)
                 {
-                    if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Exist_count"))) > 0)
-                    {
-                        ExistingCount += 1;
-                        gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Existing");
-                        //  gridView1.SetRowCellValue(i, "Error_Message", "Existing");
-
-                    }
-                    if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Duplicate_Count"))) > 0)
-                    {
-                        duplicateCount += 1;
-                        gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Duplicate");
-                    }
+                   
 
                     if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Project_Type")).ToString()))
                     {
@@ -1304,7 +1293,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Error Tab Not Found");
                         }
                     }
+                    if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Exist_count"))) > 0)
+                    {
+                        ExistingCount += 1;
+                        gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Existing");
+                        //  gridView1.SetRowCellValue(i, "Error_Message", "Existing");
 
+                    }
+                    if (Convert.ToInt32(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Duplicate_Count"))) > 0)
+                    {
+                        duplicateCount += 1;
+                        gridView1.SetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Error_Status"), "Duplicate");
+                    }
 
 
                 }
