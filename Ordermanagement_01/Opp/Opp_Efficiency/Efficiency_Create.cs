@@ -26,10 +26,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         int _ordertype, _ordersourcetype, _ClientName, _ordertask, order_type, _categoryid;
         DataTable dt = new DataTable();
         DataTable dtmulti = new DataTable();
+        private Efficiency_View Mainform = null;
 
-        public Efficiency_Create()
+        public Efficiency_Create(Form callingform)
         {
             InitializeComponent();
+            Mainform = callingform as Efficiency_View;
         }
 
         private void Import_Category_Salary_Entry_Load(object sender, EventArgs e)
@@ -478,9 +480,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         {
                                             var _result = await response.Content.ReadAsStringAsync();
                                             SplashScreenManager.CloseForm(false);
-                                            XtraMessageBox.Show("Efficiency is Submitted Successfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                            XtraMessageBox.Show("Efficiency is Submitted Successfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.None);
                                             btn_Clear_Click(sender, e);
-
+                                            this.Mainform.BindCategorySalaryBracket();
+                                            this.Close();
                                         }
                                     }
                                 }

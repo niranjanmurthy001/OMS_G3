@@ -31,20 +31,20 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Chk_Targetclient = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_submit = new DevExpress.XtraEditors.SimpleButton();
-            this.Chk_Targetclient = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.txt_Clientname = new DevExpress.XtraEditors.TextEdit();
+            this.ddl_client_from = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chk_Targetclient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Clientname.Properties)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -78,7 +78,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.txt_Clientname);
+            this.panelControl1.Controls.Add(this.ddl_client_from);
             this.panelControl1.Controls.Add(this.Chk_Targetclient);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -88,15 +88,13 @@
             this.panelControl1.Size = new System.Drawing.Size(384, 278);
             this.panelControl1.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // Chk_Targetclient
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_submit);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 287);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 40);
-            this.flowLayoutPanel1.TabIndex = 1;
+            this.Chk_Targetclient.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Chk_Targetclient.Location = new System.Drawing.Point(144, 91);
+            this.Chk_Targetclient.Name = "Chk_Targetclient";
+            this.Chk_Targetclient.Size = new System.Drawing.Size(231, 95);
+            this.Chk_Targetclient.TabIndex = 7;
             // 
             // labelControl2
             // 
@@ -123,6 +121,16 @@
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "From Client :";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btn_submit);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 287);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 40);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
             // btn_submit
             // 
             this.btn_submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,24 +144,19 @@
             this.btn_submit.Text = "Submit";
             this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
-            // Chk_Targetclient
+            // ddl_client_from
             // 
-            this.Chk_Targetclient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Chk_Targetclient.Location = new System.Drawing.Point(144, 91);
-            this.Chk_Targetclient.Name = "Chk_Targetclient";
-            this.Chk_Targetclient.Size = new System.Drawing.Size(231, 95);
-            this.Chk_Targetclient.TabIndex = 7;
-            // 
-            // txt_Clientname
-            // 
-            this.txt_Clientname.Location = new System.Drawing.Point(144, 31);
-            this.txt_Clientname.Name = "txt_Clientname";
-            this.txt_Clientname.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Clientname.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.txt_Clientname.Properties.Appearance.Options.UseFont = true;
-            this.txt_Clientname.Properties.Appearance.Options.UseForeColor = true;
-            this.txt_Clientname.Size = new System.Drawing.Size(231, 24);
-            this.txt_Clientname.TabIndex = 8;
+            this.ddl_client_from.Location = new System.Drawing.Point(144, 31);
+            this.ddl_client_from.Name = "ddl_client_from";
+            this.ddl_client_from.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_client_from.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ddl_client_from.Properties.Appearance.Options.UseFont = true;
+            this.ddl_client_from.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_client_from.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_client_from.Properties.NullText = "Select";
+            this.ddl_client_from.Size = new System.Drawing.Size(231, 22);
+            this.ddl_client_from.TabIndex = 8;
             // 
             // Efficiency_Copy
             // 
@@ -171,9 +174,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Chk_Targetclient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Clientname.Properties)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,6 +191,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_submit;
         private DevExpress.XtraEditors.CheckedListBoxControl Chk_Targetclient;
-        private DevExpress.XtraEditors.TextEdit txt_Clientname;
+        private DevExpress.XtraEditors.LookUpEdit ddl_client_from;
     }
 }

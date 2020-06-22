@@ -32,9 +32,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
         {
-            ddl_ProjectType.EditValue = 1;
-            BindProjectType();
             
+            BindProjectType();
+            ddl_ProjectType.EditValue = 1;
+
         }
         private async void BindProjectType()
         {
@@ -88,10 +89,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
         private void btn_Addnew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create();
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this);
             Efficiency_Entry.Show();
         }
-        private async void BindColumnstogrid()
+        public async void BindColumnstogrid()
         {
             try
             {
@@ -165,7 +166,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         }
 
-        private async void BindCategorySalaryBracket()
+        public async void BindCategorySalaryBracket()
         {
             try
             {
@@ -254,7 +255,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             //_dtcopy.Columns.Remove("Order_Type");
             //_dtcopy.Columns.Remove("Order_Source_Type");
             //_dtcopy.Columns.Remove("Client_Id");
-            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Copy Efficiecnycopy = new Efficiency_Copy(_ProjectId, Client_Name, client_id);
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Copy Efficiecnycopy = new Efficiency_Copy(_ProjectId, Client_Name, client_id,this);
             Efficiecnycopy.Show();
         }
 
