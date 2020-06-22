@@ -45,6 +45,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             btn_Save_Type.Text = "Save";
             ClearType();
             ClearAbs();
+            BindProjectType();
+            BindProdctType(ProjectId);
+            BindTypeAbs(ProjectId);
             if (Operation_Type == "Sub Product Type")
             {
                 pannelControl_Type.Visible = true;
@@ -70,9 +73,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     txt_Abs.Text = SubproductType;
                 }
             }           
-            BindProjectType();
-            //BindProdctType(ProjectId);
-            //BindTypeAbs(ProjectId);
+           
         }
         public async void BindProjectType()
         {
@@ -156,6 +157,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Trans" ,"GET_PRODUCT_TYPE"},
                     {"@Project_Type_Id",ProjectId_ }
                 };
+                ddl_Product_Type.Properties.Columns.Clear();
+                ddl_Product_Type_Abs.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
 
@@ -488,25 +491,25 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if(ddl_ProjectType_Type.EditValue==null)
             {
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Type.Focus();
                 return false;
             }
             if (ddl_Product_Type.EditValue == null)
             {
-                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type.Focus();
                 return false;
             }
             if (txt_Type.Text =="")
             {
-                XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Type.Focus();
                 return false;
             }
             if (ddl_Type_Abs.EditValue == null)
             {
-                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Type_Abs.Focus();
                 return false;
             }
@@ -517,19 +520,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
             if (ddl_ProjectType_Abs.EditValue == null)
             {
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Abs.Focus();
                 return false;
             }
             if (ddl_Product_Type_Abs.EditValue == null)
             {
-                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type_Abs.Focus();
                 return false;
             }
             if (txt_Abs.Text =="")
             {
-                XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Abs.Focus();
                 return false;
             }
