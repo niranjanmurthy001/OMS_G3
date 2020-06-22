@@ -38,6 +38,8 @@
             this.btn_Clear_Abs = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_Abs = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_Product_Type_Abs = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txt_Abs = new DevExpress.XtraEditors.TextEdit();
             this.ddl_ProjectType_Abs = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -48,16 +50,14 @@
             this.btn_Clear_Type = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save_Type = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_Product_Type = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ddl_Type_Abs = new DevExpress.XtraEditors.LookUpEdit();
             this.txt_Type = new DevExpress.XtraEditors.TextEdit();
             this.ddl_ProjectType_Type = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ddl_Product_Type = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.ddl_Product_Type_Abs = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pannelControl_Type)).BeginInit();
             this.pannelControl_Type.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_Abs)).BeginInit();
@@ -68,6 +68,7 @@
             this.flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type_Abs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Abs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType_Abs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl_Type)).BeginInit();
@@ -76,11 +77,10 @@
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Type_Abs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Type.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType_Type.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type_Abs.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -123,7 +123,7 @@
             this.groupControl_Abs.Name = "groupControl_Abs";
             this.groupControl_Abs.Size = new System.Drawing.Size(402, 427);
             this.groupControl_Abs.TabIndex = 4;
-            this.groupControl_Abs.Text = "Product Type Abbreviation";
+            this.groupControl_Abs.Text = "Sub Product Type Abbreviation";
             // 
             // tableLayoutPanel8
             // 
@@ -200,6 +200,32 @@
             this.panelControl6.Size = new System.Drawing.Size(390, 342);
             this.panelControl6.TabIndex = 1;
             // 
+            // ddl_Product_Type_Abs
+            // 
+            this.ddl_Product_Type_Abs.EditValue = "<Null>";
+            this.ddl_Product_Type_Abs.Location = new System.Drawing.Point(159, 95);
+            this.ddl_Product_Type_Abs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ddl_Product_Type_Abs.Name = "ddl_Product_Type_Abs";
+            this.ddl_Product_Type_Abs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_Product_Type_Abs.Properties.NullText = "Select";
+            this.ddl_Product_Type_Abs.Properties.NullValuePromptShowForEmptyValue = true;
+            this.ddl_Product_Type_Abs.Properties.ShowNullValuePromptWhenFocused = true;
+            this.ddl_Product_Type_Abs.Size = new System.Drawing.Size(201, 20);
+            this.ddl_Product_Type_Abs.TabIndex = 5;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(64, 95);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(84, 17);
+            this.labelControl7.TabIndex = 4;
+            this.labelControl7.Text = "Product Type :";
+            // 
             // txt_Abs
             // 
             this.txt_Abs.Location = new System.Drawing.Point(159, 147);
@@ -263,7 +289,7 @@
             this.groupControl_Type.Name = "groupControl_Type";
             this.groupControl_Type.Size = new System.Drawing.Size(406, 431);
             this.groupControl_Type.TabIndex = 5;
-            this.groupControl_Type.Text = "Product Type";
+            this.groupControl_Type.Text = "Sub Product Type";
             // 
             // tableLayoutPanel7
             // 
@@ -342,6 +368,32 @@
             this.panelControl8.Size = new System.Drawing.Size(394, 348);
             this.panelControl8.TabIndex = 1;
             // 
+            // ddl_Product_Type
+            // 
+            this.ddl_Product_Type.EditValue = "<Null>";
+            this.ddl_Product_Type.Location = new System.Drawing.Point(157, 92);
+            this.ddl_Product_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ddl_Product_Type.Name = "ddl_Product_Type";
+            this.ddl_Product_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_Product_Type.Properties.NullText = "Select";
+            this.ddl_Product_Type.Properties.NullValuePromptShowForEmptyValue = true;
+            this.ddl_Product_Type.Properties.ShowNullValuePromptWhenFocused = true;
+            this.ddl_Product_Type.Size = new System.Drawing.Size(203, 20);
+            this.ddl_Product_Type.TabIndex = 6;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(66, 92);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(84, 17);
+            this.labelControl1.TabIndex = 5;
+            this.labelControl1.Text = "Product Type :";
+            // 
             // ddl_Type_Abs
             // 
             this.ddl_Type_Abs.EditValue = "<Null>";
@@ -414,58 +466,6 @@
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "Project Type :";
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(66, 92);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(84, 17);
-            this.labelControl1.TabIndex = 5;
-            this.labelControl1.Text = "Product Type :";
-            // 
-            // ddl_Product_Type
-            // 
-            this.ddl_Product_Type.EditValue = "<Null>";
-            this.ddl_Product_Type.Location = new System.Drawing.Point(157, 92);
-            this.ddl_Product_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ddl_Product_Type.Name = "ddl_Product_Type";
-            this.ddl_Product_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_Product_Type.Properties.NullText = "Select";
-            this.ddl_Product_Type.Properties.NullValuePromptShowForEmptyValue = true;
-            this.ddl_Product_Type.Properties.ShowNullValuePromptWhenFocused = true;
-            this.ddl_Product_Type.Size = new System.Drawing.Size(203, 20);
-            this.ddl_Product_Type.TabIndex = 6;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(64, 95);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(84, 17);
-            this.labelControl7.TabIndex = 4;
-            this.labelControl7.Text = "Product Type :";
-            // 
-            // ddl_Product_Type_Abs
-            // 
-            this.ddl_Product_Type_Abs.EditValue = "<Null>";
-            this.ddl_Product_Type_Abs.Location = new System.Drawing.Point(159, 95);
-            this.ddl_Product_Type_Abs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ddl_Product_Type_Abs.Name = "ddl_Product_Type_Abs";
-            this.ddl_Product_Type_Abs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_Product_Type_Abs.Properties.NullText = "Select";
-            this.ddl_Product_Type_Abs.Properties.NullValuePromptShowForEmptyValue = true;
-            this.ddl_Product_Type_Abs.Properties.ShowNullValuePromptWhenFocused = true;
-            this.ddl_Product_Type_Abs.Size = new System.Drawing.Size(201, 20);
-            this.ddl_Product_Type_Abs.TabIndex = 5;
-            // 
             // Sub_Product_Type_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type_Abs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Abs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType_Abs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl_Type)).EndInit();
@@ -500,11 +501,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
             this.panelControl8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Type_Abs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Type.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType_Type.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Product_Type_Abs.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

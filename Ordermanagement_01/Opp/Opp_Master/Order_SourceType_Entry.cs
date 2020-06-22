@@ -318,7 +318,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
 
             }
-            else if (btn_SaveSource.Text == "Edit" && Validate() != false)
+            else if (btn_SaveSource.Text == "Edit" && Validate() != false && (await CheckSourcre()) != false)
             {
                 try
                 {
