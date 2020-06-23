@@ -14,6 +14,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Ordermanagement_01.Models;
 using System.Net;
+using DevExpress.XtraEditors.Repository;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -325,6 +326,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             }
                             grd_CategorySalaryEntry.DataSource = _dtcol;
                             _dtcol.Rows.Add().ItemArray[0] = null;
+                           
+                            
                         }
                     }
                 }
@@ -344,6 +347,25 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
            
            
+        }
+
+        private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
+        {
+            
+            for (int i = 0; i < gridView1.Columns.Count; i++)
+            {
+                //gridView1.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                //gridView1.Columns[i].ColumnEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
+                textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                //textEdit.Mask.EditMask = "(\\(\\d\\d\\d\\) )?\\d{1,3}-\\d\\d-\\d\\d";
+                textEdit.Mask.EditMask = "^[1-9]+[0-9]*$";
+                textEdit.Mask.UseMaskAsDisplayFormat = true;
+
+                grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
+                gridView1.Columns[i].ColumnEdit = textEdit;
+
+            }
         }
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
@@ -436,7 +458,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         _ordersourcetype = Convert.ToInt32(r2["Employee_Source_id"]);
                                         if (dtmulti.Columns.Count <= 0)
                                         {
-                                            dtmulti.Columns.AddRange(new DataColumn[7]
+                                            dtmulti.Columns.AddRange(new DataColumn[10]
                                                                                    {
                                          new DataColumn("Project_Type_Id",typeof(int)),
                                          new DataColumn("Client",typeof(int)),
@@ -444,7 +466,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                          new DataColumn("OrderType_ABS_Id",typeof(int)),
                                          new DataColumn("Order_Source_Type_ID",typeof(int)),
                                          new DataColumn("Category_ID",typeof(int)),
-                                         new DataColumn("Allocated_Time",typeof(double))
+                                         new DataColumn("Allocated_Time",typeof(double)),
+                                         new DataColumn("Status",typeof(int)),
+                                         new DataColumn("Inserted_By",typeof(int)),
+                                         new DataColumn("Inserted_Date",typeof(DateTime))
                                                                                    });
                                         }
 
@@ -464,7 +489,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                                 int _ordertype = order_type;
                                                 int _category = _categoryid;
                                                 string _allocatedtime = _clodata;
-                                                dtmulti.Rows.Add(projecttype, client, ordertask, _ordertype, _Order_sourcetype, _category, _allocatedtime);
+                                                int status = 1;
+                                                int insertedby = 1;
+                                                DateTime inserteddate = DateTime.Now;
+                                                dtmulti.Rows.Add(projecttype, client, ordertask, _ordertype, _Order_sourcetype, _category, _allocatedtime,status,insertedby,inserteddate);
                                             }
                                         }
                                     }
@@ -539,6 +567,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     XtraMessageBox.Show("Column value must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                      gridView1.Columns[i].AppearanceCell.BackColor=Color.Red;
                     return false;
+                }
+                else
+                {
+                    gridView1.Columns[i].AppearanceCell.BackColor = Color.White;
                 }
             }
             return true;

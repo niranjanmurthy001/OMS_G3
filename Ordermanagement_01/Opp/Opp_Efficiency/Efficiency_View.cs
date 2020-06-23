@@ -23,7 +23,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         DataTable _dtcol;
         string Col_Name, Client_Name;
         int _ProjectId;
-        DataTable _dt, dt, _dtcopy;
+        DataTable _dt, dt;
         int client_id;
         public Efficiency_View()
         {
@@ -32,7 +32,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
         {
-            
+            btn_delete.Visible = false;
             BindProjectType();
             ddl_ProjectType.EditValue = 1;
 
@@ -92,76 +92,88 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this);
             Efficiency_Entry.Show();
         }
-        public async void BindColumnstogrid()
-        {
-            try
-            {
-                _dtcol = new DataTable();
-                grd_Efficiency_Form.DataSource = null;
-                gridView1.Columns.Clear();
-                _ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                var dictonary = new Dictionary<string, object>()
-                {
-                    {"@Trans","Select Headers" },
-                    {"@Project_Type_Id" ,_ProjectId}
+        //public async void BindColumnstogrid()
+        //{
+        //    try
+        //    {
+        //        _dtcol = new DataTable();
+        //        grd_Efficiency_Form.DataSource = null;
+        //        gridView1.Columns.Clear();
+        //       
+        //        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+        //        var dictonary = new Dictionary<string, object>()
+        //        {
+        //            {"@Trans","Select Headers" },
+        //            {"@Project_Type_Id" ,_ProjectId}
 
-                };
-                this.grd_Efficiency_Form.DataSource = new DataTable();
-                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                using (var httpclient = new HttpClient())
-                {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindHeaders", data);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        if (response.StatusCode == HttpStatusCode.OK)
-                        {
-                            var result = await response.Content.ReadAsStringAsync();
-                             dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            _dtcol.Columns.Add("Client_Name");
-                            _dtcol.Columns.Add("Order_Task");
-                            _dtcol.Columns.Add("Order_Type");
-                            _dtcol.Columns.Add("Order_Source_Type");
-                            _dtcol.Columns.Add("Client_Id");
-                            _dtcol.Columns.Add("Order_Task_Id");
-                            _dtcol.Columns.Add("Order_Type_Id");
-                            _dtcol.Columns.Add("Order_Source_Type_Id");
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                Col_Name = Convert.ToDouble(dt.Rows[i]["Category_Name"]).ToString();
-                                _dtcol.Columns.Add(Col_Name.ToString());
-                                //count = Convert.ToInt32(_dt.Rows.Count.ToString());
+        //        };
+        //        this.grd_Efficiency_Form.DataSource = new DataTable();
+        //        var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+        //        using (var httpclient = new HttpClient())
+        //        {
+        //            var response = await httpclient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindHeaders", data);
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                if (response.StatusCode == HttpStatusCode.OK)
+        //                {
+        //                    var result = await response.Content.ReadAsStringAsync();
+        //                     dt = JsonConvert.DeserializeObject<DataTable>(result);
+        //                    _dtcol.Columns.Add("Client_Name");
+        //                    _dtcol.Columns.Add("Order_Task");
+        //                    _dtcol.Columns.Add("Order_Type");
+        //                    _dtcol.Columns.Add("Order_Source_Type");
+        //                    _dtcol.Columns.Add("Client_Id");
+        //                    _dtcol.Columns.Add("Order_Task_Id");
+        //                    _dtcol.Columns.Add("Order_Type_Id");
+        //                    _dtcol.Columns.Add("Order_Source_Type_Id");
+        //                    for (int i = 0; i < dt.Rows.Count; i++)
+        //                    {
+        //                        Col_Name = Convert.ToDouble(dt.Rows[i]["Category_Name"]).ToString();
+        //                        _dtcol.Columns.Add(Col_Name.ToString());
+        //                        //count = Convert.ToInt32(_dt.Rows.Count.ToString());
 
-                            }
-                            grd_Efficiency_Form.DataSource = _dtcol;
-                            gridView1.Columns[4].Visible = false;
-                            gridView1.Columns[5].Visible = false;
-                            gridView1.Columns[6].Visible = false;
-                            gridView1.Columns[7].Visible = false;
+        //                    }
+        //                    grd_Efficiency_Form.DataSource = _dtcol;
+        //                    gridView1.Columns[4].Visible = false;
+        //                    gridView1.Columns[5].Visible = false;
+        //                    gridView1.Columns[6].Visible = false;
+        //                    gridView1.Columns[7].Visible = false;
+        //                    for (int i = 0; i < gridView1.Columns.Count; i++)
+        //                    {
+        //                        gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
+        //                        gridView1.Columns[i].OptionsColumn.AllowEdit = false;
+        //                        if (i>7)
+        //                        {
+        //                            gridView1.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+        //                            gridView1.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+        //                        }
+        //                    }
+                           
 
 
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please contact with Admin");
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
-        }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //        XtraMessageBox.Show("Please contact with Admin");
+        //    }
+        //    finally
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //    }
+        //}
 
         private void ddl_ProjectType_EditValueChanged(object sender, EventArgs e)
         {
             if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
             {
                 //BindRows();
-                BindColumnstogrid();
+               
                 BindCategorySalaryBracket();
+                //BindColumnstogrid();
             }
 
         }
@@ -170,12 +182,15 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             try
             {
-
+                _dt = new DataTable();
+                grd_Efficiency_Form.DataSource = null;
+                gridView1.Columns.Clear();
+                int proid = Convert.ToInt32(ddl_ProjectType.EditValue);
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","BIND_DATA_TO_GRID" },
-                    {"@Project_Type_Id",_ProjectId}
+                    {"@Project_Type_Id",proid}
                 };
 
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -191,20 +206,35 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                            
                             if (_dt.Rows.Count > 0)
                             {
-                                foreach (var column in _dt.Columns.Cast<DataColumn>().ToArray())
-                                {
-                                    if (_dt.AsEnumerable().All(dr => dr.IsNull(column)))
-                                        _dt.Columns.Remove(column);
-                                }
                                 grd_Efficiency_Form.DataSource = _dt;
+                                gridView1.Columns[4].Visible = false;
+                                gridView1.Columns[5].Visible = false;
+                                gridView1.Columns[6].Visible = false;
+                                gridView1.Columns[7].Visible = false;
+                                for (int i = 0; i < gridView1.Columns.Count; i++)
+                                {
+                                    gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
+                                    gridView1.Columns[i].OptionsColumn.AllowEdit = false;
+                                    if (i > 7)
+                                    {
+                                        gridView1.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                                        gridView1.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                                    }
+                                }
 
                             }
-                            else
-                            {
-                                grd_Efficiency_Form.DataSource = null;
-
-                            }
+                           
                         }
+                    }
+                    else
+                    {
+                        DataTable dtcolun = new DataTable();
+                        dtcolun.Columns.Add("Client_Name");
+                        dtcolun.Columns.Add("Order_Task");
+                        dtcolun.Columns.Add("Order_Type");
+                        dtcolun.Columns.Add("Order_Source_Type");
+                        grd_Efficiency_Form.DataSource = dtcolun;
+
                     }
                 }
             }
@@ -239,9 +269,88 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
         }
 
+        private async void btn_delete_Click(object sender, EventArgs e)
+        {
+            _ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (show == DialogResult.Yes)
+            {
+
+                try
+                {
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    List<int> gridViewSelectedRows = gridView1.GetSelectedRows().ToList();
+                    for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                    {
+                        DataRow row = gridView1.GetDataRow(gridViewSelectedRows[i]);
+                        int client_id = int.Parse(row["Client_Id"].ToString());
+                        int Ordertaskid = int.Parse(row["Order_Task_Id"].ToString());
+                        int Ordertype = int.Parse(row["Order_Type_Id"].ToString());
+                        int ordersourcetype = int.Parse(row["Order_Source_Type_Id"].ToString());
+                        
+                       var dictionary = new Dictionary<string, object>()
+                        {
+                            { "@Trans", "DELETE" },
+                            { "@Project_Type_Id",_ProjectId},
+                           {"@Client_Id",client_id },
+                           {"@Order_Task_Id",Ordertaskid },
+                           {"@Order_Type_Id",Ordertype},
+                           {"@Order_Source_Type_Id",ordersourcetype }
+                        };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ImportCategorySalary/Delete", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+
+                                    BindCategorySalaryBracket();
+                                    btn_delete.Visible = false;
+
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Please Select Any Record To Delete");
+                            }
+                        }
+
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    throw ex;
+                }
+                finally
+
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
+            }
+        }
+
+        private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if(gridView1.SelectedRowsCount>0)
+            {
+                btn_delete.Visible = true;
+            }
+            else
+            {
+                btn_delete.Visible = false;
+            }
+        }
+
         private void btn_Copy_Click(object sender, EventArgs e)
         {
-           
+            _ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
             List<int> gridViewSelectedRows = gridView1.GetSelectedRows().ToList();
             for (int i = 0; i < gridViewSelectedRows.Count; i++)
             {

@@ -35,6 +35,7 @@
             this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Addnew = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Copy = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_delete = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -108,6 +109,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Export);
             this.flowLayoutPanel1.Controls.Add(this.btn_Addnew);
             this.flowLayoutPanel1.Controls.Add(this.btn_Copy);
+            this.flowLayoutPanel1.Controls.Add(this.btn_delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(359, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -121,6 +123,7 @@
             this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Export.Location = new System.Drawing.Point(341, 3);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(80, 32);
@@ -134,6 +137,7 @@
             this.btn_Addnew.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Addnew.Appearance.Options.UseFont = true;
             this.btn_Addnew.Appearance.Options.UseForeColor = true;
+            this.btn_Addnew.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Addnew.Location = new System.Drawing.Point(255, 3);
             this.btn_Addnew.Name = "btn_Addnew";
             this.btn_Addnew.Size = new System.Drawing.Size(80, 32);
@@ -147,12 +151,27 @@
             this.btn_Copy.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Copy.Appearance.Options.UseFont = true;
             this.btn_Copy.Appearance.Options.UseForeColor = true;
+            this.btn_Copy.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Copy.Location = new System.Drawing.Point(169, 3);
             this.btn_Copy.Name = "btn_Copy";
             this.btn_Copy.Size = new System.Drawing.Size(80, 32);
             this.btn_Copy.TabIndex = 2;
             this.btn_Copy.Text = "Copy To";
             this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_delete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_delete.Appearance.Options.UseFont = true;
+            this.btn_delete.Appearance.Options.UseForeColor = true;
+            this.btn_delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_delete.Location = new System.Drawing.Point(83, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 32);
+            this.btn_delete.TabIndex = 3;
+            this.btn_delete.Text = "Delete";
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // panel1
             // 
@@ -207,13 +226,14 @@
             // gridView1
             // 
             this.gridView1.GridControl = this.grd_Efficiency_Form;
-            this.gridView1.IndicatorWidth = 30;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
             this.gridView1.OptionsSelection.InvertSelection = true;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
             // 
             // panelControl2
             // 
@@ -249,6 +269,7 @@
             this.Name = "Efficiency_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_View";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Efficiency_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
@@ -283,5 +304,6 @@
         private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.SimpleButton btn_Copy;
+        private DevExpress.XtraEditors.SimpleButton btn_delete;
     }
 }

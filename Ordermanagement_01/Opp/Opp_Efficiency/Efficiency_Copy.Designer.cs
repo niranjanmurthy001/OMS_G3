@@ -31,20 +31,20 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_client_from = new DevExpress.XtraEditors.LookUpEdit();
             this.Chk_Targetclient = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_submit = new DevExpress.XtraEditors.SimpleButton();
-            this.ddl_client_from = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chk_Targetclient)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -88,6 +88,20 @@
             this.panelControl1.Size = new System.Drawing.Size(384, 278);
             this.panelControl1.TabIndex = 0;
             // 
+            // ddl_client_from
+            // 
+            this.ddl_client_from.Location = new System.Drawing.Point(144, 31);
+            this.ddl_client_from.Name = "ddl_client_from";
+            this.ddl_client_from.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_client_from.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ddl_client_from.Properties.Appearance.Options.UseFont = true;
+            this.ddl_client_from.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_client_from.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_client_from.Properties.NullText = "Select";
+            this.ddl_client_from.Size = new System.Drawing.Size(231, 22);
+            this.ddl_client_from.TabIndex = 8;
+            // 
             // Chk_Targetclient
             // 
             this.Chk_Targetclient.Cursor = System.Windows.Forms.Cursors.Default;
@@ -103,7 +117,7 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(11, 116);
+            this.labelControl2.Location = new System.Drawing.Point(10, 114);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(98, 17);
             this.labelControl2.TabIndex = 5;
@@ -137,6 +151,7 @@
             this.btn_submit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_submit.Appearance.Options.UseFont = true;
             this.btn_submit.Appearance.Options.UseForeColor = true;
+            this.btn_submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_submit.Location = new System.Drawing.Point(298, 3);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(83, 33);
@@ -144,26 +159,14 @@
             this.btn_submit.Text = "Submit";
             this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
-            // ddl_client_from
-            // 
-            this.ddl_client_from.Location = new System.Drawing.Point(144, 31);
-            this.ddl_client_from.Name = "ddl_client_from";
-            this.ddl_client_from.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_client_from.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.ddl_client_from.Properties.Appearance.Options.UseFont = true;
-            this.ddl_client_from.Properties.Appearance.Options.UseForeColor = true;
-            this.ddl_client_from.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_client_from.Properties.NullText = "Select";
-            this.ddl_client_from.Size = new System.Drawing.Size(231, 22);
-            this.ddl_client_from.TabIndex = 8;
-            // 
             // Efficiency_Copy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 353);
             this.Controls.Add(this.groupControl1);
+            this.MaximumSize = new System.Drawing.Size(410, 391);
+            this.MinimumSize = new System.Drawing.Size(410, 391);
             this.Name = "Efficiency_Copy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Copy";
@@ -174,9 +177,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chk_Targetclient)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_client_from.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

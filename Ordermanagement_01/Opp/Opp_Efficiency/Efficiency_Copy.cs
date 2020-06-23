@@ -141,17 +141,27 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         {
                                             var result1 = await response1.Content.ReadAsStringAsync();
                                             DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result1);
-
-
-                                            for (int i = 0; i < _dt.Rows.Count; i++)
+                                            for (int i = dt.Rows.Count-1; i >= 0; i--)
                                             {
-                                                if (dt.Rows[i]["Client_Name"].ToString() == _dt.Rows[i]["Client_Name"].ToString())
+
+                                               // DataRow dr = dt.Rows[i];
+
+                                                for (int j = 0; j < _dt.Rows.Count; j++)
                                                 {
+                                                    //if (dt.Rows[i]["Client_Name"].ToString() == _dt.Rows[i]["Client_Name"].ToString())
+                                                    //{
+                                                   
+                                                    DataRow _dr = _dt.Rows[j];
                                                     DataRow dr = dt.Rows[i];
-                                                    if (dr["Client_Name"].ToString() == _dt.Rows[i]["Client_Name"].ToString())
+                                                    if (dr["Client_Name"].ToString() == _dr["Client_Name"].ToString())
+                                                    {
                                                         dr.Delete();
+                                                    }
+                                                    i = i - 1;
+
+                                                    //}
+                                                    dt.AcceptChanges();
                                                 }
-                                                dt.AcceptChanges();
                                             }
                                                 
                                             
