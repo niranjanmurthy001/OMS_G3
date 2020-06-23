@@ -170,7 +170,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt1= JsonConvert.DeserializeObject<DataTable>(result);
+                            DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt1 != null && dt1.Rows.Count > 0)
                             {
                                 DataRow dr = dt1.NewRow();
@@ -332,9 +332,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
                                 textEdit.Mask.EditMask = "[1-9]+[0-9]";
                                 textEdit.Mask.UseMaskAsDisplayFormat = true;
-
                                 grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
                                 gridView1.Columns[i].ColumnEdit = textEdit;
+
+                                gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
+
+                                gridView1.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                                gridView1.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
                             }
 
@@ -356,14 +360,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-           
-           
+
+
         }
 
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
-            
-           
+
+
         }
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
@@ -400,7 +404,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 if (gridView1.Columns[i].ToString() == colName)
                 {
-                     _clodata = gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
+                    _clodata = gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
                     //if (clodata.tostring() == "")
                     //{
                     //    //splashscreenmanager.closeform();
@@ -445,7 +449,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     _categoryid = Convert.ToInt32(dt1.Rows[i]["Category_ID"]);
                                     if (IsMatch(Col_Name.ToString()))
                                     {
-                                       
+
                                         int[] SelectedRowHandles = gridView1.GetSelectedRows();
                                         _ProjectId = Convert.ToInt32(ddl_Project_Type.EditValue);
                                         _ClientName = Convert.ToInt32(ddl_Client_Name.EditValue);
@@ -490,7 +494,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                                 int status = 1;
                                                 int insertedby = 1;
                                                 DateTime inserteddate = DateTime.Now;
-                                                dtmulti.Rows.Add(projecttype, client, ordertask, _ordertype, _Order_sourcetype, _category, _allocatedtime,status,insertedby,inserteddate);
+                                                dtmulti.Rows.Add(projecttype, client, ordertask, _ordertype, _Order_sourcetype, _category, _allocatedtime, status, insertedby, inserteddate);
                                             }
                                         }
                                     }
@@ -506,7 +510,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         {
                                             var _result = await response.Content.ReadAsStringAsync();
                                             SplashScreenManager.CloseForm(false);
-                                            XtraMessageBox.Show("Efficiency is Submitted Successfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.None);
+                                            XtraMessageBox.Show("Efficiency is Submitted Successfully", "Submit Record", MessageBoxButtons.OK, MessageBoxIcon.None);
                                             btn_Clear_Click(sender, e);
                                             this.Mainform.BindCategorySalaryBracket();
                                             this.Close();
@@ -549,21 +553,21 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
             if (chk_Ordertype.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Please Select Order Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please check Order Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chk_OrderSourceType.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Please Select Order Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please check Order Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             for (int i = 0; i < gridView1.Columns.Count; i++)
             {
-                string data= gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
+                string data = gridView1.GetRowCellValue(0, gridView1.Columns[i]).ToString();
                 if (data == "")
                 {
                     XtraMessageBox.Show("Column value must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                     gridView1.Columns[i].AppearanceCell.BackColor=Color.Red;
+                    gridView1.Columns[i].AppearanceCell.BackColor = Color.Red;
                     return false;
                 }
                 else

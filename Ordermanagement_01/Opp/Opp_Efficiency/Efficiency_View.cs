@@ -175,6 +175,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 BindCategorySalaryBracket();
                 //BindColumnstogrid();
             }
+            else
+            {
+                grd_Efficiency_Form.DataSource = null;
+            }
 
         }
 

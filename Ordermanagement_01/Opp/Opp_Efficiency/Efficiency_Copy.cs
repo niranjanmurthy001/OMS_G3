@@ -143,14 +143,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                             DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result1);
                                             for (int i = dt.Rows.Count-1; i >= 0; i--)
                                             {
-
-                                               // DataRow dr = dt.Rows[i];
-
                                                 for (int j = 0; j < _dt.Rows.Count; j++)
                                                 {
-                                                    //if (dt.Rows[i]["Client_Name"].ToString() == _dt.Rows[i]["Client_Name"].ToString())
-                                                    //{
-                                                   
                                                     DataRow _dr = _dt.Rows[j];
                                                     DataRow dr = dt.Rows[i];
                                                     if (dr["Client_Name"].ToString() == _dr["Client_Name"].ToString())
@@ -158,15 +152,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                                         dr.Delete();
                                                     }
                                                     i = i - 1;
-
-                                                    //}
                                                     dt.AcceptChanges();
                                                 }
                                             }
-                                                
-                                            
-                                           
-
                                         }
                                     }
                                 }
@@ -264,7 +252,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             }
            if(Chk_Targetclient.CheckedItems.Count<=0)
             {
-                XtraMessageBox.Show("Please Select Target Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Check Target Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
