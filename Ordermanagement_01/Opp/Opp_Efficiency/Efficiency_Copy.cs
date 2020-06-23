@@ -147,11 +147,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                                 {
                                                     DataRow _dr = _dt.Rows[j];
                                                     DataRow dr = dt.Rows[i];
-                                                    if (dr["Client_Name"].ToString() == _dr["Client_Name"].ToString())
+                                                    if (dr.ItemArray[1].ToString() == _dr.ItemArray[0].ToString())
                                                     {
                                                         dr.Delete();
                                                     }
-                                                    i = i - 1;
+                                                    //i = i - 1;
                                                     dt.AcceptChanges();
                                                 }
                                             }
