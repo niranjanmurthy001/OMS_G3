@@ -326,8 +326,19 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             }
                             grd_CategorySalaryEntry.DataSource = _dtcol;
                             _dtcol.Rows.Add().ItemArray[0] = null;
-                           
-                            
+                            for (int i = 0; i < gridView1.Columns.Count; i++)
+                            {
+                                RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
+                                textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                                textEdit.Mask.EditMask = "[1-9]+[0-9]";
+                                textEdit.Mask.UseMaskAsDisplayFormat = true;
+
+                                grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
+                                gridView1.Columns[i].ColumnEdit = textEdit;
+
+                            }
+
+
                         }
                     }
                 }
@@ -352,20 +363,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
             
-            for (int i = 0; i < gridView1.Columns.Count; i++)
-            {
-                //gridView1.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                //gridView1.Columns[i].ColumnEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
-                textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                //textEdit.Mask.EditMask = "(\\(\\d\\d\\d\\) )?\\d{1,3}-\\d\\d-\\d\\d";
-                textEdit.Mask.EditMask = "^[1-9]+[0-9]*$";
-                textEdit.Mask.UseMaskAsDisplayFormat = true;
-
-                grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
-                gridView1.Columns[i].ColumnEdit = textEdit;
-
-            }
+           
         }
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
