@@ -28,11 +28,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         DataTable dt = new DataTable();
         DataTable dtmulti = new DataTable();
         private Efficiency_View Mainform = null;
+        int user_id;
 
-        public Efficiency_Create(Form callingform)
+        public Efficiency_Create(Form callingform,int userid)
         {
             InitializeComponent();
             Mainform = callingform as Efficiency_View;
+            user_id = userid;
         }
 
         private void Import_Category_Salary_Entry_Load(object sender, EventArgs e)
@@ -492,7 +494,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                                 int _category = _categoryid;
                                                 string _allocatedtime = _clodata;
                                                 int status = 1;
-                                                int insertedby = 1;
+                                                int insertedby = user_id;
                                                 DateTime inserteddate = DateTime.Now;
                                                 dtmulti.Rows.Add(projecttype, client, ordertask, _ordertype, _Order_sourcetype, _category, _allocatedtime, status, insertedby, inserteddate);
                                             }

@@ -25,9 +25,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         int _ProjectId;
         DataTable _dt, dt;
         int client_id;
-        public Efficiency_View()
+        int user_id;
+        public Efficiency_View(int userid)
         {
             InitializeComponent();
+            user_id = userid;
         }
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
@@ -89,7 +91,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
         private void btn_Addnew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this);
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this,user_id);
             Efficiency_Entry.Show();
         }
         //public async void BindColumnstogrid()
