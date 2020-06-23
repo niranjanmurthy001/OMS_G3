@@ -143,7 +143,7 @@
             // chk_OrderSourceType
             // 
             this.chk_OrderSourceType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderSourceType.Location = new System.Drawing.Point(135, 142);
+            this.chk_OrderSourceType.Location = new System.Drawing.Point(138, 142);
             this.chk_OrderSourceType.Name = "chk_OrderSourceType";
             this.chk_OrderSourceType.Size = new System.Drawing.Size(203, 85);
             this.chk_OrderSourceType.TabIndex = 5;
@@ -151,7 +151,7 @@
             // chk_Ordertype
             // 
             this.chk_Ordertype.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_Ordertype.Location = new System.Drawing.Point(135, 37);
+            this.chk_Ordertype.Location = new System.Drawing.Point(138, 37);
             this.chk_Ordertype.Name = "chk_Ordertype";
             this.chk_Ordertype.Size = new System.Drawing.Size(203, 85);
             this.chk_Ordertype.TabIndex = 4;
@@ -162,7 +162,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(9, 162);
+            this.labelControl5.Location = new System.Drawing.Point(12, 162);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(118, 17);
             this.labelControl5.TabIndex = 23;
@@ -174,7 +174,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(13, 46);
+            this.labelControl4.Location = new System.Drawing.Point(16, 46);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(74, 17);
             this.labelControl4.TabIndex = 22;

@@ -208,7 +208,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             var result = await response.Content.ReadAsStringAsync();
                             _dt = JsonConvert.DeserializeObject<DataTable>(result);
                            
-                            if (_dt.Rows.Count > 0)
+                            if (_dt.Rows.Count >= 0)
                             {
                                 grd_Efficiency_Form.DataSource = _dt;
                                 gridView1.Columns[4].Visible = false;
@@ -233,9 +233,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     else
                     {
                         DataTable dtcolun = new DataTable();
-                        dtcolun.Columns.Add("Client_Name");
-                        dtcolun.Columns.Add("Order_Task");
-                        dtcolun.Columns.Add("Order_Type");
+                        dtcolun.Columns.Add("Client Name");
+                        dtcolun.Columns.Add("Order Task");
+                        dtcolun.Columns.Add("Order Type");
                         dtcolun.Columns.Add("Order_Source_Type");
                         grd_Efficiency_Form.DataSource = dtcolun;
 
@@ -312,8 +312,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
 
-                                    BindCategorySalaryBracket();
-                                    btn_delete.Visible = false;
+                                    
 
                                 }
                             }
@@ -326,6 +325,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                     }
                     XtraMessageBox.Show("Record Deleted Successfully");
+                    BindCategorySalaryBracket();
+                    btn_delete.Visible = false;
                 }
                 catch (Exception ex)
                 {
