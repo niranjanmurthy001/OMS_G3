@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
@@ -17,11 +16,11 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
-    
+
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -743,50 +742,50 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                  
-                               
-                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string filePath = @"c:\OMS_Error_Imports\";
-                                string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                                Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
-                                if(xlapp==null)
-                                {
-                                    XtraMessageBox.Show("Excel is not properly Installed !!");
-                                    return;
-                                }
 
-                                Excel.Workbook xlworkbook;
-                                Excel.Worksheet xlworksheet;
-                                object misvalue = System.Reflection.Missing.Value;
-                                xlworkbook = xlapp.Workbooks.Add(misvalue);
-                                xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
-                                xlworksheet.Cells[1, 1] = "Project_Type";
-                                xlworksheet.Cells[1, 2] = "Product_Type";
-                                xlworksheet.Cells[1, 3] = "Error_Type";
-                                xlworkbook.SaveAs(fileName);
-                                xlworkbook.Close(true, misvalue, misvalue);
-                                xlapp.Quit();
+                    Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                    string filePath = @"c:\OMS_Error_Imports\";
+                    string fileName = filePath + "Import_Error_Type_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                                Marshal.ReleaseComObject(xlworksheet);
-                                Marshal.ReleaseComObject(xlworkbook);
-                                Marshal.ReleaseComObject(xlapp);
-                            
-                                 
+                    Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                    if (xlapp == null)
+                    {
+                        XtraMessageBox.Show("Excel is not properly Installed !!");
+                        return;
+                    }
 
-                                  
-                                   string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xlsx";
-                                    if (!Directory.Exists(temppath))
-                                    {
+                    Excel.Workbook xlworkbook;
+                    Excel.Worksheet xlworksheet;
+                    object misvalue = System.Reflection.Missing.Value;
+                    xlworkbook = xlapp.Workbooks.Add(misvalue);
+                    xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
+                    xlworksheet.Cells[1, 1] = "Project_Type";
+                    xlworksheet.Cells[1, 2] = "Product_Type";
+                    xlworksheet.Cells[1, 3] = "Error_Type";
+                    xlworkbook.SaveAs(fileName);
+                    xlworkbook.Close(true, misvalue, misvalue);
+                    xlapp.Quit();
 
-                                        File.Copy(fileName, temppath, true);
-                                        Process.Start(fileName);
+                    Marshal.ReleaseComObject(xlworksheet);
+                    Marshal.ReleaseComObject(xlworkbook);
+                    Marshal.ReleaseComObject(xlapp);
 
-                                    }
-                                    else
-                                    {
-                                        Process.Start(filePath);
-                                    }
+
+
+
+                    string temppath = @"c:\OMS_Error_Imports\Import_Error_Type_Data.xlsx";
+                    if (!Directory.Exists(temppath))
+                    {
+
+                        File.Copy(fileName, temppath, true);
+                        Process.Start(fileName);
+
+                    }
+                    else
+                    {
+                        Process.Start(filePath);
+                    }
                 }
 
                 catch (Exception ex)
@@ -806,50 +805,50 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                  
-                                Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
-                                string filePath = @"c:\OMS_Error_Imports\";
-                                string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                                Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
-                                if (xlapp == null)
-                                {
-                                    XtraMessageBox.Show("Excel is not properly Installed !!");
-                                    return;
-                                }
+                    Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
+                    string filePath = @"c:\OMS_Error_Imports\";
+                    string fileName = filePath + "Import_Error_Tab_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
-                                Excel.Workbook xlworkbook;
-                                Excel.Worksheet xlworksheet;
-                                object misvalue = System.Reflection.Missing.Value;
-                                xlworkbook = xlapp.Workbooks.Add(misvalue);
-                                xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
-                                xlworksheet.Cells[1, 1] = "Project_Type";
-                                xlworksheet.Cells[1, 2] = "Product_Type";
-                                xlworksheet.Cells[1, 3] = "Error_Tab";
-                                xlworkbook.SaveAs(fileName);
-                                xlworkbook.Close(true, misvalue, misvalue);
-                                xlapp.Quit();
+                    Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                    if (xlapp == null)
+                    {
+                        XtraMessageBox.Show("Excel is not properly Installed !!");
+                        return;
+                    }
 
-                                Marshal.ReleaseComObject(xlworksheet);
-                                Marshal.ReleaseComObject(xlworkbook);
-                                Marshal.ReleaseComObject(xlapp);
+                    Excel.Workbook xlworkbook;
+                    Excel.Worksheet xlworksheet;
+                    object misvalue = System.Reflection.Missing.Value;
+                    xlworkbook = xlapp.Workbooks.Add(misvalue);
+                    xlworksheet = (Microsoft.Office.Interop.Excel.Worksheet)xlworkbook.Worksheets.get_Item(1);
+                    xlworksheet.Cells[1, 1] = "Project_Type";
+                    xlworksheet.Cells[1, 2] = "Product_Type";
+                    xlworksheet.Cells[1, 3] = "Error_Tab";
+                    xlworkbook.SaveAs(fileName);
+                    xlworkbook.Close(true, misvalue, misvalue);
+                    xlapp.Quit();
 
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xlsx";
-                                if (!Directory.Exists(temppath))
-                                {
+                    Marshal.ReleaseComObject(xlworksheet);
+                    Marshal.ReleaseComObject(xlworkbook);
+                    Marshal.ReleaseComObject(xlapp);
 
-                                    File.Copy(fileName, temppath, true);
-                                    Process.Start(fileName);
+                    string temppath = @"c:\OMS_Error_Imports\Import_Error_Tab_Data.xlsx";
+                    if (!Directory.Exists(temppath))
+                    {
 
-                                }
-                                else
-                                {
-                                    Process.Start(filePath);
-                                }
+                        File.Copy(fileName, temppath, true);
+                        Process.Start(fileName);
 
-                            
-                        
-                    
+                    }
+                    else
+                    {
+                        Process.Start(filePath);
+                    }
+
+
+
+
                 }
 
                 catch (Exception ex)
@@ -872,7 +871,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     Directory.CreateDirectory(@"c:\OMS_Error_Imports\");
                     string filePath = @"C:\OMS_Error_Imports\";
-                                string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                    string fileName = filePath + "Import_Error_Field_Data-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
                     Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
                     if (xlapp == null)
                     {
@@ -896,21 +895,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     Marshal.ReleaseComObject(xlworksheet);
                     Marshal.ReleaseComObject(xlworkbook);
                     Marshal.ReleaseComObject(xlapp);
-                    
-                                string temppath = @"c:\OMS_Error_Imports\Import_Error_Field_Data.xlsx";
-                                if (!Directory.Exists(temppath))
-                                {
 
-                                    File.Copy(fileName, temppath, true);
-                                    Process.Start(fileName);
+                    string temppath = @"c:\OMS_Error_Imports\Import_Error_Field_Data.xlsx";
+                    if (!Directory.Exists(temppath))
+                    {
 
-                                }
-                                else
-                                {
-                                    Process.Start(filePath);
-                                }
+                        File.Copy(fileName, temppath, true);
+                        Process.Start(fileName);
 
-                            
+                    }
+                    else
+                    {
+                        Process.Start(filePath);
+                    }
+
+
                 }
 
                 catch (Exception ex)
@@ -1250,7 +1249,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 lblDuplicateRecordCount.Text = "";
                 for (int i = 0; i < gridView1.DataRowCount; i++)
                 {
-                   
+
 
                     if (string.IsNullOrWhiteSpace(gridView1.GetRowCellValue(i, gridView1.Columns.ColumnByFieldName("Project_Type")).ToString()))
                     {
@@ -1328,7 +1327,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 // throw ex;
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Invalid!,Fill Valid Error Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Invalid!,Enter Valid Error Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             finally
