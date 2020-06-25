@@ -34,9 +34,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
         {
+            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
             btn_delete.Visible = false;
             BindProjectType();
             ddl_ProjectType.EditValue = 1;
+            SplashScreenManager.CloseForm(false);
 
         }
         private async void BindProjectType()
@@ -220,6 +222,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 for (int i = 0; i < gridView1.Columns.Count; i++)
                                 {
                                     gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
+                                    gridView1.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
+                                    gridView1.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
                                     gridView1.Columns[i].OptionsColumn.AllowEdit = false;
                                     if (i > 7)
                                     {

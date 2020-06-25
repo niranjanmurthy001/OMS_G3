@@ -36,11 +36,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void Efficiency_Copy_Load(object sender, EventArgs e)
         {
-           
+            SplashScreenManager.ShowForm(this,typeof(WaitForm1), true, true, false);
             BindClientTo(Pid);
             BindClientName(Pid);
-           // Getdata();
-
+            // Getdata();
+            SplashScreenManager.CloseForm(false);
         }
         private async void BindClientName(int _Proc)
         {
@@ -106,7 +106,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
-                    {"@Trans","SELECT_CLIENT_NAMES_BASEDON_PROJECTID" },
+                    {"@Trans","GetItems" },
                     {"@Project_Type_Id",Pid }
 
                 };
@@ -122,47 +122,15 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null && dt.Rows.Count > 0)
                             {
-                                
-                            
-                           
-                                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                                var dictionary = new Dictionary<string, object>()
-                                {
-                                    { "@Trans", "GetItems"},
-                                    {"@Project_Type_Id",Pid }
-                                };
-                                var _data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                                using (var httpClient = new HttpClient())
-                                {
-                                    var response1 = await httpClient.PostAsync(Base_Url.Url + "/ImportCategorySalary/BindColumns", _data);
-                                    if (response1.IsSuccessStatusCode)
-                                    {
-                                        if (response1.StatusCode == HttpStatusCode.OK)
-                                        {
-                                            var result1 = await response1.Content.ReadAsStringAsync();
-                                            DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result1);
-                                            for (int i = dt.Rows.Count-1; i >= 0; i--)
-                                            {
-                                                for (int j = 0; j < _dt.Rows.Count; j++)
-                                                {
-                                                    DataRow _dr = _dt.Rows[j];
-                                                    DataRow dr = dt.Rows[i];
-                                                    if (dr.ItemArray[1].ToString() == _dr.ItemArray[0].ToString())
-                                                    {
-                                                        dr.Delete();
-                                                    }
-                                                    //i = i - 1;
-                                                    dt.AcceptChanges();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+
+                                Chk_Targetclient.DataSource = dt;
+                                Chk_Targetclient.DisplayMember = "Client_Name";
+                                Chk_Targetclient.ValueMember = "Client";
+
+
 
                             }
-                            Chk_Targetclient.DataSource = dt;
-                            Chk_Targetclient.DisplayMember = "Client_Name";
-                            Chk_Targetclient.ValueMember = "Client_Id";
+                           
 
                         }
                     }

@@ -32229,6 +32229,12 @@ namespace Ordermanagement_01
             orderentry.Show();
         }
 
+        private void sub_Producttype_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_View sub = new Opp.Opp_Master.Sub_Product_Type_View(userid);
+            sub.Show();
+        }
+
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);

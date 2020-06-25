@@ -164,9 +164,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 353);
-            this.ControlBox = false;
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(410, 391);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 391);
             this.Name = "Efficiency_Copy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
