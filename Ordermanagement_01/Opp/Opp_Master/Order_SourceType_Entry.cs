@@ -102,7 +102,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -156,7 +156,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -188,7 +188,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
         private bool Validate()
         {
-            if(lookUpEdit_Project_Type.EditValue==null)
+            if (Convert.ToInt32(lookUpEdit_Project_Type.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Project Type","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
@@ -302,6 +302,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 XtraMessageBox.Show("Submitted Sucessfully");                             
                                 Clear();
                                 this.Mainform.BindSourceTypes();
+                                this.Mainform.Enabled = true;
                                 this.Close();                        
                             }
                         }
@@ -310,7 +311,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -357,6 +358,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 XtraMessageBox.Show("Edited Successfully");
                                 Clear();
                                 this.Mainform.BindSourceTypes();
+                                this.Mainform.Enabled = true;
                                 this.Close();
                             }
                         }
@@ -365,7 +367,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -374,6 +376,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-      
+        private void Order_SourceType_Entry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
     }
 }

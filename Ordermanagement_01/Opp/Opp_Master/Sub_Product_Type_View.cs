@@ -77,7 +77,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -118,7 +118,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -169,13 +169,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         catch (Exception ex)
                         {
                             SplashScreenManager.CloseForm(false);
-                            throw ex;
+                            XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally
                         {
                             SplashScreenManager.CloseForm(false);
                         }
-
                     }
                 }
                 else
@@ -220,18 +219,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             }
                             SplashScreenManager.CloseForm(false);
                             XtraMessageBox.Show("Record Deleted Successfully");
-                            BindGridType();
+                            BindGridAbs();
                         }
                         catch (Exception ex)
                         {
                             SplashScreenManager.CloseForm(false);
-                            throw ex;
+                            XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally
                         {
                             SplashScreenManager.CloseForm(false);
                         }
-
                     }
                 }
                 else
@@ -254,8 +252,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 Operation_Type = "Sub Product Type Abbreviation";
                 Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SPT = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeAbsId, _btnName, _UserId,ID, this);
-                SPT.Show();
+                SPT.Show();             
             }
+            this.Enabled = false;
         }
 
         private void btn_Export_Type_Click_1(object sender, EventArgs e)
@@ -310,12 +309,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
+      
 
         private void gridView_Abs_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
-        }
+        }     
 
         private void gridView_Type_SelectionChanged_1(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
@@ -341,37 +341,50 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 btn_Delete_Multiple.Visible = false;
             }
         }
-
+        private void gridView_Type_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.Column.Caption == "View")
+            {
+                System.Data.DataRow row = gridView_Type.GetDataRow(gridView_Type.FocusedRowHandle);
+                string _btnName = "Edit";
+                int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+                int _productId = int.Parse(row["ProductType_Id"].ToString());
+                string _subproductType = row["Order_Type"].ToString();
+                int _subproductTypeAbsId = int.Parse(row["OrderType_ABS_Id"].ToString());
+                int user_Id = _UserId;
+                string operation = "View";
+                string Operation_Type = "Sub Product Type";
+                int ID = int.Parse(row["Order_Type_ID"].ToString());
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeAbsId, _btnName, user_Id, ID, this);
+                SourceEntry.Show();
+                this.Enabled = false;
+            }
+        }
+        private void gridView_Abs_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.Column.Caption == "View")
+            {
+                System.Data.DataRow row = gridView_Abs.GetDataRow(gridView_Abs.FocusedRowHandle);
+                string _btnName = "Edit";
+                int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+                int _productId = int.Parse(row["ProductType_Id"].ToString());
+                string _subproductType = row["Order_Type_Abbreviation"].ToString();
+                int user_Id = _UserId;
+                string operation = "View";
+                int _subproductTypeid = 0;
+                string Operation_Type = "Sub Product Type Abbreviation";
+                int ID = int.Parse(row["OrderType_ABS_Id"].ToString());
+                Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeid, _btnName, user_Id, ID, this);
+                SourceEntry.Show();
+                this.Enabled = false;
+            }
+        }
         private void repositoryItemHyperLinkEdit_Click(object sender, EventArgs e)
         {
-            System.Data.DataRow row = gridView_Type.GetDataRow(gridView_Type.FocusedRowHandle);
-            string _btnName = "Edit";
-            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
-            int _productId = int.Parse(row["ProductType_Id"].ToString());
-            string _subproductType = row["Order_Type"].ToString();
-            int _subproductTypeAbsId = int.Parse(row["OrderType_ABS_Id"].ToString());
-            int user_Id = _UserId;
-            string operation = "View";
-            string Operation_Type = "Sub Product Type";
-            int ID = int.Parse(row["Order_Type_ID"].ToString());
-            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type,operation, _projectId, _productId, _subproductType, _subproductTypeAbsId,_btnName, user_Id,ID, this);
-            SourceEntry.Show();
         }
 
         private void repositoryItemHyperLinkEdit_Abs_Click(object sender, EventArgs e)
         {
-            System.Data.DataRow row = gridView_Abs.GetDataRow(gridView_Abs.FocusedRowHandle);
-            string _btnName = "Edit";
-            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
-            int _productId = int.Parse(row["ProductType_Id"].ToString());
-            string _subproductType = row["Order_Type_Abbreviation"].ToString();            
-            int user_Id = _UserId;
-            string operation = "View";
-            int _subproductTypeid=0;
-            string Operation_Type = "Sub Product Type Abbreviation";
-            int ID = int.Parse(row["OrderType_ABS_Id"].ToString());
-            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_Entry SourceEntry = new Sub_Product_Type_Entry(Operation_Type, operation, _projectId, _productId, _subproductType, _subproductTypeid, _btnName, user_Id,ID, this);
-            SourceEntry.Show();
         }
     }
 }

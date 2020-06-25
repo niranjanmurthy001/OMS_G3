@@ -11,14 +11,14 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+//        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing && (components != null))
+        //    {
+        //        components.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
         #region Windows Form Designer generated code
 
@@ -62,7 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency_Src)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency_Src)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
-            this.SuspendLayout();
+//            this.SuspendLayout();
             // 
             // defaultLookAndFeel1
             // 
@@ -124,7 +124,7 @@
             this.btn_Export.TabIndex = 2;
             this.btn_Export.Text = "Export";
             this.btn_Export.ToolTip = "Export";
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
+//            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
             // btn_Add_New
             // 
@@ -139,7 +139,7 @@
             this.btn_Add_New.TabIndex = 0;
             this.btn_Add_New.Text = "Add New";
             this.btn_Add_New.ToolTip = "Add New";
-            this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Click);
+//            this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Click);
             // 
             // btn_Delete_Multiple
             // 
@@ -154,7 +154,7 @@
             this.btn_Delete_Multiple.TabIndex = 1;
             this.btn_Delete_Multiple.Text = "Delete";
             this.btn_Delete_Multiple.ToolTip = "Delete ";
-            this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_Multiple_Click);
+//            this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_Multiple_Click);
             // 
             // panelControl1
             // 
@@ -220,8 +220,8 @@
             this.gridView_Efficiency_Src.OptionsSelection.MultiSelect = true;
             this.gridView_Efficiency_Src.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView_Efficiency_Src.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView_Efficiency_Src.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Efficiency_Src_CustomDrawRowIndicator);
-            this.gridView_Efficiency_Src.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_Efficiency_Src_SelectionChanged);
+//            this.gridView_Efficiency_Src.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Efficiency_Src_CustomDrawRowIndicator);
+//            this.gridView_Efficiency_Src.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_Efficiency_Src_SelectionChanged);
             // 
             // gridColumn1
             // 
@@ -315,20 +315,19 @@
             this.repositoryItemHyperLinkEdit1.AutoHeight = false;
             this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
             this.repositoryItemHyperLinkEdit1.NullText = "Edit";
-            this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
+//            this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
             // 
             // Efficiency_Order_SourceType_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 750);
-            this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(711, 726);
-            this.Name = "Efficiency_Order_SourceType_View";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Efficiency_Order_SourceType_View";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Efficiency_Order_SourceType_View_Load);
+//            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+//            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+//            this.Controls.Add(this.groupControl1);
+//            this.MinimumSize = new System.Drawing.Size(711, 726);
+//            this.Name = "Efficiency_Order_SourceType_View";
+//            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+//            this.Text = "Efficiency_Order_SourceType_View";
+//            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+//            this.Load += new System.EventHandler(this.Efficiency_Order_SourceType_View_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -340,7 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency_Src)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency_Src)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
-            this.ResumeLayout(false);
+//            this.ResumeLayout(false);
 
         }
 

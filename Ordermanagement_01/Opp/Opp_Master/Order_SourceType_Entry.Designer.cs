@@ -229,6 +229,7 @@
             this.Name = "Order_SourceType_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order_SourceType_Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Order_SourceType_Entry_FormClosed);
             this.Load += new System.EventHandler(this.Order_SourceType_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
