@@ -141,7 +141,7 @@
             this.btn_Export.Location = new System.Drawing.Point(556, 3);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(80, 40);
-            this.btn_Export.TabIndex = 4;
+            this.btn_Export.TabIndex = 2;
             this.btn_Export.Text = "Export";
             this.btn_Export.ToolTip = "Export";
             this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
@@ -156,7 +156,7 @@
             this.btn_Add_NewSource.Location = new System.Drawing.Point(470, 3);
             this.btn_Add_NewSource.Name = "btn_Add_NewSource";
             this.btn_Add_NewSource.Size = new System.Drawing.Size(80, 40);
-            this.btn_Add_NewSource.TabIndex = 3;
+            this.btn_Add_NewSource.TabIndex = 1;
             this.btn_Add_NewSource.Text = "Add New";
             this.btn_Add_NewSource.Click += new System.EventHandler(this.btn_Add_NewSource_Click);
             // 
@@ -170,7 +170,7 @@
             this.btn_Delete_MultipleSource.Location = new System.Drawing.Point(384, 3);
             this.btn_Delete_MultipleSource.Name = "btn_Delete_MultipleSource";
             this.btn_Delete_MultipleSource.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete_MultipleSource.TabIndex = 1;
+            this.btn_Delete_MultipleSource.TabIndex = 0;
             this.btn_Delete_MultipleSource.Text = "Delete";
             this.btn_Delete_MultipleSource.Click += new System.EventHandler(this.btn_Delete_MultipleSource_Click);
             // 
@@ -209,7 +209,7 @@
             this.gridColumn5,
             this.gridColumn6});
             this.gridViewSource.GridControl = this.grd_SourceType;
-            this.gridViewSource.IndicatorWidth = 30;
+            this.gridViewSource.IndicatorWidth = 50;
             this.gridViewSource.Name = "gridViewSource";
             this.gridViewSource.OptionsFind.AlwaysVisible = true;
             this.gridViewSource.OptionsSelection.CheckBoxSelectorColumnWidth = 38;
@@ -217,6 +217,7 @@
             this.gridViewSource.OptionsSelection.MultiSelect = true;
             this.gridViewSource.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewSource.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridViewSource.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewSource_RowCellClick);
             this.gridViewSource.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridViewSource_CustomDrawRowIndicator);
             this.gridViewSource.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewSource_SelectionChanged);
             // 
@@ -271,6 +272,7 @@
             this.gridColumn8.Caption = "Edit";
             this.gridColumn8.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 4;
             this.gridColumn8.Width = 47;
@@ -292,6 +294,7 @@
             this.gridColumn7.Caption = "Delete";
             this.gridColumn7.ColumnEdit = this.repositoryItemHyperLinkEdit2;
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 5;
             this.gridColumn7.Width = 50;

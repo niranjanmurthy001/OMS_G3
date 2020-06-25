@@ -32213,7 +32213,7 @@ namespace Ordermanagement_01
 
         private void Efficiecy_Source_Type_and_Project_Type_Click(object sender, EventArgs e)
         {
-            Opp.Opp_Master.Efficiency_Order_SourceType_View effview = new Opp.Opp_Master.Efficiency_Order_SourceType_View(Convert.ToInt32(User_Role_Id));
+            Opp.Opp_Efficiency.Efficiency_Order_Source_Type effview = new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(Convert.ToInt32(User_Role_Id));
             effview.Show();
         }
 

@@ -114,6 +114,7 @@
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Clear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Clear.Location = new System.Drawing.Point(298, 3);
             this.btn_Clear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Clear.Name = "btn_Clear";
@@ -129,6 +130,7 @@
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
             this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Save.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Save.Location = new System.Drawing.Point(210, 3);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Save.Name = "btn_Save";
@@ -163,7 +165,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Source_Type.Properties.NullText = "SELECT";
             this.ddl_Source_Type.Size = new System.Drawing.Size(207, 20);
-            this.ddl_Source_Type.TabIndex = 12;
+            this.ddl_Source_Type.TabIndex = 1;
             // 
             // ddl_ProjectType
             // 
@@ -173,7 +175,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "SELECT";
             this.ddl_ProjectType.Size = new System.Drawing.Size(207, 20);
-            this.ddl_ProjectType.TabIndex = 11;
+            this.ddl_ProjectType.TabIndex = 0;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
             // chk_All
@@ -182,7 +184,7 @@
             this.chk_All.Name = "chk_All";
             this.chk_All.Properties.Caption = "Check All";
             this.chk_All.Size = new System.Drawing.Size(75, 19);
-            this.chk_All.TabIndex = 10;
+            this.chk_All.TabIndex = 3;
             this.chk_All.CheckedChanged += new System.EventHandler(this.chk_All_CheckedChanged_1);
             // 
             // chk_County
@@ -191,7 +193,7 @@
             this.chk_County.Location = new System.Drawing.Point(128, 188);
             this.chk_County.Name = "chk_County";
             this.chk_County.Size = new System.Drawing.Size(207, 95);
-            this.chk_County.TabIndex = 9;
+            this.chk_County.TabIndex = 4;
             // 
             // ddl_State
             // 
@@ -201,7 +203,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_State.Properties.NullText = "SELECT";
             this.ddl_State.Size = new System.Drawing.Size(207, 20);
-            this.ddl_State.TabIndex = 8;
+            this.ddl_State.TabIndex = 2;
             this.ddl_State.EditValueChanged += new System.EventHandler(this.ddl_State_EditValueChanged_1);
             // 
             // labelControl4
@@ -269,6 +271,7 @@
             this.Name = "Efficiency_Order_Source_Type_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Order_Source_Type_Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Efficiency_Order_Source_Type_Entry_FormClosed);
             this.Load += new System.EventHandler(this.Efficiency_Order_Source_Type_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

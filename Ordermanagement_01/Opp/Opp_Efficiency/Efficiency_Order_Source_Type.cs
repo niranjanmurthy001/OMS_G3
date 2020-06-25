@@ -32,7 +32,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             BindGrid();
             btn_Delete_Multiple.Visible = false;
-            User_Id = User_Role;
+            User_Id = User_Role;           
         }
         public async void BindGrid()
         {
@@ -69,7 +69,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                //throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -92,11 +92,18 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         for (int i = 0; i < gridViewSelectedRows.Count; i++)
                         {
                             DataRow row = gridView_Efficiency_Src.GetDataRow(gridViewSelectedRows[i]);
-                            int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
+                            //int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
+                            int ProjectID = int.Parse(row["Project_Type_Id"].ToString());
+                            int SourceId = int.Parse(row["Employee_Source_id"].ToString());
+                            int StateId = int.Parse(row["State_ID"].ToString());
+                            int CountyId = int.Parse(row["County_ID"].ToString());
                             var dictionary = new Dictionary<string, object>()
                 {
                     { "@Trans", "DELETE" },
-                    { "@EmpEff_OrderSourceType_Id", Source_Id }
+                    { "@Project_Type_Id", ProjectID },
+                    { "@Employee_Source_id", SourceId },
+                    { "@State_ID", StateId },
+                    { "@County_ID", CountyId }
                 };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
@@ -119,18 +126,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        throw ex;
+                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
                         SplashScreenManager.CloseForm(false);
                     }
 
-                }
-                else if (show == DialogResult.No)
-                {
-
-                }
+                }              
             }
             else
             {
@@ -154,8 +157,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void btn_Add_New_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;             
             Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Order_Source_Type_Entry Efficiency = new Efficiency_Order_Source_Type_Entry(User_Role, this);
-            Efficiency.Show();
+            Efficiency.Show();         
         }
 
         private void gridView_Efficiency_Src_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)

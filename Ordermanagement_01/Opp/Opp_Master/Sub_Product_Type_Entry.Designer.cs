@@ -212,7 +212,7 @@
             this.ddl_Product_Type_Abs.Properties.NullValuePromptShowForEmptyValue = true;
             this.ddl_Product_Type_Abs.Properties.ShowNullValuePromptWhenFocused = true;
             this.ddl_Product_Type_Abs.Size = new System.Drawing.Size(201, 20);
-            this.ddl_Product_Type_Abs.TabIndex = 5;
+            this.ddl_Product_Type_Abs.TabIndex = 1;
             // 
             // labelControl7
             // 
@@ -231,7 +231,7 @@
             this.txt_Abs.Location = new System.Drawing.Point(159, 147);
             this.txt_Abs.Name = "txt_Abs";
             this.txt_Abs.Size = new System.Drawing.Size(201, 20);
-            this.txt_Abs.TabIndex = 3;
+            this.txt_Abs.TabIndex = 2;
             // 
             // ddl_ProjectType_Abs
             // 
@@ -332,7 +332,7 @@
             this.btn_Clear_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_Clear_Type.Name = "btn_Clear_Type";
             this.btn_Clear_Type.Size = new System.Drawing.Size(80, 40);
-            this.btn_Clear_Type.TabIndex = 2;
+            this.btn_Clear_Type.TabIndex = 1;
             this.btn_Clear_Type.Text = "Clear";
             this.btn_Clear_Type.Click += new System.EventHandler(this.btn_Clear_Type_Click);
             // 
@@ -367,11 +367,12 @@
             this.panelControl8.Name = "panelControl8";
             this.panelControl8.Size = new System.Drawing.Size(394, 348);
             this.panelControl8.TabIndex = 1;
+            this.panelControl8.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl8_Paint);
             // 
             // ddl_Product_Type
             // 
             this.ddl_Product_Type.EditValue = "<Null>";
-            this.ddl_Product_Type.Location = new System.Drawing.Point(157, 92);
+            this.ddl_Product_Type.Location = new System.Drawing.Point(161, 95);
             this.ddl_Product_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ddl_Product_Type.Name = "ddl_Product_Type";
             this.ddl_Product_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -388,7 +389,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(66, 92);
+            this.labelControl1.Location = new System.Drawing.Point(66, 95);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(84, 17);
             this.labelControl1.TabIndex = 5;
@@ -397,7 +398,7 @@
             // ddl_Type_Abs
             // 
             this.ddl_Type_Abs.EditValue = "<Null>";
-            this.ddl_Type_Abs.Location = new System.Drawing.Point(159, 208);
+            this.ddl_Type_Abs.Location = new System.Drawing.Point(159, 154);
             this.ddl_Type_Abs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ddl_Type_Abs.Name = "ddl_Type_Abs";
             this.ddl_Type_Abs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -406,19 +407,19 @@
             this.ddl_Type_Abs.Properties.NullValuePromptShowForEmptyValue = true;
             this.ddl_Type_Abs.Properties.ShowNullValuePromptWhenFocused = true;
             this.ddl_Type_Abs.Size = new System.Drawing.Size(203, 20);
-            this.ddl_Type_Abs.TabIndex = 4;
+            this.ddl_Type_Abs.TabIndex = 0;
             // 
             // txt_Type
             // 
-            this.txt_Type.Location = new System.Drawing.Point(159, 150);
+            this.txt_Type.Location = new System.Drawing.Point(159, 215);
             this.txt_Type.Name = "txt_Type";
             this.txt_Type.Size = new System.Drawing.Size(203, 20);
-            this.txt_Type.TabIndex = 3;
+            this.txt_Type.TabIndex = 1;
             // 
             // ddl_ProjectType_Type
             // 
             this.ddl_ProjectType_Type.EditValue = "<Null>";
-            this.ddl_ProjectType_Type.Location = new System.Drawing.Point(159, 41);
+            this.ddl_ProjectType_Type.Location = new System.Drawing.Point(161, 41);
             this.ddl_ProjectType_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ddl_ProjectType_Type.Name = "ddl_ProjectType_Type";
             this.ddl_ProjectType_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -436,7 +437,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(11, 208);
+            this.labelControl3.Location = new System.Drawing.Point(11, 154);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(136, 17);
             this.labelControl3.TabIndex = 2;
@@ -448,7 +449,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(37, 153);
+            this.labelControl2.Location = new System.Drawing.Point(37, 215);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(110, 17);
             this.labelControl2.TabIndex = 1;
@@ -479,6 +480,7 @@
             this.Name = "Sub_Product_Type_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sub_Product_Type_Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Sub_Product_Type_Entry_FormClosed);
             this.Load += new System.EventHandler(this.Sub_Product_Type_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pannelControl_Type)).EndInit();
             this.pannelControl_Type.ResumeLayout(false);

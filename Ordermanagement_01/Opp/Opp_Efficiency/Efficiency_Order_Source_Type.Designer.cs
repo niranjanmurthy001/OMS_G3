@@ -109,7 +109,7 @@
             this.btn_Export.Location = new System.Drawing.Point(705, 3);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(80, 40);
-            this.btn_Export.TabIndex = 4;
+            this.btn_Export.TabIndex = 1;
             this.btn_Export.Text = "Export";
             this.btn_Export.ToolTip = "Export";
             this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
@@ -124,7 +124,7 @@
             this.btn_Add_New.Location = new System.Drawing.Point(619, 3);
             this.btn_Add_New.Name = "btn_Add_New";
             this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
-            this.btn_Add_New.TabIndex = 3;
+            this.btn_Add_New.TabIndex = 0;
             this.btn_Add_New.Text = "Add New";
             this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Click);
             // 
@@ -138,7 +138,7 @@
             this.btn_Delete_Multiple.Location = new System.Drawing.Point(533, 3);
             this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
             this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete_Multiple.TabIndex = 1;
+            this.btn_Delete_Multiple.TabIndex = 2;
             this.btn_Delete_Multiple.Text = "Delete";
             this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_Multiple_Click);
             // 
