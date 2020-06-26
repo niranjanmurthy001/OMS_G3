@@ -1955,13 +1955,6 @@
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Copy.Designer.cs">
       <DependentUpon>Efficiency_Copy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_Entry.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_Entry.Designer.cs" />
-    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.Designer.cs" />
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.cs">
       <SubType>Form</SubType>
@@ -1974,6 +1967,18 @@
     </Compile>
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.Designer.cs">
       <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Efficiency\Efficiency_View.cs">
       <SubType>Form</SubType>
@@ -3939,6 +3944,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.resx">
       <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type.resx">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.resx">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_View.resx">
       <DependentUpon>Efficiency_View.cs</DependentUpon>

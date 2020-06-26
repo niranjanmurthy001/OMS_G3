@@ -32213,7 +32213,7 @@ namespace Ordermanagement_01
 
         private void Efficiecy_Source_Type_and_Project_Type_Click(object sender, EventArgs e)
         {
-            Opp.Opp_Master.Efficiency_Order_SourceType_View effview = new Opp.Opp_Master.Efficiency_Order_SourceType_View(Convert.ToInt32(User_Role_Id));
+            Opp.Opp_Efficiency.Efficiency_Order_Source_Type effview = new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(Convert.ToInt32(User_Role_Id));
             effview.Show();
         }
 
@@ -32227,6 +32227,12 @@ namespace Ordermanagement_01
         {
             Ordermanagement_01.New_Dashboard.Orders.OrderEntry orderentry = new New_Dashboard.Orders.OrderEntry();
             orderentry.Show();
+        }
+
+        private void sub_Producttype_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_View sub = new Opp.Opp_Master.Sub_Product_Type_View(userid);
+            sub.Show();
         }
 
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)

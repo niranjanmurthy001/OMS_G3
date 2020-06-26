@@ -181,10 +181,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 dt1.Rows.InsertAt(dr, 0);
                             }
                             ddl_Order_task.Properties.DataSource = dt1;
-                            ddl_Order_task.Properties.DisplayMember = "Order_Status";
-                            ddl_Order_task.Properties.ValueMember = "Order_Status_ID";
+                            ddl_Order_task.Properties.DisplayMember = "Progress_Status";
+                            ddl_Order_task.Properties.ValueMember = "Order_Progress_Id";
                             DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Status");
+                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Progress_Status");
                             ddl_Order_task.Properties.Columns.Add(col);
 
                         }
@@ -277,8 +277,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 for (int i = 0; i < dt.Rows.Count; i++)
                                 {
                                     chk_OrderSourceType.DataSource = dt;
-                                    chk_OrderSourceType.DisplayMember = "Employee_source";
-                                    chk_OrderSourceType.ValueMember = "Employee_Source_id";
+                                    chk_OrderSourceType.DisplayMember = "Order_Source_Type_Name";
+                                    chk_OrderSourceType.ValueMember = "Order_Source_Type_ID";
                                 }
                             }
                         }
@@ -332,13 +332,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
                                 textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                                textEdit.Mask.EditMask = "[1-9]+[0-9]";
+                                textEdit.Mask.EditMask = "[0-9]+[1-9]";
                                 textEdit.Mask.UseMaskAsDisplayFormat = true;
                                 grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
                                 gridView1.Columns[i].ColumnEdit = textEdit;
 
                                 gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
-
+                                gridView1.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
+                                gridView1.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
                                 gridView1.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                                 gridView1.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
 
@@ -459,7 +460,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         DataRowView r1 = chk_Ordertype.GetItem(chk_Ordertype.SelectedIndex) as DataRowView;
                                         _ordertype = Convert.ToInt32(r1["OrderType_ABS_Id"]);
                                         DataRowView r2 = chk_OrderSourceType.GetItem(chk_OrderSourceType.SelectedIndex) as DataRowView;
-                                        _ordersourcetype = Convert.ToInt32(r2["Employee_Source_id"]);
+                                        _ordersourcetype = Convert.ToInt32(r2["Order_Source_Type_ID"]);
                                         if (dtmulti.Columns.Count <= 0)
                                         {
                                             dtmulti.Columns.AddRange(new DataColumn[10]
@@ -485,8 +486,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                             foreach (object itemsChecked in chk_OrderSourceType.CheckedItems)
                                             {
                                                 DataRowView castedItem = itemsChecked as DataRowView;
-                                                string Order_sourcetype = castedItem["Employee_source"].ToString();
-                                                int _Order_sourcetype = Convert.ToInt32(castedItem["Employee_Source_id"]);
+                                                string Order_sourcetype = castedItem["Order_Source_Type_Name"].ToString();
+                                                int _Order_sourcetype = Convert.ToInt32(castedItem["Order_Source_Type_ID"]);
                                                 int projecttype = _ProjectId;
                                                 int client = _ClientName;
                                                 int ordertask = _ordertask;

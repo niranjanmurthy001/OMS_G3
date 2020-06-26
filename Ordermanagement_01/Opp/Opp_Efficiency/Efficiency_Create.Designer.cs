@@ -162,7 +162,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(12, 162);
+            this.labelControl5.Location = new System.Drawing.Point(10, 142);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(118, 17);
             this.labelControl5.TabIndex = 23;
@@ -174,7 +174,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(16, 46);
+            this.labelControl4.Location = new System.Drawing.Point(54, 37);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(74, 17);
             this.labelControl4.TabIndex = 22;
@@ -243,7 +243,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(14, 165);
+            this.labelControl3.Location = new System.Drawing.Point(19, 165);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(72, 17);
             this.labelControl3.TabIndex = 14;
@@ -255,7 +255,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(14, 104);
+            this.labelControl2.Location = new System.Drawing.Point(13, 104);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(78, 17);
             this.labelControl2.TabIndex = 13;
@@ -267,7 +267,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(14, 44);
+            this.labelControl1.Location = new System.Drawing.Point(12, 44);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 12;
@@ -341,7 +341,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 568);
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(750, 606);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(750, 606);
             this.Name = "Efficiency_Create";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

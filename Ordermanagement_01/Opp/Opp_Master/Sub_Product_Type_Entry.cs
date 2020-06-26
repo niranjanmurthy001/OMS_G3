@@ -41,7 +41,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
         private void Sub_Product_Type_Entry_Load(object sender, EventArgs e)
-        {  // userid = this.Mainform._UserId; 
+        { 
             btn_Save_Type.Text = "Save";
             ClearType();
             ClearAbs();
@@ -72,8 +72,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddl_Product_Type_Abs.EditValue = ProductId;
                     txt_Abs.Text = SubproductType;
                 }
-            }           
-           
+            }                      
         }
         public async void BindProjectType()
         {
@@ -128,7 +127,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -228,7 +227,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -297,7 +296,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -338,6 +337,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show(" Inserted Successfully ");
                                     this.Mainform.BindGridType();
+                                    this.Mainform.Enabled = true;
                                     ClearType();
                                     this.Close();
                                 }
@@ -374,6 +374,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Edited Successfully ");
                                     this.Mainform.BindGridType();
+                                    this.Mainform.Enabled = true;
                                     ClearType();
                                     this.Close();
                                 }
@@ -429,6 +430,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show(" Inserted Successfully ");
                                     this.Mainform.BindGridAbs();
+                                    this.Mainform.Enabled = true;    
                                     ClearAbs();
                                     this.Close();
                                 }
@@ -462,6 +464,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Edited Successfully ");
                                     this.Mainform.BindGridAbs();
+                                    this.Mainform.Enabled = true;
                                     ClearType();
                                     this.Close();
                                 }
@@ -483,7 +486,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void ddl_ProjectType_Abs_EditValueChanged(object sender, EventArgs e)
         {
-            if (ddl_Product_Type_Abs.ItemIndex > 0)
+            if (ddl_ProjectType_Abs.ItemIndex > 0)
             {
                 if (Operation_Type == "Sub Product Type Abbreviation")
                 {
@@ -494,6 +497,16 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+        private void panelControl8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Sub_Product_Type_Entry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
+
         private void btn_Clear_Abs_Click(object sender, EventArgs e)
         {
             ClearAbs();
@@ -501,16 +514,22 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private bool ValidateType()
         {
-            if(ddl_ProjectType_Type.ItemIndex==0)
+            if (Convert.ToInt32(ddl_ProjectType_Type.EditValue) == 0)
             {
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Type.Focus();
                 return false;
             }
-            if (ddl_Product_Type.ItemIndex == 0)
+            if (Convert.ToInt32(ddl_Product_Type.EditValue) == 0)
             {
                 XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type.Focus();
+                return false;
+            }
+            if (Convert.ToInt32(ddl_Type_Abs.EditValue) == 0)
+            {
+                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ddl_Type_Abs.Focus();
                 return false;
             }
             if (txt_Type.Text =="")
@@ -518,25 +537,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Type.Focus();
                 return false;
-            }
-            if (ddl_Type_Abs.ItemIndex == 0)
-            {
-                XtraMessageBox.Show("Please Select Sub Product Type Abs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ddl_Type_Abs.Focus();
-                return false;
-            }
+            }          
             return true;
         }
         private bool ValidateAbs()
         {
 
-            if (ddl_ProjectType_Abs.ItemIndex==0)
+            if (Convert.ToInt32(ddl_ProjectType_Abs.EditValue) == 0)
             {
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_ProjectType_Abs.Focus();
                 return false;
             }
-            if (ddl_Product_Type_Abs.ItemIndex == 0)
+            if (Convert.ToInt32(ddl_Product_Type_Abs.EditValue) == 0)
             {
                 XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ddl_Product_Type_Abs.Focus();

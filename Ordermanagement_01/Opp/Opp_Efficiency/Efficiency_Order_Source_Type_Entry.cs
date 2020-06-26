@@ -16,6 +16,7 @@ using Ordermanagement_01.Models;
 using System.Net;
 using DevExpress.XtraLayout.Helpers;
 using DevExpress.XtraBars.Alerter;
+using System.Collections;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -37,14 +38,16 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             InitializeComponent();
             Mainfrom = CallingFrom as Efficiency_Order_Source_Type;          
-            User_Id = User_Role;
+            User_Id = User_Role;         
         }
 
         private void Efficiency_Order_Source_Type_Entry_Load(object sender, EventArgs e)
-        {         
+        {
+           // Clear();
+            ddl_Source_Type.EditValue = null;    
             BindProjectType();
             BindState();
-            btn_Save.Text = "Save";
+            btn_Save.Text = "Save";          
         }
         public async void BindProjectType()
         {
@@ -89,20 +92,18 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 SplashScreenManager.CloseForm(false);
             }
-        }
-     
-
+        }     
         private async void BindSourceType(int Project_Id)
         {
             try
             {
-                ddl_Source_Type.Properties.Columns.Clear();
+               ddl_Source_Type.Properties.Columns.Clear();
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
@@ -146,7 +147,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -196,15 +197,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 SplashScreenManager.CloseForm(false);
             }
-        }
-
-      
+        }     
         private async void BindCounty(int State_Id)
         {
             try
@@ -213,7 +212,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SELECT_COUNTY"},
-                    {"@State_ID",State_Id }
+                    {"@State_ID",State_Id },
+                    {"@Project_Type_Id",ddl_ProjectType.EditValue },
+                    {"@Order_Source_Type_ID",ddl_Source_Type.EditValue }
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
@@ -234,7 +235,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     chk_County.DisplayMember = "County";
                                     chk_County.ValueMember = "County_ID";
                                 }
-                                StateExist();
+                               // StateExist();
                             }
                         }
                     }
@@ -243,79 +244,79 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void StateExist()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                if (ddl_State.EditValue != null)
-                {
-                    var dictionary = new Dictionary<string, object>()
-                {
-                    { "@Trans", "StateExist" },
-                    { "@State_ID", ddl_State.EditValue },
-                    { "@Project_Type_Id", ddl_ProjectType.EditValue },
-                    { "@Order_Source_Type_ID", ddl_Source_Type.EditValue}
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/CheckState", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (dt1.Rows.Count > 0)
-                                {
-                                    foreach (DataRow row in dt1.Rows)
-                                    {
-                                        int county_Id = Convert.ToInt32(row.ItemArray[0]);
-                                        chk_County.SelectedValue = county_Id;
-                                        int _task = chk_County.SelectedIndex;
-                                        chk_County.SetItemChecked(_task, true);
-                                     //   btn_Save.Text = "Update";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                throw ex;
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
-        }
+        //private async void StateExist()
+        //{
+        //    DataTable dt = new DataTable();
+        //    try
+        //    {
+        //        if (ddl_State.EditValue != null)
+        //        {
+        //            var dictionary = new Dictionary<string, object>()
+        //        {
+        //            { "@Trans", "StateExist" },
+        //            { "@State_ID", ddl_State.EditValue },
+        //            { "@Project_Type_Id", ddl_ProjectType.EditValue },
+        //            { "@Order_Source_Type_ID", ddl_Source_Type.EditValue}
+        //        };
+        //            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+        //            using (var httpClient = new HttpClient())
+        //            {
+        //                var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/CheckState", data);
+        //                if (response.IsSuccessStatusCode)
+        //                {
+        //                    if (response.StatusCode == HttpStatusCode.OK)
+        //                    {
+        //                        var result = await response.Content.ReadAsStringAsync();
+        //                        DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+        //                        if (dt1.Rows.Count > 0)
+        //                        {
+        //                            foreach (DataRow row in dt1.Rows)
+        //                            {
+        //                                int county_Id = Convert.ToInt32(row.ItemArray[0]);
+        //                                chk_County.SelectedValue = county_Id;
+        //                                int _task = chk_County.SelectedIndex;
+        //                                chk_County.SetItemChecked(_task, true);
+        //                              btn_Save.Text = "Update";
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //    }
+        //}
      
         private bool Validate()
         {
-            if (ddl_ProjectType.EditValue == null)
+            if (Convert.ToInt32(ddl_ProjectType.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (ddl_Source_Type.EditValue == null)
+            if (Convert.ToInt32(ddl_Source_Type.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (ddl_State.EditValue == null)
+            if (Convert.ToInt32(ddl_State.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select State", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -389,7 +390,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 XtraMessageBox.Show("Submitted Sucessfully", "Success", MessageBoxButtons.OK);
                                 Clear();
                                 this.Mainfrom.BindGrid();
-                                this.Close();
+                                this.Mainfrom.Enabled = true;
+                                this.Close();                                                          
                             }
                         }
                     }
@@ -397,7 +399,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -431,8 +433,23 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         int _ProjectValue = ProjectValue;
                         int _SourceValue = SourceValue;
                         int _StateId = StateId;
+                      //  int _status = 1;
                         dtupdate.Rows.Add(_ProjectValue, _SourceValue, _StateId, _CountyId, User_Id, DateTime.Now, "True");
                     }
+                    for (int i = 0; i < chk_County.ItemCount; i++)
+                    {
+                        if (chk_County.GetItemChecked(i) == false)
+                        {
+                            //  DataRowView castedItem = i as DataRowView;
+                            int _CountyId = Convert.ToInt32(chk_County.GetItemValue(i));
+                            int _ProjectValue = ProjectValue;
+                            int _SourceValue = SourceValue;
+                            int _StateId = StateId;
+                            //int status = 0;
+                            dtupdate.Rows.Add(_ProjectValue, _SourceValue, _StateId, _CountyId, User_Id, DateTime.Now, "False");
+                        }
+                    }
+
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
                     {
@@ -446,7 +463,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 XtraMessageBox.Show("Updated Successfully");
                                 Clear();
                                 this.Mainfrom.BindGrid();
-                                this.Close();
+                                this.Mainfrom.Enabled = true;
+                                this.Close();                                                  
                             }
                         }
                     }
@@ -454,7 +472,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -474,7 +492,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             if (ddl_State.ItemIndex > 0)
             {
                 State_Id = Convert.ToInt32(ddl_State.EditValue);
-                BindCounty(State_Id);
+                chk_County.DataSource = null;
+                BindCounty(State_Id);               
             }
         }
 
@@ -496,8 +515,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             if (ddl_ProjectType.ItemIndex > 0)
             {
                 Project_Id = Convert.ToInt32(ddl_ProjectType.EditValue);
-                BindSourceType(Project_Id);
+                ddl_Source_Type.EditValue = null;
+                BindSourceType(Project_Id);               
             }
+        }
+
+        private void Efficiency_Order_Source_Type_Entry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Mainfrom.Enabled = true;
         }
     }
 }

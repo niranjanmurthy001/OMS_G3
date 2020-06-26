@@ -81,7 +81,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                throw ex;
+                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -89,11 +89,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-      
-      
+    
         private void btn_Add_NewSource_Click(object sender, EventArgs e)
         {
             Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry OrderSourceEntry = new Order_SourceType_Entry(Operation_Type,_ProjectId, _ProductId, _SourceType, _BtnName, User_Id,this);
+            this.Enabled = false;
             OrderSourceEntry.Show();
         }
 
@@ -111,11 +111,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         for (int i = 0; i < gridViewSelectedRows.Count; i++)
                         {
                             DataRow row = gridViewSource.GetDataRow(gridViewSelectedRows[i]);
-                            int Source_Id = int.Parse(row["Employee_Source_id"].ToString());
+                            int Pt_ID = int.Parse(row["Project_Type_Id"].ToString());
+                            int Pd_ID = int.Parse(row["ProductType_Id"].ToString());
+                            string Src_Type = row["Employee_source"].ToString();
                             var dictionary = new Dictionary<string, object>()
                 {
                     { "@Trans", "DELETE" },
-                    { "@Employee_Source_id", Source_Id }
+                    { "@Project_Type_Id", Pt_ID },
+                     { "@ProductType_Id", Pd_ID },
+                      { "@Employee_source", Src_Type }
                 };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
@@ -137,18 +141,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        throw ex;
+                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
                         SplashScreenManager.CloseForm(false);
                     }
 
-                }
-                else if (show == DialogResult.No)
-                {
-
-                }
+                }           
             }
             else
             {
@@ -168,64 +168,70 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 btn_Delete_MultipleSource.Visible = false;
             }
         }
-
-        private async void repositoryItemHyperLinkEdit2_Click(object sender, EventArgs e)
+        private async void gridViewSource_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (show == DialogResult.Yes)
+            if(e.Column.Caption == "Edit")
             {
-                try
+                System.Data.DataRow row = gridViewSource.GetDataRow(gridViewSource.FocusedRowHandle);
+                string _btnName = "Edit";
+                int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+                int _productId = int.Parse(row["ProductType_Id"].ToString());
+                string _sourceType = row["Employee_source"].ToString();
+                int user_Id = User_Id;
+                string operation_Type = "View";             
+                Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry SourceEntry = new Order_SourceType_Entry(operation_Type, _projectId, _productId, _sourceType, _btnName, user_Id, this);
+                this.Enabled = false;
+                SourceEntry.Show();              
+            }
+            else if (e.Column.Caption == "Delete")
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
                 {
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    System.Data.DataRow row = gridViewSource.GetDataRow(gridViewSource.FocusedRowHandle);
-                    int Source_Id = int.Parse(row["Employee_Source_id"].ToString());
-                    var dictionary = new Dictionary<string, object>()
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        System.Data.DataRow row = gridViewSource.GetDataRow(gridViewSource.FocusedRowHandle);                       
+                        int Pt_ID = int.Parse(row["Project_Type_Id"].ToString());
+                        int Pd_ID = int.Parse(row["ProductType_Id"].ToString());
+                        string Src_Type = row["Employee_source"].ToString();
+                        var dictionary = new Dictionary<string, object>()
                 {
                     { "@Trans", "DELETE" },
-                    { "@Employee_Source_id", Source_Id }
+                    { "@Project_Type_Id", Pt_ID },
+                     { "@ProductType_Id", Pd_ID },
+                      { "@Employee_source", Src_Type }
                 };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/OrderSourceType/Delete", data);
-                        if (response.IsSuccessStatusCode)
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/OrderSourceType/Delete", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Record Deleted Successfully");
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                }
+                                BindSourceTypes();
                             }
-                            BindSourceTypes();
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    throw ex;
-                }
-            }           
+            }          
+        }
+        private async void repositoryItemHyperLinkEdit2_Click(object sender, EventArgs e)
+        {                    
         }
 
         private async void repositoryItemHyperLinkEdit1_Click(object sender, EventArgs e)
-        {
-            System.Data.DataRow row = gridViewSource.GetDataRow(gridViewSource.FocusedRowHandle);
-            string _btnName = "Edit";
-            int _projectId = int.Parse(row["Project_Type_Id"].ToString());
-            int _productId = int.Parse(row["ProductType_Id"].ToString());
-            string _sourceType = row["Employee_source"].ToString();
-            int user_Id = User_Id;
-            string operation_Type = "View";
-            //GridView view = grd_SourceType.MainView as GridView;
-            //var index = view.GetDataRow(view.GetSelectedRows()[0]);          
-            //_BtnName = "Edit";
-            //_ProjectId = Convert.ToInt32(index.ItemArray[1]);
-            //_ProductId = Convert.ToInt32(index.ItemArray[2]);
-            //_SourceType = index.ItemArray[3].ToString();
-            Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry SourceEntry = new Order_SourceType_Entry(operation_Type, _projectId, _productId, _sourceType, _btnName, user_Id, this);
-            SourceEntry.Show();
-
+        {         
         }
 
         private void btn_Export_Click(object sender, EventArgs e)
@@ -240,5 +246,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             grd_SourceType.ExportToXlsx(fileName);
             System.Diagnostics.Process.Start(fileName);
         }
+
+      
     }
 }
