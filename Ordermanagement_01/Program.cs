@@ -32,15 +32,16 @@ namespace Ordermanagement_01
             //Application.Run(new Masters.Error_Field());
             //Application.Run(new Opp.Opp_Master.Error_Setting(1, 1));
             // Application.Run(new Opp.Opp_Master.TEst1());
-           //Application.Run(new Opp.Opp_Master.Error_Settings());
+            //Application.Run(new Opp.Opp_Master.Error_Settings());
             //Application.Run(new Opp.Opp_Master.ErrorTabSetting());
             // Application.Run(new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise());
-           //Application.Run(new Opp.Opp_Master.ImportErrorInfo("Error Field",));
-         //Application.Run(new Opp.Opp_Efficiency.Efficiency_View(5));
-             Application.Run(new Opp.Opp_Master.Sub_Product_Type_View(3));
-          // Application.Run(new Opp.Opp_Master.Order_SourceType_View(3));
+            //Application.Run(new Opp.Opp_Master.ImportErrorInfo("Error Field",));
+            //Application.Run(new Opp.Opp_Efficiency.Efficiency_View(5));
+            //  Application.Run(new Opp.Opp_Master.Sub_Product_Type_View(3));
+            // Application.Run(new Opp.Opp_Master.Order_SourceType_View(3));
             //Application.Run(new Opp.Opp_Master.Error_Settings());
-        // Application.Run(new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(1));
+             Application.Run(new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(1));
+          // Application.Run(new Opp.Opp_Efficiency.Efficiency_Source_Type(1));
         }
 
     }

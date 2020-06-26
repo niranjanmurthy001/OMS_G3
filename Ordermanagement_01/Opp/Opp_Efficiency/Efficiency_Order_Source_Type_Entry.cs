@@ -212,7 +212,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SELECT_COUNTY"},
-                    {"@State_ID",State_Id }
+                    {"@State_ID",State_Id },
+                    {"@Project_Type_Id",ddl_ProjectType.EditValue },
+                    {"@Order_Source_Type_ID",ddl_Source_Type.EditValue }
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
@@ -233,7 +235,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     chk_County.DisplayMember = "County";
                                     chk_County.ValueMember = "County_ID";
                                 }
-                                StateExist();
+                               // StateExist();
                             }
                         }
                     }
@@ -249,56 +251,56 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void StateExist()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                if (ddl_State.EditValue != null)
-                {
-                    var dictionary = new Dictionary<string, object>()
-                {
-                    { "@Trans", "StateExist" },
-                    { "@State_ID", ddl_State.EditValue },
-                    { "@Project_Type_Id", ddl_ProjectType.EditValue },
-                    { "@Order_Source_Type_ID", ddl_Source_Type.EditValue}
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/CheckState", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (dt1.Rows.Count > 0)
-                                {
-                                    foreach (DataRow row in dt1.Rows)
-                                    {
-                                        int county_Id = Convert.ToInt32(row.ItemArray[0]);
-                                        chk_County.SelectedValue = county_Id;
-                                        int _task = chk_County.SelectedIndex;
-                                        chk_County.SetItemChecked(_task, true);
-                                      btn_Save.Text = "Update";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
-        }
+        //private async void StateExist()
+        //{
+        //    DataTable dt = new DataTable();
+        //    try
+        //    {
+        //        if (ddl_State.EditValue != null)
+        //        {
+        //            var dictionary = new Dictionary<string, object>()
+        //        {
+        //            { "@Trans", "StateExist" },
+        //            { "@State_ID", ddl_State.EditValue },
+        //            { "@Project_Type_Id", ddl_ProjectType.EditValue },
+        //            { "@Order_Source_Type_ID", ddl_Source_Type.EditValue}
+        //        };
+        //            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+        //            using (var httpClient = new HttpClient())
+        //            {
+        //                var response = await httpClient.PostAsync(Base_Url.Url + "/EfficiencyOrderSourceType/CheckState", data);
+        //                if (response.IsSuccessStatusCode)
+        //                {
+        //                    if (response.StatusCode == HttpStatusCode.OK)
+        //                    {
+        //                        var result = await response.Content.ReadAsStringAsync();
+        //                        DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+        //                        if (dt1.Rows.Count > 0)
+        //                        {
+        //                            foreach (DataRow row in dt1.Rows)
+        //                            {
+        //                                int county_Id = Convert.ToInt32(row.ItemArray[0]);
+        //                                chk_County.SelectedValue = county_Id;
+        //                                int _task = chk_County.SelectedIndex;
+        //                                chk_County.SetItemChecked(_task, true);
+        //                              btn_Save.Text = "Update";
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    finally
+        //    {
+        //        SplashScreenManager.CloseForm(false);
+        //    }
+        //}
      
         private bool Validate()
         {
