@@ -253,10 +253,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-            else if (show == DialogResult.No)
-            {
-                this.Close();
-            }
+           
         }
 
         private void repositoryItemHyperLinkEdit2_Click_1(object sender, EventArgs e)
@@ -1323,7 +1320,9 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 {
                     var dictionary = new Dictionary<string, object>
                 {
-                    {"@Trans","SELECT_CLIENT" }
+                    {"@Trans","SELECT_CLIENT" },
+                    //{"@To_Email_Id",lookupedit_Client_ToEmail.EditValue },
+                    //{"@From_Email_Id",lookupedit_Client_FromId.EditValue }
                 };
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
@@ -1371,6 +1370,87 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                         checkedboxlist_Client.DataSource = dt;
                                         checkedboxlist_Client.DisplayMember = "Client_Name";
                                         checkedboxlist_Client.ValueMember = "Client_Id";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        private async void BindAllClient(int ClientID)
+        {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (User_Role == "2")
+                {
+                    var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_ALL_CLIENT" },                  
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindAllClient", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt != null && dt.Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+                                        checkedboxlist_Client.DataSource = dt;
+                                        checkedboxlist_Client.DisplayMember = "Client_Number";
+                                        checkedboxlist_Client.ValueMember = "Client_Id";
+                                        checkedboxlist_Client.SelectedValue = ClientID;
+                                        _Client = checkedboxlist_Client.SelectedIndex;
+                                        checkedboxlist_Client.SetItemChecked(_Client, true);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (User_Role == "1")
+                {
+                    var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_ALL_CLIENT" }
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ClarificationSetting/BindAllClient", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt != null && dt.Rows.Count > 0)
+                                {
+                                    for (int i = 0; i < dt.Rows.Count; i++)
+                                    {
+                                        checkedboxlist_Client.DataSource = dt;
+                                        checkedboxlist_Client.DisplayMember = "Client_Name";
+                                        checkedboxlist_Client.ValueMember = "Client_Id";
+                                        checkedboxlist_Client.SelectedValue = ClientID;
+                                        _Client = checkedboxlist_Client.SelectedIndex;
+                                        checkedboxlist_Client.SetItemChecked(_Client, true);
                                     }
                                 }
                             }
@@ -1472,10 +1552,10 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
 
             checkedboxlist_Client.UnCheckAll();
-
             lookupedit_Client_FromId.EditValue = null;
             lookupedit_Client_ToEmail.EditValue = null;
             btn_ClientEmailSave.Text = "Save";
+            BindClient();
 
 
         }
@@ -1642,19 +1722,10 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                                 {
                                     lookupedit_Client_FromId.EditValue = dt.Rows[0]["From_Email_Id"];
                                     lookupedit_Client_ToEmail.EditValue = dt.Rows[0]["To_Email_Id"];
-
-                                    // checkedboxlist_Client.SetItemChecked(1, true);
-
-                                    //for (int i = 0; i < checkedboxlist_Client.ItemCount; i++)
-                                    //{
-                                    //if (int.Parse(checkedboxlist_Client.Items[i].Value.ToString()) == ClientID)
-                                    //{
-                                    //    checkedboxlist_Client.SetItemChecked(i, true);
-                                    //}
-                                    //}                                   
-                                        checkedboxlist_Client.SelectedValue = ClientID;
-                                        _Client = checkedboxlist_Client.SelectedIndex;
-                                        checkedboxlist_Client.SetItemChecked(_Client, true);
+                                    BindAllClient(ClientID);                               
+                                    //checkedboxlist_Client.SelectedValue = ClientID;
+                                    //    _Client = checkedboxlist_Client.SelectedIndex;
+                                    //    checkedboxlist_Client.SetItemChecked(_Client, true);
 
                                 }
                             }
@@ -1701,7 +1772,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             {
 
                 string message = "Do you want to delete?";
-                string title = "Close Window";
+                string title = "Delete Record";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult show = XtraMessageBox.Show(message, title, buttons);
                 if (show == DialogResult.Yes)
@@ -1748,10 +1819,18 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         throw ex;
                     }
                 }
-                else if (show == DialogResult.No)
-                {
-                    this.Close();
-                }
+             
+            }
+        }
+
+        private void checkedboxlist_Client_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            if (e.State != CheckState.Checked) return;
+            CheckedListBoxControl lb = sender as CheckedListBoxControl;
+            for (int i = 0; i < lb.ItemCount; i++)
+            {
+                if (i != e.Index)
+                    lb.SetItemChecked(i, false);
             }
         }
     }
