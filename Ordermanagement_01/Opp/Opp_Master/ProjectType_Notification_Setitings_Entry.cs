@@ -39,12 +39,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void ProjectType_Notification_Setitings_Entry_Load(object sender, EventArgs e)
         {
             BindProjectType();
+            
             if (Operation_Type == "Update")
             {
                 ddlProjectType.EditValue = ProjectTypeId;
                 btnSave.Text = Editbtn_name;
                 txtMessage.Text = ViewMsgtext;
             }
+            else
+            Clear();
         }
         private async void BindProjectType()
         {
@@ -143,10 +146,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Message Inserted Successfully");
+                                XtraMessageBox.Show("Inserted Successfully");
                                 this.mainform.BindGrid();
                                 Clear();
                                 this.Close();
+                                this.mainform.Enabled = true;
 
                             }
                         }
@@ -185,12 +189,15 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Message Updated Successfully");
-                                this.mainform.BindGrid();
                                 Clear();
+                                XtraMessageBox.Show("Updated Successfully");
+                                this.mainform.BindGrid();
+                               
                                 Upload_Id = 0;
                                 btnSave.Text = "Save";
+                                Operation_Type = "Save";
                                 this.Close();
+                                this.mainform.Enabled = true;
                             }
                         }
 
@@ -223,6 +230,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void ProjectType_Notification_Setitings_Entry_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.mainform.Enabled = true;
         }
     }
 }

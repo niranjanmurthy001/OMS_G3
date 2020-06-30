@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,7 +39,7 @@
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,7 +58,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(647, 330);
+            this.groupControl1.Size = new System.Drawing.Size(563, 330);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Notification Entry";
             // 
@@ -75,7 +74,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.69055F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.30945F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(643, 307);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(559, 307);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -84,7 +83,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(450, 262);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(366, 262);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(190, 42);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -127,7 +126,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(637, 253);
+            this.panelControl1.Size = new System.Drawing.Size(553, 253);
             this.panelControl1.TabIndex = 1;
             // 
             // labelControl3
@@ -136,7 +135,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(196, 5);
+            this.labelControl3.Location = new System.Drawing.Point(141, 5);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(304, 30);
             this.labelControl3.TabIndex = 4;
@@ -146,7 +145,7 @@
             // 
             this.txtMessage.Location = new System.Drawing.Point(116, 102);
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(517, 127);
+            this.txtMessage.Size = new System.Drawing.Size(401, 127);
             this.txtMessage.TabIndex = 3;
             // 
             // ddlProjectType
@@ -187,12 +186,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 330);
+            this.ClientSize = new System.Drawing.Size(563, 330);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(663, 368);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(579, 368);
             this.Name = "ProjectType_Notification_Setitings_Entry";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjectType_Notification_Setitings_Entry";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectType_Notification_Setitings_Entry_FormClosing);
             this.Load += new System.EventHandler(this.ProjectType_Notification_Setitings_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

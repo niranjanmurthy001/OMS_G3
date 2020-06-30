@@ -40,6 +40,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
+            OperType = "Insert";
             ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType,Id,ProjectId, MessageEditText,User_Id, Btn_Name, this);
             ns.Show();
         }
@@ -72,10 +74,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 gridNotification.DataSource = _dt;
                                 //gridView1.BestFitColumns();
-                                this.gridColumn1.Width = 20;
-                                this.gridColumn2.Width = 100;
-                                this.gridColumn4.Width = 15;
-                                this.gridColumn5.Width =15;
+                                this.gridColumn1.Width = 15;
+                                this.gridColumn2.Width = 160;
+                                this.gridColumn4.Width = 5;
+                                this.gridColumn5.Width =5;
 
                             }
                             else
@@ -102,6 +104,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void LinkEditView_Click(object sender, EventArgs e)
         {
+
             System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
             ProjectId = int.Parse(row["Project_Type_Id"].ToString());
             Id = int.Parse(row["Gen_Update_ID"].ToString());
@@ -109,7 +112,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             
             Btn_Name = "Edit";
             OperType = "Update";
-
+            this.Enabled = false;
             ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType,Id,ProjectId, MessageEditText, User_Id, Btn_Name, this);
             ns.Show();
         }
