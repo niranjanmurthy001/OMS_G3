@@ -171,5 +171,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             Grd_Alert.ExportToXlsx(fileName);
             System.Diagnostics.Process.Start(fileName);
         }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
     }
 }
