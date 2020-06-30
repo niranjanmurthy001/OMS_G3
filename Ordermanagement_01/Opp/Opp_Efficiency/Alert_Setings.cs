@@ -36,6 +36,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void Alert_Setings_Load(object sender, EventArgs e)
         {
             BindUserwiseAlertType();
+            btn_Delete.Visible = false;
         }
         public async void BindUserwiseAlertType()
         {
