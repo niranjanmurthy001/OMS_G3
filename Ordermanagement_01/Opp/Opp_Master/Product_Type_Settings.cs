@@ -138,12 +138,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
-                XtraMessageBox.Show("Please Select ProjectType");
+                XtraMessageBox.Show("Please Select ProjectType","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
             if (txtProductType.Text == "")
             {
-                XtraMessageBox.Show("Please Enter ProductType Value");
+                XtraMessageBox.Show("Please Enter ProductType Value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -238,7 +238,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 catch (Exception ex)
                 {
-                    throw ex;
+                    //throw ex;
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Something Went Wrong");
                 }
                 finally
                 {

@@ -18,7 +18,7 @@ namespace Ordermanagement_01
             //Application.Run(new New_Dashboard.Settings.Process_Settings());
             //Application.Run(new New_Dashboard.Settings.EmailSetting());
             // Application.Run(new Vendors.Keywords(1));
-             // Application.Run(new New_Dashboard.NewLogin());
+           // Application.Run(new New_Dashboard.NewLogin());
             //Application.Run(new DailyStatusReport_Preview(1,"2",""));
             //  Application.Run(new New_Dashboard.New_Dashboard(0058, 2));
             // Application.Run(new New_Dashboard.Settings.Clarification_Setting(1,"1"));
@@ -42,6 +42,7 @@ namespace Ordermanagement_01
             //Application.Run(new Opp.Opp_Master.Error_Settings());
             // Application.Run(new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(1));
             Application.Run(new Opp.Opp_Master.ProjectType_Notification_Settings_View(1));
+           Application.Run(new Opp.Opp_Master.Project_Wise_Notification_View(1,1));
         }
 
     }
