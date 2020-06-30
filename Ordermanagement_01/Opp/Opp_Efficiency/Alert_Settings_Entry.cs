@@ -163,6 +163,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             return true;
         }
 
+        private void Alert_Settings_Entry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Mainfrom.Enabled = true;
+        }
+
         private async void btn_Submit_Click(object sender, EventArgs e)
         {
             if (Validation() == true)

@@ -196,6 +196,7 @@
             this.Name = "Alert_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alert_Settings_Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Alert_Settings_Entry_FormClosed);
             this.Load += new System.EventHandler(this.Alert_Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
