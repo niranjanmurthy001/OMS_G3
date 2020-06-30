@@ -165,7 +165,7 @@
             this.gridColumn2,
             this.gridColumn3});
             this.gridView1.GridControl = this.Grd_Alert;
-            this.gridView1.IndicatorWidth = 30;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
             this.gridView1.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
@@ -188,6 +188,7 @@
             this.gridColumn1.Caption = "User Role";
             this.gridColumn1.FieldName = "Role_Name";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
             // 
@@ -204,6 +205,7 @@
             this.gridColumn2.Caption = "Alert Type";
             this.gridColumn2.FieldName = "Alert_Type";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
             // 

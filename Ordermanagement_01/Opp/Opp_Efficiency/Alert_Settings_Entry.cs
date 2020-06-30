@@ -207,6 +207,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 btn_Clear_Click(sender, e);
                                 this.Mainfrom.BindUserwiseAlertType();
                                 this.Close();
+                                this.Mainfrom.Enabled = true;
+                                
                             }
                         }
                     }

@@ -31,6 +31,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             Ordermanagement_01.Opp.Opp_Efficiency.Alert_Settings_Entry Alert = new Alert_Settings_Entry(userid,this);
             Alert.Show();
+            this.Enabled = false;
         }
 
         private void Alert_Setings_Load(object sender, EventArgs e)
@@ -117,7 +118,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
 
-                                    BindUserwiseAlertType(); 
+                                   
                                     btn_Delete.Visible = false;
 
                                 }
@@ -130,6 +131,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         }
 
                     }
+                    BindUserwiseAlertType();
                     XtraMessageBox.Show("Record Deleted Successfully");
                 }
                 catch (Exception ex)
