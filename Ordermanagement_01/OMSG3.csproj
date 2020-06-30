@@ -1937,6 +1937,18 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Setings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Setings.Designer.cs">
+      <DependentUpon>Alert_Setings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Settings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Settings_Entry.Designer.cs">
+      <DependentUpon>Alert_Settings_Entry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3927,6 +3939,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Alert_Setings.resx">
+      <DependentUpon>Alert_Setings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Alert_Settings_Entry.resx">
+      <DependentUpon>Alert_Settings_Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.resx">
       <DependentUpon>Category_Salary_Bracket_EntryForm.cs</DependentUpon>
