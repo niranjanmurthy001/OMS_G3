@@ -146,6 +146,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 XtraMessageBox.Show("Message Inserted Successfully");
                                 this.mainform.BindGrid();
                                 Clear();
+                                this.Close();
 
                             }
                         }
@@ -189,6 +190,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 Clear();
                                 Upload_Id = 0;
                                 btnSave.Text = "Save";
+                                this.Close();
                             }
                         }
 
