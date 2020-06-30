@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true);
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -97,7 +96,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
             this.Gb_Processing = new System.Windows.Forms.GroupBox();
             this.btn_Tax_Req_Processing = new System.Windows.Forms.Button();
             this.btn_tax_Order_Processing = new System.Windows.Forms.Button();
@@ -192,7 +191,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_reallocate = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.MastersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FrimMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BranchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -292,7 +291,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.lbl_username = new System.Windows.Forms.Label();
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -673,22 +672,22 @@
             this.label40 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer5 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer();
+            this.timer2 = new System.Windows.Forms.Timer();
+            this.timer5 = new System.Windows.Forms.Timer();
             this.btn_Break = new System.Windows.Forms.Button();
-            this.timer6 = new System.Windows.Forms.Timer(this.components);
+            this.timer6 = new System.Windows.Forms.Timer();
             this.btn_Errors = new System.Windows.Forms.Button();
             this.btn_Target_Matrix = new System.Windows.Forms.Button();
             this.btn_Lien_Name = new System.Windows.Forms.Button();
             this.btn_Attendance = new System.Windows.Forms.Button();
             this.btn_Dail_Attendance_Report = new System.Windows.Forms.Button();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon();
             this.btn_Accuracy = new System.Windows.Forms.Button();
-            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
+            this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl();
             this.buttonIdleMode = new System.Windows.Forms.Button();
             this.buttonIdleReports = new System.Windows.Forms.Button();
-            this.sub_Producttype = new System.Windows.Forms.ToolStripMenuItem();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.Gb_Processing.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -1334,6 +1333,7 @@
             // 
             this.Mainpanel.AutoScroll = true;
             this.Mainpanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Mainpanel.Controls.Add(this.maskedTextBox1);
             this.Mainpanel.Controls.Add(this.groupBox5);
             this.Mainpanel.Controls.Add(this.groupBox4);
             this.Mainpanel.Controls.Add(this.Grp_TAT);
@@ -2516,7 +2516,6 @@
             this.projectflowtoolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Process_Settings,
             this.Product_Type_settings,
-            this.sub_Producttype,
             this.Order_Task,
             this.Order_Status,
             this.Order_Source_Type,
@@ -7898,12 +7897,12 @@
             this.buttonIdleReports.UseVisualStyleBackColor = false;
             this.buttonIdleReports.Click += new System.EventHandler(this.buttonIdleReports_Click);
             // 
-            // sub_Producttype
+            // maskedTextBox1
             // 
-            this.sub_Producttype.Name = "sub_Producttype";
-            this.sub_Producttype.Size = new System.Drawing.Size(318, 24);
-            this.sub_Producttype.Text = "Sub Product Type";
-            this.sub_Producttype.Click += new System.EventHandler(this.sub_Producttype_Click);
+            this.maskedTextBox1.Location = new System.Drawing.Point(532, 41);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
+            this.maskedTextBox1.TabIndex = 53;
             // 
             // AdminDashboard
             // 
@@ -7945,6 +7944,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.Mainpanel.ResumeLayout(false);
+            this.Mainpanel.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -8634,7 +8634,7 @@
         private System.Windows.Forms.ToolStripMenuItem Efficiency_Settings;
         private System.Windows.Forms.ToolStripMenuItem Order_Imports;
         private System.Windows.Forms.ToolStripMenuItem OrderEntrytoolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sub_Producttype;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
 

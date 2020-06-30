@@ -1980,6 +1980,18 @@
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.Designer.cs">
       <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Efficiency\Efficiency_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2052,12 +2064,22 @@
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.Designer.cs">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.Designer.cs">
+      <DependentUpon>ProjectType_Notification_Setitings_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.Designer.cs">
+      <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.Designer.cs">
-      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.Designer.cs" />
     <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3941,6 +3963,12 @@
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.resx">
       <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type.resx">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.resx">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_View.resx">
       <DependentUpon>Efficiency_View.cs</DependentUpon>
     </EmbeddedResource>
@@ -3977,9 +4005,13 @@
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx">
-      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
+    <EmbeddedResource Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.resx">
+      <DependentUpon>ProjectType_Notification_Setitings_Entry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.resx">
+      <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx" />
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
     </EmbeddedResource>
