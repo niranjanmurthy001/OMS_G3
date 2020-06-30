@@ -59,7 +59,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (_dt.Rows.Count > 0)
+                            if (_dt.Rows.Count >= 0)
                             {
 
                                 Grd_Alert.DataSource = _dt;
