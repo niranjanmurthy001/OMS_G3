@@ -5,14 +5,10 @@ using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -27,8 +23,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string ViewMsgtext;
         string Editbtn_name;
         int Upload_Id;
-       private ProjectType_Notification_Settings_View mainform = null;
-        public ProjectType_Notification_Setitings_Entry( string OperationType,int uploadId,int ProjectTypeId,string message,int User_Id, string btn_name,Form CallingFrom)
+        private ProjectType_Notification_Settings_View mainform = null;
+        public ProjectType_Notification_Setitings_Entry(string OperationType, int uploadId, int ProjectTypeId, string message, int User_Id, string btn_name, Form CallingFrom)
         {
             InitializeComponent();
             mainform = CallingFrom as ProjectType_Notification_Settings_View;
@@ -43,7 +39,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void ProjectType_Notification_Setitings_Entry_Load(object sender, EventArgs e)
         {
             BindProjectType();
-            if(Operation_Type=="Update")
+            if (Operation_Type == "Update")
             {
                 ddlProjectType.EditValue = ProjectTypeId;
                 btnSave.Text = Editbtn_name;
@@ -108,13 +104,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-             if (txtMessage.Text == "")
+            if (txtMessage.Text == "")
             {
                 XtraMessageBox.Show("Please Enter Message", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-             return true;
-            
+            return true;
+
         }
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -162,7 +158,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     XtraMessageBox.Show("Somethinfg Went Wrong");
                 }
             }
-            else if (btnSave.Text == "Edit" && validation() != false && Upload_Id!=0)
+            else if (btnSave.Text == "Edit" && validation() != false && Upload_Id != 0)
             {
                 try
                 {
@@ -176,7 +172,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         { "@Modified_By", User_id },
                        { "@Modified_Date", DateTime.Now }
                     };
-                   
+
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
                     {
