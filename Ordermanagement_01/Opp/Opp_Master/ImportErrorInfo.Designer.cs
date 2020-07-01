@@ -461,7 +461,7 @@
             this.Exist_Count,
             this.Duplicate_Count});
             this.gridView1.GridControl = this.gridErrorImport;
-            this.gridView1.IndicatorWidth = 30;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle_1);

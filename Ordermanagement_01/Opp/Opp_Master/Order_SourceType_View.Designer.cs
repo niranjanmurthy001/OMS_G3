@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.repositoryItemHyperLinkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.repositoryItemHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -100,7 +99,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(649, 750);
+            this.groupControl1.Size = new System.Drawing.Size(649, 742);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Order Source Type ";
             // 
@@ -116,7 +115,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.427785F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.57221F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(645, 727);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(645, 719);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -180,7 +179,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 56);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(639, 668);
+            this.panelControl1.Size = new System.Drawing.Size(639, 660);
             this.panelControl1.TabIndex = 0;
             // 
             // grd_SourceType
@@ -192,7 +191,7 @@
             this.grd_SourceType.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2});
-            this.grd_SourceType.Size = new System.Drawing.Size(635, 664);
+            this.grd_SourceType.Size = new System.Drawing.Size(635, 656);
             this.grd_SourceType.TabIndex = 0;
             this.grd_SourceType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSource});
@@ -329,7 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 750);
+            this.ClientSize = new System.Drawing.Size(649, 742);
             this.Controls.Add(this.groupControl1);
             this.MinimumSize = new System.Drawing.Size(665, 726);
             this.Name = "Order_SourceType_View";

@@ -110,7 +110,7 @@ namespace Ordermanagement_01
         decimal e2;
         TimeSpan prod_t, Ideal_t, Break_t, Total_t;
         int Production_Time, Ideal_Time, Break_Time, Total_Time;
-
+        int Application_Login_Type;
         Thread syncThread = null;
         System.Timers.Timer timer_Dash;
 
@@ -119,7 +119,7 @@ namespace Ordermanagement_01
         private BackgroundWorker Dash_Board_Worker = new BackgroundWorker();
 
 
-        public AdminDashboard(string User_Role, string user_id, string User_name, string Password)
+        public AdminDashboard(string User_Role, string user_id, string User_name, string Password,int Login_Type)
         {
 
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
@@ -137,7 +137,7 @@ namespace Ordermanagement_01
 
                 Load_AutomaticEmails();
                 this.Password = Password;
-
+                this.Application_Login_Type = Login_Type;
 
                 Dash_Board_Worker.DoWork += new DoWorkEventHandler(Dash_Board_Worker_DoWork);
                 Dash_Board_Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Dash_Board_Worker_RunWorkerCompleted);
@@ -7437,7 +7437,7 @@ namespace Ordermanagement_01
         {
             if (Validate_User_Access(34) != false)
             {
-                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password);
+                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password,Application_Login_Type);
                 user_Access_Control.Show();
             }
         }
@@ -32086,7 +32086,7 @@ namespace Ordermanagement_01
 
         private void notificationToolStripbtn_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid);
+            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid,Application_Login_Type);
             note.Show();
         }
 

@@ -36,6 +36,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void ProjectType_Notification_Settings_View_Load(object sender, EventArgs e)
         {
             BindGrid();
+            btnMultiselectDelete.Visible = false;
         }
 
         private void btnAddnew_Click(object sender, EventArgs e)
@@ -197,6 +198,78 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Records Not Found To Export","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+        }
+
+        private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if(gridView1.SelectedRowsCount!=0)
+            {
+                btnMultiselectDelete.Visible = true;
+            }
+            else
+            {
+                btnMultiselectDelete.Visible = false;
+            }
+        }
+
+        private async void btnMultiselectDelete_Click(object sender, EventArgs e)
+        {
+            if (gridView1.SelectedRowsCount != 0)
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        List<int> gridViewSelectedRows = gridView1.GetSelectedRows().ToList();
+                        for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                        {
+                            DataRow row = gridView1.GetDataRow(gridViewSelectedRows[i]);
+                            int Uploadid = int.Parse(row["Gen_Update_ID"].ToString());                           
+                            var dictionary = new Dictionary<string, object>()
+                          {
+                            { "@Trans", "DELETE"},
+                            { "@Gen_Update_ID", Uploadid },
+                            { "@Modified_By", User_Id },
+                            { "@Modified_Date", DateTime.Now },
+                            { "@Status", "False" }
+                         };
+                            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/ProjectTypeNotificationSetting/Delete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                    }
+                                }
+                            }
+                        }
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Record Deleted Successfully");
+                        btnMultiselectDelete.Visible = false;
+                        BindGrid();
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
+
+                }
+            }
+            else
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Select Any Record To Delete");
             }
         }
     }

@@ -36,8 +36,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictionary = new Dictionary<string, object>()
                 {
-                {"@Trans","SelectNotification" },
-                   // {"@User_Id",User_id },
+                {"@View_Type","Details" },
+                   {"@User_Id",User_id },
                 { "@Application_Login_Type",Login_Id}
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");

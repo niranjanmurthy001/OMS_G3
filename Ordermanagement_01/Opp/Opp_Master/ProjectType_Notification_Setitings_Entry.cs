@@ -38,16 +38,29 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void ProjectType_Notification_Setitings_Entry_Load(object sender, EventArgs e)
         {
-            BindProjectType();
-            
-            if (Operation_Type == "Update")
+            try
             {
-                ddlProjectType.EditValue = ProjectTypeId;
-                btnSave.Text = Editbtn_name;
-                txtMessage.Text = ViewMsgtext;
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                BindProjectType();
+
+                if (Operation_Type == "Update")
+                {
+                    ddlProjectType.EditValue = ProjectTypeId;
+                    btnSave.Text = Editbtn_name;
+                    txtMessage.Text = ViewMsgtext;
+                }
+                else
+                    Clear();
             }
-            else
-            Clear();
+            catch(Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
         private async void BindProjectType()
         {
@@ -92,7 +105,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                // throw ex;
             }
             finally
             {
@@ -123,6 +137,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 try
                 {
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     DataTable dtadd = new DataTable();
                     dtadd.Columns.AddRange(new DataColumn[]
                     {
@@ -161,6 +176,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Somethinfg Went Wrong");
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
                 }
             }
             else if (btnSave.Text == "Edit" && validation() != false && Upload_Id != 0)
@@ -225,6 +244,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             ddlProjectType.ItemIndex = 0;
             txtMessage.Text = "";
+            btnSave.Text = "Save";
+
         }
 
         private void btnClear_Click(object sender, EventArgs e)

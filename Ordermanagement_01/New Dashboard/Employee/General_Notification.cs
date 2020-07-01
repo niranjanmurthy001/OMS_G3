@@ -22,10 +22,12 @@ namespace Ordermanagement_01.New_Dashboard.Employee
     {
         public readonly int User_Id;
         string status;
-        public General_Notification(int User_ID)
+        int Application_Login_Type;
+        public General_Notification(int User_ID,int Login_Type)
         {
             InitializeComponent();
             User_Id = User_ID;
+            this.Application_Login_Type = Login_Type;
         }
         private void General_Notification_Load(object sender, EventArgs e)
         {
@@ -39,7 +41,8 @@ namespace Ordermanagement_01.New_Dashboard.Employee
                 var dictionary = new Dictionary<string, object>()
                 {
                 {"@View_Type","Details" },
-                { "@User_Id",User_Id}
+                { "@User_Id",User_Id},
+                 {"Application_Login_Type",Application_Login_Type }
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
