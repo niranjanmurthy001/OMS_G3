@@ -34,6 +34,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnMultiselectDelete = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddnew = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.gridNotification = new DevExpress.XtraGrid.GridControl();
@@ -47,7 +48,6 @@
             this.LinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.btnMultiselectDelete = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -106,7 +106,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(370, 5);
+            this.labelControl1.Location = new System.Drawing.Point(360, 5);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(333, 30);
             this.labelControl1.TabIndex = 0;
@@ -114,21 +114,36 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.btnMultiselectDelete);
-            this.flowLayoutPanel2.Controls.Add(this.btnAddnew);
             this.flowLayoutPanel2.Controls.Add(this.btnExport);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(722, 51);
+            this.flowLayoutPanel2.Controls.Add(this.btnAddnew);
+            this.flowLayoutPanel2.Controls.Add(this.btnMultiselectDelete);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 51);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(291, 45);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1010, 45);
             this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // btnMultiselectDelete
+            // 
+            this.btnMultiselectDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMultiselectDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiselectDelete.Appearance.Options.UseFont = true;
+            this.btnMultiselectDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnMultiselectDelete.Location = new System.Drawing.Point(728, 3);
+            this.btnMultiselectDelete.Name = "btnMultiselectDelete";
+            this.btnMultiselectDelete.Size = new System.Drawing.Size(86, 39);
+            this.btnMultiselectDelete.TabIndex = 2;
+            this.btnMultiselectDelete.Text = "Delete";
+            this.btnMultiselectDelete.Click += new System.EventHandler(this.btnMultiselectDelete_Click);
             // 
             // btnAddnew
             // 
+            this.btnAddnew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddnew.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddnew.Appearance.Options.UseFont = true;
             this.btnAddnew.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnAddnew.Location = new System.Drawing.Point(95, 3);
+            this.btnAddnew.Location = new System.Drawing.Point(820, 3);
             this.btnAddnew.Name = "btnAddnew";
             this.btnAddnew.Size = new System.Drawing.Size(86, 39);
             this.btnAddnew.TabIndex = 0;
@@ -137,10 +152,11 @@
             // 
             // btnExport
             // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Appearance.Options.UseFont = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnExport.Location = new System.Drawing.Point(187, 3);
+            this.btnExport.Location = new System.Drawing.Point(912, 3);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(95, 39);
             this.btnExport.TabIndex = 1;
@@ -185,6 +201,7 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
             // 
@@ -244,7 +261,6 @@
             this.LinkEditView.AutoHeight = false;
             this.LinkEditView.Name = "LinkEditView";
             this.LinkEditView.NullText = "View";
-            this.LinkEditView.Click += new System.EventHandler(this.LinkEditView_Click);
             // 
             // gridColumn5
             // 
@@ -265,7 +281,6 @@
             this.LinkDelete.AutoHeight = false;
             this.LinkDelete.Name = "LinkDelete";
             this.LinkDelete.NullText = "Delete";
-            this.LinkDelete.Click += new System.EventHandler(this.LinkDelete_Click);
             // 
             // gridColumn6
             // 
@@ -276,18 +291,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
-            // btnMultiselectDelete
-            // 
-            this.btnMultiselectDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMultiselectDelete.Appearance.Options.UseFont = true;
-            this.btnMultiselectDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnMultiselectDelete.Location = new System.Drawing.Point(3, 3);
-            this.btnMultiselectDelete.Name = "btnMultiselectDelete";
-            this.btnMultiselectDelete.Size = new System.Drawing.Size(86, 39);
-            this.btnMultiselectDelete.TabIndex = 2;
-            this.btnMultiselectDelete.Text = "Delete";
-            this.btnMultiselectDelete.Click += new System.EventHandler(this.btnMultiselectDelete_Click);
             // 
             // ProjectType_Notification_Settings_View
             // 

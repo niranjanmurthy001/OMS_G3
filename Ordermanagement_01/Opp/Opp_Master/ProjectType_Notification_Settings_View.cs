@@ -41,10 +41,24 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void btnAddnew_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            OperType = "Insert";
-            ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType,Id,ProjectId, MessageEditText,User_Id, Btn_Name, this);
-            ns.Show();
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                this.Enabled = false;
+                OperType = "Insert";
+                ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType, Id, ProjectId, MessageEditText, User_Id, Btn_Name, this);
+                ns.Show();
+            }
+            catch(Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+
+               XtraMessageBox.Show("SomeThing Went Wrong");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
 
@@ -103,77 +117,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private void LinkEditView_Click(object sender, EventArgs e)
-        {
-
-            System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-            ProjectId = int.Parse(row["Project_Type_Id"].ToString());
-            Id = int.Parse(row["Gen_Update_ID"].ToString());
-            MessageEditText = row["Message"].ToString();
-            
-            Btn_Name = "Edit";
-            OperType = "Update";
-            this.Enabled = false;
-            ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType,Id,ProjectId, MessageEditText, User_Id, Btn_Name, this);
-            ns.Show();
-        }
-
-        private async void LinkDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (show == DialogResult.Yes)
-            {
-
-                try
-                {
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
-                    int uploadid = int.Parse(row["Gen_Update_ID"].ToString());
-                    var dictionary = new Dictionary<string, object>()
-                {
-                        { "@Trans", "DELETE"},
-                       { "@Gen_Update_ID", uploadid },
-                       { "@Modified_By", User_Id },
-                        { "@Modified_Date", DateTime.Now },
-                        { "@Status", "False" }
-                };
-                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ProjectTypeNotificationSetting/Delete", data);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            if (response.StatusCode == HttpStatusCode.OK)
-                            {
-                                var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Record Deleted Successfully");
-                                BindGrid();
-
-                            }
-                        }
-                        else
-                        {
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("Please Select Message To Delete","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something Went Wrong");
-                    //throw ex;
-                }
-            }
-            else if (show == DialogResult.No)
-            {
-
-            }
-
-        }
-
+    
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle > 0)
@@ -182,22 +126,33 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            if (gridView1.RowCount > 0)
-            {
-                string filePath = @"C:\Temp\";
-                string fileName = filePath + "Export Nofication Message" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
-
-                if (!Directory.Exists(filePath))
+            try {
+                if (gridView1.RowCount > 0)
                 {
-                    Directory.CreateDirectory(filePath);
+                    string filePath = @"C:\Temp\";
+                    string fileName = filePath + "Export Nofication Message" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                    }
+                    gridView1.ExportToXlsx(fileName);
+                    System.Diagnostics.Process.Start(fileName);
                 }
-                gridView1.ExportToXlsx(fileName);
-                System.Diagnostics.Process.Start(fileName);
+                else
+                {
+                    SplashScreenManager.CloseForm(false);
+
+                } XtraMessageBox.Show("Records Not Found To Export","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            else
+            catch(Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Records Not Found To Export","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                XtraMessageBox.Show("Something Went Wrong");
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
@@ -270,6 +225,95 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Any Record To Delete");
+            }
+        }
+
+        private async void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.Column.Caption == "View")
+            {
+                try
+                {
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+                    ProjectId = int.Parse(row["Project_Type_Id"].ToString());
+                    Id = int.Parse(row["Gen_Update_ID"].ToString());
+                    MessageEditText = row["Message"].ToString();
+
+                    Btn_Name = "Edit";
+                    OperType = "Update";
+                    this.Enabled = false;
+                    ProjectType_Notification_Setitings_Entry ns = new ProjectType_Notification_Setitings_Entry(OperType, Id, ProjectId, MessageEditText, User_Id, Btn_Name, this);
+                    ns.Show();
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Something Went Wrong");
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
+            }
+            else if (e.Column.Caption == "Delete")
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+                        int uploadid = int.Parse(row["Gen_Update_ID"].ToString());
+                        var dictionary = new Dictionary<string, object>()
+                  {
+                        { "@Trans", "DELETE"},
+                       { "@Gen_Update_ID", uploadid },
+                       { "@Modified_By", User_Id },
+                        { "@Modified_Date", DateTime.Now },
+                        { "@Status", "False" }
+                  };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ProjectTypeNotificationSetting/Delete", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                    BindGrid();
+
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Please Select Message To Delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Something Went Wrong");
+                        //throw ex;
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
+                }
+                else if (show == DialogResult.No)
+                {
+
+                }
+
             }
         }
     }
