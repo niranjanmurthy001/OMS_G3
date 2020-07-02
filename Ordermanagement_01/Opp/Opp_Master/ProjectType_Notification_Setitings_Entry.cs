@@ -49,8 +49,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     btnSave.Text = Editbtn_name;
                     txtMessage.Text = ViewMsgtext;
                 }
-                else
-                    Clear();
+               
             }
             catch(Exception ex)
             {
@@ -256,6 +255,25 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void ProjectType_Notification_Setitings_Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.mainform.Enabled = true;
+        }
+
+        private void txtMessage_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(txtMessage.Text== "Enter Message....")
+            {
+                txtMessage.Text = "";
+                txtMessage.ForeColor = System.Drawing.Color.Black;
+            }
+           
+        }
+
+        private void txtMessage_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtMessage.Text == "Enter Message....")
+            {
+                txtMessage.Text = "";
+                txtMessage.ForeColor = System.Drawing.Color.Black;
+            }
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -39,7 +40,7 @@
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -143,10 +144,15 @@
             // 
             // txtMessage
             // 
+            this.txtMessage.EditValue = "Enter Message....";
             this.txtMessage.Location = new System.Drawing.Point(116, 102);
             this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMessage.Properties.Appearance.Options.UseFont = true;
             this.txtMessage.Size = new System.Drawing.Size(401, 127);
             this.txtMessage.TabIndex = 3;
+            this.txtMessage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtMessage_MouseClick);
+            this.txtMessage.MouseEnter += new System.EventHandler(this.txtMessage_MouseEnter);
             // 
             // ddlProjectType
             // 
