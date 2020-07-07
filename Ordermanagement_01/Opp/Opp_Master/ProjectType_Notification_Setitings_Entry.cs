@@ -105,7 +105,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                // throw ex;
+                XtraMessageBox.Show("Something Went Wrong");
+
             }
             finally
             {
@@ -213,7 +214,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                
                                 Upload_Id = 0;
                                 btnSave.Text = "Save";
-                                Operation_Type = "Save";
+                                Operation_Type = "Insert";
                                 this.Close();
                                 this.mainform.Enabled = true;
                             }
@@ -242,7 +243,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void Clear()
         {
             ddlProjectType.ItemIndex = 0;
-            txtMessage.Text = "";
+            txtMessage.Text = "Enter Message....";
             btnSave.Text = "Save";
 
         }

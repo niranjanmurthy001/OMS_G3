@@ -393,6 +393,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.37.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.37\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -1210,6 +1214,12 @@
     </Compile>
     <Compile Include="Gen_Forms\notification_2.Designer.cs">
       <DependentUpon>notification_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gen_Forms\PopUp_Notify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gen_Forms\PopUp_Notify.Designer.cs">
+      <DependentUpon>PopUp_Notify.cs</DependentUpon>
     </Compile>
     <Compile Include="Gen_Forms\Popup_ToastStyle.cs">
       <SubType>Form</SubType>
@@ -2057,6 +2067,12 @@
     </Compile>
     <Compile Include="Opp\Opp_Master\Order_SourceType_View.Designer.cs">
       <DependentUpon>Order_SourceType_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\PopUp_Message_Style.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\PopUp_Message_Style.Designer.cs">
+      <DependentUpon>PopUp_Message_Style.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
@@ -3584,6 +3600,9 @@
     <EmbeddedResource Include="Gen_Forms\notification_2.resx">
       <DependentUpon>notification_2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gen_Forms\PopUp_Notify.resx">
+      <DependentUpon>PopUp_Notify.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gen_Forms\Popup_ToastStyle.resx">
       <DependentUpon>Popup_ToastStyle.cs</DependentUpon>
     </EmbeddedResource>
@@ -4001,6 +4020,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Order_SourceType_View.resx">
       <DependentUpon>Order_SourceType_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\PopUp_Message_Style.resx">
+      <DependentUpon>PopUp_Message_Style.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
@@ -4755,12 +4777,16 @@
     <None Include="Resources\buttonLogout.ImageOptions.Image.png" />
     <None Include="Resources\checklist.png" />
     <Content Include="Ordermanagement_01.exe" />
+    <None Include="Resources\check.ico" />
+    <None Include="Resources\Close %282%29.png" />
     <Content Include="Resources\close.bmp" />
     <None Include="Resources\dashboard_1_32.png" />
     <None Include="Resources\dashboard_1_64.png" />
     <None Include="Resources\comment.png" />
     <None Include="Resources\comment %284%29.png" />
     <None Include="Resources\comment %283%29.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\closeing.png" />
     <Content Include="Resources\DRN-Logo.png" />
     <None Include="Resources\Final_Qc_32.png" />
     <None Include="Resources\Exception_32.png" />
@@ -4849,6 +4875,10 @@
     <None Include="Resources\notification.png" />
     <None Include="Resources\notification Settings.png" />
     <None Include="Resources\notification Alert.png" />
+    <None Include="Resources\Status.png" />
+    <None Include="Resources\Status2.png" />
+    <None Include="Resources\StatusSuccess.png" />
+    <None Include="Resources\status3.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
@@ -5101,6 +5131,7 @@
     <Folder Include="Abstractor\Abstractor_Reports\Payment Report\" />
     <Folder Include="bin\Debug\fr\" />
     <Folder Include="bin\Debug\ru\" />
+    <Folder Include="Ordermanagement_01\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
