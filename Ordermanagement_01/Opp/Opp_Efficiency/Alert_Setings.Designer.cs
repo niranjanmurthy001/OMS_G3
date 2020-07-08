@@ -188,10 +188,12 @@
             this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn1.Caption = "User Role";
             this.gridColumn1.FieldName = "Role_Name";
+            this.gridColumn1.MaxWidth = 120;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 40;
             // 
             // gridColumn2
             // 
