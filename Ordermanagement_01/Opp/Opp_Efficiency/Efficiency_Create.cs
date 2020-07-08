@@ -29,12 +29,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         DataTable dtmulti = new DataTable();
         private Efficiency_View Mainform = null;
         int user_id;
+        int _UserRole;
 
-        public Efficiency_Create(Form callingform,int userid)
+        public Efficiency_Create(Form callingform, int userid, int userrole)
         {
             InitializeComponent();
             Mainform = callingform as Efficiency_View;
             user_id = userid;
+            _UserRole = userrole;
         }
 
         private void Import_Category_Salary_Entry_Load(object sender, EventArgs e)
@@ -108,6 +110,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                 };
                 ddl_Client_Name.Properties.Columns.Clear();
+               
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -120,17 +123,35 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             if (dt != null && dt.Rows.Count > 0)
                             {
-                                DataRow dr = dt.NewRow();
-                                dr[0] = 0;
-                                dr[1] = "Select";
-                                dt.Rows.InsertAt(dr, 0);
+                               
+                                if (_UserRole == 1)
+                                {
+                                    DataRow dr = dt.NewRow();
+                                    dr[0] = 0;
+                                    dr[1] = "Select";
+                                    dr[2] = 0;
+                                    dt.Rows.InsertAt(dr, 0);
+                                    ddl_Client_Name.Properties.DataSource = dt;
+                                    ddl_Client_Name.Properties.DisplayMember = "Client_Name";
+                                    ddl_Client_Name.Properties.ValueMember = "Client_Id";
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                    col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Client_Name");
+                                    ddl_Client_Name.Properties.Columns.Add(col);
+
+                                }
+                                else
+                                {
+
+                                    ddl_Client_Name.Properties.DataSource = dt;
+                                    ddl_Client_Name.Properties.DisplayMember = "Client_Number";
+                                    ddl_Client_Name.Properties.ValueMember = "Client_Id";
+                                    DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                    col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Client_Number");
+                                    ddl_Client_Name.Properties.Columns.Add(col);
+
+                                }
                             }
-                            ddl_Client_Name.Properties.DataSource = dt;
-                            ddl_Client_Name.Properties.DisplayMember = "Client_Name";
-                            ddl_Client_Name.Properties.ValueMember = "Client_Id";
-                            DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Client_Name");
-                            ddl_Client_Name.Properties.Columns.Add(col);
+
 
                         }
                     }
@@ -238,6 +259,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             }
                         }
                     }
+                    else
+                    {
+                        chk_Ordertype.DataSource = null;
+                    }
                 }
             }
             catch (Exception ex)
@@ -281,7 +306,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     chk_OrderSourceType.ValueMember = "Order_Source_Type_ID";
                                 }
                             }
+
                         }
+                    }
+                    else
+                    {
+                        chk_OrderSourceType.DataSource = null;
                     }
                 }
             }
@@ -332,7 +362,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
                                 textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                                textEdit.Mask.EditMask = "[0-9]+[1-9]";
+                                textEdit.Mask.EditMask = "([1-9][0-9]{0,2})";
                                 textEdit.Mask.UseMaskAsDisplayFormat = true;
                                 grd_CategorySalaryEntry.RepositoryItems.Add(textEdit);
                                 gridView1.Columns[i].ColumnEdit = textEdit;
@@ -347,6 +377,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
 
                         }
+                    }
+                    else
+                    {
+                        grd_CategorySalaryEntry.DataSource = null;
                     }
                 }
             }
@@ -370,6 +404,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
 
+
+        }
+
+        private void ddl_Client_Name_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
 

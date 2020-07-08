@@ -221,6 +221,7 @@
             this.ddl_Client_Name.Properties.NullText = "Select";
             this.ddl_Client_Name.Size = new System.Drawing.Size(223, 20);
             this.ddl_Client_Name.TabIndex = 2;
+            this.ddl_Client_Name.EditValueChanged += new System.EventHandler(this.ddl_Client_Name_EditValueChanged);
             // 
             // ddl_Project_Type
             // 
