@@ -218,7 +218,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             if (_dt.Rows.Count >= 0)
                             {
                                 grd_Efficiency_Form.DataSource = _dt;
-                                gridView1.Columns[4].Visible = false;
+                                gridView1.Columns[8].Visible = false;
                                 gridView1.Columns[5].Visible = false;
                                 gridView1.Columns[6].Visible = false;
                                 gridView1.Columns[7].Visible = false;

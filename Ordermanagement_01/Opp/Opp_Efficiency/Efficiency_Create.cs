@@ -102,6 +102,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             try
             {
                 ddl_Client_Name.Properties.DataSource = null;
+               
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
@@ -110,7 +111,6 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                 };
                 ddl_Client_Name.Properties.Columns.Clear();
-               
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -177,6 +177,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             try
             {
                 ddl_Order_task.Properties.Columns.Clear();
+               
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
@@ -184,6 +185,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     {"@Project_Type_Id", _Protid }
                 };
                 ddl_Order_task.Properties.Columns.Clear();
+               
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -414,6 +416,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
         {
+            ddl_Client_Name.EditValue = null;
+            ddl_Order_task.EditValue = null;
             if (Convert.ToInt32(ddl_Project_Type.EditValue) != 0)
             {
                 int _PID = Convert.ToInt32(ddl_Project_Type.EditValue);
