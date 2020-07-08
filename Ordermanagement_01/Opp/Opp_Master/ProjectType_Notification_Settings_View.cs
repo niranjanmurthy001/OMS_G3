@@ -130,7 +130,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if (gridView1.RowCount > 0)
                 {
                     string filePath = @"C:\Temp\";
-                    string fileName = filePath + "Export Nofication Message" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                    string fileName = filePath + "Export Project Wise Nofications Settings-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
 
                     if (!Directory.Exists(filePath))
                     {
@@ -205,7 +205,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             }
                         }
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Record Deleted Successfully");
+                        XtraMessageBox.Show("Records Deleted Successfully");
                         btnMultiselectDelete.Visible = false;
                         BindGrid();
                     }

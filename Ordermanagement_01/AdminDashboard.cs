@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using Newtonsoft.Json;
@@ -1084,8 +1085,8 @@ namespace Ordermanagement_01
 
 
                 // popup style notification
-                Ordermanagement_01.Gen_Forms.Popup_ToastStyle pop_Style = new Ordermanagement_01.Gen_Forms.Popup_ToastStyle();
-                pop_Style.Show();
+                //Ordermanagement_01.Gen_Forms.Popup_ToastStyle pop_Style = new Ordermanagement_01.Gen_Forms.Popup_ToastStyle();
+                //pop_Style.Show();
 
 
                 tabControl1.TabPages.Remove(tabPage2);
@@ -1095,7 +1096,12 @@ namespace Ordermanagement_01
                 // notification icon
 
                 // notifyIcon1.ShowBalloonTip(1000, "Important Notice :", "Logged In successfully", ToolTipIcon.Info);
+                //Opp.Opp_Master.PopUp_Message_Style pop = new Opp.Opp_Master.PopUp_Message_Style();
+                //pop.Show();
+                AlertInfo info = new AlertInfo("Login Successfully", "", true);
 
+                info.Image = Properties.Resources.status3;
+                alertControl2.Show(this, info);
             }
             catch (Exception ex)
             {
