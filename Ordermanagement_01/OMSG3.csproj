@@ -4779,6 +4779,11 @@
     <Content Include="Ordermanagement_01.exe" />
     <None Include="Resources\check.ico" />
     <None Include="Resources\Close %282%29.png" />
+    <None Include="Resources\alert %281%29.png" />
+    <None Include="Resources\Alert2.png" />
+    <None Include="Resources\AlertRed.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\Alertico.png" />
     <Content Include="Resources\close.bmp" />
     <None Include="Resources\dashboard_1_32.png" />
     <None Include="Resources\dashboard_1_64.png" />
@@ -4787,6 +4792,11 @@
     <None Include="Resources\comment %283%29.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\closeing.png" />
+    <None Include="Resources\Delete3.png" />
+    <None Include="Resources\deletepng.png" />
+    <None Include="Resources\deleteico.png" />
+    <None Include="Resources\deleteico1.png" />
+    <None Include="Resources\deletei.png" />
     <Content Include="Resources\DRN-Logo.png" />
     <None Include="Resources\Final_Qc_32.png" />
     <None Include="Resources\Exception_32.png" />
@@ -4829,6 +4839,7 @@
     <None Include="Resources\ic_comments.png" />
     <None Include="Resources\ic_refresh.png" />
     <None Include="Resources\icons8-synchronize-64.png" />
+    <None Include="Resources\Info_png.png" />
     <Content Include="Resources\list.png" />
     <None Include="Resources\list1.png" />
     <None Include="Resources\New_Refresh.png" />
@@ -4879,6 +4890,8 @@
     <None Include="Resources\Status2.png" />
     <None Include="Resources\StatusSuccess.png" />
     <None Include="Resources\status3.png" />
+    <None Include="Resources\Warningpng.png" />
+    <None Include="Resources\ok_Icon.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
