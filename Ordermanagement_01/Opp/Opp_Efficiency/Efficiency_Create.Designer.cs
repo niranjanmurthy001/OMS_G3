@@ -142,6 +142,7 @@
             // 
             // chk_OrderSourceType
             // 
+            this.chk_OrderSourceType.CheckOnClick = true;
             this.chk_OrderSourceType.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_OrderSourceType.Location = new System.Drawing.Point(138, 142);
             this.chk_OrderSourceType.Name = "chk_OrderSourceType";
@@ -150,6 +151,7 @@
             // 
             // chk_Ordertype
             // 
+            this.chk_Ordertype.CheckOnClick = true;
             this.chk_Ordertype.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_Ordertype.Location = new System.Drawing.Point(138, 37);
             this.chk_Ordertype.Name = "chk_Ordertype";

@@ -556,7 +556,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         {
                                             var _result = await response.Content.ReadAsStringAsync();
                                             SplashScreenManager.CloseForm(false);
-                                            XtraMessageBox.Show("Efficiency is Submitted Successfully", "Submit Record", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                            XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                                             btn_Clear_Click(sender, e);
                                             this.Mainform.BindCategorySalaryBracket();
                                             this.Close();
