@@ -24,7 +24,7 @@ namespace Ordermanagement_01.Gen_Forms
         string Username, password;
         string Empname;
         string USerRoleid;
-        
+        int LoginType;
         int Branch_id;
         string last_login_datetime;
         string strIpAddress;
@@ -78,7 +78,8 @@ namespace Ordermanagement_01.Gen_Forms
                 USerRoleid = dtmstuser.Rows[0]["User_RoleId"].ToString();
                 Branch_id = int.Parse(dtmstuser.Rows[0]["Branch_ID"].ToString());
                 Application_Login_Id = dtmstuser.Rows[0]["Application_Login_Type"].ToString();
-             //   last_login_datetime = dtmstuser.Rows[0]["Last_login"].ToString();
+                //   last_login_datetime = dtmstuser.Rows[0]["Last_login"].ToString();
+                LoginType = Convert.ToInt32(Application_Login_Id);
             }
             else
             {
@@ -108,7 +109,7 @@ namespace Ordermanagement_01.Gen_Forms
                     {
 
 
-                        AdminDashboard mainmenu = new AdminDashboard(USerRoleid, userid, Empname,password);
+                        AdminDashboard mainmenu = new AdminDashboard(USerRoleid, userid, Empname,password, LoginType);
 
                         mainmenu.Show();
                     }
