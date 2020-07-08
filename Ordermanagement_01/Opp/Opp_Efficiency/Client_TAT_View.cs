@@ -15,6 +15,8 @@ using Ordermanagement_01.Models;
 using System.Net.Http;
 using Ordermanagement_01.Masters;
 using System.IO;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.Office.Crypto;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -79,7 +81,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error","Please contact with Admin",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -149,7 +151,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     {
                                         gridView_ClientTAT.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                                         gridView_ClientTAT.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                                        gridView_ClientTAT.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                                      
                                     }                                 
                                 }
                             }
@@ -176,7 +178,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
 
         private void btn_Export_Click(object sender, EventArgs e)
-        {
+        {         
             if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
             {
                 if (grd_ClientTAT.DataSource != null)
@@ -187,17 +189,24 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     {
                         Directory.CreateDirectory(filePath);
                     }
+                    for (int i = 3; i < gridView_ClientTAT.Columns.Count; i++)
+                    {
+                        GridColumn colModelPrice = gridView_ClientTAT.Columns[i];                      
+                        //gridView_ClientTAT.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        colModelPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        colModelPrice.DisplayFormat.FormatString = "D";
+                    }
                     grd_ClientTAT.ExportToXlsx(fileName);
                     System.Diagnostics.Process.Start(fileName);
                 }
                 else
                 {
-                    XtraMessageBox.Show("Note", "No Data To Export",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show( "No Data To Export", "Note", MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
             else
             {
-                XtraMessageBox.Show("Note", "Please Select Project Type To Export");
+                XtraMessageBox.Show( "Please Select Project Type To Export", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -263,7 +272,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     else
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Note", "Please Select Any Record To Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        XtraMessageBox.Show( "Please Select Any Record To Delete", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
