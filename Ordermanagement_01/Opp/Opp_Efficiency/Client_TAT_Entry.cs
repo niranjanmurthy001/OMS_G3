@@ -373,6 +373,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             ddl_Project_Type.ItemIndex = 0;
             chk_Client.UnCheckAll();
+            chk_Client.DataSource = null;
             _dtcol = new DataTable();
             gridView_ClientTAT.Columns.Clear();
         }
