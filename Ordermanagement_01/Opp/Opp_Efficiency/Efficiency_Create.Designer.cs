@@ -79,7 +79,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(734, 568);
+            this.groupControl1.Size = new System.Drawing.Size(784, 568);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Efficiency Settings";
             // 
@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.74312F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.256881F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(730, 545);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(780, 545);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -108,7 +108,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grd_CategorySalaryEntry);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(724, 493);
+            this.splitContainerControl1.Size = new System.Drawing.Size(774, 493);
             this.splitContainerControl1.SplitterPosition = 251;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -125,7 +125,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(724, 251);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(774, 251);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelControl1
@@ -135,13 +135,14 @@
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(365, 3);
+            this.panelControl1.Location = new System.Drawing.Point(390, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(356, 245);
+            this.panelControl1.Size = new System.Drawing.Size(381, 245);
             this.panelControl1.TabIndex = 5;
             // 
             // chk_OrderSourceType
             // 
+            this.chk_OrderSourceType.CheckOnClick = true;
             this.chk_OrderSourceType.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_OrderSourceType.Location = new System.Drawing.Point(138, 142);
             this.chk_OrderSourceType.Name = "chk_OrderSourceType";
@@ -150,6 +151,7 @@
             // 
             // chk_Ordertype
             // 
+            this.chk_Ordertype.CheckOnClick = true;
             this.chk_Ordertype.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_Ordertype.Location = new System.Drawing.Point(138, 37);
             this.chk_Ordertype.Name = "chk_Ordertype";
@@ -191,7 +193,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(356, 245);
+            this.panelControl2.Size = new System.Drawing.Size(381, 245);
             this.panelControl2.TabIndex = 4;
             // 
             // ddl_Order_task
@@ -221,6 +223,7 @@
             this.ddl_Client_Name.Properties.NullText = "Select";
             this.ddl_Client_Name.Size = new System.Drawing.Size(223, 20);
             this.ddl_Client_Name.TabIndex = 2;
+            this.ddl_Client_Name.EditValueChanged += new System.EventHandler(this.ddl_Client_Name_EditValueChanged);
             // 
             // ddl_Project_Type
             // 
@@ -279,7 +282,7 @@
             this.grd_CategorySalaryEntry.Location = new System.Drawing.Point(0, 0);
             this.grd_CategorySalaryEntry.MainView = this.gridView1;
             this.grd_CategorySalaryEntry.Name = "grd_CategorySalaryEntry";
-            this.grd_CategorySalaryEntry.Size = new System.Drawing.Size(724, 230);
+            this.grd_CategorySalaryEntry.Size = new System.Drawing.Size(774, 230);
             this.grd_CategorySalaryEntry.TabIndex = 0;
             this.grd_CategorySalaryEntry.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -304,7 +307,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 502);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(724, 40);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(774, 40);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -314,7 +317,7 @@
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Clear.Location = new System.Drawing.Point(641, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(691, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 33);
             this.btn_Clear.TabIndex = 7;
@@ -328,7 +331,7 @@
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
             this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Submit.Location = new System.Drawing.Point(555, 3);
+            this.btn_Submit.Location = new System.Drawing.Point(605, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(80, 33);
             this.btn_Submit.TabIndex = 6;
@@ -339,12 +342,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 568);
+            this.ClientSize = new System.Drawing.Size(784, 568);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(750, 606);
+            this.MaximumSize = new System.Drawing.Size(800, 606);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(750, 606);
+            this.MinimumSize = new System.Drawing.Size(800, 606);
             this.Name = "Efficiency_Create";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Create";

@@ -15,6 +15,7 @@ using Ordermanagement_01.Models;
 using System.Net.Http;
 using Ordermanagement_01.Masters;
 using System.IO;
+using DevExpress.XtraGrid.Columns;
 
 namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
@@ -26,10 +27,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         DataTable _dt, dt;
         int client_id;
         int user_id;
-        public Efficiency_View(int userid)
+        int _UserRole;
+        public Efficiency_View(int userid,int Userrole)
         {
             InitializeComponent();
             user_id = userid;
+            _UserRole = Userrole;
         }
 
         private void Efficiency_Entry_Load(object sender, EventArgs e)
@@ -93,7 +96,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         }
         private void btn_Addnew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this,user_id);
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this,user_id,_UserRole);
             Efficiency_Entry.Show();
         }
         //public async void BindColumnstogrid()
@@ -215,10 +218,22 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             if (_dt.Rows.Count >= 0)
                             {
                                 grd_Efficiency_Form.DataSource = _dt;
-                                gridView1.Columns[4].Visible = false;
+                                gridView1.Columns[8].Visible = false;
                                 gridView1.Columns[5].Visible = false;
                                 gridView1.Columns[6].Visible = false;
                                 gridView1.Columns[7].Visible = false;
+                                gridView1.Columns[1].Visible = false;
+                                if (_UserRole == 1)
+                                {
+                                    gridView1.Columns[0].Visible = true;
+                                    gridView1.Columns[1].Visible = false;
+                                }
+                                else
+                                {
+                                    gridView1.Columns[1].Visible = true;
+                                    gridView1.Columns[0].Visible = false;
+                                    gridView1.Columns[1].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+                                }
                                 for (int i = 0; i < gridView1.Columns.Count; i++)
                                 {
                                     gridView1.Columns[i].AppearanceHeader.Font = new Font(gridView1.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
@@ -269,6 +284,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 if (!Directory.Exists(filePath))
                 {
                     Directory.CreateDirectory(filePath);
+                }
+                for (int i =0; i < gridView1.Columns.Count; i++)
+                {
+                    GridColumn colModelPrice = gridView1.Columns[i];
+                    //gridView_ClientTAT.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    colModelPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                    colModelPrice.DisplayFormat.FormatString = "D";
                 }
                 grd_Efficiency_Form.ExportToXlsx(fileName);
                 System.Diagnostics.Process.Start(fileName);

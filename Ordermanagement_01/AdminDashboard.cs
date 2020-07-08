@@ -32194,7 +32194,7 @@ namespace Ordermanagement_01
 
         private void effiecincyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Opp.Opp_Efficiency.Efficiency_View eff = new Opp.Opp_Efficiency.Efficiency_View(userid);
+            Opp.Opp_Efficiency.Efficiency_View eff = new Opp.Opp_Efficiency.Efficiency_View(userid, Convert.ToInt32(User_Role_Id));
             eff.Show();
         }
 
