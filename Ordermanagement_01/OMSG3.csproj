@@ -1947,6 +1947,31 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master.Designer.cs">
+      <DependentUpon>CheckList_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.Designer.cs">
+      <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.Designer.cs">
+      <DependentUpon>CheckList_Question_Setup_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\ChekList_Master_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\ChekList_Master_Entry.Designer.cs">
+      <DependentUpon>ChekList_Master_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Public.cs" />
     <Compile Include="Opp\Opp_Efficiency\Alert_Setings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2043,12 +2068,6 @@
     </Compile>
     <Compile Include="Opp\Opp_Master\Error_Field.Designer.cs">
       <DependentUpon>Error_Field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Opp\Opp_Master\Error_Setting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
-      <DependentUpon>Error_Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Master\Error_Settings.cs">
       <SubType>Form</SubType>
@@ -3971,6 +3990,18 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master.resx">
+      <DependentUpon>CheckList_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master_View.resx">
+      <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.resx">
+      <DependentUpon>CheckList_Question_Setup_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\ChekList_Master_Entry.resx">
+      <DependentUpon>ChekList_Master_Entry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Alert_Setings.resx">
       <DependentUpon>Alert_Setings.cs</DependentUpon>
     </EmbeddedResource>
@@ -4020,9 +4051,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Error_Field.resx">
       <DependentUpon>Error_Field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
-      <DependentUpon>Error_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Error_Settings.resx">
       <DependentUpon>Error_Settings.cs</DependentUpon>
@@ -4802,6 +4830,7 @@
     <None Include="Resources\AlertRed.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\Alertico.png" />
+    <None Include="Resources\cheklist1.png" />
     <Content Include="Resources\close.bmp" />
     <None Include="Resources\dashboard_1_32.png" />
     <None Include="Resources\dashboard_1_64.png" />
