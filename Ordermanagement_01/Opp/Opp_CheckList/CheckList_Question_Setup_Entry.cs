@@ -385,25 +385,25 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chk_TabNamesQs.CheckedItems.Count == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Check Tab Names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Check Tab Names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txtQuestionQs.Text == "")
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Enter Question", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter Question", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
