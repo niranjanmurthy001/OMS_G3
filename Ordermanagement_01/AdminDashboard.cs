@@ -32171,12 +32171,12 @@ namespace Ordermanagement_01
            
         }
 
-        private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+        //private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
+        //{
 
-            Ordermanagement_01.Opp.Opp_Master.Error_Setting _errorsetting = new Opp.Opp_Master.Error_Setting(userid, int.Parse(User_Role_Id.ToString()));
-            _errorsetting.Show();
-        }
+        //    Ordermanagement_01.Opp.Opp_Master.Error_Setting _errorsetting = new Opp.Opp_Master.Error_Setting(userid, int.Parse(User_Role_Id.ToString()));
+        //    _errorsetting.Show();
+        //}
 
         private void projectTypeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
