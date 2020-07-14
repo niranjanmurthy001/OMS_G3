@@ -76,8 +76,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.83069F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.16931F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.72902F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.27098F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(455, 417);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -94,7 +94,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(449, 360);
+            this.panelControl1.Size = new System.Drawing.Size(449, 364);
             this.panelControl1.TabIndex = 0;
             // 
             // txtQuestionQs
@@ -192,9 +192,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_SaveQs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(289, 369);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(289, 373);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 41);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_ClearQs

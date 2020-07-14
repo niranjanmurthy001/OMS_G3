@@ -5,14 +5,10 @@ using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
@@ -161,6 +157,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void ddl_ProjectType_EditValueChanged(object sender, EventArgs e)
         {
             int ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
+
             BindOrderTypeAbs(ProjectId);
         }
         public bool validate()
@@ -223,9 +220,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 var result = await response.Content.ReadAsStringAsync();
 
+
+                                Clear();
+                                this.mainform.BindCheckListTypeMaster();
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Submitted Sucessfully", "Success");
-                                Clear();
                             }
                         }
                     }
@@ -240,7 +239,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue!=0)
+            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue != 0)
             {
                 try
                 {
@@ -249,6 +248,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     DataTable dtupdate = new DataTable();
                     dtupdate.Columns.AddRange(new DataColumn[]
                     {
+                       new DataColumn("ChecklistType_Id",typeof(int)),
                        new DataColumn("Checklist_Master_Type",typeof(string)),
                         new DataColumn("Project_Type_Id",typeof(int)) ,
                         new DataColumn("Product_Type_Abbr",typeof(string)),
@@ -259,7 +259,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
                         string Prodabbr = castedItem["Order_Type_Abbreviation"].ToString();
-                        dtupdate.Rows.Add(TabName, ProjectValue, Prodabbr, true);
+                        dtupdate.Rows.Add(ChklistIdValue, TabName, ProjectValue, Prodabbr, true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
@@ -274,19 +274,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show(" Updated Successfully", "Record Updated ", MessageBoxButtons.OK);
                                 Clear();
-                               
+
                                 this.mainform.BindCheckListTypeMaster();
 
                                 ChklistIdValue = 0;
                                 btn_Save.Text = "Save";
-                                Oper_Type = "Insert";
+                                Oper_Type = "CheckListMaster";
                                 this.Close();
                                 this.mainform.Enabled = true;
                             }
                         }
                     }
 
-                    
+
 
                 }
 
@@ -312,6 +312,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             ddl_ProjectType.ItemIndex = 0;
             txtTabName.Text = "";
             chk_ProductType_Abbr.DataSource = null;
+            Oper_Type = "CheckListMaster";
+            btn_Save.Text = "Save";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -324,5 +326,5 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             this.mainform.Enabled = true;
         }
     }
-    
+
 }
