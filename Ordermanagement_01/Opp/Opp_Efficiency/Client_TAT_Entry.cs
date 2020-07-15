@@ -23,9 +23,9 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private Client_TAT_View Mainform = null;
         int user_id;
         DataTable _dtcol,dt;
-        int _ProjectId, _Client, _TypeABSid;
+        int _ProjectId, _Client, _TypeABSid, ProjectID;
         string Col_Name ,_clodata, _UserRole;
-        int _categoryid;
+        int _categoryid, _ClientID;
         DataTable dtmulti = new DataTable();
 
         public Client_TAT_Entry(Form callingform, int userid, string User_Role)
@@ -92,87 +92,28 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) != 0)
             {
+                chk_Client.DataSource = null;
                 int ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
-                BindClient();
+                BindClient(ProjectID);
                 BindColumnToGrid();
             }
             else
             {
                 grd_ClientTAT.DataSource = null;
+                chk_Client.DataSource = null;
             }
         }
-        private async void BindColumnToGrid()
+        private async void BindClient(int projectid)
         {
             try
             {
-                _dtcol = new DataTable();
-                grd_ClientTAT.DataSource = null;
-                gridView_ClientTAT.Columns.Clear();
-                _ProjectId = Convert.ToInt32(ddl_Project_Type.EditValue);
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                var dictonary = new Dictionary<string, object>()
-                {
-                    {"@Trans","SELECT_HEADERS" },
-                    {"@Project_Type_Id" ,_ProjectId}
-
-                };
-                this.grd_ClientTAT.DataSource = new DataTable();
-                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                using (var httpclient = new HttpClient())
-                {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/ClientTAT/BindHeaders", data);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        if (response.StatusCode == HttpStatusCode.OK)
-                        {
-                            var result = await response.Content.ReadAsStringAsync();
-                            dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                Col_Name = Convert.ToString((dt.Rows[i]["Order_Type_Abbreviation"]));
-                                _dtcol.Columns.Add(Col_Name.ToString());
-                            }
-                            grd_ClientTAT.DataSource = _dtcol;
-                            _dtcol.Rows.Add().ItemArray[0] = null;
-                            for (int i = 0; i < gridView_ClientTAT.Columns.Count; i++)
-                            {
-                                RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
-                                textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-                                textEdit.Mask.EditMask = "([1-9][0-9]{0,2})";
-                                textEdit.Mask.UseMaskAsDisplayFormat = true;
-                                grd_ClientTAT.RepositoryItems.Add(textEdit);
-                                gridView_ClientTAT.Columns[i].ColumnEdit = textEdit;
-                                gridView_ClientTAT.Columns[i].AppearanceHeader.Font = new Font(gridView_ClientTAT.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
-                                gridView_ClientTAT.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
-                                gridView_ClientTAT.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
-                                gridView_ClientTAT.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                                gridView_ClientTAT.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
-        }
-
-        private async void BindClient()
-        {
-            try
-            {               
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                _ProjectId = Convert.ToInt32(ddl_Project_Type.EditValue);
+                // _ProjectId = Convert.ToInt32(ddl_Project_Type.EditValue);
                 var dictionary = new Dictionary<string, object>
                 {
                     {"@Trans","SELECT_CLIENT" },
-                    {"@Project_Type_Id" ,_ProjectId}
+                    {"@Project_Type_Id" ,projectid},
+                      {"@User_Role",_UserRole }
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
@@ -205,6 +146,80 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     }
                                 }
                             }
+                        }
+                    }
+                    else
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Client does not exist for " + ddl_Project_Type.Text, "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        private async void BindColumnToGrid()
+        {
+            try
+            {
+                _dtcol = new DataTable();
+                grd_ClientTAT.DataSource = null;
+                gridView_ClientTAT.Columns.Clear();
+                _ProjectId = Convert.ToInt32(ddl_Project_Type.EditValue);
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","SELECT_HEADERS" },
+                    {"@Project_Type_Id" ,_ProjectId}
+
+                };
+                this.grd_ClientTAT.DataSource = new DataTable();
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ClientTAT/BindHeaders", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    Col_Name = Convert.ToString((dt.Rows[i]["Order_Type_Abbreviation"]));
+                                    _dtcol.Columns.Add(Col_Name.ToString());
+                                }
+                                grd_ClientTAT.DataSource = _dtcol;
+                                _dtcol.Rows.Add().ItemArray[0] = null;
+                                for (int i = 0; i < gridView_ClientTAT.Columns.Count; i++)
+                                {
+                                    RepositoryItemTextEdit textEdit = new RepositoryItemTextEdit();
+                                    textEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+                                    textEdit.Mask.EditMask = "([1-9][0-9]{0,2})";
+                                    textEdit.Mask.UseMaskAsDisplayFormat = true;
+                                    grd_ClientTAT.RepositoryItems.Add(textEdit);
+                                    gridView_ClientTAT.Columns[i].ColumnEdit = textEdit;
+                                    gridView_ClientTAT.Columns[i].AppearanceHeader.Font = new Font(gridView_ClientTAT.Columns[i].AppearanceHeader.Font, FontStyle.Bold);
+                                    gridView_ClientTAT.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
+                                    gridView_ClientTAT.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
+                                    gridView_ClientTAT.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                                    gridView_ClientTAT.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Abbreviation does not exist for" + ddl_Project_Type.Text, "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -255,9 +270,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                         _Client = Convert.ToInt32(r1["Client_Id"]);                                      
                                         if (dtmulti.Columns.Count <= 0)
                                         {
-                                            dtmulti.Columns.AddRange(new DataColumn[7]                                                                                  {
+                                            dtmulti.Columns.AddRange(new DataColumn[8]                                                                                  {
                                          new DataColumn("Project_Type_Id",typeof(int)),
-                                         new DataColumn("Client_Id",typeof(int)),                       
+                                         new DataColumn("Client_Id",typeof(int)),
+                                          new DataColumn("Sub_Process_Id",typeof(int)),
                                          new DataColumn("Order_Type_ABS",typeof(string)),                                      
                                          new DataColumn("Allocated_Time",typeof(double)),
                                          new DataColumn("Status",typeof(bool)),
@@ -265,19 +281,40 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                          new DataColumn("Instered_Date",typeof(DateTime))
                                                                                    });
                                         }
-                                            foreach (object itemsChecked in chk_Client.CheckedItems)
+                                        foreach (object itemsChecked in chk_Client.CheckedItems)
+                                        {
+                                            DataRowView castedItem = itemsChecked as DataRowView;
+                                            if (_UserRole == "1")
                                             {
-                                                DataRowView castedItem = itemsChecked as DataRowView;
                                                 string _Client_Name = castedItem["Client_Name"].ToString();
-                                                int _Client_Id = Convert.ToInt32(castedItem["Client_Id"]);
-                                                int projecttype = _ProjectId;                                             
+                                            }
+                                            else
+                                            {
+                                                string _Client_Name = castedItem["Client_Number"].ToString();
+                                            }
+                                            int _Client_Id = Convert.ToInt32(castedItem["Client_Id"]);
+                                            foreach (object itemChecked in chk_SubClient.CheckedItems)
+                                            {
+                                                DataRowView castedItems = itemChecked as DataRowView;
+                                                if (_UserRole == "1")
+                                                {
+                                                    string _SubClient = castedItems["Sub_ProcessName"].ToString();
+                                                }
+                                                else
+                                                {
+                                                    string _SubClient = castedItems["Subprocess_Number"].ToString();
+                                                }
+
+                                                int _SubClientID = Convert.ToInt32(castedItems["Subprocess_Id"]);
+                                                int projecttype = _ProjectId;
                                                 string _ABS = Col_Name;
                                                 string _allocatedtime = _clodata;
                                                 int status = 1;
                                                 int insertedby = user_id;
                                                 DateTime inserteddate = DateTime.Now;
-                                                dtmulti.Rows.Add(projecttype, _Client_Id, _ABS, _allocatedtime, status, insertedby, inserteddate);
-                                            }                                       
+                                                dtmulti.Rows.Add(projecttype, _Client_Id, _SubClientID, _ABS, _allocatedtime, status, insertedby, inserteddate);
+                                            }
+                                        }                                       
                                     }
                                 }
                                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
@@ -320,6 +357,175 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             this.Mainform.Enabled = true;
         }
 
+        private void chk_Client_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void chk_Client_SelectedValueChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void chk_Client_CheckMemberChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void chk_Client_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+            if (chk_Client.CheckedItemsCount == 1)
+            {
+                foreach (object itemchecked in chk_Client.CheckedItems)
+                {
+                    DataRowView CastedItems = itemchecked as DataRowView;
+                    _ClientID = Convert.ToInt32(CastedItems["Client_Id"]);                  
+                    BindSubClient(_ClientID);
+                    chk_SubClient.Enabled = true;
+                }
+            }
+            else if(chk_Client.CheckedItemsCount>1)
+            {
+                string checkedItems = "0";
+                foreach (object Item in chk_Client.CheckedItems)
+                {
+                    var row = (Item as DataRowView).Row;
+                    checkedItems= checkedItems +","+ (row["Client_Id"]);
+                }
+                BindMultipleSubClient(checkedItems);
+              
+               // chk_SubClient.Enabled = false;        
+            }
+            else if (chk_Client.CheckedItemsCount == 0)
+            {
+                chk_SubClient.UnCheckAll();
+                chk_SubClient.DataSource = null;
+                chk_SubClient.Enabled = true;
+            }
+            SplashScreenManager.CloseForm(false);
+        }
+
+        private async void BindSubClient(int ClientID)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_SUBCLIENT" },
+                    {"@Client_Id" ,ClientID} ,
+                      {"@User_Role",_UserRole }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClientTAT/BindSubClient", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {                               
+                               for (int i = 0; i < dt.Rows.Count; i++)
+                                 {
+                                    if (_UserRole == "1")
+                                        {
+                                        chk_SubClient.DataSource = dt;
+                                        chk_SubClient.DisplayMember = "Sub_ProcessName";
+                                        chk_SubClient.ValueMember = "Subprocess_Id";
+                                        }                                
+                                    else
+                                      {
+                                        chk_SubClient.DataSource = dt;
+                                        chk_SubClient.DisplayMember = "Subprocess_Number";
+                                        chk_SubClient.ValueMember = "Subprocess_Id";
+                                      }
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Sub Client does not exist for " + chk_Client.Text, "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }                   
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        private async void BindMultipleSubClient(string ClientID)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                chk_SubClient.DataSource = null;
+                var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_MULTIPLE_SUBCLIENT" },
+                    {"@Multiple_Client" ,ClientID},
+                    {"@User_Role",_UserRole }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ClientTAT/BindMultipleSubClient", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    if (_UserRole == "1")
+                                    {
+                                        chk_SubClient.DataSource = dt;
+                                        chk_SubClient.DisplayMember = "Sub_ProcessName";
+                                        chk_SubClient.ValueMember = "Subprocess_Id";
+                                        chk_SubClient.CheckAll();
+                                    }
+                                    else
+                                    {
+                                        chk_SubClient.DataSource = dt;
+                                        chk_SubClient.DisplayMember = "Subprocess_Number";
+                                        chk_SubClient.ValueMember = "Subprocess_Id";
+                                        chk_SubClient.CheckAll();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Sub Client does not exist for " + chk_Client.Text, "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
         private void gridView_ClientTAT_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
         }
@@ -345,11 +551,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
             {
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chk_Client.CheckedItems.Count == 0)
             {
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Check Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -358,6 +566,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 string data = gridView_ClientTAT.GetRowCellValue(0, gridView_ClientTAT.Columns[i]).ToString();
                 if (data == "")
                 {
+                    SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Please Fill All The Columns", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     gridView_ClientTAT.Columns[i].AppearanceCell.BackColor = Color.Red;
                     return false;
@@ -376,6 +585,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             chk_Client.DataSource = null;
             _dtcol = new DataTable();
             gridView_ClientTAT.Columns.Clear();
+            chk_SubClient.UnCheckAll();
+            chk_SubClient.DataSource = null;
         }
 
 

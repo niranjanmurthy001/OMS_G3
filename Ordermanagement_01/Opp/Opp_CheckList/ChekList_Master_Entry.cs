@@ -204,14 +204,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                         new DataColumn("Checklist_Master_Type",typeof(string)),
                         new DataColumn("Project_Type_Id",typeof(int)) ,
-                        new DataColumn("Product_Type_Abbr",typeof(string)),
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                        string abbr = castedItem["Order_Type_Abbreviation"].ToString();
+                        int abbr = int.Parse(castedItem["OrderType_ABS_Id"].ToString());
                         dtInsert.Rows.Add(TabName, ProjectValue, abbr, true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtInsert), Encoding.UTF8, "application/json");
@@ -255,15 +255,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                        new DataColumn("ChecklistType_Id",typeof(int)),
                        new DataColumn("Checklist_Master_Type",typeof(string)),
                         new DataColumn("Project_Type_Id",typeof(int)) ,
-                        new DataColumn("Product_Type_Abbr",typeof(string)),
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                        string Prodabbr = castedItem["Order_Type_Abbreviation"].ToString();
-                        dtupdate.Rows.Add(ChklistIdValue, TabName, ProjectValue, Prodabbr, true);
+                        int ProdabbrId = int.Parse(castedItem["OrderType_ABS_Id"].ToString());
+                        dtupdate.Rows.Add(ChklistIdValue, TabName, ProjectValue, ProdabbrId, true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
@@ -329,14 +329,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                        string abbr = castedItem["Order_Type_Abbreviation"].ToString();
+                       int abbr = Convert.ToInt32(castedItem["OrderType_ABS_Id"].ToString());
                      
                     
                        var dictionary = new Dictionary<string, object>()
                      {
                         { "@Trans", "CheckCheckListType" },
                         { "@Project_Type_Id",ddl_ProjectType.EditValue },
-                         { "@Product_Type_Abbr",abbr},
+                         { "@Product_Type_Abbr_Id",abbr},
                         { "@Checklist_Master_Type",txtTabName.Text } ,
                   
                      };

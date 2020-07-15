@@ -130,16 +130,22 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 grd_ClientTAT.DataSource = _dt;
                                 gridView_ClientTAT.Columns[1].Visible = false;
-                                if(_UserRole=="1")
+                                gridView_ClientTAT.Columns[4].Visible = false;
+                                if (_UserRole=="1")
                                 {
                                     gridView_ClientTAT.Columns[0].Visible = true;
                                     gridView_ClientTAT.Columns[2].Visible = false;
+                                    gridView_ClientTAT.Columns[3].Visible = true;
+                                    gridView_ClientTAT.Columns[5].Visible = false;
                                 }
                                 else                                
                                 {
                                     gridView_ClientTAT.Columns[2].Visible = true;
                                     gridView_ClientTAT.Columns[0].Visible = false;
+                                    gridView_ClientTAT.Columns[5].Visible = true;
+                                    gridView_ClientTAT.Columns[3].Visible = false;
                                     gridView_ClientTAT.Columns[2].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+                                    gridView_ClientTAT.Columns[5].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
                                 }
                                 for (int i = 0; i < gridView_ClientTAT.Columns.Count; i++)
                                 {
@@ -147,7 +153,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     gridView_ClientTAT.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
                                     gridView_ClientTAT.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
                                     gridView_ClientTAT.Columns[i].OptionsColumn.AllowEdit = false;                                   
-                                    if (i > 2)
+                                    if (i > 5)
                                     {
                                         gridView_ClientTAT.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                                         gridView_ClientTAT.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -189,7 +195,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     {
                         Directory.CreateDirectory(filePath);
                     }
-                    for (int i = 3; i < gridView_ClientTAT.Columns.Count; i++)
+                    for (int i = 6; i < gridView_ClientTAT.Columns.Count; i++)
                     {
                         GridColumn colModelPrice = gridView_ClientTAT.Columns[i];                      
                         //gridView_ClientTAT.Columns[i].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;

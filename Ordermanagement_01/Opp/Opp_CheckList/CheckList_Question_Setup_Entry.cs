@@ -22,10 +22,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int ProductTypeAbbrIdValue;
         string QuestionValue;
         int checklistValue;
-        string PrdTypeAbbrValue;
+        int PrdTypeAbbrValue;
         public CheckList_Master_View mainForm = null;
 
-        public CheckList_Question_Setup_Entry(string OperType, string BtnName, int ProjectId, int ChkListMasterId, int ProductTyeAbbrId, string ProductAbbr, int chkListType, string Question, Form CallingFrom)
+        public CheckList_Question_Setup_Entry(string OperType, string BtnName, int ProjectId, int ChkListMasterId, int ProductTyeAbbrId, int ProductAbbr, int chkListType, string Question, Form CallingFrom)
         {
             InitializeComponent();
             this.Oper_Type = OperType;
@@ -171,7 +171,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void BindCheckListTabName(string ProductTypeAbbr)
+        private async void BindCheckListTabName(int ProductTypeAbbrId)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SelectCheckListTabName"},
-                    {"@Product_Type_Abbr" , ProductTypeAbbr}
+                    {"@Product_Type_Abbr_Id" , ProductTypeAbbrId}
 
                 };
 
@@ -233,7 +233,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             string QuestionEnterValue = txtQuestionQs.Text;
             int ProjectValue = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
-            string btnProductTypeAbbrValue = ddl_ProdductTypeAbbrQs.Text.ToString();
+            int btnProductTypeAbbrValue = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
 
             if (btn_SaveQs.Text == "Save" && validate() != false)
             {
@@ -249,7 +249,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Question",typeof(string)) ,
                         new DataColumn("Project_Type_Id",typeof(int)),
-                        new DataColumn("Product_Type_Abbr",typeof(string)) ,
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)) ,
 
                         new DataColumn("Is_Active",typeof(bool))
 
@@ -303,7 +303,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                         new DataColumn("Question", typeof(string)) ,
                         new DataColumn("Project_Type_Id", typeof(int)),
-                        new DataColumn("Product_Type_Abbr",typeof(string)),
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
@@ -376,9 +376,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ddl_ProdductTypeAbbrQs_EditValueChanged(object sender, EventArgs e)
         {
-            string ProductAbbr = ddl_ProdductTypeAbbrQs.Text.ToString();
-            ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
-            BindCheckListTabName(ProductAbbr);
+            int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
+           
+            BindCheckListTabName(ProductAbbr_id);
         }
         public bool validate()
         {
