@@ -9,6 +9,7 @@ using System.Data;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
@@ -235,7 +236,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             int ProjectValue = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
             int btnProductTypeAbbrValue = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
 
-            if (btn_SaveQs.Text == "Save" && validate() != false)
+            if (btn_SaveQs.Text == "Save" && validate() != false && (await CheckCheckListQuestion() != false))
             {
                 try
                 {
@@ -290,7 +291,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            if (btn_SaveQs.Text == "Edit" && validate() != false && MasterChklistIdValue != 0)
+            if (btn_SaveQs.Text == "Edit" && validate() != false && MasterChklistIdValue != 0 && (await CheckCheckListQuestion()!=false))
             {
                 try
                 {
@@ -353,6 +354,63 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
 
+            }
+        }
+
+        private async Task<bool> CheckCheckListQuestion()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (validate() != false)
+                {
+                    foreach (object itemChecked in chk_TabNamesQs.CheckedItems)
+                    {
+                        DataRowView castedItem = itemChecked as DataRowView;
+                        int ChecklistType_Id = Convert.ToInt32(castedItem["ChecklistType_Id"].ToString());
+
+
+                        var dictionary = new Dictionary<string, object>()
+                     {
+                        { "@Trans", "CheckQuestion" },
+                        { "@Project_Type_Id",ddl_projectTypeQuesSetup.EditValue },
+                         { "@Product_Type_Abbr_Id",ddl_ProdductTypeAbbrQs.EditValue},
+                        { "@Ref_Checklist_Master_Type_Id ",ChecklistType_Id} ,
+                            {"@Question",txtQuestionQs.Text }
+
+                     };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/CheckListMaster/CheckQuestion", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                    if (count > 0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("CheckList Type Question  Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
