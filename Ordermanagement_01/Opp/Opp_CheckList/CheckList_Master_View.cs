@@ -8,6 +8,7 @@ using DevExpress.XtraSplashScreen;
 using Newtonsoft.Json;
 using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -385,10 +386,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 btn_multiselect.Visible = false;
             }
         }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }     
+           
         private async void btn_multiselect_Click_1(object sender, EventArgs e)
         {
             DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -763,61 +761,74 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void Behavior_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
         {
-            GridView targetGrid = e.Target as GridView;
-            GridView sourceGrid = e.Source as GridView;
-            if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
-                return;
-            DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
-
-            Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
-            GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
-
-            int[] sourceHandles = e.GetData<int[]>();
-
-            int targetRowHandle = hitInfo.RowHandle;
-            int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
-
-            List<DataRow> draggedRows = new List<DataRow>();
-            foreach (int sourceHandle in sourceHandles)
+            try
             {
-                int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
-                DataRow oldRow = sourceTable.Rows[oldRowIndex];
-                draggedRows.Add(oldRow);
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                GridView targetGrid = e.Target as GridView;
+                GridView sourceGrid = e.Source as GridView;
+                if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
+                    return;
+                DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
+
+                Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
+                GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
+
+                int[] sourceHandles = e.GetData<int[]>();
+
+                int targetRowHandle = hitInfo.RowHandle;
+                int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
+
+                List<DataRow> draggedRows = new List<DataRow>();
+                foreach (int sourceHandle in sourceHandles)
+                {
+                    int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
+                    DataRow oldRow = sourceTable.Rows[oldRowIndex];
+                    draggedRows.Add(oldRow);
+                }
+
+                int newRowIndex;
+
+                switch (e.InsertType)
+                {
+                    case InsertType.Before:
+                        newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
+                        for (int i = draggedRows.Count - 1; i >= 0; i--)
+                        {
+                            DataRow oldRow = draggedRows[i];
+                            DataRow newRow = sourceTable.NewRow();
+                            newRow.ItemArray = oldRow.ItemArray;
+                            sourceTable.Rows.Remove(oldRow);
+                            sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                        }
+                        break;
+                    case InsertType.After:
+                        newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
+                        for (int i = 0; i < draggedRows.Count; i++)
+                        {
+                            DataRow oldRow = draggedRows[i];
+                            DataRow newRow = sourceTable.NewRow();
+                            newRow.ItemArray = oldRow.ItemArray;
+                            sourceTable.Rows.Remove(oldRow);
+                            sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                        }
+                        break;
+                    default:
+                        newRowIndex = -1;
+                        break;
+                }
+                int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
+                targetGrid.FocusedRowHandle = insertedIndex;
+                targetGrid.SelectRow(targetGrid.FocusedRowHandle);
             }
-
-            int newRowIndex;
-
-            switch (e.InsertType)
+            catch(Exception ex)
             {
-                case InsertType.Before:
-                    newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
-                    for (int i = draggedRows.Count - 1; i >= 0; i--)
-                    {
-                        DataRow oldRow = draggedRows[i];
-                        DataRow newRow = sourceTable.NewRow();
-                        newRow.ItemArray = oldRow.ItemArray;
-                        sourceTable.Rows.Remove(oldRow);
-                        sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                    }
-                    break;
-                case InsertType.After:
-                    newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
-                    for (int i = 0; i < draggedRows.Count; i++)
-                    {
-                        DataRow oldRow = draggedRows[i];
-                        DataRow newRow = sourceTable.NewRow();
-                        newRow.ItemArray = oldRow.ItemArray;
-                        sourceTable.Rows.Remove(oldRow);
-                        sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                    }
-                    break;
-                default:
-                    newRowIndex = -1;
-                    break;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
-            targetGrid.FocusedRowHandle = insertedIndex;
-            targetGrid.SelectRow(targetGrid.FocusedRowHandle);
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
         private void gridView_TabSetting_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
@@ -832,22 +843,32 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //List<int> getallrows = gridView_TabSetting.Rows().ToList();
-            //DataRow row = gridView_TabSetting.GetDataRow(getallrows[i]);
-            //int[] chk_Ids = int.Parse(row["ChecklistType_Id"].ToString());
-            // object value = view.GetCell(view.Columns[ColumnIndex, Row]).Value
-            DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ID");
-            ArrayList aL = new ArrayList();         
-            for (int i = 0; i < gridView_TabSetting.DataRowCount; i++)
-            { 
-                aL.Add(gridView_TabSetting.GetRowCellValue(i, col));
-            }             
-                int preference = 1;
-                foreach (int chk_Id in aL)
+
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ChecklistType_Id");
+                ArrayList aL = new ArrayList();
+                for (int i = 0; i < gridView_TabSetting.DataRowCount; i++)
                 {
-                    UpdatePreference(chk_Id, preference);
+                    aL.Add(gridView_TabSetting.GetRowCellValue(i, col));
+                }
+                int preference = 1;
+                foreach (var chk_Id in aL)
+                {
+                    UpdatePreference(Convert.ToInt32(chk_Id), preference);
                     preference += 1;
-                }           
+                }
+            }
+            catch
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }          
         }
 
         private async void UpdatePreference(int locationId, int preference)
@@ -870,7 +891,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                         
+                           // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                         
                         }
                     }
                 }
