@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -95,6 +95,7 @@
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -231,9 +232,9 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement5.Text = "CheckList Master";
-            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_CheckList_Master.Elements.Add(tileItemElement5);
+            tileItemElement1.Text = "CheckList Master";
+            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_CheckList_Master.Elements.Add(tileItemElement1);
             this.tile_CheckList_Master.Id = 0;
             this.tile_CheckList_Master.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_CheckList_Master.Name = "tile_CheckList_Master";
@@ -282,17 +283,17 @@
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement6.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement6.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement6.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement6.Appearance.Normal.Options.UseFont = true;
-            tileItemElement6.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement6.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement6.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement6.Appearance.Selected.Options.UseFont = true;
-            tileItemElement6.Text = "Tab Settings";
-            tileItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_TabSettings.Elements.Add(tileItemElement6);
+            tileItemElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Normal.Options.UseFont = true;
+            tileItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Selected.Options.UseFont = true;
+            tileItemElement2.Text = "Tab Settings";
+            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_TabSettings.Elements.Add(tileItemElement2);
             this.tile_TabSettings.Id = 2;
             this.tile_TabSettings.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_TabSettings.Name = "tile_TabSettings";
@@ -341,9 +342,9 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement7.Text = "CheckList Question SetUp";
-            tileItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_Question_SetUp.Elements.Add(tileItemElement7);
+            tileItemElement3.Text = "CheckList Question SetUp";
+            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_Question_SetUp.Elements.Add(tileItemElement3);
             this.tile_Question_SetUp.Id = 1;
             this.tile_Question_SetUp.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_Question_SetUp.Name = "tile_Question_SetUp";
@@ -738,15 +739,15 @@
             // 
             // gridColumn13
             // 
-            this.gridColumn13.Caption = "OrderRow";
-            this.gridColumn13.FieldName = "OrderRow";
+            this.gridColumn13.Caption = "Preference";
+            this.gridColumn13.FieldName = "Preference";
             this.gridColumn13.Name = "gridColumn13";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 433F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 345F));
             this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -816,6 +817,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.ddl_ProductType);
             this.panel1.Controls.Add(this.ddl_ProjectType);
             this.panel1.Controls.Add(this.labelControl2);
@@ -823,7 +825,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(571, 47);
+            this.panel1.Size = new System.Drawing.Size(659, 47);
             this.panel1.TabIndex = 0;
             // 
             // ddl_ProductType
@@ -902,8 +904,8 @@
             this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement8.Text = "Master";
-            this.tileItem1.Elements.Add(tileItemElement8);
+            tileItemElement4.Text = "Master";
+            this.tileItem1.Elements.Add(tileItemElement4);
             this.tileItem1.Id = 0;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem1.Name = "tileItem1";
@@ -915,6 +917,21 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Appearance.Options.UseFont = true;
+            this.btnUpdate.Appearance.Options.UseForeColor = true;
+            this.btnUpdate.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btnUpdate.Location = new System.Drawing.Point(572, 1);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 40);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // CheckList_Master_View
             // 
@@ -1023,5 +1040,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.SimpleButton btn_Update;
+        private DevExpress.XtraEditors.SimpleButton btnUpdate;
     }
 }

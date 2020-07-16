@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -829,6 +830,62 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             ddl_ProjectType.EditValue = 0;
             grd_TabSetting.DataSource = null;
         }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //List<int> getallrows = gridView_TabSetting.Rows().ToList();
+            //DataRow row = gridView_TabSetting.GetDataRow(getallrows[i]);
+            //int[] chk_Ids = int.Parse(row["ChecklistType_Id"].ToString());
+            // object value = view.GetCell(view.Columns[ColumnIndex, Row]).Value
+            DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ID");
+            ArrayList aL = new ArrayList();         
+            for (int i = 0; i < gridView_TabSetting.DataRowCount; i++)
+            { 
+                aL.Add(gridView_TabSetting.GetRowCellValue(i, col));
+            }             
+                int preference = 1;
+                foreach (int chk_Id in aL)
+                {
+                    UpdatePreference(chk_Id, preference);
+                    preference += 1;
+                }           
+        }
+
+        private async void UpdatePreference(int locationId, int preference)
+        {
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);               
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","UPDATE_REORDER_ROWS" },
+                    {"@ID ",locationId },
+                    {"@Preference ",preference }
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckListMaster/BindReorderedRows", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                         
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
     }
 }
 
