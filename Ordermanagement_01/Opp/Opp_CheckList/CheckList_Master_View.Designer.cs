@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement6 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement7 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement8 = new DevExpress.XtraEditors.TileItemElement();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,6 +56,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.chklistmasterHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.gridChkQuestionSetup = new DevExpress.XtraGrid.GridControl();
             this.gridviewChkQuestionSetup = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -70,6 +71,7 @@
             this.gridColDeleteQs = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.grd_TabSetting = new DevExpress.XtraGrid.GridControl();
             this.gridView_TabSetting = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -93,8 +95,6 @@
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -105,11 +105,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCheckListMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkListMasterHyperLinkEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chklistmasterHyperLinkDelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.navigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridChkQuestionSetup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewChkQuestionSetup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuesSetUpHyperLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.navigationPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).BeginInit();
@@ -120,8 +122,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -231,9 +231,9 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement1.Text = "CheckList Master";
-            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_CheckList_Master.Elements.Add(tileItemElement1);
+            tileItemElement5.Text = "CheckList Master";
+            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_CheckList_Master.Elements.Add(tileItemElement5);
             this.tile_CheckList_Master.Id = 0;
             this.tile_CheckList_Master.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_CheckList_Master.Name = "tile_CheckList_Master";
@@ -251,7 +251,7 @@
             this.tile_TabSettings.AllowAnimation = false;
             this.tile_TabSettings.AppearanceItem.Hovered.BackColor = System.Drawing.Color.White;
             this.tile_TabSettings.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tile_TabSettings.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tile_TabSettings.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tile_TabSettings.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.Black;
             this.tile_TabSettings.AppearanceItem.Hovered.Options.UseBackColor = true;
             this.tile_TabSettings.AppearanceItem.Hovered.Options.UseBorderColor = true;
@@ -282,17 +282,17 @@
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement2.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement2.Appearance.Normal.Options.UseFont = true;
-            tileItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement2.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement2.Appearance.Selected.Options.UseFont = true;
-            tileItemElement2.Text = "Tab Settings";
-            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_TabSettings.Elements.Add(tileItemElement2);
+            tileItemElement6.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement6.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement6.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement6.Appearance.Normal.Options.UseFont = true;
+            tileItemElement6.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement6.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement6.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement6.Appearance.Selected.Options.UseFont = true;
+            tileItemElement6.Text = "Tab Settings";
+            tileItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_TabSettings.Elements.Add(tileItemElement6);
             this.tile_TabSettings.Id = 2;
             this.tile_TabSettings.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_TabSettings.Name = "tile_TabSettings";
@@ -341,9 +341,9 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement3.Text = "CheckList Question SetUp";
-            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_Question_SetUp.Elements.Add(tileItemElement3);
+            tileItemElement7.Text = "CheckList Question SetUp";
+            tileItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_Question_SetUp.Elements.Add(tileItemElement7);
             this.tile_Question_SetUp.Id = 1;
             this.tile_Question_SetUp.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_Question_SetUp.Name = "tile_Question_SetUp";
@@ -496,6 +496,11 @@
             this.gridColumn16.FieldName = "Product_Type_Abbr_Id";
             this.gridColumn16.Name = "gridColumn16";
             // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gridCheckListMasterDetails;
+            this.gridView3.Name = "gridView3";
+            // 
             // navigationPage2
             // 
             this.navigationPage2.Caption = "navigationPage2";
@@ -640,6 +645,11 @@
             this.gridColumn15.Caption = "ProductType_Abbr_Id";
             this.gridColumn15.FieldName = "Product_Type_Abbr_Id";
             this.gridColumn15.Name = "gridColumn15";
+            // 
+            // gridView2
+            // 
+            this.gridView2.GridControl = this.gridChkQuestionSetup;
+            this.gridView2.Name = "gridView2";
             // 
             // navigationPage3
             // 
@@ -892,8 +902,8 @@
             this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement4.Text = "Master";
-            this.tileItem1.Elements.Add(tileItemElement4);
+            tileItemElement8.Text = "Master";
+            this.tileItem1.Elements.Add(tileItemElement8);
             this.tileItem1.Id = 0;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem1.Name = "tileItem1";
@@ -905,16 +915,6 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridChkQuestionSetup;
-            this.gridView2.Name = "gridView2";
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.gridCheckListMasterDetails;
-            this.gridView3.Name = "gridView3";
             // 
             // CheckList_Master_View
             // 
@@ -937,11 +937,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCheckListMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkListMasterHyperLinkEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chklistmasterHyperLinkDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.navigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridChkQuestionSetup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewChkQuestionSetup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuesSetUpHyperLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.navigationPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).EndInit();
@@ -953,8 +955,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
