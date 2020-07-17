@@ -65,7 +65,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(409, 346);
+            this.groupControl1.Size = new System.Drawing.Size(380, 346);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Master Entry";
             // 
@@ -79,9 +79,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 22);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.90093F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.09907F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 322);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.16149F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.83851F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 322);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -95,13 +95,15 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(399, 264);
+            this.panelControl1.Size = new System.Drawing.Size(370, 265);
             this.panelControl1.TabIndex = 0;
             // 
             // txtTabName
             // 
             this.txtTabName.Location = new System.Drawing.Point(170, 198);
             this.txtTabName.Name = "txtTabName";
+            this.txtTabName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTabName.Properties.Appearance.Options.UseFont = true;
             this.txtTabName.Size = new System.Drawing.Size(186, 20);
             this.txtTabName.TabIndex = 11;
             // 
@@ -161,9 +163,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(240, 273);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(211, 274);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 46);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 45);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnClear
@@ -198,8 +200,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 346);
+            this.ClientSize = new System.Drawing.Size(380, 346);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(396, 384);
             this.Name = "ChekList_Master_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChekList_Master_Entry";

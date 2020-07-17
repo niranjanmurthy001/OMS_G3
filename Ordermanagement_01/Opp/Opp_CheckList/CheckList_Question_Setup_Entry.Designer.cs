@@ -101,6 +101,8 @@
             // 
             this.txtQuestionQs.Location = new System.Drawing.Point(131, 283);
             this.txtQuestionQs.Name = "txtQuestionQs";
+            this.txtQuestionQs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuestionQs.Properties.Appearance.Options.UseFont = true;
             this.txtQuestionQs.Size = new System.Drawing.Size(295, 62);
             this.txtQuestionQs.TabIndex = 7;
             // 
