@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement9 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement10 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement11 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement12 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,6 +87,7 @@
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_multiselect = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -96,7 +97,6 @@
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -120,11 +120,11 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -233,9 +233,9 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement9.Text = "CheckList Master";
-            tileItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_CheckList_Master.Elements.Add(tileItemElement9);
+            tileItemElement1.Text = "CheckList Master";
+            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_CheckList_Master.Elements.Add(tileItemElement1);
             this.tile_CheckList_Master.Id = 0;
             this.tile_CheckList_Master.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_CheckList_Master.Name = "tile_CheckList_Master";
@@ -284,17 +284,17 @@
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement10.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement10.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement10.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement10.Appearance.Normal.Options.UseFont = true;
-            tileItemElement10.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement10.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement10.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement10.Appearance.Selected.Options.UseFont = true;
-            tileItemElement10.Text = "Tab Settings";
-            tileItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_TabSettings.Elements.Add(tileItemElement10);
+            tileItemElement2.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Normal.Options.UseFont = true;
+            tileItemElement2.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement2.Appearance.Selected.Options.UseFont = true;
+            tileItemElement2.Text = "Tab Settings";
+            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_TabSettings.Elements.Add(tileItemElement2);
             this.tile_TabSettings.Id = 2;
             this.tile_TabSettings.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_TabSettings.Name = "tile_TabSettings";
@@ -343,9 +343,9 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement11.Text = "CheckList Question SetUp";
-            tileItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_Question_SetUp.Elements.Add(tileItemElement11);
+            tileItemElement3.Text = "CheckList Question SetUp";
+            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_Question_SetUp.Elements.Add(tileItemElement3);
             this.tile_Question_SetUp.Id = 1;
             this.tile_Question_SetUp.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_Question_SetUp.Name = "tile_Question_SetUp";
@@ -705,6 +705,7 @@
             this.gridColumn8.Caption = "Project Type";
             this.gridColumn8.FieldName = "Project_Type";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
             // 
@@ -729,6 +730,7 @@
             this.gridColumn10.Caption = "Tab Name";
             this.gridColumn10.FieldName = "Checklist_Master_Type";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
             // 
@@ -829,6 +831,16 @@
             this.panel1.Size = new System.Drawing.Size(615, 47);
             this.panel1.TabIndex = 0;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.btnUpdate);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(534, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(81, 47);
+            this.flowLayoutPanel2.TabIndex = 7;
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -919,8 +931,8 @@
             this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement12.Text = "Master";
-            this.tileItem1.Elements.Add(tileItemElement12);
+            tileItemElement4.Text = "Master";
+            this.tileItem1.Elements.Add(tileItemElement4);
             this.tileItem1.Id = 0;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem1.Name = "tileItem1";
@@ -932,16 +944,6 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.btnUpdate);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(534, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(81, 47);
-            this.flowLayoutPanel2.TabIndex = 7;
             // 
             // CheckList_Master_View
             // 
@@ -978,11 +980,11 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

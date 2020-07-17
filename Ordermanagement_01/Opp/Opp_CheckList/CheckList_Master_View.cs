@@ -571,6 +571,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             flowLayoutPanel1.Visible = false;
             BindProjectType();
             panel1.Visible = true;
+            btnUpdate.Visible = false;
         }
         public async void BindProjectType()
         {
@@ -625,11 +626,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
             {
-                ddl_ProjectType.EditValue = 0;
-                ddl_ProductType.EditValue = 0;
+               // ddl_ProjectType.EditValue = null;
+                ddl_ProductType.EditValue = null;
                 int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
                 ddl_ProductType.Enabled = true;
-                ddl_ProductType.EditValue = 0;
+                ddl_ProductType.EditValue = null;
                 grd_TabSetting.DataSource = null;
                 BindProductType(ProjectID);
             }
@@ -758,6 +759,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             e.Action = args.Action;
             Cursor.Current = args.Cursor;
             args.Handled = true;
+            btnUpdate.Visible = true;
         }
         private void Behavior_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
         {
@@ -837,8 +839,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void Clear()
         {
-            ddl_ProductType.EditValue = 0;
-            ddl_ProjectType.EditValue = 0;
+            ddl_ProductType.EditValue = null;
+            ddl_ProjectType.EditValue = null;
             grd_TabSetting.DataSource = null;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -859,6 +861,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     UpdatePreference(Convert.ToInt32(chk_Id), preference);
                     preference += 1;
                 }
+                int _ProjID = Convert.ToInt32(ddl_ProjectType.EditValue);
+                int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
+                this.BindGridTabSetting(_ProjID, _ProdID);
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Rows Updated Sucessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);              
+                Clear();
+                btnUpdate.Visible = false;
+                ddl_ProductType.Enabled = false;
             }
             catch
             {
@@ -870,7 +880,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }          
         }
-
         private async void UpdatePreference(int locationId, int preference)
         {
             try
@@ -891,7 +900,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                           // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                         
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                                               
                         }
                     }
                 }
