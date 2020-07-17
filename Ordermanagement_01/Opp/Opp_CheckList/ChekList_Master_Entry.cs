@@ -41,6 +41,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ChekList_Master_Entry_Load(object sender, EventArgs e)
         {
+            ddl_ProjectType.Enabled = true;
             BindProjectType();
             if (Oper_Type == "Update")
             {
@@ -48,6 +49,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 BindOrderTypeAbs(ProjectType_IdValue);
                 txtTabName.Text = chkListTypeVaue;
                 btn_Save.Text = btn_name;
+                ddl_ProjectType.Enabled = false;
             }
         }
         public async void BindProjectType()

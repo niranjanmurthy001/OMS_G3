@@ -50,8 +50,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }      
         private void CheckList_Master_View_Load(object sender, EventArgs e)
         {
-            BindCheckListTypeMaster();
-            BindCheckListQuesSetUpTab();
+            tile_CheckList_Master.Checked = true;
+            BindCheckListTypeMaster();            
             navigationFrame1.SelectedPage = navigationPage1;
             btn_multiselect.Visible = false;
             panel1.Visible = false;
@@ -570,8 +570,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             ddl_ProductType.Enabled = false;
             flowLayoutPanel1.Visible = false;
             BindProjectType();
-            panel1.Visible = true;
-            btnUpdate.Visible = false;
+            panel1.Visible = true;         
         }
         public async void BindProjectType()
         {
@@ -758,8 +757,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             e.InsertIndicatorLocation = args.InsertIndicatorLocation;
             e.Action = args.Action;
             Cursor.Current = args.Cursor;
-            args.Handled = true;
-            btnUpdate.Visible = true;
+            args.Handled = true;           
         }
         private void Behavior_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
         {
@@ -821,6 +819,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
                 targetGrid.FocusedRowHandle = insertedIndex;
                 targetGrid.SelectRow(targetGrid.FocusedRowHandle);
+                Update();
             }
             catch(Exception ex)
             {
@@ -867,7 +866,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Rows Updated Sucessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);              
                 Clear();
-                btnUpdate.Visible = false;
+             //   btnUpdate.Visible = false;
                 ddl_ProductType.Enabled = false;
             }
             catch
@@ -879,6 +878,24 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.CloseForm(false);
             }          
+        }
+        private void Update()
+        {
+            DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ChecklistType_Id");
+            ArrayList aL = new ArrayList();
+            for (int i = 0; i < gridView_TabSetting.DataRowCount; i++)
+            {
+                aL.Add(gridView_TabSetting.GetRowCellValue(i, col));
+            }
+            int preference = 1;
+            foreach (var chk_Id in aL)
+            {
+                UpdatePreference(Convert.ToInt32(chk_Id), preference);
+                preference += 1;
+            }
+            int _ProjID = Convert.ToInt32(ddl_ProjectType.EditValue);
+            int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
+            this.BindGridTabSetting(_ProjID, _ProdID);
         }
         private async void UpdatePreference(int locationId, int preference)
         {
@@ -915,7 +932,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-
+      
     }
 }
 

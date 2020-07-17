@@ -87,8 +87,6 @@
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_multiselect = new DevExpress.XtraEditors.SimpleButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -120,7 +118,6 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
@@ -233,7 +230,7 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement1.Text = "CheckList Master";
+            tileItemElement1.Text = "CheckList Type Settings";
             tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tile_CheckList_Master.Elements.Add(tileItemElement1);
             this.tile_CheckList_Master.Id = 0;
@@ -292,7 +289,7 @@
             tileItemElement2.Appearance.Pressed.Options.UseFont = true;
             tileItemElement2.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
             tileItemElement2.Appearance.Selected.Options.UseFont = true;
-            tileItemElement2.Text = "Tab Settings";
+            tileItemElement2.Text = "CheckList Tab Settings";
             tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tile_TabSettings.Elements.Add(tileItemElement2);
             this.tile_TabSettings.Id = 2;
@@ -343,7 +340,7 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement3.Text = "CheckList Question SetUp";
+            tileItemElement3.Text = "CheckList Question Settings";
             tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             this.tile_Question_SetUp.Elements.Add(tileItemElement3);
             this.tile_Question_SetUp.Id = 1;
@@ -364,7 +361,7 @@
             this.navigationPage1,
             this.navigationPage2,
             this.navigationPage3});
-            this.navigationFrame1.SelectedPage = this.navigationPage3;
+            this.navigationFrame1.SelectedPage = this.navigationPage1;
             this.navigationFrame1.Size = new System.Drawing.Size(1010, 323);
             this.navigationFrame1.TabIndex = 9;
             this.navigationFrame1.Text = "navigationFrame1";
@@ -419,35 +416,44 @@
             // gridColumn1
             // 
             this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn1.Caption = "Project Type";
             this.gridColumn1.FieldName = "Project_Type";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 185;
             // 
             // gridColumn3
             // 
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.Caption = "ProductType Abbreviation";
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn3.Caption = "Product Type Abbreviation";
             this.gridColumn3.FieldName = "Order_Type_Abbreviation";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 185;
             // 
             // gridColumn2
             // 
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn2.Caption = "Check List Type";
             this.gridColumn2.FieldName = "Checklist_Master_Type";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 185;
             // 
             // gridColumn4
             // 
@@ -459,13 +465,16 @@
             // gridColumn5
             // 
             this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn5.Caption = "View";
             this.gridColumn5.ColumnEdit = this.ChkListMasterHyperLinkEdit;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 60;
             // 
             // ChkListMasterHyperLinkEdit
             // 
@@ -477,13 +486,16 @@
             // gridColumn6
             // 
             this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn6.Caption = "Delete";
             this.gridColumn6.ColumnEdit = this.chklistmasterHyperLinkDelete;
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.Width = 60;
             // 
             // chklistmasterHyperLinkDelete
             // 
@@ -554,13 +566,16 @@
             // gridColProjTypeQs
             // 
             this.gridColProjTypeQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColProjTypeQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColProjTypeQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColProjTypeQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColProjTypeQs.Caption = "Project Type";
             this.gridColProjTypeQs.FieldName = "Project_Type";
             this.gridColProjTypeQs.Name = "gridColProjTypeQs";
             this.gridColProjTypeQs.OptionsColumn.AllowEdit = false;
             this.gridColProjTypeQs.Visible = true;
             this.gridColProjTypeQs.VisibleIndex = 1;
+            this.gridColProjTypeQs.Width = 90;
             // 
             // gridColProjectIdQs
             // 
@@ -568,39 +583,49 @@
             this.gridColProjectIdQs.FieldName = "Project_Type_Id";
             this.gridColProjectIdQs.Name = "gridColProjectIdQs";
             this.gridColProjectIdQs.OptionsColumn.AllowEdit = false;
+            this.gridColProjectIdQs.Width = 80;
             // 
             // gridColProductTypeAbbrQs
             // 
             this.gridColProductTypeAbbrQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColProductTypeAbbrQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColProductTypeAbbrQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColProductTypeAbbrQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColProductTypeAbbrQs.Caption = "Product Type Abbreviation";
             this.gridColProductTypeAbbrQs.FieldName = "Order_Type_Abbreviation";
             this.gridColProductTypeAbbrQs.Name = "gridColProductTypeAbbrQs";
             this.gridColProductTypeAbbrQs.OptionsColumn.AllowEdit = false;
             this.gridColProductTypeAbbrQs.Visible = true;
             this.gridColProductTypeAbbrQs.VisibleIndex = 2;
+            this.gridColProductTypeAbbrQs.Width = 150;
             // 
             // gridColChkTypeQs
             // 
             this.gridColChkTypeQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColChkTypeQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColChkTypeQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColChkTypeQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColChkTypeQs.Caption = "CheckList Type";
             this.gridColChkTypeQs.FieldName = "Checklist_Master_Type";
             this.gridColChkTypeQs.Name = "gridColChkTypeQs";
             this.gridColChkTypeQs.OptionsColumn.AllowEdit = false;
             this.gridColChkTypeQs.Visible = true;
             this.gridColChkTypeQs.VisibleIndex = 3;
+            this.gridColChkTypeQs.Width = 230;
             // 
             // gridColQuestionQs
             // 
             this.gridColQuestionQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColQuestionQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColQuestionQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColQuestionQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColQuestionQs.Caption = "Question";
             this.gridColQuestionQs.FieldName = "Question";
             this.gridColQuestionQs.Name = "gridColQuestionQs";
             this.gridColQuestionQs.OptionsColumn.AllowEdit = false;
             this.gridColQuestionQs.Visible = true;
             this.gridColQuestionQs.VisibleIndex = 4;
+            this.gridColQuestionQs.Width = 322;
             // 
             // gridColumn12
             // 
@@ -611,12 +636,15 @@
             // gridColViewQs
             // 
             this.gridColViewQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColViewQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColViewQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColViewQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColViewQs.Caption = "View";
             this.gridColViewQs.ColumnEdit = this.gridQuesSetUpHyperLink;
             this.gridColViewQs.Name = "gridColViewQs";
             this.gridColViewQs.Visible = true;
             this.gridColViewQs.VisibleIndex = 5;
+            this.gridColViewQs.Width = 63;
             // 
             // gridQuesSetUpHyperLink
             // 
@@ -628,12 +656,15 @@
             // gridColDeleteQs
             // 
             this.gridColDeleteQs.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColDeleteQs.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColDeleteQs.AppearanceHeader.Options.UseFont = true;
+            this.gridColDeleteQs.AppearanceHeader.Options.UseForeColor = true;
             this.gridColDeleteQs.Caption = "Delete";
             this.gridColDeleteQs.ColumnEdit = this.repositoryItemHyperLinkEdit2;
             this.gridColDeleteQs.Name = "gridColDeleteQs";
             this.gridColDeleteQs.Visible = true;
             this.gridColDeleteQs.VisibleIndex = 6;
+            this.gridColDeleteQs.Width = 60;
             // 
             // repositoryItemHyperLinkEdit2
             // 
@@ -820,40 +851,15 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.flowLayoutPanel2);
             this.panel1.Controls.Add(this.ddl_ProductType);
             this.panel1.Controls.Add(this.ddl_ProjectType);
             this.panel1.Controls.Add(this.labelControl2);
             this.panel1.Controls.Add(this.labelControl1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(615, 47);
+            this.panel1.Size = new System.Drawing.Size(750, 47);
             this.panel1.TabIndex = 0;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.btnUpdate);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(534, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(81, 47);
-            this.flowLayoutPanel2.TabIndex = 7;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Appearance.Options.UseFont = true;
-            this.btnUpdate.Appearance.Options.UseForeColor = true;
-            this.btnUpdate.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(3, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 40);
-            this.btnUpdate.TabIndex = 6;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // ddl_ProductType
             // 
@@ -862,7 +868,7 @@
             this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProductType.Properties.NullText = "SELECT";
-            this.ddl_ProductType.Size = new System.Drawing.Size(150, 20);
+            this.ddl_ProductType.Size = new System.Drawing.Size(159, 20);
             this.ddl_ProductType.TabIndex = 5;
             this.ddl_ProductType.EditValueChanged += new System.EventHandler(this.ddl_ProductType_EditValueChanged);
             // 
@@ -980,7 +986,6 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
@@ -1054,7 +1059,5 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraEditors.SimpleButton btn_Update;
-        private DevExpress.XtraEditors.SimpleButton btnUpdate;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }

@@ -44,15 +44,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void CheckList_Question_Setup_Entry_Load(object sender, EventArgs e)
         {
+            ddl_projectTypeQuesSetup.Enabled = true;
+            ddl_ProdductTypeAbbrQs.Enabled = true;
             BindProjectTypeForSetUp();
             if (Oper_Type == "Update")
             {
-                ddl_projectTypeQuesSetup.EditValue = ProjectIdValue;
-                
+                ddl_projectTypeQuesSetup.EditValue = ProjectIdValue;               
                 BindOrderTypeAbbrForQuesSetUp(ProjectIdValue);
                 BindCheckListTabName(PrdTypeAbbrValue);
                 txtQuestionQs.Text = QuestionValue;
                 btn_SaveQs.Text = BtnNameValue;
+                ddl_projectTypeQuesSetup.Enabled = false;
+                ddl_ProdductTypeAbbrQs.Enabled = false;
             }
         }
         public async void BindProjectTypeForSetUp()
@@ -108,12 +111,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SELECT_ORDER_ABS"},
                     {"@Project_Type_Id",ProjectId_ }
-                };
-                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+                }; 
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -344,9 +347,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             }
                         }
                     }
-
-
-
                 }
 
                 catch (Exception ex)
@@ -422,9 +422,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Clear()
         {
-            ddl_projectTypeQuesSetup.ItemIndex = 0;
+            ddl_projectTypeQuesSetup.EditValue = null;
             txtQuestionQs.Text ="Enter Question...";
-            ddl_ProdductTypeAbbrQs.ItemIndex = 0;
+            ddl_ProdductTypeAbbrQs.EditValue = null;
             chk_TabNamesQs.DataSource = null;
             Oper_Type = "QuestionSetUp";
             btn_SaveQs.Text = "Save";
@@ -433,21 +433,35 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ddl_projectTypeQuesSetup_EditValueChanged(object sender, EventArgs e)
         {
-            chk_TabNamesQs.DataSource = null;
-            ddl_ProdductTypeAbbrQs.ItemIndex = 0;
-            int ProjectId = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
-            ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
-            BindOrderTypeAbbrForQuesSetUp(ProjectId);
+            if (Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue) != 0)
+            {
+                chk_TabNamesQs.DataSource = null;            
+                int ProjectId = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);              
+                BindOrderTypeAbbrForQuesSetUp(ProjectId);
+            }
+            else
+            {
+                ddl_ProdductTypeAbbrQs.EditValue = null;
+                ddl_ProdductTypeAbbrQs.Properties.DataSource = null;
+                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+                chk_TabNamesQs.DataSource = null;
+            }
         }
 
         private void ddl_ProdductTypeAbbrQs_EditValueChanged(object sender, EventArgs e)
         {
-           
-            int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
-            ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
-            chk_TabNamesQs.DataSource = null;
-            chk_TabNamesQs.UnCheckAll();
-            BindCheckListTabName(ProductAbbr_id);
+            if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) != 0)
+            {
+                int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
+               // ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+                chk_TabNamesQs.DataSource = null;
+                chk_TabNamesQs.UnCheckAll();
+                BindCheckListTabName(ProductAbbr_id);
+            }
+            else
+            {
+                chk_TabNamesQs.DataSource = null;
+            }
         }
         public bool validate()
         {
