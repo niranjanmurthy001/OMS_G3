@@ -107,6 +107,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             BindCheckListTypeMaster();
             flowLayoutPanel1.Visible = true;
             panel1.Visible = false;
+            btn_multiselect.Visible = false;
             Clear();         
         }
         private void tile_Question_SetUp_ItemClick(object sender, TileItemEventArgs e)
@@ -119,6 +120,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             flowLayoutPanel1.Visible = true;
             panel1.Visible = false;
             Clear();
+            btn_multiselect.Visible = false;
         }
         public async void BindCheckListQuesSetUpTab()
         {
@@ -144,12 +146,17 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 gridChkQuestionSetup.DataSource = dt;
-                                gridColProjTypeQs.Width = 15;
-                                gridColProductTypeAbbrQs.Width = 15;
-                                gridColChkTypeQs.Width = 30;
-                                gridColQuestionQs.Width = 130;
-                                gridColDeleteQs.Width = 5;
-                                gridColViewQs.Width = 5;
+                                gridviewChkQuestionSetup.BestFitColumns();
+                                gridColProductTypeAbbrQs.Width = 150;
+                                gridColViewQs.Width = 70;
+                                gridColDeleteQs.Width = 70;
+                             
+                                //gridColProjTypeQs.Width = 50;
+                                //gridColProductTypeAbbrQs.Width = 50;
+                                //gridColChkTypeQs.Width = 50;
+                                //gridColQuestionQs.Width = 350;
+                                //gridColDeleteQs.Width = 30;
+                                //gridColViewQs.Width = 30;
 
 
                             }
@@ -917,10 +924,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                                               
+                           // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                                               
                         }
                     }
                 }
+
+
             }
             catch (Exception ex)
             {
