@@ -229,6 +229,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 this.mainform.BindCheckListTypeMaster();
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Submitted Sucessfully", "Success");
+                                this.Close();
+                                this.mainform.Enabled = true;
                             }
                         }
                     }
@@ -314,7 +316,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void Clear()
         {
             ddl_ProjectType.ItemIndex = 0;
-            txtTabName.Text = "";
+            txtTabName.Text = "Enter TabName...";
             chk_ProductType_Abbr.DataSource = null;
             Oper_Type = "CheckListMaster";
             btn_Save.Text = "Save";
@@ -383,6 +385,27 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void ChekList_Master_Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.mainform.Enabled = true;
+        }
+
+        private void txtTabName_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if(txtTabName.Text=="Enter TabName...")
+            {
+                txtTabName.Text = "";
+                txtTabName.ForeColor = Color.Black;
+                   
+            }
+        }
+
+        private void txtTabName_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtTabName.Text == "Enter TabName...")
+            {
+                txtTabName.Text = "";
+                txtTabName.ForeColor = Color.Black;
+
+            }
         }
     }
 

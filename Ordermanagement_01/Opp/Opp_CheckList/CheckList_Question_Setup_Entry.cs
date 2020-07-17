@@ -48,7 +48,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (Oper_Type == "Update")
             {
                 ddl_projectTypeQuesSetup.EditValue = ProjectIdValue;
-
+                
                 BindOrderTypeAbbrForQuesSetUp(ProjectIdValue);
                 BindCheckListTabName(PrdTypeAbbrValue);
                 txtQuestionQs.Text = QuestionValue;
@@ -113,7 +113,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     {"@Trans" ,"SELECT_ORDER_ABS"},
                     {"@Project_Type_Id",ProjectId_ }
                 };
-               // ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -130,7 +130,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 dr[0] = 0;
                                 dr[1] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
-
+                                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
                                 ddl_ProdductTypeAbbrQs.Properties.DataSource = dt;
                                 ddl_ProdductTypeAbbrQs.Properties.DisplayMember = "Order_Type_Abbreviation";
                                 ddl_ProdductTypeAbbrQs.Properties.ValueMember = "OrderType_ABS_Id";
@@ -138,8 +138,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Type_Abbreviation");
                                 ddl_ProdductTypeAbbrQs.Properties.Columns.Add(col);
                             }
+                            
                             else if (dt != null && dt.Rows.Count > 0)
                             {
+                                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
                                 DataRow dr = dt.NewRow();
                                 dr[0] = 0;
                                 dr[1] = "Select";
@@ -153,7 +155,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 col1 = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Type_Abbreviation");
                                 ddl_ProdductTypeAbbrQs.Properties.Columns.Add(col1);
                             }
-                          
+                           
+
+
 
 
 
@@ -176,6 +180,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             try
             {
+                chk_TabNamesQs.DataSource = null;
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dict = new Dictionary<string, object>()
                 {
@@ -215,6 +220,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 }
                                 
                             }
+                            
                         }
                     }
                 }
@@ -272,11 +278,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 Clear();
-                                this.mainForm.BindCheckListQuesSetUpTab();
-                                
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Submitted Sucessfully", "Success");
-
+                                this.mainForm.BindCheckListQuesSetUpTab();
+                                this.Close();
+                                this.mainForm.Enabled = true;
                             }
                         }
                     }
@@ -417,16 +423,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void Clear()
         {
             ddl_projectTypeQuesSetup.ItemIndex = 0;
-            txtQuestionQs.Text = "";
+            txtQuestionQs.Text ="Enter Question...";
             ddl_ProdductTypeAbbrQs.ItemIndex = 0;
             chk_TabNamesQs.DataSource = null;
             Oper_Type = "QuestionSetUp";
             btn_SaveQs.Text = "Save";
+            
         }
 
         private void ddl_projectTypeQuesSetup_EditValueChanged(object sender, EventArgs e)
         {
-
+            chk_TabNamesQs.DataSource = null;
+            ddl_ProdductTypeAbbrQs.ItemIndex = 0;
             int ProjectId = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
             ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
             BindOrderTypeAbbrForQuesSetUp(ProjectId);
@@ -434,8 +442,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ddl_ProdductTypeAbbrQs_EditValueChanged(object sender, EventArgs e)
         {
-            int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
            
+            int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
+            ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+            chk_TabNamesQs.DataSource = null;
+            chk_TabNamesQs.UnCheckAll();
             BindCheckListTabName(ProductAbbr_id);
         }
         public bool validate()
@@ -475,6 +486,24 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void CheckList_Question_Setup_Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.mainForm.Enabled = true;
+        }
+
+        private void txtQuestionQs_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(txtQuestionQs.Text== "Enter Question...")
+            {
+                txtQuestionQs.Text = "";
+                txtQuestionQs.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtQuestionQs_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtQuestionQs.Text == "Enter Question...")
+            {
+                txtQuestionQs.Text = "";
+                txtQuestionQs.ForeColor = System.Drawing.Color.Black;
+            }
         }
     }
 }
