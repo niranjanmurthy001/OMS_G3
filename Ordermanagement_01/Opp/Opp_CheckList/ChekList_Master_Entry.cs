@@ -5,10 +5,8 @@ using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -41,6 +39,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ChekList_Master_Entry_Load(object sender, EventArgs e)
         {
+            ddl_ProjectType.Enabled = true;
             BindProjectType();
             if (Oper_Type == "Update")
             {
@@ -48,6 +47,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 BindOrderTypeAbs(ProjectType_IdValue);
                 txtTabName.Text = chkListTypeVaue;
                 btn_Save.Text = btn_name;
+                ddl_ProjectType.Enabled = false;
             }
         }
         public async void BindProjectType()
@@ -161,6 +161,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void ddl_ProjectType_EditValueChanged(object sender, EventArgs e)
         {
             int ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
+
             BindOrderTypeAbs(ProjectId);
         }
         public bool validate()
@@ -168,19 +169,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (Convert.ToInt32(ddl_ProjectType.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chk_ProductType_Abbr.CheckedItems.Count == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Check ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Check ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (txtTabName.Text == "")
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Enter CheckList Tab Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Enter CheckList Tab Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -190,7 +191,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             string TabName = txtTabName.Text;
             int ProjectValue = Convert.ToInt32(ddl_ProjectType.EditValue);
-            if (btn_Save.Text == "Save" && validate() != false)
+            if (btn_Save.Text == "Save" && validate() != false && (await CheckCheckListType()) != false)
             {
                 try
                 {
@@ -203,14 +204,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                         new DataColumn("Checklist_Master_Type",typeof(string)),
                         new DataColumn("Project_Type_Id",typeof(int)) ,
-                        new DataColumn("Product_Type_Abbr",typeof(string)),
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                        string abbr = castedItem["Order_Type_Abbreviation"].ToString();
+                        int abbr = int.Parse(castedItem["OrderType_ABS_Id"].ToString());
                         dtInsert.Rows.Add(TabName, ProjectValue, abbr, true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtInsert), Encoding.UTF8, "application/json");
@@ -223,9 +224,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 var result = await response.Content.ReadAsStringAsync();
 
+
+                                Clear();
+                                this.mainform.BindCheckListTypeMaster();
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Submitted Sucessfully", "Success");
-                                Clear();
+                                this.Close();
+                                this.mainform.Enabled = true;
                             }
                         }
                     }
@@ -240,7 +245,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue!=0)
+            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue != 0 && (await CheckCheckListType()) != false)
             {
                 try
                 {
@@ -249,17 +254,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     DataTable dtupdate = new DataTable();
                     dtupdate.Columns.AddRange(new DataColumn[]
                     {
+                       new DataColumn("ChecklistType_Id",typeof(int)),
                        new DataColumn("Checklist_Master_Type",typeof(string)),
                         new DataColumn("Project_Type_Id",typeof(int)) ,
-                        new DataColumn("Product_Type_Abbr",typeof(string)),
+                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                        string Prodabbr = castedItem["Order_Type_Abbreviation"].ToString();
-                        dtupdate.Rows.Add(TabName, ProjectValue, Prodabbr, true);
+                        int ProdabbrId = int.Parse(castedItem["OrderType_ABS_Id"].ToString());
+                        dtupdate.Rows.Add(ChklistIdValue, TabName, ProjectValue, ProdabbrId, true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
@@ -274,19 +280,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show(" Updated Successfully", "Record Updated ", MessageBoxButtons.OK);
                                 Clear();
-                               
+
                                 this.mainform.BindCheckListTypeMaster();
 
                                 ChklistIdValue = 0;
                                 btn_Save.Text = "Save";
-                                Oper_Type = "Insert";
+                                Oper_Type = "CheckListMaster";
                                 this.Close();
                                 this.mainform.Enabled = true;
                             }
                         }
                     }
 
-                    
+
 
                 }
 
@@ -310,8 +316,65 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void Clear()
         {
             ddl_ProjectType.ItemIndex = 0;
-            txtTabName.Text = "";
+            txtTabName.Text = "Enter TabName...";
             chk_ProductType_Abbr.DataSource = null;
+            Oper_Type = "CheckListMaster";
+            btn_Save.Text = "Save";
+        }
+        private async Task<bool> CheckCheckListType()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (validate() != false)
+                {
+                    foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
+                    {
+                        DataRowView castedItem = itemChecked as DataRowView;
+                        int abbr = Convert.ToInt32(castedItem["OrderType_ABS_Id"].ToString());
+
+
+                        var dictionary = new Dictionary<string, object>()
+                     {
+                        { "@Trans", "CheckCheckListType" },
+                        { "@Project_Type_Id",ddl_ProjectType.EditValue },
+                         { "@Product_Type_Abbr_Id",abbr},
+                        { "@Checklist_Master_Type",txtTabName.Text } ,
+
+                     };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/CheckListMaster/Check", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                    if (count > 0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("CheckList Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -323,6 +386,27 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             this.mainform.Enabled = true;
         }
+
+        private void txtTabName_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (txtTabName.Text == "Enter TabName...")
+            {
+                txtTabName.Text = "";
+                txtTabName.ForeColor = Color.Black;
+
+            }
+        }
+
+        private void txtTabName_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtTabName.Text == "Enter TabName...")
+            {
+                txtTabName.Text = "";
+                txtTabName.ForeColor = Color.Black;
+
+            }
+        }
     }
-    
+
 }

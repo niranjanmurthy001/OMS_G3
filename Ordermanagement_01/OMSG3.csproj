@@ -864,6 +864,7 @@
     <Compile Include="Deed\Deed.Designer.cs">
       <DependentUpon>Deed.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevExpress\Utils\DragDrop\DragEventArgs.cs" />
     <Compile Include="Email_Send.cs">
       <SubType>Form</SubType>
     </Compile>

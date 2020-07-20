@@ -62,7 +62,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(459, 445);
+            this.groupControl1.Size = new System.Drawing.Size(434, 423);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Question SetUp ";
             // 
@@ -76,9 +76,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.83069F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.16931F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(455, 417);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.16121F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83879F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 395);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -94,27 +94,33 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(449, 360);
+            this.panelControl1.Size = new System.Drawing.Size(424, 342);
             this.panelControl1.TabIndex = 0;
             // 
             // txtQuestionQs
             // 
-            this.txtQuestionQs.Location = new System.Drawing.Point(131, 283);
+            this.txtQuestionQs.EditValue = "Enter Question...";
+            this.txtQuestionQs.Location = new System.Drawing.Point(123, 271);
             this.txtQuestionQs.Name = "txtQuestionQs";
+            this.txtQuestionQs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuestionQs.Properties.Appearance.Options.UseFont = true;
             this.txtQuestionQs.Size = new System.Drawing.Size(295, 62);
             this.txtQuestionQs.TabIndex = 7;
+            this.txtQuestionQs.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtQuestionQs_MouseClick);
+            this.txtQuestionQs.MouseEnter += new System.EventHandler(this.txtQuestionQs_MouseEnter);
             // 
             // chk_TabNamesQs
             // 
+            this.chk_TabNamesQs.CheckOnClick = true;
             this.chk_TabNamesQs.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_TabNamesQs.Location = new System.Drawing.Point(131, 141);
+            this.chk_TabNamesQs.Location = new System.Drawing.Point(123, 131);
             this.chk_TabNamesQs.Name = "chk_TabNamesQs";
             this.chk_TabNamesQs.Size = new System.Drawing.Size(206, 114);
             this.chk_TabNamesQs.TabIndex = 6;
             // 
             // ddl_ProdductTypeAbbrQs
             // 
-            this.ddl_ProdductTypeAbbrQs.Location = new System.Drawing.Point(131, 90);
+            this.ddl_ProdductTypeAbbrQs.Location = new System.Drawing.Point(123, 82);
             this.ddl_ProdductTypeAbbrQs.Name = "ddl_ProdductTypeAbbrQs";
             this.ddl_ProdductTypeAbbrQs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -125,7 +131,7 @@
             // 
             // ddl_projectTypeQuesSetup
             // 
-            this.ddl_projectTypeQuesSetup.Location = new System.Drawing.Point(131, 32);
+            this.ddl_projectTypeQuesSetup.Location = new System.Drawing.Point(123, 32);
             this.ddl_projectTypeQuesSetup.Name = "ddl_projectTypeQuesSetup";
             this.ddl_projectTypeQuesSetup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -141,7 +147,7 @@
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Location = new System.Drawing.Point(54, 283);
+            this.labelControl4.Location = new System.Drawing.Point(47, 281);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 15);
             this.labelControl4.TabIndex = 3;
@@ -154,9 +160,9 @@
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.Location = new System.Drawing.Point(50, 127);
+            this.labelControl3.Location = new System.Drawing.Point(47, 114);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(75, 37);
+            this.labelControl3.Size = new System.Drawing.Size(68, 37);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "CheckList \r\nTabName  :";
             // 
@@ -167,7 +173,7 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(36, 71);
+            this.labelControl2.Location = new System.Drawing.Point(32, 64);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(82, 41);
             this.labelControl2.TabIndex = 1;
@@ -180,7 +186,7 @@
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Location = new System.Drawing.Point(40, 32);
+            this.labelControl1.Location = new System.Drawing.Point(35, 32);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 15);
             this.labelControl1.TabIndex = 0;
@@ -192,9 +198,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_SaveQs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(289, 369);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(264, 351);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 41);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_ClearQs
@@ -231,10 +237,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 445);
+            this.ClientSize = new System.Drawing.Size(434, 423);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(606, 500);
-            this.MinimumSize = new System.Drawing.Size(475, 38);
+            this.MinimumSize = new System.Drawing.Size(450, 461);
             this.Name = "CheckList_Question_Setup_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckList_Question_Setup_Entry";

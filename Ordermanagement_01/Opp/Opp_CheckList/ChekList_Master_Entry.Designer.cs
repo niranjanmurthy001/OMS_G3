@@ -65,7 +65,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(409, 346);
+            this.groupControl1.Size = new System.Drawing.Size(380, 346);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Master Entry";
             // 
@@ -79,9 +79,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 22);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.90093F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.09907F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 322);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.16149F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.83851F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 322);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -95,32 +95,38 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(399, 264);
+            this.panelControl1.Size = new System.Drawing.Size(370, 265);
             this.panelControl1.TabIndex = 0;
             // 
             // txtTabName
             // 
-            this.txtTabName.Location = new System.Drawing.Point(170, 198);
+            this.txtTabName.EditValue = "Enter TabName...";
+            this.txtTabName.Location = new System.Drawing.Point(114, 216);
             this.txtTabName.Name = "txtTabName";
-            this.txtTabName.Size = new System.Drawing.Size(186, 20);
+            this.txtTabName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTabName.Properties.Appearance.Options.UseFont = true;
+            this.txtTabName.Size = new System.Drawing.Size(196, 20);
             this.txtTabName.TabIndex = 11;
+            this.txtTabName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTabName_MouseClick);
+            this.txtTabName.MouseEnter += new System.EventHandler(this.txtTabName_MouseEnter);
             // 
             // chk_ProductType_Abbr
             // 
+            this.chk_ProductType_Abbr.CheckOnClick = true;
             this.chk_ProductType_Abbr.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_ProductType_Abbr.Location = new System.Drawing.Point(170, 70);
+            this.chk_ProductType_Abbr.Location = new System.Drawing.Point(114, 70);
             this.chk_ProductType_Abbr.Name = "chk_ProductType_Abbr";
-            this.chk_ProductType_Abbr.Size = new System.Drawing.Size(186, 95);
+            this.chk_ProductType_Abbr.Size = new System.Drawing.Size(196, 123);
             this.chk_ProductType_Abbr.TabIndex = 10;
             // 
             // ddl_ProjectType
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(170, 24);
+            this.ddl_ProjectType.Location = new System.Drawing.Point(114, 24);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(186, 20);
+            this.ddl_ProjectType.Size = new System.Drawing.Size(196, 20);
             this.ddl_ProjectType.TabIndex = 9;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
@@ -128,18 +134,19 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(36, 200);
+            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl4.Location = new System.Drawing.Point(34, 197);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(117, 15);
+            this.labelControl4.Size = new System.Drawing.Size(71, 42);
             this.labelControl4.TabIndex = 8;
-            this.labelControl4.Text = "CheckList Tab Name  :";
+            this.labelControl4.Text = "CheckList\r\nTab Name  :";
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.Location = new System.Drawing.Point(67, 63);
+            this.labelControl3.Location = new System.Drawing.Point(23, 69);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(97, 32);
             this.labelControl3.TabIndex = 7;
@@ -149,7 +156,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(78, 24);
+            this.labelControl2.Location = new System.Drawing.Point(25, 24);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 15);
             this.labelControl2.TabIndex = 6;
@@ -161,9 +168,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(240, 273);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(211, 274);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 46);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 45);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btnClear
@@ -198,8 +205,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 346);
+            this.ClientSize = new System.Drawing.Size(380, 346);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(396, 384);
             this.Name = "ChekList_Master_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChekList_Master_Entry";

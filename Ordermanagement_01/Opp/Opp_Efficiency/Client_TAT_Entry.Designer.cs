@@ -32,6 +32,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.chk_SubClient = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.chk_Client = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddl_Project_Type = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -48,6 +50,7 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chk_SubClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_Client)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Project_Type.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClientTAT)).BeginInit();
@@ -65,7 +68,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(656, 537);
+            this.groupControl1.Size = new System.Drawing.Size(706, 605);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Client TAT Settings";
             // 
@@ -81,7 +84,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.27238F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.727627F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(652, 514);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(702, 582);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -94,13 +97,15 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grd_ClientTAT);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(646, 458);
-            this.splitContainerControl1.SplitterPosition = 220;
+            this.splitContainerControl1.Size = new System.Drawing.Size(696, 519);
+            this.splitContainerControl1.SplitterPosition = 332;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.chk_SubClient);
+            this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.chk_Client);
             this.panelControl1.Controls.Add(this.ddl_Project_Type);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -108,21 +113,46 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(646, 220);
+            this.panelControl1.Size = new System.Drawing.Size(696, 332);
             this.panelControl1.TabIndex = 0;
+            // 
+            // chk_SubClient
+            // 
+            this.chk_SubClient.CheckOnClick = true;
+            this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
+            this.chk_SubClient.Location = new System.Drawing.Point(170, 195);
+            this.chk_SubClient.Name = "chk_SubClient";
+            this.chk_SubClient.Size = new System.Drawing.Size(175, 121);
+            this.chk_SubClient.TabIndex = 3;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(91, 195);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(65, 17);
+            this.labelControl3.TabIndex = 2;
+            this.labelControl3.Text = "Sub Client :";
             // 
             // chk_Client
             // 
             this.chk_Client.CheckOnClick = true;
             this.chk_Client.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_Client.Location = new System.Drawing.Point(167, 92);
+            this.chk_Client.Location = new System.Drawing.Point(170, 80);
             this.chk_Client.Name = "chk_Client";
             this.chk_Client.Size = new System.Drawing.Size(175, 95);
             this.chk_Client.TabIndex = 1;
+            this.chk_Client.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_Client_ItemCheck);
+            this.chk_Client.CheckMemberChanged += new System.EventHandler(this.chk_Client_CheckMemberChanged);
+            this.chk_Client.SelectedIndexChanged += new System.EventHandler(this.chk_Client_SelectedIndexChanged);
+            this.chk_Client.SelectedValueChanged += new System.EventHandler(this.chk_Client_SelectedValueChanged);
             // 
             // ddl_Project_Type
             // 
-            this.ddl_Project_Type.Location = new System.Drawing.Point(167, 41);
+            this.ddl_Project_Type.Location = new System.Drawing.Point(170, 29);
             this.ddl_Project_Type.Name = "ddl_Project_Type";
             this.ddl_Project_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -137,7 +167,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(114, 95);
+            this.labelControl2.Location = new System.Drawing.Point(117, 83);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 17);
             this.labelControl2.TabIndex = 1;
@@ -149,7 +179,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(74, 44);
+            this.labelControl1.Location = new System.Drawing.Point(77, 32);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -161,7 +191,7 @@
             this.grd_ClientTAT.Location = new System.Drawing.Point(0, 0);
             this.grd_ClientTAT.MainView = this.gridView_ClientTAT;
             this.grd_ClientTAT.Name = "grd_ClientTAT";
-            this.grd_ClientTAT.Size = new System.Drawing.Size(646, 226);
+            this.grd_ClientTAT.Size = new System.Drawing.Size(696, 175);
             this.grd_ClientTAT.TabIndex = 0;
             this.grd_ClientTAT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_ClientTAT});
@@ -183,9 +213,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 467);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 528);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(646, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(696, 51);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -195,7 +225,7 @@
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Clear.Location = new System.Drawing.Point(563, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(613, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 41);
             this.btn_Clear.TabIndex = 1;
@@ -210,7 +240,7 @@
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
             this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Submit.Location = new System.Drawing.Point(477, 3);
+            this.btn_Submit.Location = new System.Drawing.Point(527, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(80, 41);
             this.btn_Submit.TabIndex = 0;
@@ -222,12 +252,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 537);
+            this.ClientSize = new System.Drawing.Size(706, 605);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(672, 575);
+            this.MaximumSize = new System.Drawing.Size(722, 643);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(672, 575);
+            this.MinimumSize = new System.Drawing.Size(722, 643);
             this.Name = "Client_TAT_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client_TAT_Entry";
@@ -241,6 +271,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chk_SubClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_Client)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Project_Type.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grd_ClientTAT)).EndInit();
@@ -265,5 +296,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Submit;
+        private DevExpress.XtraEditors.CheckedListBoxControl chk_SubClient;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }
