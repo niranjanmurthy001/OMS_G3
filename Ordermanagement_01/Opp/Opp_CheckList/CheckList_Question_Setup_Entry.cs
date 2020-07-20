@@ -399,7 +399,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     if (count > 0)
                                     {
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("CheckList Type Question  Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        XtraMessageBox.Show("CheckList Type Question  Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         return false;
                                     }
                                 }

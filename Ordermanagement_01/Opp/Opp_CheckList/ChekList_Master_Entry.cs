@@ -5,10 +5,8 @@ using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -247,7 +245,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue != 0 && (await CheckCheckListType())!=false)
+            else if (btn_Save.Text == "Edit" && validate() != false && ChklistIdValue != 0 && (await CheckCheckListType()) != false)
             {
                 try
                 {
@@ -333,16 +331,16 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     foreach (object itemChecked in chk_ProductType_Abbr.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
-                       int abbr = Convert.ToInt32(castedItem["OrderType_ABS_Id"].ToString());
-                     
-                    
-                       var dictionary = new Dictionary<string, object>()
+                        int abbr = Convert.ToInt32(castedItem["OrderType_ABS_Id"].ToString());
+
+
+                        var dictionary = new Dictionary<string, object>()
                      {
                         { "@Trans", "CheckCheckListType" },
                         { "@Project_Type_Id",ddl_ProjectType.EditValue },
                          { "@Product_Type_Abbr_Id",abbr},
                         { "@Checklist_Master_Type",txtTabName.Text } ,
-                  
+
                      };
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -358,7 +356,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     if (count > 0)
                                     {
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("CheckList Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        XtraMessageBox.Show("CheckList Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         return false;
                                     }
                                 }
@@ -392,11 +390,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void txtTabName_MouseClick(object sender, MouseEventArgs e)
         {
 
-            if(txtTabName.Text=="Enter TabName...")
+            if (txtTabName.Text == "Enter TabName...")
             {
                 txtTabName.Text = "";
                 txtTabName.ForeColor = Color.Black;
-                   
+
             }
         }
 
