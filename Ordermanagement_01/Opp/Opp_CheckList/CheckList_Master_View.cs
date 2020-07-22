@@ -41,12 +41,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         public string Btn_Name { get; private set; }
         public string OperType { get; private set; }
         public string QuestionValue { get; private set; }
+        public int Product_ID { get; private set; }
+
         Classes.Load_Progres form_loader = new Classes.Load_Progres();
+        private int Project_ID;
+        private int Ref_CheckList_Id;
+
         //private GridHitInfo downHitInfo;
         public CheckList_Master_View()
         {
             InitializeComponent();
             HandleBehaviorDragDropEvents();
+            HandleBehaviorDragDropEventsForQuestion();
         }      
         private void CheckList_Master_View_Load(object sender, EventArgs e)
         {
@@ -55,6 +61,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             navigationFrame1.SelectedPage = navigationPage1;
             btn_multiselect.Visible = false;
             panel1.Visible = false;
+            lbl_CheckListTab.Visible = false;
+            ddl_CheckListTab.Visible = false;
+            rb_CheckListTabSetting.SelectedIndex = 0;
+            rb_CheckListQuesSetting.SelectedIndex = -1;
+            
+
         }
         public async void BindCheckListTypeMaster()
         {
@@ -697,18 +709,45 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void ddl_ProductType_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
+            if (rb_CheckListTabSetting.SelectedIndex != -1)
             {
-                ddl_ProductType.EditValue = 0;
-                int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
-                int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
-                BindGridTabSetting(ProjectID, ProducttID);
+
+                if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
+                {
+                    ddl_ProductType.EditValue = 0;
+                    int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
+                    int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
+                    //ddl_CheckListTab.Enabled = true;
+                    BindCheckListTabName(ProducttID);
+                    BindGridTabSetting(ProjectID, ProducttID);
+
+                }
+                else
+                {
+                    grd_TabSetting.DataSource = null;
+                    ddl_ProductType.EditValue = 0;
+                }
             }
-            else
+            else if(rb_CheckListQuesSetting.SelectedIndex!=-1)
             {
-                grd_TabSetting.DataSource = null;
-                ddl_ProductType.EditValue = 0;
+                if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
+                {
+                    ddl_ProductType.EditValue = 0;
+                    int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
+                   // int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
+                    ddl_CheckListTab.Enabled = true;
+                    ddl_CheckListTab.Properties.Columns.Clear();
+                    BindCheckListTabName(ProducttID);
+                   
+
+                }
+                else
+                {
+                    grd_TabSetting.DataSource = null;
+                    ddl_ProductType.EditValue = 0;
+                }
             }
+           
         }
         public async void BindGridTabSetting(int Proj_ID, int Prod_ID)
         {
@@ -735,7 +774,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 grd_TabSetting.DataSource = dt;
+                               
                                 gridView_TabSetting.BestFitColumns();
+                               
                             }
                         }
                     }
@@ -768,74 +809,151 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void Behavior_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
         {
-            try
+            if (rb_CheckListTabSetting.SelectedIndex != -1)
             {
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                GridView targetGrid = e.Target as GridView;
-                GridView sourceGrid = e.Source as GridView;
-                if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
-                    return;
-                DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
-
-                Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
-                GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
-
-                int[] sourceHandles = e.GetData<int[]>();
-
-                int targetRowHandle = hitInfo.RowHandle;
-                int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
-
-                List<DataRow> draggedRows = new List<DataRow>();
-                foreach (int sourceHandle in sourceHandles)
+                try
                 {
-                    int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
-                    DataRow oldRow = sourceTable.Rows[oldRowIndex];
-                    draggedRows.Add(oldRow);
+                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    GridView targetGrid = e.Target as GridView;
+                    GridView sourceGrid = e.Source as GridView;
+                    if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
+                        return;
+                    DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
+
+                    Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
+                    GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
+
+                    int[] sourceHandles = e.GetData<int[]>();
+
+                    int targetRowHandle = hitInfo.RowHandle;
+                    int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
+
+                    List<DataRow> draggedRows = new List<DataRow>();
+                    foreach (int sourceHandle in sourceHandles)
+                    {
+                        int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
+                        DataRow oldRow = sourceTable.Rows[oldRowIndex];
+                        draggedRows.Add(oldRow);
+                    }
+
+                    int newRowIndex;
+
+                    switch (e.InsertType)
+                    {
+                        case InsertType.Before:
+                            newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
+                            for (int i = draggedRows.Count - 1; i >= 0; i--)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        case InsertType.After:
+                            newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
+                            for (int i = 0; i < draggedRows.Count; i++)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        default:
+                            newRowIndex = -1;
+                            break;
+                    }
+                    int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
+                    targetGrid.FocusedRowHandle = insertedIndex;
+                    targetGrid.SelectRow(targetGrid.FocusedRowHandle);
+                    Update();
+
                 }
-
-                int newRowIndex;
-
-                switch (e.InsertType)
+                catch (Exception ex)
                 {
-                    case InsertType.Before:
-                        newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
-                        for (int i = draggedRows.Count - 1; i >= 0; i--)
-                        {
-                            DataRow oldRow = draggedRows[i];
-                            DataRow newRow = sourceTable.NewRow();
-                            newRow.ItemArray = oldRow.ItemArray;
-                            sourceTable.Rows.Remove(oldRow);
-                            sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                        }
-                        break;
-                    case InsertType.After:
-                        newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
-                        for (int i = 0; i < draggedRows.Count; i++)
-                        {
-                            DataRow oldRow = draggedRows[i];
-                            DataRow newRow = sourceTable.NewRow();
-                            newRow.ItemArray = oldRow.ItemArray;
-                            sourceTable.Rows.Remove(oldRow);
-                            sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                        }
-                        break;
-                    default:
-                        newRowIndex = -1;
-                        break;
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
-                targetGrid.FocusedRowHandle = insertedIndex;
-                targetGrid.SelectRow(targetGrid.FocusedRowHandle);
-                Update();
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
             }
-            catch(Exception ex)
+            else if(rb_CheckListQuesSetting.SelectedIndex!=-1)
             {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
+                try
+                {
+                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    GridView targetGrid = e.Target as GridView;
+                    GridView sourceGrid = e.Source as GridView;
+                    if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
+                        return;
+                    DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
+
+                    Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
+                    GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
+
+                    int[] sourceHandles = e.GetData<int[]>();
+
+                    int targetRowHandle = hitInfo.RowHandle;
+                    int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
+
+                    List<DataRow> draggedRows = new List<DataRow>();
+                    foreach (int sourceHandle in sourceHandles)
+                    {
+                        int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
+                        DataRow oldRow = sourceTable.Rows[oldRowIndex];
+                        draggedRows.Add(oldRow);
+                    }
+
+                    int newRowIndex;
+
+                    switch (e.InsertType)
+                    {
+                        case InsertType.Before:
+                            newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
+                            for (int i = draggedRows.Count - 1; i >= 0; i--)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        case InsertType.After:
+                            newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
+                            for (int i = 0; i < draggedRows.Count; i++)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        default:
+                            newRowIndex = -1;
+                            break;
+                    }
+                    int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
+                    targetGrid.FocusedRowHandle = insertedIndex;
+                    targetGrid.SelectRow(targetGrid.FocusedRowHandle);
+                    UpdateRowOrderQuestionSetting();
+
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
             }
         }
         private void gridView_TabSetting_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
@@ -941,7 +1059,330 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-      
+
+       
+
+        private void rb_CheckListQuesSetting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            navigationFrame1.SelectedPage = navigationPage4;
+            lbl_CheckListTab.Visible = true;
+            ddl_CheckListTab.Visible = true;
+           
+            ddl_CheckListTab.Enabled = false;
+            ddl_ProductType.EditValue = null;
+            ddl_ProjectType.EditValue = null;
+            rb_CheckListTabSetting.SelectedIndex = -1;
+            gridQuestionRowSetUp.DataSource = null;
+            //BindGridChecklistTabSettingForQues( Project_ID,  Product_ID,  Ref_CheckList_Id);
+
+
+
+        }
+
+        private void rb_CheckListTabSetting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbl_CheckListTab.Visible = false;
+            ddl_CheckListTab.Visible = false;
+            rb_CheckListQuesSetting.SelectedIndex = -1;
+            navigationFrame1.SelectedPage = navigationPage3;
+            ddl_CheckListTab.Properties.Columns.Clear();
+        }
+
+        private void rb_CheckListTabSetting_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            rb_CheckListTabSetting.SelectedIndex = 0;
+        }
+
+        private void rb_CheckListQuesSetting_MouseClick(object sender, MouseEventArgs e)
+        {
+            rb_CheckListQuesSetting.SelectedIndex = 0;
+        }
+
+        private async void BindCheckListTabName(int ProductTypeAbbrId)
+        {
+            try
+            {
+               
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dict = new Dictionary<string, object>()
+                {
+                    {"@Trans" ,"SelectCheckListTabName"},
+                    {"@Product_Type_Abbr_Id" , ProductTypeAbbrId}
+
+                };
+                ddl_CheckListTab.Properties.Columns.Clear();
+                var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckListMaster/BindTabNames", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+
+                                DataRow dr = dt.NewRow();
+                                dr[0] = "SELECT";
+                                dr[1] = 0;
+                                dt.Rows.InsertAt(dr, 0);
+                                ddl_CheckListTab.Properties.DataSource = dt;
+                                ddl_CheckListTab.Properties.DisplayMember = "Checklist_Master_Type";
+                                ddl_CheckListTab.Properties.ValueMember = "ChecklistType_Id";
+                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Checklist_Master_Type");
+                                ddl_CheckListTab.Properties.Columns.Add(col);
+                            }
+                            else
+                            {
+                                gridQuestionRowSetUp.DataSource = null;
+                            }
+
+                        }
+                            
+
+                        
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong ! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        public async void BindGridChecklistTabSettingForQues(int Proj_ID, int Prod_ID,int Ref_CheckList_Id)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","BindCheckListSettingQuestions" },
+                    {"@Project_Type_Id ",Proj_ID  },
+                    {"@Product_Type_Abbr_Id",Prod_ID },
+                    {"@Ref_Checklist_Master_Type_Id",Ref_CheckList_Id }
+
+                    
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckListMaster/BindGrdQuestionSorted", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                gridQuestionRowSetUp.DataSource = dt;
+                                
+                                gridviewQuestionRowSetUp.BestFitColumns();
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong ! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        private void ddl_CheckListTab_EditValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ddl_CheckListTab.EditValue) != 0)
+            {
+                
+                int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
+                int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
+                int TabValue = Convert.ToInt32(ddl_CheckListTab.EditValue);
+
+                BindGridChecklistTabSettingForQues(ProjectID, ProducttID, TabValue);
+
+            }
+            else
+            {
+                grd_TabSetting.DataSource = null;
+                ddl_CheckListTab.EditValue = 0;
+            }
+            
+        }
+        private void UpdateRowOrderQuestionSetting()
+        {
+            DevExpress.XtraGrid.Columns.GridColumn col = gridviewQuestionRowSetUp.Columns.ColumnByFieldName("Checklist_Id");
+            ArrayList aL = new ArrayList();
+            for (int i = 0; i < gridviewQuestionRowSetUp.DataRowCount; i++)
+            {
+                aL.Add(gridviewQuestionRowSetUp.GetRowCellValue(i, col));
+            }
+            
+            int questionsno = 1;
+            foreach (var chk_Id in aL)
+            {
+                UpdateQuestionSno(Convert.ToInt32(chk_Id),questionsno);
+                
+                questionsno += 1;
+            }
+            int _ProjID = Convert.ToInt32(ddl_ProjectType.EditValue);
+            int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
+            int _TabVal = Convert.ToInt32(ddl_CheckListTab.EditValue);
+            this.BindGridChecklistTabSettingForQues(_ProjID, _ProdID, _TabVal);
+        }
+        private async void UpdateQuestionSno(int ChkListId,int QuestionsNo)
+        {
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","UPDATE_REORDER_Question_ROWS" },
+                    {"@ID ",ChkListId },                  
+                    {"@QuestionSno",QuestionsNo}
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckListMaster/UpdateReorderQuesRows", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                                                                          
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        public void HandleBehaviorDragDropEventsForQuestion()
+        {
+            
+            DragDropBehavior gridbehaviour = behaviorManager1.GetBehavior<DragDropBehavior>(this.gridviewQuestionRowSetUp);
+            gridbehaviour.DragDrop += Gridbehaviour_DragDrop;
+            gridbehaviour.DragOver += Gridbehaviour_DragOver;
+        }
+
+        private void Gridbehaviour_DragOver(object sender, DragOverEventArgs e)
+        {
+            DragOverGridEventArgs arg = DragOverGridEventArgs.GetDragOverGridEventArgs(e);
+            e.InsertType = arg.InsertType;
+            e.InsertIndicatorLocation = arg.InsertIndicatorLocation;
+            e.Action = arg.Action;
+            Cursor.Current = arg.Cursor;
+            arg.Handled = true;
+        }
+
+        private void Gridbehaviour_DragDrop(object sender, DragDropEventArgs e)
+        {
+             if (rb_CheckListQuesSetting.SelectedIndex != -1)
+            {
+                try
+                {
+                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    GridView targetGrid = e.Target as GridView;
+                    GridView sourceGrid = e.Source as GridView;
+                    if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
+                        return;
+                    DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
+
+                    Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
+                    GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
+
+                    int[] sourceHandles = e.GetData<int[]>();
+
+                    int targetRowHandle = hitInfo.RowHandle;
+                    int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
+
+                    List<DataRow> draggedRows = new List<DataRow>();
+                    foreach (int sourceHandle in sourceHandles)
+                    {
+                        int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
+                        DataRow oldRow = sourceTable.Rows[oldRowIndex];
+                        draggedRows.Add(oldRow);
+                    }
+
+                    int newRowIndex;
+
+                    switch (e.InsertType)
+                    {
+                        case InsertType.Before:
+                            newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
+                            for (int i = draggedRows.Count - 1; i >= 0; i--)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        case InsertType.After:
+                            newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
+                            for (int i = 0; i < draggedRows.Count; i++)
+                            {
+                                DataRow oldRow = draggedRows[i];
+                                DataRow newRow = sourceTable.NewRow();
+                                newRow.ItemArray = oldRow.ItemArray;
+                                sourceTable.Rows.Remove(oldRow);
+                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
+                            }
+                            break;
+                        default:
+                            newRowIndex = -1;
+                            break;
+                    }
+                    int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
+                    targetGrid.FocusedRowHandle = insertedIndex;
+                    targetGrid.SelectRow(targetGrid.FocusedRowHandle);
+                    UpdateRowOrderQuestionSetting();
+
+                }
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
+            }
+        }
+
+        private void gridviewQuestionRowSetUp_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
     }
 }
 
