@@ -34,6 +34,7 @@ namespace Ordermanagement_01
             // Application.Run(new Opp.Opp_Master.TEst1());
             //Application.Run(new Opp.Opp_Master.Error_Settings());
             //Application.Run(new Opp.Opp_Master.ErrorTabSetting());
+            Application.Run(new New_Dashboard.NewLogin());
             // Application.Run(new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise());
             //Application.Run(new Opp.Opp_Master.ImportErrorInfo("Error Field",));
             //Application.Run(new Opp.Opp_Efficiency.Efficiency_View(1));
@@ -45,7 +46,7 @@ namespace Ordermanagement_01
             //Application.Run(new Opp.Opp_Master.Project_Wise_Notification_View(1,1));
             // Application.Run(new New_Dashboard.Employee.General_Notification(2, 1));
             //Application.Run(new Opp.Opp_Efficiency.Client_TAT_View(3,"2"));
-             Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
+            // Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
             //Application.Run(new Opp.Opp_CheckList.CheckList_Master_View());
         }
 

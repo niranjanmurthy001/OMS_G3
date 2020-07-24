@@ -499,7 +499,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void CheckList_Question_Setup_Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.mainForm.Enabled = true;
+           // this.mainForm.Enabled = true;
         }
 
         private void txtQuestionQs_MouseClick(object sender, MouseEventArgs e)
