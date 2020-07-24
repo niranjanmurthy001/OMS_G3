@@ -23,11 +23,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int projectid;
         DataTable _dttabs;
         int tabid;
-        int order_type;
+        int order_type, count;
         GridControl grid = new GridControl();
         DataTable dt1, dt_user;
-        public Checklist_Settings_Entry()
+        //private bool IsButton { get; set; }
+        private Checklist_Settings_View Mainform = null;
+        public Checklist_Settings_Entry(Form CallingForm)
         {
+            Mainform = CallingForm as Checklist_Settings_View;
             InitializeComponent();
         }
 
@@ -35,6 +38,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             BindProjectType();
             grd_Questions.Visible = false;
+            btn_Previous.Visible = false;
+            btn_Finish.Visible = false;
+            // IsButton = false;
+            tabPane1.SelectedPageIndex = 0;
         }
         private async void Bind_Sub_Clients(int Client_Id)
         {
@@ -360,14 +367,36 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 string Col_Name = dt.Rows[i]["Checklist_Master_Type"].ToString();
                                 string name = "tabnav" + i;
+                                int Id=Convert.ToInt32(dt.Rows[i]["ChecklistType_Id"].ToString());
+                                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                                var dictonary1 = new Dictionary<string, object>()
+                                    {
+                                        {"@Trans","GET_COUNT" },
+                                        {"@Ref_Checklist_Id",Id }
 
-                                tabPane1.AddPage(Col_Name, name);
-                                // tabPane1.Pages.Add(new DevExpress.XtraBars.Navigation.NavigationPage() { Caption = "My First Page", Name = "page1" });
-
-
+                                    };
+                                var data1 = new StringContent(JsonConvert.SerializeObject(dictonary1), Encoding.UTF8, "Application/Json");
+                                using (var httpclient1 = new HttpClient())
+                                {
+                                    var response1 = await httpclient1.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data1);
+                                    if (response1.IsSuccessStatusCode)
+                                    {
+                                        if (response1.StatusCode == HttpStatusCode.OK)
+                                        {
+                                            var result1 = await response1.Content.ReadAsStringAsync();
+                                           DataTable dtcount = JsonConvert.DeserializeObject<DataTable>(result1);
+                                            if (dtcount != null && dtcount.Rows.Count > 0)
+                                            {
+                                                int count =Convert.ToInt32 (dtcount.Rows[0]["Count"].ToString());
+                                                if(count > 0)
+                                                {
+                                                    tabPane1.AddPage(Col_Name, name);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                            //  tabPane1.Controls.Add(new GridControl() { Dock = DockStyle.Fill });
-
                         }
                     }
                 }
@@ -386,13 +415,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void tabPane1_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
         {
-
             if (tabPane1.Pages.Count > 0)
             {
                 if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
                 {
                     string tabname = tabPane1.SelectedPage.Caption;
-                    //BindDatatoGrid();
                     Gettabid(tabname);
 
                 }
@@ -453,7 +480,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                             // dt1.Columns.RemoveAt(0);
                                             if (dt1 != null && dt1.Rows.Count > 0)
                                             {
-                                                dt1.Columns.Add("Status", typeof(bool), "False");
+                                                // dt1.Columns.Add("Status", typeof(bool), "1");
+                                                for (int i = 0; i < dt1.Rows.Count; i++)
+                                                {
+                                                    dt1.Rows[i]["Is_Active"] = "False";
+                                                }
                                                 grd_Questions.Visible = true;
                                                 grd_Questions.DataSource = dt1;
                                                 grd_Questions.Dock = DockStyle.Fill;
@@ -478,16 +509,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-
+                                                                         
         private void ddl_OrderType_EditValueChanged(object sender, EventArgs e)
         {
-            // tabPane1.Pages.Clear();
             order_type = Convert.ToInt32(ddl_OrderType.EditValue);
 
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
             {
                 BindTabs(order_type);
+               
             }
+
+           
         }
 
         private async void btn_Add_Click(object sender, EventArgs e)
@@ -496,28 +529,33 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 if (validate() == true)
                 {
-                    DataTable dt2 = grd_Questions.DataSource as DataTable;
-                    dt2.Columns.Add("Checklist_Id", typeof(int));
-                    for (int i = 0; i < dt_user.Rows.Count; i++)
+                    if (grd_Questions.DataSource != null)
                     {
-                        for (int j = 0; j < dt2.Rows.Count; j++)
+
+
+                        DataTable dt2 = new DataTable();
+                        dt2 = grd_Questions.DataSource as DataTable;
+                        dt2.Columns.Add("Checklist_Id", typeof(int));
+                        for (int i = 0; i < dt_user.Rows.Count; i++)
                         {
-                            dt2.Rows[i]["Checklist_Id"] = dt_user.Rows[i]["Question Number"];
+                            for (int j = 0; j < dt2.Rows.Count; j++)
+                            {
+                                dt2.Rows[i]["Checklist_Id"] = dt_user.Rows[i]["Question Number"];
+                            }
+
                         }
+                        DataView dv = new DataView(dt2);
 
-                    }
-                    DataView dv = new DataView(dt2);
-
-                    DataTable dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
+                        DataTable dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
 
 
-                    DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
-                    int _subclient = Convert.ToInt32(r1["Subprocess_Id"]);
-                    DataRowView r2 = chk_OrderTask.GetItem(chk_OrderTask.SelectedIndex) as DataRowView;
-                    int _ordertask = Convert.ToInt32(r2["Order_Status_ID"]);
-                    DataTable dtmulti = new DataTable();
-                    dtmulti.Columns.AddRange(new DataColumn[9]
-                    {
+                        DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
+                        int _subclient = Convert.ToInt32(r1["Subprocess_Id"]);
+                        DataRowView r2 = chk_OrderTask.GetItem(chk_OrderTask.SelectedIndex) as DataRowView;
+                        int _ordertask = Convert.ToInt32(r2["Order_Status_ID"]);
+                        DataTable dtmulti = new DataTable();
+                        dtmulti.Columns.AddRange(new DataColumn[9]
+                        {
 
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Project_Type_Id",typeof(int)),
@@ -528,31 +566,31 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("User_id",typeof(int)),
                         new DataColumn("Status1",typeof(int)),
                         new DataColumn("Inserted_Date",typeof(DateTime))
-                    });
+                        });
 
-                    foreach (object itemChecked in chk_SubClient.CheckedItems)
-                    {
-                        DataRowView castedItem = itemChecked as DataRowView;
-                        string sub = castedItem["Sub_ProcessName"].ToString();
-                        int subclient = Convert.ToInt32(castedItem["Subprocess_Id"]);
-                        foreach (object itemsChecked in chk_OrderTask.CheckedItems)
+                        foreach (object itemChecked in chk_SubClient.CheckedItems)
                         {
-                            DataRowView _castedItem = itemsChecked as DataRowView;
-                            string _sub = _castedItem["Order_Status"].ToString();
-                            int ordertask = Convert.ToInt32(_castedItem["Order_Status_ID"]);
-                            int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
-                            int client = Convert.ToInt32(ddl_Client.EditValue);
-                            int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                            int userid = 1;
-                            int _status = 1;
-                            DateTime _inserdate = DateTime.Now;
-                            dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
+                            DataRowView castedItem = itemChecked as DataRowView;
+                            string sub = castedItem["Sub_ProcessName"].ToString();
+                            int subclient = Convert.ToInt32(castedItem["Subprocess_Id"]);
+                            foreach (object itemsChecked in chk_OrderTask.CheckedItems)
+                            {
+                                DataRowView _castedItem = itemsChecked as DataRowView;
+                                string _sub = _castedItem["Order_Status"].ToString();
+                                int ordertask = Convert.ToInt32(_castedItem["Order_Status_ID"]);
+                                int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
+                                int client = Convert.ToInt32(ddl_Client.EditValue);
+                                int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
+                                int userid = 1;
+                                int _status = 1;
+                                DateTime _inserdate = DateTime.Now;
+                                dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
 
+                            }
                         }
-                    }
-                    DataTable dtfinal = new DataTable();
-                    dtfinal.Columns.AddRange(new DataColumn[11]
-                        {
+                        DataTable dtfinal = new DataTable();
+                        dtfinal.Columns.AddRange(new DataColumn[11]
+                            {
 
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Project_Type_Id",typeof(int)),
@@ -566,31 +604,57 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Quest_Checklist_Id",typeof(int)),
                         new DataColumn("Chk_Default",typeof(int))
 
-                    });
-                    var _results1 = from t1 in dtmulti.AsEnumerable()
-                                    from t2 in dt3.AsEnumerable()
-                                    select t1.ItemArray.Concat(t2.ItemArray).ToArray();
-                    foreach (var allFields in _results1)
-                    {
-                        dtfinal.Rows.Add(allFields);
-                    }
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var data = new StringContent(JsonConvert.SerializeObject(dtfinal), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Insert", data);
-                        if (response.IsSuccessStatusCode)
+                        });
+                        var _results1 = from t1 in dtmulti.AsEnumerable()
+                                        from t2 in dt3.AsEnumerable()
+                                        select t1.ItemArray.Concat(t2.ItemArray).ToArray();
+                        foreach (var allFields in _results1)
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            dtfinal.Rows.Add(allFields);
+                        }
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        var data = new StringContent(JsonConvert.SerializeObject(dtfinal), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Insert", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show(" Submitted Successfully", "Success", MessageBoxButtons.OK);
-                                btn_Clear_Click(sender, e);
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    this.Mainform.BindDataToGrid();
+                                    //XtraMessageBox.Show(" Submitted Successfully", "Success", MessageBoxButtons.OK);
+                                    //btn_Clear_Click(sender, e);
+                                    chk_SubClient_ItemCheck(sender, (DevExpress.XtraEditors.Controls.ItemCheckEventArgs)e);
+                                    tabPane1.SelectedPageIndex += 1;
+                                    if (tabPane1.SelectedPageIndex > 0)
+                                    {
+                                        btn_Previous.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        btn_Previous.Visible = false;
+                                    }
+                                    count = tabPane1.Pages.Count;
+                                    if (tabPane1.SelectedPageIndex == count - 1)
+                                    {
+                                        btn_Finish.Visible = true;
+                                        btn_Add.Visible = false;
+                                    }
+                                    else
+                                    {
+                                        btn_Add.Visible = true;
+                                        btn_Finish.Visible = false;
+                                    }
+
+                                }
                             }
                         }
                     }
+
                 }
+
             }
             catch (Exception ex)
             {
@@ -621,6 +685,59 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
+        private void btn_Previous_Click(object sender, EventArgs e)
+        {
+            // IsButton = false;
+            if (tabPane1.SelectedPageIndex == 0)
+            {
+                // btn_Previous.Enabled = false;
+                btn_Previous.Visible = false;
+            }
+            else if (tabPane1.SelectedPageIndex == count - 1)
+            {
+                btn_Add.Visible = true;
+                // btn_Previous.Visible = true;
+                btn_Finish.Visible = false;
+                tabPane1.SelectedPageIndex -= 1;
+            }
+            else
+            {
+                tabPane1.SelectedPageIndex -= 1;
+                btn_Previous.Visible = true;
+                btn_Add.Visible = true;
+                btn_Finish.Visible = false;
+
+            }
+
+        }
+
+        private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
+        {
+            //if (IsButton) e.Cancel = false;
+            //if (!IsButton)
+            //{
+            //    e.Cancel = true;
+            //}
+        }
+
+        private void chk_SubClient_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            if (chk_SubClient.CheckedItems.Count == 1)
+            {
+                BindDataToGrid();
+            }
+            else
+            {
+                grd_Questions.DataSource = dt1;
+            }
+        }
+
+        private void btn_Finish_Click(object sender, EventArgs e)
+        {
+            btn_Add_Click(sender, e);
+            XtraMessageBox.Show("Submitted Successfully");
+        }
+
         private bool validate()
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
@@ -649,6 +766,70 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 return false;
             }
             return true;
+        }
+
+        private async void BindDataToGrid()
+        {
+            try
+            {
+                DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
+                int _subclient1 = Convert.ToInt32(r1["Subprocess_Id"]);
+                foreach (object itemChecked in chk_SubClient.CheckedItems)
+                {
+                    DataRowView castedItem = itemChecked as DataRowView;
+                    string sub = castedItem["Sub_ProcessName"].ToString();
+                    int subclient = Convert.ToInt32(castedItem["Subprocess_Id"]);
+
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    var dictonary = new Dictionary<string, object>()
+                        {
+                    {"@Trans","BIND_DATA_BASED_ON_ORDER_TASK" },
+                    {"@Ref_Checklist_Id",tabid },
+                    {"@Project_Type_Id",projectid },
+                    {"@ProductType_Abs_Id",order_type },
+                    {"@subcliet_Id",subclient }
+
+                        };
+
+                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                    using (var httpclient = new HttpClient())
+                    {
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+
+
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt != null && dt.Rows.Count > 0)
+                                {
+
+                                    grd_Questions.DataSource = dt;
+
+                                }
+                                // dt.Columns.Clear();
+                            }
+                        }
+                        else
+                        {
+                            grd_Questions.DataSource = dt1;
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
     }
 }

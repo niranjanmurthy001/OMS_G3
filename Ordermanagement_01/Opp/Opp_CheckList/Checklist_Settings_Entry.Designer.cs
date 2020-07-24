@@ -52,9 +52,12 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Finish = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -76,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_Questions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +151,7 @@
             this.chk_SubClient.Name = "chk_SubClient";
             this.chk_SubClient.Size = new System.Drawing.Size(215, 95);
             this.chk_SubClient.TabIndex = 11;
+            this.chk_SubClient.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_SubClient_ItemCheck);
             // 
             // chk_OrderTask
             // 
@@ -307,6 +312,7 @@
             this.tabPane1.TabIndex = 2;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
+            this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
             // 
             // grd_Questions
             // 
@@ -314,7 +320,8 @@
             this.grd_Questions.MainView = this.gridView1;
             this.grd_Questions.Name = "grd_Questions";
             this.grd_Questions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckedComboBoxEdit1});
             this.grd_Questions.Size = new System.Drawing.Size(401, 213);
             this.grd_Questions.TabIndex = 0;
             this.grd_Questions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -362,10 +369,19 @@
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
+            // repositoryItemCheckedComboBoxEdit1
+            // 
+            this.repositoryItemCheckedComboBoxEdit1.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit1.Name = "repositoryItemCheckedComboBoxEdit1";
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Finish);
             this.flowLayoutPanel1.Controls.Add(this.btn_Add);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 293);
@@ -387,6 +403,20 @@
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
+            // btn_Finish
+            // 
+            this.btn_Finish.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Finish.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Finish.Appearance.Options.UseFont = true;
+            this.btn_Finish.Appearance.Options.UseForeColor = true;
+            this.btn_Finish.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Finish.Location = new System.Drawing.Point(522, 3);
+            this.btn_Finish.Name = "btn_Finish";
+            this.btn_Finish.Size = new System.Drawing.Size(84, 31);
+            this.btn_Finish.TabIndex = 10;
+            this.btn_Finish.Text = "Finish";
+            this.btn_Finish.Click += new System.EventHandler(this.btn_Finish_Click);
+            // 
             // btn_Add
             // 
             this.btn_Add.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,12 +424,26 @@
             this.btn_Add.Appearance.Options.UseFont = true;
             this.btn_Add.Appearance.Options.UseForeColor = true;
             this.btn_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add.Location = new System.Drawing.Point(522, 3);
+            this.btn_Add.Location = new System.Drawing.Point(432, 3);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(84, 31);
             this.btn_Add.TabIndex = 0;
-            this.btn_Add.Text = "Submit";
+            this.btn_Add.Text = "Next";
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
+            // btn_Previous
+            // 
+            this.btn_Previous.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Previous.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Previous.Appearance.Options.UseFont = true;
+            this.btn_Previous.Appearance.Options.UseForeColor = true;
+            this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Previous.Location = new System.Drawing.Point(342, 3);
+            this.btn_Previous.Name = "btn_Previous";
+            this.btn_Previous.Size = new System.Drawing.Size(84, 31);
+            this.btn_Previous.TabIndex = 9;
+            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
             // 
             // defaultLookAndFeel1
             // 
@@ -437,6 +481,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grd_Questions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -471,5 +516,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraEditors.SimpleButton btn_Previous;
+        private DevExpress.XtraEditors.SimpleButton btn_Finish;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
     }
 }
