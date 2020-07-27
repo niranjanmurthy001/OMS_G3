@@ -32235,46 +32235,10 @@ namespace Ordermanagement_01
             orderentry.Show();
         }
 
-        private void Sub_Product_Type_Click(object sender, EventArgs e)
+        private void sub_Producttype_Click(object sender, EventArgs e)
         {
             Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_View sub = new Opp.Opp_Master.Sub_Product_Type_View(userid);
             sub.Show();
-        }
-
-        private void Client_Tat_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_Efficiency.Client_TAT_View clienttat = new Opp.Opp_Efficiency.Client_TAT_View(userid, User_Role_Id);
-            clienttat.Show();
-        }
-
-        private void Checklist_Question_Entry_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry Entry = new Opp.Opp_CheckList.CheckList_Question_Setup_Entry("QuestionSetUp","Save",1,1,1,1,1,"",this);
-            Entry.Show();
-        }
-
-        private void Checklist_Master_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_CheckList.CheckList_Master_View masterview = new Opp.Opp_CheckList.CheckList_Master_View();
-            masterview.Show();
-        }
-
-        private void Checklist_Settings_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_View settings = new Opp.Opp_CheckList.Checklist_Settings_View();
-            settings.Show();
-        }
-
-        private void Alert_Settings_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_Efficiency.Alert_Setings alert = new Opp.Opp_Efficiency.Alert_Setings(userid);
-            alert.Show();
-        }
-
-        private void Project_Type_Notificationsettings_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.Opp.Opp_Master.ProjectType_Notification_Settings_View projectview = new Opp.Opp_Master.ProjectType_Notification_Settings_View(userid);
-            projectview.Show();
         }
 
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
