@@ -1,18 +1,14 @@
 ﻿using DevExpress.Utils.DragDrop;
-using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraSplashScreen;
 using Newtonsoft.Json;
 using Ordermanagement_01.Masters;
 using Ordermanagement_01.Models;
-using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -20,7 +16,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
@@ -51,21 +46,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         public CheckList_Master_View()
         {
             InitializeComponent();
-            HandleBehaviorDragDropEvents();
             HandleBehaviorDragDropEventsForQuestion();
-        }      
+            HandleBehaviorDragDropEvents();
+        }
         private void CheckList_Master_View_Load(object sender, EventArgs e)
         {
             tile_CheckList_Master.Checked = true;
-            BindCheckListTypeMaster();            
             navigationFrame1.SelectedPage = navigationPage1;
+            BindCheckListTypeMaster();
             btn_multiselect.Visible = false;
             panel1.Visible = false;
             lbl_CheckListTab.Visible = false;
             ddl_CheckListTab.Visible = false;
-            rb_CheckListTabSetting.SelectedIndex = 0;
             rb_CheckListQuesSetting.SelectedIndex = -1;
-            
 
         }
         public async void BindCheckListTypeMaster()
@@ -112,15 +105,16 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void tile_CheckList_Master_ItemClick(object sender, TileItemEventArgs e)
         {
-            tile_Question_SetUp.Checked = false;
             tile_CheckList_Master.Checked = true;
+            tile_Question_SetUp.Checked = false;
             tile_TabSettings.Checked = false;
             navigationFrame1.SelectedPage = navigationPage1;
+
             BindCheckListTypeMaster();
             flowLayoutPanel1.Visible = true;
             panel1.Visible = false;
             btn_multiselect.Visible = false;
-            Clear();         
+            Clear();
         }
         private void tile_Question_SetUp_ItemClick(object sender, TileItemEventArgs e)
         {
@@ -159,10 +153,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 gridChkQuestionSetup.DataSource = dt;
                                 gridviewChkQuestionSetup.BestFitColumns();
-                                gridColProductTypeAbbrQs.Width = 150;
+                                gridColProductTypeAbbrQs.Width = 160;
                                 gridColViewQs.Width = 70;
                                 gridColDeleteQs.Width = 70;
-                             
+
                                 //gridColProjTypeQs.Width = 50;
                                 //gridColProductTypeAbbrQs.Width = 50;
                                 //gridColChkTypeQs.Width = 50;
@@ -405,7 +399,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 btn_multiselect.Visible = false;
             }
         }
-           
+
         private async void btn_multiselect_Click_1(object sender, EventArgs e)
         {
             DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -533,7 +527,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
 
             }
-    }
+        }
         private void btn_Add_Click_1(object sender, EventArgs e)
         {
             if (tile_CheckList_Master.Checked == true)
@@ -585,11 +579,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             tile_Question_SetUp.Checked = false;
             tile_CheckList_Master.Checked = false;
             tile_TabSettings.Checked = true;
+            rb_CheckListTabSetting.SelectedIndex = 0;
             navigationFrame1.SelectedPage = navigationPage3;
+
             ddl_ProductType.Enabled = false;
             flowLayoutPanel1.Visible = false;
             BindProjectType();
-            panel1.Visible = true;         
+            panel1.Visible = true;
         }
         public async void BindProjectType()
         {
@@ -644,7 +640,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
             {
-               // ddl_ProjectType.EditValue = null;
+                // ddl_ProjectType.EditValue = null;
                 ddl_ProductType.EditValue = null;
                 int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
                 ddl_ProductType.Enabled = true;
@@ -714,11 +710,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                 if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
                 {
+                    ddl_ProductType.Enabled = true;
                     ddl_ProductType.EditValue = 0;
+
                     int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
                     int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
                     //ddl_CheckListTab.Enabled = true;
-                    BindCheckListTabName(ProducttID);
+                    //BindCheckListTabName(ProducttID);
                     BindGridTabSetting(ProjectID, ProducttID);
 
                 }
@@ -728,26 +726,27 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     ddl_ProductType.EditValue = 0;
                 }
             }
-            else if(rb_CheckListQuesSetting.SelectedIndex!=-1)
+            else if (rb_CheckListQuesSetting.SelectedIndex != -1)
             {
                 if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
                 {
+                    ddl_ProductType.Enabled = true;
                     ddl_ProductType.EditValue = 0;
                     int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
-                   // int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
+                    // int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
                     ddl_CheckListTab.Enabled = true;
                     ddl_CheckListTab.Properties.Columns.Clear();
                     BindCheckListTabName(ProducttID);
-                   
+
 
                 }
                 else
                 {
-                    grd_TabSetting.DataSource = null;
+                    gridQuestionRowSetUp.DataSource = null;
                     ddl_ProductType.EditValue = 0;
                 }
             }
-           
+
         }
         public async void BindGridTabSetting(int Proj_ID, int Prod_ID)
         {
@@ -774,9 +773,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 grd_TabSetting.DataSource = dt;
-                               
+
                                 gridView_TabSetting.BestFitColumns();
-                               
+
                             }
                         }
                     }
@@ -805,7 +804,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             e.InsertIndicatorLocation = args.InsertIndicatorLocation;
             e.Action = args.Action;
             Cursor.Current = args.Cursor;
-            args.Handled = true;           
+            args.Handled = true;
         }
         private void Behavior_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
         {
@@ -882,79 +881,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if(rb_CheckListQuesSetting.SelectedIndex!=-1)
-            {
-                try
-                {
-                    DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    GridView targetGrid = e.Target as GridView;
-                    GridView sourceGrid = e.Source as GridView;
-                    if (e.Action == DragDropActions.None || targetGrid != sourceGrid)
-                        return;
-                    DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
 
-                    Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
-                    GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
-
-                    int[] sourceHandles = e.GetData<int[]>();
-
-                    int targetRowHandle = hitInfo.RowHandle;
-                    int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
-
-                    List<DataRow> draggedRows = new List<DataRow>();
-                    foreach (int sourceHandle in sourceHandles)
-                    {
-                        int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
-                        DataRow oldRow = sourceTable.Rows[oldRowIndex];
-                        draggedRows.Add(oldRow);
-                    }
-
-                    int newRowIndex;
-
-                    switch (e.InsertType)
-                    {
-                        case InsertType.Before:
-                            newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
-                            for (int i = draggedRows.Count - 1; i >= 0; i--)
-                            {
-                                DataRow oldRow = draggedRows[i];
-                                DataRow newRow = sourceTable.NewRow();
-                                newRow.ItemArray = oldRow.ItemArray;
-                                sourceTable.Rows.Remove(oldRow);
-                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                            }
-                            break;
-                        case InsertType.After:
-                            newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
-                            for (int i = 0; i < draggedRows.Count; i++)
-                            {
-                                DataRow oldRow = draggedRows[i];
-                                DataRow newRow = sourceTable.NewRow();
-                                newRow.ItemArray = oldRow.ItemArray;
-                                sourceTable.Rows.Remove(oldRow);
-                                sourceTable.Rows.InsertAt(newRow, newRowIndex);
-                            }
-                            break;
-                        default:
-                            newRowIndex = -1;
-                            break;
-                    }
-                    int insertedIndex = targetGrid.GetRowHandle(newRowIndex);
-                    targetGrid.FocusedRowHandle = insertedIndex;
-                    targetGrid.SelectRow(targetGrid.FocusedRowHandle);
-                    UpdateRowOrderQuestionSetting();
-
-                }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                finally
-                {
-                    SplashScreenManager.CloseForm(false);
-                }
-            }
         }
         private void gridView_TabSetting_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
@@ -989,9 +916,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
                 this.BindGridTabSetting(_ProjID, _ProdID);
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Rows Updated Sucessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);              
+                XtraMessageBox.Show("Rows Updated Sucessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                 Clear();
-             //   btnUpdate.Visible = false;
+                //   btnUpdate.Visible = false;
                 ddl_ProductType.Enabled = false;
             }
             catch
@@ -1002,7 +929,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             finally
             {
                 SplashScreenManager.CloseForm(false);
-            }          
+            }
         }
         private void Update()
         {
@@ -1026,7 +953,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             try
             {
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);               
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","UPDATE_REORDER_ROWS" },
@@ -1042,7 +969,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                           // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                                               
+                            // DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);                                               
                         }
                     }
                 }
@@ -1060,16 +987,17 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-       
+
 
         private void rb_CheckListQuesSetting_SelectedIndexChanged(object sender, EventArgs e)
         {
             navigationFrame1.SelectedPage = navigationPage4;
             lbl_CheckListTab.Visible = true;
             ddl_CheckListTab.Visible = true;
-           
+
             ddl_CheckListTab.Enabled = false;
             ddl_ProductType.EditValue = null;
+            ddl_ProductType.Enabled = false;
             ddl_ProjectType.EditValue = null;
             rb_CheckListTabSetting.SelectedIndex = -1;
             gridQuestionRowSetUp.DataSource = null;
@@ -1083,8 +1011,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             lbl_CheckListTab.Visible = false;
             ddl_CheckListTab.Visible = false;
+            ddl_ProductType.Enabled = false;
             rb_CheckListQuesSetting.SelectedIndex = -1;
             navigationFrame1.SelectedPage = navigationPage3;
+
             ddl_CheckListTab.Properties.Columns.Clear();
         }
 
@@ -1103,7 +1033,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             try
             {
-               
+
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dict = new Dictionary<string, object>()
                 {
@@ -1142,9 +1072,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             }
 
                         }
-                            
 
-                        
+
+
                     }
                 }
 
@@ -1159,7 +1089,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        public async void BindGridChecklistTabSettingForQues(int Proj_ID, int Prod_ID,int Ref_CheckList_Id)
+        public async void BindGridChecklistTabSettingForQues(int Proj_ID, int Prod_ID, int Ref_CheckList_Id)
         {
             try
             {
@@ -1171,7 +1101,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     {"@Product_Type_Abbr_Id",Prod_ID },
                     {"@Ref_Checklist_Master_Type_Id",Ref_CheckList_Id }
 
-                    
+
                 };
 
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -1187,11 +1117,20 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 gridQuestionRowSetUp.DataSource = dt;
-                                
+
                                 gridviewQuestionRowSetUp.BestFitColumns();
-                                
+
+                            }
+                            else
+                            {
+                                gridQuestionRowSetUp.DataSource = null;
                             }
                         }
+
+                    }
+                    else
+                    {
+                        gridQuestionRowSetUp.DataSource = null;
                     }
                 }
             }
@@ -1210,7 +1149,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             if (Convert.ToInt32(ddl_CheckListTab.EditValue) != 0)
             {
-                
+
                 int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
                 int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
                 int TabValue = Convert.ToInt32(ddl_CheckListTab.EditValue);
@@ -1220,10 +1159,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
             else
             {
-                grd_TabSetting.DataSource = null;
+                gridQuestionRowSetUp.DataSource = null;
                 ddl_CheckListTab.EditValue = 0;
             }
-            
+
         }
         private void UpdateRowOrderQuestionSetting()
         {
@@ -1233,20 +1172,20 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 aL.Add(gridviewQuestionRowSetUp.GetRowCellValue(i, col));
             }
-            
-            int questionsno = 1;
+
+            int questionno = 1;
             foreach (var chk_Id in aL)
             {
-                UpdateQuestionSno(Convert.ToInt32(chk_Id),questionsno);
-                
-                questionsno += 1;
+                UpdateQuestionSno(Convert.ToInt32(chk_Id), questionno);
+
+                questionno += 1;
             }
             int _ProjID = Convert.ToInt32(ddl_ProjectType.EditValue);
             int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
             int _TabVal = Convert.ToInt32(ddl_CheckListTab.EditValue);
             this.BindGridChecklistTabSettingForQues(_ProjID, _ProdID, _TabVal);
         }
-        private async void UpdateQuestionSno(int ChkListId,int QuestionsNo)
+        private async void UpdateQuestionSno(int ChkListId, int QuestionsNo)
         {
             try
             {
@@ -1254,7 +1193,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","UPDATE_REORDER_Question_ROWS" },
-                    {"@ID ",ChkListId },                  
+                    {"@ID ",ChkListId },
                     {"@QuestionSno",QuestionsNo}
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -1266,7 +1205,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                                                                          
+
                         }
                     }
                 }
@@ -1285,7 +1224,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         public void HandleBehaviorDragDropEventsForQuestion()
         {
-            
+
             DragDropBehavior gridbehaviour = behaviorManager1.GetBehavior<DragDropBehavior>(this.gridviewQuestionRowSetUp);
             gridbehaviour.DragDrop += Gridbehaviour_DragDrop;
             gridbehaviour.DragOver += Gridbehaviour_DragOver;
@@ -1293,17 +1232,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Gridbehaviour_DragOver(object sender, DragOverEventArgs e)
         {
-            DragOverGridEventArgs arg = DragOverGridEventArgs.GetDragOverGridEventArgs(e);
-            e.InsertType = arg.InsertType;
-            e.InsertIndicatorLocation = arg.InsertIndicatorLocation;
-            e.Action = arg.Action;
-            Cursor.Current = arg.Cursor;
-            arg.Handled = true;
+
+            DragOverGridEventArgs argument = DragOverGridEventArgs.GetDragOverGridEventArgs(e);
+            e.InsertType = argument.InsertType;
+            e.InsertIndicatorLocation = argument.InsertIndicatorLocation;
+            e.Action = argument.Action;
+            Cursor.Current = argument.Cursor;
+            argument.Handled = true;
         }
 
         private void Gridbehaviour_DragDrop(object sender, DragDropEventArgs e)
         {
-             if (rb_CheckListQuesSetting.SelectedIndex != -1)
+            if (rb_CheckListQuesSetting.SelectedIndex != -1)
             {
                 try
                 {
@@ -1314,31 +1254,31 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         return;
                     DataTable sourceTable = sourceGrid.GridControl.DataSource as DataTable;
 
-                    Point hitPoint = targetGrid.GridControl.PointToClient(Cursor.Position);
-                    GridHitInfo hitInfo = targetGrid.CalcHitInfo(hitPoint);
+                    Point hitPoints = targetGrid.GridControl.PointToClient(Cursor.Position);
+                    GridHitInfo hitInfodata = targetGrid.CalcHitInfo(hitPoints);
 
                     int[] sourceHandles = e.GetData<int[]>();
 
-                    int targetRowHandle = hitInfo.RowHandle;
+                    int targetRowHandle = hitInfodata.RowHandle;
                     int targetRowIndex = targetGrid.GetDataSourceRowIndex(targetRowHandle);
 
-                    List<DataRow> draggedRows = new List<DataRow>();
+                    List<DataRow> draggedRow = new List<DataRow>();
                     foreach (int sourceHandle in sourceHandles)
                     {
                         int oldRowIndex = sourceGrid.GetDataSourceRowIndex(sourceHandle);
                         DataRow oldRow = sourceTable.Rows[oldRowIndex];
-                        draggedRows.Add(oldRow);
+                        draggedRow.Add(oldRow);
                     }
 
-                    int newRowIndex;
+                    int newRowIndex = 0;
 
                     switch (e.InsertType)
                     {
                         case InsertType.Before:
                             newRowIndex = targetRowIndex > sourceHandles[sourceHandles.Length - 1] ? targetRowIndex - 1 : targetRowIndex;
-                            for (int i = draggedRows.Count - 1; i >= 0; i--)
+                            for (int i = draggedRow.Count - 1; i >= 0; i--)
                             {
-                                DataRow oldRow = draggedRows[i];
+                                DataRow oldRow = draggedRow[i];
                                 DataRow newRow = sourceTable.NewRow();
                                 newRow.ItemArray = oldRow.ItemArray;
                                 sourceTable.Rows.Remove(oldRow);
@@ -1347,13 +1287,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             break;
                         case InsertType.After:
                             newRowIndex = targetRowIndex < sourceHandles[0] ? targetRowIndex + 1 : targetRowIndex;
-                            for (int i = 0; i < draggedRows.Count; i++)
+                            for (int i = 0; i < draggedRow.Count; i++)
                             {
-                                DataRow oldRow = draggedRows[i];
+                                DataRow oldRow = draggedRow[i];
                                 DataRow newRow = sourceTable.NewRow();
                                 newRow.ItemArray = oldRow.ItemArray;
                                 sourceTable.Rows.Remove(oldRow);
                                 sourceTable.Rows.InsertAt(newRow, newRowIndex);
+
                             }
                             break;
                         default:
