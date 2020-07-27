@@ -725,6 +725,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (chk_SubClient.CheckedItems.Count == 1)
             {
                 BindDataToGrid();
+               BindTabs(order_type);
             }
             else
             {
@@ -783,7 +784,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var dictonary = new Dictionary<string, object>()
                         {
-                    {"@Trans","BIND_DATA_BASED_ON_ORDER_TASK" },
+                    {"@Trans","BIND_DATA_BASED_ON_SUB_CLIENT" },
                     {"@Ref_Checklist_Id",tabid },
                     {"@Project_Type_Id",projectid },
                     {"@ProductType_Abs_Id",order_type },
