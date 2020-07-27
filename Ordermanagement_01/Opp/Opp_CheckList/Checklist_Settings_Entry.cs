@@ -26,7 +26,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int order_type, count;
         GridControl grid = new GridControl();
         DataTable dt1, dt_user;
-        //private bool IsButton { get; set; }
+        private bool IsButton { get; set; }
         private Checklist_Settings_View Mainform = null;
         public Checklist_Settings_Entry(Form CallingForm)
         {
@@ -517,7 +517,17 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
             {
                 BindTabs(order_type);
-               
+                tabPane1.SelectedPageIndex = 0;
+                if (tabPane1.Pages.Count > 0)
+                {
+                    if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
+                    {
+                        string tabname = tabPane1.SelectedPage.Caption;
+                        Gettabid(tabname);
+
+                    }
+                }
+
             }
 
            
@@ -647,6 +657,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                         btn_Add.Visible = true;
                                         btn_Finish.Visible = false;
                                     }
+                                    
 
                                 }
                             }
@@ -677,6 +688,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             ddl_OrderType.ItemIndex = 0;
             ddl_OrderType.Properties.DataSource = null;
             tabPane1.Pages.Clear();
+            btn_Previous.Visible = false;
+            btn_Finish.Visible = false;
+            btn_Add.Visible = true;
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -737,8 +751,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             btn_Add_Click(sender, e);
             XtraMessageBox.Show("Submitted Successfully");
+            btn_Clear_Click(sender, e);
         }
-
         private bool validate()
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)

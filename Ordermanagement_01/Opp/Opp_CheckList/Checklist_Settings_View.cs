@@ -37,6 +37,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             BindDataToGrid();
             btn_Update.Visible = false;
+           
         }
         public async void BindDataToGrid()
         {
@@ -85,7 +86,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void brn_AddNew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_Entry chk_Entry = new Checklist_Settings_Entry();
+            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_Entry chk_Entry = new Checklist_Settings_Entry(this);
             chk_Entry.Show();
         }
 
@@ -113,13 +114,58 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
+            //btn_Update.Visible = true;
+            //btn_Update.Enabled = true;
+            //_dtUpdatecell = ((DataView)gridView1.DataSource).Table;
+        }
+
+        private async void btn_Update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _dtUpdatecell.Columns.RemoveAt(10);
+                _dtUpdatecell.Columns.RemoveAt(8);
+                _dtUpdatecell.Columns.RemoveAt(6);
+                _dtUpdatecell.Columns.RemoveAt(4);
+                _dtUpdatecell.Columns.RemoveAt(2);
+                _dtUpdatecell.Columns.RemoveAt(0);
+                //_dtUpdatecell.Columns.Add("Modified_By",typeof(int),);
+                //_dtUpdatecell.Columns.Add("Modified_Date");
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var data = new StringContent(JsonConvert.SerializeObject(_dtUpdatecell), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Update", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Updated Successfully");
+                            BindDataToGrid();
+                            btn_Update.Visible = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
             btn_Update.Visible = true;
             _dtUpdatecell = ((DataView)gridView1.DataSource).Table;
-        }
-
-        private void btn_Update_Click(object sender, EventArgs e)
-        {
-
-        }
+        }       
     }
+   
 }
