@@ -1948,6 +1948,12 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList.Designer.cs">
+      <DependentUpon>CheckList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3996,6 +4002,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList.resx">
+      <DependentUpon>CheckList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master_View.resx">
       <DependentUpon>CheckList_Master_View.cs</DependentUpon>
