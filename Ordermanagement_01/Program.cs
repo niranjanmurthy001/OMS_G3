@@ -45,8 +45,8 @@ namespace Ordermanagement_01
             //Application.Run(new Opp.Opp_Master.Project_Wise_Notification_View(1,1));
             // Application.Run(new New_Dashboard.Employee.General_Notification(2, 1));
             //Application.Run(new Opp.Opp_Efficiency.Client_TAT_View(3,"2"));
-           // Application.Run(new Opp.Opp_CheckList.CheckList(17,1, 2,202230, 2,39,3, 1));
-            Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
+            Application.Run(new Opp.Opp_CheckList.CheckLists(1,1,2,200226,5,6,2,1));
+          //  Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
             //Application.Run(new Opp.Opp_CheckList.CheckList_Master_View());
         }
 
