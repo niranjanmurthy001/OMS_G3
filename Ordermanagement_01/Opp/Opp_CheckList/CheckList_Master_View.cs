@@ -225,6 +225,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
             else if (e.Column.Caption == "Delete")
             {
+                btn_multiselect.Visible = false;
                 DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (show == DialogResult.Yes)
                 {
@@ -252,6 +253,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Record Deleted Successfully");
                                     BindCheckListTypeMaster();
+                                    btn_multiselect.Visible = false;
 
                                 }
                             }
@@ -332,6 +334,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
             else if (e.Column.Caption == "Delete")
             {
+                btn_multiselect.Visible = false;
                 DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (show == DialogResult.Yes)
                 {
@@ -359,6 +362,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Record Deleted Successfully");
                                     BindCheckListQuesSetUpTab();
+                                    btn_multiselect.Visible = false;
 
                                 }
                             }
@@ -874,7 +878,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Arrange Rows Properly", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
@@ -1310,7 +1314,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Arrange Rows Properly", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Arrange Rows Properly", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
