@@ -1954,6 +1954,12 @@
     <Compile Include="Opp\Opp_CheckList\CheckList.Designer.cs">
       <DependentUpon>CheckList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckLists.Designer.cs">
+      <DependentUpon>CheckLists.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4005,6 +4011,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckList.resx">
       <DependentUpon>CheckList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckLists.resx">
+      <DependentUpon>CheckLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master_View.resx">
       <DependentUpon>CheckList_Master_View.cs</DependentUpon>
