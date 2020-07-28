@@ -308,7 +308,6 @@
             this.tabPane1.Size = new System.Drawing.Size(699, 284);
             this.tabPane1.TabIndex = 2;
             this.tabPane1.Text = "tabPane1";
-            this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
             this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
             // 
             // grd_Questions
@@ -447,6 +446,7 @@
             this.Name = "Checklist_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checklist_Settings";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Checklist_Settings_Entry_FormClosed);
             this.Load += new System.EventHandler(this.Checklist_Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
