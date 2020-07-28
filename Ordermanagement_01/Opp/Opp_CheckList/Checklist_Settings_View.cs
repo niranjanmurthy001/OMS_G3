@@ -87,6 +87,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void brn_AddNew_Click(object sender, EventArgs e)
         {
             Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_Entry chk_Entry = new Checklist_Settings_Entry(this);
+            this.Enabled = false;
             chk_Entry.Show();
         }
 

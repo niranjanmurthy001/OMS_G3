@@ -22,10 +22,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
     {
         int projectid;
         DataTable _dttabs;
-        int tabid;
+        int tabid,k;
         int order_type, count;
+        int index = 0;
         GridControl grid = new GridControl();
-        DataTable dt1, dt_user;
+        DataTable dt1, dt_user, dtcopy, _dt;
         private bool IsButton { get; set; }
         private Checklist_Settings_View Mainform = null;
         public Checklist_Settings_Entry(Form CallingForm)
@@ -40,8 +41,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             grd_Questions.Visible = false;
             btn_Previous.Visible = false;
             btn_Finish.Visible = false;
-            // IsButton = false;
-            tabPane1.SelectedPageIndex = 0;
+           
+           // tabPane1.SelectedPageIndex = 0;
         }
         private async void Bind_Sub_Clients(int Client_Id)
         {
@@ -227,12 +228,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt1 != null && dt1.Rows.Count > 0)
+                            DataTable dttask= JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dttask != null && dttask.Rows.Count > 0)
                             {
-                                for (int i = 0; i < dt1.Rows.Count; i++)
+                                for (int i = 0; i < dttask.Rows.Count; i++)
                                 {
-                                    chk_OrderTask.DataSource = dt1;
+                                    chk_OrderTask.DataSource = dttask;
                                     chk_OrderTask.DisplayMember = "Order_Status";
                                     chk_OrderTask.ValueMember = "Order_Status_ID";
                                 }
@@ -397,6 +398,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     }
                                 }
                             }
+                            if (tabPane1.Pages.Count > 0)
+                            {
+                                IsButton = true;
+                                tabPane1.SelectedPageIndex = index;
+                                if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
+                                {
+
+                                    string tabname = tabPane1.SelectedPage.Caption;
+                                    Gettabid(tabname);
+
+                                }
+                            }
+
                         }
                     }
                 }
@@ -412,27 +426,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-
-        private void tabPane1_SelectedPageChanged(object sender, SelectedPageChangedEventArgs e)
-        {
-            if (tabPane1.Pages.Count > 0)
-            {
-                if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
-                {
-                    string tabname = tabPane1.SelectedPage.Caption;
-                    Gettabid(tabname);
-
-                }
-            }
-
-        }
-
-
         private async void Gettabid(string tabname)
         {
             try
             {
-
+                dt1 = new DataTable();
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
@@ -489,6 +487,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                 grd_Questions.DataSource = dt1;
                                                 grd_Questions.Dock = DockStyle.Fill;
                                                 tabPane1.SelectedPage.Controls.Add(grd_Questions);
+                                                // dt1.Columns.Clear();
+                                                getcheckdata();
                                             }
                                         }
                                     }
@@ -512,29 +512,34 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                                          
         private void ddl_OrderType_EditValueChanged(object sender, EventArgs e)
         {
+            IsButton = false;
             order_type = Convert.ToInt32(ddl_OrderType.EditValue);
 
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
             {
                 BindTabs(order_type);
-                tabPane1.SelectedPageIndex = 0;
-                if (tabPane1.Pages.Count > 0)
-                {
-                    if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
-                    {
-                        string tabname = tabPane1.SelectedPage.Caption;
-                        Gettabid(tabname);
-
-                    }
-                }
 
             }
-
            
         }
 
+        //private void Getquestions()
+        //{
+        //    tabPane1.SelectedPageIndex = 0;
+        //    if (tabPane1.Pages.Count > 0)
+        //    {
+        //        if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
+        //        {
+        //            string tabname = tabPane1.SelectedPage.Caption;
+        //            Gettabid(tabname);
+
+        //        }
+        //    }
+        //}
+
         private async void btn_Add_Click(object sender, EventArgs e)
         {
+           IsButton = true;
             try
             {
                 if (validate() == true)
@@ -634,10 +639,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
                                     this.Mainform.BindDataToGrid();
-                                    //XtraMessageBox.Show(" Submitted Successfully", "Success", MessageBoxButtons.OK);
-                                    //btn_Clear_Click(sender, e);
-                                    chk_SubClient_ItemCheck(sender, (DevExpress.XtraEditors.Controls.ItemCheckEventArgs)e);
+                                    
                                     tabPane1.SelectedPageIndex += 1;
+                                    if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
+                                    {
+                                        string tabname = tabPane1.SelectedPage.Caption;
+                                        Gettabid(tabname);
+
+                                    }
+                                   
                                     if (tabPane1.SelectedPageIndex > 0)
                                     {
                                         btn_Previous.Visible = true;
@@ -657,8 +667,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                         btn_Add.Visible = true;
                                         btn_Finish.Visible = false;
                                     }
-                                    
 
+                                   
                                 }
                             }
                         }
@@ -667,6 +677,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 }
 
             }
+           
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
@@ -676,6 +687,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.CloseForm(false);
             }
+          
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
@@ -701,7 +713,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void btn_Previous_Click(object sender, EventArgs e)
         {
-            // IsButton = false;
+           // IsButton = true;
             if (tabPane1.SelectedPageIndex == 0)
             {
                 // btn_Previous.Enabled = false;
@@ -713,46 +725,55 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 // btn_Previous.Visible = true;
                 btn_Finish.Visible = false;
                 tabPane1.SelectedPageIndex -= 1;
+                // getcheckdata();
+                index = tabPane1.SelectedPageIndex;
+                ddl_OrderType_EditValueChanged(sender, e);
             }
             else
             {
+                IsButton = true;
                 tabPane1.SelectedPageIndex -= 1;
+                index = tabPane1.SelectedPageIndex;
                 btn_Previous.Visible = true;
                 btn_Add.Visible = true;
                 btn_Finish.Visible = false;
+                ddl_OrderType_EditValueChanged(sender, e);
+               // getcheckdata();
 
             }
 
-        }
-
-        private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
-        {
-            //if (IsButton) e.Cancel = false;
-            //if (!IsButton)
-            //{
-            //    e.Cancel = true;
-            //}
         }
 
         private void chk_SubClient_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            if (chk_SubClient.CheckedItems.Count == 1)
+            getcheckdata();
+        }
+
+        private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
+        {
+            if (IsButton) e.Cancel = false;
+            if (!IsButton)
             {
-                BindDataToGrid();
-               BindTabs(order_type);
+                e.Cancel = true;
             }
-            else
-            {
-                grd_Questions.DataSource = dt1;
-            }
+            IsButton = false;
+            ///tabPane1.Pages[tabPane1.SelectedPageIndex].Focus();
+            //tabPane1.Pages[tabPane1.SelectedPageIndex].CausesValidation = true;
+        }
+
+        private void Checklist_Settings_Entry_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Mainform.Enabled = true;
         }
 
         private void btn_Finish_Click(object sender, EventArgs e)
         {
             btn_Add_Click(sender, e);
             XtraMessageBox.Show("Submitted Successfully");
-            btn_Clear_Click(sender, e);
+            this.Close();
+            this.Mainform.Enabled = true;
         }
+
         private bool validate()
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
@@ -787,6 +808,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             try
             {
+                dtcopy = new DataTable();
                 DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
                 int _subclient1 = Convert.ToInt32(r1["Subprocess_Id"]);
                 foreach (object itemChecked in chk_SubClient.CheckedItems)
@@ -817,14 +839,19 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
 
                                 var result = await response.Content.ReadAsStringAsync();
-                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (dt != null && dt.Rows.Count > 0)
+                                 _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (_dt != null && _dt.Rows.Count > 0)
                                 {
-
-                                    grd_Questions.DataSource = dt;
+                                     dtcopy = dt1.Copy();
+                                    for ( k = 0; k < dtcopy.Rows.Count; k++)
+                                    {
+                                      string _questionno = dtcopy.Rows[k]["Question Number"].ToString();
+                                        IsMatch(_questionno);
+                                        
+                                    }
+                                    grd_Questions.DataSource = dtcopy;
 
                                 }
-                                // dt.Columns.Clear();
                             }
                         }
                         else
@@ -844,6 +871,34 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             finally
             {
                 SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        private bool IsMatch(string _QNAME)
+        {
+            for (int j = 0; j < _dt.Rows.Count; j++)
+            {
+                if ( _dt.Rows[j]["Question Number"].ToString()== _QNAME)
+                {
+                    dtcopy.Rows[k]["Is_Active"] = "True";
+                    return true;
+                }
+               
+
+            }
+            return false;
+        }
+
+        private void getcheckdata()
+        {
+            if (chk_SubClient.CheckedItems.Count == 1)
+            {
+                BindDataToGrid();
+                // BindTabs(order_type);
+            }
+            else
+            {
+                grd_Questions.DataSource = dt1;
             }
         }
     }
