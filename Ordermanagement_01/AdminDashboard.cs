@@ -32249,7 +32249,7 @@ namespace Ordermanagement_01
 
         private void Checklist_Question_Entry_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry Q_Entry = new Opp.Opp_CheckList.CheckList_Question_Setup_Entry("QuestionSetUp","Save",1,2,1,1,1,"",this);
+            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1,1,2,200226,5,6,2,1);
             Q_Entry.Show();
         }
 

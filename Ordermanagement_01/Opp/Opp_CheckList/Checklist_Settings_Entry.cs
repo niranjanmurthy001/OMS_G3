@@ -391,7 +391,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                 int count =Convert.ToInt32 (dtcount.Rows[0]["Count"].ToString());
                                                 if(count > 0)
                                                 {
+
                                                     tabPane1.AddPage(Col_Name, name);
+                                                }
+                                                else if(count==0)
+                                                {
+                                                    grd_Questions.Visible = false;
+                                                    grd_Questions.DataSource = null;
                                                 }
                                             }
                                         }
@@ -409,6 +415,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     Gettabid(tabname);
 
                                 }
+                            }
+                            if (tabPane1.Pages.Count == 1)
+                            {
+                                btn_Add.Visible = false;
+                                btn_Finish.Visible = true;
                             }
 
                         }
@@ -490,7 +501,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                 // dt1.Columns.Clear();
                                                 getcheckdata();
                                             }
+                                           
                                         }
+                                    }
+                                    else
+                                    {
+                                        grd_Questions.DataSource = null;
                                     }
                                 }
                             }
@@ -513,8 +529,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void ddl_OrderType_EditValueChanged(object sender, EventArgs e)
         {
             IsButton = false;
+            ddl_Client.ItemIndex = 0;
+            chk_SubClient.DataSource = null;
             order_type = Convert.ToInt32(ddl_OrderType.EditValue);
-
+           
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
             {
                 BindTabs(order_type);
@@ -769,9 +787,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void btn_Finish_Click(object sender, EventArgs e)
         {
             btn_Add_Click(sender, e);
-            XtraMessageBox.Show("Submitted Successfully");
-            this.Close();
-            this.Mainform.Enabled = true;
+            if (validate() == true)
+            {
+                XtraMessageBox.Show("Submitted Successfully");
+                this.Close();
+                this.Mainform.Enabled = true;
+            }
+                
         }
 
         private bool validate()
