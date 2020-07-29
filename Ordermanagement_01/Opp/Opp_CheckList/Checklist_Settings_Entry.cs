@@ -529,8 +529,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void ddl_OrderType_EditValueChanged(object sender, EventArgs e)
         {
             IsButton = false;
+            ddl_Client.ItemIndex = 0;
+            chk_SubClient.DataSource = null;
             order_type = Convert.ToInt32(ddl_OrderType.EditValue);
-
+           
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
             {
                 BindTabs(order_type);
@@ -785,9 +787,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void btn_Finish_Click(object sender, EventArgs e)
         {
             btn_Add_Click(sender, e);
-            XtraMessageBox.Show("Submitted Successfully");
-            this.Close();
-            this.Mainform.Enabled = true;
+            if (validate() == true)
+            {
+                XtraMessageBox.Show("Submitted Successfully");
+                this.Close();
+                this.Mainform.Enabled = true;
+            }
+                
         }
 
         private bool validate()
