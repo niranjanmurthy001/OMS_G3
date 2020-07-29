@@ -391,7 +391,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                 int count =Convert.ToInt32 (dtcount.Rows[0]["Count"].ToString());
                                                 if(count > 0)
                                                 {
+
                                                     tabPane1.AddPage(Col_Name, name);
+                                                }
+                                                else if(count==0)
+                                                {
+                                                    grd_Questions.Visible = false;
+                                                    grd_Questions.DataSource = null;
                                                 }
                                             }
                                         }
@@ -409,6 +415,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     Gettabid(tabname);
 
                                 }
+                            }
+                            if (tabPane1.Pages.Count == 1)
+                            {
+                                btn_Add.Visible = false;
+                                btn_Finish.Visible = true;
                             }
 
                         }
@@ -490,7 +501,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                 // dt1.Columns.Clear();
                                                 getcheckdata();
                                             }
+                                           
                                         }
+                                    }
+                                    else
+                                    {
+                                        grd_Questions.DataSource = null;
                                     }
                                 }
                             }
