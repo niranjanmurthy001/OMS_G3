@@ -92,7 +92,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(709, 612);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Checklist Settings";
+            this.groupControl1.Text = "Checklist Settings Entry";
             // 
             // splitContainerControl1
             // 
