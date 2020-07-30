@@ -31,28 +31,33 @@
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Next = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.grd_CheckList = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Next = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_CheckList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -73,7 +78,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabPane1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -86,6 +91,60 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(730, 539);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btn_Save);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Next);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 491);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(724, 45);
+            this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Save.Appearance.Options.UseFont = true;
+            this.btn_Save.Appearance.Options.UseForeColor = true;
+            this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Save.Location = new System.Drawing.Point(637, 3);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(84, 42);
+            this.btn_Save.TabIndex = 10;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
+            // 
+            // btn_Next
+            // 
+            this.btn_Next.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Next.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Next.Appearance.Options.UseFont = true;
+            this.btn_Next.Appearance.Options.UseForeColor = true;
+            this.btn_Next.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Next.Location = new System.Drawing.Point(547, 3);
+            this.btn_Next.Name = "btn_Next";
+            this.btn_Next.Size = new System.Drawing.Size(84, 42);
+            this.btn_Next.TabIndex = 0;
+            this.btn_Next.Text = "Next";
+            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click_1);
+            // 
+            // btn_Previous
+            // 
+            this.btn_Previous.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Previous.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Previous.Appearance.Options.UseFont = true;
+            this.btn_Previous.Appearance.Options.UseForeColor = true;
+            this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Previous.Location = new System.Drawing.Point(457, 3);
+            this.btn_Previous.Name = "btn_Previous";
+            this.btn_Previous.Size = new System.Drawing.Size(84, 42);
+            this.btn_Previous.TabIndex = 9;
+            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click_1);
             // 
             // label1
             // 
@@ -111,12 +170,16 @@
             this.tabPane1.TabIndex = 7;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
+            this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
             // 
             // grd_CheckList
             // 
             this.grd_CheckList.Location = new System.Drawing.Point(19, 16);
             this.grd_CheckList.MainView = this.gridView1;
             this.grd_CheckList.Name = "grd_CheckList";
+            this.grd_CheckList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemCheckEdit2});
             this.grd_CheckList.Size = new System.Drawing.Size(698, 399);
             this.grd_CheckList.TabIndex = 0;
             this.grd_CheckList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -129,57 +192,13 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridView1.GridControl = this.grd_CheckList;
             this.gridView1.IndicatorWidth = 45;
             this.gridView1.Name = "gridView1";
-            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.btn_Save);
-            this.flowLayoutPanel3.Controls.Add(this.btn_Next);
-            this.flowLayoutPanel3.Controls.Add(this.btn_Previous);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 491);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(724, 45);
-            this.flowLayoutPanel3.TabIndex = 10;
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Save.Appearance.Options.UseFont = true;
-            this.btn_Save.Appearance.Options.UseForeColor = true;
-            this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Save.Location = new System.Drawing.Point(641, 3);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(80, 41);
-            this.btn_Save.TabIndex = 1;
-            this.btn_Save.Text = "Save";
-            this.btn_Save.ToolTip = "Save";
-            // 
-            // btn_Next
-            // 
-            this.btn_Next.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Next.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Next.Appearance.Options.UseFont = true;
-            this.btn_Next.Appearance.Options.UseForeColor = true;
-            this.btn_Next.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Next.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Next.Location = new System.Drawing.Point(555, 3);
-            this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(80, 41);
-            this.btn_Next.TabIndex = 0;
-            this.btn_Next.Text = "Next";
-            this.btn_Next.ToolTip = "Next";
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            this.gridView1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView1_RowCellStyle);
             // 
             // gridColumn1
             // 
@@ -190,8 +209,10 @@
             this.gridColumn1.Caption = "Question";
             this.gridColumn1.FieldName = "Question";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 350;
             // 
             // gridColumn2
             // 
@@ -204,6 +225,13 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 30;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.EditValueChanged += new System.EventHandler(this.repositoryItemCheckEdit1_EditValueChanged);
             // 
             // gridColumn3
             // 
@@ -216,6 +244,13 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 30;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            this.repositoryItemCheckEdit2.EditValueChanged += new System.EventHandler(this.repositoryItemCheckEdit2_EditValueChanged);
             // 
             // gridColumn4
             // 
@@ -228,6 +263,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 241;
             // 
             // gridColumn5
             // 
@@ -235,20 +271,15 @@
             this.gridColumn5.FieldName = "Ref_Checklist_Master_Type_Id";
             this.gridColumn5.Name = "gridColumn5";
             // 
-            // btn_Previous
+            // gridColumn6
             // 
-            this.btn_Previous.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Previous.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Previous.Appearance.Options.UseFont = true;
-            this.btn_Previous.Appearance.Options.UseForeColor = true;
-            this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Previous.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Previous.Location = new System.Drawing.Point(469, 3);
-            this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(80, 41);
-            this.btn_Previous.TabIndex = 2;
-            this.btn_Previous.Text = "Previous";
-            this.btn_Previous.ToolTip = "Previous";
+            this.gridColumn6.Caption = "Checklist_Id";
+            this.gridColumn6.FieldName = "Checklist_Id";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // CheckLists
             // 
@@ -265,11 +296,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_CheckList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,15 +315,18 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraGrid.GridControl grd_CheckList;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private DevExpress.XtraEditors.SimpleButton btn_Save;
-        private DevExpress.XtraEditors.SimpleButton btn_Next;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private DevExpress.XtraEditors.SimpleButton btn_Save;
+        private DevExpress.XtraEditors.SimpleButton btn_Next;
         private DevExpress.XtraEditors.SimpleButton btn_Previous;
     }
 }
