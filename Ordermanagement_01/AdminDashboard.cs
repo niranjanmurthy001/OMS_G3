@@ -113,6 +113,7 @@ namespace Ordermanagement_01
         int Production_Time, Ideal_Time, Break_Time, Total_Time;
         int Application_Login_Type;
         Thread syncThread = null;
+        string User_namefornotify;
         System.Timers.Timer timer_Dash;
 
         //----------------------Background Work Thread --------------------
@@ -135,7 +136,7 @@ namespace Ordermanagement_01
 
                 lbl_username.Text = User_name;
                 ToolStripButton12.Text = User_name + " Profile";
-
+               this.User_namefornotify = User_name;
                 Load_AutomaticEmails();
                 this.Password = Password;
                 this.Application_Login_Type = Login_Type;
@@ -1098,9 +1099,9 @@ namespace Ordermanagement_01
                 // notifyIcon1.ShowBalloonTip(1000, "Important Notice :", "Logged In successfully", ToolTipIcon.Info);
                 //Opp.Opp_Master.PopUp_Message_Style pop = new Opp.Opp_Master.PopUp_Message_Style();
                 //pop.Show();
-                AlertInfo info = new AlertInfo("Login Successfully", "", true);
+                AlertInfo info = new AlertInfo("Login Successfully",User_namefornotify, true);
 
-                info.Image = Properties.Resources.status3;
+                info.Image = Properties.Resources.ok_Icon;
                 alertControl2.Show(this, info);
             }
             catch (Exception ex)
