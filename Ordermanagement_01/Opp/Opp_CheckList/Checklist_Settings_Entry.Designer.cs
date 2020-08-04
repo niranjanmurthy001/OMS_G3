@@ -162,6 +162,7 @@
             this.chk_OrderTask.Name = "chk_OrderTask";
             this.chk_OrderTask.Size = new System.Drawing.Size(215, 95);
             this.chk_OrderTask.TabIndex = 6;
+            this.chk_OrderTask.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_OrderTask_ItemCheck);
             // 
             // labelControl3
             // 

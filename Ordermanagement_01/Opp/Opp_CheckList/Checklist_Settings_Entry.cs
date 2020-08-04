@@ -23,7 +23,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int projectid;
         DataTable _dttabs;
         int tabid,k;
-        int order_type, count;
+        int order_type, count,Order_Task;
         int index = 0;
         GridControl grid = new GridControl();
         DataTable dt1, dt_user, dtcopy, _dt;
@@ -421,6 +421,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 btn_Add.Visible = false;
                                 btn_Finish.Visible = true;
                             }
+                            else
+                            {
+                                btn_Add.Visible = true;
+                                btn_Finish.Visible = false;
+                            }
 
                         }
                     }
@@ -528,9 +533,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                                                          
         private void ddl_OrderType_EditValueChanged(object sender, EventArgs e)
         {
-            IsButton = false;
-            ddl_Client.ItemIndex = 0;
-            chk_SubClient.DataSource = null;
+            IsButton = true;
+            //ddl_Client.ItemIndex = 0;
+            //chk_SubClient.DataSource = null;
             order_type = Convert.ToInt32(ddl_OrderType.EditValue);
            
             if ((Convert.ToInt32(ddl_Project_Type.EditValue) > 0) && (Convert.ToInt32(ddl_OrderType.EditValue) > 0))
@@ -721,6 +726,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             btn_Previous.Visible = false;
             btn_Finish.Visible = false;
             btn_Add.Visible = true;
+            grd_Questions.DataSource = null;
+            grd_Questions.Visible = false;
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -731,40 +738,29 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void btn_Previous_Click(object sender, EventArgs e)
         {
-           // IsButton = true;
-            if (tabPane1.SelectedPageIndex == 0)
+            
+            IsButton = true;
+            btn_Add.Visible = true; 
+            btn_Finish.Visible = false;
+            tabPane1.SelectedPageIndex -= 1;
+            index = tabPane1.SelectedPageIndex;
+            if(index==0)
             {
-                // btn_Previous.Enabled = false;
                 btn_Previous.Visible = false;
             }
-            else if (tabPane1.SelectedPageIndex == count - 1)
-            {
-                btn_Add.Visible = true;
-                // btn_Previous.Visible = true;
-                btn_Finish.Visible = false;
-                tabPane1.SelectedPageIndex -= 1;
-                // getcheckdata();
-                index = tabPane1.SelectedPageIndex;
-                ddl_OrderType_EditValueChanged(sender, e);
-            }
-            else
-            {
-                IsButton = true;
-                tabPane1.SelectedPageIndex -= 1;
-                index = tabPane1.SelectedPageIndex;
-                btn_Previous.Visible = true;
-                btn_Add.Visible = true;
-                btn_Finish.Visible = false;
-                ddl_OrderType_EditValueChanged(sender, e);
-               // getcheckdata();
-
-            }
-
+            ddl_OrderType_EditValueChanged(sender, e);
         }
 
         private void chk_SubClient_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            getcheckdata();
+           if(chk_SubClient.CheckedItems.Count==1 && chk_OrderTask.CheckedItems.Count==1)
+            {
+                getcheckdata();
+            }
+            else
+            {
+                grd_Questions.DataSource = dt1;
+            }
         }
 
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
@@ -782,6 +778,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void Checklist_Settings_Entry_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Mainform.Enabled = true;
+        }
+
+        private void chk_OrderTask_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            getcheckdata();
         }
 
         private void btn_Finish_Click(object sender, EventArgs e)
@@ -839,46 +840,52 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     string sub = castedItem["Sub_ProcessName"].ToString();
                     int subclient = Convert.ToInt32(castedItem["Subprocess_Id"]);
 
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictonary = new Dictionary<string, object>()
+                    foreach (object checkeditem in chk_OrderTask.CheckedItems)
+                    {
+                        DataRowView ItemCasted = checkeditem as DataRowView;
+                        Order_Task = Convert.ToInt32(ItemCasted["Order_Status_ID"]);
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        var dictonary = new Dictionary<string, object>()
                         {
-                    {"@Trans","BIND_DATA_BASED_ON_SUB_CLIENT" },
-                    {"@Ref_Checklist_Id",tabid },
-                    {"@Project_Type_Id",projectid },
-                    {"@ProductType_Abs_Id",order_type },
-                    {"@subcliet_Id",subclient }
+                        {"@Trans","BIND_DATA_BASED_ON_SUB_CLIENT" },
+                        {"@Ref_Checklist_Id",tabid },
+                        {"@Project_Type_Id",projectid },
+                        {"@ProductType_Abs_Id",order_type },
+                        {"@subcliet_Id",subclient },
+                        {"@Order_Task_Id",Order_Task }
 
                         };
 
-                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                    using (var httpclient = new HttpClient())
-                    {
-                        var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
-                        if (response.IsSuccessStatusCode)
+                        var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                        using (var httpclient = new HttpClient())
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
+                            if (response.IsSuccessStatusCode)
                             {
-
-
-                                var result = await response.Content.ReadAsStringAsync();
-                                 _dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (_dt != null && _dt.Rows.Count > 0)
+                                if (response.StatusCode == HttpStatusCode.OK)
                                 {
-                                     dtcopy = dt1.Copy();
-                                    for ( k = 0; k < dtcopy.Rows.Count; k++)
-                                    {
-                                      string _questionno = dtcopy.Rows[k]["Question Number"].ToString();
-                                        IsMatch(_questionno);
-                                        
-                                    }
-                                    grd_Questions.DataSource = dtcopy;
 
+
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                    if (_dt != null && _dt.Rows.Count > 0)
+                                    {
+                                        dtcopy = dt1.Copy();
+                                        for (k = 0; k < dtcopy.Rows.Count; k++)
+                                        {
+                                            string _questionno = dtcopy.Rows[k]["Question Number"].ToString();
+                                            IsMatch(_questionno);
+
+                                        }
+                                        grd_Questions.DataSource = dtcopy;
+
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            grd_Questions.DataSource = dt1;
+                            else
+                            {
+                                grd_Questions.DataSource = dt1;
+                            }
                         }
                     }
                 }
@@ -913,7 +920,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void getcheckdata()
         {
-            if (chk_SubClient.CheckedItems.Count == 1)
+            if (chk_SubClient.CheckedItems.Count == 1 && chk_OrderTask.CheckedItems.Count==1)
             {
                 BindDataToGrid();
                 // BindTabs(order_type);
