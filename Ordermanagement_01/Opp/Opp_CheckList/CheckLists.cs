@@ -16,6 +16,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraGrid.Columns;
 using System.Linq;
+using DevExpress.XtraEditors.Repository;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
 {
@@ -24,12 +25,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         DataTable dt_tabName;
         int UserId, ProjectType_Id, OrderTypeAbs_Id, OrderId, ClientId, SubClientId, OrderTask, WorkType_Id;     
         int tabid, count;
-        DataTable dt1;
+        DataTable dt1, dt_All1,dt_VIEW1,dt_Check;
         int index = 0;      
         string Comments;
         int Ref_Checklist_Master_Type_Id, Checklist_Id, Check_List_Tran_ID;
         string Question;
         private Color colour;
+        int visit = 0;
+        RepositoryItemCheckEdit ritem;
 
         private bool IsButton { get; set; }
 
@@ -55,6 +58,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             btn_Save.Visible = false;
             btn_Next.Visible = true;
             BindTabs();
+            visit = 0;
         }
 
         private async void BindTabs()
@@ -123,7 +127,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     string tabname = tabPane1.SelectedPage.Caption;
                                     GetTabId(tabname);
 
-                            }                          
+                            }
+                            if (tabPane1.Pages.Count == 1)
+                            {
+                                btn_Next.Visible = false;
+                                btn_Save.Visible = true;
+                            }
                         }
                     }
                 }
@@ -146,6 +155,178 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         //            GetTabId(tabname); 
         //    }
         }
+
+        private void grd_CheckList_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+           
+            //if (e.Column.Caption == "Yes")
+            //{
+            //    bool Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["Yes"]);
+            //    if(Yes)
+            //    {
+            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "False");
+            //    }
+            //    else if (!Yes) {
+            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "True");
+
+            //    }
+            //}
+            //if (e.Column.Caption == "No")
+            //{
+            //    bool No = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["No"]);
+            //    if(No)
+            //    {
+            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "False");
+            //    }
+            //    else if (!No)
+            //    {
+            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["Yes"], "True");
+            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["Comments"], "");
+            //    }
+            //}
+        }
+
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+           // DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
+            if (e.RowHandle != -1)
+            {
+
+                if (e.Column.Caption == "Comments")
+                {
+                    bool chk_yes = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["Yes"]);
+                    bool chk_no = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["No"]);
+                    if (chk_yes != false)
+                    {
+                        e.Column.OptionsColumn.AllowEdit = false;
+                        e.Column.OptionsColumn.ReadOnly = true;
+                        gridView1.PostEditor();
+                        gridView1.UpdateCurrentRow();
+                    }
+                    else if (chk_yes == false&& chk_no==true)
+                    {
+                        e.Column.OptionsColumn.AllowEdit = true;
+                        e.Column.OptionsColumn.ReadOnly = false;
+                        gridView1.PostEditor();
+                        gridView1.UpdateCurrentRow();
+                    }
+                    if (chk_yes == false && chk_no == false)
+                    {
+                        e.Column.OptionsColumn.AllowEdit = false;
+                        e.Column.OptionsColumn.ReadOnly = true;
+                        gridView1.PostEditor();
+                        gridView1.UpdateCurrentRow();
+                    } 
+                }
+             
+            }
+          }
+
+        private void repositoryItemCheckEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            ////bool chk_Yes = (bool)(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Yes"));
+            ////if (chk_Yes)
+            ////{
+            ////    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
+            ////    gridView1.PostEditor();
+            ////    gridView1.UpdateCurrentRow();
+            ////}
+            //else
+            //{
+            //    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
+            //}
+
+            //bool chk_Yes = (bool)gridView1.GetRowCellValue(i, "Yes");
+            //bool chk_No = (bool)gridView1.GetRowCellValue(i, "No");
+            //if (chk_Yes == true)
+            //{
+            //    gridView1.SetRowCellValue(i, gridView1.Columns["No"], false);
+            //    gridView1.SetRowCellValue(i, gridView1.Columns["Comments"], "");
+            //    gridView1.PostEditor();
+            //    if (gridView1.PostEditor())
+            //    {
+            //        gridView1.UpdateCurrentRow();
+            //    }
+            //}
+            //else if (chk_Yes == false)
+            //{
+            //    gridView1.SetRowCellValue(i, gridView1.Columns["No"], true);
+            //    gridView1.PostEditor();
+            //    if (gridView1.PostEditor())
+            //    {
+            //        gridView1.UpdateCurrentRow();
+            //    }
+            //}
+        }
+     
+
+        private void repositoryItemCheckEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            ////bool chk_No = (bool)(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Yes"));
+            ////if (chk_No)
+            ////{
+            ////    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
+            ////    gridView1.PostEditor();
+            ////    gridView1.UpdateCurrentRow();
+            ////}
+            //else
+            //{
+            //    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
+            //}
+            //for (int i = 0; i < gridView1.DataRowCount; i++)
+            //{
+            //    bool chk_Yes = (bool)gridView1.GetRowCellValue(i, "Yes");
+            //    bool chk_No = (bool)gridView1.GetRowCellValue(i, "No");
+            //    if (chk_No == true)
+            //    {
+            //        gridView1.SetRowCellValue(i, gridView1.Columns["Yes"], false);
+            //        gridView1.PostEditor();
+            //        if (gridView1.PostEditor())
+            //        {
+            //            gridView1.UpdateCurrentRow();
+            //        }
+            //    }
+            //    else if (chk_No == false)
+            //    {
+            //        gridView1.SetRowCellValue(i, gridView1.Columns["Yes"], true);
+            //        gridView1.SetRowCellValue(i, gridView1.Columns["Comments"], "");
+            //        gridView1.PostEditor();
+            //        if (gridView1.PostEditor())
+            //        {
+            //            gridView1.UpdateCurrentRow();
+            //        }
+            //    }
+            //}
+        }
+
+
+        private void gridView1_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //if (e.Column.FieldName != "UnitPrice")
+            //{ e.Cancel = (bool)gridView1.GetCellValue(e.RowHandle, "Discontinued"); }
+            //for(int i=0;i<gridView1.DataRowCount;i++ )
+            //{
+            //    bool chk_yes = (bool)gridView1.GetRowCellValue(i, "Yes");
+            //    bool chk_no = (bool)gridView1.GetRowCellValue(i, "No");
+            //    if (chk_yes)
+            //{
+            //        if (gridView1.FocusedColumnName == "colCarrier")
+            //        {
+            //            e.Cancel = true;
+            //        }
+            //    }
+            //    else if(chk_no)
+            //    {
+
+                //    }
+
+        }
+
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
         {
             if (IsButton) e.Cancel = false;
@@ -154,6 +335,17 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 e.Cancel = true;
             }
             IsButton = false;
+        }
+
+        private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
+        {
+            //if (e.RowHandle == GridControl.NewItemRowHandle && e.Column.FieldName == "Yes" && e.Column.FieldName == "No")
+            //    e.RepositoryItem = ritem;
+        }
+
+        private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private async void GetTabId(string tabname)
@@ -195,14 +387,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 var data1 = new StringContent(JsonConvert.SerializeObject(dictonary1), Encoding.UTF8, "Application/Json");
                                 using (var httpclient1 = new HttpClient())
                                 {
-                                    var response1 = await httpclient1.PostAsync(Base_Url.Url + "/CheckLists/BindDataToTabIndex", data1);
+                                    var response1 = await httpclient1.PostAsync(Base_Url.Url + "/CheckLists/CheckOrderIdExist", data1);
                                     if (response1.IsSuccessStatusCode)
                                     {
                                         if (response1.StatusCode == HttpStatusCode.OK)
                                         {
                                             var result1 = await response1.Content.ReadAsStringAsync();
-                                            dt1 = JsonConvert.DeserializeObject<DataTable>(result1);
-                                            if (dt1.Rows.Count != 0)
+                                            dt_Check = JsonConvert.DeserializeObject<DataTable>(result1);
+                                            if (dt_Check.Rows.Count != 0)
                                             {
                                                 TabData_View();
                                             }
@@ -237,7 +429,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dictionary = new Dictionary<string, object>()
                     {
                         { "@Trans", "GET_ALL_DETAILS"},
-                        { "@Ref_Checklist_Master_Type_Id", 1},
+                        { "@Ref_Checklist_Master_Type_Id", tabid },
                         { "@Order_Task", OrderTask},
                         { "@OrderType_ABS_Id", OrderTypeAbs_Id },
                         { "@Project_Type_Id", ProjectType_Id },
@@ -254,19 +446,26 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null && dt.Rows.Count > 0)
+                            DataTable dt_All = JsonConvert.DeserializeObject<DataTable>(result);
+                            dt_All1 = dt_All;
+                            if (dt_All != null && dt_All.Rows.Count > 0)
                             {
-                                for (int i = 0; i < dt.Rows.Count; i++)
-                                {
-                                    dt.Rows[i]["Yes"] = "False";
-                                    dt.Rows[i]["No"] = "False";
-                                    dt.Rows[i]["Comments"] = "";
-                                }
+                                //if (visit == 0)
+                                //{
+                                    for (int i = 0; i < dt_All.Rows.Count; i++)
+                                    {
+                                    dt_All.Rows[i]["Yes"] = "False";
+                                    dt_All.Rows[i]["No"] = "False";
+                                    dt_All.Rows[i]["Comments"] = "";
+                                    }
+                               // }
                                 grd_CheckList.Visible = true;
-                                grd_CheckList.DataSource = dt;
+                                if (visit == 1)
+                                { grd_CheckList.DataSource = dt_All1; }
+                                else { grd_CheckList.DataSource = dt_All; }
                                 grd_CheckList.Dock = DockStyle.Fill;
                                 tabPane1.SelectedPage.Controls.Add(grd_CheckList);
+                               
                             }                           
                         }
                     }
@@ -295,7 +494,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         { "@Order_Task", OrderTask },
                         { "@Order_Id", OrderId },
                         { "@User_Id", UserId },
-                        { "@Work_Type", WorkType_Id }
+                        { "@Work_Type", WorkType_Id },
+                        { "@Project_Type_Id",ProjectType_Id }
             };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
@@ -307,19 +507,26 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null && dt.Rows.Count > 0)
+                            DataTable dt_VIEW = JsonConvert.DeserializeObject<DataTable>(result);
+                            dt_VIEW1 = dt_VIEW;
+                            if (dt_VIEW != null && dt_VIEW.Rows.Count > 0)
                             {
-                                for (int i = 0; i < dt.Rows.Count; i++)
+                                for (int i = 0; i < dt_VIEW.Rows.Count; i++)
                                 {
-                                    dt.Rows[i]["Yes"] = "False";
-                                    dt.Rows[i]["No"] = "False";
-                                    dt.Rows[i]["Comments"] = "";
+                                    dt_VIEW.Rows[i]["Yes"] = "False";
+                                    dt_VIEW.Rows[i]["No"] = "False";
+                                    dt_VIEW.Rows[i]["Comments"] = "";
                                 }
                                 grd_CheckList.Visible = true;
-                                grd_CheckList.DataSource = dt;
+                                if (visit == 1)
+                                { grd_CheckList.DataSource = dt_VIEW1; }
+                                else { grd_CheckList.DataSource = dt_VIEW; }
                                 grd_CheckList.Dock = DockStyle.Fill;
                                 tabPane1.SelectedPage.Controls.Add(grd_CheckList);
+                                //for (int i = 0; i < dt.Rows.Count; i++)
+                                //{
+                                //   // gridView1.Columns[i].ColumnEdit=rpeo
+                                //}
                             }
                         }
                     }
@@ -336,41 +543,72 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-        private void repositoryItemCheckEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-        }
-        private void repositoryItemCheckEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-        }
+
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-            if (e.Column.FieldName == "Comments")
+            DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
+            if (e.RowHandle >= 0)
             {
-                bool val_Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, "Yes");
-                if (val_Yes)
-                    e.Appearance.BackColor = Color.White;
-                e.Column.OptionsColumn.AllowEdit = false;
-                e.Column.OptionsColumn.ReadOnly = true;
-            }
-            if (e.Column.FieldName == "Comments")
-            {
-                bool value = (bool)gridView1.GetRowCellValue(e.RowHandle, "No");
-                if (value)
+                if (e.Column.FieldName == "Comments")
                 {
-                    string text = (gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString());
-                    e.Column.OptionsColumn.AllowEdit = true;
-                    e.Column.OptionsColumn.ReadOnly = false;
-                    if (text == "" || text == null)
+                    //bool val_Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, "Yes");
+                    //if (val_Yes)
+                    //    e.Appearance.BackColor = Color.White;
+                    //e.Column.OptionsColumn.AllowEdit = false;
+                    //e.Column.OptionsColumn.ReadOnly = true;                                        
+                    if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == true)
                     {
-                        e.Appearance.BackColor = Color.Red;
+                        string Comments = view.Row["Comments"].ToString();
+                        if (Comments != "")
+                        {
+                            e.Appearance.BackColor = Color.White;
+                            e.Column.OptionsColumn.AllowEdit = true;
+                            e.Column.OptionsColumn.ReadOnly = false;
+                            gridView1.PostEditor();
+                            gridView1.UpdateCurrentRow();
+
+                        }
+                        else if (Comments == "")
+                        {
+                            e.Appearance.BackColor = Color.Red;
+                            e.Column.OptionsColumn.AllowEdit = true;
+                            e.Column.OptionsColumn.ReadOnly = false;
+                            gridView1.PostEditor();
+                            gridView1.UpdateCurrentRow();
+
+                        }
                     }
-                    else if (text != "" || text != null)
+                   else if ((bool)view.Row["No"] == false && (bool)view.Row["Yes"] == true)
                     {
+                        gridView1.SetRowCellValue(e.RowHandle, "Comments","");                    
                         e.Appearance.BackColor = Color.White;
+                        e.Column.OptionsColumn.AllowEdit = false;
+                        e.Column.OptionsColumn.ReadOnly = true;
+                        gridView1.PostEditor();
+                        gridView1.UpdateCurrentRow();
+
                     }
+                    //if (e.Column.FieldName == "Comments")
+                    //{
+                    //    bool val_No = (bool)gridView1.GetRowCellValue(e.RowHandle, "No");
+                    //    if (val_No)
+                    //    {
+                    //        string text = (gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString());
+                    //        e.Column.OptionsColumn.AllowEdit = true;
+                    //        e.Column.OptionsColumn.ReadOnly = false;
+                    //        if (text == "" || text == null)
+                    //        {
+                    //            e.Appearance.BackColor = Color.Red;
+                    //        }
+                    //        else if (text != "" || text != null)
+                    //        {
+                    //            e.Appearance.BackColor = Color.White;
+                    //        }
+                    //    }
+                    //}
+                    ////  System.Drawing.Color colour = e.Appearance.BackColor;
                 }
             }
-            System.Drawing.Color colour = e.Appearance.BackColor;
         }
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
@@ -472,63 +710,96 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
     
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
-            if (tabPane1.SelectedPageIndex == 0)
+            visit = 1;
+            IsButton = true;
+            btn_Next.Visible = true;
+            btn_Save.Visible = false;
+            tabPane1.SelectedPageIndex -= 1;
+            index = tabPane1.SelectedPageIndex;
+            if (index == 0)
             {
                 btn_Previous.Visible = false;
             }
-            else if (tabPane1.SelectedPageIndex == count - 1)
-            {
-                btn_Next.Visible = true;
-                btn_Save.Visible = false;
-                tabPane1.SelectedPageIndex -= 1;
-                index = tabPane1.SelectedPageIndex;
-                IsButton = false;
-                BindTabs();
-            }
-            else
-            {
-                IsButton = true;
-                tabPane1.SelectedPageIndex -= 1;
-                index = tabPane1.SelectedPageIndex;              
-                btn_Previous.Visible = true;
-                if (index == 0)
-                { btn_Previous.Visible = false; }
-                btn_Next.Visible = true;
-                btn_Save.Visible = false;
-                IsButton = false;
-                BindTabs();
-            }
+            BindTabs();
+            //if (dt_Check.Rows.Count != 0)
+            //{
+            //    grd_CheckList.DataSource = dt_VIEW1;
+            //}
+            //else
+            //{
+            //    grd_CheckList.DataSource = dt_All1;
+            //}
         }
 
         private void btn_Next_Click_1(object sender, EventArgs e)
         {
-            SaveTabData();
+            //DataTable dtgrid = new DataTable();
+            //dtgrid = grd_CheckList.DataSource as DataTable;
+            //List<DataTable> dtList = new List<DataTable>();
+            //dtList.Add(dtgrid);
+
+            //DataTable[] dtArray = new DataTable[tabid];
+            //for (int i = 0; i < tabid; i++)
+            //    dtArray[i] = new DataTable("dtgrid" + i);
+            visit = 0;
+                SaveTabData();
         }
 
         private void btn_Save_Click_1(object sender, EventArgs e)
         {
-            SaveTabData();
-            XtraMessageBox.Show("Submitted Sucessfully", "Success", MessageBoxButtons.OK);
-            this.Close();
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                SaveTabData();
+               // this.Close();
+            }
+            catch
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }         
+           
         }
         private bool Validate()
         {
-           
-            //for (int i = 0; i < gridView1.RowCount; i++)
-            //{              
-            //    if (gridView1.Columns["Comments"].AppearanceCell.BackColor != Color.Red)
-            //    {
-            //        SplashScreenManager.CloseForm(false);
-            //        XtraMessageBox.Show("Please Enter Comment If 'No'");
-            //        return false;
-            //    }
-            //}
-            if(colour==Color.Red)
+
+            for (int i = 0; i < gridView1.RowCount; i++)
             {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Enter Comment Field in Red Color");
-                return false;
+                bool val_Yes = (bool)gridView1.GetRowCellValue(i, "Yes");
+                bool val_No = (bool)gridView1.GetRowCellValue(i, "No");
+                string Comments= gridView1.GetRowCellValue(i, "Comments").ToString();
+                if (val_Yes==true || val_No==true)
+                {
+                    if (val_Yes == true && val_No==true)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Please Check Either 'Yes' or 'No' ");
+                        return false;
+                    }
+                    else if(val_Yes==false && val_No==true && Comments=="")
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Please Enter Comment if 'No' ");
+                        return false;
+                    }
+                }
+                else
+                {
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Please Check Either 'Yes' or 'No' For All Rows ");
+                    return false;
+                }
             }
+            //if (colour==Color.Red)
+            //{
+            //    SplashScreenManager.CloseForm(false);
+            //    XtraMessageBox.Show("Please Enter Comment Field in Red Color");
+            //    return false;
+            //}
                 return true;
         }
 
