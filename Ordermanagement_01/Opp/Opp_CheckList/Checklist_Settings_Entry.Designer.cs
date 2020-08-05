@@ -38,6 +38,10 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_Order_Task = new DevExpress.XtraEditors.LookUpEdit();
+            this.ddl_Subclient = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.ddl_Client = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_OrderType = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Project_Type = new DevExpress.XtraEditors.LookUpEdit();
@@ -57,8 +61,6 @@
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -70,6 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chk_OrderTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Order_Task.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Subclient.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Client.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_OrderType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Project_Type.Properties)).BeginInit();
@@ -146,11 +150,10 @@
             this.chk_SubClient.Appearance.Options.UseForeColor = true;
             this.chk_SubClient.CheckOnClick = true;
             this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_SubClient.Location = new System.Drawing.Point(111, 15);
+            this.chk_SubClient.Location = new System.Drawing.Point(156, 15);
             this.chk_SubClient.Name = "chk_SubClient";
             this.chk_SubClient.Size = new System.Drawing.Size(215, 95);
             this.chk_SubClient.TabIndex = 11;
-            this.chk_SubClient.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_SubClient_ItemCheck);
             // 
             // chk_OrderTask
             // 
@@ -160,7 +163,7 @@
             this.chk_OrderTask.Appearance.Options.UseForeColor = true;
             this.chk_OrderTask.CheckOnClick = true;
             this.chk_OrderTask.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderTask.Location = new System.Drawing.Point(111, 124);
+            this.chk_OrderTask.Location = new System.Drawing.Point(156, 124);
             this.chk_OrderTask.Name = "chk_OrderTask";
             this.chk_OrderTask.Size = new System.Drawing.Size(215, 95);
             this.chk_OrderTask.TabIndex = 6;
@@ -174,9 +177,9 @@
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(21, 33);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(65, 17);
+            this.labelControl3.Size = new System.Drawing.Size(118, 17);
             this.labelControl3.TabIndex = 8;
-            this.labelControl3.Text = "Sub Client :";
+            this.labelControl3.Text = "Copy To Sub Client :";
             // 
             // labelControl4
             // 
@@ -186,12 +189,14 @@
             this.labelControl4.Appearance.Options.UseForeColor = true;
             this.labelControl4.Location = new System.Drawing.Point(21, 140);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(72, 17);
+            this.labelControl4.Size = new System.Drawing.Size(125, 17);
             this.labelControl4.TabIndex = 4;
-            this.labelControl4.Text = "Order Task :";
+            this.labelControl4.Text = "Copy To Order Task :";
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.ddl_Order_Task);
+            this.panelControl2.Controls.Add(this.ddl_Subclient);
             this.panelControl2.Controls.Add(this.labelControl7);
             this.panelControl2.Controls.Add(this.labelControl6);
             this.panelControl2.Controls.Add(this.ddl_Client);
@@ -206,9 +211,63 @@
             this.panelControl2.Size = new System.Drawing.Size(457, 237);
             this.panelControl2.TabIndex = 1;
             // 
+            // ddl_Order_Task
+            // 
+            this.ddl_Order_Task.Location = new System.Drawing.Point(112, 204);
+            this.ddl_Order_Task.Name = "ddl_Order_Task";
+            this.ddl_Order_Task.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ddl_Order_Task.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.ddl_Order_Task.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Order_Task.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_Order_Task.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_Order_Task.Properties.NullText = "Select";
+            this.ddl_Order_Task.Size = new System.Drawing.Size(215, 20);
+            this.ddl_Order_Task.TabIndex = 14;
+            this.ddl_Order_Task.EditValueChanged += new System.EventHandler(this.ddl_Order_Task_EditValueChanged);
+            // 
+            // ddl_Subclient
+            // 
+            this.ddl_Subclient.Location = new System.Drawing.Point(112, 159);
+            this.ddl_Subclient.Name = "ddl_Subclient";
+            this.ddl_Subclient.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ddl_Subclient.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.ddl_Subclient.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Subclient.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_Subclient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_Subclient.Properties.NullText = "Select";
+            this.ddl_Subclient.Size = new System.Drawing.Size(215, 20);
+            this.ddl_Subclient.TabIndex = 13;
+            this.ddl_Subclient.EditValueChanged += new System.EventHandler(this.ddl_Subclient_EditValueChanged);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(19, 204);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(66, 17);
+            this.labelControl7.TabIndex = 12;
+            this.labelControl7.Text = "Order Task";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
+            this.labelControl6.Location = new System.Drawing.Point(19, 159);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(65, 17);
+            this.labelControl6.TabIndex = 11;
+            this.labelControl6.Text = "Sub Client :";
+            // 
             // ddl_Client
             // 
-            this.ddl_Client.Location = new System.Drawing.Point(112, 133);
+            this.ddl_Client.Location = new System.Drawing.Point(112, 109);
             this.ddl_Client.Name = "ddl_Client";
             this.ddl_Client.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_Client.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -223,7 +282,7 @@
             // 
             // ddl_OrderType
             // 
-            this.ddl_OrderType.Location = new System.Drawing.Point(112, 78);
+            this.ddl_OrderType.Location = new System.Drawing.Point(112, 64);
             this.ddl_OrderType.Name = "ddl_OrderType";
             this.ddl_OrderType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_OrderType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -257,7 +316,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(19, 136);
+            this.labelControl2.Location = new System.Drawing.Point(19, 112);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 17);
             this.labelControl2.TabIndex = 7;
@@ -269,7 +328,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(19, 78);
+            this.labelControl5.Location = new System.Drawing.Point(19, 64);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(74, 17);
             this.labelControl5.TabIndex = 5;
@@ -427,30 +486,6 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(19, 177);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(244, 15);
-            this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "Note : If you Select multiple \"Sub Clients\" and ";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(56, 198);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(232, 15);
-            this.labelControl7.TabIndex = 12;
-            this.labelControl7.Text = "multiple \"Order Task\" the status won\'t show";
-            // 
             // Checklist_Settings_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,6 +510,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Order_Task.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Subclient.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Client.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_OrderType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Project_Type.Properties)).EndInit();
@@ -521,5 +558,7 @@
         private DevExpress.XtraEditors.SimpleButton btn_Finish;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LookUpEdit ddl_Order_Task;
+        private DevExpress.XtraEditors.LookUpEdit ddl_Subclient;
     }
 }
