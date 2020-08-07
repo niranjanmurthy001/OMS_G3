@@ -40,7 +40,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.ddl_Order_Task = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Subclient = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControltask = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.ddl_Client = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_OrderType = new DevExpress.XtraEditors.LookUpEdit();
@@ -197,7 +197,7 @@
             // 
             this.panelControl2.Controls.Add(this.ddl_Order_Task);
             this.panelControl2.Controls.Add(this.ddl_Subclient);
-            this.panelControl2.Controls.Add(this.labelControl7);
+            this.panelControl2.Controls.Add(this.labelControltask);
             this.panelControl2.Controls.Add(this.labelControl6);
             this.panelControl2.Controls.Add(this.ddl_Client);
             this.panelControl2.Controls.Add(this.ddl_OrderType);
@@ -241,17 +241,17 @@
             this.ddl_Subclient.TabIndex = 13;
             this.ddl_Subclient.EditValueChanged += new System.EventHandler(this.ddl_Subclient_EditValueChanged);
             // 
-            // labelControl7
+            // labelControltask
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(19, 204);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(66, 17);
-            this.labelControl7.TabIndex = 12;
-            this.labelControl7.Text = "Order Task";
+            this.labelControltask.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControltask.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControltask.Appearance.Options.UseFont = true;
+            this.labelControltask.Appearance.Options.UseForeColor = true;
+            this.labelControltask.Location = new System.Drawing.Point(19, 204);
+            this.labelControltask.Name = "labelControltask";
+            this.labelControltask.Size = new System.Drawing.Size(66, 17);
+            this.labelControltask.TabIndex = 12;
+            this.labelControltask.Text = "Order Task";
             // 
             // labelControl6
             // 
@@ -556,7 +556,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.SimpleButton btn_Previous;
         private DevExpress.XtraEditors.SimpleButton btn_Finish;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControltask;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LookUpEdit ddl_Order_Task;
         private DevExpress.XtraEditors.LookUpEdit ddl_Subclient;

@@ -40,7 +40,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             BindProjectType();
             grd_Questions.Visible = false;
-            btn_Previous.Visible = false;
+            btn_Previous.Visible = false;   
             btn_Finish.Visible = false;
 
             // tabPane1.SelectedPageIndex = 0;
