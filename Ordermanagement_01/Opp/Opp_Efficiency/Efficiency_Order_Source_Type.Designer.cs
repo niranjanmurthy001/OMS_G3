@@ -31,11 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Add_New = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Delete_Multiple = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.grd_Efficiency_Src = new DevExpress.XtraGrid.GridControl();
             this.gridView_Efficiency_Src = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,15 +43,20 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Add_New = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete_Multiple = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency_Src)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency_Src)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -75,89 +76,39 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.grd_Efficiency_Src, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.15936F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.84064F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 541);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // label1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Add_New);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Delete_Multiple);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(788, 48);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // btn_Export
-            // 
-            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Export.Appearance.Options.UseFont = true;
-            this.btn_Export.Appearance.Options.UseForeColor = true;
-            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Location = new System.Drawing.Point(705, 3);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(80, 40);
-            this.btn_Export.TabIndex = 1;
-            this.btn_Export.Text = "Export";
-            this.btn_Export.ToolTip = "Export";
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
-            // 
-            // btn_Add_New
-            // 
-            this.btn_Add_New.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_Add_New.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Add_New.Appearance.Options.UseFont = true;
-            this.btn_Add_New.Appearance.Options.UseForeColor = true;
-            this.btn_Add_New.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New.Location = new System.Drawing.Point(619, 3);
-            this.btn_Add_New.Name = "btn_Add_New";
-            this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
-            this.btn_Add_New.TabIndex = 0;
-            this.btn_Add_New.Text = "Add New";
-            this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Click);
-            // 
-            // btn_Delete_Multiple
-            // 
-            this.btn_Delete_Multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btn_Delete_Multiple.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Delete_Multiple.Appearance.Options.UseFont = true;
-            this.btn_Delete_Multiple.Appearance.Options.UseForeColor = true;
-            this.btn_Delete_Multiple.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_Multiple.Location = new System.Drawing.Point(533, 3);
-            this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
-            this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
-            this.btn_Delete_Multiple.TabIndex = 2;
-            this.btn_Delete_Multiple.Text = "Delete";
-            this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_Multiple_Click);
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.grd_Efficiency_Src);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 57);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(788, 481);
-            this.panelControl1.TabIndex = 0;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(788, 49);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Efficiency Order Source Type";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grd_Efficiency_Src
             // 
             this.grd_Efficiency_Src.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grd_Efficiency_Src.Location = new System.Drawing.Point(2, 2);
+            this.grd_Efficiency_Src.Location = new System.Drawing.Point(3, 105);
             this.grd_Efficiency_Src.MainView = this.gridView_Efficiency_Src;
             this.grd_Efficiency_Src.Name = "grd_Efficiency_Src";
-            this.grd_Efficiency_Src.Size = new System.Drawing.Size(784, 477);
+            this.grd_Efficiency_Src.Size = new System.Drawing.Size(788, 433);
             this.grd_Efficiency_Src.TabIndex = 0;
             this.grd_Efficiency_Src.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Efficiency_Src});
@@ -264,6 +215,72 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 4;
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.flowLayoutPanel1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(3, 52);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(788, 47);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Add_New);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Delete_Multiple);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 43);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // btn_Export
+            // 
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Export.Location = new System.Drawing.Point(701, 3);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(80, 40);
+            this.btn_Export.TabIndex = 1;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.ToolTip = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
+            // 
+            // btn_Add_New
+            // 
+            this.btn_Add_New.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Add_New.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Add_New.Appearance.Options.UseFont = true;
+            this.btn_Add_New.Appearance.Options.UseForeColor = true;
+            this.btn_Add_New.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Add_New.Location = new System.Drawing.Point(615, 3);
+            this.btn_Add_New.Name = "btn_Add_New";
+            this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
+            this.btn_Add_New.TabIndex = 0;
+            this.btn_Add_New.Text = "Add New";
+            this.btn_Add_New.ToolTip = "Add New";
+            this.btn_Add_New.Click += new System.EventHandler(this.btn_Add_New_Click);
+            // 
+            // btn_Delete_Multiple
+            // 
+            this.btn_Delete_Multiple.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btn_Delete_Multiple.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Delete_Multiple.Appearance.Options.UseFont = true;
+            this.btn_Delete_Multiple.Appearance.Options.UseForeColor = true;
+            this.btn_Delete_Multiple.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Delete_Multiple.Location = new System.Drawing.Point(529, 3);
+            this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
+            this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
+            this.btn_Delete_Multiple.TabIndex = 2;
+            this.btn_Delete_Multiple.Text = "Delete";
+            this.btn_Delete_Multiple.ToolTip = "Delete";
+            this.btn_Delete_Multiple.Click += new System.EventHandler(this.btn_Delete_Multiple_Click);
+            // 
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
@@ -283,11 +300,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency_Src)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency_Src)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -313,5 +330,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private System.Windows.Forms.Label label1;
     }
 }

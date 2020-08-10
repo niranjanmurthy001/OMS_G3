@@ -1948,12 +1948,6 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_CheckList\CheckList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Opp_CheckList\CheckList.Designer.cs">
-      <DependentUpon>CheckList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckLists.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2033,7 +2027,6 @@
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Copy.Designer.cs">
       <DependentUpon>Efficiency_Copy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.Designer.cs" />
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4009,9 +4002,6 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList.resx">
-      <DependentUpon>CheckList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckLists.resx">
       <DependentUpon>CheckLists.cs</DependentUpon>
     </EmbeddedResource>
@@ -4052,7 +4042,6 @@
       <DependentUpon>Efficiency_Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_Entry.resx" />
-    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.resx" />
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.resx">
       <DependentUpon>Efficiency_Order_Source_Type.cs</DependentUpon>
     </EmbeddedResource>
