@@ -49,9 +49,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,7 +75,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(834, 662);
+            this.groupControl1.Size = new System.Drawing.Size(884, 688);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "CheckList Entry";
             // 
@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.286385F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.02973F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.700014F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(830, 639);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(880, 665);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -105,9 +105,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 579);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 602);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(824, 57);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(874, 60);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
             // btn_Save
@@ -117,7 +117,7 @@
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
             this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Save.Location = new System.Drawing.Point(737, 3);
+            this.btn_Save.Location = new System.Drawing.Point(787, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(84, 42);
             this.btn_Save.TabIndex = 10;
@@ -131,7 +131,7 @@
             this.btn_Next.Appearance.Options.UseFont = true;
             this.btn_Next.Appearance.Options.UseForeColor = true;
             this.btn_Next.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Next.Location = new System.Drawing.Point(647, 3);
+            this.btn_Next.Location = new System.Drawing.Point(697, 3);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(84, 42);
             this.btn_Next.TabIndex = 0;
@@ -145,7 +145,7 @@
             this.btn_Previous.Appearance.Options.UseFont = true;
             this.btn_Previous.Appearance.Options.UseForeColor = true;
             this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Previous.Location = new System.Drawing.Point(557, 3);
+            this.btn_Previous.Location = new System.Drawing.Point(607, 3);
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(84, 42);
             this.btn_Previous.TabIndex = 9;
@@ -156,11 +156,11 @@
             // 
             this.tabPane1.Controls.Add(this.grd_CheckList);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Location = new System.Drawing.Point(3, 74);
+            this.tabPane1.Location = new System.Drawing.Point(3, 76);
             this.tabPane1.Name = "tabPane1";
-            this.tabPane1.RegularSize = new System.Drawing.Size(824, 499);
+            this.tabPane1.RegularSize = new System.Drawing.Size(874, 520);
             this.tabPane1.SelectedPage = null;
-            this.tabPane1.Size = new System.Drawing.Size(824, 499);
+            this.tabPane1.Size = new System.Drawing.Size(874, 520);
             this.tabPane1.TabIndex = 7;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
@@ -285,66 +285,67 @@
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Image = global::Ordermanagement_01.Properties.Resources.ic_info;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(3, 50);
+            this.label2.Location = new System.Drawing.Point(3, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(824, 21);
+            this.label2.Size = new System.Drawing.Size(874, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "          Note :  Select Yes / No . If  \'No\'  Enter a Comment";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.labelControl2);
             this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 44);
+            this.panel1.Size = new System.Drawing.Size(874, 46);
             this.panel1.TabIndex = 10;
             // 
             // label1
             // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(351, 3);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 35);
+            this.label1.Size = new System.Drawing.Size(874, 46);
             this.label1.TabIndex = 7;
             this.label1.Text = "CheckList Entry";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(273, 14);
+            this.labelControl2.Location = new System.Drawing.Point(276, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(56, 17);
-            this.labelControl2.TabIndex = 1;
+            this.labelControl2.TabIndex = 9;
             this.labelControl2.Text = "              ";
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(207, 13);
+            this.labelControl1.Location = new System.Drawing.Point(210, 14);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(59, 17);
-            this.labelControl1.TabIndex = 0;
+            this.labelControl1.TabIndex = 8;
             this.labelControl1.Text = "Order Id :";
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // CheckLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 662);
+            this.ClientSize = new System.Drawing.Size(884, 688);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(850, 700);
+            this.MinimumSize = new System.Drawing.Size(900, 726);
             this.Name = "CheckLists";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckLists";

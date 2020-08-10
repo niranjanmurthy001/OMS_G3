@@ -196,38 +196,37 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            //if (e.RowHandle != -1)
-            //{
+            if (e.Column.Caption == "Yes")
+            {
+                gridView1.PostEditor();
+                if (gridView1.PostEditor())
+                {
+                    gridView1.UpdateCurrentRow();
+                }
+                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
+                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
+                gridView1.PostEditor();
+                if (gridView1.PostEditor())
+                {
+                    gridView1.UpdateCurrentRow();
+                }
+            }
+            if (e.Column.Caption == "No")
+            {
+                gridView1.PostEditor();
+                if (gridView1.PostEditor())
+                {
+                    gridView1.UpdateCurrentRow();
+                }
+                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
+                gridView1.PostEditor();
+                if (gridView1.PostEditor())
+                {
+                    gridView1.UpdateCurrentRow();
+                }
+            }
 
-            //    if (e.Column.Caption == "Comments")
-            //    {
-            //        bool chk_yes = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["Yes"]);
-            //        bool chk_no = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["No"]);
-            //        if (chk_yes != false)
-            //        {
-            //            e.Column.OptionsColumn.AllowEdit = false;
-            //            e.Column.OptionsColumn.ReadOnly = true;
-            //            gridView1.PostEditor();
-            //            gridView1.UpdateCurrentRow();
-            //        }
-            //        else if (chk_yes == false && chk_no == true)
-            //        {
-            //            e.Column.OptionsColumn.AllowEdit = true;
-            //            e.Column.OptionsColumn.ReadOnly = false;
-            //            gridView1.PostEditor();
-            //            gridView1.UpdateCurrentRow();
-            //        }
-            //        if (chk_yes == false && chk_no == false)
-            //        {
-            //            e.Column.OptionsColumn.AllowEdit = false;
-            //            e.Column.OptionsColumn.ReadOnly = true;
-            //            gridView1.PostEditor();
-            //            gridView1.UpdateCurrentRow();
-            //        }
-            //    }
-
-            //}
-        }
+            }
 
         private void repositoryItemCheckEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -338,6 +337,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 gridView1.UpdateCurrentRow();
             }
+            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
             gridView1.PostEditor();
@@ -355,6 +355,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 gridView1.UpdateCurrentRow();
             }
+            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
             gridView1.PostEditor();
             if (gridView1.PostEditor())
@@ -862,8 +863,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 SaveTabData();
-                XtraMessageBox.Show("Submitted Sucessfully", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.None);
-                // this.Close();
+                XtraMessageBox.Show("Submitted Successfully", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.None);
+                 this.Close();
             }
             catch
             {
