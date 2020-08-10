@@ -135,6 +135,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 btn_Next.Visible = false;
                                 btn_Save.Visible = true;
+
                             }
                         }
                     }
@@ -362,6 +363,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 gridView1.UpdateCurrentRow();
             }
+        }
+
+        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+           
         }
 
         private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -775,6 +781,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                                  
                                     tabPane1.SelectedPageIndex += 1;
                                     string tabname = tabPane1.SelectedPage.Caption;
                                     GetTabId(tabname);
@@ -863,8 +870,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 SaveTabData();
-                XtraMessageBox.Show("Submitted Successfully", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.None);
-                 this.Close();
+                if (Validate() == true)
+                {
+                    XtraMessageBox.Show("Submitted Successfully", "Success",MessageBoxButtons.OK,MessageBoxIcon.None);
+                    this.Close();
+                 
+                }
+
             }
             catch
             {
