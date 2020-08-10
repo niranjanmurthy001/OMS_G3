@@ -590,36 +590,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             DataTable dt_VIEW = JsonConvert.DeserializeObject<DataTable>(result);
                             dt_VIEW1 = dt_VIEW.Copy();
                             if (dt_VIEW != null && dt_VIEW.Rows.Count > 0)
-                            {
-                                for (int i = 0; i < dt_VIEW.Rows.Count; i++)
-                                {
-                                    dt_VIEW.Rows[i]["Yes"] = "False";
-                                    dt_VIEW.Rows[i]["No"] = "False";
-                                    dt_VIEW.Rows[i]["Comments"] = "";
-                                }
-                                grd_CheckList.Visible = true;
-                                if (visit == 1)
-                                { grd_CheckList.DataSource = dt_VIEW1; }
-                                else if (previous == 1)
-                                {
-                                    grd_CheckList.DataSource = dt_VIEW1;
-                                    previous = 0;
-                                }
-
-                                ////to display old data
-                                //if(visit==1 && current!=tabPane1.SelectedPageIndex+1)
-                                //{
-                                //    grd_CheckList.DataSource = dt_VIEW1;                                                                     
-                                //}
-                                //else if(visit== 0 && current == tabPane1.SelectedPageIndex)
-                                //    { grd_CheckList.DataSource = dt_VIEW;
-                                //    next = current;
-                                //}
-
-                                else
-                                {
-                                    grd_CheckList.DataSource = dt_VIEW;
-                                }
+                            {                              
+                                grd_CheckList.Visible = true;                             
+                                grd_CheckList.DataSource = dt_VIEW;                              
                                 grd_CheckList.Dock = DockStyle.Fill;
                                 tabPane1.SelectedPage.Controls.Add(grd_CheckList);
                                 //for (int i = 0; i < dt.Rows.Count; i++)
@@ -823,10 +796,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
-            SavePreviousData();
-            previous = 1;
-            visit = 1; //to load previous tab data
-                       //            next = 0;
+            SavePreviousData();         
             IsButton = true;
             btn_Next.Visible = true;
             btn_Save.Visible = false;
@@ -848,18 +818,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
 
         private void btn_Next_Click_1(object sender, EventArgs e)
-        {
-            //DataTable dtgrid = new DataTable();
-            //dtgrid = grd_CheckList.DataSource as DataTable;
-            //List<DataTable> dtList = new List<DataTable>();
-            //dtList.Add(dtgrid);
-
-            //DataTable[] dtArray = new DataTable[tabid];
-            //for (int i = 0; i < tabid; i++)
-            //    dtArray[i] = new DataTable("dtgrid" + i);
-            visit = 0;
-            //            next += 1;
-            //            current=next;
+        {           
             SaveTabData();
 
         }
