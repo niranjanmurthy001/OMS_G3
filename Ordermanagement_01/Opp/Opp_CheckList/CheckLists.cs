@@ -160,151 +160,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //    }
         }
 
-        private void grd_CheckList_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-
-            //if (e.Column.Caption == "Yes")
-            //{
-            //    bool Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["Yes"]);
-            //    if(Yes)
-            //    {
-            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "False");
-            //    }
-            //    else if (!Yes) {
-            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "True");
-
-            //    }
-            //}
-            //if (e.Column.Caption == "No")
-            //{
-            //    bool No = (bool)gridView1.GetRowCellValue(e.RowHandle, gridView1.Columns["No"]);
-            //    if(No)
-            //    {
-            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["No"], "False");
-            //    }
-            //    else if (!No)
-            //    {
-            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["Yes"], "True");
-            //        gridView1.SetRowCellValue(e.RowHandle, gridView1.Columns["Comments"], "");
-            //    }
-            //}
-        }
-
-        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            if (e.Column.Caption == "Yes")
-            {
-                gridView1.PostEditor();
-                if (gridView1.PostEditor())
-                {
-                    gridView1.UpdateCurrentRow();
-                }
-                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
-                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
-                gridView1.PostEditor();
-                if (gridView1.PostEditor())
-                {
-                    gridView1.UpdateCurrentRow();
-                }
-            }
-            if (e.Column.Caption == "No")
-            {
-                gridView1.PostEditor();
-                if (gridView1.PostEditor())
-                {
-                    gridView1.UpdateCurrentRow();
-                }
-                gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
-                gridView1.PostEditor();
-                if (gridView1.PostEditor())
-                {
-                    gridView1.UpdateCurrentRow();
-                }
-            }
-
-            }
-
-        private void repositoryItemCheckEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-            ////bool chk_Yes = (bool)(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Yes"));
-            ////if (chk_Yes)
-            ////{
-            ////    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
-            ////    gridView1.PostEditor();
-            ////    gridView1.UpdateCurrentRow();
-            ////}
-            //else
-            //{
-            //    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
-            //}
-
-            //bool chk_Yes = (bool)gridView1.GetRowCellValue(i, "Yes");
-            //bool chk_No = (bool)gridView1.GetRowCellValue(i, "No");
-            //if (chk_Yes == true)
-            //{
-            //    gridView1.SetRowCellValue(i, gridView1.Columns["No"], false);
-            //    gridView1.SetRowCellValue(i, gridView1.Columns["Comments"], "");
-            //    gridView1.PostEditor();
-            //    if (gridView1.PostEditor())
-            //    {
-            //        gridView1.UpdateCurrentRow();
-            //    }
-            //}
-            //else if (chk_Yes == false)
-            //{
-            //    gridView1.SetRowCellValue(i, gridView1.Columns["No"], true);
-            //    gridView1.PostEditor();
-            //    if (gridView1.PostEditor())
-            //    {
-            //        gridView1.UpdateCurrentRow();
-            //    }
-            //}
-        }
-
-
-        private void repositoryItemCheckEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-            ////bool chk_No = (bool)(gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Yes"));
-            ////if (chk_No)
-            ////{
-            ////    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
-            ////    gridView1.PostEditor();
-            ////    gridView1.UpdateCurrentRow();
-            ////}
-            //else
-            //{
-            //    gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
-            //}
-            //for (int i = 0; i < gridView1.DataRowCount; i++)
-            //{
-            //    bool chk_Yes = (bool)gridView1.GetRowCellValue(i, "Yes");
-            //    bool chk_No = (bool)gridView1.GetRowCellValue(i, "No");
-            //    if (chk_No == true)
-            //    {
-            //        gridView1.SetRowCellValue(i, gridView1.Columns["Yes"], false);
-            //        gridView1.PostEditor();
-            //        if (gridView1.PostEditor())
-            //        {
-            //            gridView1.UpdateCurrentRow();
-            //        }
-            //    }
-            //    else if (chk_No == false)
-            //    {
-            //        gridView1.SetRowCellValue(i, gridView1.Columns["Yes"], true);
-            //        gridView1.SetRowCellValue(i, gridView1.Columns["Comments"], "");
-            //        gridView1.PostEditor();
-            //        if (gridView1.PostEditor())
-            //        {
-            //            gridView1.UpdateCurrentRow();
-            //        }
-            //    }
-            //}
-        }
+    
 
         private bool CheckNo(GridView view, int row)
         {
@@ -330,81 +187,136 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         }
 
+        private void gridView1_CellValueChanging_1(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "Yes")
+            {
+
+                gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
+                gridView1.SetRowCellValue(e.RowHandle, "No", false);
+                gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
+              
+
+
+            }
+            else if (e.Column.FieldName == "No")
+            {
+                gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
+                gridView1.SetRowCellValue(e.RowHandle, "No", true);
+
+            }
+        }
+
+        private void gridView1_ShowingEditor_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //     disable/enable editing for yes / No  
+            GridView gridView1 = sender as GridView;
+            if (this.gridView1.FocusedColumn.FieldName == "Comments" && CheckNo(gridView1, this.gridView1.FocusedRowHandle))
+                e.Cancel = false;
+            if (this.gridView1.FocusedColumn.FieldName == "Comments" && CheckYes(gridView1, this.gridView1.FocusedRowHandle))
+                e.Cancel = true;
+        }
+
+        private void gridView1_RowCellStyle_1(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            GridView currentView = sender as GridView;
+            if (e.Column.Caption == "Comments")
+            {
+                bool value = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "No"));
+                if (value)
+                    e.Appearance.BackColor = Color.Red;
+                string comment = gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString();
+                if(comment=="" && comment== null)
+                    e.Appearance.BackColor = Color.Red;
+                else if(comment!="")
+                    e.Appearance.BackColor = Color.White;
+            }
+           
+            //DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
+            //if (e.RowHandle >= 0)
+            //{
+            //    if (e.Column.Caption == "Comments")
+            //    {
+            //        if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == true)
+            //        {
+            //            string Comments = view.Row["Comments"].ToString();
+            //            if (Comments != "")
+            //            {
+            //                e.Appearance.BackColor = Color.White;
+            //            }
+            //            else if (Comments == "")
+            //            {
+            //                e.Appearance.BackColor = Color.Red;
+            //            }
+            //        }
+            //        else if ((bool)view.Row["No"] == false && (bool)view.Row["Yes"] == true)
+            //        {
+            //            gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
+            //            e.Appearance.BackColor = Color.White;
+            //        }
+            //        else if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == false)
+            //        {
+            //            gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
+            //            e.Appearance.BackColor = Color.White;
+            //        }
+            //    }
+            //}
+        }
 
         private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
         {
-            gridView1.PostEditor();
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
+            
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
-            gridView1.PostEditor();
             if (gridView1.PostEditor())
             {
                 gridView1.UpdateCurrentRow();
             }
+          
+        }
+
+        private void gridView1_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
         private void repositoryItemCheckEdit2_EditValueChanged_1(object sender, EventArgs e)
         {
 
-            gridView1.PostEditor();
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
+          
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
-            gridView1.PostEditor();
             if (gridView1.PostEditor())
             {
                 gridView1.UpdateCurrentRow();
             }
+
         }
 
         private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            //if (e.Column.FieldName == "Yes")
+            //{
+              
+            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
+            //    gridView1.SetRowCellValue(e.RowHandle, "No", false);
+            //    gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
+               
+
+            //}
+            //else if (e.Column.FieldName == "No")
+            //{
+            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
+            //    gridView1.SetRowCellValue(e.RowHandle, "No", true);
+              
+            //}
+          
+
            
         }
 
-        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            //if (e.Column.FieldName == "Comments")
-            //{
-            //    bool Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, "Yes");
-            //    bool No = (bool)gridView1.GetRowCellValue(e.RowHandle, "No");
-            //    if (Yes == true && No == false)
-            //    {
-
-            //        //gridView1.Columns["Comments"].ColumnEdit = repositoryItemTextEdit1;
-            //        //e.Column.OptionsColumn.AllowEdit = false;
-            //        //e.Column.OptionsColumn.ReadOnly = true;
-            //    }
-            //    else if (Yes == false && No == true)
-            //    {
-            //        gridView1.Columns["Comments"].ColumnEdit = repositoryItemTextEdit1;
-            //        //e.Column.OptionsColumn.AllowEdit = true;
-            //        //e.Column.OptionsColumn.ReadOnly = false;
-            //    }
-            //    else if (Yes == false && No == false)
-            //    {
-            //        //e.Column.OptionsColumn.AllowEdit = false;
-            //        //e.Column.OptionsColumn.ReadOnly = true;
-            //    }
-            //}
-        }
-
-        private void repositoryItemCheckEdit_Yes_CheckedChanged(object sender, EventArgs e)
-        {
-            gridView1.PostEditor();
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
-        }
 
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
         {
@@ -414,13 +326,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 e.Cancel = true;
             }
             IsButton = false;
-        }
-
-        private void gridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
-        {
-
-        }
-
+        }      
         private async void GetTabId(string tabname)
         {
             try
@@ -559,7 +465,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-
         public async void TabData_View()
         {
             try
@@ -622,83 +527,33 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (e.RowHandle >= 0)
             {
                 if (e.Column.Caption == "Comments")
-                {
-                    //bool val_Yes = (bool)gridView1.GetRowCellValue(e.RowHandle, "Yes");
-                    //if (val_Yes)
-                    //    e.Appearance.BackColor = Color.White;
-                    //e.Column.OptionsColumn.AllowEdit = false;
-                    //e.Column.OptionsColumn.ReadOnly = true;                                        
+                {                                                      
                     if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == true)
                     {
                         string Comments = view.Row["Comments"].ToString();
                         if (Comments != "")
                         {
                             e.Appearance.BackColor = Color.White;
-                            //e.Column.OptionsColumn.AllowEdit = true;
-                            //e.Column.OptionsColumn.ReadOnly = false;
-                            gridView1.PostEditor();
-                            gridView1.UpdateCurrentRow();
-
                         }
                         else if (Comments == "")
                         {
                             e.Appearance.BackColor = Color.Red;
-
-                            //e.Column.OptionsColumn.AllowEdit = true;
-                            //e.Column.OptionsColumn.ReadOnly = false;
-                            gridView1.PostEditor();
-                            gridView1.UpdateCurrentRow();
-
                         }
                     }
                     else if ((bool)view.Row["No"] == false && (bool)view.Row["Yes"] == true)
                     {
                         gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
                         e.Appearance.BackColor = Color.White;
-                        //e.Column.OptionsColumn.AllowEdit = false;
-                        //e.Column.OptionsColumn.ReadOnly = true;
-                        gridView1.PostEditor();
-                        gridView1.UpdateCurrentRow();
-
                     }
                     else if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == false)
                     {
                         gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
                         e.Appearance.BackColor = Color.White;
-                        //e.Column.OptionsColumn.AllowEdit = false;
-                        //e.Column.OptionsColumn.ReadOnly = true;
-                        gridView1.PostEditor();
-                        gridView1.UpdateCurrentRow();
                     }
-
-                    //if (e.Column.FieldName == "Comments")
-                    //{
-                    //    bool val_No = (bool)gridView1.GetRowCellValue(e.RowHandle, "No");
-                    //    if (val_No)
-                    //    {
-                    //        string text = (gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString());
-                    //        e.Column.OptionsColumn.AllowEdit = true;
-                    //        e.Column.OptionsColumn.ReadOnly = false;
-                    //        if (text == "" || text == null)
-                    //        {
-                    //            e.Appearance.BackColor = Color.Red;
-                    //        }
-                    //        else if (text != "" || text != null)
-                    //        {
-                    //            e.Appearance.BackColor = Color.White;
-                    //        }
-                    //    }
-                    //}
-                    ////  System.Drawing.Color colour = e.Appearance.BackColor;
                 }
             }
         }
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.RowHandle >= 0)
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-        }
-
+     
         private async void SaveTabData()
         {
             IsButton = true;
@@ -793,7 +648,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
             SavePreviousData();         
@@ -806,15 +660,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 btn_Previous.Visible = false;
             }
-            BindTabs();
-            //if (dt_Check.Rows.Count != 0)
-            //{
-            //    grd_CheckList.DataSource = dt_VIEW1;
-            //}
-            //else
-            //{
-            //    grd_CheckList.DataSource = dt_All1;
-            //}
+            BindTabs();         
         }
 
         private void btn_Next_Click_1(object sender, EventArgs e)
@@ -935,7 +781,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         //      }
         //  }
 
-
         private async void SavePreviousData()
         {
             IsButton = true;
@@ -1005,5 +850,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
+
     }
 }
