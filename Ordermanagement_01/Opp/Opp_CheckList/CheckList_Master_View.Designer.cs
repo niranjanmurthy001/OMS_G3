@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.TileItemElement tileItemElement21 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement22 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement23 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement24 = new DevExpress.XtraEditors.TileItemElement();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tileCheckList = new DevExpress.XtraEditors.TileControl();
@@ -44,6 +45,11 @@
             this.tile_TabSettings = new DevExpress.XtraEditors.TileItem();
             this.navigationFrame1 = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPage1 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_multiselect = new DevExpress.XtraEditors.SimpleButton();
             this.gridCheckListMasterDetails = new DevExpress.XtraGrid.GridControl();
             this.gridViewCheckListMaster = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,7 +62,14 @@
             this.chklistmasterHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.navigationPage2 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_ExportForQuesTab = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_AddForQesTab = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_DeleteForQuesTab = new DevExpress.XtraEditors.SimpleButton();
             this.gridChkQuestionSetup = new DevExpress.XtraGrid.GridControl();
             this.gridviewChkQuestionSetup = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColProjTypeQs = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,7 +84,19 @@
             this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.navigationPage3 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_multiSelec_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Add_FortabRowSort = new DevExpress.XtraEditors.SimpleButton();
+            this.rb_CheckListQuesSetting = new DevExpress.XtraEditors.RadioGroup();
+            this.rb_CheckListTabSetting = new DevExpress.XtraEditors.RadioGroup();
+            this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
+            this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.grd_TabSetting = new DevExpress.XtraGrid.GridControl();
             this.gridView_TabSetting = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,27 +105,12 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemHyperLinkForDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.navigationPage4 = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gridQuestionRowSetUp = new DevExpress.XtraGrid.GridControl();
             this.gridviewQuestionRowSetUp = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
-            this.btn_multiselect = new DevExpress.XtraEditors.SimpleButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rb_CheckListQuesSetting = new DevExpress.XtraEditors.RadioGroup();
-            this.rb_CheckListTabSetting = new DevExpress.XtraEditors.RadioGroup();
-            this.ddl_CheckListTab = new DevExpress.XtraEditors.LookUpEdit();
-            this.lbl_CheckListTab = new DevExpress.XtraEditors.LabelControl();
-            this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
-            this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.tileItem1 = new DevExpress.XtraEditors.TileItem();
-            this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
-            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdColProjTypeQr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -109,37 +119,63 @@
             this.grdColChkListTabQr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdColQuestinQr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.rb_QuessetForQuesSort = new DevExpress.XtraEditors.RadioGroup();
+            this.rd_TabSettingFor_QuesSetup = new DevExpress.XtraEditors.RadioGroup();
+            this.lookUpEditCheckListTab = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.lookUpedit_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.tileItem1 = new DevExpress.XtraEditors.TileItem();
+            this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).BeginInit();
             this.navigationFrame1.SuspendLayout();
             this.navigationPage1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCheckListMasterDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCheckListMaster)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkListMasterHyperLinkEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chklistmasterHyperLinkDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
             this.navigationPage2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridChkQuestionSetup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewChkQuestionSetup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuesSetUpHyperLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             this.navigationPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).BeginInit();
-            this.navigationPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridQuestionRowSetUp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridviewQuestionRowSetUp)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_CheckListQuesSetting.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_CheckListTabSetting.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_CheckListTab.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkForDelete)).BeginInit();
+            this.navigationPage4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridQuestionRowSetUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewQuestionRowSetUp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rb_QuessetForQuesSort.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rd_TabSettingFor_QuesSetup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCheckListTab.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpedit_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -166,16 +202,14 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tileCheckList, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.navigationFrame1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.navigationFrame1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 33);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 217F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1083, 484);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -250,9 +284,9 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement1.Text = "CheckList  Tab";
-            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_CheckList_Master.Elements.Add(tileItemElement1);
+            tileItemElement21.Text = "CheckList  Tab";
+            tileItemElement21.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_CheckList_Master.Elements.Add(tileItemElement21);
             this.tile_CheckList_Master.Id = 0;
             this.tile_CheckList_Master.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_CheckList_Master.Name = "tile_CheckList_Master";
@@ -301,9 +335,9 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement2.Text = "CheckList Question ";
-            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_Question_SetUp.Elements.Add(tileItemElement2);
+            tileItemElement22.Text = "CheckList Tab Question ";
+            tileItemElement22.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_Question_SetUp.Elements.Add(tileItemElement22);
             this.tile_Question_SetUp.Id = 1;
             this.tile_Question_SetUp.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_Question_SetUp.Name = "tile_Question_SetUp";
@@ -352,17 +386,17 @@
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement3.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement3.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement3.Appearance.Normal.Options.UseFont = true;
-            tileItemElement3.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement3.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement3.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement3.Appearance.Selected.Options.UseFont = true;
-            tileItemElement3.Text = "CheckList  Settings";
-            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_TabSettings.Elements.Add(tileItemElement3);
+            tileItemElement23.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement23.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement23.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement23.Appearance.Normal.Options.UseFont = true;
+            tileItemElement23.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement23.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement23.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement23.Appearance.Selected.Options.UseFont = true;
+            tileItemElement23.Text = "CheckList Tab  Settings";
+            tileItemElement23.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_TabSettings.Elements.Add(tileItemElement23);
             this.tile_TabSettings.Id = 2;
             this.tile_TabSettings.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_TabSettings.Name = "tile_TabSettings";
@@ -376,7 +410,7 @@
             this.navigationFrame1.Controls.Add(this.navigationPage3);
             this.navigationFrame1.Controls.Add(this.navigationPage4);
             this.navigationFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navigationFrame1.Location = new System.Drawing.Point(3, 192);
+            this.navigationFrame1.Location = new System.Drawing.Point(3, 99);
             this.navigationFrame1.Name = "navigationFrame1";
             this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPage1,
@@ -384,31 +418,105 @@
             this.navigationPage3,
             this.navigationPage4});
             this.navigationFrame1.SelectedPage = this.navigationPage1;
-            this.navigationFrame1.Size = new System.Drawing.Size(1077, 289);
+            this.navigationFrame1.Size = new System.Drawing.Size(1077, 382);
             this.navigationFrame1.TabIndex = 9;
             this.navigationFrame1.Text = "navigationFrame1";
             // 
             // navigationPage1
             // 
             this.navigationPage1.Caption = "navigationPage1";
-            this.navigationPage1.Controls.Add(this.gridCheckListMasterDetails);
+            this.navigationPage1.Controls.Add(this.tableLayoutPanel2);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(1077, 289);
+            this.navigationPage1.Size = new System.Drawing.Size(1077, 382);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.gridCheckListMasterDetails, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.87435F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.12566F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1077, 382);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Add);
+            this.flowLayoutPanel1.Controls.Add(this.btn_multiselect);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(829, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 47);
+            this.flowLayoutPanel1.TabIndex = 9;
+            // 
+            // btn_Export
+            // 
+            this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
+            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Export.Location = new System.Drawing.Point(167, 3);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(75, 40);
+            this.btn_Export.TabIndex = 0;
+            this.btn_Export.Text = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click_1);
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Add.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Add.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Add.Appearance.Options.UseFont = true;
+            this.btn_Add.Appearance.Options.UseForeColor = true;
+            this.btn_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Add.Location = new System.Drawing.Point(86, 3);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(75, 40);
+            this.btn_Add.TabIndex = 2;
+            this.btn_Add.Text = "Add";
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click_1);
+            // 
+            // btn_multiselect
+            // 
+            this.btn_multiselect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_multiselect.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_multiselect.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_multiselect.Appearance.Options.UseFont = true;
+            this.btn_multiselect.Appearance.Options.UseForeColor = true;
+            this.btn_multiselect.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_multiselect.Location = new System.Drawing.Point(5, 3);
+            this.btn_multiselect.Name = "btn_multiselect";
+            this.btn_multiselect.Size = new System.Drawing.Size(75, 40);
+            this.btn_multiselect.TabIndex = 1;
+            this.btn_multiselect.Text = "Delete";
+            this.btn_multiselect.Click += new System.EventHandler(this.btn_multiselect_Click_1);
             // 
             // gridCheckListMasterDetails
             // 
             this.gridCheckListMasterDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCheckListMasterDetails.Location = new System.Drawing.Point(0, 0);
+            this.gridCheckListMasterDetails.Location = new System.Drawing.Point(3, 56);
             this.gridCheckListMasterDetails.MainView = this.gridViewCheckListMaster;
             this.gridCheckListMasterDetails.Name = "gridCheckListMasterDetails";
             this.gridCheckListMasterDetails.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.ChkListMasterHyperLinkEdit,
             this.chklistmasterHyperLinkDelete});
-            this.gridCheckListMasterDetails.Size = new System.Drawing.Size(1077, 289);
+            this.gridCheckListMasterDetails.Size = new System.Drawing.Size(1071, 323);
             this.gridCheckListMasterDetails.TabIndex = 1;
             this.gridCheckListMasterDetails.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCheckListMaster,
-            this.gridView3});
+            this.gridView3,
+            this.gridView5,
+            this.gridView7});
             // 
             // gridViewCheckListMaster
             // 
@@ -458,8 +566,6 @@
             this.gridColumn3.FieldName = "Order_Type_Abbreviation";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 185;
             // 
             // gridColumn2
@@ -473,7 +579,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 185;
             // 
             // gridColumn4
@@ -494,7 +600,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 60;
             // 
             // ChkListMasterHyperLinkEdit
@@ -515,7 +621,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 4;
             this.gridColumn6.Width = 60;
             // 
             // chklistmasterHyperLinkDelete
@@ -536,27 +642,102 @@
             this.gridView3.GridControl = this.gridCheckListMasterDetails;
             this.gridView3.Name = "gridView3";
             // 
+            // gridView5
+            // 
+            this.gridView5.GridControl = this.gridCheckListMasterDetails;
+            this.gridView5.Name = "gridView5";
+            // 
+            // gridView7
+            // 
+            this.gridView7.GridControl = this.gridCheckListMasterDetails;
+            this.gridView7.Name = "gridView7";
+            // 
             // navigationPage2
             // 
             this.navigationPage2.Caption = "navigationPage2";
-            this.navigationPage2.Controls.Add(this.gridChkQuestionSetup);
+            this.navigationPage2.Controls.Add(this.tableLayoutPanel4);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(1077, 289);
+            this.navigationPage2.Size = new System.Drawing.Size(1077, 382);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.gridChkQuestionSetup, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.39791F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.6021F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1077, 382);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel2.Controls.Add(this.btn_ExportForQuesTab);
+            this.flowLayoutPanel2.Controls.Add(this.btn_AddForQesTab);
+            this.flowLayoutPanel2.Controls.Add(this.btn_DeleteForQuesTab);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(830, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(244, 48);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // btn_ExportForQuesTab
+            // 
+            this.btn_ExportForQuesTab.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ExportForQuesTab.Appearance.Options.UseFont = true;
+            this.btn_ExportForQuesTab.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ExportForQuesTab.Location = new System.Drawing.Point(166, 3);
+            this.btn_ExportForQuesTab.Name = "btn_ExportForQuesTab";
+            this.btn_ExportForQuesTab.Size = new System.Drawing.Size(75, 40);
+            this.btn_ExportForQuesTab.TabIndex = 2;
+            this.btn_ExportForQuesTab.Text = "Export";
+            this.btn_ExportForQuesTab.Click += new System.EventHandler(this.btn_ExportForQuesTab_Click);
+            // 
+            // btn_AddForQesTab
+            // 
+            this.btn_AddForQesTab.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddForQesTab.Appearance.Options.UseFont = true;
+            this.btn_AddForQesTab.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_AddForQesTab.Location = new System.Drawing.Point(85, 3);
+            this.btn_AddForQesTab.Name = "btn_AddForQesTab";
+            this.btn_AddForQesTab.Size = new System.Drawing.Size(75, 40);
+            this.btn_AddForQesTab.TabIndex = 0;
+            this.btn_AddForQesTab.Text = "Add";
+            this.btn_AddForQesTab.Click += new System.EventHandler(this.btn_AddForQesTab_Click);
+            // 
+            // btn_DeleteForQuesTab
+            // 
+            this.btn_DeleteForQuesTab.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DeleteForQuesTab.Appearance.Options.UseFont = true;
+            this.btn_DeleteForQuesTab.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_DeleteForQuesTab.Location = new System.Drawing.Point(4, 3);
+            this.btn_DeleteForQuesTab.Name = "btn_DeleteForQuesTab";
+            this.btn_DeleteForQuesTab.Size = new System.Drawing.Size(75, 40);
+            this.btn_DeleteForQuesTab.TabIndex = 1;
+            this.btn_DeleteForQuesTab.Text = "Delete";
+            this.btn_DeleteForQuesTab.Click += new System.EventHandler(this.btn_DeleteForQuesTab_Click);
             // 
             // gridChkQuestionSetup
             // 
             this.gridChkQuestionSetup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridChkQuestionSetup.Location = new System.Drawing.Point(0, 0);
+            this.gridChkQuestionSetup.Location = new System.Drawing.Point(3, 58);
             this.gridChkQuestionSetup.MainView = this.gridviewChkQuestionSetup;
             this.gridChkQuestionSetup.Name = "gridChkQuestionSetup";
             this.gridChkQuestionSetup.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.gridQuesSetUpHyperLink,
             this.repositoryItemHyperLinkEdit2});
-            this.gridChkQuestionSetup.Size = new System.Drawing.Size(1077, 289);
+            this.gridChkQuestionSetup.Size = new System.Drawing.Size(1071, 321);
             this.gridChkQuestionSetup.TabIndex = 0;
             this.gridChkQuestionSetup.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridviewChkQuestionSetup,
-            this.gridView2});
+            this.gridView2,
+            this.gridView4,
+            this.gridView6});
             this.gridChkQuestionSetup.Click += new System.EventHandler(this.gridChkQuestionSetup_Click);
             // 
             // gridviewChkQuestionSetup
@@ -616,8 +797,6 @@
             this.gridColProductTypeAbbrQs.FieldName = "Order_Type_Abbreviation";
             this.gridColProductTypeAbbrQs.Name = "gridColProductTypeAbbrQs";
             this.gridColProductTypeAbbrQs.OptionsColumn.AllowEdit = false;
-            this.gridColProductTypeAbbrQs.Visible = true;
-            this.gridColProductTypeAbbrQs.VisibleIndex = 2;
             this.gridColProductTypeAbbrQs.Width = 198;
             // 
             // gridColChkTypeQs
@@ -631,7 +810,7 @@
             this.gridColChkTypeQs.Name = "gridColChkTypeQs";
             this.gridColChkTypeQs.OptionsColumn.AllowEdit = false;
             this.gridColChkTypeQs.Visible = true;
-            this.gridColChkTypeQs.VisibleIndex = 3;
+            this.gridColChkTypeQs.VisibleIndex = 2;
             this.gridColChkTypeQs.Width = 144;
             // 
             // gridColQuestionQs
@@ -645,7 +824,7 @@
             this.gridColQuestionQs.Name = "gridColQuestionQs";
             this.gridColQuestionQs.OptionsColumn.AllowEdit = false;
             this.gridColQuestionQs.Visible = true;
-            this.gridColQuestionQs.VisibleIndex = 4;
+            this.gridColQuestionQs.VisibleIndex = 3;
             this.gridColQuestionQs.Width = 325;
             // 
             // gridColumn12
@@ -664,7 +843,7 @@
             this.gridColViewQs.ColumnEdit = this.gridQuesSetUpHyperLink;
             this.gridColViewQs.Name = "gridColViewQs";
             this.gridColViewQs.Visible = true;
-            this.gridColViewQs.VisibleIndex = 5;
+            this.gridColViewQs.VisibleIndex = 4;
             this.gridColViewQs.Width = 63;
             // 
             // gridQuesSetUpHyperLink
@@ -684,7 +863,7 @@
             this.gridColDeleteQs.ColumnEdit = this.repositoryItemHyperLinkEdit2;
             this.gridColDeleteQs.Name = "gridColDeleteQs";
             this.gridColDeleteQs.Visible = true;
-            this.gridColDeleteQs.VisibleIndex = 6;
+            this.gridColDeleteQs.VisibleIndex = 5;
             this.gridColDeleteQs.Width = 42;
             // 
             // repositoryItemHyperLinkEdit2
@@ -705,21 +884,171 @@
             this.gridView2.GridControl = this.gridChkQuestionSetup;
             this.gridView2.Name = "gridView2";
             // 
+            // gridView4
+            // 
+            this.gridView4.GridControl = this.gridChkQuestionSetup;
+            this.gridView4.Name = "gridView4";
+            // 
+            // gridView6
+            // 
+            this.gridView6.GridControl = this.gridChkQuestionSetup;
+            this.gridView6.Name = "gridView6";
+            // 
             // navigationPage3
             // 
             this.navigationPage3.Caption = "navigationPage3";
-            this.navigationPage3.Controls.Add(this.grd_TabSetting);
+            this.navigationPage3.Controls.Add(this.tableLayoutPanel5);
             this.navigationPage3.Name = "navigationPage3";
-            this.navigationPage3.Size = new System.Drawing.Size(1077, 289);
+            this.navigationPage3.Size = new System.Drawing.Size(1077, 382);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.grd_TabSetting, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1077, 382);
+            this.tableLayoutPanel5.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btn_multiSelec_Delete);
+            this.panel1.Controls.Add(this.btn_Add_FortabRowSort);
+            this.panel1.Controls.Add(this.rb_CheckListQuesSetting);
+            this.panel1.Controls.Add(this.rb_CheckListTabSetting);
+            this.panel1.Controls.Add(this.ddl_ProductType);
+            this.panel1.Controls.Add(this.ddl_ProjectType);
+            this.panel1.Controls.Add(this.labelControl2);
+            this.panel1.Controls.Add(this.labelControl1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1071, 68);
+            this.panel1.TabIndex = 0;
+            // 
+            // btn_multiSelec_Delete
+            // 
+            this.btn_multiSelec_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_multiSelec_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_multiSelec_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_multiSelec_Delete.Appearance.Options.UseFont = true;
+            this.btn_multiSelec_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_multiSelec_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_multiSelec_Delete.Location = new System.Drawing.Point(911, 23);
+            this.btn_multiSelec_Delete.Name = "btn_multiSelec_Delete";
+            this.btn_multiSelec_Delete.Size = new System.Drawing.Size(75, 40);
+            this.btn_multiSelec_Delete.TabIndex = 11;
+            this.btn_multiSelec_Delete.Text = "Delete";
+            // 
+            // btn_Add_FortabRowSort
+            // 
+            this.btn_Add_FortabRowSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Add_FortabRowSort.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Add_FortabRowSort.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Add_FortabRowSort.Appearance.Options.UseFont = true;
+            this.btn_Add_FortabRowSort.Appearance.Options.UseForeColor = true;
+            this.btn_Add_FortabRowSort.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Add_FortabRowSort.Location = new System.Drawing.Point(992, 23);
+            this.btn_Add_FortabRowSort.Name = "btn_Add_FortabRowSort";
+            this.btn_Add_FortabRowSort.Size = new System.Drawing.Size(75, 40);
+            this.btn_Add_FortabRowSort.TabIndex = 10;
+            this.btn_Add_FortabRowSort.Text = "Add";
+            this.btn_Add_FortabRowSort.Click += new System.EventHandler(this.btn_Add_FortabRowSort_Click);
+            // 
+            // rb_CheckListQuesSetting
+            // 
+            this.rb_CheckListQuesSetting.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rb_CheckListQuesSetting.EditValue = "<Null>";
+            this.rb_CheckListQuesSetting.Location = new System.Drawing.Point(531, 5);
+            this.rb_CheckListQuesSetting.Name = "rb_CheckListQuesSetting";
+            this.rb_CheckListQuesSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_CheckListQuesSetting.Properties.Appearance.Options.UseFont = true;
+            this.rb_CheckListQuesSetting.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rb_CheckListQuesSetting.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Question Settings")});
+            this.rb_CheckListQuesSetting.Size = new System.Drawing.Size(203, 24);
+            this.rb_CheckListQuesSetting.TabIndex = 9;
+            this.rb_CheckListQuesSetting.SelectedIndexChanged += new System.EventHandler(this.rb_CheckListQuesSetting_SelectedIndexChanged);
+            this.rb_CheckListQuesSetting.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_CheckListQuesSetting_MouseClick);
+            // 
+            // rb_CheckListTabSetting
+            // 
+            this.rb_CheckListTabSetting.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rb_CheckListTabSetting.EditValue = "<Null>";
+            this.rb_CheckListTabSetting.Location = new System.Drawing.Point(355, 4);
+            this.rb_CheckListTabSetting.Name = "rb_CheckListTabSetting";
+            this.rb_CheckListTabSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_CheckListTabSetting.Properties.Appearance.Options.UseFont = true;
+            this.rb_CheckListTabSetting.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rb_CheckListTabSetting.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Tab Settings")});
+            this.rb_CheckListTabSetting.Size = new System.Drawing.Size(169, 24);
+            this.rb_CheckListTabSetting.TabIndex = 8;
+            this.rb_CheckListTabSetting.SelectedIndexChanged += new System.EventHandler(this.rb_CheckListTabSetting_SelectedIndexChanged);
+            this.rb_CheckListTabSetting.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_CheckListTabSetting_MouseClick);
+            // 
+            // ddl_ProductType
+            // 
+            this.ddl_ProductType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ddl_ProductType.Location = new System.Drawing.Point(613, 37);
+            this.ddl_ProductType.Name = "ddl_ProductType";
+            this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_ProductType.Properties.NullText = "SELECT";
+            this.ddl_ProductType.Size = new System.Drawing.Size(166, 20);
+            this.ddl_ProductType.TabIndex = 5;
+            this.ddl_ProductType.EditValueChanged += new System.EventHandler(this.ddl_ProductType_EditValueChanged);
+            // 
+            // ddl_ProjectType
+            // 
+            this.ddl_ProjectType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ddl_ProjectType.Location = new System.Drawing.Point(341, 37);
+            this.ddl_ProjectType.Name = "ddl_ProjectType";
+            this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_ProjectType.Properties.NullText = "SELECT";
+            this.ddl_ProjectType.Size = new System.Drawing.Size(166, 20);
+            this.ddl_ProjectType.TabIndex = 4;
+            this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(518, 37);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(84, 17);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "Product Type :";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(251, 37);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(79, 17);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Project Type :";
             // 
             // grd_TabSetting
             // 
             this.grd_TabSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grd_TabSetting.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grd_TabSetting.Location = new System.Drawing.Point(0, 0);
+            this.grd_TabSetting.Location = new System.Drawing.Point(3, 77);
             this.grd_TabSetting.MainView = this.gridView_TabSetting;
             this.grd_TabSetting.Name = "grd_TabSetting";
-            this.grd_TabSetting.Size = new System.Drawing.Size(1077, 289);
+            this.grd_TabSetting.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemHyperLinkForDelete});
+            this.grd_TabSetting.Size = new System.Drawing.Size(1071, 302);
             this.grd_TabSetting.TabIndex = 1;
             this.grd_TabSetting.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_TabSetting});
@@ -734,18 +1063,22 @@
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn19,
+            this.gridColumn21});
             this.gridView_TabSetting.GridControl = this.grd_TabSetting;
             this.gridView_TabSetting.IndicatorWidth = 50;
             this.gridView_TabSetting.Name = "gridView_TabSetting";
             this.gridView_TabSetting.OptionsCustomization.AllowSort = false;
             this.gridView_TabSetting.OptionsFind.AlwaysVisible = true;
+            this.gridView_TabSetting.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_TabSetting_RowCellClick);
             this.gridView_TabSetting.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_TabSetting_CustomDrawRowIndicator);
+            this.gridView_TabSetting.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView_TabSetting_SelectionChanged);
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "ID";
-            this.gridColumn7.FieldName = "ChecklistType_Id";
+            this.gridColumn7.FieldName = "CheckList_Type_Id";
             this.gridColumn7.Name = "gridColumn7";
             // 
             // gridColumn8
@@ -799,20 +1132,51 @@
             this.gridColumn13.FieldName = "Preference";
             this.gridColumn13.Name = "gridColumn13";
             // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Delete";
+            this.gridColumn19.ColumnEdit = this.repositoryItemHyperLinkForDelete;
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.OptionsColumn.AllowEdit = false;
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 3;
+            // 
+            // repositoryItemHyperLinkForDelete
+            // 
+            this.repositoryItemHyperLinkForDelete.AutoHeight = false;
+            this.repositoryItemHyperLinkForDelete.Caption = "Delete";
+            this.repositoryItemHyperLinkForDelete.Name = "repositoryItemHyperLinkForDelete";
+            this.repositoryItemHyperLinkForDelete.NullText = "Delete";
+            // 
             // navigationPage4
             // 
             this.navigationPage4.Caption = "navigationPage4";
-            this.navigationPage4.Controls.Add(this.gridQuestionRowSetUp);
+            this.navigationPage4.Controls.Add(this.tableLayoutPanel3);
             this.navigationPage4.Name = "navigationPage4";
-            this.navigationPage4.Size = new System.Drawing.Size(1077, 289);
+            this.navigationPage4.Size = new System.Drawing.Size(1077, 382);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.gridQuestionRowSetUp, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.panelControl1, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1077, 382);
+            this.tableLayoutPanel3.TabIndex = 1;
             // 
             // gridQuestionRowSetUp
             // 
             this.gridQuestionRowSetUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridQuestionRowSetUp.Location = new System.Drawing.Point(0, 0);
+            this.gridQuestionRowSetUp.Location = new System.Drawing.Point(3, 74);
             this.gridQuestionRowSetUp.MainView = this.gridviewQuestionRowSetUp;
             this.gridQuestionRowSetUp.Name = "gridQuestionRowSetUp";
-            this.gridQuestionRowSetUp.Size = new System.Drawing.Size(1077, 289);
+            this.gridQuestionRowSetUp.Size = new System.Drawing.Size(1071, 305);
             this.gridQuestionRowSetUp.TabIndex = 0;
             this.gridQuestionRowSetUp.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridviewQuestionRowSetUp});
@@ -837,235 +1201,6 @@
             this.gridviewQuestionRowSetUp.OptionsFind.AlwaysVisible = true;
             this.gridviewQuestionRowSetUp.OptionsFind.SearchInPreview = true;
             this.gridviewQuestionRowSetUp.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridviewQuestionRowSetUp_CustomDrawRowIndicator);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 251F));
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel1, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 99);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1077, 87);
-            this.tableLayoutPanel3.TabIndex = 10;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Export);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Add);
-            this.flowLayoutPanel1.Controls.Add(this.btn_multiselect);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(829, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 81);
-            this.flowLayoutPanel1.TabIndex = 9;
-            // 
-            // btn_Export
-            // 
-            this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Export.Appearance.Options.UseFont = true;
-            this.btn_Export.Appearance.Options.UseForeColor = true;
-            this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Location = new System.Drawing.Point(167, 3);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(75, 40);
-            this.btn_Export.TabIndex = 0;
-            this.btn_Export.Text = "Export";
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click_1);
-            // 
-            // btn_Add
-            // 
-            this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Add.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Add.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_Add.Appearance.Options.UseFont = true;
-            this.btn_Add.Appearance.Options.UseForeColor = true;
-            this.btn_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add.Location = new System.Drawing.Point(86, 3);
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(75, 40);
-            this.btn_Add.TabIndex = 2;
-            this.btn_Add.Text = "Add";
-            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click_1);
-            // 
-            // btn_multiselect
-            // 
-            this.btn_multiselect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_multiselect.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_multiselect.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.btn_multiselect.Appearance.Options.UseFont = true;
-            this.btn_multiselect.Appearance.Options.UseForeColor = true;
-            this.btn_multiselect.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_multiselect.Location = new System.Drawing.Point(5, 3);
-            this.btn_multiselect.Name = "btn_multiselect";
-            this.btn_multiselect.Size = new System.Drawing.Size(75, 40);
-            this.btn_multiselect.TabIndex = 1;
-            this.btn_multiselect.Text = "Delete";
-            this.btn_multiselect.Click += new System.EventHandler(this.btn_multiselect_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rb_CheckListQuesSetting);
-            this.panel1.Controls.Add(this.rb_CheckListTabSetting);
-            this.panel1.Controls.Add(this.ddl_CheckListTab);
-            this.panel1.Controls.Add(this.lbl_CheckListTab);
-            this.panel1.Controls.Add(this.ddl_ProductType);
-            this.panel1.Controls.Add(this.ddl_ProjectType);
-            this.panel1.Controls.Add(this.labelControl2);
-            this.panel1.Controls.Add(this.labelControl1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 81);
-            this.panel1.TabIndex = 0;
-            // 
-            // rb_CheckListQuesSetting
-            // 
-            this.rb_CheckListQuesSetting.EditValue = "<Null>";
-            this.rb_CheckListQuesSetting.Location = new System.Drawing.Point(464, 11);
-            this.rb_CheckListQuesSetting.Name = "rb_CheckListQuesSetting";
-            this.rb_CheckListQuesSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_CheckListQuesSetting.Properties.Appearance.Options.UseFont = true;
-            this.rb_CheckListQuesSetting.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.rb_CheckListQuesSetting.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Question Settings")});
-            this.rb_CheckListQuesSetting.Size = new System.Drawing.Size(203, 24);
-            this.rb_CheckListQuesSetting.TabIndex = 9;
-            this.rb_CheckListQuesSetting.SelectedIndexChanged += new System.EventHandler(this.rb_CheckListQuesSetting_SelectedIndexChanged);
-            this.rb_CheckListQuesSetting.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_CheckListQuesSetting_MouseClick);
-            // 
-            // rb_CheckListTabSetting
-            // 
-            this.rb_CheckListTabSetting.EditValue = "<Null>";
-            this.rb_CheckListTabSetting.Location = new System.Drawing.Point(279, 11);
-            this.rb_CheckListTabSetting.Name = "rb_CheckListTabSetting";
-            this.rb_CheckListTabSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_CheckListTabSetting.Properties.Appearance.Options.UseFont = true;
-            this.rb_CheckListTabSetting.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.rb_CheckListTabSetting.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Tab Settings")});
-            this.rb_CheckListTabSetting.Size = new System.Drawing.Size(185, 24);
-            this.rb_CheckListTabSetting.TabIndex = 8;
-            this.rb_CheckListTabSetting.SelectedIndexChanged += new System.EventHandler(this.rb_CheckListTabSetting_SelectedIndexChanged);
-            this.rb_CheckListTabSetting.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_CheckListTabSetting_MouseClick);
-            // 
-            // ddl_CheckListTab
-            // 
-            this.ddl_CheckListTab.Location = new System.Drawing.Point(640, 46);
-            this.ddl_CheckListTab.Name = "ddl_CheckListTab";
-            this.ddl_CheckListTab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_CheckListTab.Properties.NullText = "Select";
-            this.ddl_CheckListTab.Size = new System.Drawing.Size(166, 20);
-            this.ddl_CheckListTab.TabIndex = 7;
-            this.ddl_CheckListTab.EditValueChanged += new System.EventHandler(this.ddl_CheckListTab_EditValueChanged);
-            // 
-            // lbl_CheckListTab
-            // 
-            this.lbl_CheckListTab.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_CheckListTab.Appearance.Options.UseFont = true;
-            this.lbl_CheckListTab.Location = new System.Drawing.Point(546, 49);
-            this.lbl_CheckListTab.Name = "lbl_CheckListTab";
-            this.lbl_CheckListTab.Size = new System.Drawing.Size(83, 15);
-            this.lbl_CheckListTab.TabIndex = 6;
-            this.lbl_CheckListTab.Text = "CheckList Tab  :";
-            // 
-            // ddl_ProductType
-            // 
-            this.ddl_ProductType.Location = new System.Drawing.Point(369, 46);
-            this.ddl_ProductType.Name = "ddl_ProductType";
-            this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProductType.Properties.NullText = "SELECT";
-            this.ddl_ProductType.Size = new System.Drawing.Size(166, 20);
-            this.ddl_ProductType.TabIndex = 5;
-            this.ddl_ProductType.EditValueChanged += new System.EventHandler(this.ddl_ProductType_EditValueChanged);
-            // 
-            // ddl_ProjectType
-            // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(97, 46);
-            this.ddl_ProjectType.Name = "ddl_ProjectType";
-            this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProjectType.Properties.NullText = "SELECT";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(166, 20);
-            this.ddl_ProjectType.TabIndex = 4;
-            this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(274, 46);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(84, 17);
-            this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Product Type :";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(7, 46);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(79, 17);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Project Type :";
-            // 
-            // tileItem1
-            // 
-            this.tileItem1.AppearanceItem.Hovered.BackColor = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.Black;
-            this.tileItem1.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem1.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.tileItem1.AppearanceItem.Hovered.Options.UseBackColor = true;
-            this.tileItem1.AppearanceItem.Hovered.Options.UseBorderColor = true;
-            this.tileItem1.AppearanceItem.Hovered.Options.UseFont = true;
-            this.tileItem1.AppearanceItem.Hovered.Options.UseForeColor = true;
-            this.tileItem1.AppearanceItem.Normal.BackColor = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Gray;
-            this.tileItem1.AppearanceItem.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem1.AppearanceItem.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.tileItem1.AppearanceItem.Normal.Options.UseBackColor = true;
-            this.tileItem1.AppearanceItem.Normal.Options.UseBorderColor = true;
-            this.tileItem1.AppearanceItem.Normal.Options.UseFont = true;
-            this.tileItem1.AppearanceItem.Normal.Options.UseForeColor = true;
-            this.tileItem1.AppearanceItem.Pressed.BackColor = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Pressed.BackColor2 = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Pressed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.tileItem1.AppearanceItem.Pressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem1.AppearanceItem.Pressed.Options.UseBackColor = true;
-            this.tileItem1.AppearanceItem.Pressed.Options.UseBorderColor = true;
-            this.tileItem1.AppearanceItem.Pressed.Options.UseFont = true;
-            this.tileItem1.AppearanceItem.Selected.BackColor = System.Drawing.Color.Blue;
-            this.tileItem1.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Selected.BorderColor = System.Drawing.Color.Black;
-            this.tileItem1.AppearanceItem.Selected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tileItem1.AppearanceItem.Selected.ForeColor = System.Drawing.Color.White;
-            this.tileItem1.AppearanceItem.Selected.Options.UseBackColor = true;
-            this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
-            this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
-            this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement4.Text = "Master";
-            this.tileItem1.Elements.Add(tileItemElement4);
-            this.tileItem1.Id = 0;
-            this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
-            this.tileItem1.Name = "tileItem1";
-            // 
-            // tileGroup4
-            // 
-            this.tileGroup4.Name = "tileGroup4";
-            // 
-            // gridView1
-            // 
-            this.gridView1.Name = "gridView1";
             // 
             // gridColumn14
             // 
@@ -1106,8 +1241,6 @@
             this.grdColProdTypeAbbrQr.FieldName = "Order_Type_Abbreviation";
             this.grdColProdTypeAbbrQr.Name = "grdColProdTypeAbbrQr";
             this.grdColProdTypeAbbrQr.OptionsColumn.AllowEdit = false;
-            this.grdColProdTypeAbbrQr.Visible = true;
-            this.grdColProdTypeAbbrQr.VisibleIndex = 1;
             // 
             // gridColumn20
             // 
@@ -1126,7 +1259,7 @@
             this.grdColChkListTabQr.Name = "grdColChkListTabQr";
             this.grdColChkListTabQr.OptionsColumn.AllowEdit = false;
             this.grdColChkListTabQr.Visible = true;
-            this.grdColChkListTabQr.VisibleIndex = 2;
+            this.grdColChkListTabQr.VisibleIndex = 1;
             // 
             // grdColQuestinQr
             // 
@@ -1139,13 +1272,160 @@
             this.grdColQuestinQr.Name = "grdColQuestinQr";
             this.grdColQuestinQr.OptionsColumn.AllowEdit = false;
             this.grdColQuestinQr.Visible = true;
-            this.grdColQuestinQr.VisibleIndex = 3;
+            this.grdColQuestinQr.VisibleIndex = 2;
             // 
             // gridColumn17
             // 
             this.gridColumn17.Caption = "Question Sno";
             this.gridColumn17.FieldName = "QuestionSno";
             this.gridColumn17.Name = "gridColumn17";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.rb_QuessetForQuesSort);
+            this.panelControl1.Controls.Add(this.rd_TabSettingFor_QuesSetup);
+            this.panelControl1.Controls.Add(this.lookUpEditCheckListTab);
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Controls.Add(this.lookUpedit_ProjectType);
+            this.panelControl1.Controls.Add(this.labelControl5);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(3, 3);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1071, 65);
+            this.panelControl1.TabIndex = 1;
+            // 
+            // rb_QuessetForQuesSort
+            // 
+            this.rb_QuessetForQuesSort.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rb_QuessetForQuesSort.EditValue = "<Null>";
+            this.rb_QuessetForQuesSort.Location = new System.Drawing.Point(514, 4);
+            this.rb_QuessetForQuesSort.Name = "rb_QuessetForQuesSort";
+            this.rb_QuessetForQuesSort.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_QuessetForQuesSort.Properties.Appearance.Options.UseFont = true;
+            this.rb_QuessetForQuesSort.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rb_QuessetForQuesSort.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Question Settings")});
+            this.rb_QuessetForQuesSort.Size = new System.Drawing.Size(203, 24);
+            this.rb_QuessetForQuesSort.TabIndex = 17;
+            this.rb_QuessetForQuesSort.SelectedIndexChanged += new System.EventHandler(this.rb_QuessetForQuesSort_SelectedIndexChanged);
+            this.rb_QuessetForQuesSort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_QuessetForQuesSort_MouseClick);
+            // 
+            // rd_TabSettingFor_QuesSetup
+            // 
+            this.rd_TabSettingFor_QuesSetup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rd_TabSettingFor_QuesSetup.EditValue = "<Null>";
+            this.rd_TabSettingFor_QuesSetup.Location = new System.Drawing.Point(337, 2);
+            this.rd_TabSettingFor_QuesSetup.Name = "rd_TabSettingFor_QuesSetup";
+            this.rd_TabSettingFor_QuesSetup.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rd_TabSettingFor_QuesSetup.Properties.Appearance.Options.UseFont = true;
+            this.rd_TabSettingFor_QuesSetup.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.rd_TabSettingFor_QuesSetup.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "CheckList  Tab Settings")});
+            this.rd_TabSettingFor_QuesSetup.Size = new System.Drawing.Size(171, 24);
+            this.rd_TabSettingFor_QuesSetup.TabIndex = 16;
+            this.rd_TabSettingFor_QuesSetup.SelectedIndexChanged += new System.EventHandler(this.rd_TabSettingFor_QuesSetup_SelectedIndexChanged);
+            this.rd_TabSettingFor_QuesSetup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rd_TabSettingFor_QuesSetup_MouseClick);
+            // 
+            // lookUpEditCheckListTab
+            // 
+            this.lookUpEditCheckListTab.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lookUpEditCheckListTab.Location = new System.Drawing.Point(607, 33);
+            this.lookUpEditCheckListTab.Name = "lookUpEditCheckListTab";
+            this.lookUpEditCheckListTab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditCheckListTab.Properties.NullText = "Select";
+            this.lookUpEditCheckListTab.Size = new System.Drawing.Size(166, 20);
+            this.lookUpEditCheckListTab.TabIndex = 15;
+            this.lookUpEditCheckListTab.EditValueChanged += new System.EventHandler(this.lookUpEditCheckListTab_EditValueChanged);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(513, 36);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(83, 15);
+            this.labelControl3.TabIndex = 14;
+            this.labelControl3.Text = "CheckList Tab  :";
+            // 
+            // lookUpedit_ProjectType
+            // 
+            this.lookUpedit_ProjectType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lookUpedit_ProjectType.Location = new System.Drawing.Point(335, 33);
+            this.lookUpedit_ProjectType.Name = "lookUpedit_ProjectType";
+            this.lookUpedit_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpedit_ProjectType.Properties.NullText = "SELECT";
+            this.lookUpedit_ProjectType.Size = new System.Drawing.Size(166, 20);
+            this.lookUpedit_ProjectType.TabIndex = 12;
+            this.lookUpedit_ProjectType.EditValueChanged += new System.EventHandler(this.lookUpedit_ProjectType_EditValueChanged);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(245, 33);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(79, 17);
+            this.labelControl5.TabIndex = 10;
+            this.labelControl5.Text = "Project Type :";
+            // 
+            // tileItem1
+            // 
+            this.tileItem1.AppearanceItem.Hovered.BackColor = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Hovered.BorderColor = System.Drawing.Color.Black;
+            this.tileItem1.AppearanceItem.Hovered.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem1.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.tileItem1.AppearanceItem.Hovered.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Hovered.Options.UseBorderColor = true;
+            this.tileItem1.AppearanceItem.Hovered.Options.UseFont = true;
+            this.tileItem1.AppearanceItem.Hovered.Options.UseForeColor = true;
+            this.tileItem1.AppearanceItem.Normal.BackColor = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Gray;
+            this.tileItem1.AppearanceItem.Normal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem1.AppearanceItem.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.tileItem1.AppearanceItem.Normal.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Normal.Options.UseBorderColor = true;
+            this.tileItem1.AppearanceItem.Normal.Options.UseFont = true;
+            this.tileItem1.AppearanceItem.Normal.Options.UseForeColor = true;
+            this.tileItem1.AppearanceItem.Pressed.BackColor = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Pressed.BackColor2 = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Pressed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.tileItem1.AppearanceItem.Pressed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem1.AppearanceItem.Pressed.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Pressed.Options.UseBorderColor = true;
+            this.tileItem1.AppearanceItem.Pressed.Options.UseFont = true;
+            this.tileItem1.AppearanceItem.Selected.BackColor = System.Drawing.Color.Blue;
+            this.tileItem1.AppearanceItem.Selected.BackColor2 = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Selected.BorderColor = System.Drawing.Color.Black;
+            this.tileItem1.AppearanceItem.Selected.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tileItem1.AppearanceItem.Selected.ForeColor = System.Drawing.Color.White;
+            this.tileItem1.AppearanceItem.Selected.Options.UseBackColor = true;
+            this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
+            this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
+            this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
+            tileItemElement24.Text = "Master";
+            this.tileItem1.Elements.Add(tileItemElement24);
+            this.tileItem1.Id = 0;
+            this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
+            this.tileItem1.Name = "tileItem1";
+            // 
+            // tileGroup4
+            // 
+            this.tileGroup4.Name = "tileGroup4";
+            // 
+            // gridView1
+            // 
+            this.gridView1.Name = "gridView1";
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "MasterTableProdId";
+            this.gridColumn21.FieldName = "ProductWise_Id";
+            this.gridColumn21.Name = "gridColumn21";
             // 
             // CheckList_Master_View
             // 
@@ -1164,32 +1444,47 @@
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame1)).EndInit();
             this.navigationFrame1.ResumeLayout(false);
             this.navigationPage1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridCheckListMasterDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCheckListMaster)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChkListMasterHyperLinkEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chklistmasterHyperLinkDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
             this.navigationPage2.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridChkQuestionSetup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewChkQuestionSetup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuesSetUpHyperLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             this.navigationPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).EndInit();
-            this.navigationPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridQuestionRowSetUp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridviewQuestionRowSetUp)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rb_CheckListQuesSetting.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rb_CheckListTabSetting.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_CheckListTab.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_TabSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_TabSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkForDelete)).EndInit();
+            this.navigationPage4.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridQuestionRowSetUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewQuestionRowSetUp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rb_QuessetForQuesSort.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rd_TabSettingFor_QuesSetup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCheckListTab.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpedit_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -1204,15 +1499,15 @@
         private DevExpress.XtraEditors.TileGroup tileGroup4;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraEditors.TileControl tileCheckList;
-        private DevExpress.XtraEditors.TileGroup tileGroup1;
-        private DevExpress.XtraEditors.TileItem tile_CheckList_Master;
-        private DevExpress.XtraEditors.TileGroup tileGroup2;
-        private DevExpress.XtraEditors.TileItem tile_TabSettings;
-        private DevExpress.XtraEditors.TileGroup tileGroup3;
-        private DevExpress.XtraEditors.TileItem tile_Question_SetUp;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btn_Update;
         private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame1;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private DevExpress.XtraEditors.SimpleButton btn_DeleteForQuesTab;
+        private DevExpress.XtraEditors.SimpleButton btn_AddForQesTab;
+        private DevExpress.XtraEditors.SimpleButton btn_ExportForQuesTab;
         private DevExpress.XtraGrid.GridControl gridCheckListMasterDetails;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCheckListMaster;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -1224,6 +1519,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit chklistmasterHyperLinkDelete;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage2;
         private DevExpress.XtraGrid.GridControl gridChkQuestionSetup;
         private DevExpress.XtraGrid.Views.Grid.GridView gridviewChkQuestionSetup;
@@ -1238,6 +1534,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColDeleteQs;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage3;
         private DevExpress.XtraGrid.GridControl grd_TabSetting;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_TabSetting;
@@ -1247,24 +1544,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private DevExpress.XtraEditors.SimpleButton btn_Export;
-        private DevExpress.XtraEditors.SimpleButton btn_Add;
-        private DevExpress.XtraEditors.SimpleButton btn_multiselect;
-        private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProductType;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraEditors.SimpleButton btn_Update;
-        private DevExpress.XtraEditors.RadioGroup rb_CheckListTabSetting;
-        private DevExpress.XtraEditors.LookUpEdit ddl_CheckListTab;
-        private DevExpress.XtraEditors.LabelControl lbl_CheckListTab;
-        private DevExpress.XtraEditors.RadioGroup rb_CheckListQuesSetting;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage4;
         private DevExpress.XtraGrid.GridControl gridQuestionRowSetUp;
         private DevExpress.XtraGrid.Views.Grid.GridView gridviewQuestionRowSetUp;
@@ -1276,5 +1555,42 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdColChkListTabQr;
         private DevExpress.XtraGrid.Columns.GridColumn grdColQuestinQr;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private DevExpress.XtraEditors.SimpleButton btn_Export;
+        private DevExpress.XtraEditors.SimpleButton btn_Add;
+        private DevExpress.XtraEditors.SimpleButton btn_multiselect;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.RadioGroup rb_CheckListQuesSetting;
+        private DevExpress.XtraEditors.RadioGroup rb_CheckListTabSetting;
+        private DevExpress.XtraEditors.LookUpEdit ddl_ProductType;
+        private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
+        private DevExpress.XtraEditors.TileControl tileCheckList;
+        private DevExpress.XtraEditors.TileGroup tileGroup1;
+        private DevExpress.XtraEditors.TileItem tile_CheckList_Master;
+        private DevExpress.XtraEditors.TileGroup tileGroup3;
+        private DevExpress.XtraEditors.TileItem tile_Question_SetUp;
+        private DevExpress.XtraEditors.TileGroup tileGroup2;
+        private DevExpress.XtraEditors.TileItem tile_TabSettings;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private DevExpress.XtraEditors.SimpleButton btn_multiSelec_Delete;
+        private DevExpress.XtraEditors.SimpleButton btn_Add_FortabRowSort;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.RadioGroup rb_QuessetForQuesSort;
+        private DevExpress.XtraEditors.RadioGroup rd_TabSettingFor_QuesSetup;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditCheckListTab;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LookUpEdit lookUpedit_ProjectType;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkForDelete;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
     }
 }
