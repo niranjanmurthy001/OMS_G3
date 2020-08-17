@@ -55,9 +55,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             navigationFrame1.SelectedPage = navigationPage1;
             BindCheckListTypeMaster();
             btn_multiselect.Visible = false;
-            panel1.Visible = false;
-            lbl_CheckListTab.Visible = false;
-            ddl_CheckListTab.Visible = false;
+           
+            
             rb_CheckListQuesSetting.SelectedIndex = -1;
 
         }
@@ -111,8 +110,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             navigationFrame1.SelectedPage = navigationPage1;
 
             BindCheckListTypeMaster();
-            flowLayoutPanel1.Visible = true;
-            panel1.Visible = false;
+            
+           
             btn_multiselect.Visible = false;
             Clear();
         }
@@ -123,10 +122,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             tile_TabSettings.Checked = false;
             BindCheckListQuesSetUpTab();
             navigationFrame1.SelectedPage = navigationPage2;
-            flowLayoutPanel1.Visible = true;
-            panel1.Visible = false;
+          
             Clear();
-            btn_multiselect.Visible = false;
+            
+            btn_DeleteForQuesTab.Visible = false;
         }
         public async void BindCheckListQuesSetUpTab()
         {
@@ -201,13 +200,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     System.Data.DataRow row = gridViewCheckListMaster.GetDataRow(gridViewCheckListMaster.FocusedRowHandle);
                     ProjectIdValue = int.Parse(row["Project_Type_Id"].ToString());
                     chklIstMasterTypeIdValue = int.Parse(row["ChecklistType_Id"].ToString());
-                    ProductTypeAbbrValue = int.Parse(row["Product_Type_Abbr_Id"].ToString());
+                    //ProductTypeAbbrValue = int.Parse(row["Product_Type_Abbr_Id"].ToString());
                     chkListTypeValue = row["Checklist_Master_Type"].ToString();
 
                     Btn_Name = "Edit";
                     OperType = "Update";
                     this.Enabled = false;
-                    Ordermanagement_01.Opp.Opp_CheckList.ChekList_Master_Entry cm = new ChekList_Master_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, ProductTypeAbbrValue, chkListTypeValue, this);
+                    Ordermanagement_01.Opp.Opp_CheckList.ChekList_Master_Entry cm = new ChekList_Master_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, chkListTypeValue, this);
                     cm.Show();
 
 
@@ -308,15 +307,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     System.Data.DataRow row = gridviewChkQuestionSetup.GetDataRow(gridviewChkQuestionSetup.FocusedRowHandle);
                     ProjectIdValue = int.Parse(row["Project_Type_Id"].ToString());
                     chklIstMasterTypeIdValue = int.Parse(row["Checklist_Id"].ToString());
-                    ProductTypeAbbrValue = int.Parse(row["Product_Type_Abbr_Id"].ToString());
-                    ProductTypeValueForQs = int.Parse(row["Product_Type_Abbr_Id"].ToString());
+                    //ProductTypeAbbrValue = int.Parse(row["Product_Type_Abbr_Id"].ToString());
+                    //ProductTypeValueForQs = int.Parse(row["Product_Type_Abbr_Id"].ToString());
                     CheckListValueForQs = int.Parse(row["ChecklistType_Id"].ToString());
                     QuestionValue = row["Question"].ToString();
 
                     Btn_Name = "Edit";
                     OperType = "Update";
                     this.Enabled = false;
-                    Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry qse = new CheckList_Question_Setup_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, ProductTypeAbbrValue, ProductTypeValueForQs, CheckListValueForQs, QuestionValue, this);
+                    Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry qse = new CheckList_Question_Setup_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue,/* ProductTypeAbbrValue, ProductTypeValueForQs, */CheckListValueForQs, QuestionValue, this);
                     qse.Show();
 
 
@@ -395,12 +394,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             if (gridviewChkQuestionSetup.SelectedRowsCount != 0)
             {
-                btn_multiselect.Visible = true;
+                btn_DeleteForQuesTab.Visible = true;
 
             }
             else
             {
-                btn_multiselect.Visible = false;
+                btn_DeleteForQuesTab.Visible = false;
             }
         }
 
@@ -539,7 +538,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 OperType = "CheckListMaster";
                 Btn_Name = "Save";
                 this.Enabled = false;
-                Ordermanagement_01.Opp.Opp_CheckList.ChekList_Master_Entry me = new ChekList_Master_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, ProductTypeAbbrValue, chkListTypeValue, this);
+                Ordermanagement_01.Opp.Opp_CheckList.ChekList_Master_Entry me = new ChekList_Master_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, /*ProductTypeAbbrValue,*/ chkListTypeValue, this);
                 me.Show();
             }
             else if (tile_Question_SetUp.Checked == true)
@@ -547,7 +546,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 OperType = "QuestionSetUp";
                 Btn_Name = "Save";
                 this.Enabled = false;
-                Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry Qs = new CheckList_Question_Setup_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, ProductTypeAbbrValue, ProductTypeValueForQs, CheckListValueForQs, QuestionValue, this);
+                Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry Qs = new CheckList_Question_Setup_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, /*ProductTypeAbbrValue, ProductTypeValueForQs,*/ CheckListValueForQs, QuestionValue, this);
                 Qs.Show();
             }
         }
@@ -587,9 +586,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             navigationFrame1.SelectedPage = navigationPage3;
 
             ddl_ProductType.Enabled = false;
-            flowLayoutPanel1.Visible = false;
+            btn_multiSelec_Delete.Visible = false;
+            
             BindProjectType();
-            panel1.Visible = true;
+            lookUpedit_ProjectType.Properties.Columns.Clear();
+            BindProjectTypeForQuessorting();
+            
         }
         public async void BindProjectType()
         {
@@ -738,9 +740,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     ddl_ProductType.EditValue = 0;
                     int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
                     // int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
-                    ddl_CheckListTab.Enabled = true;
-                    ddl_CheckListTab.Properties.Columns.Clear();
-                    BindCheckListTabName(ProducttID);
+                    //ddl_CheckListTab.Enabled = true;
+                    //ddl_CheckListTab.Properties.Columns.Clear();
+                    //BindCheckListTabName(ProducttID);
 
 
                 }
@@ -937,7 +939,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void Update()
         {
-            DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ChecklistType_Id");
+            DevExpress.XtraGrid.Columns.GridColumn col = gridView_TabSetting.Columns.ColumnByFieldName("ProductWise_Id");
             ArrayList aL = new ArrayList();
             for (int i = 0; i < gridView_TabSetting.DataRowCount; i++)
             {
@@ -996,16 +998,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void rb_CheckListQuesSetting_SelectedIndexChanged(object sender, EventArgs e)
         {
             navigationFrame1.SelectedPage = navigationPage4;
-            lbl_CheckListTab.Visible = true;
-            ddl_CheckListTab.Visible = true;
+            //lbl_CheckListTab.Visible = true;
+            //ddl_CheckListTab.Visible = true;
 
-            ddl_CheckListTab.Enabled = false;
-            ddl_ProductType.EditValue = null;
-            ddl_ProductType.Enabled = false;
-            ddl_ProjectType.EditValue = null;
+            ////ddl_CheckListTab.Enabled = false;
+            //ddl_ProductType.EditValue = null;
+            //ddl_ProductType.Enabled = false;
+            //ddl_ProjectType.EditValue = null;
             rb_CheckListTabSetting.SelectedIndex = -1;
+            rb_QuessetForQuesSort.SelectedIndex = 0;
+            rd_TabSettingFor_QuesSetup.SelectedIndex = -1;
             gridQuestionRowSetUp.DataSource = null;
-            //BindGridChecklistTabSettingForQues( Project_ID,  Product_ID,  Ref_CheckList_Id);
+            BindGridChecklistTabSettingForQues( Project_ID,Ref_CheckList_Id);
 
 
 
@@ -1013,13 +1017,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void rb_CheckListTabSetting_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbl_CheckListTab.Visible = false;
-            ddl_CheckListTab.Visible = false;
+          
             ddl_ProductType.Enabled = false;
             rb_CheckListQuesSetting.SelectedIndex = -1;
             navigationFrame1.SelectedPage = navigationPage3;
+            ddl_ProjectType.ItemIndex = 0;
+            ddl_ProductType.ItemIndex = 0;
 
-            ddl_CheckListTab.Properties.Columns.Clear();
+
         }
 
         private void rb_CheckListTabSetting_MouseClick(object sender, MouseEventArgs e)
@@ -1031,9 +1036,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void rb_CheckListQuesSetting_MouseClick(object sender, MouseEventArgs e)
         {
             rb_CheckListQuesSetting.SelectedIndex = 0;
+            navigationFrame1.SelectedPage = navigationPage4;
+            rb_QuessetForQuesSort.SelectedIndex = 0;
+            ddl_ProjectType.ItemIndex = 0;
+            ddl_ProductType.ItemIndex = 0;
         }
 
-        private async void BindCheckListTabName(int ProductTypeAbbrId)
+        private async void BindCheckListTabName(int ProjectType_Id)
         {
             try
             {
@@ -1042,10 +1051,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SelectCheckListTabName"},
-                    {"@Product_Type_Abbr_Id" , ProductTypeAbbrId}
+                    {"@Project_Type_Id" , ProjectType_Id}
 
                 };
-                ddl_CheckListTab.Properties.Columns.Clear();
+                lookUpEditCheckListTab.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -1063,12 +1072,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 dr[0] = "SELECT";
                                 dr[1] = 0;
                                 dt.Rows.InsertAt(dr, 0);
-                                ddl_CheckListTab.Properties.DataSource = dt;
-                                ddl_CheckListTab.Properties.DisplayMember = "Checklist_Master_Type";
-                                ddl_CheckListTab.Properties.ValueMember = "ChecklistType_Id";
+                                lookUpEditCheckListTab.Properties.DataSource = dt;
+                                lookUpEditCheckListTab.Properties.DisplayMember = "Checklist_Master_Type";
+                                lookUpEditCheckListTab.Properties.ValueMember = "ChecklistType_Id";
                                 DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
                                 col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Checklist_Master_Type");
-                                ddl_CheckListTab.Properties.Columns.Add(col);
+                                lookUpEditCheckListTab.Properties.Columns.Add(col);
                             }
                             else
                             {
@@ -1093,7 +1102,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        public async void BindGridChecklistTabSettingForQues(int Proj_ID, int Prod_ID, int Ref_CheckList_Id)
+        public async void BindGridChecklistTabSettingForQues(int Proj_ID,  int Ref_CheckList_Id)
         {
             try
             {
@@ -1102,7 +1111,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 {
                     {"@Trans","BindCheckListSettingQuestions" },
                     {"@Project_Type_Id ",Proj_ID  },
-                    {"@Product_Type_Abbr_Id",Prod_ID },
+                  
                     {"@Ref_Checklist_Master_Type_Id",Ref_CheckList_Id }
 
 
@@ -1151,20 +1160,20 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ddl_CheckListTab_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddl_CheckListTab.EditValue) != 0)
+            if (Convert.ToInt32(lookUpEditCheckListTab.EditValue) != 0)
             {
 
-                int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
-                int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
-                int TabValue = Convert.ToInt32(ddl_CheckListTab.EditValue);
+                //int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
+                int ProjectID = Convert.ToInt32(lookUpedit_ProjectType.EditValue);
+                int TabValue = Convert.ToInt32(lookUpEditCheckListTab.EditValue);
 
-                BindGridChecklistTabSettingForQues(ProjectID, ProducttID, TabValue);
+                BindGridChecklistTabSettingForQues(ProjectID, TabValue);
 
             }
             else
             {
                 gridQuestionRowSetUp.DataSource = null;
-                ddl_CheckListTab.EditValue = 0;
+                lookUpEditCheckListTab.EditValue = 0;
             }
 
         }
@@ -1184,10 +1193,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                 questionno += 1;
             }
-            int _ProjID = Convert.ToInt32(ddl_ProjectType.EditValue);
-            int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
-            int _TabVal = Convert.ToInt32(ddl_CheckListTab.EditValue);
-            this.BindGridChecklistTabSettingForQues(_ProjID, _ProdID, _TabVal);
+            int _ProjID = Convert.ToInt32(lookUpedit_ProjectType.EditValue);
+           // int _ProdID = Convert.ToInt32(ddl_ProductType.EditValue);
+            int _TabVal = Convert.ToInt32(lookUpEditCheckListTab.EditValue);
+            this.BindGridChecklistTabSettingForQues(_ProjID, _TabVal );
         }
         private async void UpdateQuestionSno(int ChkListId, int QuestionsNo)
         {
@@ -1247,7 +1256,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Gridbehaviour_DragDrop(object sender, DragDropEventArgs e)
         {
-            if (rb_CheckListQuesSetting.SelectedIndex != -1)
+            if (rb_QuessetForQuesSort.SelectedIndex != -1)
             {
                 try
                 {
@@ -1328,8 +1337,318 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
+
+        private void lookUpEditCheckListTab_EditValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lookUpEditCheckListTab.EditValue) != 0)
+            {
+
+                //int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
+                int ProjectID = Convert.ToInt32(lookUpedit_ProjectType.EditValue);
+                int TabValue = Convert.ToInt32(lookUpEditCheckListTab.EditValue);
+
+                BindGridChecklistTabSettingForQues(ProjectID, TabValue);
+
+            }
+            else
+            {
+                gridQuestionRowSetUp.DataSource = null;
+                lookUpEditCheckListTab.EditValue = 0;
+            }
+        }
+
+        private void rd_TabSettingFor_QuesSetup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            navigationFrame1.SelectedPage = navigationPage3;
+            ddl_ProductType.Enabled = false;
+            rb_QuessetForQuesSort.SelectedIndex = -1;
+            rb_CheckListTabSetting.SelectedIndex = 0;
+            ddl_ProjectType.ItemIndex = 0;
+            ddl_ProductType.ItemIndex = 0;
+          
+        }
+
+        private void rb_QuessetForQuesSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            navigationFrame1.SelectedPage = navigationPage4;
+            lookUpEditCheckListTab.Enabled = false;
+            rd_TabSettingFor_QuesSetup.SelectedIndex = -1;
+            ddl_ProjectType.ItemIndex = 0;
+            ddl_ProductType.ItemIndex = 0;
+            lookUpedit_ProjectType.ItemIndex = 0;
+            lookUpEditCheckListTab.ItemIndex = 0;
+            
+        }
+
+        private void rd_TabSettingFor_QuesSetup_MouseClick(object sender, MouseEventArgs e)
+        {
+            rd_TabSettingFor_QuesSetup.SelectedIndex = 0;
+        }
+
+        private void rb_QuessetForQuesSort_MouseClick(object sender, MouseEventArgs e)
+        {
+            rb_QuessetForQuesSort.SelectedIndex = 0;
+        }
+
+        private async void btn_DeleteForQuesTab_Click(object sender, EventArgs e)
+        {
+
+
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (show == DialogResult.Yes)
+            {
+                if (tile_Question_SetUp.Checked == true)
+                {
+
+                    if (gridviewChkQuestionSetup.SelectedRowsCount != 0)
+                    {
+                        try
+                        {
+
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                            List<int> gridViewSelectedRows = gridviewChkQuestionSetup.GetSelectedRows().ToList();
+                            for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                            {
+                                DataRow row = gridviewChkQuestionSetup.GetDataRow(gridViewSelectedRows[i]);
+                                int chklistvalue = int.Parse(row["Checklist_Id"].ToString());
+                                var dictionary = new Dictionary<string, object>()
+                               {
+                                 { "@Trans", "DELETE_CHECKLIST"},
+                                 { "@Checklist_Id", chklistvalue },
+
+                               };
+                                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                                using (var httpClient = new HttpClient())
+                                {
+                                    var response = await httpClient.PostAsync(Base_Url.Url + "/CheckListMaster/DeleteChklist", data);
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        if (response.StatusCode == HttpStatusCode.OK)
+                                        {
+                                            var result = await response.Content.ReadAsStringAsync();
+                                        }
+
+
+                                    }
+                                }
+                            }
+
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Record Deleted Successfully");
+                            btn_multiselect.Visible = false;
+                            BindCheckListQuesSetUpTab();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Something Went Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //throw ex;
+                        }
+                        finally
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+                    }
+                    else
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Please Select Any Record To Delete");
+                    }
+
+
+                }
+            }
+            else if (show == DialogResult.No)
+            {
+
+            }
+        }
+
+        private void btn_AddForQesTab_Click(object sender, EventArgs e)
+        {
+            if (tile_Question_SetUp.Checked == true)
+            {
+                OperType = "QuestionSetUp";
+                Btn_Name = "Save";
+                this.Enabled = false;
+                Ordermanagement_01.Opp.Opp_CheckList.CheckList_Question_Setup_Entry Qs = new CheckList_Question_Setup_Entry(OperType, Btn_Name, ProjectIdValue, chklIstMasterTypeIdValue, /*ProductTypeAbbrValue, ProductTypeValueForQs,*/ CheckListValueForQs, QuestionValue, this);
+                Qs.Show();
+            }
+        }
+
+        private void btn_ExportForQuesTab_Click(object sender, EventArgs e)
+        {
+             if (tile_Question_SetUp.Checked == true)
+            {
+                string filePath = @"C:\Temp\";
+                string fileName = filePath + "ChecKList Master Question SetUp Details-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                gridviewChkQuestionSetup.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+        }
+
+        public async void BindProjectTypeForQuessorting()
+        {
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                lookUpedit_ProjectType.Properties.Columns.Clear();
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","Get_Project_Type" }
+                };
+                
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckListMaster/BindProject", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                DataRow dr = dt.NewRow();
+                                dr[0] = 0;
+                                dr[1] = "SELECT";
+                                dt.Rows.InsertAt(dr, 0);
+                                
+                                lookUpedit_ProjectType.Properties.DataSource = dt;
+                                lookUpedit_ProjectType.Properties.DisplayMember = "Project_Type";
+                                lookUpedit_ProjectType.Properties.ValueMember = "Project_Type_Id";
+                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
+                                lookUpedit_ProjectType.Properties.Columns.Add(col);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        private void lookUpedit_ProjectType_EditValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(lookUpedit_ProjectType.EditValue) != 0)
+            {
+                int projectId = Convert.ToInt32(lookUpedit_ProjectType.EditValue);
+                lookUpEditCheckListTab.Enabled = true;
+
+                lookUpEditCheckListTab.Properties.Columns.Clear();
+                 
+                BindCheckListTabName(projectId);
+            }
+    }
+
+        private void btn_Add_FortabRowSort_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Ordermanagement_01.Opp.Opp_CheckList.CheckList_ProductWise_Tab_Settings_Entry cpts = new CheckList_ProductWise_Tab_Settings_Entry(this);
+
+            cpts.Show();
+        }
+
+        private void gridView_TabSetting_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            //if (gridView_TabSetting.SelectedRowsCount != 0)
+            //{
+            //    btn_multiSelec_Delete.Visible = true;
+            //}
+            //else
+            //{
+
+            //    btn_multiSelec_Delete.Visible = false;
+            //}
+        }
+
+
+
+        private async void gridView_TabSetting_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            int projid = Convert.ToInt32(ddl_ProjectType.EditValue);
+            int prodId = Convert.ToInt32(ddl_ProductType.EditValue);
+             if (e.Column.Caption == "Delete")
+            {
+                
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        System.Data.DataRow row = gridView_TabSetting.GetDataRow(gridView_TabSetting.FocusedRowHandle);
+                        int ProdWiseId = int.Parse(row["ProductWise_Id"].ToString());
+                        var dictionary = new Dictionary<string, object>()
+                  {
+                        { "@Trans", "DELETECheckListProdId"},
+                       { "@ProductWise_Id", ProdWiseId },
+
+                  };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/CheckListMaster/DeleteChkListProdId", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                    BindGridTabSetting(projid, prodId);
+
+
+
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Please Select Record To Delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Something Went Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //throw ex;
+                    }
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
+                }
+                else if (show == DialogResult.No)
+                {
+
+                }
+
+            }
+        }
     }
 }
+
+
 
 
 

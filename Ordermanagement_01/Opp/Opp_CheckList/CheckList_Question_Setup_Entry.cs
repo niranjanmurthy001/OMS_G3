@@ -26,16 +26,16 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int PrdTypeAbbrValue;
         public CheckList_Master_View mainForm = null;
 
-        public CheckList_Question_Setup_Entry(string OperType, string BtnName, int ProjectId, int ChkListMasterId, int ProductTyeAbbrId, int ProductAbbr, int chkListType, string Question, Form CallingFrom)
+        public CheckList_Question_Setup_Entry(string OperType, string BtnName, int ProjectId, int ChkListMasterId, /*int ProductTyeAbbrId, int ProductAbbr,*/ int chkListType, string Question, Form CallingFrom)
         {
             InitializeComponent();
             this.Oper_Type = OperType;
             this.BtnNameValue = BtnName;
             this.ProjectIdValue = ProjectId;
             this.MasterChklistIdValue = ChkListMasterId;
-            this.ProductTypeAbbrIdValue = ProductTyeAbbrId;
+           // this.ProductTypeAbbrIdValue = ProductTyeAbbrId;
             this.checklistValue = chkListType;
-            this.PrdTypeAbbrValue = ProductAbbr;
+           // this.PrdTypeAbbrValue = ProductAbbr;
 
             this.QuestionValue = Question;
             mainForm = CallingFrom as CheckList_Master_View;
@@ -45,17 +45,17 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void CheckList_Question_Setup_Entry_Load(object sender, EventArgs e)
         {
             ddl_projectTypeQuesSetup.Enabled = true;
-            ddl_ProdductTypeAbbrQs.Enabled = true;
+            //ddl_ProdductTypeAbbrQs.Enabled = true;
             BindProjectTypeForSetUp();
             if (Oper_Type == "Update")
             {
                 ddl_projectTypeQuesSetup.EditValue = ProjectIdValue;               
-                BindOrderTypeAbbrForQuesSetUp(ProjectIdValue);
+               // BindOrderTypeAbbrForQuesSetUp(ProjectIdValue);
                 BindCheckListTabName(PrdTypeAbbrValue);
                 txtQuestionQs.Text = QuestionValue;
                 btn_SaveQs.Text = BtnNameValue;
                 ddl_projectTypeQuesSetup.Enabled = false;
-                ddl_ProdductTypeAbbrQs.Enabled = false;
+               // ddl_ProdductTypeAbbrQs.Enabled = false;
             }
         }
         public async void BindProjectTypeForSetUp()
@@ -67,7 +67,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 {
                     {"@Trans","Get_Project_Type" }
                 };
-
+                
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -106,7 +106,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void BindOrderTypeAbbrForQuesSetUp(int ProjectId_)
+      /*  private async void BindOrderTypeAbbrForQuesSetUp(int ProjectId_)
         {
             try
             {
@@ -178,8 +178,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.CloseForm(false);
             }
-        }
-        private async void BindCheckListTabName(int ProductTypeAbbrId)
+        }*/
+        private async void BindCheckListTabName(int projectType_id)
         {
             try
             {
@@ -188,7 +188,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dict = new Dictionary<string, object>()
                 {
                     {"@Trans" ,"SelectCheckListTabName"},
-                    {"@Product_Type_Abbr_Id" , ProductTypeAbbrId}
+                    {"@Project_Type_Id" , projectType_id}
 
                 };
 
@@ -243,7 +243,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             string QuestionEnterValue = txtQuestionQs.Text;
             int ProjectValue = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
-            int btnProductTypeAbbrValue = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
+            //int btnProductTypeAbbrValue = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
 
             if (btn_SaveQs.Text == "Save" && validate() != false && (await CheckCheckListQuestion() != false))
             {
@@ -259,7 +259,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Question",typeof(string)) ,
                         new DataColumn("Project_Type_Id",typeof(int)),
-                        new DataColumn("Product_Type_Abbr_Id",typeof(int)) ,
+                        //new DataColumn("Product_Type_Abbr_Id",typeof(int)) ,
 
                         new DataColumn("Is_Active",typeof(bool))
 
@@ -269,7 +269,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         DataRowView castedItem = itemChecked as DataRowView;
                         string TabName = castedItem["Checklist_Master_Type"].ToString();
                         int CheckListId = Convert.ToInt32(castedItem["ChecklistType_Id"]);
-                        dtInsert.Rows.Add(CheckListId, QuestionEnterValue, ProjectValue, btnProductTypeAbbrValue, true);
+                        dtInsert.Rows.Add(CheckListId, QuestionEnterValue, ProjectValue,  true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtInsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
@@ -313,7 +313,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Ref_Checklist_Master_Type_Id", typeof(int)),
                         new DataColumn("Question", typeof(string)) ,
                         new DataColumn("Project_Type_Id", typeof(int)),
-                        new DataColumn("Product_Type_Abbr_Id",typeof(int)),
+                       // new DataColumn("Product_Type_Abbr_Id",typeof(int)),
                         new DataColumn("Is_Active",typeof(bool))
 
                     });
@@ -321,7 +321,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
                         int ChecklistType_IdValue = Convert.ToInt32(castedItem["ChecklistType_Id"].ToString());
-                        dtupdate.Rows.Add( MasterChklistIdValue,ChecklistType_IdValue, QuestionEnterValue, ProjectValue, btnProductTypeAbbrValue, true);
+                        dtupdate.Rows.Add( MasterChklistIdValue,ChecklistType_IdValue, QuestionEnterValue, ProjectValue,  true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())
@@ -380,7 +380,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                      {
                         { "@Trans", "CheckQuestion" },
                         { "@Project_Type_Id",ddl_projectTypeQuesSetup.EditValue },
-                         { "@Product_Type_Abbr_Id",ddl_ProdductTypeAbbrQs.EditValue},
+                        // { "@Product_Type_Abbr_Id",ddl_ProdductTypeAbbrQs.EditValue},
                         { "@Ref_Checklist_Master_Type_Id ",ChecklistType_Id} ,
                             {"@Question",txtQuestionQs.Text }
 
@@ -424,10 +424,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             ddl_projectTypeQuesSetup.EditValue = null;
             txtQuestionQs.Text ="Enter Question...";
-            ddl_ProdductTypeAbbrQs.EditValue = null;
+            //ddl_ProdductTypeAbbrQs.EditValue = null;
             chk_TabNamesQs.DataSource = null;
             Oper_Type = "QuestionSetUp";
             btn_SaveQs.Text = "Save";
+            ddl_projectTypeQuesSetup.Enabled = true;
+            BindProjectTypeForSetUp();
             
         }
 
@@ -436,33 +438,37 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue) != 0)
             {
                 chk_TabNamesQs.DataSource = null;            
-                int ProjectId = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);              
-                BindOrderTypeAbbrForQuesSetUp(ProjectId);
+                int ProjectId = Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue);
+                //BindOrderTypeAbbrForQuesSetUp(ProjectId);
+                BindCheckListTabName(ProjectId);
             }
             else
             {
-                ddl_ProdductTypeAbbrQs.EditValue = null;
-                ddl_ProdductTypeAbbrQs.Properties.DataSource = null;
-                ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+                //ddl_ProdductTypeAbbrQs.EditValue = null;
+                //ddl_ProdductTypeAbbrQs.Properties.DataSource = null;
+                //ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
                 chk_TabNamesQs.DataSource = null;
+                ddl_projectTypeQuesSetup.EditValue = null;
+                ddl_projectTypeQuesSetup.Properties.DataSource = null;
+                ddl_projectTypeQuesSetup.Properties.Columns.Clear();
             }
         }
 
-        private void ddl_ProdductTypeAbbrQs_EditValueChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) != 0)
-            {
-                int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
-               // ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
-                chk_TabNamesQs.DataSource = null;
-                chk_TabNamesQs.UnCheckAll();
-                BindCheckListTabName(ProductAbbr_id);
-            }
-            else
-            {
-                chk_TabNamesQs.DataSource = null;
-            }
-        }
+        //private void ddl_ProdductTypeAbbrQs_EditValueChanged(object sender, EventArgs e)
+        //{
+        //    if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) != 0)
+        //    {
+        //        int ProductAbbr_id = Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue);
+        //       // ddl_ProdductTypeAbbrQs.Properties.Columns.Clear();
+        //        chk_TabNamesQs.DataSource = null;
+        //        chk_TabNamesQs.UnCheckAll();
+        //        BindCheckListTabName(ProductAbbr_id);
+        //    }
+        //    else
+        //    {
+        //        chk_TabNamesQs.DataSource = null;
+        //    }
+        //}
         public bool validate()
         {
             if (Convert.ToInt32(ddl_projectTypeQuesSetup.EditValue) == 0)
@@ -483,12 +489,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 XtraMessageBox.Show("Please Enter Question", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) == 0)
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            //if (Convert.ToInt32(ddl_ProdductTypeAbbrQs.EditValue) == 0)
+            //{
+            //    SplashScreenManager.CloseForm(false);
+            //    XtraMessageBox.Show("Please Select ProductType Abbr", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
             return true;
         }
 

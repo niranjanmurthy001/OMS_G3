@@ -751,25 +751,25 @@
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Public_Variable.cs" />
-    <Compile Include="Classes\RTF\IRTFCell.cs" />
-    <Compile Include="Classes\RTF\IRtfProcessor.cs" />
-    <Compile Include="Classes\RTF\IRTFRow.cs" />
-    <Compile Include="Classes\RTF\RTFAlignment.cs" />
-    <Compile Include="Classes\RTF\RTFBorderSide.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFFonts.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFFormatWrap.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFParaWrap.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.UnWrapped.cs" />
-    <Compile Include="Classes\RTF\RTFBuilderbase.cs" />
-    <Compile Include="Classes\RTF\RTFCell.cs" />
-    <Compile Include="Classes\RTF\RTFCellDefinition.cs" />
-    <Compile Include="Classes\RTF\RTFCellDefinitionBuilder.cs" />
-    <Compile Include="Classes\RTF\RTFFont.cs" />
-    <Compile Include="Classes\RTF\RTFImage.cs" />
-    <Compile Include="Classes\RTF\RTFRow.cs" />
-    <Compile Include="Classes\RTF\RTFRowDefinition.cs" />
-    <Compile Include="Classes\RTF\RTFUtil.cs" />
+    <Compile Include="bin\RTF\IRTFCell.cs" />
+    <Compile Include="bin\RTF\IRtfProcessor.cs" />
+    <Compile Include="bin\RTF\IRTFRow.cs" />
+    <Compile Include="bin\RTF\RTFAlignment.cs" />
+    <Compile Include="bin\RTF\RTFBorderSide.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFFonts.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFFormatWrap.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFParaWrap.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.UnWrapped.cs" />
+    <Compile Include="bin\RTF\RTFBuilderbase.cs" />
+    <Compile Include="bin\RTF\RTFCell.cs" />
+    <Compile Include="bin\RTF\RTFCellDefinition.cs" />
+    <Compile Include="bin\RTF\RTFCellDefinitionBuilder.cs" />
+    <Compile Include="bin\RTF\RTFFont.cs" />
+    <Compile Include="bin\RTF\RTFImage.cs" />
+    <Compile Include="bin\RTF\RTFRow.cs" />
+    <Compile Include="bin\RTF\RTFRowDefinition.cs" />
+    <Compile Include="bin\RTF\RTFUtil.cs" />
     <Compile Include="Classes\TaxClass.cs" />
     <Compile Include="Classes\TransDialog.cs">
       <SubType>Form</SubType>
@@ -1948,12 +1948,6 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_CheckList\CheckList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Opp_CheckList\CheckList.Designer.cs">
-      <DependentUpon>CheckList.cs</DependentUpon>
-    </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckLists.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1965,6 +1959,12 @@
     </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.Designer.cs">
       <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.Designer.cs">
+      <DependentUpon>CheckList_ProductWise_Tab_Settings_Entry.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.cs">
       <SubType>Form</SubType>
@@ -2033,7 +2033,6 @@
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Copy.Designer.cs">
       <DependentUpon>Efficiency_Copy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.Designer.cs" />
     <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4009,14 +4008,14 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList.resx">
-      <DependentUpon>CheckList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckLists.resx">
       <DependentUpon>CheckLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master_View.resx">
       <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.resx">
+      <DependentUpon>CheckList_ProductWise_Tab_Settings_Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.resx">
       <DependentUpon>CheckList_Question_Setup_Entry.cs</DependentUpon>
@@ -4052,7 +4051,6 @@
       <DependentUpon>Efficiency_Copy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_Entry.resx" />
-    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_View.resx" />
     <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.resx">
       <DependentUpon>Efficiency_Order_Source_Type.cs</DependentUpon>
     </EmbeddedResource>

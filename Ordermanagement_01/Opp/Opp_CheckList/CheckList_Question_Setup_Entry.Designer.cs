@@ -33,11 +33,9 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtQuestionQs = new DevExpress.XtraEditors.MemoEdit();
             this.chk_TabNamesQs = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.ddl_ProdductTypeAbbrQs = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_projectTypeQuesSetup = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_ClearQs = new DevExpress.XtraEditors.SimpleButton();
@@ -49,7 +47,6 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuestionQs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_TabNamesQs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProdductTypeAbbrQs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_projectTypeQuesSetup.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +59,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(434, 423);
+            this.groupControl1.Size = new System.Drawing.Size(434, 388);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Question SetUp ";
             // 
@@ -76,31 +73,29 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.16121F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.83879F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 395);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.66666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 360);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.txtQuestionQs);
             this.panelControl1.Controls.Add(this.chk_TabNamesQs);
-            this.panelControl1.Controls.Add(this.ddl_ProdductTypeAbbrQs);
             this.panelControl1.Controls.Add(this.ddl_projectTypeQuesSetup);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 342);
+            this.panelControl1.Size = new System.Drawing.Size(424, 306);
             this.panelControl1.TabIndex = 0;
             // 
             // txtQuestionQs
             // 
             this.txtQuestionQs.EditValue = "Enter Question...";
-            this.txtQuestionQs.Location = new System.Drawing.Point(123, 271);
+            this.txtQuestionQs.Location = new System.Drawing.Point(123, 221);
             this.txtQuestionQs.Name = "txtQuestionQs";
             this.txtQuestionQs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuestionQs.Properties.Appearance.Options.UseFont = true;
@@ -113,21 +108,10 @@
             // 
             this.chk_TabNamesQs.CheckOnClick = true;
             this.chk_TabNamesQs.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_TabNamesQs.Location = new System.Drawing.Point(123, 131);
+            this.chk_TabNamesQs.Location = new System.Drawing.Point(123, 81);
             this.chk_TabNamesQs.Name = "chk_TabNamesQs";
             this.chk_TabNamesQs.Size = new System.Drawing.Size(206, 114);
             this.chk_TabNamesQs.TabIndex = 6;
-            // 
-            // ddl_ProdductTypeAbbrQs
-            // 
-            this.ddl_ProdductTypeAbbrQs.Location = new System.Drawing.Point(123, 82);
-            this.ddl_ProdductTypeAbbrQs.Name = "ddl_ProdductTypeAbbrQs";
-            this.ddl_ProdductTypeAbbrQs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProdductTypeAbbrQs.Properties.NullText = "Select";
-            this.ddl_ProdductTypeAbbrQs.Size = new System.Drawing.Size(206, 20);
-            this.ddl_ProdductTypeAbbrQs.TabIndex = 5;
-            this.ddl_ProdductTypeAbbrQs.EditValueChanged += new System.EventHandler(this.ddl_ProdductTypeAbbrQs_EditValueChanged);
             // 
             // ddl_projectTypeQuesSetup
             // 
@@ -147,7 +131,7 @@
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Location = new System.Drawing.Point(47, 281);
+            this.labelControl4.Location = new System.Drawing.Point(49, 231);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(57, 15);
             this.labelControl4.TabIndex = 3;
@@ -160,24 +144,11 @@
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.Location = new System.Drawing.Point(47, 114);
+            this.labelControl3.Location = new System.Drawing.Point(47, 64);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(68, 37);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "CheckList \r\nTabName  :";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(32, 64);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(82, 41);
-            this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "ProductType \r\nAbbreviation  :";
             // 
             // labelControl1
             // 
@@ -198,9 +169,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_SaveQs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(264, 351);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(264, 315);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 41);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 42);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_ClearQs
@@ -237,9 +208,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 423);
+            this.ClientSize = new System.Drawing.Size(434, 388);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(450, 461);
+            this.MinimumSize = new System.Drawing.Size(450, 426);
             this.Name = "CheckList_Question_Setup_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckList_Question_Setup_Entry";
@@ -252,7 +223,6 @@
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQuestionQs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_TabNamesQs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProdductTypeAbbrQs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_projectTypeQuesSetup.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -266,11 +236,9 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.MemoEdit txtQuestionQs;
         private DevExpress.XtraEditors.CheckedListBoxControl chk_TabNamesQs;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProdductTypeAbbrQs;
         private DevExpress.XtraEditors.LookUpEdit ddl_projectTypeQuesSetup;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_ClearQs;
