@@ -97,8 +97,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 var dictonary1 = new Dictionary<string, object>()
                                     {
                                         {"@Trans","GET_COUNT" },
-                                        {"@Ref_Checklist_Master_Type_Id",Id }
-
+                                        {"@Ref_Checklist_Master_Type_Id",Id },
+                                      {"@Project_Type_Id",ProjectType_Id }
                                     };
                                 var data1 = new StringContent(JsonConvert.SerializeObject(dictonary1), Encoding.UTF8, "Application/Json");
                                 using (var httpclient1 = new HttpClient())
@@ -161,7 +161,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
 
 
-    
+
 
         private bool CheckNo(GridView view, int row)
         {
@@ -195,7 +195,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
                 gridView1.SetRowCellValue(e.RowHandle, "No", false);
                 gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
-              
+
 
 
             }
@@ -226,12 +226,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 if (value)
                     e.Appearance.BackColor = Color.Red;
                 string comment = gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString();
-                if(comment=="" && comment== null)
+                if (comment == "" && comment == null)
                     e.Appearance.BackColor = Color.Red;
-                else if(comment!="")
+                else if (comment != "")
                     e.Appearance.BackColor = Color.White;
             }
-           
+
             //DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
             //if (e.RowHandle >= 0)
             //{
@@ -265,7 +265,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
         {
-            
+
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
@@ -273,7 +273,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 gridView1.UpdateCurrentRow();
             }
-          
+
         }
 
         private void gridView1_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -285,7 +285,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void repositoryItemCheckEdit2_EditValueChanged_1(object sender, EventArgs e)
         {
 
-          
+
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
             gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
             if (gridView1.PostEditor())
@@ -299,22 +299,22 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             //if (e.Column.FieldName == "Yes")
             //{
-              
+
             //    gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
             //    gridView1.SetRowCellValue(e.RowHandle, "No", false);
             //    gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
-               
+
 
             //}
             //else if (e.Column.FieldName == "No")
             //{
             //    gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
             //    gridView1.SetRowCellValue(e.RowHandle, "No", true);
-              
-            //}
-          
 
-           
+            //}
+
+
+
         }
 
 
@@ -326,7 +326,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 e.Cancel = true;
             }
             IsButton = false;
-        }      
+        }
         private async void GetTabId(string tabname)
         {
             try
@@ -338,7 +338,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     {"@Trans","GET_TAB_ID" },
                     {"@Checklist_Master_Type",tabname },
                     {"@Project_Type_Id",ProjectType_Id },
-                    {"@ProductType_Abs_Id",OrderTypeAbs_Id }
+
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
@@ -495,9 +495,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             DataTable dt_VIEW = JsonConvert.DeserializeObject<DataTable>(result);
                             dt_VIEW1 = dt_VIEW.Copy();
                             if (dt_VIEW != null && dt_VIEW.Rows.Count > 0)
-                            {                              
-                                grd_CheckList.Visible = true;                             
-                                grd_CheckList.DataSource = dt_VIEW;                              
+                            {
+                                grd_CheckList.Visible = true;
+                                grd_CheckList.DataSource = dt_VIEW;
                                 grd_CheckList.Dock = DockStyle.Fill;
                                 tabPane1.SelectedPage.Controls.Add(grd_CheckList);
                                 //for (int i = 0; i < dt.Rows.Count; i++)
@@ -527,7 +527,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (e.RowHandle >= 0)
             {
                 if (e.Column.Caption == "Comments")
-                {                                                      
+                {
                     if ((bool)view.Row["Yes"] == false && (bool)view.Row["No"] == true)
                     {
                         string Comments = view.Row["Comments"].ToString();
@@ -553,7 +553,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 }
             }
         }
-     
+
         private async void SaveTabData()
         {
             IsButton = true;
@@ -609,7 +609,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                  
+
                                     tabPane1.SelectedPageIndex += 1;
                                     string tabname = tabPane1.SelectedPage.Caption;
                                     GetTabId(tabname);
@@ -650,7 +650,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
-            SavePreviousData();         
+            SavePreviousData();
             IsButton = true;
             btn_Next.Visible = true;
             btn_Save.Visible = false;
@@ -660,11 +660,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 btn_Previous.Visible = false;
             }
-            BindTabs();         
+            BindTabs();
         }
 
         private void btn_Next_Click_1(object sender, EventArgs e)
-        {           
+        {
             SaveTabData();
 
         }
@@ -677,9 +677,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SaveTabData();
                 if (Validate() == true)
                 {
-                    XtraMessageBox.Show("Submitted Successfully", "Success",MessageBoxButtons.OK,MessageBoxIcon.None);
+                    XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     this.Close();
-                 
+
                 }
 
             }
