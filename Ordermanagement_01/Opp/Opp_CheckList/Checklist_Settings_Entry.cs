@@ -26,7 +26,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int order_type, count;
         int index = 0;
         GridControl grid = new GridControl();
-        DataTable dt1, dt_user, dtcopy, _dt,dt3;
+        DataTable dt1, dt_user, dtcopy, _dt, dt3, dtsubclients;
         int order_task, subclient;
         private bool IsButton { get; set; }
         private Checklist_Settings_View Mainform = null;
@@ -40,36 +40,38 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             BindProjectType();
             grd_Questions.Visible = false;
-            btn_Previous.Visible = false;   
+            btn_Previous.Visible = false;
             btn_Finish.Visible = false;
 
             // tabPane1.SelectedPageIndex = 0;
         }
-        private async void Bind_Sub_Clients(int Client_Id,int subclientid)
+        private async void Bind_Sub_Clients(int Client_ID)
         {
+
             try
             {
+
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictionary = new Dictionary<string, object>
-                {
-                    {"@Trans", "GET_SUBCLIENT_ITEMS" },
-                    {"@Client_Id",Client_Id },
-                    {"@SubClientID",subclientid }
-                };
+                    {
+                    {"@Trans", "SELECT_SUB_CLIENTS" },
+                    {"@Client_Id",Client_ID }
+
+                    };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
                 {
-                    var response = httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/GetCopyData", data).Result;
+                    var response = httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindOrderTask", data).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = response.Content.ReadAsStringAsync().Result;
-                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt != null && dt.Rows.Count > 0)
+                            dtsubclients = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dtsubclients != null && dtsubclients.Rows.Count > 0)
                             {
-                                chk_SubClient.DataSource = dt;
+                                chk_SubClient.DataSource = dtsubclients;
                                 chk_SubClient.DisplayMember = "Sub_ProcessName";
                                 chk_SubClient.ValueMember = "Subprocess_Id";
                             }
@@ -81,6 +83,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     }
 
                 }
+
             }
             catch (Exception ex)
             {
@@ -261,7 +264,60 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void BindOrderTask(int _Protid,int ordertask1)
+        private async void BindClientNameToCheckist(int _Proc)
+        {
+            try
+            {
+                ddl_Client.Properties.DataSource = null;
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","SELECT_CLIENT_NAMES_BASEDON_PROJECTID" },
+                    {"@Project_Type_Id",_Proc }
+
+                };
+                ddl_Client.Properties.Columns.Clear();
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+
+                                Chk_Clients.DataSource = dt;
+                                Chk_Clients.DisplayMember = "Client_Name";
+                                Chk_Clients.ValueMember = "Client_Id";
+
+                            }
+
+
+                        }
+                    }
+                    else
+                    {
+                        ddl_Client.Properties.DataSource = null;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        private async void BindOrderTask(int _Protid, int ordertask1)
         {
             try
             {
@@ -397,8 +453,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 DataRow dr = dt.NewRow();
-                                dr[2] = 0;
-                                dr[3] = "Select";
+                                dr[0] = 0;
+                                dr[1] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
 
                             }
@@ -438,6 +494,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 // BindOrderTask(projectid);
                 BindOrderTasks(projectid);
                 BindOrderType(projectid);
+                BindClientNameToCheckist(projectid);
                 chk_SubClient.DataSource = null;
 
 
@@ -489,8 +546,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     {
                                         {"@Trans","GET_COUNT" },
                                         {"@Ref_Checklist_Id",Id },
-                                    {"@Project_Type_Id",projectid },
-                                    {"@ProductType_Abs_Id",ordertypeid }
+                                    {"@Project_Type_Id",projectid }
+
 
                                     };
                                 var data1 = new StringContent(JsonConvert.SerializeObject(dictonary1), Encoding.UTF8, "Application/Json");
@@ -687,7 +744,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                         }
                         DataView dv = new DataView(dt2);
-                         dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
+                        dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
                         DataTable dtmulti = new DataTable();
                         dtmulti.Columns.AddRange(new DataColumn[9]
                         {
@@ -844,20 +901,54 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void ddl_Subclient_EditValueChanged(object sender, EventArgs e)
         {
-            int client = Convert.ToInt32(ddl_Client.EditValue.ToString());
-            int subid = Convert.ToInt32(ddl_Subclient.EditValue.ToString());
-            Bind_Sub_Clients(client, subid);
+            //int client = Convert.ToInt32(ddl_Client.EditValue.ToString());
+            //int subid = Convert.ToInt32(ddl_Subclient.EditValue.ToString());
+            //Bind_Sub_Clients(client, subid);
+        }
+
+        private void Chk_Clients_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+            if (Chk_Clients.CheckedItemsCount == 1)
+            {
+                foreach (object itemChecked in Chk_Clients.CheckedItems)
+                {
+                    DataRowView _castedItem = itemChecked as DataRowView;
+                    string client = _castedItem["Client_Name"].ToString();
+                    int client_id = Convert.ToInt32(_castedItem["Client_Id"]);
+                    Bind_Sub_Clients(client_id);
+                }
+            }
+            else if (Chk_Clients.CheckedItemsCount > 1)
+            {
+                string checkedItems = "0";
+                foreach (object Item in Chk_Clients.CheckedItems)
+                {
+                    var row = (Item as DataRowView).Row;
+                    checkedItems = checkedItems + "," + (row["Client_Id"]);
+                }
+                BindMultipleSubClient(checkedItems);
+
+                // chk_SubClient.Enabled = false;        
+            }
+            else if (Chk_Clients.CheckedItemsCount == 0)
+            {
+                chk_SubClient.UnCheckAll();
+                chk_SubClient.DataSource = null;
+                chk_SubClient.Enabled = true;
+            }
+            SplashScreenManager.CloseForm(false);
         }
 
         private void ddl_Order_Task_EditValueChanged(object sender, EventArgs e)
         {
             subclient = Convert.ToInt32(ddl_Subclient.EditValue.ToString());
             order_task = Convert.ToInt32(ddl_Order_Task.EditValue.ToString());
-            if(subclient>0 && order_task > 0)
+            if (subclient > 0 && order_task > 0)
             {
                 BindDataToGrid();
             }
-            BindOrderTask(projectid,order_task);
+            BindOrderTask(projectid, order_task);
         }
 
         private void btn_Finish_Click(object sender, EventArgs e)
@@ -904,12 +995,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private async void BindDataToGrid()
         {
-            
-                try
-                {
-                    dtcopy = new DataTable();
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var dictonary = new Dictionary<string, object>()
+
+            try
+            {
+                dtcopy = new DataTable();
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
                         {
                         {"@Trans","BIND_DATA_BASED_ON_SUB_CLIENT" },
                         {"@Ref_Checklist_Id",tabid },
@@ -920,48 +1011,48 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                         };
 
-                    var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
-                    using (var httpclient = new HttpClient())
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
+                    if (response.IsSuccessStatusCode)
                     {
-                        var response = await httpclient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindProject", data);
-                        if (response.IsSuccessStatusCode)
+                        if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+
+
+                            var result = await response.Content.ReadAsStringAsync();
+                            _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (_dt != null && _dt.Rows.Count > 0)
                             {
-
-
-                                var result = await response.Content.ReadAsStringAsync();
-                                _dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (_dt != null && _dt.Rows.Count > 0)
+                                dtcopy = dt1.Copy();
+                                for (k = 0; k < dtcopy.Rows.Count; k++)
                                 {
-                                    dtcopy = dt1.Copy();
-                                    for (k = 0; k < dtcopy.Rows.Count; k++)
-                                    {
-                                        string _questionno = dtcopy.Rows[k]["Question Number"].ToString();
-                                        IsMatch(_questionno);
-
-                                    }
-                                    grd_Questions.DataSource = dtcopy;
+                                    string _questionno = dtcopy.Rows[k]["Question Number"].ToString();
+                                    IsMatch(_questionno);
 
                                 }
+                                grd_Questions.DataSource = dtcopy;
+
                             }
                         }
-                        else
-                        {
-                            grd_Questions.DataSource = dt1;
-                        }
+                    }
+                    else
+                    {
+                        grd_Questions.DataSource = dt1;
                     }
                 }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                finally
-                {
-                    SplashScreenManager.CloseForm(false);
-                }
-            
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+
         }
 
         private bool IsMatch(string _QNAME)
@@ -981,7 +1072,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         //private void getcheckdata()
         //{
-            
+
         //    var sub = ddl_Subclient.EditValue.ToString();
         //    var otask = ddl_Order_Task.EditValue.ToString();
         //    if (sub != null && otask != null)
@@ -1092,21 +1183,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 if (grd_Questions.DataSource != null)
                 {
-
-
-                    //DataTable dt2 = new DataTable();
-                    //dt2 = grd_Questions.DataSource as DataTable;
-                    //dt2.Columns.Add("Checklist_Id", typeof(int));
-                    //for (int i = 0; i < dt_user.Rows.Count; i++)
-                    //{
-                    //    for (int j = 0; j < dt2.Rows.Count; j++)
-                    //    {
-                    //        dt2.Rows[i]["Checklist_Id"] = dt_user.Rows[i]["Question Number"];
-                    //    }
-
-                    //}
-                    //DataView dv = new DataView(dt2);
-
                     //DataTable dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
                     DataTable _dtmulti = new DataTable();
                     DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
@@ -1126,26 +1202,32 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Status1",typeof(int)),
                         new DataColumn("Inserted_Date",typeof(DateTime))
                     });
-                    foreach (object itemChecked in chk_SubClient.CheckedItems)
-                    {
-                        DataRowView _castedItem = itemChecked as DataRowView;
-                        string Order_type = _castedItem["Sub_ProcessName"].ToString();
-                        int _sub = Convert.ToInt32(_castedItem["Subprocess_Id"]);
-                        foreach (object itemsChecked in chk_OrderTask.CheckedItems)
+                    //foreach (object itemsChecked in Chk_Clients.CheckedItems)
+                    //{
+                    //    DataRowView castedItem = itemsChecked as DataRowView;
+                    //    string _Client_Name = castedItem["Client_Name"].ToString();
+                    //   // int _Client_Id = Convert.ToInt32(castedItem["Client_Id"]);
+                        foreach (object itemChecked in chk_SubClient.CheckedItems)
                         {
-                            DataRowView castedItem = itemsChecked as DataRowView;
-                            string Order_sourcetype = castedItem["Order_Status"].ToString();
-                            int _otask = Convert.ToInt32(castedItem["Order_Status_ID"]);
-                            int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
-                            int client = Convert.ToInt32(ddl_Client.EditValue);
-                            int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                            int userid = 1;
-                            int _status = 1;
-                            DateTime _inserdate = DateTime.Now;
-                            _dtmulti.Rows.Add(tabid, _ProjectID, client, _sub, _otask, ordertype, userid, _status, _inserdate);
+                            DataRowView _castedItem = itemChecked as DataRowView;
+                            string Order_type = _castedItem["Sub_ProcessName"].ToString();
+                            int _Client_Id = Convert.ToInt32(_castedItem["Client_Id"]);
+                            int _sub = Convert.ToInt32(_castedItem["Subprocess_Id"]);
+                            foreach (object _itemsChecked in chk_OrderTask.CheckedItems)
+                            {
+                                DataRowView castedItems = _itemsChecked as DataRowView;
+                                string Order_sourcetype = castedItems["Order_Status"].ToString();
+                                int _otask = Convert.ToInt32(castedItems["Order_Status_ID"]);
+                                int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
+                                int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
+                                int userid = 1;
+                                int _status = 1;
+                                DateTime _inserdate = DateTime.Now;
+                                _dtmulti.Rows.Add(tabid, _ProjectID, _Client_Id, _sub, _otask, ordertype, userid, _status, _inserdate);
+                            }
                         }
-                    }
-                    
+                   
+
                     DataTable _dtfinal = new DataTable();
                     _dtfinal.Columns.AddRange(new DataColumn[11]
                         {
@@ -1187,5 +1269,143 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 }
             }
         }
+
+        private async void BindMultipleSubClient(string ClientID)
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                chk_SubClient.DataSource = null;
+                var dictionary = new Dictionary<string, object>
+                {
+                    {"@Trans","SELECT_MULTIPLE_SUBCLIENT" },
+                    {"@Multiple_Client" ,ClientID}
+
+                };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/BindMultipleSubClient", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+
+                                    chk_SubClient.DataSource = dt;
+                                    chk_SubClient.DisplayMember = "Sub_ProcessName";
+                                    chk_SubClient.ValueMember = "Subprocess_Id";
+                                    //chk_SubClient.CheckAll();
+
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Sub Client does not exist for " + Chk_Clients.Text, "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+        //        private async void Insertmultipledetails()
+        //        {
+        //            if (validate() == true)
+        //            {
+        //                if (grd_Questions.DataSource != null)
+        //                {
+        //                    DataTable _dtmulti = new DataTable();
+        //                    DataRowView r1 = chk_SubClient.GetItem(chk_SubClient.SelectedIndex) as DataRowView;
+        //                    int subcl = Convert.ToInt32(r1["Subprocess_Id"]);
+        //                    DataRowView r2 = chk_OrderTask.GetItem(chk_OrderTask.SelectedIndex) as DataRowView;
+        //                    int otask = Convert.ToInt32(r2["Order_Status_ID"]);
+        //                    _dtmulti.Columns.AddRange(new DataColumn[9]
+        //                    {
+
+        //                        new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
+        //                        new DataColumn("Project_Type_Id",typeof(int)),
+        //                        new DataColumn("Client_Id",typeof(int)),
+        //                        new  DataColumn("Sub_Client_Id",typeof(int)),
+        //                        new DataColumn("Order_Task",typeof(int)),
+        //                        new DataColumn("OrderType_ABS_Id",typeof(int)),
+        //                        new DataColumn("User_id",typeof(int)),
+        //                        new DataColumn("Status1",typeof(int)),
+        //                        new DataColumn("Inserted_Date",typeof(DateTime))
+        //                    });
+        //                    foreach (object itemsChecked in Chk_Clients.CheckedItems)
+        //                    {
+        //                        DataRowView castedItem = itemsChecked as DataRowView;
+        //                        string _Client_Name = castedItem["Client_Name"].ToString();
+        //                        int _Client_Id = Convert.ToInt32(castedItem["Client_Id"]);
+        //                        foreach (object itemChecked in chk_SubClient.CheckedItems)
+        //                        {
+        //                            DataRowView castedItems = itemChecked as DataRowView;
+        //                            string _SubClient = castedItems["Sub_ProcessName"].ToString();
+        //                            int _SubClientID = Convert.ToInt32(castedItems["Subprocess_Id"]);
+        //                            int projecttype = Convert.ToInt32(ddl_Project_Type.EditValue);
+        //                            int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
+        //                            int status = 1;
+        //                            int userid = 1;
+        //                            DateTime inserteddate = DateTime.Now;
+        //                            _dtmulti.Rows.Add(tabid, projecttype, _Client_Id, _SubClientID, ordertype, userid, status, inserteddate);
+
+        //                            DataTable _dtfinal = new DataTable();
+        //                        _dtfinal.Columns.AddRange(new DataColumn[11]
+        //                        {
+
+        //                        new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
+        //                        new DataColumn("Project_Type_Id",typeof(int)),
+        //                        new DataColumn("Client_Id",typeof(int)),
+        //                        new  DataColumn("Sub_Client_Id",typeof(int)),
+        //                        new DataColumn("Order_Task",typeof(int)),
+        //                        new DataColumn("OrderType_ABS_Id",typeof(int)),
+        //                        new DataColumn("User_id",typeof(int)),
+        //                        new DataColumn("Status",typeof(int)),
+        //                        new DataColumn("Inserted_Date",typeof(DateTime)),
+        //                        new DataColumn("Quest_Checklist_Id",typeof(int)),
+        //                        new DataColumn("Chk_Default",typeof(int))
+
+        //                    });
+        //                    var _results2 = from t1 in _dtmulti.AsEnumerable()
+        //                                    from t2 in dt3.AsEnumerable()
+        //                                    select t1.ItemArray.Concat(t2.ItemArray).ToArray();
+        //                    foreach (var allFields in _results2)
+        //                    {
+        //                        _dtfinal.Rows.Add(allFields);
+        //                    }
+        //                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+        //                    var data = new StringContent(JsonConvert.SerializeObject(_dtfinal), Encoding.UTF8, "application/json");
+        //                    using (var httpClient = new HttpClient())
+        //                    {
+        //                        var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Insert", data);
+        //                        if (response.IsSuccessStatusCode)
+        //                        {
+        //                            if (response.StatusCode == HttpStatusCode.OK)
+        //                            {
+        //                                var result = await response.Content.ReadAsStringAsync();
+        //                                SplashScreenManager.CloseForm(false);
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

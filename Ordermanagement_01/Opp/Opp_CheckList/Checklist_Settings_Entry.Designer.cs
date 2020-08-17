@@ -61,6 +61,8 @@
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.Chk_Clients = new DevExpress.XtraEditors.CheckedListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -84,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -96,7 +99,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(931, 647);
+            this.groupControl1.Size = new System.Drawing.Size(931, 657);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Checklist Settings Entry";
             // 
@@ -110,8 +113,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(927, 624);
-            this.splitContainerControl1.SplitterPosition = 243;
+            this.splitContainerControl1.Size = new System.Drawing.Size(927, 634);
+            this.splitContainerControl1.SplitterPosition = 303;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -127,11 +130,13 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(927, 243);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(927, 303);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.Chk_Clients);
+            this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.chk_SubClient);
             this.panelControl1.Controls.Add(this.chk_OrderTask);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -139,7 +144,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(466, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(458, 237);
+            this.panelControl1.Size = new System.Drawing.Size(458, 297);
             this.panelControl1.TabIndex = 0;
             // 
             // chk_SubClient
@@ -150,9 +155,9 @@
             this.chk_SubClient.Appearance.Options.UseForeColor = true;
             this.chk_SubClient.CheckOnClick = true;
             this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_SubClient.Location = new System.Drawing.Point(156, 15);
+            this.chk_SubClient.Location = new System.Drawing.Point(156, 118);
             this.chk_SubClient.Name = "chk_SubClient";
-            this.chk_SubClient.Size = new System.Drawing.Size(215, 95);
+            this.chk_SubClient.Size = new System.Drawing.Size(215, 76);
             this.chk_SubClient.TabIndex = 11;
             // 
             // chk_OrderTask
@@ -163,9 +168,9 @@
             this.chk_OrderTask.Appearance.Options.UseForeColor = true;
             this.chk_OrderTask.CheckOnClick = true;
             this.chk_OrderTask.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderTask.Location = new System.Drawing.Point(156, 124);
+            this.chk_OrderTask.Location = new System.Drawing.Point(156, 212);
             this.chk_OrderTask.Name = "chk_OrderTask";
-            this.chk_OrderTask.Size = new System.Drawing.Size(215, 95);
+            this.chk_OrderTask.Size = new System.Drawing.Size(215, 76);
             this.chk_OrderTask.TabIndex = 6;
             this.chk_OrderTask.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_OrderTask_ItemCheck);
             // 
@@ -175,7 +180,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(21, 33);
+            this.labelControl3.Location = new System.Drawing.Point(21, 137);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(118, 17);
             this.labelControl3.TabIndex = 8;
@@ -187,7 +192,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(21, 140);
+            this.labelControl4.Location = new System.Drawing.Point(21, 228);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(125, 17);
             this.labelControl4.TabIndex = 4;
@@ -208,7 +213,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(457, 237);
+            this.panelControl2.Size = new System.Drawing.Size(457, 297);
             this.panelControl2.TabIndex = 1;
             // 
             // ddl_Order_Task
@@ -358,7 +363,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(927, 369);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(927, 319);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tabPane1
@@ -367,9 +372,9 @@
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPane1.Location = new System.Drawing.Point(3, 3);
             this.tabPane1.Name = "tabPane1";
-            this.tabPane1.RegularSize = new System.Drawing.Size(921, 315);
+            this.tabPane1.RegularSize = new System.Drawing.Size(921, 271);
             this.tabPane1.SelectedPage = null;
-            this.tabPane1.Size = new System.Drawing.Size(921, 315);
+            this.tabPane1.Size = new System.Drawing.Size(921, 271);
             this.tabPane1.TabIndex = 2;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
@@ -435,9 +440,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 324);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 280);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(921, 42);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(921, 36);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // btn_Finish
@@ -486,11 +491,37 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(21, 43);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(92, 17);
+            this.labelControl7.TabIndex = 12;
+            this.labelControl7.Text = "Copy To Client :";
+            // 
+            // Chk_Clients
+            // 
+            this.Chk_Clients.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.Chk_Clients.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Chk_Clients.Appearance.Options.UseFont = true;
+            this.Chk_Clients.Appearance.Options.UseForeColor = true;
+            this.Chk_Clients.CheckOnClick = true;
+            this.Chk_Clients.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Chk_Clients.Location = new System.Drawing.Point(156, 24);
+            this.Chk_Clients.Name = "Chk_Clients";
+            this.Chk_Clients.Size = new System.Drawing.Size(215, 76);
+            this.Chk_Clients.TabIndex = 13;
+            this.Chk_Clients.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.Chk_Clients_ItemCheck);
+            // 
             // Checklist_Settings_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 647);
+            this.ClientSize = new System.Drawing.Size(931, 657);
             this.Controls.Add(this.groupControl1);
             this.Name = "Checklist_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -522,6 +553,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,5 +592,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LookUpEdit ddl_Order_Task;
         private DevExpress.XtraEditors.LookUpEdit ddl_Subclient;
+        private DevExpress.XtraEditors.CheckedListBoxControl Chk_Clients;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }
