@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TileItemElement tileItemElement21 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement22 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement23 = new DevExpress.XtraEditors.TileItemElement();
-            DevExpress.XtraEditors.TileItemElement tileItemElement24 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
+            DevExpress.XtraEditors.TileItemElement tileItemElement4 = new DevExpress.XtraEditors.TileItemElement();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -107,6 +107,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkForDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.navigationPage4 = new DevExpress.XtraBars.Navigation.NavigationPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gridQuestionRowSetUp = new DevExpress.XtraGrid.GridControl();
@@ -130,7 +131,6 @@
             this.tileGroup4 = new DevExpress.XtraEditors.TileGroup();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -284,9 +284,9 @@
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_CheckList_Master.AppearanceItem.Selected.Options.UseForeColor = true;
             this.tile_CheckList_Master.Checked = true;
-            tileItemElement21.Text = "CheckList  Tab";
-            tileItemElement21.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_CheckList_Master.Elements.Add(tileItemElement21);
+            tileItemElement1.Text = "CheckList  Tab";
+            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_CheckList_Master.Elements.Add(tileItemElement1);
             this.tile_CheckList_Master.Id = 0;
             this.tile_CheckList_Master.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_CheckList_Master.Name = "tile_CheckList_Master";
@@ -335,9 +335,9 @@
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_Question_SetUp.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement22.Text = "CheckList Tab Question ";
-            tileItemElement22.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_Question_SetUp.Elements.Add(tileItemElement22);
+            tileItemElement2.Text = "CheckList Tab Question ";
+            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_Question_SetUp.Elements.Add(tileItemElement2);
             this.tile_Question_SetUp.Id = 1;
             this.tile_Question_SetUp.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_Question_SetUp.Name = "tile_Question_SetUp";
@@ -386,17 +386,17 @@
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseFont = true;
             this.tile_TabSettings.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement23.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement23.Appearance.Hovered.Options.UseFont = true;
-            tileItemElement23.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement23.Appearance.Normal.Options.UseFont = true;
-            tileItemElement23.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement23.Appearance.Pressed.Options.UseFont = true;
-            tileItemElement23.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
-            tileItemElement23.Appearance.Selected.Options.UseFont = true;
-            tileItemElement23.Text = "CheckList Tab  Settings";
-            tileItemElement23.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            this.tile_TabSettings.Elements.Add(tileItemElement23);
+            tileItemElement3.Appearance.Hovered.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement3.Appearance.Hovered.Options.UseFont = true;
+            tileItemElement3.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement3.Appearance.Normal.Options.UseFont = true;
+            tileItemElement3.Appearance.Pressed.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement3.Appearance.Pressed.Options.UseFont = true;
+            tileItemElement3.Appearance.Selected.Font = new System.Drawing.Font("Segoe UI", 12F);
+            tileItemElement3.Appearance.Selected.Options.UseFont = true;
+            tileItemElement3.Text = "CheckList Tab  Settings";
+            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            this.tile_TabSettings.Elements.Add(tileItemElement3);
             this.tile_TabSettings.Id = 2;
             this.tile_TabSettings.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tile_TabSettings.Name = "tile_TabSettings";
@@ -1148,6 +1148,12 @@
             this.repositoryItemHyperLinkForDelete.Name = "repositoryItemHyperLinkForDelete";
             this.repositoryItemHyperLinkForDelete.NullText = "Delete";
             // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "MasterTableProdId";
+            this.gridColumn21.FieldName = "ProductWise_Id";
+            this.gridColumn21.Name = "gridColumn21";
+            // 
             // navigationPage4
             // 
             this.navigationPage4.Caption = "navigationPage4";
@@ -1407,8 +1413,8 @@
             this.tileItem1.AppearanceItem.Selected.Options.UseBorderColor = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseFont = true;
             this.tileItem1.AppearanceItem.Selected.Options.UseForeColor = true;
-            tileItemElement24.Text = "Master";
-            this.tileItem1.Elements.Add(tileItemElement24);
+            tileItemElement4.Text = "Master";
+            this.tileItem1.Elements.Add(tileItemElement4);
             this.tileItem1.Id = 0;
             this.tileItem1.ItemSize = DevExpress.XtraEditors.TileItemSize.Wide;
             this.tileItem1.Name = "tileItem1";
@@ -1420,12 +1426,6 @@
             // gridView1
             // 
             this.gridView1.Name = "gridView1";
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.Caption = "MasterTableProdId";
-            this.gridColumn21.FieldName = "ProductWise_Id";
-            this.gridColumn21.Name = "gridColumn21";
             // 
             // CheckList_Master_View
             // 

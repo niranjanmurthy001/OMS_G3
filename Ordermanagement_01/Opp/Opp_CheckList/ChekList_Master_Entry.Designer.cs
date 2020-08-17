@@ -96,7 +96,7 @@
             // txtTabName
             // 
             this.txtTabName.EditValue = "Enter TabName...";
-            this.txtTabName.Location = new System.Drawing.Point(112, 100);
+            this.txtTabName.Location = new System.Drawing.Point(112, 76);
             this.txtTabName.Name = "txtTabName";
             this.txtTabName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTabName.Properties.Appearance.Options.UseFont = true;
@@ -121,7 +121,7 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Location = new System.Drawing.Point(35, 81);
+            this.labelControl4.Location = new System.Drawing.Point(35, 57);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(71, 42);
             this.labelControl4.TabIndex = 8;
