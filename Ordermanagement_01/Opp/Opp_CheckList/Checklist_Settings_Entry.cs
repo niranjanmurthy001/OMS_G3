@@ -42,6 +42,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             grd_Questions.Visible = false;
             btn_Previous.Visible = false;
             btn_Finish.Visible = false;
+            ddl_Client.Properties.NullText = "Select";
+            ddl_Subclient.Properties.NullText = "Select";
+            ddl_OrderType.Properties.NullText = "Select";
+            ddl_Order_Task.Properties.NullText = "Select";
 
             // tabPane1.SelectedPageIndex = 0;
         }
@@ -944,6 +948,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             subclient = Convert.ToInt32(ddl_Subclient.EditValue.ToString());
             order_task = Convert.ToInt32(ddl_Order_Task.EditValue.ToString());
+
             if (subclient > 0 && order_task > 0)
             {
                 BindDataToGrid();
