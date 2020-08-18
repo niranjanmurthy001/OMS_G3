@@ -49,7 +49,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
             // tabPane1.SelectedPageIndex = 0;
         }
-        private async void Bind_Sub_Clients(int Client_ID)
+        private async void Bind_Sub_Clients(int Client_ID,int subc)
         {
 
             try
@@ -58,8 +58,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictionary = new Dictionary<string, object>
                     {
-                    {"@Trans", "SELECT_SUB_CLIENTS" },
-                    {"@Client_Id",Client_ID }
+                    {"@Trans", "SELECT_CHECKBOX_SUBCLIENTS" },
+                    {"@Client_Id",Client_ID },
+                    {"@SubClientID",subc }
 
                     };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
@@ -920,7 +921,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     DataRowView _castedItem = itemChecked as DataRowView;
                     string client = _castedItem["Client_Name"].ToString();
                     int client_id = Convert.ToInt32(_castedItem["Client_Id"]);
-                    Bind_Sub_Clients(client_id);
+                    int sub = Convert.ToInt32(ddl_Subclient.EditValue);
+                    Bind_Sub_Clients(client_id,sub);
                 }
             }
             else if (Chk_Clients.CheckedItemsCount > 1)
