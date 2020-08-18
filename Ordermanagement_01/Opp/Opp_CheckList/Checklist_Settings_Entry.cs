@@ -121,7 +121,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                             {
                                 DataRow dr = dt.NewRow();
                                 dr[0] = 0;
-                                dr[1] = "Select";
+                                dr[2] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
                             }
                             ddl_Subclient.Properties.DataSource = dt;
