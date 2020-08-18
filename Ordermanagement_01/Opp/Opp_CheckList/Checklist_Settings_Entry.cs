@@ -1115,29 +1115,32 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private async void Previous_Data()
         {
-            if (validate() == true)
+            try
             {
-                if (grd_Questions.DataSource != null)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (validate() == true)
                 {
-
-
-                    DataTable dt2 = new DataTable();
-                    dt2 = grd_Questions.DataSource as DataTable;
-                    dt2.Columns.Add("Checklist_Id", typeof(int));
-                    for (int i = 0; i < dt_user.Rows.Count; i++)
+                    if (grd_Questions.DataSource != null)
                     {
-                        for (int j = 0; j < dt2.Rows.Count; j++)
+
+
+                        DataTable dt2 = new DataTable();
+                        dt2 = grd_Questions.DataSource as DataTable;
+                        dt2.Columns.Add("Checklist_Id", typeof(int));
+                        for (int i = 0; i < dt_user.Rows.Count; i++)
                         {
-                            dt2.Rows[i]["Checklist_Id"] = dt_user.Rows[i]["Question Number"];
+                            for (int j = 0; j < dt2.Rows.Count; j++)
+                            {
+                                dt2.Rows[i]["Checklist_Id"] = dt_user.Rows[i]["Question Number"];
+                            }
+
                         }
+                        DataView dv = new DataView(dt2);
 
-                    }
-                    DataView dv = new DataView(dt2);
-
-                    DataTable dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
-                    DataTable dtmulti = new DataTable();
-                    dtmulti.Columns.AddRange(new DataColumn[9]
-                    {
+                        DataTable dt3 = dv.ToTable(true, "Checklist_Id", "Is_Active");
+                        DataTable dtmulti = new DataTable();
+                        dtmulti.Columns.AddRange(new DataColumn[9]
+                        {
 
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Project_Type_Id",typeof(int)),
@@ -1148,18 +1151,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("User_id",typeof(int)),
                         new DataColumn("Status1",typeof(int)),
                         new DataColumn("Inserted_Date",typeof(DateTime))
-                    });
-                    int ordertask = order_task;
-                    int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
-                    int client = Convert.ToInt32(ddl_Client.EditValue);
-                    int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                    int userid = 1;
-                    int _status = 1;
-                    DateTime _inserdate = DateTime.Now;
-                    dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
-                    DataTable dtfinal = new DataTable();
-                    dtfinal.Columns.AddRange(new DataColumn[11]
-                        {
+                        });
+                        int ordertask = order_task;
+                        int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
+                        int client = Convert.ToInt32(ddl_Client.EditValue);
+                        int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
+                        int userid = 1;
+                        int _status = 1;
+                        DateTime _inserdate = DateTime.Now;
+                        dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
+                        DataTable dtfinal = new DataTable();
+                        dtfinal.Columns.AddRange(new DataColumn[11]
+                            {
 
                         new DataColumn("Ref_Checklist_Master_Type_Id",typeof(int)),
                         new DataColumn("Project_Type_Id",typeof(int)),
@@ -1173,29 +1176,39 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Quest_Checklist_Id",typeof(int)),
                         new DataColumn("Chk_Default",typeof(int))
 
-                    });
-                    var _results1 = from t1 in dtmulti.AsEnumerable()
-                                    from t2 in dt3.AsEnumerable()
-                                    select t1.ItemArray.Concat(t2.ItemArray).ToArray();
-                    foreach (var allFields in _results1)
-                    {
-                        dtfinal.Rows.Add(allFields);
-                    }
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    var data = new StringContent(JsonConvert.SerializeObject(dtfinal), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
-                    {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Insert", data);
-                        if (response.IsSuccessStatusCode)
+                        });
+                        var _results1 = from t1 in dtmulti.AsEnumerable()
+                                        from t2 in dt3.AsEnumerable()
+                                        select t1.ItemArray.Concat(t2.ItemArray).ToArray();
+                        foreach (var allFields in _results1)
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            dtfinal.Rows.Add(allFields);
+                        }
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        var data = new StringContent(JsonConvert.SerializeObject(dtfinal), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ChecklistSettings/Insert", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-                                SplashScreenManager.CloseForm(false);
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                }
                             }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please contact with Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
