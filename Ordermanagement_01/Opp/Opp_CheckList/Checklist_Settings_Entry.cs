@@ -990,6 +990,21 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 XtraMessageBox.Show("Please Select Subclient ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if(Chk_Clients.CheckedItemsCount==0)
+            {
+                XtraMessageBox.Show("Please Check Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (chk_SubClient.CheckedItemsCount == 0)
+            {
+                XtraMessageBox.Show("Please Check Sub-Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (chk_OrderTask.CheckedItemsCount == 0)
+            {
+                XtraMessageBox.Show("Please Check Order Task ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             return true;
         }
 
