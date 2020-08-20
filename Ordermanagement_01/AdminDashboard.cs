@@ -32250,7 +32250,7 @@ namespace Ordermanagement_01
 
         private void Checklist_Question_Entry_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1,1,2,200226,2,39,2,1);
+            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1,1,1,200226,4,24,3,1);
             Q_Entry.Show();
         }
 

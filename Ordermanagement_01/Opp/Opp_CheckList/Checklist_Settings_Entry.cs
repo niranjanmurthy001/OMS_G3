@@ -933,7 +933,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     var row = (Item as DataRowView).Row;
                     checkedItems = checkedItems + "," + (row["Client_Id"]);
                 }
-                BindMultipleSubClient(checkedItems);
+                string subid = ddl_Subclient.EditValue.ToString();
+                BindMultipleSubClient(checkedItems,subid);
 
                 // chk_SubClient.Enabled = false;        
             }
@@ -1305,7 +1306,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-        private async void BindMultipleSubClient(string ClientID)
+        private async void BindMultipleSubClient(string ClientID,string Subprocessid)
         {
             try
             {
@@ -1314,7 +1315,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 var dictionary = new Dictionary<string, object>
                 {
                     {"@Trans","SELECT_MULTIPLE_SUBCLIENT" },
-                    {"@Multiple_Client" ,ClientID}
+                    {"@Multiple_Client" ,ClientID},
+                    {"@SubClientID",Subprocessid }
 
                 };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
