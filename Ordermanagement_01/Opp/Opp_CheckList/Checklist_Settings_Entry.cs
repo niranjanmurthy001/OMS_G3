@@ -964,7 +964,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             btn_Add_Click(sender, e);
             if (validate() == true)
             {
-                XtraMessageBox.Show("Submitted Successfully");
+                XtraMessageBox.Show("Submitted Successfully","Success");
                 this.Close();
                 this.Mainform.Enabled = true;
             }

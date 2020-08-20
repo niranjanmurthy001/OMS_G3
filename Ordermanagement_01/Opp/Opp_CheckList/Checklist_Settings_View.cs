@@ -144,7 +144,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("Updated Successfully");
+                            XtraMessageBox.Show("Updated Successfully","Success");
                             BindDataToGrid();
                             btn_Update.Visible = false;
                         }
