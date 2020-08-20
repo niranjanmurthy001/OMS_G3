@@ -721,8 +721,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                     int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
                     int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
-                    //ddl_CheckListTab.Enabled = true;
-                    //BindCheckListTabName(ProducttID);
+                    
                     BindGridTabSetting(ProjectID, ProducttID);
 
                 }
@@ -732,26 +731,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     ddl_ProductType.EditValue = 0;
                 }
             }
-            else if (rb_CheckListQuesSetting.SelectedIndex != -1)
-            {
-                if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
-                {
-                    ddl_ProductType.Enabled = true;
-                    ddl_ProductType.EditValue = 0;
-                    int ProducttID = Convert.ToInt32(ddl_ProductType.EditValue);
-                    // int ProjectID = Convert.ToInt32(ddl_ProjectType.EditValue);
-                    //ddl_CheckListTab.Enabled = true;
-                    //ddl_CheckListTab.Properties.Columns.Clear();
-                    //BindCheckListTabName(ProducttID);
-
-
-                }
-                else
-                {
-                    gridQuestionRowSetUp.DataSource = null;
-                    ddl_ProductType.EditValue = 0;
-                }
-            }
+           
+            
 
         }
         public async void BindGridTabSetting(int Proj_ID, int Prod_ID)
@@ -783,7 +764,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 gridView_TabSetting.BestFitColumns();
 
                             }
+                            else
+                            {
+                                grd_TabSetting.DataSource = null;
+                            }
                         }
+                    }
+                    else
+                    {
+                        grd_TabSetting.DataSource = null;
                     }
                 }
             }

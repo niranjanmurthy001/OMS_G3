@@ -61,6 +61,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
                                 col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
                                 ddl_ProjectType.Properties.Columns.Add(col);
+                               
                             }
                         }
                     }
@@ -98,6 +99,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                           
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 DataRow dr = dt.NewRow();
@@ -111,7 +113,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Type_Abbreviation");
                                 ddl_ProductType.Properties.Columns.Add(col);
                             }
+                            else
+                            {
+                                ddl_ProductType.Properties.DataSource = null;
+                            }
                         }
+                    }
+                    else
+                    {
+                        ddl_ProductType.Properties.DataSource = null;
                     }
                 }
 
@@ -134,21 +144,23 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 int ProjId = Convert.ToInt32(ddl_ProjectType.EditValue);
 
                 ddl_ProductType.Properties.Columns.Clear();
+                ddl_ProductType.ItemIndex = 0;
                 BindProductType(ProjId);
             }
         }
 
         private void ddl_ProductType_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddl_ProjectType.EditValue) != 0)
+            if (Convert.ToInt32(ddl_ProductType.EditValue) != 0)
             {
                 int ProjId = Convert.ToInt32(ddl_ProjectType.EditValue);
-                chk_CheckListTab.DataSource = null;
-                BindCheckListTabName(ProjId);
+                int prodid = Convert.ToInt32(ddl_ProductType.EditValue);
+               // chk_CheckListTab.DataSource = null;
+                BindCheckListTabName(ProjId,prodid);
             }
         }
 
-        private async void BindCheckListTabName(int projectType_id)
+        private async void BindCheckListTabName(int projectType_id,int ProductType_Id)
         {
             try
             {
@@ -156,8 +168,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dict = new Dictionary<string, object>()
                 {
-                    {"@Trans" ,"SelectCheckListTabName"},
-                    {"@Project_Type_Id" , projectType_id}
+                    {"@Trans" ,"bindCheckListTabData"},
+                    {"@Project_Type_Id" , projectType_id},
+                    {"@Product_Type_Abbr_Id" ,ProductType_Id}
 
                 };
 
@@ -305,6 +318,18 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void chk_AllTabs_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk_AllTabs.Checked==true)
+            {
+                chk_CheckListTab.CheckAll();
+            }
+           else  if(chk_AllTabs.Checked==false)
+            {
+                chk_CheckListTab.UnCheckAll();
+            }
         }
     }
 }
