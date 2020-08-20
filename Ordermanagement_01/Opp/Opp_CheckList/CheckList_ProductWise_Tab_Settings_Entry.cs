@@ -269,24 +269,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Clear()
         {
-            try
-            {
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+            
                 chk_CheckListTab.DataSource = null;
+           
 
                 ddl_ProductType.ItemIndex = 0;
                 ddl_ProjectType.ItemIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something Went Wrong ! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                SplashScreenManager.CloseForm(false);
-            }
-
 
         }
 
