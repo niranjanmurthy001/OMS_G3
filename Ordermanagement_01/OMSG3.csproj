@@ -2175,6 +2175,10 @@
     <Compile Include="Opp\Opp_Master\Sub_Product_Type_View.Designer.cs">
       <DependentUpon>Sub_Product_Type_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Rep_Test.cs" />
+    <Compile Include="Opp\Rep_Test.Designer.cs">
+      <DependentUpon>Rep_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order_Check_List.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4132,6 +4136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Sub_Product_Type_View.resx">
       <DependentUpon>Sub_Product_Type_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Rep_Test.resx">
+      <DependentUpon>Rep_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order_Check_List.resx">
       <DependentUpon>Order_Check_List.cs</DependentUpon>
