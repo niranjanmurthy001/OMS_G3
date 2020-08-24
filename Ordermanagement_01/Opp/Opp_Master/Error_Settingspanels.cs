@@ -20,7 +20,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
     public partial class Error_Settingspanels : DevExpress.XtraEditors.XtraForm
     {
         int ProjectValue;
-        int Productvalue, User_Id, Error_Type_Id;
+        int Productvalue, User_Id=1, Error_Type_Id;
         string ErrorTypeTxt;
         int InsertedByvalue;
         DateTime InsertedDatevalue;
@@ -119,7 +119,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     //InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type is Submitted Sucessfully","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Error Tab is Submitted Sucessfully","Submit Record",MessageBoxButtons.OK);
                                     // Bind_Error_Tab_Grid();
                                     clear();
                                     Error_Type_Id = 0;
@@ -149,12 +149,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
 
                         DataTable dtupdate = new DataTable();
-                        dtupdate.Columns.AddRange(new DataColumn[7]
+                        dtupdate.Columns.AddRange(new DataColumn[]
                         {
                     new DataColumn("Project_Type_Id",typeof(int)),
                      new DataColumn("Product_Type_Id",typeof(int)),
                      new DataColumn("Error_Type",typeof(string)),
-                     new DataColumn("Inserted_By",typeof(int)),
+                   
                      new DataColumn("Status",typeof(bool)),
                      new DataColumn("Modified_By",typeof(int)),
 
@@ -168,7 +168,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                             int projecttype = ProjectValue;
 
-                            dtupdate.Rows.Add(ProjectValue, Productval, ErrorTypeTxt, InsertedByvalue, "True", User_Id, DateTime.Now);
+                            dtupdate.Rows.Add(ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                         using (var httpclient = new HttpClient())
@@ -181,11 +181,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("ErrorTab Updated Successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("ErrorTab Updated Successfully","Update Record",MessageBoxButtons.OK);
                                     //Bind_Error_Tab_Grid();
                                     clear();
                                     this.Mainform.BindErrorDetails();
                                     this.Mainform.Bind_Error_Tab_Grid();
+                                    this.Close();
+                                    this.Mainform.Enabled = true;
                                     // btnSubmit.Text = "Submit";
                                 }
                             }
@@ -366,6 +368,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+        private void Error_Settingspanels_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
+
         public async void BindProjectType()
         {
             try
@@ -487,13 +494,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
 
-                            if (dt != null && dt.Rows.Count > 0 && Operation_Type == "Error Type"  && Operation_Type=="Error Tab") 
+                            if (dt != null && dt.Rows.Count > 0 && Operation_Type == "Error Type"  ) 
                             {
                                 chkProductType.DataSource = dt;
                                 chkProductType.DisplayMember = "Product_Type";
                                 chkProductType.ValueMember = "ProductType_Id";
                             }
-                            else if(dt != null && dt.Rows.Count > 0 )
+                            else if(dt != null && dt.Rows.Count > 0 && Operation_Type == "Error Tab")
                             {
                                 chkProductType.DataSource = dt;
                                 chkProductType.DisplayMember = "Product_Type";

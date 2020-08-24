@@ -459,7 +459,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 else
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Please Select Client To Delete", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    XtraMessageBox.Show("Please Select Record To Delete", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     btn_delete_multiple.Visible = false;
                                 }
                             }
@@ -714,7 +714,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 _btnname = "Edit";
                 OperationType = "Error Tab";
 
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _Projectid, checkederror, errortext, _btnname, this);
+
+               Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this);
+                this.Enabled = false;
                 _etab.Show();
                 //chkProductType.SelectedValue = ProductChk;
                 //int _task = chkProductType.SelectedIndex;
@@ -729,7 +731,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                     try
                     {
-                        System.Data.DataRow row = gridView3.GetDataRow(gridView1.FocusedRowHandle);
+                        System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
                         int ID = int.Parse(row["Error_Type_Id"].ToString());
                         var dictionarydelete = new Dictionary<string, object>();
                         {

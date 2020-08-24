@@ -221,6 +221,7 @@
             this.Name = "Error_Settingspanels";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Error_Settingspanels_FormClosing);
             this.Load += new System.EventHandler(this.Error_Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtErrorTab.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkProductType)).EndInit();
