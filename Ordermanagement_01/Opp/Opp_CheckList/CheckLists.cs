@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Columns;
 using System.Linq;
 using DevExpress.XtraEditors.Repository;
 
+
 namespace Ordermanagement_01.Opp.Opp_CheckList
 {
     public partial class CheckLists : DevExpress.XtraEditors.XtraForm
@@ -25,18 +26,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         DataTable dt_tabName;
         int UserId, ProjectType_Id, OrderTypeAbs_Id, OrderId, ClientId, SubClientId, OrderTask, WorkType_Id;
         int tabid, count;
-        DataTable dt1, dt_All1, dt_VIEW1, dt_Check;
+        DataTable dt1, dt_Check;
         int index = 0;
         string Comments;
         int Ref_Checklist_Master_Type_Id, Checklist_Id, Check_List_Tran_ID;
         string Question;
-        private Color colour;
-        int visit = 0;
-        int next, current, previous = 0;
-        RepositoryItemCheckEdit ritem;
+//        ReportDocument rptDoc = new ReportDocument();
+//        ReportDocument subRepDoc = new ReportDocument();
 
         private bool IsButton { get; set; }
-
 
         public CheckLists(int User_Id, int Project_Type_Id, int Product_Type_Id, int Order_Id, int Client_Id, int SubClient_Id, int Order_Task, int Work_Type_Id)
         {
@@ -59,11 +57,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             btn_Save.Visible = false;
             btn_Next.Visible = true;
             BindTabs();
-            visit = 0;
+           
             labelControl2.Text = Convert.ToString(OrderId);
 
         }
-
+      
         private async void BindTabs()
         {
             try
@@ -122,6 +120,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     }
                                 }
                             }
+                            tabPane1.AddPage("Report", "_Report");
                             if (tabPane1.Pages.Count > 0)
                             {
 
@@ -159,9 +158,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //            GetTabId(tabname); 
             //    }
         }
-
-
-
 
         private bool CheckNo(GridView view, int row)
         {
@@ -263,61 +259,45 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //}
         }
 
-        private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
+        private void tabPane1_Click(object sender, EventArgs e)
         {
-
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
 
         }
 
+        private void Load_Report()
+        {
+            //StiReport report = new StiReport();
+            //report.Reset();
+            //report.Dictionary.DataSources.Clear();
+            //report.Load("Checklist_Report.mrt");
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = OrderId;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = OrderTask;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@ProductType_Abs_Id"].Value = OrderTypeAbs_Id;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = WorkType_Id;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = ProjectType_Id;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Client_Id"].Value = ClientId;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@Sub_Client_Id"].Value = SubClientId;
+            //report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = UserId;
+            //report.Compile();
+            //report.Render();
+            //StiWebViewer2.Report = report;
+            //StiWebViewer2.DataBind();
+
+        }
+        private void tabPane1_SelectedPageIndexChanged(object sender, EventArgs e)
+        {
+            if (tabPane1.SelectedPage.Name == "Report") //your specific tabname
+            {
+                Load_Report();
+            }
+        }
+
+     
         private void gridView1_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
-
-        private void repositoryItemCheckEdit2_EditValueChanged_1(object sender, EventArgs e)
-        {
-
-
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
-
-        }
-
-        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            //if (e.Column.FieldName == "Yes")
-            //{
-
-            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
-            //    gridView1.SetRowCellValue(e.RowHandle, "No", false);
-            //    gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
-
-
-            //}
-            //else if (e.Column.FieldName == "No")
-            //{
-            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
-            //    gridView1.SetRowCellValue(e.RowHandle, "No", true);
-
-            //}
-
-
-
-        }
-
-
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
         {
             if (IsButton) e.Cancel = false;
@@ -493,7 +473,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt_VIEW = JsonConvert.DeserializeObject<DataTable>(result);
-                            dt_VIEW1 = dt_VIEW.Copy();
+                            //dt_VIEW1 = dt_VIEW.Copy();
                             if (dt_VIEW != null && dt_VIEW.Rows.Count > 0)
                             {
                                 grd_CheckList.Visible = true;
@@ -519,8 +499,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-
-
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
@@ -677,7 +655,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SaveTabData();
                 if (Validate() == true)
                 {
-                    XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    XtraMessageBox.Show("CheckList Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                     this.Close();
 
                 }

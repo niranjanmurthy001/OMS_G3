@@ -39,16 +39,16 @@ namespace Ordermanagement_01
             //Application.Run(new Opp.Opp_Efficiency.Efficiency_View(1));
             // Application.Run(new Opp.Opp_Master.Sub_Product_Type_View(3));
             // Application.Run(new Opp.Opp_Master.Order_SourceType_View(3));
-            //Application.Run(new Opp.Opp_Master.Error_Settings());
+            Application.Run(new Opp.Opp_Master.Error_Settings());
             // Application.Run(new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(1));
             //Application.Run(new Opp.Opp_Master.ProjectType_Notification_Settings_View(1));
             //Application.Run(new Opp.Opp_Master.Project_Wise_Notification_View(1,1));
             // Application.Run(new New_Dashboard.Employee.General_Notification(2, 1));
             //  Application.Run(new Opp.Opp_Efficiency.Client_TAT_View(3,"2"));
       //Application.Run(new Opp.Opp_CheckList.CheckLists(1,1,2,200226,2,39,2,1));
-           //Application.Run(new Opp.Opp_CheckList.CheckLists(1,1,8,200226,2,39,2,1));
-            //Application.Run(new Opp.Opp_CheckList.CheckList_Master_View());
-           Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
+          // Application.Run(new Opp.Opp_CheckList.CheckLists(1,1,1,200226,4,24,3,1));
+           // Application.Run(new Opp.Opp_CheckList.CheckList_Master_View());
+         //  Application.Run(new Opp.Opp_CheckList.Checklist_Settings_View());
         }
 
     }
