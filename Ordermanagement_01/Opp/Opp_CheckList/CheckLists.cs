@@ -17,6 +17,7 @@ using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraGrid.Columns;
 using System.Linq;
 using DevExpress.XtraEditors.Repository;
+using Stimulsoft.Report;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
 {
@@ -61,6 +62,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             BindTabs();
             visit = 0;
             labelControl2.Text = Convert.ToString(OrderId);
+            stiViewerControl1.Visible = false;
 
         }
 
@@ -137,6 +139,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 btn_Save.Visible = true;
 
                             }
+                            tabPane1.AddPage("Report Preview", "Report Preview");
                         }
                     }
                 }
@@ -261,6 +264,36 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //        }
             //    }
             //}
+        }
+
+        private void Load_Report()
+        {
+            StiReport Report = new StiReport();
+            Report.Reset();
+            Report.Dictionary.DataSources.Clear();
+            Report.Load(@"C: \Users\SJeevan\Desktop\OMS_G3\Checklist_Report_Preview.mrt");
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@ProductType_Abs_Id"].Value = Convert.ToString(OrderTypeAbs_Id);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = Convert.ToString(ProjectType_Id);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Client_Id"].Value = Convert.ToString(ClientId);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@Sub_Client_Id"].Value = Convert.ToString(SubClientId);
+            Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
+            Report.Compile();
+            Report.Render();
+            //  Report.Show(true);
+            stiViewerControl1.Dock = DockStyle.Fill;
+            stiViewerControl1.Report = Report;
+        }
+
+        private void tabPane1_SelectedPageIndexChanged_1(object sender, EventArgs e)
+        {
+            if(tabPane1.SelectedPage.Caption=="Report Preview")
+            {
+               stiViewerControl1.Visible = true;
+                Load_Report();
+            }
         }
 
         private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
@@ -520,7 +553,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-
         private void gridView1_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
             DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
@@ -650,6 +682,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
+            stiViewerControl1.Visible = false;
             SavePreviousData();
             IsButton = true;
             btn_Next.Visible = true;
