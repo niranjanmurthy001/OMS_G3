@@ -883,9 +883,39 @@ namespace Ordermanagement_01.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap error_ {
+            get {
+                object obj = ResourceManager.GetObject("error_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Error_icon {
+            get {
+                object obj = ResourceManager.GetObject("Error_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap error_Settings_24 {
             get {
                 object obj = ResourceManager.GetObject("error_Settings_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Errorico {
+            get {
+                object obj = ResourceManager.GetObject("Errorico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
