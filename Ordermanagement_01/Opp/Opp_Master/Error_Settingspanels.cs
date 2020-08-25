@@ -151,7 +151,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         DataTable dtupdate = new DataTable();
                         dtupdate.Columns.AddRange(new DataColumn[]
                         {
-                    new DataColumn("Project_Type_Id",typeof(int)),
+                     new DataColumn("Error_Type_Id",typeof(int)),
+                     new DataColumn("Project_Type_Id",typeof(int)),
                      new DataColumn("Product_Type_Id",typeof(int)),
                      new DataColumn("Error_Type",typeof(string)),
                    
@@ -168,7 +169,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                             int projecttype = ProjectValue;
 
-                            dtupdate.Rows.Add(ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
+                            dtupdate.Rows.Add(12,ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                         using (var httpclient = new HttpClient())
@@ -181,7 +182,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("ErrorTab Updated Successfully","Update Record",MessageBoxButtons.OK);
+                                    XtraMessageBox.Show("Updated Successfully","Success",MessageBoxButtons.OK);
                                     //Bind_Error_Tab_Grid();
                                     clear();
                                     this.Mainform.BindErrorDetails();

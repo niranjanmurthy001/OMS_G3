@@ -1,23 +1,19 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraSplashScreen;
+using Newtonsoft.Json;
+using Ordermanagement_01.Masters;
+using Ordermanagement_01.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DevExpress.XtraSplashScreen;
-using Ordermanagement_01.Masters;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Net;
-using Ordermanagement_01.Models;
-using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
-using ClosedXML.Excel;
-using System.Diagnostics;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Windows.Forms;
 
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -32,7 +28,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string errortext;
         int checkederror;
         Classes.Load_Progres form_loader = new Classes.Load_Progres();
-    
+
         public Error_Settings()
         {
             InitializeComponent();
@@ -94,7 +90,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Type";
                 string Boxname = "Error Type";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname,this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this);
                 ErrorTypes.Show();
 
             }
@@ -103,13 +99,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
                 string _boxname = "Error Tab";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname,this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this);
                 ErrorTypes.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror,this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
                 ErrorField.Show();
             }
         }
@@ -322,11 +318,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 _btnname = "Update";
                 OperationType = "";
                 //_Projectid = Convert.ToInt32(index.ItemArray[7]);
-                
+
                 //_productid = Convert.ToInt32(index.ItemArray[8]);
                 //errortext = index.ItemArray[0].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[3]);
-                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror,this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
                 _Efield.Show();
 
             }
@@ -340,24 +336,24 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void repositoryItemHyperLinkEdit9_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private async void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
         {
-                   
+
         }
 
         private async void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
-        {        
-          
-           
+        {
+
+
         }
 
         private void repositoryItemHyperLinkEdit7_Click(object sender, EventArgs e)
         {
 
-     
+
         }
 
 
@@ -382,7 +378,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
 
         private async void btn_delete_multiple_Click(object sender, EventArgs e)
-        { 
+        {
             DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (show == DialogResult.Yes)
             {
@@ -511,9 +507,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         BindErrorGrid();
                         btn_delete_multiple.Visible = false;
                     }
-                }                 
-                
-                
+                }
+
+
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
@@ -526,7 +522,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             else if (show == DialogResult.No)
             {
-               
+
             }
 
 
@@ -534,11 +530,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void gridView3_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-           if(gridView3.SelectedRowsCount !=0 && Tile_Item_ErrorTab.Checked==true)
+            if (gridView3.SelectedRowsCount != 0 && Tile_Item_ErrorTab.Checked == true)
             {
                 btn_delete_multiple.Visible = true;
             }
-           else
+            else
             {
                 btn_delete_multiple.Visible = false;
             }
@@ -546,7 +542,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-            if(gridView1.SelectedRowsCount !=0 && Tile_Item_ErrorType.Checked==true)
+            if (gridView1.SelectedRowsCount != 0 && Tile_Item_ErrorType.Checked == true)
             {
                 btn_delete_multiple.Visible = true;
             }
@@ -558,7 +554,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void gridView5_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
-            if(gridView5.SelectedRowsCount !=0 && Tile_Item_ErrorField.Checked==true)
+            if (gridView5.SelectedRowsCount != 0 && Tile_Item_ErrorField.Checked == true)
             {
                 btn_delete_multiple.Visible = true;
             }
@@ -615,19 +611,19 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (Tile_Item_ErrorType.Checked == true)
             {
                 OperationType = "Error Type";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
                 Import.Show();
             }
             else if (Tile_Item_ErrorTab.Checked == true)
             {
                 OperationType = "Error Tab";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
                 Import.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType,this);
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
                 Import.Show();
             }
 
@@ -635,7 +631,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            if(e.Column.Caption=="Delete")
+            if (e.Column.Caption == "Delete")
             {
                 DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (show == DialogResult.Yes)
@@ -681,7 +677,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
                 }
             }
-            else if(e.Column.Caption=="View")
+            else if (e.Column.Caption == "View")
             {
                 System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
                 _Projectid = int.Parse(row["Project_Type_Id"].ToString());
@@ -700,7 +696,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void gridView3_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-          if(e.Column.Caption=="View")
+            if (e.Column.Caption == "View")
             {
                 System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
                 int _projectId = int.Parse(row["Project_Type_Id"].ToString());
@@ -715,14 +711,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
 
 
-               Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this);
                 this.Enabled = false;
                 _etab.Show();
                 //chkProductType.SelectedValue = ProductChk;
                 //int _task = chkProductType.SelectedIndex;
                 //chkProductType.SetItemChecked(_task, true);
             }
-            else if(e.Column.Caption=="Delete")
+            else if (e.Column.Caption == "Delete")
             {
                 DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (show == DialogResult.Yes)
