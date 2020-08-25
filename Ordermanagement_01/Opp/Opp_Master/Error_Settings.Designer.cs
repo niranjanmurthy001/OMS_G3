@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemFrame tileItemFrame1 = new DevExpress.XtraEditors.TileItemFrame();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
@@ -109,7 +110,7 @@
             this.repositoryItemButtonEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -781,7 +782,7 @@
             this.gridColumn27,
             this.gridColumn28});
             this.gridView1.GridControl = this.grd_Error_Type;
-            this.gridView1.IndicatorWidth = 30;
+            this.gridView1.IndicatorWidth = 50;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsFind.AlwaysVisible = true;
             this.gridView1.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
@@ -951,7 +952,7 @@
             this.gridColumn15,
             this.gridColumn16});
             this.gridView3.GridControl = this.grdErrorTab;
-            this.gridView3.IndicatorWidth = 30;
+            this.gridView3.IndicatorWidth = 50;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsFind.AlwaysVisible = true;
             this.gridView3.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
@@ -1152,7 +1153,7 @@
             this.gridColumn19,
             this.gridColumn20});
             this.gridView5.GridControl = this.Grd_ErrorDes;
-            this.gridView5.IndicatorWidth = 30;
+            this.gridView5.IndicatorWidth = 50;
             this.gridView5.Name = "gridView5";
             this.gridView5.OptionsFind.AlwaysVisible = true;
             this.gridView5.OptionsSelection.CheckBoxSelectorColumnWidth = 30;

@@ -121,7 +121,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     //InsertedDatevalue = Convert.ToDateTime(dt.Rows[0]["Instered_Date"]);
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Tab is Submitted Sucessfully","Submit Record",MessageBoxButtons.OK);
+                                    XtraMessageBox.Show("Submitted Successfully","Success",MessageBoxButtons.OK);
                                     // Bind_Error_Tab_Grid();
                                     clear();
                                     Error_Type_Id = 0;
@@ -221,7 +221,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         DataTable dtproducttype = new DataTable();
                         dtproducttype.Columns.AddRange(new DataColumn[6]
                           {
-
+                       
                         new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Product_Type_Id",typeof(int)),
                         new DataColumn("New_Error_Type",typeof(string)),
@@ -252,11 +252,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type is Submited","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Submitted Successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
                                     //BindErrorDetails();
                                     clear();
                                     this.Mainform.BindErrorDetails();
-                                    //this.Mainform.Bind_Error_Tab_Grid();
+                                    this.Mainform.Enabled = true;
                                     this.Close();
                                 }
                             }
@@ -284,9 +284,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int _Product_Id = Convert.ToInt32(r1["ProductType_Id"]);
 
                         DataTable dt_error_update = new DataTable();
-                        dt_error_update.Columns.AddRange(new DataColumn[6]
-                          {
-                         new DataColumn("Project_Type_Id",typeof(int)),
+                        dt_error_update.Columns.AddRange(new DataColumn[7]
+                          {                        
+                          new DataColumn("New_Error_Type_Id",typeof(int)),
+                          new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Product_Type_Id",typeof(int)),
                         new DataColumn("New_Error_Type",typeof(string)),
                         new DataColumn("Status",typeof(int)),
@@ -303,12 +304,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             DateTime _Insertdate = DateTime.Now;
                            string _Errortype = txtErrorTab.Text;
                             int _ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
-                            dt_error_update.Rows.Add(_ProjectId, productid, _Errortype, _Statsu, User_Id, _Insertdate);
+                            dt_error_update.Rows.Add(ErrorTYpeId,_ProjectId, productid, _Errortype, _Statsu, User_Id, _Insertdate);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dt_error_update), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/UpdateErrorType", data);
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/UpdateErrorType", data);
                             if (response.IsSuccessStatusCode)
                             {
                                 if (response.StatusCode == HttpStatusCode.OK)
@@ -316,12 +317,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     var result = await response.Content.ReadAsStringAsync();
 
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Error Type Updated successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Updated successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
                                     //BindErrorDetails();
                                     clear();
                                     // btnSubmit.Text = "Submit"; 
                                     this.Mainform.BindErrorDetails();
                                     this.Close();
+                                    this.Mainform.Enabled = true;
                                 }
                             }
                         }

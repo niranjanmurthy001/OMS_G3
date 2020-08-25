@@ -105,10 +105,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error details are Submitted","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Submitted Successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                                 // BindErrorGrid();
                                 btn_Clear_Click(sender, e);
                                 this.Mainform.BindErrorGrid();
+                                this.Close();
+                                this.Mainform.Enabled = true;
                             }
                         }
                     }
@@ -123,7 +125,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Update" && Validates() != false)
+            else if (btn_Save.Text == "Edit" && Validates() != false)
             {
                 try
                 {
@@ -165,11 +167,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Error is Updated","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Updated Successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
                                 // BindErrorGrid();
                                 btn_Clear_Click(sender, e);
                                 this.Mainform.BindErrorGrid();
-
+                                this.Close();
+                                this.Mainform.Enabled = true; 
                             }
                         }
                     }
@@ -441,6 +444,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-       
+        private void Error_Field_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
     }
 }

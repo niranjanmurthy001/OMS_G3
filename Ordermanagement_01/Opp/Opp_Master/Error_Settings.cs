@@ -91,7 +91,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Type";
                 string Boxname = "Error Type";
                 _btnname = "Submit";
+                _Projectid = 0;
+                _productid = 0;
+                errortext = null;
+                Errortypeid = 0;
                 Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
+                this.Enabled = false;
                 ErrorTypes.Show();
 
             }
@@ -100,13 +105,18 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
                 string _boxname = "Error Tab";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
-                ErrorTypes.Show();
+                _Projectid = 0;
+                _productid = 0;
+                errortext = null;
+                Errortypeid = 0;
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorType = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
+                ErrorType.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
                 Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
+                this.Enabled = false;
                 ErrorField.Show();
             }
         }
@@ -316,7 +326,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //GridView view = Grd_ErrorDes.MainView as GridView;
                 //var index = view.GetDataRow(view.GetSelectedRows()[0]);
                 ////e.Column.ColumnEdit.NullText = "Edit";
-                _btnname = "Update";
+                _btnname = "Edit";
                 OperationType = "";
                 //_Projectid = Convert.ToInt32(index.ItemArray[7]);
 
@@ -324,6 +334,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //errortext = index.ItemArray[0].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[3]);
                 Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
+                this.Enabled = false;
                 _Efield.Show();
 
             }
@@ -464,6 +475,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         SplashScreenManager.CloseForm(false);
                         XtraMessageBox.Show("Record Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.None);
                         Bind_Error_Tab_Grid();
+                        btn_delete_multiple.Visible = false;
                     }
                     else if (Tile_Item_ErrorField.Checked == true)
                     {
@@ -692,6 +704,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //checkederror = Convert.ToInt32(index.ItemArray[2]);
                 Errortypeid = int.Parse(row["New_Error_Type_Id"].ToString());
                 Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this, Errortypeid);
+                this.Enabled = false;
                 _Espanels.Show();
             }
         }
