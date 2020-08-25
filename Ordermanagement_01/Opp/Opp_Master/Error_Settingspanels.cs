@@ -31,9 +31,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int _Projectid;
         int _productid;
         string errortext;
+        int ErrorTYpeId;
         private Error_Settings Mainform = null;
 
-        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name,Form Callingform)
+        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name,Form Callingform,int Error_type_Id)
         {
             InitializeComponent();
             Operation_Type = _OperationType;
@@ -44,10 +45,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
             _btnname = _btn_name;
             txtErrorTab.Text = _text;
             Mainform=Callingform as Error_Settings;
+            ErrorTYpeId = Error_type_Id;
 
 
 
-    }
+        }
 
         private void Error_Settings_Load(object sender, EventArgs e)
         {
@@ -169,7 +171,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                             int projecttype = ProjectValue;
 
-                            dtupdate.Rows.Add(12,ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
+                            dtupdate.Rows.Add(ErrorTYpeId, ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                         using (var httpclient = new HttpClient())
@@ -185,7 +187,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     XtraMessageBox.Show("Updated Successfully","Success",MessageBoxButtons.OK);
                                     //Bind_Error_Tab_Grid();
                                     clear();
-                                    this.Mainform.BindErrorDetails();
+                                   // this.Mainform.BindErrorDetails();
                                     this.Mainform.Bind_Error_Tab_Grid();
                                     this.Close();
                                     this.Mainform.Enabled = true;
@@ -253,6 +255,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     XtraMessageBox.Show("Error Type is Submited","Submit Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     //BindErrorDetails();
                                     clear();
+                                    this.Mainform.BindErrorDetails();
+                                    //this.Mainform.Bind_Error_Tab_Grid();
+                                    this.Close();
                                 }
                             }
                         }
@@ -314,7 +319,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     XtraMessageBox.Show("Error Type Updated successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                     //BindErrorDetails();
                                     clear();
-                                   // btnSubmit.Text = "Submit";
+                                    // btnSubmit.Text = "Submit"; 
+                                    this.Mainform.BindErrorDetails();
+                                    this.Close();
                                 }
                             }
                         }
@@ -500,6 +507,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 chkProductType.DataSource = dt;
                                 chkProductType.DisplayMember = "Product_Type";
                                 chkProductType.ValueMember = "ProductType_Id";
+                                chkProductType.SelectedValue = _productid;
+                                int _erroe = chkProductType.SelectedIndex;
+                                chkProductType.SetItemChecked(_erroe, true);
                             }
                             else if(dt != null && dt.Rows.Count > 0 && Operation_Type == "Error Tab")
                             {

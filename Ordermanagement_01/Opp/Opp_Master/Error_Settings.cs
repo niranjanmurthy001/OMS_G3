@@ -27,6 +27,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int _productid;
         string errortext;
         int checkederror;
+        int Errortypeid;
         Classes.Load_Progres form_loader = new Classes.Load_Progres();
 
         public Error_Settings()
@@ -90,7 +91,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Type";
                 string Boxname = "Error Type";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
                 ErrorTypes.Show();
 
             }
@@ -99,7 +100,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
                 string _boxname = "Error Tab";
                 _btnname = "Submit";
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
                 ErrorTypes.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
@@ -689,7 +690,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //_Projectid = Convert.ToInt32(index.ItemArray[1]);
                 //errortext = index.ItemArray[3].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[2]);
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this);
+                Errortypeid = int.Parse(row["New_Error_Type_Id"].ToString());
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this, Errortypeid);
                 _Espanels.Show();
             }
         }
@@ -707,11 +709,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //checkederror = Convert.ToInt32(index.ItemArray[5]);
                 errortext = row["Error_Type"].ToString();
                 checkederror = int.Parse(row["Product_Type_Id"].ToString());
+                 Errortypeid = int.Parse(row["Error_Type_Id"].ToString());
                 _btnname = "Edit";
                 OperationType = "Error Tab";
 
 
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this, Errortypeid);
                 this.Enabled = false;
                 _etab.Show();
                 //chkProductType.SelectedValue = ProductChk;
