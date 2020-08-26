@@ -108,7 +108,7 @@
             // 
             // txt_Priority
             // 
-            this.txt_Priority.Location = new System.Drawing.Point(196, 57);
+            this.txt_Priority.Location = new System.Drawing.Point(182, 57);
             this.txt_Priority.Name = "txt_Priority";
             this.txt_Priority.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Priority.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -123,7 +123,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(92, 58);
+            this.labelControl2.Location = new System.Drawing.Point(109, 58);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 17);
             this.labelControl2.TabIndex = 1;
@@ -135,7 +135,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(92, 18);
+            this.labelControl1.Location = new System.Drawing.Point(78, 18);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -204,8 +204,10 @@
             this.gridColumn5,
             this.gridColumn6});
             this.gridView1.GridControl = this.grd_Priority;
+            this.gridView1.IndicatorWidth = 30;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
             // 
             // gridColumn1
             // 
@@ -309,7 +311,7 @@
             // 
             // ddl_ProjectType
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(196, 16);
+            this.ddl_ProjectType.Location = new System.Drawing.Point(182, 16);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
             this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));

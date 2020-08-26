@@ -138,6 +138,7 @@ namespace Ordermanagement_01.Masters
                                 BindCategorySalaryBracket();
                                 XtraMessageBox.Show("Updated Successfully");
                                 btn_Clear_Click(sender, e);
+                                ddl_ProjectType.Enabled = true;
                             }
                         }
                     }
@@ -176,6 +177,7 @@ namespace Ordermanagement_01.Masters
             ddl_ProjectType.ItemIndex = 0;
             txt_Priority.Text = "";
             btn_Submit.Text = "Submit";
+            ddl_ProjectType.Enabled = true;
         }
 
         public async void BindCategorySalaryBracket()
@@ -223,6 +225,12 @@ namespace Ordermanagement_01.Masters
                 SplashScreenManager.CloseForm(false);
 
             }
+        }
+
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
 
         private async void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -280,6 +288,7 @@ namespace Ordermanagement_01.Masters
                 //ddl_ProjectType.EditValue = index.ItemArray[2] ;
                 txt_Priority.Text = priority;
                 priority_Id =int.Parse(rows["Priority_Id"].ToString());
+                ddl_ProjectType.Enabled = false; 
 
 
             }
