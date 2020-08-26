@@ -115,7 +115,7 @@
             this.txt_Priority.Properties.Appearance.Options.UseFont = true;
             this.txt_Priority.Properties.Appearance.Options.UseForeColor = true;
             this.txt_Priority.Size = new System.Drawing.Size(218, 22);
-            this.txt_Priority.TabIndex = 3;
+            this.txt_Priority.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -162,7 +162,7 @@
             this.btn_Clear.Location = new System.Drawing.Point(423, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(75, 27);
-            this.btn_Clear.TabIndex = 0;
+            this.btn_Clear.TabIndex = 4;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
@@ -176,7 +176,7 @@
             this.btn_Submit.Location = new System.Drawing.Point(342, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(75, 27);
-            this.btn_Submit.TabIndex = 1;
+            this.btn_Submit.TabIndex = 3;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
@@ -321,7 +321,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
             this.ddl_ProjectType.Size = new System.Drawing.Size(218, 22);
-            this.ddl_ProjectType.TabIndex = 4;
+            this.ddl_ProjectType.TabIndex = 1;
             // 
             // Order_Priority
             // 
