@@ -1676,6 +1676,12 @@
     <Compile Include="Masters\Order_Document_List.designer.cs">
       <DependentUpon>Order_Document_List.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Order_Priority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Order_Priority.Designer.cs">
+      <DependentUpon>Order_Priority.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Task_Confirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3917,6 +3923,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Order_Document_List.resx">
       <DependentUpon>Order_Document_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Order_Priority.resx">
+      <DependentUpon>Order_Priority.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Masters\Task_Confirmation.resx">
       <DependentUpon>Task_Confirmation.cs</DependentUpon>
