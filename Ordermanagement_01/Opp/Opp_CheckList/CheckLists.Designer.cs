@@ -36,6 +36,7 @@
             this.btn_Next = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
+            this.stiViewerControl1 = new Stimulsoft.Report.Viewer.StiViewerControl();
             this.grd_CheckList = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,7 +51,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.label1 = new System.Windows.Forms.Label();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.stiViewerControl1 = new Stimulsoft.Report.Viewer.StiViewerControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -119,6 +119,7 @@
             this.btn_Save.Size = new System.Drawing.Size(84, 42);
             this.btn_Save.TabIndex = 10;
             this.btn_Save.Text = "Finish";
+            this.btn_Save.ToolTip = "Finish";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click_1);
             // 
             // btn_Next
@@ -132,7 +133,8 @@
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(84, 42);
             this.btn_Next.TabIndex = 0;
-            this.btn_Next.Text = "Next";
+            this.btn_Next.Text = "Next >";
+            this.btn_Next.ToolTip = "Next";
             this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click_1);
             // 
             // btn_Previous
@@ -146,7 +148,8 @@
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(84, 42);
             this.btn_Previous.TabIndex = 9;
-            this.btn_Previous.Text = "Previous";
+            this.btn_Previous.Text = "< Previous";
+            this.btn_Previous.ToolTip = "Previous";
             this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click_1);
             // 
             // tabPane1
@@ -164,6 +167,17 @@
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
             this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
             this.tabPane1.SelectedPageIndexChanged += new System.EventHandler(this.tabPane1_SelectedPageIndexChanged_1);
+            // 
+            // stiViewerControl1
+            // 
+            this.stiViewerControl1.AllowDrop = true;
+            this.stiViewerControl1.Location = new System.Drawing.Point(41, 153);
+            this.stiViewerControl1.Name = "stiViewerControl1";
+            this.stiViewerControl1.Report = null;
+            this.stiViewerControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.stiViewerControl1.ShowZoom = true;
+            this.stiViewerControl1.Size = new System.Drawing.Size(78, 105);
+            this.stiViewerControl1.TabIndex = 1;
             // 
             // grd_CheckList
             // 
@@ -302,17 +316,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
-            // stiViewerControl1
-            // 
-            this.stiViewerControl1.AllowDrop = true;
-            this.stiViewerControl1.Location = new System.Drawing.Point(41, 153);
-            this.stiViewerControl1.Name = "stiViewerControl1";
-            this.stiViewerControl1.Report = null;
-            this.stiViewerControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.stiViewerControl1.ShowZoom = true;
-            this.stiViewerControl1.Size = new System.Drawing.Size(466, 176);
-            this.stiViewerControl1.TabIndex = 1;
             // 
             // CheckLists
             // 

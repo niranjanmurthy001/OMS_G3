@@ -164,13 +164,13 @@ namespace Ordermanagement_01.Masters
                 ddl_ProjectType.Focus();
                 return false;
             }
-            if(txt_Priority.Text=="")
+            if(string.IsNullOrWhiteSpace(txt_Priority.Text))
             {
                 XtraMessageBox.Show("Please Enter Priority", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Priority.Focus();
                 return false;
-            }
-            return true;
+            }          
+                return true;
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
@@ -325,7 +325,7 @@ namespace Ordermanagement_01.Masters
                                 if (_projectid == pro && priorty == prio)
                                 {
                                     SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Project_Type and Priority Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    XtraMessageBox.Show("Project_Type and Priority Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     return false;
                                 }
 

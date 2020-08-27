@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.txt_Priority = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -46,21 +48,20 @@
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Priority.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Priority)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -73,7 +74,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(511, 379);
+            this.groupControl1.Size = new System.Drawing.Size(524, 424);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Order Priority";
             // 
@@ -88,10 +89,10 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(507, 356);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 401);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -103,12 +104,26 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(501, 100);
+            this.panelControl1.Size = new System.Drawing.Size(514, 100);
             this.panelControl1.TabIndex = 0;
+            // 
+            // ddl_ProjectType
+            // 
+            this.ddl_ProjectType.Location = new System.Drawing.Point(166, 16);
+            this.ddl_ProjectType.Name = "ddl_ProjectType";
+            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
+            this.ddl_ProjectType.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_ProjectType.Properties.NullText = "Select";
+            this.ddl_ProjectType.Size = new System.Drawing.Size(218, 22);
+            this.ddl_ProjectType.TabIndex = 1;
             // 
             // txt_Priority
             // 
-            this.txt_Priority.Location = new System.Drawing.Point(182, 57);
+            this.txt_Priority.Location = new System.Drawing.Point(166, 57);
             this.txt_Priority.Name = "txt_Priority";
             this.txt_Priority.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Priority.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -149,7 +164,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 109);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(501, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(514, 33);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -159,11 +174,12 @@
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Clear.Location = new System.Drawing.Point(423, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(427, 3);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 27);
+            this.btn_Clear.Size = new System.Drawing.Size(84, 30);
             this.btn_Clear.TabIndex = 4;
             this.btn_Clear.Text = "Clear";
+            this.btn_Clear.ToolTip = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Submit
@@ -173,11 +189,12 @@
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
             this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Submit.Location = new System.Drawing.Point(342, 3);
+            this.btn_Submit.Location = new System.Drawing.Point(337, 3);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(75, 27);
+            this.btn_Submit.Size = new System.Drawing.Size(84, 30);
             this.btn_Submit.TabIndex = 3;
             this.btn_Submit.Text = "Submit";
+            this.btn_Submit.ToolTip = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // grd_Priority
@@ -189,7 +206,7 @@
             this.grd_Priority.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2});
-            this.grd_Priority.Size = new System.Drawing.Size(501, 205);
+            this.grd_Priority.Size = new System.Drawing.Size(514, 250);
             this.grd_Priority.TabIndex = 2;
             this.grd_Priority.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -225,6 +242,7 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 83;
             // 
             // gridColumn2
             // 
@@ -242,6 +260,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 100;
             // 
             // gridColumn3
             // 
@@ -266,6 +285,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 30;
             // 
             // repositoryItemHyperLinkEdit1
             // 
@@ -291,6 +311,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.Width = 30;
             // 
             // repositoryItemHyperLinkEdit2
             // 
@@ -299,38 +320,24 @@
             this.repositoryItemHyperLinkEdit2.Name = "repositoryItemHyperLinkEdit2";
             this.repositoryItemHyperLinkEdit2.NullText = "Delete";
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Project Type Id";
             this.gridColumn6.FieldName = "Project_Type_Id";
             this.gridColumn6.Name = "gridColumn6";
             // 
-            // ddl_ProjectType
+            // defaultLookAndFeel1
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(182, 16);
-            this.ddl_ProjectType.Name = "ddl_ProjectType";
-            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
-            this.ddl_ProjectType.Properties.Appearance.Options.UseForeColor = true;
-            this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(218, 22);
-            this.ddl_ProjectType.TabIndex = 1;
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // Order_Priority
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 379);
+            this.ClientSize = new System.Drawing.Size(524, 424);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(540, 720);
-            this.MinimumSize = new System.Drawing.Size(527, 417);
+            this.MaximumSize = new System.Drawing.Size(640, 800);
+            this.MinimumSize = new System.Drawing.Size(540, 450);
             this.Name = "Order_Priority";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order_Priority";
@@ -341,13 +348,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Priority.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Priority)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

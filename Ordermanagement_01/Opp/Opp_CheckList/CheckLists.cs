@@ -18,6 +18,9 @@ using DevExpress.XtraGrid.Columns;
 using System.Linq;
 using DevExpress.XtraEditors.Repository;
 using Stimulsoft.Report;
+using System.DirectoryServices;
+
+using System.IO;
 
 namespace Ordermanagement_01.Opp.Opp_CheckList
 {
@@ -31,12 +34,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         string Comments;
         int Ref_Checklist_Master_Type_Id, Checklist_Id, Check_List_Tran_ID;
         string Question;
-        private Color colour;
-        int visit = 0;
-        int next, current, previous = 0;
-        RepositoryItemCheckEdit ritem;
-
+        string File_Name, Path;
         private bool IsButton { get; set; }
+        StiReport Report = new StiReport();
 
 
         public CheckLists(int User_Id, int Project_Type_Id, int Product_Type_Id, int Order_Id, int Client_Id, int SubClient_Id, int Order_Task, int Work_Type_Id)
@@ -60,7 +60,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             btn_Save.Visible = false;
             btn_Next.Visible = true;
             BindTabs();
-            visit = 0;
+           
             labelControl2.Text = Convert.ToString(OrderId);
             stiViewerControl1.Visible = false;
 
@@ -268,32 +268,33 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Load_Report()
         {
+            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);          
             StiReport Report = new StiReport();
             Report.Reset();
             Report.Dictionary.DataSources.Clear();
-            Report.Load(@"C: \Users\SJeevan\Desktop\OMS_G3\Checklist_Report_Preview.mrt");
+            Report.Load(@"C:\bindu\DRN OMS TEST SOFT CODE 1\Checklist_Report_Preview.mrt");
+            // Report=new Reports.
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
-            Report.DataSources["Usp_CheckList_Report"].Parameters["@ProductType_Abs_Id"].Value = Convert.ToString(OrderTypeAbs_Id);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = Convert.ToString(ProjectType_Id);
-            Report.DataSources["Usp_CheckList_Report"].Parameters["@Client_Id"].Value = Convert.ToString(ClientId);
-            Report.DataSources["Usp_CheckList_Report"].Parameters["@Sub_Client_Id"].Value = Convert.ToString(SubClientId);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
             Report.Compile();
             Report.Render();
             //  Report.Show(true);
+            SplashScreenManager.CloseForm(false);
+            stiViewerControl1.Visible = true;
             stiViewerControl1.Dock = DockStyle.Fill;
             stiViewerControl1.Report = Report;
         }
 
         private void tabPane1_SelectedPageIndexChanged_1(object sender, EventArgs e)
         {
-            if(tabPane1.SelectedPage.Caption=="Report Preview")
-            {
-               stiViewerControl1.Visible = true;
-                Load_Report();
-            }
+            //if(tabPane1.SelectedPage.Caption=="Report Preview")
+            //{
+            //   stiViewerControl1.Visible = true;
+            //    Load_Report();
+            //}
         }
 
         private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
@@ -314,42 +315,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             if (e.RowHandle >= 0)
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
         }
-
-        private void repositoryItemCheckEdit2_EditValueChanged_1(object sender, EventArgs e)
-        {
-
-
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", true);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", false);
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
-
-        }
-
-        private void gridView1_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            //if (e.Column.FieldName == "Yes")
-            //{
-
-            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
-            //    gridView1.SetRowCellValue(e.RowHandle, "No", false);
-            //    gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
-
-
-            //}
-            //else if (e.Column.FieldName == "No")
-            //{
-            //    gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
-            //    gridView1.SetRowCellValue(e.RowHandle, "No", true);
-
-            //}
-
-
-
-        }
-
 
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)
         {
@@ -644,7 +609,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
                                     tabPane1.SelectedPageIndex += 1;
                                     string tabname = tabPane1.SelectedPage.Caption;
-                                    GetTabId(tabname);
+                                    if (tabname == "Report Preview")
+                                    {
+                                       
+                                        Load_Report();
+                                    }
+                                    else
+                                    {
+                                        GetTabId(tabname);
+                                    }
                                     if (tabPane1.SelectedPageIndex > 0)
                                     {
                                         btn_Previous.Visible = true;
@@ -707,16 +680,31 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             try
             {
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                SaveTabData();
-                if (Validate() == true)
-                {
-                    XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    this.Close();
+                //  SaveTabData();
+                // if (Validate() == true)
+                // {
+                // XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-                }
-
+                string outputPdfPath = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report.pdf";
+                StiReport Report = new StiReport();
+                Report.Reset();
+                Report.Dictionary.DataSources.Clear();
+                Report.Load(@"C:\bindu\DRN OMS TEST SOFT CODE 1\Checklist_Report_Preview.mrt");
+                // Report=new Reports.
+                Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
+                Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
+                Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
+                Report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = Convert.ToString(ProjectType_Id);
+                Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
+                Report.Compile();
+                Report.Render();
+                Report.ExportDocument(StiExportFormat.Pdf, outputPdfPath);
+                string Source = outputPdfPath;
+                Copy_Check_List_To_Server();
+               
+               // }
             }
-            catch
+            catch(Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -725,8 +713,76 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 SplashScreenManager.CloseForm(false);
             }
-
         }
+
+        //Copying Source File Into Destional Folder
+        private async void Copy_Check_List_To_Server()
+        {
+            //form_loader.Start_progres();
+            string Source = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report.pdf";
+            if (WorkType_Id == 1)
+            {
+                File_Name = "" + OrderId + "-" + OrderTask.ToString() + "CheckList Report" + ".pdf";
+            }
+            else if (WorkType_Id == 2)
+            {
+
+                File_Name = "" + OrderId + " - " + " REWORK " + OrderTask.ToString() + "CheckList" + ".pdf";
+            }
+            else if (WorkType_Id == 3)
+            {
+                File_Name = "" + OrderId + " - " + " SUPER QC " + OrderTask.ToString() + "CheckList" + ".pdf";
+            }
+            Path = @"\\192.168.12.33\oms\" + ClientId + @"\" + SubClientId + @"\" + OrderId + @"\" + File_Name;
+            DirectoryEntry de = new DirectoryEntry(Path, "administrator", "password1$");
+            de.Username = "administrator";
+            de.Password = "password1$";
+            Directory.CreateDirectory(@"\\192.168.12.33\oms\" + ClientId + @"\" + SubClientId + @"\" + OrderId.ToString());
+            File.Copy(Source, Path, true);
+            var dict = new Dictionary<string, object>();
+            {
+                dict.Add("@Trans", "INSERT_DOCUMENT");
+                if (WorkType_Id == 1)
+                {
+                    dict.Add("@Instuction", "" + OrderTask.ToString() + "Check List Report");
+                }
+                else if (WorkType_Id == 2)
+                {
+                    dict.Add("@Instuction", "REWORK -" + OrderTask.ToString() + "Check List Report");
+
+                }
+                else if (WorkType_Id == 2)
+                {
+                    dict.Add("@Instuction", "SUPER QC -" + OrderTask.ToString() + "Check List Report");
+
+                }
+                dict.Add("@Order_ID", OrderId);
+                dict.Add("@Document_Name", File_Name);
+                dict.Add("@Document_Path", Path);
+                dict.Add("@Inserted_By", UserId);
+                
+                dict.Add("@Project_Type_Id", ProjectType_Id);
+                dict.Add("@Work_Type", WorkType_Id);
+                
+            }
+            var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PostAsync(Base_Url.Url + "/CheckLists/InsertDocument", data);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();                        
+                    }
+                }
+            }
+            SplashScreenManager.CloseForm(false);
+            XtraMessageBox.Show("CheckList Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);           
+            System.Diagnostics.Process.Start(Path);
+            this.Close();
+        }
+     
         private bool Validate()
         {
 
