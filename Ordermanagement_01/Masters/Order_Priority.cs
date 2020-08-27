@@ -10,6 +10,7 @@ using System.Net;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ordermanagement_01.Masters
 {
@@ -84,7 +85,7 @@ namespace Ordermanagement_01.Masters
         {
             try
             {
-                if (btn_Submit.Text == "Submit" && Validation() == true )
+                if (btn_Submit.Text == "Submit" && Validation() == true &&(await MatchData()) !=false)
                 {
                     Project_Type_Id = Convert.ToInt32(ddl_ProjectType.EditValue);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
@@ -113,7 +114,7 @@ namespace Ordermanagement_01.Masters
                         }
                     }
                 }
-                else if (btn_Submit.Text == "Edit" && Validation() == true)
+                else if (btn_Submit.Text == "Edit" && Validation() == true && (await MatchData()) != false)
                 {
                     Project_Type_Id = Convert.ToInt32(ddl_ProjectType.EditValue);
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
@@ -180,7 +181,7 @@ namespace Ordermanagement_01.Masters
             ddl_ProjectType.Enabled = true;
         }
 
-        public async void BindCategorySalaryBracket()
+        private async void BindCategorySalaryBracket()
         {
             try
             {
@@ -290,6 +291,58 @@ namespace Ordermanagement_01.Masters
                 priority_Id =int.Parse(rows["Priority_Id"].ToString());
                 ddl_ProjectType.Enabled = false; 
 
+
+            }
+        }
+
+        private async Task<bool> MatchData()
+        {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","BIND_DATA_TO_GRID" }
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ProjectWiseOrder/BindDetails", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dtmatch = JsonConvert.DeserializeObject<DataTable>(result);
+                            for (int i = 0; i < dtmatch.Rows.Count; i++)
+                            {
+                                string priorty = dtmatch.Rows[i]["Order_Priority"].ToString();
+                                int _projectid = Convert.ToInt32(dtmatch.Rows[i]["Project_Type_Id"]);
+                                int pro = Convert.ToInt32(ddl_ProjectType.EditValue);
+                                string prio = txt_Priority.Text;
+                                if (_projectid == pro && priorty == prio)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Project_Type and Priority Already Exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
+                                }
+
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
 
             }
         }
