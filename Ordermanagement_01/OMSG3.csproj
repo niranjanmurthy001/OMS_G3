@@ -1987,6 +1987,26 @@
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\ColumnData.cs" />
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.Designer.cs">
+      <DependentUpon>master_Employee_Error_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.Designer.cs">
+      <DependentUpon>master_Employee_Error_Entry_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry.Designer.cs" />
+    <Compile Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry_View.Designer.cs" />
     <Compile Include="Opp\Opp_CheckList\CheckLists.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4062,6 +4082,14 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.resx">
+      <DependentUpon>master_Employee_Error_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.resx">
+      <DependentUpon>master_Employee_Error_Entry_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry.resx" />
+    <EmbeddedResource Include="Opp\Opp_Accu\error_E\Master_Employee_Error_Entry_View.resx" />
     <EmbeddedResource Include="Opp\Opp_CheckList\CheckLists.resx">
       <DependentUpon>CheckLists.cs</DependentUpon>
     </EmbeddedResource>
