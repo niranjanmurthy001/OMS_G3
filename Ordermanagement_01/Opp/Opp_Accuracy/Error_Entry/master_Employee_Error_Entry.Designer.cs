@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grp_Control = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -48,6 +49,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grp_Control)).BeginInit();
             this.grp_Control.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,6 +67,8 @@
             // 
             // grp_Control
             // 
+            this.grp_Control.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_Control.AppearanceCaption.Options.UseFont = true;
             this.grp_Control.Controls.Add(this.tableLayoutPanel1);
             this.grp_Control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grp_Control.Location = new System.Drawing.Point(0, 0);
@@ -80,12 +84,12 @@
             this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.91549F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.08451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(497, 355);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(497, 350);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -107,7 +111,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(491, 298);
+            this.panelControl1.Size = new System.Drawing.Size(491, 294);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_Comments
@@ -119,11 +123,12 @@
             this.txt_Comments.TabIndex = 13;
             this.txt_Comments.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Comments_KeyDown);
             this.txt_Comments.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_Comments_MouseClick);
+            this.txt_Comments.MouseEnter += new System.EventHandler(this.txt_Comments_MouseEnter);
             // 
             // lbl_UserName
             // 
             this.lbl_UserName.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_UserName.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lbl_UserName.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.lbl_UserName.Appearance.Options.UseFont = true;
             this.lbl_UserName.Appearance.Options.UseForeColor = true;
             this.lbl_UserName.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -280,9 +285,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(331, 307);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(331, 303);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 44);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -297,6 +302,7 @@
             this.btn_Clear.Size = new System.Drawing.Size(75, 39);
             this.btn_Clear.TabIndex = 14;
             this.btn_Clear.Text = "Clear";
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Save
             // 
@@ -312,15 +318,21 @@
             this.btn_Save.Text = "Save";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
             // master_Employee_Error_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 378);
             this.Controls.Add(this.grp_Control);
+            this.LookAndFeel.SkinName = "Office 2013";
             this.Name = "master_Employee_Error_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee_Error_Entry";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.master_Employee_Error_Entry_FormClosing);
             this.Load += new System.EventHandler(this.master_Employee_Error_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grp_Control)).EndInit();
             this.grp_Control.ResumeLayout(false);
@@ -362,5 +374,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

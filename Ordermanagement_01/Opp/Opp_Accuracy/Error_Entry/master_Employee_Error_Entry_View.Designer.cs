@@ -113,9 +113,9 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.lbl_Header, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.navigationFrame1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_Header, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -133,11 +133,11 @@
             this.lbl_Header.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lbl_Header.Appearance.Options.UseFont = true;
             this.lbl_Header.Appearance.Options.UseForeColor = true;
-            this.lbl_Header.Location = new System.Drawing.Point(406, 3);
+            this.lbl_Header.Location = new System.Drawing.Point(378, 3);
             this.lbl_Header.Name = "lbl_Header";
-            this.lbl_Header.Size = new System.Drawing.Size(133, 30);
+            this.lbl_Header.Size = new System.Drawing.Size(188, 30);
             this.lbl_Header.TabIndex = 0;
-            this.lbl_Header.Text = "labelControl1";
+            this.lbl_Header.Text = "Internal Error Entry";
             // 
             // tableLayoutPanel2
             // 
@@ -170,7 +170,7 @@
             // 
             this.rb_External_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_External_Error_Type.EditValue = "<Null>";
-            this.rb_External_Error_Type.Location = new System.Drawing.Point(487, 11);
+            this.rb_External_Error_Type.Location = new System.Drawing.Point(468, 11);
             this.rb_External_Error_Type.Name = "rb_External_Error_Type";
             this.rb_External_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_External_Error_Type.Properties.Appearance.Options.UseFont = true;
@@ -186,7 +186,7 @@
             // 
             this.rb_Internal_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_Internal_Error_Type.EditValue = "<Null>";
-            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(359, 11);
+            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(340, 11);
             this.rb_Internal_Error_Type.Name = "rb_Internal_Error_Type";
             this.rb_Internal_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_Internal_Error_Type.Properties.Appearance.Options.UseFont = true;
@@ -220,6 +220,7 @@
             this.btn_Export.Size = new System.Drawing.Size(75, 37);
             this.btn_Export.TabIndex = 3;
             this.btn_Export.Text = "Export";
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
             // btn_Add
             // 
@@ -288,6 +289,8 @@
             this.gridView_Internal_Error.GridControl = this.grdCtrl_Internal_Error;
             this.gridView_Internal_Error.IndicatorWidth = 50;
             this.gridView_Internal_Error.Name = "gridView_Internal_Error";
+            this.gridView_Internal_Error.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_Internal_Error_RowCellClick);
+            this.gridView_Internal_Error.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Internal_Error_CustomDrawRowIndicator);
             // 
             // grdIntCol_Error_Type
             // 
@@ -320,7 +323,7 @@
             this.grdIntCol_Error_Field.AppearanceHeader.Options.UseFont = true;
             this.grdIntCol_Error_Field.AppearanceHeader.Options.UseForeColor = true;
             this.grdIntCol_Error_Field.Caption = "Error Field";
-            this.grdIntCol_Error_Field.FieldName = "Error_Description";
+            this.grdIntCol_Error_Field.FieldName = "Error_description";
             this.grdIntCol_Error_Field.Name = "grdIntCol_Error_Field";
             this.grdIntCol_Error_Field.Visible = true;
             this.grdIntCol_Error_Field.VisibleIndex = 2;
@@ -416,6 +419,7 @@
             this.grdIntCol_Remove.Caption = "Remove";
             this.grdIntCol_Remove.ColumnEdit = this.rpHypEditInt_Remove;
             this.grdIntCol_Remove.Name = "grdIntCol_Remove";
+            this.grdIntCol_Remove.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Remove.Visible = true;
             this.grdIntCol_Remove.VisibleIndex = 8;
             // 
@@ -427,7 +431,6 @@
             // 
             // navigationPage2
             // 
-            this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.grdCtrl_External_Error);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(939, 353);
@@ -463,7 +466,10 @@
             this.grdCol_Remove,
             this.grdCol_TaskId});
             this.gridView_External_Error.GridControl = this.grdCtrl_External_Error;
+            this.gridView_External_Error.IndicatorWidth = 50;
             this.gridView_External_Error.Name = "gridView_External_Error";
+            this.gridView_External_Error.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_External_Error_RowCellClick);
+            this.gridView_External_Error.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_External_Error_CustomDrawRowIndicator);
             // 
             // grdCol_Error_Type
             // 
@@ -474,6 +480,7 @@
             this.grdCol_Error_Type.Caption = "Error Type";
             this.grdCol_Error_Type.FieldName = "New_Error_Type";
             this.grdCol_Error_Type.Name = "grdCol_Error_Type";
+            this.grdCol_Error_Type.OptionsColumn.AllowEdit = false;
             this.grdCol_Error_Type.Visible = true;
             this.grdCol_Error_Type.VisibleIndex = 0;
             // 
@@ -486,6 +493,7 @@
             this.grdCol_Error_Tab.Caption = "Error Tab";
             this.grdCol_Error_Tab.FieldName = "Error_Type";
             this.grdCol_Error_Tab.Name = "grdCol_Error_Tab";
+            this.grdCol_Error_Tab.OptionsColumn.AllowEdit = false;
             this.grdCol_Error_Tab.Visible = true;
             this.grdCol_Error_Tab.VisibleIndex = 1;
             // 
@@ -498,6 +506,7 @@
             this.grdCol_Error_Field.Caption = "Error Field";
             this.grdCol_Error_Field.FieldName = "Error_description";
             this.grdCol_Error_Field.Name = "grdCol_Error_Field";
+            this.grdCol_Error_Field.OptionsColumn.AllowEdit = false;
             this.grdCol_Error_Field.Visible = true;
             this.grdCol_Error_Field.VisibleIndex = 2;
             // 
@@ -510,6 +519,7 @@
             this.grdCol_Comments.Caption = "Comments";
             this.grdCol_Comments.FieldName = "Comments";
             this.grdCol_Comments.Name = "grdCol_Comments";
+            this.grdCol_Comments.OptionsColumn.AllowEdit = false;
             this.grdCol_Comments.Visible = true;
             this.grdCol_Comments.VisibleIndex = 3;
             // 
@@ -535,6 +545,7 @@
             this.grdCol_User_Name.Caption = "User Name";
             this.grdCol_User_Name.FieldName = "Error_User_Name";
             this.grdCol_User_Name.Name = "grdCol_User_Name";
+            this.grdCol_User_Name.OptionsColumn.AllowEdit = false;
             this.grdCol_User_Name.Visible = true;
             this.grdCol_User_Name.VisibleIndex = 5;
             // 
@@ -547,6 +558,7 @@
             this.grdCol_User_Id.Caption = "User Id";
             this.grdCol_User_Id.FieldName = "User_id";
             this.grdCol_User_Id.Name = "grdCol_User_Id";
+            this.grdCol_User_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdColError_Task
             // 
@@ -557,6 +569,7 @@
             this.grdColError_Task.Caption = "Error Task";
             this.grdColError_Task.FieldName = "Order_Status";
             this.grdColError_Task.Name = "grdColError_Task";
+            this.grdColError_Task.OptionsColumn.AllowEdit = false;
             this.grdColError_Task.Visible = true;
             this.grdColError_Task.VisibleIndex = 6;
             // 
@@ -569,6 +582,7 @@
             this.grdColUpdated_By.Caption = "Updated By";
             this.grdColUpdated_By.FieldName = "User_name";
             this.grdColUpdated_By.Name = "grdColUpdated_By";
+            this.grdColUpdated_By.OptionsColumn.AllowEdit = false;
             this.grdColUpdated_By.Visible = true;
             this.grdColUpdated_By.VisibleIndex = 7;
             // 
@@ -580,6 +594,7 @@
             this.gridCol_Task_Id.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_Task_Id.Caption = "Task Id";
             this.gridCol_Task_Id.Name = "gridCol_Task_Id";
+            this.gridCol_Task_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdCol_ErrorInfo_Id
             // 
@@ -590,6 +605,7 @@
             this.grdCol_ErrorInfo_Id.Caption = "ErrorInfo Id";
             this.grdCol_ErrorInfo_Id.FieldName = "ErrorInfo_ID";
             this.grdCol_ErrorInfo_Id.Name = "grdCol_ErrorInfo_Id";
+            this.grdCol_ErrorInfo_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdCol_New_Error_Type_Id
             // 
@@ -600,6 +616,7 @@
             this.grdCol_New_Error_Type_Id.Caption = "New Error Type Id";
             this.grdCol_New_Error_Type_Id.FieldName = "New_Error_Type_Id";
             this.grdCol_New_Error_Type_Id.Name = "grdCol_New_Error_Type_Id";
+            this.grdCol_New_Error_Type_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdCol_Remove
             // 
@@ -610,6 +627,7 @@
             this.grdCol_Remove.Caption = "Remove";
             this.grdCol_Remove.ColumnEdit = this.repHypLnk_Remove;
             this.grdCol_Remove.Name = "grdCol_Remove";
+            this.grdCol_Remove.OptionsColumn.AllowEdit = false;
             this.grdCol_Remove.Visible = true;
             this.grdCol_Remove.VisibleIndex = 8;
             // 
@@ -643,6 +661,7 @@
             this.Name = "master_Employee_Error_Entry_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee_Error_Entry_View";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.master_Employee_Error_Entry_View_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
