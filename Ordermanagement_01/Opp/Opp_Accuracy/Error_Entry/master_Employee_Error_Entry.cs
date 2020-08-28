@@ -220,7 +220,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt.Rows.InsertAt(dr, 0);
                             ddl_Error_Type.Properties.DataSource = dt;
                             ddl_Error_Type.Properties.ValueMember = "New_Error_Type_Id";
@@ -274,7 +274,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt1.Rows.InsertAt(dr, 0);
                             ddl_ErrorTab.Properties.DataSource = dt1;
                             ddl_ErrorTab.Properties.ValueMember = "Error_Type_Id";
@@ -308,11 +308,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 ddl_Error_Field.Properties.Columns.Clear();
                 Bind_Error_Field(ErrorTabvalue);
             }
-            else
-            {
-                SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show(" Select Error Tab", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
         }
 
 
@@ -342,7 +338,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt1.Rows.InsertAt(dr, 0);
                             ddl_Error_Field.Properties.DataSource = dt1;
                             ddl_Error_Field.Properties.ValueMember = "Error_description_Id";
@@ -442,7 +438,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt1.Rows.InsertAt(dr, 0);
                             ddl_Task.Properties.DataSource = dt1;
                             ddl_Task.Properties.ValueMember = "Order_Task_ID";
@@ -490,7 +486,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt1.Rows.InsertAt(dr, 0);
                             ddl_Task.Properties.DataSource = dt1;
                             ddl_Task.Properties.ValueMember = "Order_Task_ID";
@@ -809,7 +805,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                         this.mainform.BindgrdError();
                                         this.mainform.Enabled = true;
                                         this.Close();
-                                       
+                                        ClearControls();
                                         Master_Error_Info_Id = 0;
 
 
@@ -932,7 +928,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                         this.mainform.BindGridExternalErrors();
                                         this.mainform.Enabled = true;
                                         this.Close();
-                                       
+                                        ClearControls();
                                         Master_Error_Info_Id = 0;
 
 

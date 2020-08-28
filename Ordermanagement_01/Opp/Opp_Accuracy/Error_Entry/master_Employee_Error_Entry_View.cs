@@ -49,7 +49,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
                 rb_Internal_Error_Type.SelectedIndex = 0;
                 navigationFrame1.SelectedPage = navigationPage1;
-                lbl_Header.Text = "Internal Error Entry";
+                lbl_Header.Text = "Internal Error Entry-"+ OrderId;
                 BindgrdError();
 
                 rb_External_Error_Type.Visible = false;
@@ -71,7 +71,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             rb_External_Error_Type.SelectedIndex = -1;
             BindgrdError();
 
-            lbl_Header.Text = "Internal Error Entry";
+            lbl_Header.Text = "Internal Error Entry" + OrderId;
         }
 
         private void rb_Internal_Error_Type_MouseClick(object sender, MouseEventArgs e)
@@ -86,7 +86,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             navigationFrame1.SelectedPage = navigationPage2;
             rb_Internal_Error_Type.SelectedIndex = -1;
-            lbl_Header.Text = "External Error Entry";
+            lbl_Header.Text = "External Error Entry" + OrderId;
             BindGridExternalErrors();
         }
 
