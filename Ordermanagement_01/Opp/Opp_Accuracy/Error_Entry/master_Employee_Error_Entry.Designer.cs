@@ -38,7 +38,7 @@
             this.ddl_User_Name = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Task = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Error_Field = new DevExpress.XtraEditors.LookUpEdit();
-            this.ddl_Error_Tab = new DevExpress.XtraEditors.LookUpEdit();
+            this.ddl_ErrorTab = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_Error_Type = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -60,7 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddl_User_Name.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Task.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Field.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Tab.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ErrorTab.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Type.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             this.grp_Control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grp_Control.Location = new System.Drawing.Point(0, 0);
             this.grp_Control.Name = "grp_Control";
-            this.grp_Control.Size = new System.Drawing.Size(501, 378);
+            this.grp_Control.Size = new System.Drawing.Size(637, 378);
             this.grp_Control.TabIndex = 0;
             this.grp_Control.Text = "Error Entry";
             // 
@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.91549F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.08451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(497, 350);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(633, 350);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -100,7 +100,7 @@
             this.panelControl1.Controls.Add(this.ddl_User_Name);
             this.panelControl1.Controls.Add(this.ddl_Task);
             this.panelControl1.Controls.Add(this.ddl_Error_Field);
-            this.panelControl1.Controls.Add(this.ddl_Error_Tab);
+            this.panelControl1.Controls.Add(this.ddl_ErrorTab);
             this.panelControl1.Controls.Add(this.ddl_Error_Type);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl5);
@@ -111,7 +111,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(491, 294);
+            this.panelControl1.Size = new System.Drawing.Size(627, 294);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_Comments
@@ -139,7 +139,7 @@
             // 
             // chk_UserName
             // 
-            this.chk_UserName.Location = new System.Drawing.Point(301, 136);
+            this.chk_UserName.Location = new System.Drawing.Point(376, 136);
             this.chk_UserName.Name = "chk_UserName";
             this.chk_UserName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chk_UserName.Properties.Appearance.Options.UseFont = true;
@@ -150,12 +150,14 @@
             // 
             // ddl_User_Name
             // 
-            this.ddl_User_Name.Location = new System.Drawing.Point(301, 167);
+            this.ddl_User_Name.Location = new System.Drawing.Point(376, 167);
             this.ddl_User_Name.Name = "ddl_User_Name";
+            this.ddl_User_Name.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_User_Name.Properties.Appearance.Options.UseFont = true;
             this.ddl_User_Name.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_User_Name.Properties.NullText = "Select User Name";
-            this.ddl_User_Name.Size = new System.Drawing.Size(178, 20);
+            this.ddl_User_Name.Size = new System.Drawing.Size(238, 22);
             this.ddl_User_Name.TabIndex = 10;
             this.ddl_User_Name.EditValueChanged += new System.EventHandler(this.ddl_User_Name_EditValueChanged);
             // 
@@ -163,10 +165,12 @@
             // 
             this.ddl_Task.Location = new System.Drawing.Point(125, 131);
             this.ddl_Task.Name = "ddl_Task";
+            this.ddl_Task.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Task.Properties.Appearance.Options.UseFont = true;
             this.ddl_Task.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Task.Properties.NullText = "Select";
-            this.ddl_Task.Size = new System.Drawing.Size(162, 20);
+            this.ddl_Task.Size = new System.Drawing.Size(231, 22);
             this.ddl_Task.TabIndex = 9;
             this.ddl_Task.EditValueChanged += new System.EventHandler(this.ddl_Task_EditValueChanged);
             this.ddl_Task.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddl_Task_KeyDown);
@@ -175,34 +179,40 @@
             // 
             this.ddl_Error_Field.Location = new System.Drawing.Point(125, 96);
             this.ddl_Error_Field.Name = "ddl_Error_Field";
+            this.ddl_Error_Field.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Error_Field.Properties.Appearance.Options.UseFont = true;
             this.ddl_Error_Field.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Error_Field.Properties.NullText = "Select";
-            this.ddl_Error_Field.Size = new System.Drawing.Size(162, 20);
+            this.ddl_Error_Field.Size = new System.Drawing.Size(231, 22);
             this.ddl_Error_Field.TabIndex = 8;
             this.ddl_Error_Field.EditValueChanged += new System.EventHandler(this.ddl_Error_Field_EditValueChanged);
             this.ddl_Error_Field.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddl_Error_Field_KeyDown);
             // 
-            // ddl_Error_Tab
+            // ddl_ErrorTab
             // 
-            this.ddl_Error_Tab.Location = new System.Drawing.Point(125, 61);
-            this.ddl_Error_Tab.Name = "ddl_Error_Tab";
-            this.ddl_Error_Tab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ddl_ErrorTab.Location = new System.Drawing.Point(125, 61);
+            this.ddl_ErrorTab.Name = "ddl_ErrorTab";
+            this.ddl_ErrorTab.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ErrorTab.Properties.Appearance.Options.UseFont = true;
+            this.ddl_ErrorTab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_Error_Tab.Properties.NullText = "Select";
-            this.ddl_Error_Tab.Size = new System.Drawing.Size(162, 20);
-            this.ddl_Error_Tab.TabIndex = 7;
-            this.ddl_Error_Tab.EditValueChanged += new System.EventHandler(this.ddl_Error_Tab_EditValueChanged);
-            this.ddl_Error_Tab.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddl_Error_Tab_KeyDown);
+            this.ddl_ErrorTab.Properties.NullText = "Select";
+            this.ddl_ErrorTab.Size = new System.Drawing.Size(231, 22);
+            this.ddl_ErrorTab.TabIndex = 7;
+            this.ddl_ErrorTab.EditValueChanged += new System.EventHandler(this.ddl_Error_Tab_EditValueChanged);
+            this.ddl_ErrorTab.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddl_Error_Tab_KeyDown);
             // 
             // ddl_Error_Type
             // 
             this.ddl_Error_Type.Location = new System.Drawing.Point(125, 26);
             this.ddl_Error_Type.Name = "ddl_Error_Type";
+            this.ddl_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Error_Type.Properties.Appearance.Options.UseFont = true;
             this.ddl_Error_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Error_Type.Properties.NullText = "Select";
-            this.ddl_Error_Type.Size = new System.Drawing.Size(162, 20);
+            this.ddl_Error_Type.Size = new System.Drawing.Size(231, 22);
             this.ddl_Error_Type.TabIndex = 6;
             this.ddl_Error_Type.EditValueChanged += new System.EventHandler(this.ddl_Error_Type_EditValueChanged);
             this.ddl_Error_Type.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ddl_Error_Type_KeyDown);
@@ -285,7 +295,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(331, 303);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(467, 303);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 44);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -326,7 +336,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 378);
+            this.ClientSize = new System.Drawing.Size(637, 378);
             this.Controls.Add(this.grp_Control);
             this.LookAndFeel.SkinName = "Office 2013";
             this.Name = "master_Employee_Error_Entry";
@@ -345,7 +355,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddl_User_Name.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Task.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Field.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Tab.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ErrorTab.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_Error_Type.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -360,7 +370,7 @@
         private DevExpress.XtraEditors.LookUpEdit ddl_User_Name;
         private DevExpress.XtraEditors.LookUpEdit ddl_Task;
         private DevExpress.XtraEditors.LookUpEdit ddl_Error_Field;
-        private DevExpress.XtraEditors.LookUpEdit ddl_Error_Tab;
+        private DevExpress.XtraEditors.LookUpEdit ddl_ErrorTab;
         private DevExpress.XtraEditors.LookUpEdit ddl_Error_Type;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl5;

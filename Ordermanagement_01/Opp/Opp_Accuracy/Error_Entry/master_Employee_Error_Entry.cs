@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
@@ -244,7 +245,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void ddl_Error_Type_EditValueChanged(object sender, EventArgs e)
         {
-            ddl_Error_Tab.Properties.Columns.Clear();
+            ddl_ErrorTab.Properties.Columns.Clear();
             BindErrorTab();
         }
 
@@ -275,12 +276,12 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             dr[0] = 0;
                             dr[1] = "SELECT";
                             dt1.Rows.InsertAt(dr, 0);
-                            ddl_Error_Tab.Properties.DataSource = dt1;
-                            ddl_Error_Tab.Properties.ValueMember = "Error_Type_Id";
-                            ddl_Error_Tab.Properties.DisplayMember = "Error_Type";
+                            ddl_ErrorTab.Properties.DataSource = dt1;
+                            ddl_ErrorTab.Properties.ValueMember = "Error_Type_Id";
+                            ddl_ErrorTab.Properties.DisplayMember = "Error_Type";
                             DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
                             col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Error_Type");
-                            ddl_Error_Tab.Properties.Columns.Add(col);
+                            ddl_ErrorTab.Properties.Columns.Add(col);
 
                         }
                     }
@@ -301,9 +302,9 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void ddl_Error_Tab_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddl_Error_Tab.EditValue) != 0)
+            if (Convert.ToInt32(ddl_ErrorTab.EditValue) != 0)
             {
-                int ErrorTabvalue = Convert.ToInt32(ddl_Error_Tab.EditValue);
+                int ErrorTabvalue = Convert.ToInt32(ddl_ErrorTab.EditValue);
                 ddl_Error_Field.Properties.Columns.Clear();
                 Bind_Error_Field(ErrorTabvalue);
             }
@@ -538,7 +539,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                             DataRow dr = dt1.NewRow();
                             dr[0] = 0;
-                            dr[1] = "SELECT";
+                            dr[1] = "Select";
                             dt1.Rows.InsertAt(dr, 0);
                             ddl_User_Name.Properties.DataSource = dt1;
                             ddl_User_Name.Properties.ValueMember = "User_id";
@@ -619,7 +620,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                     {
                                         lbl_UserName.Text = "**********";
                                     }
-                                    
+
                                 }
                                 else
                                 {
@@ -644,7 +645,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 }
                 else
                 {
-                    chk_UserName.Visible = false ;
+                    chk_UserName.Visible = false;
 
                     ddl_User_Name.Visible = false;
                     lbl_UserName.Text = "";
@@ -683,10 +684,10 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 Error_User = 0;
             }
         }
-        private void Clear()
+        private void ClearControls()
         {
             ddl_Error_Type.ItemIndex = 0;
-            ddl_Error_Tab.ItemIndex = 0;
+            ddl_ErrorTab.ItemIndex = 0;
             ddl_Error_Field.ItemIndex = 0;
             ddl_Task.ItemIndex = 0;
             ddl_User_Name.ItemIndex = 0;
@@ -701,7 +702,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         private async void btn_Save_Click(object sender, EventArgs e)
         {
             int ErrorTypeValue = Convert.ToInt32(ddl_Error_Type.EditValue);
-            int ErrorTabvalue = Convert.ToInt32(ddl_Error_Tab.EditValue);
+            int ErrorTabvalue = Convert.ToInt32(ddl_ErrorTab.EditValue);
             int Errorfieldvalue = Convert.ToInt32(ddl_Error_Field.EditValue);
             int Taskvalue = Convert.ToInt32(ddl_Task.EditValue);
             int Usernamevalue = Convert.ToInt32(ddl_User_Name.EditValue);
@@ -714,7 +715,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 {
                     if (validate() != false)
                     {
-                        if (Error_User != 0)
+                        if (Error_User != 0 && (await CheckExistrecord()!=false))
                         {
                             int Ent_error_info_Id = 0;
                             IDictionary<string, object> dict_insert = new Dictionary<string, object>();
@@ -808,7 +809,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                         this.mainform.BindgrdError();
                                         this.mainform.Enabled = true;
                                         this.Close();
-                                        Clear();
+                                       
                                         Master_Error_Info_Id = 0;
 
 
@@ -837,7 +838,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 {
                     if (validate() != false)
                     {
-                        if (Error_User != 0)
+                        if (Error_User != 0 && (await CheckExistrecord() != false))
                         {
                             int Ent_error_info_Id = 0;
                             IDictionary<string, object> dict_insert = new Dictionary<string, object>();
@@ -931,7 +932,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                         this.mainform.BindGridExternalErrors();
                                         this.mainform.Enabled = true;
                                         this.Close();
-                                        Clear();
+                                       
                                         Master_Error_Info_Id = 0;
 
 
@@ -960,7 +961,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void btn_Clear_Click(object sender, EventArgs e)
         {
-            Clear();
+            ClearControls();
         }
 
         private bool validate()
@@ -971,10 +972,10 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 XtraMessageBox.Show("Please Select Error Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (Convert.ToInt32(ddl_Error_Tab.EditValue) == 0)
+            if (Convert.ToInt32(ddl_ErrorTab.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Please Select Error Tab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               // XtraMessageBox.Show("Please Select Error Tab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (Convert.ToInt32(ddl_Error_Field.EditValue) == 0)
@@ -998,7 +999,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                     return false;
                 }
             }
-            if (txt_Comments.Text == "")
+            if ( string.IsNullOrWhiteSpace(txt_Comments.Text))
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Enter Comments", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1012,7 +1013,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             if (chk_UserName.Checked == true)
             {
-                
+
                 ddl_User_Name.Visible = true;
             }
             else
@@ -1033,7 +1034,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ddl_Error_Tab.Focus();
+                ddl_ErrorTab.Focus();
             }
         }
         private void txt_Comments_KeyDown(object sender, KeyEventArgs e)
@@ -1075,58 +1076,120 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 ddl_Task.Focus();
             }
         }
-        private async void GetError_Info_Id(int error_Typ_Id, int error_Tab_Id, int error_Field_Id, string comment, int error_Task, int order_Id, int user_Id, int workType_id)
+        private async Task<bool> CheckExistrecord()
         {
+            int ErrorTypeValue = Convert.ToInt32(ddl_Error_Type.EditValue);
+            int ErrorTabvalue = Convert.ToInt32(ddl_ErrorTab.EditValue);
+            int Errorfieldvalue = Convert.ToInt32(ddl_Error_Field.EditValue);
+            int Taskvalue = Convert.ToInt32(ddl_Task.EditValue);
+            string CommentValue = txt_Comments.Text;
+            DataTable dt = new DataTable();
             try
             {
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-
-                IDictionary<string, object> dictionary = new Dictionary<string, object>()
+                if (validate() != false)
                 {
-                    { "@Trans", "Get_Error_info_id" },
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                    {"@New_Error_Type_Id",error_Typ_Id},
-                    {"@Error_Type",error_Tab_Id },
-                    {"@Error_Description",error_Field_Id },
-                    { "@Comments",comment },
-                    {"@Error_Task",error_Task },
-                    { "@Order_ID", order_Id },
-                    { "@User_id", user_Id },
-                    { "@Work_Type", workType_id },
+                    IDictionary<string, object> dictionary = new Dictionary<string, object>()
+                 {
+                    { "@Trans", "Check_Error_Info" },
+
+                    {"@New_Error_Type_Id",ErrorTypeValue},
+                    {"@Error_Type",ErrorTabvalue },
+                    {"@Error_Description",Errorfieldvalue },
+                    { "@Comments",CommentValue },
+                    {"@Error_Task",Taskvalue },
+                    { "@Order_ID", orderid },
+                    { "@User_id", UserId },
+
                  };
-                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                using (var httpClient = new HttpClient())
-                {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindErrorInfoId", data);
-                    if (response.IsSuccessStatusCode)
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindExistRecord", data);
+                        if (response.IsSuccessStatusCode)
                         {
-                            var result = await response.Content.ReadAsStringAsync();
-                            DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                            if (dt1.Rows.Count > 0)
+                            if (response.StatusCode == HttpStatusCode.OK)
                             {
-                                Master_Error_Info_Id = Convert.ToInt32(dt1.Rows[0]["ErrorInfo_ID"].ToString());
-
-                            }
-                            else
-                            {
-                                SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                if (count > 0)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Error Information Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
+                                }
                             }
                         }
                     }
+
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw ex;
             }
             finally
             {
                 SplashScreenManager.CloseForm(false);
             }
+
+            //private async void GetError_Info_Id(int error_Typ_Id, int error_Tab_Id, int error_Field_Id, string comment, int error_Task, int order_Id, int user_Id, int workType_id)
+            //{
+            //    try
+            //    {
+            //        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+            //        IDictionary<string, object> dictionary = new Dictionary<string, object>()
+            //        {
+            //            { "@Trans", "Get_Error_info_id" },
+
+            //            {"@New_Error_Type_Id",error_Typ_Id},
+            //            {"@Error_Type",error_Tab_Id },
+            //            {"@Error_Description",error_Field_Id },
+            //            { "@Comments",comment },
+            //            {"@Error_Task",error_Task },
+            //            { "@Order_ID", order_Id },
+            //            { "@User_id", user_Id },
+            //            { "@Work_Type", workType_id },
+            //         };
+            //        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+            //        using (var httpClient = new HttpClient())
+            //        {
+            //            var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindErrorInfoId", data);
+            //            if (response.IsSuccessStatusCode)
+            //            {
+            //                if (response.StatusCode == HttpStatusCode.OK)
+            //                {
+            //                    var result = await response.Content.ReadAsStringAsync();
+            //                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+            //                    if (dt1.Rows.Count > 0)
+            //                    {
+            //                        Master_Error_Info_Id = Convert.ToInt32(dt1.Rows[0]["ErrorInfo_ID"].ToString());
+
+            //                    }
+            //                    else
+            //                    {
+            //                        SplashScreenManager.CloseForm(false);
+            //                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        SplashScreenManager.CloseForm(false);
+            //        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //    finally
+            //    {
+            //        SplashScreenManager.CloseForm(false);
+            //    }
+            //}
         }
     }
 }
