@@ -971,7 +971,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             if (Convert.ToInt32(ddl_ErrorTab.EditValue) == 0)
             {
                 SplashScreenManager.CloseForm(false);
-               // XtraMessageBox.Show("Please Select Error Tab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               XtraMessageBox.Show("Please Select Error Tab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (Convert.ToInt32(ddl_Error_Field.EditValue) == 0)
@@ -1086,19 +1086,27 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                    IDictionary<string, object> dictionary = new Dictionary<string, object>()
-                 {
-                    { "@Trans", "Check_Error_Info" },
+                    IDictionary<string, object> dictionary = new Dictionary<string, object>();
+                 
+                    if(operationType=="Internal Error Entry")
+                    {
+                      dictionary.Add("@Trans", "Check_Error_Info_For_Internal_Error");
+                    }
+                    else if(operationType == "External Error Entry")
+                    {
+                            dictionary.Add("@Trans", "Check_Error_Info_For_External_Error");
+                    }
 
-                    {"@New_Error_Type_Id",ErrorTypeValue},
-                    {"@Error_Type",ErrorTabvalue },
-                    {"@Error_Description",Errorfieldvalue },
-                    { "@Comments",CommentValue },
-                    {"@Error_Task",Taskvalue },
-                    { "@Order_ID", orderid },
-                    { "@User_id", UserId },
 
-                 };
+                        dictionary.Add("@New_Error_Type_Id", ErrorTypeValue);
+                        dictionary.Add("@Error_Type", ErrorTabvalue);
+                        dictionary.Add("@Error_Description", Errorfieldvalue);
+                        dictionary.Add("@Comments", CommentValue);
+                        dictionary.Add("@Error_Task", Taskvalue);
+                        dictionary.Add("@Order_ID", orderid);
+                        dictionary.Add("@User_id", UserId);
+
+                
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_Header = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.rb_External_Error_Type = new DevExpress.XtraEditors.RadioGroup();
@@ -74,7 +74,8 @@
             this.grdCol_Remove = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repHypLnk_Remove = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.grdCol_TaskId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.lbl_Header = new DevExpress.XtraEditors.LabelControl();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -126,19 +127,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(945, 458);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // lbl_Header
-            // 
-            this.lbl_Header.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_Header.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Header.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Header.Appearance.Options.UseFont = true;
-            this.lbl_Header.Appearance.Options.UseForeColor = true;
-            this.lbl_Header.Location = new System.Drawing.Point(378, 3);
-            this.lbl_Header.Name = "lbl_Header";
-            this.lbl_Header.Size = new System.Drawing.Size(188, 30);
-            this.lbl_Header.TabIndex = 0;
-            this.lbl_Header.Text = "Internal Error Entry";
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -170,7 +158,7 @@
             // 
             this.rb_External_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_External_Error_Type.EditValue = "<Null>";
-            this.rb_External_Error_Type.Location = new System.Drawing.Point(468, 11);
+            this.rb_External_Error_Type.Location = new System.Drawing.Point(486, 11);
             this.rb_External_Error_Type.Name = "rb_External_Error_Type";
             this.rb_External_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_External_Error_Type.Properties.Appearance.Options.UseFont = true;
@@ -186,7 +174,7 @@
             // 
             this.rb_Internal_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_Internal_Error_Type.EditValue = "<Null>";
-            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(340, 11);
+            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(358, 11);
             this.rb_Internal_Error_Type.Name = "rb_Internal_Error_Type";
             this.rb_Internal_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_Internal_Error_Type.Properties.Appearance.Options.UseFont = true;
@@ -213,7 +201,9 @@
             // 
             this.btn_Export.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Export.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Export.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Export.Appearance.Options.UseFont = true;
+            this.btn_Export.Appearance.Options.UseForeColor = true;
             this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Export.Location = new System.Drawing.Point(88, 3);
             this.btn_Export.Name = "btn_Export";
@@ -226,7 +216,9 @@
             // 
             this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Add.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Add.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Add.Appearance.Options.UseFont = true;
+            this.btn_Add.Appearance.Options.UseForeColor = true;
             this.btn_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Add.Location = new System.Drawing.Point(7, 3);
             this.btn_Add.Name = "btn_Add";
@@ -344,7 +336,7 @@
             // 
             this.grdIntCol_Task.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdIntCol_Task.AppearanceHeader.Options.UseFont = true;
-            this.grdIntCol_Task.Caption = "Task";
+            this.grdIntCol_Task.Caption = "Error On Task";
             this.grdIntCol_Task.FieldName = "Error_Task";
             this.grdIntCol_Task.Name = "grdIntCol_Task";
             this.grdIntCol_Task.Visible = true;
@@ -356,7 +348,7 @@
             this.grdIntCol_User_Name.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdIntCol_User_Name.AppearanceHeader.Options.UseFont = true;
             this.grdIntCol_User_Name.AppearanceHeader.Options.UseForeColor = true;
-            this.grdIntCol_User_Name.Caption = "User Name";
+            this.grdIntCol_User_Name.Caption = "Error On User ";
             this.grdIntCol_User_Name.FieldName = "Error_User_Name";
             this.grdIntCol_User_Name.Name = "grdIntCol_User_Name";
             this.grdIntCol_User_Name.Visible = true;
@@ -386,7 +378,7 @@
             this.grdIntCol_.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdIntCol_.AppearanceHeader.Options.UseFont = true;
             this.grdIntCol_.AppearanceHeader.Options.UseForeColor = true;
-            this.grdIntCol_.Caption = "Error Task";
+            this.grdIntCol_.Caption = "Error From Task";
             this.grdIntCol_.FieldName = "Order_Status";
             this.grdIntCol_.Name = "grdIntCol_";
             this.grdIntCol_.Visible = true;
@@ -398,7 +390,7 @@
             this.grdIntCol_Updated_By.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdIntCol_Updated_By.AppearanceHeader.Options.UseFont = true;
             this.grdIntCol_Updated_By.AppearanceHeader.Options.UseForeColor = true;
-            this.grdIntCol_Updated_By.Caption = "Updated By";
+            this.grdIntCol_Updated_By.Caption = "Error Entered By";
             this.grdIntCol_Updated_By.FieldName = "User_name";
             this.grdIntCol_Updated_By.Name = "grdIntCol_Updated_By";
             this.grdIntCol_Updated_By.Visible = true;
@@ -431,6 +423,7 @@
             // 
             // navigationPage2
             // 
+            this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.grdCtrl_External_Error);
             this.navigationPage2.Name = "navigationPage2";
             this.navigationPage2.Size = new System.Drawing.Size(939, 353);
@@ -529,7 +522,7 @@
             this.grdCol_Task.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdCol_Task.AppearanceHeader.Options.UseFont = true;
             this.grdCol_Task.AppearanceHeader.Options.UseForeColor = true;
-            this.grdCol_Task.Caption = "Task";
+            this.grdCol_Task.Caption = "Error On Task";
             this.grdCol_Task.FieldName = "Error_Task";
             this.grdCol_Task.Name = "grdCol_Task";
             this.grdCol_Task.OptionsColumn.AllowEdit = false;
@@ -542,7 +535,7 @@
             this.grdCol_User_Name.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdCol_User_Name.AppearanceHeader.Options.UseFont = true;
             this.grdCol_User_Name.AppearanceHeader.Options.UseForeColor = true;
-            this.grdCol_User_Name.Caption = "User Name";
+            this.grdCol_User_Name.Caption = "Error On User ";
             this.grdCol_User_Name.FieldName = "Error_User_Name";
             this.grdCol_User_Name.Name = "grdCol_User_Name";
             this.grdCol_User_Name.OptionsColumn.AllowEdit = false;
@@ -566,7 +559,7 @@
             this.grdColError_Task.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdColError_Task.AppearanceHeader.Options.UseFont = true;
             this.grdColError_Task.AppearanceHeader.Options.UseForeColor = true;
-            this.grdColError_Task.Caption = "Error Task";
+            this.grdColError_Task.Caption = "Error From Task";
             this.grdColError_Task.FieldName = "Order_Status";
             this.grdColError_Task.Name = "grdColError_Task";
             this.grdColError_Task.OptionsColumn.AllowEdit = false;
@@ -579,7 +572,7 @@
             this.grdColUpdated_By.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.grdColUpdated_By.AppearanceHeader.Options.UseFont = true;
             this.grdColUpdated_By.AppearanceHeader.Options.UseForeColor = true;
-            this.grdColUpdated_By.Caption = "Updated By";
+            this.grdColUpdated_By.Caption = "Error Entered By";
             this.grdColUpdated_By.FieldName = "User_name";
             this.grdColUpdated_By.Name = "grdColUpdated_By";
             this.grdColUpdated_By.OptionsColumn.AllowEdit = false;
@@ -647,6 +640,19 @@
             this.grdCol_TaskId.Caption = "Task Id";
             this.grdCol_TaskId.FieldName = "User_id";
             this.grdCol_TaskId.Name = "grdCol_TaskId";
+            // 
+            // lbl_Header
+            // 
+            this.lbl_Header.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_Header.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Header.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Header.Appearance.Options.UseFont = true;
+            this.lbl_Header.Appearance.Options.UseForeColor = true;
+            this.lbl_Header.Location = new System.Drawing.Point(378, 3);
+            this.lbl_Header.Name = "lbl_Header";
+            this.lbl_Header.Size = new System.Drawing.Size(188, 30);
+            this.lbl_Header.TabIndex = 0;
+            this.lbl_Header.Text = "Internal Error Entry";
             // 
             // defaultLookAndFeel1
             // 
