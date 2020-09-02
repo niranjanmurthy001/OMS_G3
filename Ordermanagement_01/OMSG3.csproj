@@ -2956,6 +2956,12 @@
     <Compile Include="Test\Api_Call.Designer.cs">
       <DependentUpon>Api_Call.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\ArrangeButtons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\ArrangeButtons.Designer.cs">
+      <DependentUpon>ArrangeButtons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\Clarification_Type_Check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4603,6 +4609,9 @@
     <EmbeddedResource Include="Test\Api_Call.resx">
       <DependentUpon>Api_Call.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test\ArrangeButtons.resx">
+      <DependentUpon>ArrangeButtons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test\Clarification_Type_Check.resx">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
     </EmbeddedResource>
@@ -4971,6 +4980,7 @@
     <None Include="Resources\Exception_32.png" />
     <None Include="Resources\Employee.png" />
     <None Include="Resources\error_Settings_24.png" />
+    <None Include="Resources\error_ent.png" />
     <Content Include="Resources\groupControlAccuracy.CaptionImageOptions.Image.png" />
     <None Include="Resources\groupControlAccuracy.CaptionImageOptions.Image1.png" />
     <Content Include="Resources\iconfinder_Windows_View_Detail_52792.png" />
