@@ -101,14 +101,14 @@
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
-            this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.error_;
+            this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.error_ent;
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(949, 491);
+            this.groupControl1.Size = new System.Drawing.Size(907, 491);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Employee Error Entry View";
+            this.groupControl1.Text = "Employee Error Entry ";
             // 
             // tableLayoutPanel1
             // 
@@ -118,13 +118,13 @@
             this.tableLayoutPanel1.Controls.Add(this.navigationFrame1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.lbl_Header, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 31);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 33);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(945, 458);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 296F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(903, 456);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -136,11 +136,11 @@
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 46);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 48);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(939, 50);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(897, 52);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // panelControl1
@@ -151,21 +151,23 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(761, 44);
+            this.panelControl1.Size = new System.Drawing.Size(719, 46);
             this.panelControl1.TabIndex = 1;
             // 
             // rb_External_Error_Type
             // 
             this.rb_External_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_External_Error_Type.EditValue = "<Null>";
-            this.rb_External_Error_Type.Location = new System.Drawing.Point(486, 11);
+            this.rb_External_Error_Type.Location = new System.Drawing.Point(456, 12);
             this.rb_External_Error_Type.Name = "rb_External_Error_Type";
-            this.rb_External_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_External_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_External_Error_Type.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.rb_External_Error_Type.Properties.Appearance.Options.UseFont = true;
+            this.rb_External_Error_Type.Properties.Appearance.Options.UseForeColor = true;
             this.rb_External_Error_Type.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.rb_External_Error_Type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "External Error Entry")});
-            this.rb_External_Error_Type.Size = new System.Drawing.Size(127, 23);
+            this.rb_External_Error_Type.Size = new System.Drawing.Size(146, 23);
             this.rb_External_Error_Type.TabIndex = 1;
             this.rb_External_Error_Type.SelectedIndexChanged += new System.EventHandler(this.rb_External_Error_Type_SelectedIndexChanged);
             this.rb_External_Error_Type.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_External_Error_Type_MouseClick);
@@ -174,14 +176,16 @@
             // 
             this.rb_Internal_Error_Type.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_Internal_Error_Type.EditValue = "<Null>";
-            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(358, 11);
+            this.rb_Internal_Error_Type.Location = new System.Drawing.Point(305, 12);
             this.rb_Internal_Error_Type.Name = "rb_Internal_Error_Type";
-            this.rb_Internal_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_Internal_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_Internal_Error_Type.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.rb_Internal_Error_Type.Properties.Appearance.Options.UseFont = true;
+            this.rb_Internal_Error_Type.Properties.Appearance.Options.UseForeColor = true;
             this.rb_Internal_Error_Type.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.rb_Internal_Error_Type.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Internal Error Entry")});
-            this.rb_Internal_Error_Type.Size = new System.Drawing.Size(127, 23);
+            this.rb_Internal_Error_Type.Size = new System.Drawing.Size(146, 23);
             this.rb_Internal_Error_Type.TabIndex = 0;
             this.rb_Internal_Error_Type.SelectedIndexChanged += new System.EventHandler(this.rb_Internal_Error_Type_SelectedIndexChanged);
             this.rb_Internal_Error_Type.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rb_Internal_Error_Type_MouseClick);
@@ -192,9 +196,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Add);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(770, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(728, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(166, 44);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(166, 46);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Export
@@ -232,13 +236,13 @@
             this.navigationFrame1.Controls.Add(this.navigationPage1);
             this.navigationFrame1.Controls.Add(this.navigationPage2);
             this.navigationFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navigationFrame1.Location = new System.Drawing.Point(3, 102);
+            this.navigationFrame1.Location = new System.Drawing.Point(3, 106);
             this.navigationFrame1.Name = "navigationFrame1";
             this.navigationFrame1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPage1,
             this.navigationPage2});
             this.navigationFrame1.SelectedPage = this.navigationPage2;
-            this.navigationFrame1.Size = new System.Drawing.Size(939, 353);
+            this.navigationFrame1.Size = new System.Drawing.Size(897, 347);
             this.navigationFrame1.TabIndex = 3;
             this.navigationFrame1.Text = "navigationFrame1";
             // 
@@ -247,7 +251,7 @@
             this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.grdCtrl_Internal_Error);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(939, 353);
+            this.navigationPage1.Size = new System.Drawing.Size(897, 347);
             // 
             // grdCtrl_Internal_Error
             // 
@@ -257,7 +261,7 @@
             this.grdCtrl_Internal_Error.Name = "grdCtrl_Internal_Error";
             this.grdCtrl_Internal_Error.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpHypEditInt_Remove});
-            this.grdCtrl_Internal_Error.Size = new System.Drawing.Size(939, 353);
+            this.grdCtrl_Internal_Error.Size = new System.Drawing.Size(897, 347);
             this.grdCtrl_Internal_Error.TabIndex = 0;
             this.grdCtrl_Internal_Error.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Internal_Error});
@@ -281,6 +285,8 @@
             this.gridView_Internal_Error.GridControl = this.grdCtrl_Internal_Error;
             this.gridView_Internal_Error.IndicatorWidth = 50;
             this.gridView_Internal_Error.Name = "gridView_Internal_Error";
+            this.gridView_Internal_Error.OptionsFind.AlwaysVisible = true;
+            this.gridView_Internal_Error.OptionsFind.ShowCloseButton = false;
             this.gridView_Internal_Error.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_Internal_Error_RowCellClick);
             this.gridView_Internal_Error.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_Internal_Error_CustomDrawRowIndicator);
             // 
@@ -293,6 +299,7 @@
             this.grdIntCol_Error_Type.Caption = "Error Type";
             this.grdIntCol_Error_Type.FieldName = "New_Error_Type";
             this.grdIntCol_Error_Type.Name = "grdIntCol_Error_Type";
+            this.grdIntCol_Error_Type.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Type.Visible = true;
             this.grdIntCol_Error_Type.VisibleIndex = 0;
             // 
@@ -305,6 +312,7 @@
             this.grdIntCol_Error_Tab.Caption = "Error Tab";
             this.grdIntCol_Error_Tab.FieldName = "Error_Type";
             this.grdIntCol_Error_Tab.Name = "grdIntCol_Error_Tab";
+            this.grdIntCol_Error_Tab.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Tab.Visible = true;
             this.grdIntCol_Error_Tab.VisibleIndex = 1;
             // 
@@ -317,6 +325,7 @@
             this.grdIntCol_Error_Field.Caption = "Error Field";
             this.grdIntCol_Error_Field.FieldName = "Error_description";
             this.grdIntCol_Error_Field.Name = "grdIntCol_Error_Field";
+            this.grdIntCol_Error_Field.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Field.Visible = true;
             this.grdIntCol_Error_Field.VisibleIndex = 2;
             // 
@@ -329,6 +338,7 @@
             this.grdIntCol_Comments.Caption = "Comments";
             this.grdIntCol_Comments.FieldName = "Comments";
             this.grdIntCol_Comments.Name = "grdIntCol_Comments";
+            this.grdIntCol_Comments.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Comments.Visible = true;
             this.grdIntCol_Comments.VisibleIndex = 3;
             // 
@@ -339,6 +349,7 @@
             this.grdIntCol_Task.Caption = "Error On Task";
             this.grdIntCol_Task.FieldName = "Error_Task";
             this.grdIntCol_Task.Name = "grdIntCol_Task";
+            this.grdIntCol_Task.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Task.Visible = true;
             this.grdIntCol_Task.VisibleIndex = 4;
             // 
@@ -351,6 +362,7 @@
             this.grdIntCol_User_Name.Caption = "Error On User ";
             this.grdIntCol_User_Name.FieldName = "Error_User_Name";
             this.grdIntCol_User_Name.Name = "grdIntCol_User_Name";
+            this.grdIntCol_User_Name.OptionsColumn.AllowEdit = false;
             this.grdIntCol_User_Name.Visible = true;
             this.grdIntCol_User_Name.VisibleIndex = 5;
             // 
@@ -359,18 +371,21 @@
             this.gdIntCol_User_Id.Caption = "User Id";
             this.gdIntCol_User_Id.FieldName = "User_id";
             this.gdIntCol_User_Id.Name = "gdIntCol_User_Id";
+            this.gdIntCol_User_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdIntCol_Task_Id
             // 
             this.grdIntCol_Task_Id.Caption = "Task Id";
             this.grdIntCol_Task_Id.FieldName = "Order_ID";
             this.grdIntCol_Task_Id.Name = "grdIntCol_Task_Id";
+            this.grdIntCol_Task_Id.OptionsColumn.AllowEdit = false;
             // 
             // grdIntCol_ErrorInfo_id
             // 
             this.grdIntCol_ErrorInfo_id.Caption = "ErrorInfo_Id";
             this.grdIntCol_ErrorInfo_id.FieldName = "ErrorInfo_ID";
             this.grdIntCol_ErrorInfo_id.Name = "grdIntCol_ErrorInfo_id";
+            this.grdIntCol_ErrorInfo_id.OptionsColumn.AllowEdit = false;
             // 
             // grdIntCol_
             // 
@@ -381,6 +396,7 @@
             this.grdIntCol_.Caption = "Error From Task";
             this.grdIntCol_.FieldName = "Order_Status";
             this.grdIntCol_.Name = "grdIntCol_";
+            this.grdIntCol_.OptionsColumn.AllowEdit = false;
             this.grdIntCol_.Visible = true;
             this.grdIntCol_.VisibleIndex = 6;
             // 
@@ -393,6 +409,7 @@
             this.grdIntCol_Updated_By.Caption = "Error Entered By";
             this.grdIntCol_Updated_By.FieldName = "User_name";
             this.grdIntCol_Updated_By.Name = "grdIntCol_Updated_By";
+            this.grdIntCol_Updated_By.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Updated_By.Visible = true;
             this.grdIntCol_Updated_By.VisibleIndex = 7;
             // 
@@ -426,7 +443,7 @@
             this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.grdCtrl_External_Error);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(939, 353);
+            this.navigationPage2.Size = new System.Drawing.Size(897, 347);
             // 
             // grdCtrl_External_Error
             // 
@@ -436,7 +453,7 @@
             this.grdCtrl_External_Error.Name = "grdCtrl_External_Error";
             this.grdCtrl_External_Error.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repHypLnk_Remove});
-            this.grdCtrl_External_Error.Size = new System.Drawing.Size(939, 353);
+            this.grdCtrl_External_Error.Size = new System.Drawing.Size(897, 347);
             this.grdCtrl_External_Error.TabIndex = 0;
             this.grdCtrl_External_Error.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_External_Error});
@@ -461,6 +478,8 @@
             this.gridView_External_Error.GridControl = this.grdCtrl_External_Error;
             this.gridView_External_Error.IndicatorWidth = 50;
             this.gridView_External_Error.Name = "gridView_External_Error";
+            this.gridView_External_Error.OptionsFind.AlwaysVisible = true;
+            this.gridView_External_Error.OptionsFind.ShowCloseButton = false;
             this.gridView_External_Error.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView_External_Error_RowCellClick);
             this.gridView_External_Error.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView_External_Error_CustomDrawRowIndicator);
             // 
@@ -648,7 +667,7 @@
             this.lbl_Header.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lbl_Header.Appearance.Options.UseFont = true;
             this.lbl_Header.Appearance.Options.UseForeColor = true;
-            this.lbl_Header.Location = new System.Drawing.Point(378, 3);
+            this.lbl_Header.Location = new System.Drawing.Point(357, 3);
             this.lbl_Header.Name = "lbl_Header";
             this.lbl_Header.Size = new System.Drawing.Size(188, 30);
             this.lbl_Header.TabIndex = 0;
@@ -662,8 +681,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 491);
+            this.ClientSize = new System.Drawing.Size(907, 491);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(923, 529);
             this.Name = "master_Employee_Error_Entry_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee_Error_Entry_View";

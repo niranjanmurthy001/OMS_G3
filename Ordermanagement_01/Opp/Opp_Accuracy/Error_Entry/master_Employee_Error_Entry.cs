@@ -116,25 +116,38 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private async void GetUsername()
         {
-            Dictionary<string, object> dict_userid = new Dictionary<string, object>();
-            dict_userid.Add("@Trans", "Get_User_Name");
-            dict_userid.Add("@User_id", UserId);
-            var data = new StringContent(JsonConvert.SerializeObject(dict_userid), Encoding.UTF8, "application/json");
-            using (var httpClient = new HttpClient())
+            try
             {
-                var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindUserName", data);
-                if (response.IsSuccessStatusCode)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                Dictionary<string, object> dict_userid = new Dictionary<string, object>();
+                dict_userid.Add("@Trans", "Get_User_Name");
+                dict_userid.Add("@User_id", UserId);
+                var data = new StringContent(JsonConvert.SerializeObject(dict_userid), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindUserName", data);
+                    if (response.IsSuccessStatusCode)
                     {
-                        var result = await response.Content.ReadAsStringAsync();
-                        DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                        if (dt1.Rows.Count > 0)
+                        if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            UserName = dt1.Rows[0]["User_Name"].ToString();
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt1.Rows.Count > 0)
+                            {
+                                UserName = dt1.Rows[0]["User_Name"].ToString();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
@@ -180,18 +193,35 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void master_Employee_Error_Entry_Load(object sender, EventArgs e)
         {
-            ddl_Error_Type.Properties.Columns.Clear();
-            Bind_ErrorType();
-            chk_UserName.Visible = false;
-            ddl_User_Name.Visible = false;
-            GetUsername();
-            if (operationType == "Internal Error Entry")
+            try
             {
-                grp_Control.Text = "Internal Error Entry";
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                ddl_Error_Type.ItemIndex = 0;
+                ddl_ErrorTab.ItemIndex = 0;
+                ddl_Error_Field.ItemIndex = 0;
+                ddl_Task.ItemIndex = 0;
+                ddl_Error_Type.Properties.Columns.Clear();
+                Bind_ErrorType();
+                chk_UserName.Visible = false;
+                ddl_User_Name.Visible = false;
+                GetUsername();
+                if (operationType == "Internal Error Entry")
+                {
+                    grp_Control.Text = "Internal Error Entry";
+                }
+                else if (operationType == "External Error Entry")
+                {
+                    grp_Control.Text = "External Error Entry";
+                }
             }
-            else if (operationType == "External Error Entry")
+            catch (Exception ex)
             {
-                grp_Control.Text = "External Error Entry";
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
 
@@ -318,7 +348,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             try
             {
 
-
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 IDictionary<string, object> dictselect = new Dictionary<string, object>();
                 {
                     dictselect.Add("@Trans", "SELECT_Error_Description");
@@ -367,49 +397,63 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void ddl_Error_Field_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(ddl_Error_Field.EditValue) != 0)
+            try
             {
-                if (Work_Type_Id == 3)
-                {
 
-                    if (AdminStatus == 2)
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                if (Convert.ToInt32(ddl_Error_Field.EditValue) != 0)
+                {
+                    if (Work_Type_Id == 3)
                     {
-                        ddl_Task.Properties.Columns.Clear();
-                        BindErrorTaskForSuperQc();
+
+                        if (AdminStatus == 2)
+                        {
+                            ddl_Task.Properties.Columns.Clear();
+                            BindErrorTaskForSuperQc();
+                        }
+                        else
+                        {
+
+
+                            ddl_Task.Properties.Columns.Clear();
+
+                            BindOrderTask();
+                        }
                     }
                     else
                     {
+                        if (AdminStatus == 2)
+                        {
+                            if (Client_Id == 40)
+                            {
+                                ddl_Task.Properties.Columns.Clear();
 
-
-                        ddl_Task.Properties.Columns.Clear();
-
-                        BindOrderTask();
-                    }
-                }
-                else
-                {
-                    if (AdminStatus == 2)
-                    {
-                        if (Client_Id == 40)
+                                BindOrderTask();
+                            }
+                            else
+                            {
+                                ddl_Task.Properties.Columns.Clear();
+                                BindErrorTaskForSuperQc();
+                            }
+                        }
+                        else
                         {
                             ddl_Task.Properties.Columns.Clear();
 
                             BindOrderTask();
                         }
-                        else
-                        {
-                            ddl_Task.Properties.Columns.Clear();
-                            BindErrorTaskForSuperQc();
-                        }
-                    }
-                    else
-                    {
-                        ddl_Task.Properties.Columns.Clear();
-
-                        BindOrderTask();
                     }
                 }
 
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
         private async void BindErrorTaskForSuperQc()
@@ -691,6 +735,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             Error_User = 0;
             chk_UserName.Checked = false;
             ddl_User_Name.Visible = false;
+            lbl_UserName.Text = "";
 
 
         }
@@ -709,10 +754,12 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             {
                 try
                 {
+                   
                     if (validate() != false)
                     {
                         if (Error_User != 0 && (await CheckExistrecord()!=false))
                         {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                             int Ent_error_info_Id = 0;
                             IDictionary<string, object> dict_insert = new Dictionary<string, object>();
                             dict_insert.Add("@Trans", "Insert_Error");
@@ -832,10 +879,12 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             {
                 try
                 {
+                    
                     if (validate() != false)
                     {
                         if (Error_User != 0 && (await CheckExistrecord() != false))
                         {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                             int Ent_error_info_Id = 0;
                             IDictionary<string, object> dict_insert = new Dictionary<string, object>();
                             dict_insert.Add("@Trans", "Insert_Error");
@@ -1141,59 +1190,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 SplashScreenManager.CloseForm(false);
             }
 
-            //private async void GetError_Info_Id(int error_Typ_Id, int error_Tab_Id, int error_Field_Id, string comment, int error_Task, int order_Id, int user_Id, int workType_id)
-            //{
-            //    try
-            //    {
-            //        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-
-            //        IDictionary<string, object> dictionary = new Dictionary<string, object>()
-            //        {
-            //            { "@Trans", "Get_Error_info_id" },
-
-            //            {"@New_Error_Type_Id",error_Typ_Id},
-            //            {"@Error_Type",error_Tab_Id },
-            //            {"@Error_Description",error_Field_Id },
-            //            { "@Comments",comment },
-            //            {"@Error_Task",error_Task },
-            //            { "@Order_ID", order_Id },
-            //            { "@User_id", user_Id },
-            //            { "@Work_Type", workType_id },
-            //         };
-            //        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-            //        using (var httpClient = new HttpClient())
-            //        {
-            //            var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindErrorInfoId", data);
-            //            if (response.IsSuccessStatusCode)
-            //            {
-            //                if (response.StatusCode == HttpStatusCode.OK)
-            //                {
-            //                    var result = await response.Content.ReadAsStringAsync();
-            //                    DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-            //                    if (dt1.Rows.Count > 0)
-            //                    {
-            //                        Master_Error_Info_Id = Convert.ToInt32(dt1.Rows[0]["ErrorInfo_ID"].ToString());
-
-            //                    }
-            //                    else
-            //                    {
-            //                        SplashScreenManager.CloseForm(false);
-            //                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        SplashScreenManager.CloseForm(false);
-            //        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //    finally
-            //    {
-            //        SplashScreenManager.CloseForm(false);
-            //    }
-            //}
+            
         }
     }
 }
