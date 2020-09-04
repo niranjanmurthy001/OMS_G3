@@ -11,7 +11,9 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 {
@@ -49,7 +51,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
                 rb_Internal_Error_Type.SelectedIndex = 0;
                 navigationFrame1.SelectedPage = navigationPage1;
-                lbl_Header.Text = "Internal Error Entry-"+ OrderId;
+                lbl_Header.Text = "Internal Error Entry-" + OrderId;
                 BindgrdError();
 
                 rb_External_Error_Type.Visible = false;
@@ -63,6 +65,10 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("SomeThing Went Wrong! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private void rb_Internal_Error_Type_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +77,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             rb_External_Error_Type.SelectedIndex = -1;
             BindgrdError();
 
-            lbl_Header.Text = "Internal Error Entry" + OrderId;
+            lbl_Header.Text = "Internal Error Entry-"+ OrderId;
         }
 
         private void rb_Internal_Error_Type_MouseClick(object sender, MouseEventArgs e)
@@ -86,7 +92,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             navigationFrame1.SelectedPage = navigationPage2;
             rb_Internal_Error_Type.SelectedIndex = -1;
-            lbl_Header.Text = "External Error Entry" + OrderId;
+            lbl_Header.Text = "External Error Entry-" + OrderId;
             BindGridExternalErrors();
         }
 
@@ -99,6 +105,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+           
             if (rb_Internal_Error_Type.SelectedIndex != -1)
             {
 
@@ -155,16 +162,16 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                             gridView_Internal_Error.SetRowCellValue(i, gridView_Internal_Error.Columns.ColumnByFieldName("Order_Status"), "AdminTask");
                                         }
                                     }
-                                    if (UserRole == "1" || UserRole == " 6")
-                                    {
-                                        grdIntCol_User_Name.Visible = true;
-                                        grdIntCol_Remove.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        grdIntCol_User_Name.Visible = false;
-                                        grdIntCol_Remove.Visible = false;
-                                    }
+                                    //if (UserRole == "1" || UserRole == " 6")
+                                    //{
+                                    //    grdIntCol_User_Name.Visible = true;
+                                    //    grdIntCol_Remove.Visible = true;
+                                    //}
+                                    //else
+                                    //{
+                                    //    grdIntCol_User_Name.Visible = false;
+                                    //    grdIntCol_Remove.Visible = false;
+                                    //}
 
                                 }
                             }
@@ -201,16 +208,16 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                             gridView_Internal_Error.SetRowCellValue(i, gridView_Internal_Error.Columns.ColumnByFieldName("Order_Status"), "Admin Task");
                                         }
                                     }
-                                    if (UserRole == "1" || UserRole == "6")
-                                    {
-                                        grdIntCol_User_Name.Visible = true;
-                                        grdIntCol_Remove.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        grdIntCol_User_Name.Visible = false;
-                                        grdIntCol_Remove.Visible = false;
-                                    }
+                                    //if (UserRole == "1" || UserRole == "6")
+                                    //{
+                                    //    grdIntCol_User_Name.Visible = true;
+                                    //    grdIntCol_Remove.Visible = true;
+                                    //}
+                                    //else
+                                    //{
+                                    //    grdIntCol_User_Name.Visible = false;
+                                    //    grdIntCol_Remove.Visible = false;
+                                    //}
                                 }
                             }
                         }
@@ -229,6 +236,9 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
 
         }
+
+        
+
         public async void BindGridExternalErrors()
         {
             try
@@ -268,16 +278,16 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                             gridView_External_Error.SetRowCellValue(i, gridView_External_Error.Columns.ColumnByFieldName("Order_Status"), "Admin Task");
                                         }
                                     }
-                                    if (UserRole == "1" || UserRole == "6" || UserRole == "4")
-                                    {
-                                        grdCol_User_Name.Visible = true;
-                                        grdCol_Remove.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        grdCol_User_Name.Visible = false;
-                                        grdCol_Remove.Visible = false;
-                                    }
+                                    //if (UserRole == "1" || UserRole == "6" || UserRole == "4")
+                                    //{
+                                    //    grdCol_User_Name.Visible = true;
+                                    //    grdCol_Remove.Visible = true;
+                                    //}
+                                    //else
+                                    //{
+                                    //    grdCol_User_Name.Visible = false;
+                                    //    grdCol_Remove.Visible = false;
+                                    //}
                                 }
 
                             }
@@ -313,16 +323,16 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                             gridView_External_Error.SetRowCellValue(i, gridView_External_Error.Columns.ColumnByFieldName("Order_Status"), "Admin Task");
                                         }
                                     }
-                                    if (UserRole == "1" || UserRole == "6" || UserRole == "4")
-                                    {
-                                        grdCol_User_Name.Visible = true;
-                                        grdCol_Remove.Visible = true;
-                                    }
-                                    else
-                                    {
-                                        grdCol_User_Name.Visible = false;
-                                        grdCol_Remove.Visible = false;
-                                    }
+                                    //if (UserRole == "1" || UserRole == "6" || UserRole == "4")
+                                    //{
+                                    //    grdCol_User_Name.Visible = true;
+                                    //    grdCol_Remove.Visible = true;
+                                    //}
+                                    //else
+                                    //{
+                                    //    grdCol_User_Name.Visible = false;
+                                    //    grdCol_Remove.Visible = false;
+                                    //}
                                 }
 
                             }
@@ -362,70 +372,141 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             if (e.Column.Caption == "Remove")
             {
-                try
+                if (UserRole == "1" || UserRole == "4" || UserRole == "6")
                 {
-
-                    DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
-                    int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                    int UserIdValue = int.Parse(row["User_id"].ToString());
-                    int OrderIdValue = int.Parse(row["Order_ID"].ToString());
-                    DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (show == DialogResult.Yes)
+                    try
                     {
-                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                        IDictionary<string, object> dict_del = new Dictionary<string, object>();
-                        dict_del.Add("@Trans", "Delete_Error_Info");
-                        dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
-                        var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
-                        using (var httpClient = new HttpClient())
-                        {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                if (response.StatusCode == HttpStatusCode.OK)
-                                {
-                                    var result = await response.Content.ReadAsStringAsync();
 
-                                }
-                            }
-                        }
-                        IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
-                        dicterr_history.Add("@Trans", "Insert_Order_History");
-                        dicterr_history.Add("@Order_Id", OrderIdValue);
-                        dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
-                        dicterr_history.Add("@Comments", "Error Deleted");
-                        dicterr_history.Add("@User_Id", UserIdValue);
-                        var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
-                        using (var httpClient1 = new HttpClient())
+                        DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
+                        int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
+                        
+                        int OrderIdValue = int.Parse(row["Order_ID"].ToString());
+                        DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (show == DialogResult.Yes)
                         {
-                            var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
-                            if (response1.IsSuccessStatusCode)
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            IDictionary<string, object> dict_del = new Dictionary<string, object>();
+                            dict_del.Add("@Trans", "Delete_Error_Info");
+                            dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
                             {
-                                if (response1.StatusCode == HttpStatusCode.OK)
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
+                                if (response.IsSuccessStatusCode)
                                 {
-                                    var result1 = await response1.Content.ReadAsStringAsync();
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+
+                                    }
                                 }
                             }
+                            IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
+                            dicterr_history.Add("@Trans", "Insert_Order_History");
+                            dicterr_history.Add("@Order_Id", OrderIdValue);
+                            dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            dicterr_history.Add("@Comments", "Error Deleted");
+                            dicterr_history.Add("@User_Id", UserId);
+                            var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
+                            using (var httpClient1 = new HttpClient())
+                            {
+                                var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
+                                if (response1.IsSuccessStatusCode)
+                                {
+                                    if (response1.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result1 = await response1.Content.ReadAsStringAsync();
+                                    }
+                                }
+                            }
+                            SplashScreenManager.CloseForm(false);
+
+                            BindgrdError();
                         }
+
+                        else if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
                         SplashScreenManager.CloseForm(false);
-
-                        BindgrdError();
+                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    else if (show == DialogResult.Yes)
+                    finally
                     {
                         SplashScreenManager.CloseForm(false);
                     }
                 }
-                catch (Exception ex)
+                else if ((await Check_Authorize_User_To_Delete_Int_Err() != false))
                 {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    try
+                    {
 
-                finally
-                {
-                    SplashScreenManager.CloseForm(false);
+                        DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
+                        int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
+                        
+                        int OrderIdValue = int.Parse(row["Order_ID"].ToString());
+                        DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            IDictionary<string, object> dict_del = new Dictionary<string, object>();
+                            dict_del.Add("@Trans", "Delete_Error_Info");
+                            dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+
+                                    }
+                                }
+                            }
+                            IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
+                            dicterr_history.Add("@Trans", "Insert_Order_History");
+                            dicterr_history.Add("@Order_Id", OrderIdValue);
+                            dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            dicterr_history.Add("@Comments", "Error Deleted");
+                            dicterr_history.Add("@User_Id", UserId);
+                            var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
+                            using (var httpClient1 = new HttpClient())
+                            {
+                                var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
+                                if (response1.IsSuccessStatusCode)
+                                {
+                                    if (response1.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result1 = await response1.Content.ReadAsStringAsync();
+                                    }
+                                }
+                            }
+                            SplashScreenManager.CloseForm(false);
+
+                            BindgrdError();
+                        }
+
+                        else if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
                 }
             }
         }
@@ -433,101 +514,318 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             if (e.Column.Caption == "Remove")
             {
-                try
-                {
-
-                    DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
-                    int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                    int UserIdValue = int.Parse(row["User_id"].ToString());
-                    int OrderIdValue = int.Parse(row["Order_ID"].ToString());
-                    DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (show == DialogResult.Yes)
+               
+                  if (UserRole == "1" || UserRole == "4" || UserRole == "6")
+                 {
+                    try
                     {
-                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                        IDictionary<string, object> dict_del = new Dictionary<string, object>();
-                        dict_del.Add("@Trans", "Delete_Error_Info");
-                        dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
-                        var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
-                        using (var httpClient = new HttpClient())
+                        DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
+                        int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
+                      
+                        int OrderIdValue = int.Parse(row["Order_ID"].ToString());
+                        DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (show == DialogResult.Yes)
                         {
-                            var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
-                            if (response.IsSuccessStatusCode)
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            IDictionary<string, object> dict_del = new Dictionary<string, object>();
+                            dict_del.Add("@Trans", "Delete_Error_Info");
+                            dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
                             {
-                                if (response.StatusCode == HttpStatusCode.OK)
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
+                                if (response.IsSuccessStatusCode)
                                 {
-                                    var result = await response.Content.ReadAsStringAsync();
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
 
+                                    }
                                 }
                             }
-                        }
-                        IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
-                        dicterr_history.Add("@Trans", "Insert_Order_History");
-                        dicterr_history.Add("@Order_Id", OrderIdValue);
-                        dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
-                        dicterr_history.Add("@Comments", "Error Deleted");
-                        dicterr_history.Add("@User_Id", UserIdValue);
-                        var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
-                        using (var httpClient1 = new HttpClient())
-                        {
-                            var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
-                            if (response1.IsSuccessStatusCode)
+                            IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
+                            dicterr_history.Add("@Trans", "Insert_Order_History");
+                            dicterr_history.Add("@Order_Id", OrderIdValue);
+                            dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            dicterr_history.Add("@Comments", "Error Deleted");
+                            dicterr_history.Add("@User_Id", UserId);
+                            var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
+                            using (var httpClient1 = new HttpClient())
                             {
-                                if (response1.StatusCode == HttpStatusCode.OK)
+                                var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
+                                if (response1.IsSuccessStatusCode)
                                 {
-                                    var result1 = await response1.Content.ReadAsStringAsync();
+                                    if (response1.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result1 = await response1.Content.ReadAsStringAsync();
+                                    }
                                 }
                             }
-                        }
-                        SplashScreenManager.CloseForm(false);
+                            SplashScreenManager.CloseForm(false);
 
-                        BindGridExternalErrors();
+                            BindGridExternalErrors();
+                        }
+
+                        else if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    else if (show == DialogResult.Yes)
+                    finally
+                    {
+                        SplashScreenManager.CloseForm(false);
+                    }
+                 }
+                else if((await Check_Authorize_User_To_Delete_Ext_Err()!=false))
+                {
+                    try
+                    {
+                        DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
+                        int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
+                      
+                        int OrderIdValue = int.Parse(row["Order_ID"].ToString());
+                        DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                            IDictionary<string, object> dict_del = new Dictionary<string, object>();
+                            dict_del.Add("@Trans", "Delete_Error_Info");
+                            dict_del.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            var data = new StringContent(JsonConvert.SerializeObject(dict_del), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridDelete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+
+                                    }
+                                }
+                            }
+                            IDictionary<string, object> dicterr_history = new Dictionary<string, object>();
+                            dicterr_history.Add("@Trans", "Insert_Order_History");
+                            dicterr_history.Add("@Order_Id", OrderIdValue);
+                            dicterr_history.Add("@Error_Info_Id", ErrorInfo_id_value);
+                            dicterr_history.Add("@Comments", "Error Deleted");
+                            dicterr_history.Add("@User_Id", UserId);
+                            var data1 = new StringContent(JsonConvert.SerializeObject(dicterr_history), Encoding.UTF8, "application/json");
+                            using (var httpClient1 = new HttpClient())
+                            {
+                                var response1 = await httpClient1.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/GridHistory", data1);
+                                if (response1.IsSuccessStatusCode)
+                                {
+                                    if (response1.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result1 = await response1.Content.ReadAsStringAsync();
+                                    }
+                                }
+                            }
+                            SplashScreenManager.CloseForm(false);
+
+                            BindGridExternalErrors();
+                        }
+
+                        else if (show == DialogResult.Yes)
+                        {
+                            SplashScreenManager.CloseForm(false);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    finally
                     {
                         SplashScreenManager.CloseForm(false);
                     }
                 }
-                catch (Exception ex)
-                {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
 
-                finally
-                {
-                    SplashScreenManager.CloseForm(false);
-                }
+
+
+
             }
         }
 
         private void btn_Export_Click(object sender, EventArgs e)
         {
-            if (rb_Internal_Error_Type.SelectedIndex != -1)
+            try
             {
-                string filepath = @"C:\Temp\";
-                string fileName = filepath + "Internal Error Entry-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
-                if (!Directory.Exists(filepath))
-                {
-                    Directory.CreateDirectory(filepath);
-                }
-                gridView_Internal_Error.ExportToXlsx(fileName);
-                Process.Start(fileName);
-            }
-            else if(rb_External_Error_Type.SelectedIndex!=-1)
-            {
-                string filepath = @"C:\Temp\";
-                string fileName = filepath + "External Error Entry-" + DateTime.Now.ToString("dd-MM-hh-mm-ss") + ".xlsx";
-                if(!Directory.Exists(filepath))
-                {
-                    Directory.CreateDirectory(filepath);
+                
 
+                if (rb_Internal_Error_Type.SelectedIndex != -1)
+                {
+                    string filepath = @"C:\Temp\";
+                    string fileName = filepath + "Internal Error Entry-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+                    if (!Directory.Exists(filepath))
+                    {
+                        Directory.CreateDirectory(filepath);
+                    }
+                    grdIntCol_Remove.Visible = false;
+                    gridView_Internal_Error.ExportToXlsx(fileName);
+                    Process.Start(fileName);
+                    grdIntCol_Remove.Visible = true;
                 }
-                gridView_External_Error.ExportToXlsx(fileName);
-                Process.Start(fileName);
-            } 
+                else if (rb_External_Error_Type.SelectedIndex != -1)
+                {
+                    string filepath = @"C:\Temp\";
+                    string fileName = filepath + "External Error Entry-" + DateTime.Now.ToString("dd-MM-hh-mm-ss") + ".xlsx";
+                    if (!Directory.Exists(filepath))
+                    {
+                        Directory.CreateDirectory(filepath);
+
+                    }
+                    grdCol_Remove.Visible = false;
+                    gridView_External_Error.ExportToXlsx(fileName);
+                    Process.Start(fileName);
+                    grdCol_Remove.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+
         }
 
+        private async Task<bool> Check_Authorize_User_To_Delete_Int_Err()
+        {
+            
+            DataTable dt = new DataTable();
+            try
+            {
+                if (rb_Internal_Error_Type.SelectedIndex!=-1)
+                {
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                    DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
+                    //int USERID = int.Parse(row["User_id"].ToString());
+                    int ORDERID = int.Parse(row["Order_ID"].ToString());
+                    int ERRORINFOID = int.Parse(row["ErrorInfo_ID"].ToString());
+
+
+                    
+
+                    IDictionary<string, object> dictionary = new Dictionary<string, object>();
+
+
+                    dictionary.Add("@Trans", "Check_User_Id_To_Remove_for_Internal_Err");
+                    dictionary.Add("@Order_ID", ORDERID);
+                    dictionary.Add("@User_id", UserId);
+                    dictionary.Add("Error_Info_Id", ERRORINFOID);
+
+
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindUserDetails", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                int count = Convert.ToInt32(dt1.Rows[0]["exist_Count"].ToString());
+                                if (count <= 0)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("You Are Not Authorized User To Delete These Record", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+
+
+        }
+        private async Task<bool> Check_Authorize_User_To_Delete_Ext_Err()
+        {
+
+            DataTable dt = new DataTable();
+            try
+            {
+                if (rb_External_Error_Type.SelectedIndex != -1)
+                {
+                    DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
+                   // int USERID = int.Parse(row["User_id"].ToString());
+                    int ORDERID = int.Parse(row["Order_ID"].ToString());
+                    int ERRORINFOID = int.Parse(row["ErrorInfo_ID"].ToString());
+
+
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                    IDictionary<string, object> dictionary = new Dictionary<string, object>();
+
+
+                    dictionary.Add("@Trans", "Check_User_Id_To_Remove_for_External_Err");
+                    dictionary.Add("@Order_ID", ORDERID);
+                    dictionary.Add("@User_id", UserId);
+                    dictionary.Add("Error_Info_Id", ERRORINFOID);
+
+
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/EmployeeErrorEntry/BindUserDetails", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                int count = Convert.ToInt32(dt1.Rows[0]["exist_Count"].ToString());
+                                if (count <= 0)
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("You Are Not Authorized User To Delete These Record", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+
+
+        }
     }
 
 

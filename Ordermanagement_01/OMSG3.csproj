@@ -1986,12 +1986,6 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Buttons.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Opp\Buttons.Designer.cs">
-      <DependentUpon>Buttons.cs</DependentUpon>
-    </Compile>
     <Compile Include="Opp\ColumnData.cs" />
     <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.cs">
       <SubType>Form</SubType>
@@ -4079,9 +4073,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Buttons.resx">
-      <DependentUpon>Buttons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.resx">
       <DependentUpon>master_Employee_Error_Entry.cs</DependentUpon>

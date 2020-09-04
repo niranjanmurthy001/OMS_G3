@@ -69,11 +69,12 @@
             // 
             this.grp_Control.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_Control.AppearanceCaption.Options.UseFont = true;
+            this.grp_Control.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.error_;
             this.grp_Control.Controls.Add(this.tableLayoutPanel1);
             this.grp_Control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grp_Control.Location = new System.Drawing.Point(0, 0);
             this.grp_Control.Name = "grp_Control";
-            this.grp_Control.Size = new System.Drawing.Size(637, 378);
+            this.grp_Control.Size = new System.Drawing.Size(636, 378);
             this.grp_Control.TabIndex = 0;
             this.grp_Control.Text = "Error Entry";
             // 
@@ -89,11 +90,12 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.91549F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.08451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(633, 350);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 350);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
             // 
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.panelControl1.Controls.Add(this.txt_Comments);
             this.panelControl1.Controls.Add(this.lbl_UserName);
             this.panelControl1.Controls.Add(this.chk_UserName);
@@ -111,7 +113,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(627, 294);
+            this.panelControl1.Size = new System.Drawing.Size(626, 294);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_Comments
@@ -119,7 +121,9 @@
             this.txt_Comments.EditValue = "Enter Comments....";
             this.txt_Comments.Location = new System.Drawing.Point(125, 213);
             this.txt_Comments.Name = "txt_Comments";
-            this.txt_Comments.Size = new System.Drawing.Size(319, 61);
+            this.txt_Comments.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.txt_Comments.Properties.Appearance.Options.UseForeColor = true;
+            this.txt_Comments.Size = new System.Drawing.Size(324, 61);
             this.txt_Comments.TabIndex = 13;
             this.txt_Comments.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Comments_KeyDown);
             this.txt_Comments.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txt_Comments_MouseClick);
@@ -139,10 +143,12 @@
             // 
             // chk_UserName
             // 
-            this.chk_UserName.Location = new System.Drawing.Point(376, 136);
+            this.chk_UserName.Location = new System.Drawing.Point(376, 133);
             this.chk_UserName.Name = "chk_UserName";
             this.chk_UserName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_UserName.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.chk_UserName.Properties.Appearance.Options.UseFont = true;
+            this.chk_UserName.Properties.Appearance.Options.UseForeColor = true;
             this.chk_UserName.Properties.Caption = "Check for User/Vendor Name";
             this.chk_UserName.Size = new System.Drawing.Size(183, 19);
             this.chk_UserName.TabIndex = 11;
@@ -150,10 +156,12 @@
             // 
             // ddl_User_Name
             // 
-            this.ddl_User_Name.Location = new System.Drawing.Point(376, 167);
+            this.ddl_User_Name.Location = new System.Drawing.Point(376, 164);
             this.ddl_User_Name.Name = "ddl_User_Name";
             this.ddl_User_Name.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_User_Name.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_User_Name.Properties.Appearance.Options.UseFont = true;
+            this.ddl_User_Name.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_User_Name.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_User_Name.Properties.NullText = "Select User Name";
@@ -166,7 +174,9 @@
             this.ddl_Task.Location = new System.Drawing.Point(125, 131);
             this.ddl_Task.Name = "ddl_Task";
             this.ddl_Task.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Task.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_Task.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Task.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_Task.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Task.Properties.NullText = "Select";
@@ -180,7 +190,9 @@
             this.ddl_Error_Field.Location = new System.Drawing.Point(125, 96);
             this.ddl_Error_Field.Name = "ddl_Error_Field";
             this.ddl_Error_Field.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Error_Field.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_Error_Field.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Error_Field.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_Error_Field.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Error_Field.Properties.NullText = "Select";
@@ -194,7 +206,9 @@
             this.ddl_ErrorTab.Location = new System.Drawing.Point(125, 61);
             this.ddl_ErrorTab.Name = "ddl_ErrorTab";
             this.ddl_ErrorTab.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ErrorTab.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_ErrorTab.Properties.Appearance.Options.UseFont = true;
+            this.ddl_ErrorTab.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_ErrorTab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ErrorTab.Properties.NullText = "Select";
@@ -208,7 +222,9 @@
             this.ddl_Error_Type.Location = new System.Drawing.Point(125, 26);
             this.ddl_Error_Type.Name = "ddl_Error_Type";
             this.ddl_Error_Type.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Error_Type.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_Error_Type.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Error_Type.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_Error_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Error_Type.Properties.NullText = "Select";
@@ -223,7 +239,7 @@
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(38, 212);
+            this.labelControl6.Location = new System.Drawing.Point(38, 210);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(68, 15);
             this.labelControl6.TabIndex = 5;
@@ -235,7 +251,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(39, 170);
+            this.labelControl5.Location = new System.Drawing.Point(39, 166);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(67, 15);
             this.labelControl5.TabIndex = 4;
@@ -247,7 +263,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(73, 134);
+            this.labelControl4.Location = new System.Drawing.Point(73, 129);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(33, 15);
             this.labelControl4.TabIndex = 3;
@@ -259,7 +275,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(44, 98);
+            this.labelControl3.Location = new System.Drawing.Point(44, 95);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(62, 15);
             this.labelControl3.TabIndex = 2;
@@ -271,7 +287,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(49, 62);
+            this.labelControl2.Location = new System.Drawing.Point(49, 59);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(57, 15);
             this.labelControl2.TabIndex = 1;
@@ -283,7 +299,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(43, 26);
+            this.labelControl1.Location = new System.Drawing.Point(43, 24);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(63, 15);
             this.labelControl1.TabIndex = 0;
@@ -295,7 +311,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(467, 303);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(466, 303);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 44);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -336,9 +352,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 378);
+            this.ClientSize = new System.Drawing.Size(636, 378);
             this.Controls.Add(this.grp_Control);
             this.LookAndFeel.SkinName = "Office 2013";
+            this.MinimumSize = new System.Drawing.Size(652, 416);
             this.Name = "master_Employee_Error_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee_Error_Entry";
