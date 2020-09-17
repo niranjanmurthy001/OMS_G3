@@ -34,9 +34,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         string Comments;
         int Ref_Checklist_Master_Type_Id, Checklist_Id, Check_List_Tran_ID;
         string Question;
-        string File_Name, Path;
+        string File_Name, Path, report_pdf_Path;
+        string File_size, ftpfullpath, directoryPath;
         private bool IsButton { get; set; }
-        StiReport Report = new StiReport();
+        StiReport Report;
+        string Ftp_Domain_Name, Ftp_User_Name, Ftp_Password, Upload_Directory, Ftp_Path, ftpUploadFullPath;
+        DropDownistBindClass dbc = new DropDownistBindClass();
 
 
         public CheckLists(int User_Id, int Project_Type_Id, int Product_Type_Id, int Order_Id, int Client_Id, int SubClient_Id, int Order_Task, int Work_Type_Id)
@@ -50,21 +53,68 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             SubClientId = SubClient_Id;
             OrderTask = Order_Task;
             WorkType_Id = Work_Type_Id;
+            // to get sever login credentials
+            DataTable dt_ftp_Details = dbc.Get_Ftp_Details();
+            if (dt_ftp_Details.Rows.Count > 0)
+            {
+                try
+                {
+                    Ftp_Domain_Name = dt_ftp_Details.Rows[0]["Ftp_Host_Name"].ToString();
+                    Ftp_User_Name = dt_ftp_Details.Rows[0]["Ftp_User_Name"].ToString();
+                    string Ftp_pass = dt_ftp_Details.Rows[0]["Ftp_Password"].ToString();
+                    if (Ftp_pass != "")
+                    {
+                        Ftp_Password = dbc.Decrypt(Ftp_pass);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Something went wrong");
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Ftp File Path was not found; You cannot upload the documents please check with administrator");
+            }
+
         }
 
         private void CheckLists_Load(object sender, EventArgs e)
         {
+            stiViewerControl1.Visible = false;
             IsButton = false;
             grd_CheckList.Visible = false;
             btn_Previous.Visible = false;
             btn_Save.Visible = false;
             btn_Next.Visible = true;
-            BindTabs();
-           
-            labelControl2.Text = Convert.ToString(OrderId);
-            stiViewerControl1.Visible = false;
-
+            GetOrderNumber();
+            BindTabs();                                       
         }
+        private async  void GetOrderNumber()
+        {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","GET_ORDER_NUMBER" },
+                    {"@Order_ID" ,OrderId}
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/CheckLists/Get_Order_No", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                           label1.Text = "CheckList Entry - "+ dt.Rows[0]["Order_Number"].ToString();
+                          
+                         }
+                    }
+                }
+         }
 
         private async void BindTabs()
         {
@@ -163,9 +213,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //    }
         }
 
-
-
-
         private bool CheckNo(GridView view, int row)
         {
             GridColumn col = gridView1.Columns["No"];
@@ -179,35 +226,20 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             return (val_Yes == true);
         }
 
-        private void gridView1_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            //     disable/enable editing for yes / No  
-            GridView gridView1 = sender as GridView;
-            if (this.gridView1.FocusedColumn.FieldName == "Comments" && CheckNo(gridView1, this.gridView1.FocusedRowHandle))
-                e.Cancel = false;
-            if (this.gridView1.FocusedColumn.FieldName == "Comments" && CheckYes(gridView1, this.gridView1.FocusedRowHandle))
-                e.Cancel = true;
-
-        }
-
         private void gridView1_CellValueChanging_1(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             if (e.Column.FieldName == "Yes")
             {
-
                 gridView1.SetRowCellValue(e.RowHandle, "Yes", true);
                 gridView1.SetRowCellValue(e.RowHandle, "No", false);
-                gridView1.SetRowCellValue(e.RowHandle, "Comments", "");
-
-
-
+                gridView1.SetRowCellValue(e.RowHandle, "Comments", "");              
             }
             else if (e.Column.FieldName == "No")
             {
                 gridView1.SetRowCellValue(e.RowHandle, "Yes", false);
-                gridView1.SetRowCellValue(e.RowHandle, "No", true);
-
+                gridView1.SetRowCellValue(e.RowHandle, "No", true);             
             }
+          
         }
 
         private void gridView1_ShowingEditor_1(object sender, System.ComponentModel.CancelEventArgs e)
@@ -218,6 +250,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 e.Cancel = false;
             if (this.gridView1.FocusedColumn.FieldName == "Comments" && CheckYes(gridView1, this.gridView1.FocusedRowHandle))
                 e.Cancel = true;
+            if (this.gridView1.FocusedColumn.FieldName == "Comments" && !CheckYes(gridView1, this.gridView1.FocusedRowHandle) && !CheckNo(gridView1, this.gridView1.FocusedRowHandle))
+                e.Cancel = true;
         }
 
         private void gridView1_RowCellStyle_1(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -225,16 +259,44 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             GridView currentView = sender as GridView;
             if (e.Column.Caption == "Comments")
             {
-                bool value = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "No"));
-                if (value)
+                bool value_no = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "No"));
+                if (value_no)
+                {
                     e.Appearance.BackColor = Color.Red;
-                string comment = gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString();
-                if (comment == "" && comment == null)
-                    e.Appearance.BackColor = Color.Red;
-                else if (comment != "")
-                    e.Appearance.BackColor = Color.White;
-            }
+                    string comment = gridView1.GetRowCellValue(e.RowHandle, "Comments").ToString();
+                    if (string.IsNullOrWhiteSpace(comment))
+                    { e.Appearance.BackColor = Color.Red; }
+                    else if (!string.IsNullOrWhiteSpace(comment))
+                    { e.Appearance.BackColor = Color.White; }
+                }
+                bool value_yes = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "Yes"));
+                if (value_yes)
+                { e.Appearance.BackColor = Color.White; }
 
+            }
+           
+            //else if (e.Column.FieldName == "No")
+            //{
+            //    bool value_yes = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "Yes"));
+            //    bool value_no = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "No"));
+            //    if (value_yes == false && value_no == false)
+            //    { e.Appearance.BackColor = Color.Red; }
+            //    else
+            //    {
+            //        e.Appearance.BackColor = Color.White;
+            //    }
+            //}
+            //else if (e.Column.FieldName == "Yes" )
+            //{
+            //    bool value_yes = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "Yes"));
+            //    bool value_no = Convert.ToBoolean(gridView1.GetRowCellValue(e.RowHandle, "No"));
+            //    if (value_yes == false && value_no == false)
+            //    { e.Appearance.BackColor = Color.Red; }
+            //    else
+            //    {
+            //        e.Appearance.BackColor = Color.White;
+            //    }
+            //}
             //DataRowView view = gridView1.GetRow(e.RowHandle) as DataRowView;
             //if (e.RowHandle >= 0)
             //{
@@ -266,14 +328,42 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //}
         }
 
+        private void Download_Ftp_File(string File_Name, string File_path)
+        {
+            try
+            {
+                FtpWebRequest reqFTP;
+                FileStream outputStream = new FileStream(@"C:\\Temp" + "\\" + File_Name, FileMode.Create);             
+                reqFTP = (FtpWebRequest)WebRequest.Create(new Uri(File_path));
+                reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
+                reqFTP.UseBinary = true;
+                reqFTP.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                Stream ftpStream = response.GetResponseStream();
+                ftpStream.CopyTo(outputStream);
+                ftpStream.Dispose();
+                outputStream.Dispose();
+                response.Dispose();
+              
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Problem in Downloading Files please Check with Administrator");
+            }
+        }
         private void Load_Report()
         {
-            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);          
+            SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+           // Login_Server_Credentials();          
+            Download_Ftp_File("Checklist_Report_Preview.mrt", "ftp://titlelogy.com/FTP_Application_Files/OMS/Oms_reports/Checklist_Report_Preview.mrt");
             StiReport Report = new StiReport();
             Report.Reset();
             Report.Dictionary.DataSources.Clear();
-            Report.Load(@"C:\bindu\DRN OMS TEST SOFT CODE 1\Checklist_Report_Preview.mrt");
-            // Report=new Reports.
+            // Report.Load(@"C:\bindu\DRN OMS TEST SOFT CODE 1\Checklist_Report_Preview.mrt");
+            //  Report.Load("~/Reports/StimulSoftReports/Checklist_Report_Preview.mrt");
+            report_pdf_Path = @"C:\\Temp\\Checklist_Report_Preview.pdf";
+            Report.Load(@"C:\\Temp\\Checklist_Report_Preview.mrt");
+         
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
             Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
@@ -281,11 +371,13 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
             Report.Compile();
             Report.Render();
+            Report.ExportDocument(StiExportFormat.Pdf, report_pdf_Path);
             //  Report.Show(true);
             SplashScreenManager.CloseForm(false);
             stiViewerControl1.Visible = true;
             stiViewerControl1.Dock = DockStyle.Fill;
             stiViewerControl1.Report = Report;
+            tabPane1.SelectedPage.Controls.Add(stiViewerControl1);
         }
 
         private void tabPane1_SelectedPageIndexChanged_1(object sender, EventArgs e)
@@ -295,19 +387,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             //   stiViewerControl1.Visible = true;
             //    Load_Report();
             //}
-        }
-
-        private void repositoryItemCheckEdit1_EditValueChanged_2(object sender, EventArgs e)
-        {
-
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Yes", true);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "No", false);
-            gridView1.SetRowCellValue(gridView1.FocusedRowHandle, "Comments", "");
-            if (gridView1.PostEditor())
-            {
-                gridView1.UpdateCurrentRow();
-            }
-
         }
 
         private void gridView1_CustomDrawRowIndicator_1(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -498,10 +577,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 grd_CheckList.DataSource = dt_VIEW;
                                 grd_CheckList.Dock = DockStyle.Fill;
                                 tabPane1.SelectedPage.Controls.Add(grd_CheckList);
-                                //for (int i = 0; i < dt.Rows.Count; i++)
-                                //{
-                                //   // gridView1.Columns[i].ColumnEdit=rpeo
-                                //}
+                               
                             }
                         }
                     }
@@ -655,18 +731,32 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         }
         private void btn_Previous_Click_1(object sender, EventArgs e)
         {
-            stiViewerControl1.Visible = false;
-            SavePreviousData();
-            IsButton = true;
-            btn_Next.Visible = true;
-            btn_Save.Visible = false;
-            tabPane1.SelectedPageIndex -= 1;
-            index = tabPane1.SelectedPageIndex;
-            if (index == 0)
+            try
             {
-                btn_Previous.Visible = false;
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                stiViewerControl1.Visible = false;
+                if (tabPane1.SelectedPage.Caption != "Report Preview")
+                { SavePreviousData(); }
+                IsButton = true;
+                btn_Next.Visible = true;
+                btn_Save.Visible = false;
+                tabPane1.SelectedPageIndex -= 1;
+                index = tabPane1.SelectedPageIndex;
+                if (index == 0)
+                {
+                    btn_Previous.Visible = false;
+                }
+                BindTabs();
             }
-            BindTabs();
+            catch(Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Error in loading this content" + "\n" + "Please try again","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private void btn_Next_Click_1(object sender, EventArgs e)
@@ -684,22 +774,6 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 // if (Validate() == true)
                 // {
                 // XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-                string outputPdfPath = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report.pdf";
-                StiReport Report = new StiReport();
-                Report.Reset();
-                Report.Dictionary.DataSources.Clear();
-                Report.Load(@"C:\bindu\DRN OMS TEST SOFT CODE 1\Checklist_Report_Preview.mrt");
-                // Report=new Reports.
-                Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
-                Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
-                Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
-                Report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = Convert.ToString(ProjectType_Id);
-                Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
-                Report.Compile();
-                Report.Render();
-                Report.ExportDocument(StiExportFormat.Pdf, outputPdfPath);
-                string Source = outputPdfPath;
                 Copy_Check_List_To_Server();
                
                // }
@@ -715,74 +789,184 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             }
         }
 
-        //Copying Source File Into Destional Folder
-        private async void Copy_Check_List_To_Server()
+        private string GetFileSize(double byteCount)
         {
-            //form_loader.Start_progres();
-            string Source = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report.pdf";
-            if (WorkType_Id == 1)
+            string size = "0 Bytes";
+            if (byteCount >= 1073741824.0)
+                size = String.Format("{0:##.##}", byteCount / 1073741824.0) + " GB";
+            else if (byteCount >= 1048576.0)
+                size = String.Format("{0:##.##}", byteCount / 1048576.0) + " MB";
+            else if (byteCount >= 1024.0)
+                size = String.Format("{0:##.##}", byteCount / 1024.0) + " KB";
+            else if (byteCount > 0 && byteCount < 1024.0)
+                size = byteCount.ToString() + " Bytes";
+            File_size = size;
+            return size;
+        }
+        private void CreateDirectory(string directoryPath)
+        {
+            try
             {
-                File_Name = "" + OrderId + "-" + OrderTask.ToString() + "CheckList Report" + ".pdf";
-            }
-            else if (WorkType_Id == 2)
-            {
-
-                File_Name = "" + OrderId + " - " + " REWORK " + OrderTask.ToString() + "CheckList" + ".pdf";
-            }
-            else if (WorkType_Id == 3)
-            {
-                File_Name = "" + OrderId + " - " + " SUPER QC " + OrderTask.ToString() + "CheckList" + ".pdf";
-            }
-            Path = @"\\192.168.12.33\oms\" + ClientId + @"\" + SubClientId + @"\" + OrderId + @"\" + File_Name;
-            DirectoryEntry de = new DirectoryEntry(Path, "administrator", "password1$");
-            de.Username = "administrator";
-            de.Password = "password1$";
-            Directory.CreateDirectory(@"\\192.168.12.33\oms\" + ClientId + @"\" + SubClientId + @"\" + OrderId.ToString());
-            File.Copy(Source, Path, true);
-            var dict = new Dictionary<string, object>();
-            {
-                dict.Add("@Trans", "INSERT_DOCUMENT");
-                if (WorkType_Id == 1)
+                Upload_Directory = directoryPath;
+                string Ftp_Host_Name = Ftp_Domain_Name;
+                Ftp_Path = Ftp_Host_Name + "/FTP_Application_Files/OMS/Oms_reports";
+                string[] folderArray = Upload_Directory.Split('/');
+                string folderName = "";
+                for (int i = 0; i < folderArray.Length; i++)
                 {
-                    dict.Add("@Instuction", "" + OrderTask.ToString() + "Check List Report");
-                }
-                else if (WorkType_Id == 2)
-                {
-                    dict.Add("@Instuction", "REWORK -" + OrderTask.ToString() + "Check List Report");
-
-                }
-                else if (WorkType_Id == 2)
-                {
-                    dict.Add("@Instuction", "SUPER QC -" + OrderTask.ToString() + "Check List Report");
-
-                }
-                dict.Add("@Order_ID", OrderId);
-                dict.Add("@Document_Name", File_Name);
-                dict.Add("@Document_Path", Path);
-                dict.Add("@Inserted_By", UserId);
-                
-                dict.Add("@Project_Type_Id", ProjectType_Id);
-                dict.Add("@Work_Type", WorkType_Id);
-                
-            }
-            var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
-            using (var httpClient = new HttpClient())
-            {
-                var response = await httpClient.PostAsync(Base_Url.Url + "/CheckLists/InsertDocument", data);
-                if (response.IsSuccessStatusCode)
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    if (!string.IsNullOrEmpty(folderArray[i]))
                     {
-                        var result = await response.Content.ReadAsStringAsync();                        
+                        try
+                        {
+                            folderName = string.IsNullOrEmpty(folderName) ? folderArray[i] : folderName + "/" + folderArray[i];
+                            FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create("ftp://" + Ftp_Path + "/" + folderName);
+                            ftp.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
+                            ftp.Method = WebRequestMethods.Ftp.MakeDirectory;
+                            FtpWebResponse CreateForderResponse = (FtpWebResponse)ftp.GetResponse();
+                            if (CreateForderResponse.StatusCode == FtpStatusCode.PathnameCreated)
+                            {
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
                     }
                 }
             }
-            SplashScreenManager.CloseForm(false);
-            XtraMessageBox.Show("CheckList Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);           
-            System.Diagnostics.Process.Start(Path);
-            this.Close();
+            catch (Exception ex)
+            {
+                return;
+            }
         }
-     
+        //Copying Source File Into Destional Folder
+        private async void Copy_Check_List_To_Server()
+        {
+            try
+            {
+                //form_loader.Start_progres();FTP_Application_Files/OMS/Oms_reports
+                // string Source = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report  New.pdf";
+                if (WorkType_Id == 1)
+                {
+                    File_Name = "" + OrderId + "-" + OrderTask.ToString() + "-" + "CheckList Report" + ".pdf";
+                }
+                else if (WorkType_Id == 2)
+                {
+
+                    File_Name = "" + OrderId + " - " + " REWORK " + OrderTask.ToString() + "-" + "CheckList" + ".pdf";
+                }
+                else if (WorkType_Id == 3)
+                {
+                    File_Name = "" + OrderId + " - " + " SUPER QC " + OrderTask.ToString() + "-" + "CheckList" + ".pdf";
+                }
+                directoryPath = +ClientId + "/" + SubClientId + "/" + OrderId + "/" + File_Name;
+                CreateDirectory(directoryPath);
+                string file = report_pdf_Path;
+                FileInfo f = new FileInfo(file);
+                File_size = GetFileSize(f.Length);
+                // @"\\192.168.12.33\oms\" + ClientId + @"\" + SubClientId + @"\" + OrderId.ToString())
+                ftpfullpath = "ftp://" + Ftp_Domain_Name + "/FTP_Application_Files/OMS/Oms_reports/" + directoryPath;
+                string ftpUploadFullPath = ftpfullpath + "/" + "Checklist_Report_Preview.pdf";
+                // Checking File Exit or not
+                FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(ftpfullpath); // FTP Address  
+                ftpRequest.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password); // Credentials  
+                ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                FtpWebResponse response = (FtpWebResponse)ftpRequest.GetResponse();
+                StreamReader streamReader = new StreamReader(response.GetResponseStream());
+
+                HashSet<string> files = new HashSet<string>(); // create list to store directories.   
+                string line = streamReader.ReadLine();
+                while (!string.IsNullOrEmpty(line))
+                {
+                    files.Add(line); // Add Each file to the List.  
+                    line = streamReader.ReadLine();
+                }
+                //if (!files.Contains(f.Name))
+                //{
+                   FtpWebRequest ftpUpLoadFile = (FtpWebRequest)WebRequest.Create(ftpUploadFullPath);
+                    ftpUpLoadFile.Credentials = new NetworkCredential(@"" + Ftp_User_Name + "", Ftp_Password);
+                    ftpUpLoadFile.KeepAlive = true;
+                    ftpUpLoadFile.UseBinary = true;
+                    ftpUpLoadFile.Method = WebRequestMethods.Ftp.UploadFile;
+                    FileStream fs = File.OpenRead(file);
+                    Stream ftpstream = ftpUpLoadFile.GetRequestStream();
+                    fs.CopyTo(ftpstream);
+                    fs.Close();
+                    ftpstream.Close();
+               // }
+
+                var dict = new Dictionary<string, object>();
+                {
+                    dict.Add("@Trans", "INSERT_DOCUMENT");
+                    if (WorkType_Id == 1)
+                    {
+                        dict.Add("@Instuction", "" + OrderTask.ToString() + "Check List Report");
+                    }
+                    else if (WorkType_Id == 2)
+                    {
+                        dict.Add("@Instuction", "REWORK -" + OrderTask.ToString() + "Check List Report");
+
+                    }
+                    else if (WorkType_Id == 2)
+                    {
+                        dict.Add("@Instuction", "SUPER QC -" + OrderTask.ToString() + "Check List Report");
+
+                    }
+                    dict.Add("@Order_ID", OrderId);
+                    dict.Add("@Document_Name", File_Name);
+                    dict.Add("@Document_Path", ftpUploadFullPath);
+                    dict.Add("@Inserted_By", UserId);
+                    dict.Add("@Inserted_date", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz"));
+                    dict.Add("@Project_Type_Id", ProjectType_Id);
+                    dict.Add("@Work_Type", WorkType_Id);
+                    dict.Add("@Status", "True");
+                    dict.Add("@Chk_UploadPackage", "False");
+                    dict.Add("@Chk_Typing_Package", "False");
+                }
+                var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response1 = await httpClient.PostAsync(Base_Url.Url + "/CheckLists/InsertDocument", data);
+                    if (response1.IsSuccessStatusCode)
+                    {
+                        if (response1.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response1.Content.ReadAsStringAsync();
+                        }
+                    }
+                }
+                //StiReport Report = new StiReport();
+                //Report.Reset();
+                //Report.Dictionary.DataSources.Clear();
+                //Report.Load(@"C:\\Temp\\Checklist_Report_Preview.mrt");
+                //Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Id"].Value = Convert.ToString(OrderId);
+                //Report.DataSources["Usp_CheckList_Report"].Parameters["@Order_Task"].Value = Convert.ToString(OrderTask);
+                //Report.DataSources["Usp_CheckList_Report"].Parameters["@Work_Type"].Value = Convert.ToString(WorkType_Id);
+                //Report.DataSources["Usp_CheckList_Report"].Parameters["@Project_Type_Id"].Value = Convert.ToString(ProjectType_Id);
+                //Report.DataSources["Usp_CheckList_Report"].Parameters["@User_Id"].Value = Convert.ToString(UserId);
+                //Report.Compile();
+                //Report.Render();
+                //Report.ExportDocument(StiExportFormat.Pdf, Path);                    
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("CheckList Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
+                System.Diagnostics.Process.Start(report_pdf_Path);
+                this.Close();
+            }
+            catch(Exception ex)
+            { }        
+        }
+        private bool IsAvailable(string file)
+        {
+            using (File.OpenRead(file))
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("The Action can't be completed because the file is open." + "\n\t\t\t" + "Close the file and try again.", "File In Use", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }         
+            return true;
+        }
+          
         private bool Validate()
         {
 
@@ -796,29 +980,24 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     if (val_Yes == true && val_No == true)
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Please Check Either 'Yes' or 'No' ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        XtraMessageBox.Show("Please Select Either 'Yes' or 'No' ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
-                    else if (val_Yes == false && val_No == true && Comments == "")
+                    else if (val_Yes == false && val_No == true && string.IsNullOrWhiteSpace(Comments))
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Please Enter Comment if 'No' ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        XtraMessageBox.Show("Please Enter Comment in Red ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
                 }
-                else
+                else 
                 {
-                    SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Please Check Either 'Yes' or 'No' For All Rows ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SplashScreenManager.CloseForm(false);                  
+                    XtraMessageBox.Show("Please Select Either 'Yes' or 'No' For All Rows ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
-            //if (colour==Color.Red)
-            //{
-            //    SplashScreenManager.CloseForm(false);
-            //    XtraMessageBox.Show("Please Enter Comment Field in Red Color");
-            //    return false;
-            //}
+       
             return true;
         }
 
