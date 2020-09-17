@@ -33,6 +33,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.chk_AllTabs = new DevExpress.XtraEditors.CheckEdit();
             this.chk_CheckListTab = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -40,17 +41,16 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.chk_AllTabs = new DevExpress.XtraEditors.CheckEdit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chk_AllTabs.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_CheckListTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chk_AllTabs.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Add
@@ -98,7 +98,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 352);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 352);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // flowLayoutPanel1
@@ -106,7 +106,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Add);
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(188, 305);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(221, 305);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(181, 44);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -123,33 +123,50 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(366, 296);
+            this.panelControl1.Size = new System.Drawing.Size(399, 296);
             this.panelControl1.TabIndex = 1;
+            // 
+            // chk_AllTabs
+            // 
+            this.chk_AllTabs.Location = new System.Drawing.Point(123, 122);
+            this.chk_AllTabs.Name = "chk_AllTabs";
+            this.chk_AllTabs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_AllTabs.Properties.Appearance.Options.UseFont = true;
+            this.chk_AllTabs.Properties.Caption = "Check All";
+            this.chk_AllTabs.Size = new System.Drawing.Size(80, 19);
+            this.chk_AllTabs.TabIndex = 6;
+            this.chk_AllTabs.CheckedChanged += new System.EventHandler(this.chk_AllTabs_CheckedChanged);
             // 
             // chk_CheckListTab
             // 
+            this.chk_CheckListTab.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_CheckListTab.Appearance.Options.UseFont = true;
             this.chk_CheckListTab.CheckOnClick = true;
             this.chk_CheckListTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_CheckListTab.Location = new System.Drawing.Point(120, 147);
             this.chk_CheckListTab.Name = "chk_CheckListTab";
-            this.chk_CheckListTab.Size = new System.Drawing.Size(196, 130);
+            this.chk_CheckListTab.Size = new System.Drawing.Size(223, 130);
             this.chk_CheckListTab.TabIndex = 5;
             // 
             // ddl_ProjectType
             // 
             this.ddl_ProjectType.Location = new System.Drawing.Point(120, 33);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
+            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(196, 20);
+            this.ddl_ProjectType.Size = new System.Drawing.Size(223, 22);
             this.ddl_ProjectType.TabIndex = 3;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Location = new System.Drawing.Point(26, 35);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 15);
@@ -160,17 +177,21 @@
             // 
             this.ddl_ProductType.Location = new System.Drawing.Point(120, 83);
             this.ddl_ProductType.Name = "ddl_ProductType";
+            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProductType.Properties.NullText = "Select";
-            this.ddl_ProductType.Size = new System.Drawing.Size(196, 20);
+            this.ddl_ProductType.Size = new System.Drawing.Size(223, 22);
             this.ddl_ProductType.TabIndex = 4;
             this.ddl_ProductType.EditValueChanged += new System.EventHandler(this.ddl_ProductType_EditValueChanged);
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(18, 149);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(83, 15);
@@ -180,7 +201,9 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.Location = new System.Drawing.Point(21, 85);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(80, 15);
@@ -195,26 +218,18 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(376, 376);
+            this.groupControl1.Size = new System.Drawing.Size(409, 376);
             this.groupControl1.TabIndex = 9;
             this.groupControl1.Text = "Product Wise Tab Entry";
-            // 
-            // chk_AllTabs
-            // 
-            this.chk_AllTabs.Location = new System.Drawing.Point(120, 122);
-            this.chk_AllTabs.Name = "chk_AllTabs";
-            this.chk_AllTabs.Properties.Caption = "Check All";
-            this.chk_AllTabs.Size = new System.Drawing.Size(80, 19);
-            this.chk_AllTabs.TabIndex = 6;
-            this.chk_AllTabs.CheckedChanged += new System.EventHandler(this.chk_AllTabs_CheckedChanged);
             // 
             // CheckList_ProductWise_Tab_Settings_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 376);
+            this.ClientSize = new System.Drawing.Size(409, 376);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(392, 414);
+            this.MaximumSize = new System.Drawing.Size(664, 414);
+            this.MinimumSize = new System.Drawing.Size(425, 414);
             this.Name = "CheckList_ProductWise_Tab_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product_Wise_Tab Setting";
@@ -225,12 +240,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chk_AllTabs.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_CheckListTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chk_AllTabs.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -141,7 +141,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Select ProjectType","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
-            if (txtProductType.Text == "")
+            if (string.IsNullOrWhiteSpace(txtProductType.Text ))
             {
                 XtraMessageBox.Show("Please Enter ProductType Value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

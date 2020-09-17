@@ -157,10 +157,12 @@
             // 
             this.ddlProjectType.Location = new System.Drawing.Point(119, 55);
             this.ddlProjectType.Name = "ddlProjectType";
+            this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddlProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProjectType.Properties.NullText = "Select";
-            this.ddlProjectType.Size = new System.Drawing.Size(191, 20);
+            this.ddlProjectType.Size = new System.Drawing.Size(217, 22);
             this.ddlProjectType.TabIndex = 2;
             // 
             // labelControl2

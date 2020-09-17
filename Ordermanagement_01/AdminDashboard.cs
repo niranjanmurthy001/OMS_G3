@@ -32278,6 +32278,24 @@ namespace Ordermanagement_01
             notify.Show();
         }
 
+        private void errorEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {           
+            Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View eee = new Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View(1, 1, 197, 1, 1, 25, "", "1", 10, 99870, "", "4");
+            eee.Show();
+        }
+
+        private void orderPriorityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Masters.Order_Priority op = new Masters.Order_Priority();
+            op.Show();
+        }
+
+        private void efficiencySourceTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Source_Type est = new Opp.Opp_Efficiency.Efficiency_Source_Type(1);
+            est.Show();
+        }
+
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);

@@ -192,9 +192,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
 
                             }
+                           
 
 
                         }
+                    }
+                    else
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("We Already Added Tabs For These Product Type ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
 

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -86,7 +85,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(607, 394);
+            this.groupControl1.Size = new System.Drawing.Size(671, 394);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Product Type Setting";
             // 
@@ -102,7 +101,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.39892F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.60108F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 367);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(667, 367);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -114,7 +113,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(597, 316);
+            this.splitContainerControl1.Size = new System.Drawing.Size(661, 316);
             this.splitContainerControl1.SplitterPosition = 231;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -186,7 +185,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.3125F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.6875F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(354, 316);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(418, 316);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panelControl2
@@ -198,24 +197,26 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(348, 263);
+            this.panelControl2.Size = new System.Drawing.Size(412, 263);
             this.panelControl2.TabIndex = 2;
             // 
             // txtProductType
             // 
             this.txtProductType.Location = new System.Drawing.Point(132, 67);
             this.txtProductType.Name = "txtProductType";
-            this.txtProductType.Size = new System.Drawing.Size(177, 20);
+            this.txtProductType.Size = new System.Drawing.Size(220, 20);
             this.txtProductType.TabIndex = 4;
             // 
             // ddlProjectType
             // 
             this.ddlProjectType.Location = new System.Drawing.Point(132, 24);
             this.ddlProjectType.Name = "ddlProjectType";
+            this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddlProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProjectType.Properties.NullText = "Select";
-            this.ddlProjectType.Size = new System.Drawing.Size(177, 20);
+            this.ddlProjectType.Size = new System.Drawing.Size(220, 22);
             this.ddlProjectType.TabIndex = 3;
             // 
             // labelControl3
@@ -248,7 +249,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 272);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(348, 41);
+            this.panelControl3.Size = new System.Drawing.Size(412, 41);
             this.panelControl3.TabIndex = 3;
             // 
             // flowLayoutPanel1
@@ -257,7 +258,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(101, 2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(165, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 37);
             this.flowLayoutPanel1.TabIndex = 3;
@@ -304,7 +305,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(597, 39);
+            this.panelControl1.Size = new System.Drawing.Size(661, 39);
             this.panelControl1.TabIndex = 1;
             // 
             // labelControl1
@@ -314,7 +315,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(208, 2);
+            this.labelControl1.Location = new System.Drawing.Point(240, 2);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(217, 30);
             this.labelControl1.TabIndex = 0;
@@ -324,7 +325,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 394);
+            this.ClientSize = new System.Drawing.Size(671, 394);
             this.Controls.Add(this.groupControl1);
             this.MaximumSize = new System.Drawing.Size(863, 432);
             this.MinimumSize = new System.Drawing.Size(623, 432);
