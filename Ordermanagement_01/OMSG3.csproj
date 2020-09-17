@@ -154,6 +154,10 @@
     <Reference Include="ClosedXML">
       <HintPath>..\..\..\Third Part Software\Excel Exporting Dll Software for Windows\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="Control.Draggable, Version=1.0.5049.269, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Control.Draggable.1.0.5049.269\lib\net35-Client\Control.Draggable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -2956,12 +2960,6 @@
     <Compile Include="Test\Api_Call.Designer.cs">
       <DependentUpon>Api_Call.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test\ArrangeButtons.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test\ArrangeButtons.Designer.cs">
-      <DependentUpon>ArrangeButtons.cs</DependentUpon>
-    </Compile>
     <Compile Include="Test\Clarification_Type_Check.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4609,9 +4607,6 @@
     <EmbeddedResource Include="Test\Api_Call.resx">
       <DependentUpon>Api_Call.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Test\ArrangeButtons.resx">
-      <DependentUpon>ArrangeButtons.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Test\Clarification_Type_Check.resx">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
     </EmbeddedResource>
@@ -4819,7 +4814,9 @@
     <EmbeddedResource Include="fonts\Roboto-Light.ttf" />
     <None Include="ClassDiagram5.cd" />
     <None Include="Order_Type.xlsx" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
