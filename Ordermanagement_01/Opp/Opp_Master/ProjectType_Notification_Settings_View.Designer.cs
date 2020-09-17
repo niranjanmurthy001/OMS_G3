@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,7 +47,7 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -64,7 +63,9 @@
             // groupControl1
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.notification_Settings;
             this.groupControl1.Controls.Add(this.tableLayoutPanel2);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -93,6 +94,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl2.Controls.Add(this.labelControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
@@ -129,7 +131,9 @@
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.Appearance.Options.UseForeColor = true;
             this.btnExport.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnExport.Location = new System.Drawing.Point(912, 3);
             this.btnExport.Name = "btnExport";
@@ -142,7 +146,9 @@
             // 
             this.btnAddnew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddnew.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddnew.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnAddnew.Appearance.Options.UseFont = true;
+            this.btnAddnew.Appearance.Options.UseForeColor = true;
             this.btnAddnew.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnAddnew.Location = new System.Drawing.Point(820, 3);
             this.btnAddnew.Name = "btnAddnew";
@@ -155,7 +161,9 @@
             // 
             this.btnMultiselectDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMultiselectDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMultiselectDelete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnMultiselectDelete.Appearance.Options.UseFont = true;
+            this.btnMultiselectDelete.Appearance.Options.UseForeColor = true;
             this.btnMultiselectDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnMultiselectDelete.Location = new System.Drawing.Point(728, 3);
             this.btnMultiselectDelete.Name = "btnMultiselectDelete";
