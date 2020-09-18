@@ -59,6 +59,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddl_Product_Type.EditValue = ProductId;
                     txt_Type.Text = SubproductType;
                     ddl_Type_Abs.EditValue = SubproductTypeAbsId;
+                   // txt_Type.Focus();
                 }
             }
            else if(Operation_Type == "Sub Product Type Abbreviation")
@@ -71,6 +72,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddl_ProjectType_Abs.EditValue = ProjectId;
                     ddl_Product_Type_Abs.EditValue = ProductId;
                     txt_Abs.Text = SubproductType;
+                   // txt_Abs.Focus();
                 }
             }                      
         }
@@ -296,7 +298,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -532,7 +534,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 ddl_Type_Abs.Focus();
                 return false;
             }
-            if (txt_Type.Text =="")
+            if (string.IsNullOrWhiteSpace(txt_Type.Text))
             {
                 XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Type.Focus();
@@ -555,7 +557,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 ddl_Product_Type_Abs.Focus();
                 return false;
             }
-            if (txt_Abs.Text =="")
+            if (string.IsNullOrWhiteSpace(txt_Abs.Text))
             {
                 XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Abs.Focus();

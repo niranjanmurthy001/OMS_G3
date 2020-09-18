@@ -162,6 +162,7 @@
             this.gridColumn2.Caption = "Efficiency Source Type";
             this.gridColumn2.FieldName = "Order_Source_Type_Name";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 242;
@@ -197,7 +198,7 @@
             this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn5.Caption = "Edit";
+            this.gridColumn5.Caption = "View";
             this.gridColumn5.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
@@ -209,7 +210,7 @@
             // 
             this.repositoryItemHyperLinkEdit1.AutoHeight = false;
             this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
-            this.repositoryItemHyperLinkEdit1.NullText = "Edit";
+            this.repositoryItemHyperLinkEdit1.NullText = "View";
             // 
             // panelControl1
             // 

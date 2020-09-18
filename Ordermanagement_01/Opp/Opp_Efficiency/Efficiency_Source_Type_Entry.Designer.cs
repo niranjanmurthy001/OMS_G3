@@ -153,7 +153,7 @@
             this.txt_Efficiency_Source.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_Efficiency_Source.Name = "txt_Efficiency_Source";
             this.txt_Efficiency_Source.Size = new System.Drawing.Size(184, 71);
-            this.txt_Efficiency_Source.TabIndex = 2;
+            this.txt_Efficiency_Source.TabIndex = 1;
             // 
             // ddl_Project_Type
             // 

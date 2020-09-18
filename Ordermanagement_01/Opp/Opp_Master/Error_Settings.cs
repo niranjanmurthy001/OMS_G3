@@ -50,7 +50,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
         private void Tile_Item_ErrorType_ItemClick(object sender, TileItemEventArgs e)
         {
-
+            btn_delete_multiple.Visible = false;
             Tile_Item_ErrorType.Checked = true;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = false;
@@ -61,6 +61,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Tile_Item_ErrorTab_ItemClick(object sender, TileItemEventArgs e)
         {
+            btn_delete_multiple.Visible = false;
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = true;
             Tile_Item_ErrorField.Checked = false;
@@ -71,6 +72,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Tile_Item_ErrorField_ItemClick(object sender, TileItemEventArgs e)
         {
+            btn_delete_multiple.Visible = false;
             Tile_Item_ErrorType.Checked = false;
             Tile_Item_ErrorTab.Checked = false;
             Tile_Item_ErrorField.Checked = true;

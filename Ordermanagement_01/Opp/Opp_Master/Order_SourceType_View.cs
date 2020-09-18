@@ -25,8 +25,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string _BtnName;
         int _ProjectId;
         string _SourceType;
-        int _ProductId;
-        private int User_Role;
+        int _ProductId,Src_Id;
+        
         string Operation_Type;
 
         public Order_SourceType_View(int User_Role)
@@ -81,7 +81,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -92,7 +92,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
     
         private void btn_Add_NewSource_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry OrderSourceEntry = new Order_SourceType_Entry(Operation_Type,_ProjectId, _ProductId, _SourceType, _BtnName, User_Id,this);
+            Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry OrderSourceEntry = new Order_SourceType_Entry(Operation_Type,_ProjectId, _ProductId, _SourceType, _BtnName, User_Id, Src_Id, this);
             this.Enabled = false;
             OrderSourceEntry.Show();
         }
@@ -135,13 +135,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             }
                         }
                         SplashScreenManager.CloseForm(false);
+                        btn_Delete_MultipleSource.Visible = false;
                         XtraMessageBox.Show("Record Deleted Successfully");
                         BindSourceTypes();
                     }
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
@@ -170,16 +171,17 @@ namespace Ordermanagement_01.Opp.Opp_Master
         }
         private async void gridViewSource_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            if(e.Column.Caption == "Edit")
+            if(e.Column.Caption == "View")
             {
                 System.Data.DataRow row = gridViewSource.GetDataRow(gridViewSource.FocusedRowHandle);
                 string _btnName = "Edit";
                 int _projectId = int.Parse(row["Project_Type_Id"].ToString());
                 int _productId = int.Parse(row["ProductType_Id"].ToString());
                 string _sourceType = row["Employee_source"].ToString();
+                int Source_Id =int.Parse(row["Employee_Source_id"].ToString());
                 int user_Id = User_Id;
                 string operation_Type = "View";             
-                Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry SourceEntry = new Order_SourceType_Entry(operation_Type, _projectId, _productId, _sourceType, _btnName, user_Id, this);
+                Ordermanagement_01.Opp.Opp_Master.Order_SourceType_Entry SourceEntry = new Order_SourceType_Entry(operation_Type, _projectId, _productId, _sourceType, _btnName, user_Id,Source_Id, this);
                 this.Enabled = false;
                 SourceEntry.Show();              
             }
@@ -221,7 +223,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }          

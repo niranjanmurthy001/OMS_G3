@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -48,7 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -169,12 +168,12 @@
             // stiViewerControl1
             // 
             this.stiViewerControl1.AllowDrop = true;
-            this.stiViewerControl1.Location = new System.Drawing.Point(428, 203);
+            this.stiViewerControl1.Location = new System.Drawing.Point(387, 203);
             this.stiViewerControl1.Name = "stiViewerControl1";
             this.stiViewerControl1.Report = null;
             this.stiViewerControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.stiViewerControl1.ShowZoom = true;
-            this.stiViewerControl1.Size = new System.Drawing.Size(63, 15);
+            this.stiViewerControl1.Size = new System.Drawing.Size(117, 45);
             this.stiViewerControl1.TabIndex = 1;
             // 
             // grd_CheckList
@@ -333,6 +332,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private Stimulsoft.Report.Viewer.StiViewerControl stiViewerControl1;
         private DevExpress.XtraGrid.GridControl grd_CheckList;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -341,6 +341,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private Stimulsoft.Report.Viewer.StiViewerControl stiViewerControl1;
     }
 }

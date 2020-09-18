@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.pannelControl_Type = new DevExpress.XtraEditors.PanelControl();
             this.panelControl_Abs = new DevExpress.XtraEditors.PanelControl();
             this.groupControl_Abs = new DevExpress.XtraEditors.GroupControl();
@@ -121,7 +122,7 @@
             this.groupControl_Abs.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupControl_Abs.Name = "groupControl_Abs";
             this.groupControl_Abs.Size = new System.Drawing.Size(402, 427);
-            this.groupControl_Abs.TabIndex = 4;
+            this.groupControl_Abs.TabIndex = 0;
             this.groupControl_Abs.Text = "Sub Product Type Abbreviation";
             // 
             // tableLayoutPanel8
@@ -197,7 +198,7 @@
             this.panelControl6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Size = new System.Drawing.Size(390, 342);
-            this.panelControl6.TabIndex = 1;
+            this.panelControl6.TabIndex = 0;
             // 
             // ddl_Product_Type_Abs
             // 
@@ -211,7 +212,7 @@
             this.ddl_Product_Type_Abs.Properties.NullValuePromptShowForEmptyValue = true;
             this.ddl_Product_Type_Abs.Properties.ShowNullValuePromptWhenFocused = true;
             this.ddl_Product_Type_Abs.Size = new System.Drawing.Size(201, 20);
-            this.ddl_Product_Type_Abs.TabIndex = 1;
+            this.ddl_Product_Type_Abs.TabIndex = 2;
             // 
             // labelControl7
             // 
@@ -230,7 +231,7 @@
             this.txt_Abs.Location = new System.Drawing.Point(159, 147);
             this.txt_Abs.Name = "txt_Abs";
             this.txt_Abs.Size = new System.Drawing.Size(201, 20);
-            this.txt_Abs.TabIndex = 2;
+            this.txt_Abs.TabIndex = 3;
             // 
             // ddl_ProjectType_Abs
             // 
@@ -244,7 +245,7 @@
             this.ddl_ProjectType_Abs.Properties.NullValuePromptShowForEmptyValue = true;
             this.ddl_ProjectType_Abs.Properties.ShowNullValuePromptWhenFocused = true;
             this.ddl_ProjectType_Abs.Size = new System.Drawing.Size(201, 20);
-            this.ddl_ProjectType_Abs.TabIndex = 0;
+            this.ddl_ProjectType_Abs.TabIndex = 1;
             this.ddl_ProjectType_Abs.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_Abs_EditValueChanged);
             // 
             // labelControl5
@@ -380,7 +381,7 @@
             this.ddl_Product_Type.Properties.NullValuePromptShowForEmptyValue = true;
             this.ddl_Product_Type.Properties.ShowNullValuePromptWhenFocused = true;
             this.ddl_Product_Type.Size = new System.Drawing.Size(203, 20);
-            this.ddl_Product_Type.TabIndex = 6;
+            this.ddl_Product_Type.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -413,7 +414,7 @@
             this.txt_Type.Location = new System.Drawing.Point(159, 215);
             this.txt_Type.Name = "txt_Type";
             this.txt_Type.Size = new System.Drawing.Size(203, 20);
-            this.txt_Type.TabIndex = 1;
+            this.txt_Type.TabIndex = 2;
             // 
             // ddl_ProjectType_Type
             // 

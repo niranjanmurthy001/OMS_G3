@@ -220,7 +220,7 @@
             this.gridColumn8.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn8.AppearanceHeader.Options.UseFont = true;
             this.gridColumn8.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn8.Caption = "Edit";
+            this.gridColumn8.Caption = "View";
             this.gridColumn8.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
@@ -230,10 +230,10 @@
             // 
             // repositoryItemHyperLinkEdit1
             // 
-            this.repositoryItemHyperLinkEdit1.AccessibleName = "Edit";
+            this.repositoryItemHyperLinkEdit1.AccessibleName = "View";
             this.repositoryItemHyperLinkEdit1.AutoHeight = false;
             this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
-            this.repositoryItemHyperLinkEdit1.NullText = "Edit";
+            this.repositoryItemHyperLinkEdit1.NullText = "View";
             this.repositoryItemHyperLinkEdit1.Click += new System.EventHandler(this.repositoryItemHyperLinkEdit1_Click);
             // 
             // gridColumn7

@@ -89,7 +89,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -110,7 +110,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }        
-            if (txt_Efficiency_Source.Text == "")
+            if (string.IsNullOrWhiteSpace(txt_Efficiency_Source.Text))
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Enter Efficiency Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

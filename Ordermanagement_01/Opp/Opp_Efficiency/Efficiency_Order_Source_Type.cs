@@ -69,7 +69,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -126,7 +126,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {

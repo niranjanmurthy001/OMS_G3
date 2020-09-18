@@ -71,7 +71,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -126,13 +126,14 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             }
                         }
                         SplashScreenManager.CloseForm(false);
+                        btn_Delete_Multiple_Efficiency.Visible = false;
                         XtraMessageBox.Show("Record Deleted Successfully");
                         BindEfficiencySource();
                     }
                     catch (Exception ex)
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
@@ -165,13 +166,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             else
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Info", "No data to export", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show( "No data to export", "Information", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
         private void gridView_Efficiency_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            if (e.Column.Caption == "Edit")
+            if (e.Column.Caption == "View")
             {
                 System.Data.DataRow row = gridView_Efficiency.GetDataRow(gridView_Efficiency.FocusedRowHandle);
                 string _btnName = "Edit";

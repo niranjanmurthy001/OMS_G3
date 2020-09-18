@@ -746,7 +746,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 {
                     btn_Previous.Visible = false;
                 }
-                BindTabs();
+                // BindTabs();
+                string name = tabPane1.SelectedPage.Caption;
+                GetTabId(name);
             }
             catch(Exception ex)
             {
@@ -847,6 +849,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 //form_loader.Start_progres();FTP_Application_Files/OMS/Oms_reports
                 // string Source = @"\\192.168.12.33\OMS-REPORTS\Order Check List Report  New.pdf";
+
                 if (WorkType_Id == 1)
                 {
                     File_Name = "" + OrderId + "-" + OrderTask.ToString() + "-" + "CheckList Report" + ".pdf";
@@ -859,6 +862,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 else if (WorkType_Id == 3)
                 {
                     File_Name = "" + OrderId + " - " + " SUPER QC " + OrderTask.ToString() + "-" + "CheckList" + ".pdf";
+                }
+                else
+                {
+                    File_Name = "" + OrderId + "-" + OrderTask.ToString() + "-" + "CheckList Report" + ".pdf";
                 }
                 directoryPath = +ClientId + "/" + SubClientId + "/" + OrderId + "/" + File_Name;
                 CreateDirectory(directoryPath);
@@ -911,18 +918,21 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     else if (WorkType_Id == 2)
                     {
                         dict.Add("@Instuction", "SUPER QC -" + OrderTask.ToString() + "Check List Report");
-
+                    }
+                    else 
+                    {
+                        dict.Add("@Instuction", "" + OrderTask.ToString() + "Check List Report");
                     }
                     dict.Add("@Order_ID", OrderId);
                     dict.Add("@Document_Name", File_Name);
                     dict.Add("@Document_Path", ftpUploadFullPath);
                     dict.Add("@Inserted_By", UserId);
-                    dict.Add("@Inserted_date", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz"));
                     dict.Add("@Project_Type_Id", ProjectType_Id);
                     dict.Add("@Work_Type", WorkType_Id);
                     dict.Add("@Status", "True");
                     dict.Add("@Chk_UploadPackage", "False");
                     dict.Add("@Chk_Typing_Package", "False");
+                    dict.Add("@File_Size", File_size);
                 }
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
@@ -992,7 +1002,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 }
                 else 
                 {
-                    SplashScreenManager.CloseForm(false);                  
+                        gridView1.Columns[i,].AppearanceCell.BackColor = Color.Red;
+                        SplashScreenManager.CloseForm(false);                  
                     XtraMessageBox.Show("Please Select Either 'Yes' or 'No' For All Rows ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }

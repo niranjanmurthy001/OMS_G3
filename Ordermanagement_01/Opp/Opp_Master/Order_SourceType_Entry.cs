@@ -27,13 +27,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string _BtnName;
         int _ProjectId;
         string _SourceType;
-        int _ProductId;
+        int _ProductId,Src_Id;
         string _Operaion_Id;
-        int User_Id;
         private Order_SourceType_View Mainform = null;
 
 
-        public Order_SourceType_Entry(string _Oid,int ProjId, int ProdId, string SrcType, string btnname,int User_Id, Form CallingForm)
+        public Order_SourceType_Entry(string _Oid,int ProjId, int ProdId, string SrcType, string btnname,int User_Id,int Source_Id, Form CallingForm)
         {
             InitializeComponent();
             _ProjectId = ProjId;
@@ -42,6 +41,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             _BtnName = btnname;
             _Operaion_Id = _Oid;
             userid = User_Id;
+            Src_Id = Source_Id;
             Mainform = CallingForm as Order_SourceType_View;                      
         }
 
@@ -55,7 +55,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 btn_SaveSource.Text = _BtnName;
                 lookUpEdit_Project_Type.EditValue = _ProjectId;
                 txt_Source_Type.Text = _SourceType;
-                userid = User_Id;
+                lookUpEdit_Project_Type.Enabled = false;
+                checkbox_Product_Type.Enabled = false;
             }
             
         }
@@ -102,7 +103,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -156,7 +157,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -168,6 +169,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (lookUpEdit_Project_Type.ItemIndex > 0)
             {
+                checkbox_Product_Type.DataSource = null;
                 Project_Id = Convert.ToInt32(lookUpEdit_Project_Type.EditValue);
                 BindProdctType(Project_Id);
             }
@@ -200,7 +202,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Select Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(txt_Source_Type.Text=="")
+            if(string.IsNullOrWhiteSpace(txt_Source_Type.Text))
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Enter Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -311,7 +313,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -324,50 +326,48 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 try
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-
-
-                    DataTable dtupdate = new DataTable();
-                    dtupdate.Columns.AddRange(new DataColumn[6]
-                    {
-                      new DataColumn("Project_Type_Id",typeof(int)),
-                     new DataColumn("ProductType_Id",typeof(int)),
-                     new DataColumn("Employee_source",typeof(string)),
-                     //new DataColumn("Inserted_by",typeof(int)),
-                     //new DataColumn("Inserted_date",typeof(DateTime)),
-                     new DataColumn("Status",typeof(bool)),
-                     new DataColumn("Modified_by",typeof(int)),
-                     new DataColumn("Modified_date",typeof(DateTime))
-                    });
                     foreach (object item in checkbox_Product_Type.CheckedItems)
                     {
                         DataRowView castedItem = item as DataRowView;
                         int Productval = Convert.ToInt32(castedItem["ProductType_Id"]);
                         int projecttype = ProjectValue;
-                        dtupdate.Rows.Add(ProjectValue, Productval, SourceTypeTxt, "True", userid, DateTime.Now);
-                    }
-                    var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
-                    using (var httpclient = new HttpClient())
-                    {
-                        var response = await httpclient.PutAsync(Base_Url.Url + "/OrderSourceType/UpdatSource", data);
-                        if (response.IsSuccessStatusCode)
+
+                        var dictionaryedit = new Dictionary<string, object>();
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            dictionaryedit.Add("@Trans", "UPDATE");
+                            dictionaryedit.Add("@Employee_Source_id", Src_Id);
+                            dictionaryedit.Add("@Project_Type_Id", ProjectValue);
+                            dictionaryedit.Add("@ProductType_Id", Productval);
+                            dictionaryedit.Add("@Employee_source",txt_Source_Type.Text);
+                            dictionaryedit.Add("@Status", "True");
+                            dictionaryedit.Add("@Modified_by", userid);
+                            dictionaryedit.Add("@Modified_date", DateTime.Now);
+                        }
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionaryedit), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PutAsync(Base_Url.Url +"/OrderSourceType/Update", data);
+                            if (response.IsSuccessStatusCode)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                }
+                            }
+                        }
+                    }
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show("Edited Successfully");
                                 Clear();
                                 this.Mainform.BindSourceTypes();
                                 this.Mainform.Enabled = true;
                                 this.Close();
-                            }
-                        }
-                    }
+                     
                 }
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

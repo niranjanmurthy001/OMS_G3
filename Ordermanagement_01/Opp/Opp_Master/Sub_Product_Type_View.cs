@@ -163,6 +163,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 }
                             }
                             SplashScreenManager.CloseForm(false);
+                            btn_Delete_Multiple.Visible = false;
                             XtraMessageBox.Show("Record Deleted Successfully");
                             BindGridType();
                         }
@@ -179,6 +180,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
                 else
                 {
+                    btn_Delete_Multiple.Visible = false;
                     SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Please Select Any Record To Delete");
                 }
@@ -290,6 +292,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             Tile_Item_ProductType.Checked = true;           
             Tile_Item_ProductAbs.Checked = false;
+            btn_Delete_Multiple.Visible = false;
             navigationFrame1.SelectedPage = navigationPage1;
             BindGridType();
             Operation_Type = "Sub Product Type";
@@ -299,6 +302,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             Tile_Item_ProductAbs.Checked = true;      
             Tile_Item_ProductType.Checked = false;
+            btn_Delete_Multiple.Visible = false;
             navigationFrame1.SelectedPage = navigationPage2;
             BindGridAbs();
             Operation_Type = "Sub Product Type Abbreviation";
