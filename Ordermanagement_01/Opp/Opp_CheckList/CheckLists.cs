@@ -1002,7 +1002,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 }
                 else 
                 {
-                        gridView1.Columns[i,].AppearanceCell.BackColor = Color.Red;
+                        //gridView1.Columns[i,].AppearanceCell.BackColor = Color.Red;
                         SplashScreenManager.CloseForm(false);                  
                     XtraMessageBox.Show("Please Select Either 'Yes' or 'No' For All Rows ", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
