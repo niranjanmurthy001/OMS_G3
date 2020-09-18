@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.Chk_Clients = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.chk_SubClient = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.chk_OrderTask = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -60,9 +61,7 @@
             this.btn_Finish = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Previous = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.Chk_Clients = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -70,6 +69,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_SubClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_OrderTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -86,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -99,7 +98,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(931, 657);
+            this.groupControl1.Size = new System.Drawing.Size(796, 525);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Checklist Settings Entry";
             // 
@@ -113,8 +112,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(927, 634);
-            this.splitContainerControl1.SplitterPosition = 303;
+            this.splitContainerControl1.Size = new System.Drawing.Size(792, 502);
+            this.splitContainerControl1.SplitterPosition = 278;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -130,7 +129,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(927, 303);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 278);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -142,10 +141,36 @@
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(466, 3);
+            this.panelControl1.Location = new System.Drawing.Point(399, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(458, 297);
+            this.panelControl1.Size = new System.Drawing.Size(390, 272);
             this.panelControl1.TabIndex = 0;
+            // 
+            // Chk_Clients
+            // 
+            this.Chk_Clients.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.Chk_Clients.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Chk_Clients.Appearance.Options.UseFont = true;
+            this.Chk_Clients.Appearance.Options.UseForeColor = true;
+            this.Chk_Clients.CheckOnClick = true;
+            this.Chk_Clients.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Chk_Clients.Location = new System.Drawing.Point(156, 12);
+            this.Chk_Clients.Name = "Chk_Clients";
+            this.Chk_Clients.Size = new System.Drawing.Size(215, 76);
+            this.Chk_Clients.TabIndex = 13;
+            this.Chk_Clients.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.Chk_Clients_ItemCheck);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Appearance.Options.UseForeColor = true;
+            this.labelControl7.Location = new System.Drawing.Point(21, 31);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(92, 17);
+            this.labelControl7.TabIndex = 12;
+            this.labelControl7.Text = "Copy To Client :";
             // 
             // chk_SubClient
             // 
@@ -155,7 +180,7 @@
             this.chk_SubClient.Appearance.Options.UseForeColor = true;
             this.chk_SubClient.CheckOnClick = true;
             this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_SubClient.Location = new System.Drawing.Point(156, 118);
+            this.chk_SubClient.Location = new System.Drawing.Point(156, 98);
             this.chk_SubClient.Name = "chk_SubClient";
             this.chk_SubClient.Size = new System.Drawing.Size(215, 76);
             this.chk_SubClient.TabIndex = 11;
@@ -168,7 +193,7 @@
             this.chk_OrderTask.Appearance.Options.UseForeColor = true;
             this.chk_OrderTask.CheckOnClick = true;
             this.chk_OrderTask.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderTask.Location = new System.Drawing.Point(156, 212);
+            this.chk_OrderTask.Location = new System.Drawing.Point(156, 186);
             this.chk_OrderTask.Name = "chk_OrderTask";
             this.chk_OrderTask.Size = new System.Drawing.Size(215, 76);
             this.chk_OrderTask.TabIndex = 6;
@@ -180,7 +205,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(21, 137);
+            this.labelControl3.Location = new System.Drawing.Point(21, 117);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(118, 17);
             this.labelControl3.TabIndex = 8;
@@ -192,7 +217,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(21, 228);
+            this.labelControl4.Location = new System.Drawing.Point(21, 202);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(125, 17);
             this.labelControl4.TabIndex = 4;
@@ -213,12 +238,12 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(457, 297);
+            this.panelControl2.Size = new System.Drawing.Size(390, 272);
             this.panelControl2.TabIndex = 1;
             // 
             // ddl_Order_Task
             // 
-            this.ddl_Order_Task.Location = new System.Drawing.Point(112, 204);
+            this.ddl_Order_Task.Location = new System.Drawing.Point(112, 198);
             this.ddl_Order_Task.Name = "ddl_Order_Task";
             this.ddl_Order_Task.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.ddl_Order_Task.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -233,7 +258,7 @@
             // 
             // ddl_Subclient
             // 
-            this.ddl_Subclient.Location = new System.Drawing.Point(112, 159);
+            this.ddl_Subclient.Location = new System.Drawing.Point(112, 153);
             this.ddl_Subclient.Name = "ddl_Subclient";
             this.ddl_Subclient.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.ddl_Subclient.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -252,7 +277,7 @@
             this.labelControltask.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControltask.Appearance.Options.UseFont = true;
             this.labelControltask.Appearance.Options.UseForeColor = true;
-            this.labelControltask.Location = new System.Drawing.Point(19, 204);
+            this.labelControltask.Location = new System.Drawing.Point(19, 198);
             this.labelControltask.Name = "labelControltask";
             this.labelControltask.Size = new System.Drawing.Size(66, 17);
             this.labelControltask.TabIndex = 12;
@@ -264,7 +289,7 @@
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(19, 159);
+            this.labelControl6.Location = new System.Drawing.Point(19, 153);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(65, 17);
             this.labelControl6.TabIndex = 11;
@@ -272,7 +297,7 @@
             // 
             // ddl_Client
             // 
-            this.ddl_Client.Location = new System.Drawing.Point(112, 109);
+            this.ddl_Client.Location = new System.Drawing.Point(112, 103);
             this.ddl_Client.Name = "ddl_Client";
             this.ddl_Client.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_Client.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -287,7 +312,7 @@
             // 
             // ddl_OrderType
             // 
-            this.ddl_OrderType.Location = new System.Drawing.Point(112, 64);
+            this.ddl_OrderType.Location = new System.Drawing.Point(112, 58);
             this.ddl_OrderType.Name = "ddl_OrderType";
             this.ddl_OrderType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_OrderType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -302,7 +327,7 @@
             // 
             // ddl_Project_Type
             // 
-            this.ddl_Project_Type.Location = new System.Drawing.Point(112, 21);
+            this.ddl_Project_Type.Location = new System.Drawing.Point(112, 15);
             this.ddl_Project_Type.Name = "ddl_Project_Type";
             this.ddl_Project_Type.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_Project_Type.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
@@ -321,7 +346,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(19, 112);
+            this.labelControl2.Location = new System.Drawing.Point(19, 106);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 17);
             this.labelControl2.TabIndex = 7;
@@ -333,7 +358,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(19, 64);
+            this.labelControl5.Location = new System.Drawing.Point(19, 58);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(74, 17);
             this.labelControl5.TabIndex = 5;
@@ -345,7 +370,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(19, 21);
+            this.labelControl1.Location = new System.Drawing.Point(19, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 6;
@@ -361,9 +386,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(927, 319);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.71698F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.28302F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(792, 212);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tabPane1
@@ -372,9 +397,9 @@
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPane1.Location = new System.Drawing.Point(3, 3);
             this.tabPane1.Name = "tabPane1";
-            this.tabPane1.RegularSize = new System.Drawing.Size(921, 271);
+            this.tabPane1.RegularSize = new System.Drawing.Size(786, 162);
             this.tabPane1.SelectedPage = null;
-            this.tabPane1.Size = new System.Drawing.Size(921, 271);
+            this.tabPane1.Size = new System.Drawing.Size(786, 162);
             this.tabPane1.TabIndex = 2;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanging += new DevExpress.XtraBars.Navigation.SelectedPageChangingEventHandler(this.tabPane1_SelectedPageChanging);
@@ -440,9 +465,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 280);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 171);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(921, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(786, 38);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // btn_Finish
@@ -452,7 +477,7 @@
             this.btn_Finish.Appearance.Options.UseFont = true;
             this.btn_Finish.Appearance.Options.UseForeColor = true;
             this.btn_Finish.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Finish.Location = new System.Drawing.Point(834, 3);
+            this.btn_Finish.Location = new System.Drawing.Point(699, 3);
             this.btn_Finish.Name = "btn_Finish";
             this.btn_Finish.Size = new System.Drawing.Size(84, 31);
             this.btn_Finish.TabIndex = 10;
@@ -466,7 +491,7 @@
             this.btn_Add.Appearance.Options.UseFont = true;
             this.btn_Add.Appearance.Options.UseForeColor = true;
             this.btn_Add.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add.Location = new System.Drawing.Point(744, 3);
+            this.btn_Add.Location = new System.Drawing.Point(609, 3);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(84, 31);
             this.btn_Add.TabIndex = 0;
@@ -480,7 +505,7 @@
             this.btn_Previous.Appearance.Options.UseFont = true;
             this.btn_Previous.Appearance.Options.UseForeColor = true;
             this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Previous.Location = new System.Drawing.Point(654, 3);
+            this.btn_Previous.Location = new System.Drawing.Point(519, 3);
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(84, 31);
             this.btn_Previous.TabIndex = 9;
@@ -491,37 +516,11 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(21, 43);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(92, 17);
-            this.labelControl7.TabIndex = 12;
-            this.labelControl7.Text = "Copy To Client :";
-            // 
-            // Chk_Clients
-            // 
-            this.Chk_Clients.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.Chk_Clients.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.Chk_Clients.Appearance.Options.UseFont = true;
-            this.Chk_Clients.Appearance.Options.UseForeColor = true;
-            this.Chk_Clients.CheckOnClick = true;
-            this.Chk_Clients.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Chk_Clients.Location = new System.Drawing.Point(156, 24);
-            this.Chk_Clients.Name = "Chk_Clients";
-            this.Chk_Clients.Size = new System.Drawing.Size(215, 76);
-            this.Chk_Clients.TabIndex = 13;
-            this.Chk_Clients.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.Chk_Clients_ItemCheck);
-            // 
             // Checklist_Settings_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 657);
+            this.ClientSize = new System.Drawing.Size(796, 525);
             this.Controls.Add(this.groupControl1);
             this.Name = "Checklist_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -536,6 +535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_SubClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_OrderTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -553,7 +553,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Chk_Clients)).EndInit();
             this.ResumeLayout(false);
 
         }

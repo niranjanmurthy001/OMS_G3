@@ -69,7 +69,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(884, 688);
+            this.groupControl1.Size = new System.Drawing.Size(796, 520);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "CheckList Entry";
             // 
@@ -87,9 +87,9 @@
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.864662F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.556391F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.60902F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.819549F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(880, 665);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.08652F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.66398F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 497);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -99,9 +99,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Previous);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 615);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 446);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(874, 47);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(786, 48);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
             // btn_Save
@@ -111,9 +111,9 @@
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
             this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Save.Location = new System.Drawing.Point(787, 3);
+            this.btn_Save.Location = new System.Drawing.Point(699, 3);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(84, 42);
+            this.btn_Save.Size = new System.Drawing.Size(84, 40);
             this.btn_Save.TabIndex = 10;
             this.btn_Save.Text = "Finish";
             this.btn_Save.ToolTip = "Finish";
@@ -126,9 +126,9 @@
             this.btn_Next.Appearance.Options.UseFont = true;
             this.btn_Next.Appearance.Options.UseForeColor = true;
             this.btn_Next.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Next.Location = new System.Drawing.Point(697, 3);
+            this.btn_Next.Location = new System.Drawing.Point(609, 3);
             this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(84, 42);
+            this.btn_Next.Size = new System.Drawing.Size(84, 40);
             this.btn_Next.TabIndex = 0;
             this.btn_Next.Text = "Next >";
             this.btn_Next.ToolTip = "Next";
@@ -141,9 +141,9 @@
             this.btn_Previous.Appearance.Options.UseFont = true;
             this.btn_Previous.Appearance.Options.UseForeColor = true;
             this.btn_Previous.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Previous.Location = new System.Drawing.Point(607, 3);
+            this.btn_Previous.Location = new System.Drawing.Point(519, 3);
             this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(84, 42);
+            this.btn_Previous.Size = new System.Drawing.Size(84, 40);
             this.btn_Previous.TabIndex = 9;
             this.btn_Previous.Text = "< Previous";
             this.btn_Previous.ToolTip = "Previous";
@@ -154,11 +154,11 @@
             this.tabPane1.Controls.Add(this.stiViewerControl1);
             this.tabPane1.Controls.Add(this.grd_CheckList);
             this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Location = new System.Drawing.Point(3, 59);
+            this.tabPane1.Location = new System.Drawing.Point(3, 44);
             this.tabPane1.Name = "tabPane1";
-            this.tabPane1.RegularSize = new System.Drawing.Size(874, 550);
+            this.tabPane1.RegularSize = new System.Drawing.Size(786, 396);
             this.tabPane1.SelectedPage = null;
-            this.tabPane1.Size = new System.Drawing.Size(874, 550);
+            this.tabPane1.Size = new System.Drawing.Size(786, 396);
             this.tabPane1.TabIndex = 7;
             this.tabPane1.Text = "tabPane1";
             this.tabPane1.SelectedPageChanged += new DevExpress.XtraBars.Navigation.SelectedPageChangedEventHandler(this.tabPane1_SelectedPageChanged);
@@ -261,9 +261,9 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(3, 39);
+            this.label2.Location = new System.Drawing.Point(3, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(874, 17);
+            this.label2.Size = new System.Drawing.Size(786, 12);
             this.label2.TabIndex = 9;
             this.label2.Text = "          Note :  Select Yes / No . If  \'No\'  Enter a Comment";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -274,7 +274,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(874, 33);
+            this.panel1.Size = new System.Drawing.Size(786, 23);
             this.panel1.TabIndex = 10;
             // 
             // label1
@@ -284,7 +284,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(874, 33);
+            this.label1.Size = new System.Drawing.Size(786, 23);
             this.label1.TabIndex = 7;
             this.label1.Text = "CheckList Entry";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -297,9 +297,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 688);
+            this.ClientSize = new System.Drawing.Size(796, 520);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(900, 726);
+            this.MinimumSize = new System.Drawing.Size(798, 558);
             this.Name = "CheckLists";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckLists";

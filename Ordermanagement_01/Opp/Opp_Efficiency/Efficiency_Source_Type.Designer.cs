@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Export_Eff = new DevExpress.XtraEditors.SimpleButton();
@@ -51,7 +50,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemHyperLinkEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -75,7 +74,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(798, 564);
+            this.groupControl1.Size = new System.Drawing.Size(796, 512);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Efficiency Source Type ";
             // 
@@ -93,7 +92,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 541);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 489);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -103,7 +102,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(788, 48);
+            this.label1.Size = new System.Drawing.Size(786, 48);
             this.label1.TabIndex = 1;
             this.label1.Text = "Efficiency Source Type";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,9 +113,7 @@
             this.grd_Efficiency.Location = new System.Drawing.Point(3, 108);
             this.grd_Efficiency.MainView = this.gridView_Efficiency;
             this.grd_Efficiency.Name = "grd_Efficiency";
-            this.grd_Efficiency.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemHyperLinkEdit1});
-            this.grd_Efficiency.Size = new System.Drawing.Size(788, 430);
+            this.grd_Efficiency.Size = new System.Drawing.Size(786, 378);
             this.grd_Efficiency.TabIndex = 0;
             this.grd_Efficiency.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Efficiency});
@@ -199,18 +196,16 @@
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn5.Caption = "View";
-            this.gridColumn5.ColumnEdit = this.repositoryItemHyperLinkEdit1;
+            repositoryItemHyperLinkEdit2.AutoHeight = false;
+            repositoryItemHyperLinkEdit2.LookAndFeel.SkinName = "Office 2013";
+            repositoryItemHyperLinkEdit2.Name = "repositoryItemHyperLinkEdit1";
+            repositoryItemHyperLinkEdit2.NullText = "View";
+            this.gridColumn5.ColumnEdit = repositoryItemHyperLinkEdit2;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 40;
-            // 
-            // repositoryItemHyperLinkEdit1
-            // 
-            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
-            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
-            this.repositoryItemHyperLinkEdit1.NullText = "View";
             // 
             // panelControl1
             // 
@@ -218,7 +213,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 51);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(788, 51);
+            this.panelControl1.Size = new System.Drawing.Size(786, 51);
             this.panelControl1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -230,7 +225,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 47);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(782, 47);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Export_Eff
@@ -240,7 +235,7 @@
             this.btn_Export_Eff.Appearance.Options.UseFont = true;
             this.btn_Export_Eff.Appearance.Options.UseForeColor = true;
             this.btn_Export_Eff.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export_Eff.Location = new System.Drawing.Point(701, 3);
+            this.btn_Export_Eff.Location = new System.Drawing.Point(699, 3);
             this.btn_Export_Eff.Name = "btn_Export_Eff";
             this.btn_Export_Eff.Size = new System.Drawing.Size(80, 40);
             this.btn_Export_Eff.TabIndex = 2;
@@ -255,7 +250,7 @@
             this.btn_Add_New_Eff.Appearance.Options.UseFont = true;
             this.btn_Add_New_Eff.Appearance.Options.UseForeColor = true;
             this.btn_Add_New_Eff.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New_Eff.Location = new System.Drawing.Point(615, 3);
+            this.btn_Add_New_Eff.Location = new System.Drawing.Point(613, 3);
             this.btn_Add_New_Eff.Name = "btn_Add_New_Eff";
             this.btn_Add_New_Eff.Size = new System.Drawing.Size(80, 40);
             this.btn_Add_New_Eff.TabIndex = 1;
@@ -270,7 +265,7 @@
             this.btn_Delete_Multiple_Efficiency.Appearance.Options.UseFont = true;
             this.btn_Delete_Multiple_Efficiency.Appearance.Options.UseForeColor = true;
             this.btn_Delete_Multiple_Efficiency.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_Multiple_Efficiency.Location = new System.Drawing.Point(529, 3);
+            this.btn_Delete_Multiple_Efficiency.Location = new System.Drawing.Point(527, 3);
             this.btn_Delete_Multiple_Efficiency.Name = "btn_Delete_Multiple_Efficiency";
             this.btn_Delete_Multiple_Efficiency.Size = new System.Drawing.Size(80, 40);
             this.btn_Delete_Multiple_Efficiency.TabIndex = 0;
@@ -282,9 +277,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 564);
+            this.ClientSize = new System.Drawing.Size(796, 512);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(814, 602);
             this.Name = "Efficiency_Source_Type";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Source_Type";
@@ -295,7 +289,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd_Efficiency)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Efficiency)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(repositoryItemHyperLinkEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -320,7 +314,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEdit1;
         private System.Windows.Forms.Label label1;
     }
 }

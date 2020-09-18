@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.repositoryItemHyperLinkEdit = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.repositoryItemHyperLinkDelete = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -101,7 +100,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(798, 588);
+            this.groupControl1.Size = new System.Drawing.Size(796, 520);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Order Source Type ";
             // 
@@ -110,8 +109,8 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.grd_SourceType, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.grd_SourceType, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -119,7 +118,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 565);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 497);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -129,7 +128,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(788, 47);
+            this.label1.Size = new System.Drawing.Size(786, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "Order Source  Type";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,7 +142,7 @@
             this.grd_SourceType.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2});
-            this.grd_SourceType.Size = new System.Drawing.Size(788, 611);
+            this.grd_SourceType.Size = new System.Drawing.Size(786, 389);
             this.grd_SourceType.TabIndex = 0;
             this.grd_SourceType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSource});
@@ -282,7 +281,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 50);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(788, 49);
+            this.panelControl1.Size = new System.Drawing.Size(786, 49);
             this.panelControl1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -294,7 +293,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 45);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(782, 45);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Export
@@ -304,7 +303,7 @@
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
             this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Location = new System.Drawing.Point(701, 3);
+            this.btn_Export.Location = new System.Drawing.Point(699, 3);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(80, 40);
             this.btn_Export.TabIndex = 2;
@@ -319,7 +318,7 @@
             this.btn_Add_NewSource.Appearance.Options.UseFont = true;
             this.btn_Add_NewSource.Appearance.Options.UseForeColor = true;
             this.btn_Add_NewSource.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_NewSource.Location = new System.Drawing.Point(615, 3);
+            this.btn_Add_NewSource.Location = new System.Drawing.Point(613, 3);
             this.btn_Add_NewSource.Name = "btn_Add_NewSource";
             this.btn_Add_NewSource.Size = new System.Drawing.Size(80, 40);
             this.btn_Add_NewSource.TabIndex = 1;
@@ -334,7 +333,7 @@
             this.btn_Delete_MultipleSource.Appearance.Options.UseFont = true;
             this.btn_Delete_MultipleSource.Appearance.Options.UseForeColor = true;
             this.btn_Delete_MultipleSource.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_MultipleSource.Location = new System.Drawing.Point(529, 3);
+            this.btn_Delete_MultipleSource.Location = new System.Drawing.Point(527, 3);
             this.btn_Delete_MultipleSource.Name = "btn_Delete_MultipleSource";
             this.btn_Delete_MultipleSource.Size = new System.Drawing.Size(80, 40);
             this.btn_Delete_MultipleSource.TabIndex = 0;
@@ -346,9 +345,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 588);
+            this.ClientSize = new System.Drawing.Size(796, 520);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(814, 602);
+            this.MinimumSize = new System.Drawing.Size(798, 558);
             this.Name = "Order_SourceType_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order_SourceType_View";

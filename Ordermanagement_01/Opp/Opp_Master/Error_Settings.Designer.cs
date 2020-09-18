@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemFrame tileItemFrame1 = new DevExpress.XtraEditors.TileItemFrame();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
@@ -110,7 +109,7 @@
             this.repositoryItemButtonEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -162,7 +161,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(902, 695);
+            this.groupControl1.Size = new System.Drawing.Size(902, 562);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "Error Setting";
             // 
@@ -172,7 +171,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(2, 25);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(898, 668);
+            this.panelControl1.Size = new System.Drawing.Size(898, 535);
             this.panelControl1.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -189,7 +188,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 468F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 664);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(894, 531);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl2
@@ -729,7 +728,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(3, 154);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(888, 507);
+            this.panelControl4.Size = new System.Drawing.Size(888, 462);
             this.panelControl4.TabIndex = 2;
             // 
             // navigationFrame1
@@ -745,7 +744,7 @@
             this.navigationPage2,
             this.navigationPage3});
             this.navigationFrame1.SelectedPage = this.navigationPage1;
-            this.navigationFrame1.Size = new System.Drawing.Size(884, 503);
+            this.navigationFrame1.Size = new System.Drawing.Size(884, 458);
             this.navigationFrame1.TabIndex = 0;
             this.navigationFrame1.Text = "navigationFrame1";
             // 
@@ -754,7 +753,7 @@
             this.navigationPage1.Caption = "navigationPage1";
             this.navigationPage1.Controls.Add(this.grd_Error_Type);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(884, 503);
+            this.navigationPage1.Size = new System.Drawing.Size(884, 458);
             // 
             // grd_Error_Type
             // 
@@ -765,7 +764,7 @@
             this.grd_Error_Type.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit9,
             this.repositoryItemHyperLinkEdit10});
-            this.grd_Error_Type.Size = new System.Drawing.Size(884, 503);
+            this.grd_Error_Type.Size = new System.Drawing.Size(884, 458);
             this.grd_Error_Type.TabIndex = 280;
             this.grd_Error_Type.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -922,7 +921,7 @@
             this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Controls.Add(this.grdErrorTab);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(884, 503);
+            this.navigationPage2.Size = new System.Drawing.Size(884, 458);
             // 
             // grdErrorTab
             // 
@@ -935,7 +934,7 @@
             this.linkDelete,
             this.repositoryItemHyperLinkEdit8,
             this.repositoryItemHyperLinkEdit7});
-            this.grdErrorTab.Size = new System.Drawing.Size(884, 503);
+            this.grdErrorTab.Size = new System.Drawing.Size(884, 458);
             this.grdErrorTab.TabIndex = 285;
             this.grdErrorTab.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1124,7 +1123,7 @@
             this.navigationPage3.Caption = "navigationPage3";
             this.navigationPage3.Controls.Add(this.Grd_ErrorDes);
             this.navigationPage3.Name = "navigationPage3";
-            this.navigationPage3.Size = new System.Drawing.Size(884, 503);
+            this.navigationPage3.Size = new System.Drawing.Size(884, 458);
             // 
             // Grd_ErrorDes
             // 
@@ -1135,7 +1134,7 @@
             this.Grd_ErrorDes.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit5,
             this.repositoryItemHyperLinkEdit6});
-            this.Grd_ErrorDes.Size = new System.Drawing.Size(884, 503);
+            this.Grd_ErrorDes.Size = new System.Drawing.Size(884, 458);
             this.Grd_ErrorDes.TabIndex = 8;
             this.Grd_ErrorDes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1340,10 +1339,10 @@
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 695);
+            this.ClientSize = new System.Drawing.Size(902, 562);
             this.Controls.Add(this.groupControl1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(918, 726);
+            this.MinimumSize = new System.Drawing.Size(918, 600);
             this.Name = "Error_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Error_Settings";

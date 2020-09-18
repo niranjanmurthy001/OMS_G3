@@ -73,7 +73,7 @@
             this.grp_Control.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grp_Control.Location = new System.Drawing.Point(0, 0);
             this.grp_Control.Name = "grp_Control";
-            this.grp_Control.Size = new System.Drawing.Size(636, 378);
+            this.grp_Control.Size = new System.Drawing.Size(636, 409);
             this.grp_Control.TabIndex = 0;
             this.grp_Control.Text = "Error Entry";
             // 
@@ -87,9 +87,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 31);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.91549F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.08451F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 345);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.93468F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.06533F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 376);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -112,7 +112,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(626, 290);
+            this.panelControl1.Size = new System.Drawing.Size(626, 320);
             this.panelControl1.TabIndex = 0;
             // 
             // txt_Comments
@@ -310,9 +310,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(466, 299);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(466, 329);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 43);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 44);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -349,12 +349,15 @@
             // 
             // master_Employee_Error_Entry
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Blue;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 378);
+            this.ClientSize = new System.Drawing.Size(636, 409);
             this.Controls.Add(this.grp_Control);
             this.LookAndFeel.SkinName = "Office 2013";
-            this.MinimumSize = new System.Drawing.Size(652, 416);
+            this.MaximumSize = new System.Drawing.Size(884, 469);
+            this.MinimumSize = new System.Drawing.Size(652, 447);
             this.Name = "master_Employee_Error_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee_Error_Entry";

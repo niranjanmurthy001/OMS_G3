@@ -121,7 +121,7 @@ namespace Ordermanagement_01
         private BackgroundWorker Dash_Board_Worker = new BackgroundWorker();
 
 
-        public AdminDashboard(string User_Role, string user_id, string User_name, string Password,int Login_Type)
+        public AdminDashboard(string User_Role, string user_id, string User_name, string Password, int Login_Type)
         {
 
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
@@ -136,7 +136,7 @@ namespace Ordermanagement_01
 
                 lbl_username.Text = User_name;
                 ToolStripButton12.Text = User_name + " Profile";
-               this.User_namefornotify = User_name;
+                this.User_namefornotify = User_name;
                 Load_AutomaticEmails();
                 this.Password = Password;
                 this.Application_Login_Type = Login_Type;
@@ -1099,7 +1099,7 @@ namespace Ordermanagement_01
                 // notifyIcon1.ShowBalloonTip(1000, "Important Notice :", "Logged In successfully", ToolTipIcon.Info);
                 //Opp.Opp_Master.PopUp_Message_Style pop = new Opp.Opp_Master.PopUp_Message_Style();
                 //pop.Show();
-                AlertInfo info = new AlertInfo("Login Successfully",User_namefornotify, true);
+                AlertInfo info = new AlertInfo("Login Successfully", User_namefornotify, true);
 
                 info.Image = Properties.Resources.ok_Icon;
                 alertControl2.Show(this, info);
@@ -7444,7 +7444,7 @@ namespace Ordermanagement_01
         {
             if (Validate_User_Access(34) != false)
             {
-                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password,Application_Login_Type);
+                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password, Application_Login_Type);
                 user_Access_Control.Show();
             }
         }
@@ -32093,7 +32093,7 @@ namespace Ordermanagement_01
 
         private void notificationToolStripbtn_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid,Application_Login_Type);
+            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid, Application_Login_Type);
             note.Show();
         }
 
@@ -32166,10 +32166,10 @@ namespace Ordermanagement_01
 
         private void orderTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-                Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
+
+            Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
             os.Show();
-           
+
         }
 
         //private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -32181,7 +32181,7 @@ namespace Ordermanagement_01
 
         private void projectTypeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             Ordermanagement_01.New_Dashboard.Settings.Process_Settings processsettings = new New_Dashboard.Settings.Process_Settings();
             processsettings.Show();
         }
@@ -32201,9 +32201,9 @@ namespace Ordermanagement_01
 
         private void orderEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
-             pr.Show();
+            pr.Show();
         }
 
         private void Error_Settings_Click(object sender, EventArgs e)
@@ -32250,7 +32250,7 @@ namespace Ordermanagement_01
 
         private void Checklist_Question_Entry_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1,1,1,200226,4,24,3,1);
+            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1, 1, 1, 200226, 4, 24, 3, 1);
             Q_Entry.Show();
         }
 
@@ -32279,7 +32279,7 @@ namespace Ordermanagement_01
         }
 
         private void errorEntryToolStripMenuItem_Click(object sender, EventArgs e)
-        {           
+        {
             Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View eee = new Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View(1, 1, 197, 1, 1, 25, "", "1", 10, 99870, "", "4");
             eee.Show();
         }
@@ -32295,6 +32295,8 @@ namespace Ordermanagement_01
             Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Source_Type est = new Opp.Opp_Efficiency.Efficiency_Source_Type(1);
             est.Show();
         }
+
+
 
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {

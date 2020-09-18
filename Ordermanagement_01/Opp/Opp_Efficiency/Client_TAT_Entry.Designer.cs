@@ -68,7 +68,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(706, 605);
+            this.groupControl1.Size = new System.Drawing.Size(706, 520);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Client TAT Settings";
             // 
@@ -82,9 +82,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.27238F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.727627F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(702, 582);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.34205F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.657948F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(702, 497);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
@@ -97,8 +97,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.grd_ClientTAT);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(696, 519);
-            this.splitContainerControl1.SplitterPosition = 332;
+            this.splitContainerControl1.Size = new System.Drawing.Size(696, 442);
+            this.splitContainerControl1.SplitterPosition = 277;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -113,16 +113,16 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(696, 332);
+            this.panelControl1.Size = new System.Drawing.Size(696, 277);
             this.panelControl1.TabIndex = 0;
             // 
             // chk_SubClient
             // 
             this.chk_SubClient.CheckOnClick = true;
             this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_SubClient.Location = new System.Drawing.Point(170, 195);
+            this.chk_SubClient.Location = new System.Drawing.Point(170, 167);
             this.chk_SubClient.Name = "chk_SubClient";
-            this.chk_SubClient.Size = new System.Drawing.Size(175, 121);
+            this.chk_SubClient.Size = new System.Drawing.Size(224, 94);
             this.chk_SubClient.TabIndex = 3;
             // 
             // labelControl3
@@ -131,7 +131,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(91, 195);
+            this.labelControl3.Location = new System.Drawing.Point(91, 167);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(65, 17);
             this.labelControl3.TabIndex = 2;
@@ -141,9 +141,9 @@
             // 
             this.chk_Client.CheckOnClick = true;
             this.chk_Client.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_Client.Location = new System.Drawing.Point(170, 80);
+            this.chk_Client.Location = new System.Drawing.Point(170, 55);
             this.chk_Client.Name = "chk_Client";
-            this.chk_Client.Size = new System.Drawing.Size(175, 95);
+            this.chk_Client.Size = new System.Drawing.Size(224, 95);
             this.chk_Client.TabIndex = 1;
             this.chk_Client.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.chk_Client_ItemCheck);
             this.chk_Client.CheckMemberChanged += new System.EventHandler(this.chk_Client_CheckMemberChanged);
@@ -152,12 +152,14 @@
             // 
             // ddl_Project_Type
             // 
-            this.ddl_Project_Type.Location = new System.Drawing.Point(170, 29);
+            this.ddl_Project_Type.Location = new System.Drawing.Point(170, 17);
             this.ddl_Project_Type.Name = "ddl_Project_Type";
+            this.ddl_Project_Type.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Project_Type.Properties.Appearance.Options.UseFont = true;
             this.ddl_Project_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Project_Type.Properties.NullText = "SELECT";
-            this.ddl_Project_Type.Size = new System.Drawing.Size(175, 20);
+            this.ddl_Project_Type.Size = new System.Drawing.Size(224, 22);
             this.ddl_Project_Type.TabIndex = 0;
             this.ddl_Project_Type.EditValueChanged += new System.EventHandler(this.ddl_Project_Type_EditValueChanged);
             // 
@@ -167,7 +169,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(117, 83);
+            this.labelControl2.Location = new System.Drawing.Point(117, 58);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 17);
             this.labelControl2.TabIndex = 1;
@@ -179,7 +181,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(77, 32);
+            this.labelControl1.Location = new System.Drawing.Point(77, 20);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -191,7 +193,7 @@
             this.grd_ClientTAT.Location = new System.Drawing.Point(0, 0);
             this.grd_ClientTAT.MainView = this.gridView_ClientTAT;
             this.grd_ClientTAT.Name = "grd_ClientTAT";
-            this.grd_ClientTAT.Size = new System.Drawing.Size(696, 175);
+            this.grd_ClientTAT.Size = new System.Drawing.Size(696, 153);
             this.grd_ClientTAT.TabIndex = 0;
             this.grd_ClientTAT.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_ClientTAT});
@@ -213,9 +215,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 528);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 451);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(696, 51);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(696, 43);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -227,7 +229,7 @@
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Clear.Location = new System.Drawing.Point(613, 3);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(80, 41);
+            this.btn_Clear.Size = new System.Drawing.Size(80, 36);
             this.btn_Clear.TabIndex = 1;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.ToolTip = "Clear";
@@ -242,7 +244,7 @@
             this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Submit.Location = new System.Drawing.Point(527, 3);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(80, 41);
+            this.btn_Submit.Size = new System.Drawing.Size(80, 36);
             this.btn_Submit.TabIndex = 0;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.ToolTip = "Submit";
@@ -252,12 +254,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 605);
+            this.ClientSize = new System.Drawing.Size(706, 520);
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(722, 643);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(722, 643);
+            this.MinimumSize = new System.Drawing.Size(722, 558);
             this.Name = "Client_TAT_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client_TAT_Entry";

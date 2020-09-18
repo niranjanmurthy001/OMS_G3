@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +47,7 @@
             this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Add_New = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete_Multiple = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -69,7 +68,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(798, 564);
+            this.groupControl1.Size = new System.Drawing.Size(796, 520);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Efficiency Order Source Type";
             // 
@@ -87,7 +86,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 541);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 497);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -97,7 +96,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(788, 49);
+            this.label1.Size = new System.Drawing.Size(786, 49);
             this.label1.TabIndex = 1;
             this.label1.Text = "Efficiency Order Source Type";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,7 +107,7 @@
             this.grd_Efficiency_Src.Location = new System.Drawing.Point(3, 105);
             this.grd_Efficiency_Src.MainView = this.gridView_Efficiency_Src;
             this.grd_Efficiency_Src.Name = "grd_Efficiency_Src";
-            this.grd_Efficiency_Src.Size = new System.Drawing.Size(788, 433);
+            this.grd_Efficiency_Src.Size = new System.Drawing.Size(786, 389);
             this.grd_Efficiency_Src.TabIndex = 0;
             this.grd_Efficiency_Src.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Efficiency_Src});
@@ -221,7 +220,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 52);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(788, 47);
+            this.panelControl1.Size = new System.Drawing.Size(786, 47);
             this.panelControl1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -233,7 +232,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(784, 43);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(782, 43);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Export
@@ -243,9 +242,9 @@
             this.btn_Export.Appearance.Options.UseFont = true;
             this.btn_Export.Appearance.Options.UseForeColor = true;
             this.btn_Export.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Export.Location = new System.Drawing.Point(701, 3);
+            this.btn_Export.Location = new System.Drawing.Point(699, 3);
             this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(80, 40);
+            this.btn_Export.Size = new System.Drawing.Size(80, 37);
             this.btn_Export.TabIndex = 1;
             this.btn_Export.Text = "Export";
             this.btn_Export.ToolTip = "Export";
@@ -258,9 +257,9 @@
             this.btn_Add_New.Appearance.Options.UseFont = true;
             this.btn_Add_New.Appearance.Options.UseForeColor = true;
             this.btn_Add_New.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Add_New.Location = new System.Drawing.Point(615, 3);
+            this.btn_Add_New.Location = new System.Drawing.Point(613, 3);
             this.btn_Add_New.Name = "btn_Add_New";
-            this.btn_Add_New.Size = new System.Drawing.Size(80, 40);
+            this.btn_Add_New.Size = new System.Drawing.Size(80, 37);
             this.btn_Add_New.TabIndex = 0;
             this.btn_Add_New.Text = "Add New";
             this.btn_Add_New.ToolTip = "Add New";
@@ -273,9 +272,9 @@
             this.btn_Delete_Multiple.Appearance.Options.UseFont = true;
             this.btn_Delete_Multiple.Appearance.Options.UseForeColor = true;
             this.btn_Delete_Multiple.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Delete_Multiple.Location = new System.Drawing.Point(529, 3);
+            this.btn_Delete_Multiple.Location = new System.Drawing.Point(527, 3);
             this.btn_Delete_Multiple.Name = "btn_Delete_Multiple";
-            this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 40);
+            this.btn_Delete_Multiple.Size = new System.Drawing.Size(80, 37);
             this.btn_Delete_Multiple.TabIndex = 2;
             this.btn_Delete_Multiple.Text = "Delete";
             this.btn_Delete_Multiple.ToolTip = "Delete";
@@ -289,9 +288,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 564);
+            this.ClientSize = new System.Drawing.Size(796, 520);
             this.Controls.Add(this.groupControl1);
-            this.MinimumSize = new System.Drawing.Size(814, 602);
+            this.MinimumSize = new System.Drawing.Size(798, 558);
             this.Name = "Efficiency_Order_Source_Type";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Order_Source_Type";
