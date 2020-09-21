@@ -879,7 +879,9 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 btn_Previous.Visible = false;
             }
             Previous_Data();
-            ddl_OrderType_EditValueChanged(sender, e);
+           // ddl_OrderType_EditValueChanged(sender, e);
+            string tabname = tabPane1.SelectedPage.Caption;
+            Gettabid(tabname);
         }
 
         private void tabPane1_SelectedPageChanging(object sender, SelectedPageChangingEventArgs e)

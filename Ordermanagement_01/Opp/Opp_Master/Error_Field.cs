@@ -25,8 +25,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string errortext;
         int checkederror;
         string Operation_Type;
+        int userid;
         private Error_Settings Mainform = null;
-        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror,Form Callingform)
+        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror,Form Callingform, int User_ID)
         {
             InitializeComponent();
             _btnname = btnname;
@@ -36,8 +37,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkederror = _Cerror;
             Operation_Type = _operationType;
             Mainform = Callingform as Error_Settings;
-
-
+            userid = User_ID;
         }
 
         private void Error_Field_Load(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int _ProductType = Convert.ToInt32(ddl_ProductType.EditValue);
                         string _Error = txt_Errorfield.Text;
                         int _status = 1;
-                        int _Insertedby = 1;
+                        int _Insertedby = userid;
                         DateTime _inserdate = DateTime.Now;
                         dtmulti.Rows.Add(_ProjectID, _ProductType, Error_description, _Error, _status, _Insertedby, _inserdate);
 
@@ -152,7 +152,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int _ProductType = Convert.ToInt32(ddl_ProductType.EditValue);
                         string _Error = txt_Errorfield.Text;
                         int _status = 1;
-                        int _Modifiedby = 1;
+                        int _Modifiedby = userid;
                         DateTime _modifydate = DateTime.Now;
                         _dtmulti1.Rows.Add(_ProjectID, _ProductType, Error_description, _Error, _status, _Modifiedby, _modifydate);
                     }
@@ -426,7 +426,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Select Error Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (txt_Errorfield.Text == "")
+            if (string.IsNullOrWhiteSpace(txt_Errorfield.Text))
             {
                 XtraMessageBox.Show("Error Field Must not be Empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

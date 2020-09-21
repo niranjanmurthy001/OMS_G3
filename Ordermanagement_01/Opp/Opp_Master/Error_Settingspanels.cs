@@ -20,7 +20,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
     public partial class Error_Settingspanels : DevExpress.XtraEditors.XtraForm
     {
         int ProjectValue;
-        int Productvalue, User_Id=1, Error_Type_Id;
+        int Productvalue, userid, Error_Type_Id;
         string ErrorTypeTxt;
         int InsertedByvalue;
         DateTime InsertedDatevalue;
@@ -34,7 +34,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int ErrorTYpeId;
         private Error_Settings Mainform = null;
 
-        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name,Form Callingform,int Error_type_Id)
+        public Error_Settingspanels(string _OperationType, string Boxname,int _Pro,int _product,string _text,string _btn_name,Form Callingform,int Error_type_Id,int User_ID)
         {
             InitializeComponent();
             Operation_Type = _OperationType;
@@ -46,9 +46,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             txtErrorTab.Text = _text;
             Mainform=Callingform as Error_Settings;
             ErrorTYpeId = Error_type_Id;
-
-
-
+            userid = User_ID;
         }
 
         private void Error_Settings_Load(object sender, EventArgs e)
@@ -105,7 +103,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             DataRowView CastedItems = itemchecked as DataRowView;
                             Productvalue = Convert.ToInt32(CastedItems["ProductType_Id"]);
                         }
-                        dtinsert.Rows.Add(ProjectValue, Productvalue, ErrorTypeTxt, User_Id, DateTime.Now, "True");
+                        dtinsert.Rows.Add(ProjectValue, Productvalue, ErrorTypeTxt, userid, DateTime.Now, "True");
                         var data = new StringContent(JsonConvert.SerializeObject(dtinsert), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {
@@ -171,7 +169,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                             int projecttype = ProjectValue;
 
-                            dtupdate.Rows.Add(ErrorTYpeId, ProjectValue, Productval, ErrorTypeTxt, "True", User_Id, DateTime.Now);
+                            dtupdate.Rows.Add(ErrorTYpeId, ProjectValue, Productval, ErrorTypeTxt, "True", userid, DateTime.Now);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                         using (var httpclient = new HttpClient())
@@ -235,11 +233,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             string sub = castedItem["Product_Type"].ToString();
                             int productid = Convert.ToInt32(castedItem["ProductType_Id"]);
                             int _Statsu = 1;
-                            User_Id = 1;
+                            //User_Id = 1;
                             DateTime _Insertdate = DateTime.Now;
                             Errortype = txtErrorTab.Text;
                             int _ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
-                            dtproducttype.Rows.Add(_ProjectId, productid, Errortype, _Statsu, User_Id, _Insertdate);
+                            dtproducttype.Rows.Add(_ProjectId, productid, Errortype, _Statsu, userid, _Insertdate);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dtproducttype), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -300,11 +298,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             string sub = castedItem["Product_Type"].ToString();
                             int productid = Convert.ToInt32(castedItem["ProductType_Id"]);
                             int _Statsu = 1;
-                            User_Id = 1;
+                            //User_Id = 1;
                             DateTime _Insertdate = DateTime.Now;
                            string _Errortype = txtErrorTab.Text;
                             int _ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
-                            dt_error_update.Rows.Add(ErrorTYpeId,_ProjectId, productid, _Errortype, _Statsu, User_Id, _Insertdate);
+                            dt_error_update.Rows.Add(ErrorTYpeId,_ProjectId, productid, _Errortype, _Statsu, userid, _Insertdate);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dt_error_update), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -360,7 +358,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please select ProductType", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (txtErrorTab.Text == "")
+            if (string.IsNullOrWhiteSpace(txtErrorTab.Text))
             {
                 XtraMessageBox.Show("Please Enter ErrorTab", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

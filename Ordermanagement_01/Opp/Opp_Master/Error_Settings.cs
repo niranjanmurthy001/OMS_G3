@@ -21,7 +21,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
     public partial class Error_Settings : DevExpress.XtraEditors.XtraForm
     {
         string OperationType;
-        int User_Id;
+        int userid;
         string _btnname;
         int _Projectid;
         int _productid;
@@ -30,9 +30,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Errortypeid;
         Classes.Load_Progres form_loader = new Classes.Load_Progres();
 
-        public Error_Settings()
+        public Error_Settings(int User_ID)
         {
             InitializeComponent();
+            userid = User_ID;
         }
 
 
@@ -97,7 +98,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 _productid = 0;
                 errortext = null;
                 Errortypeid = 0;
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid, userid);
                 this.Enabled = false;
                 ErrorTypes.Show();
 
@@ -111,13 +112,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 _productid = 0;
                 errortext = null;
                 Errortypeid = 0;
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorType = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorType = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid, userid);
                 ErrorType.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, userid);
                 this.Enabled = false;
                 ErrorField.Show();
             }
@@ -335,7 +336,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //_productid = Convert.ToInt32(index.ItemArray[8]);
                 //errortext = index.ItemArray[0].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[3]);
-                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, userid);
                 this.Enabled = false;
                 _Efield.Show();
 
@@ -353,12 +354,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         }
 
-        private async void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
+        private  void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
         {
 
         }
 
-        private async void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
+        private  void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
         {
 
 
@@ -452,7 +453,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 dictionarydelete.Add("@Trans", "DELETE_Error_Type");
                                 dictionarydelete.Add("@Error_Type_Id", ID);
-                                dictionarydelete.Add("@Modified_By", User_Id);
+                                dictionarydelete.Add("@Modified_By", userid);
                             }
                             var data = new StringContent(JsonConvert.SerializeObject(dictionarydelete), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
@@ -705,7 +706,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //errortext = index.ItemArray[3].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[2]);
                 Errortypeid = int.Parse(row["New_Error_Type_Id"].ToString());
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this, Errortypeid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this, Errortypeid,userid);
                 this.Enabled = false;
                 _Espanels.Show();
             }
@@ -729,7 +730,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 OperationType = "Error Tab";
 
 
-                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this, Errortypeid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this, Errortypeid,userid);
                 this.Enabled = false;
                 _etab.Show();
                 //chkProductType.SelectedValue = ProductChk;
@@ -751,7 +752,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             dictionarydelete.Add("@Trans", "DELETE_Error_Type");
                             dictionarydelete.Add("@Error_Type_Id", ID);
-                            dictionarydelete.Add("@Modified_By", User_Id);
+                            dictionarydelete.Add("@Modified_By", userid);
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dictionarydelete), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())

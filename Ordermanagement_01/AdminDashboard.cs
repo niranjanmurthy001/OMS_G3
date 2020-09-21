@@ -32208,7 +32208,7 @@ namespace Ordermanagement_01
 
         private void Error_Settings_Click(object sender, EventArgs e)
         {
-            Opp.Opp_Master.Error_Settings errorsettings = new Opp.Opp_Master.Error_Settings();
+            Opp.Opp_Master.Error_Settings errorsettings = new Opp.Opp_Master.Error_Settings(userid);
             errorsettings.Show();
         }
 
