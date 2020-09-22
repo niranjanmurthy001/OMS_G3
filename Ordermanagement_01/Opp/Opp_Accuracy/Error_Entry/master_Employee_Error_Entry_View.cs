@@ -13,7 +13,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 {
@@ -77,7 +76,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             rb_External_Error_Type.SelectedIndex = -1;
             BindgrdError();
 
-            lbl_Header.Text = "Internal Error Entry-"+ OrderId;
+            lbl_Header.Text = "Internal Error Entry-" + OrderId;
         }
 
         private void rb_Internal_Error_Type_MouseClick(object sender, MouseEventArgs e)
@@ -96,7 +95,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
             BindGridExternalErrors();
         }
 
-        
+
 
         private void rb_External_Error_Type_MouseClick(object sender, MouseEventArgs e)
         {
@@ -105,7 +104,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
-           
+
             if (rb_Internal_Error_Type.SelectedIndex != -1)
             {
 
@@ -147,7 +146,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                 var result = await response.Content.ReadAsStringAsync();
                                 dt1 = JsonConvert.DeserializeObject<DataTable>(result);
 
-                                if (dt1.Rows.Count > 0)
+                                if (dt1.Rows.Count >= 0)
                                 {
                                     grdCtrl_Internal_Error.DataSource = dt1;
                                     grdIntCol_Remove.Width = 60;
@@ -194,7 +193,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                 var result = await response.Content.ReadAsStringAsync();
                                 dt1 = JsonConvert.DeserializeObject<DataTable>(result);
 
-                                if (dt1.Rows.Count > 0)
+                                if (dt1.Rows.Count >= 0)
                                 {
                                     grdCtrl_Internal_Error.DataSource = dt1;
                                     grdIntCol_Remove.Width = 60;
@@ -237,7 +236,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         }
 
-        
+
 
         public async void BindGridExternalErrors()
         {
@@ -379,7 +378,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
                         DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
                         int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                        
+
                         int OrderIdValue = int.Parse(row["Order_ID"].ToString());
                         DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (show == DialogResult.Yes)
@@ -416,17 +415,20 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                     if (response1.StatusCode == HttpStatusCode.OK)
                                     {
                                         var result1 = await response1.Content.ReadAsStringAsync();
+
                                     }
                                 }
                             }
                             SplashScreenManager.CloseForm(false);
+                            XtraMessageBox.Show("Record Deleted Successfully");
 
-                            BindgrdError();
+                           BindgrdError();
                         }
 
-                        else if (show == DialogResult.Yes)
+                        else if (show == DialogResult.No)
                         {
                             SplashScreenManager.CloseForm(false);
+
                         }
                     }
                     catch (Exception ex)
@@ -447,7 +449,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
                         DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
                         int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                        
+
                         int OrderIdValue = int.Parse(row["Order_ID"].ToString());
                         DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (show == DialogResult.Yes)
@@ -484,6 +486,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                     if (response1.StatusCode == HttpStatusCode.OK)
                                     {
                                         var result1 = await response1.Content.ReadAsStringAsync();
+
                                     }
                                 }
                             }
@@ -492,13 +495,15 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             BindgrdError();
                         }
 
-                        else if (show == DialogResult.Yes)
+                        else if (show == DialogResult.No)
                         {
                             SplashScreenManager.CloseForm(false);
+
                         }
                     }
                     catch (Exception ex)
                     {
+
                         SplashScreenManager.CloseForm(false);
                         XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -514,14 +519,14 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             if (e.Column.Caption == "Remove")
             {
-               
-                  if (UserRole == "1" || UserRole == "4" || UserRole == "6")
-                 {
+
+                if (UserRole == "1" || UserRole == "4" || UserRole == "6")
+                {
                     try
                     {
                         DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
                         int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                      
+
                         int OrderIdValue = int.Parse(row["Order_ID"].ToString());
                         DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (show == DialogResult.Yes)
@@ -566,9 +571,10 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             BindGridExternalErrors();
                         }
 
-                        else if (show == DialogResult.Yes)
+                        else if (show == DialogResult.No)
                         {
                             SplashScreenManager.CloseForm(false);
+
                         }
                     }
                     catch (Exception ex)
@@ -581,14 +587,14 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                     {
                         SplashScreenManager.CloseForm(false);
                     }
-                 }
-                else if((await Check_Authorize_User_To_Delete_Ext_Err()!=false))
+                }
+                else if ((await Check_Authorize_User_To_Delete_Ext_Err() != false))
                 {
                     try
                     {
                         DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
                         int ErrorInfo_id_value = int.Parse(row["ErrorInfo_ID"].ToString());
-                      
+
                         int OrderIdValue = int.Parse(row["Order_ID"].ToString());
                         DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (show == DialogResult.Yes)
@@ -633,9 +639,10 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                             BindGridExternalErrors();
                         }
 
-                        else if (show == DialogResult.Yes)
+                        else if (show == DialogResult.No)
                         {
                             SplashScreenManager.CloseForm(false);
+
                         }
                     }
                     catch (Exception ex)
@@ -660,7 +667,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
         {
             try
             {
-                
+
 
                 if (rb_Internal_Error_Type.SelectedIndex != -1)
                 {
@@ -705,11 +712,11 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
 
         private async Task<bool> Check_Authorize_User_To_Delete_Int_Err()
         {
-            
+
             DataTable dt = new DataTable();
             try
             {
-                if (rb_Internal_Error_Type.SelectedIndex!=-1)
+                if (rb_Internal_Error_Type.SelectedIndex != -1)
                 {
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     DataRow row = gridView_Internal_Error.GetDataRow(gridView_Internal_Error.FocusedRowHandle);
@@ -718,7 +725,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                     int ERRORINFOID = int.Parse(row["ErrorInfo_ID"].ToString());
 
 
-                    
+
 
                     IDictionary<string, object> dictionary = new Dictionary<string, object>();
 
@@ -774,7 +781,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                 if (rb_External_Error_Type.SelectedIndex != -1)
                 {
                     DataRow row = gridView_External_Error.GetDataRow(gridView_External_Error.FocusedRowHandle);
-                   // int USERID = int.Parse(row["User_id"].ToString());
+                    // int USERID = int.Parse(row["User_id"].ToString());
                     int ORDERID = int.Parse(row["Order_ID"].ToString());
                     int ERRORINFOID = int.Parse(row["ErrorInfo_ID"].ToString());
 

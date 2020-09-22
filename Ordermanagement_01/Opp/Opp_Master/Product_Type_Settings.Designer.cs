@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -76,10 +77,14 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.SystemColors.Window;
             this.groupControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.Appearance.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.productSetting;
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,6 +162,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn1.Caption = "ProjectType";
             this.gridColumn1.FieldName = "Project_Type";
             this.gridColumn1.Name = "gridColumn1";
@@ -221,30 +228,32 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(28, 67);
+            this.labelControl3.Location = new System.Drawing.Point(37, 68);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(90, 13);
+            this.labelControl3.Size = new System.Drawing.Size(80, 15);
             this.labelControl3.TabIndex = 2;
             this.labelControl3.Text = "Product Type  :";
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(34, 27);
+            this.labelControl2.Location = new System.Drawing.Point(43, 26);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(85, 13);
+            this.labelControl2.Size = new System.Drawing.Size(75, 15);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Project Type  :";
             // 
             // panelControl3
             // 
+            this.panelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.panelControl3.Appearance.Options.UseForeColor = true;
             this.panelControl3.Controls.Add(this.flowLayoutPanel1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 272);
@@ -266,7 +275,10 @@
             // btnSubmit
             // 
             this.btnSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
+            this.btnSubmit.Appearance.Options.UseForeColor = true;
+            this.btnSubmit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSubmit.Location = new System.Drawing.Point(3, 3);
             this.btnSubmit.Name = "btnSubmit";
@@ -278,7 +290,10 @@
             // btnClear
             // 
             this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
+            this.btnClear.Appearance.Options.UseForeColor = true;
+            this.btnClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClear.Location = new System.Drawing.Point(84, 3);
             this.btnClear.Name = "btnClear";
@@ -290,7 +305,10 @@
             // btnDelete
             // 
             this.btnDelete.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Appearance.Options.UseForeColor = true;
+            this.btnDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDelete.Location = new System.Drawing.Point(165, 3);
             this.btnDelete.Name = "btnDelete";
@@ -312,7 +330,7 @@
             // 
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Navy;
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Location = new System.Drawing.Point(240, 2);

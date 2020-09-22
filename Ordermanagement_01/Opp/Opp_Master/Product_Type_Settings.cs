@@ -76,7 +76,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                //throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -127,7 +128,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -180,7 +182,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 //ProductId = Convert.ToInt32(dt.Rows[0]["ProductType_Id"].ToString());
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("product Type is Submitted");
+                                XtraMessageBox.Show("Submitted SuccessFully","Success",MessageBoxButtons.OK);
                                 BindProductTypeGrid();
                                 Clear();
 
@@ -191,7 +193,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -223,7 +225,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("ProductType Updated Successfully");
+                                XtraMessageBox.Show(" Updated Successfully","Success", MessageBoxButtons.OK);
                                 BindProductTypeGrid();
                                 Clear();
                             }
@@ -240,7 +242,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     //throw ex;
                     SplashScreenManager.CloseForm(false);
-                    XtraMessageBox.Show("Something Went Wrong");
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -276,7 +278,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -319,7 +322,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("productType Deleted Successfully");
+                                XtraMessageBox.Show("Deleted Successfully");
                                 BindProductTypeGrid();
                                 btnDelete.Enabled = false;
                                 Clear();
@@ -332,13 +335,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
                 else if (show==DialogResult.No)
                 {
-
+                   
                 }
             }
            
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

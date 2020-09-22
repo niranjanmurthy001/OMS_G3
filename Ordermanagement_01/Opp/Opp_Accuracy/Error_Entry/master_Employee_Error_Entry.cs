@@ -848,7 +848,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                     {
                                         var result1 = await response1.Content.ReadAsStringAsync();
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("Error Info Added Successfully", "Success", MessageBoxButtons.OK);
+                                        XtraMessageBox.Show(" Submitted Successfully", "Success", MessageBoxButtons.OK);
                                         this.mainform.BindgrdError();
                                         this.mainform.Enabled = true;
                                         this.Close();
@@ -973,7 +973,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                     {
                                         var result1 = await response1.Content.ReadAsStringAsync();
                                         SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("Error Info Added Successfully", "Success", MessageBoxButtons.OK);
+                                        XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK);
                                         this.mainform.BindGridExternalErrors();
                                         this.mainform.Enabled = true;
                                         this.Close();

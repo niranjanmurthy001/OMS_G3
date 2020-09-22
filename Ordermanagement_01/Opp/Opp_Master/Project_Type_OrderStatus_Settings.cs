@@ -90,7 +90,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -150,7 +151,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -194,7 +196,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -304,7 +307,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Status Submitted Sucessfully");
+                                XtraMessageBox.Show(" Submitted Successfully","Success",MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
                                 Clear();
                             }
@@ -314,7 +317,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
@@ -363,7 +366,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("OrderStatus Updated Successfully");
+                                XtraMessageBox.Show(" Updated Successfully","Success",MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
                                 Clear();
                             }
@@ -378,7 +381,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 catch (Exception ex)
                 {
-                    throw ex;
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
@@ -425,7 +429,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -476,7 +481,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             finally
