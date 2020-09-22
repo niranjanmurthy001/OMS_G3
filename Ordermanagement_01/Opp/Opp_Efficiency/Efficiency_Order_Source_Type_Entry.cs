@@ -33,12 +33,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         private Efficiency_Order_Source_Type Mainfrom = null;
         private int county_Id;
-        private int User_Role;
-        public Efficiency_Order_Source_Type_Entry(int User_Role, Form CallingFrom)
+       
+        public Efficiency_Order_Source_Type_Entry(int User_ID, Form CallingFrom)
         {
             InitializeComponent();
             Mainfrom = CallingFrom as Efficiency_Order_Source_Type;          
-            User_Id = User_Role;         
+            User_Id = User_ID;         
         }
 
         private void Efficiency_Order_Source_Type_Entry_Load(object sender, EventArgs e)
@@ -344,7 +344,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             ProjectValue = Convert.ToInt32(ddl_ProjectType.EditValue);
             SourceValue = Convert.ToInt32(ddl_Source_Type.EditValue);
             StateId = Convert.ToInt32(ddl_State.EditValue);
-            User_Id = 1;
+           
             if (btn_Save.Text == "Save" && Validate() != false)
             {
                 try

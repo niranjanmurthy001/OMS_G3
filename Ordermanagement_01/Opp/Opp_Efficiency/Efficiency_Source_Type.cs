@@ -22,13 +22,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
     public partial class Efficiency_Source_Type : DevExpress.XtraEditors.XtraForm
     {
-        int User_Role;
+        
         int User_Id, _ProjectId , _ID;
         string Operation_Type, _BtnName, _SourceType; 
-        public Efficiency_Source_Type(int User_Role)
+        public Efficiency_Source_Type(int User_ID)
         {
             InitializeComponent();
-            User_Id = User_Role;
+            User_Id = User_ID;
         }
 
         private void gridView_Efficiency_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -110,7 +110,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             var dictionary = new Dictionary<string, object>()
                             {
                                 { "@Trans", "DELETE" },
-                                { "@Order_Source_Type_ID", ID },                   
+                                { "@Order_Source_Type_ID", ID },
+                                {"@Modified_By",User_Id }                  
                            };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())

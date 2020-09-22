@@ -19,7 +19,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 {
     public partial class Efficiency_Source_Type_Entry : DevExpress.XtraEditors.XtraForm
     {
-        int User_Id, _ProjectId, _ID, userid,ID;
+        int _ProjectId, _ID, userid,ID;
         string _SourceType, _BtnName, _Operaion_Id;
         private Efficiency_Source_Type Mainform = null;
         public Efficiency_Source_Type_Entry(string _Oid, int ID, int ProjId, string SrcType, string btnname, int User_Id, Form CallingForm)
@@ -43,7 +43,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 btn_Save_EffSource.Text = _BtnName;
                 ddl_Project_Type.EditValue = _ProjectId;
                 txt_Efficiency_Source.Text = _SourceType;
-                userid = User_Id;
+              
                 ID = _ID;
             }
         }
@@ -180,7 +180,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         dictinsert.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text);                       
                         dictinsert.Add("@Status", "True");
                         dictinsert.Add("@Inserted_By", userid);
-                        dictinsert.Add("@Inserted_Date", _inserteddate);
+                      
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dictinsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
@@ -212,8 +212,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         dictionaryedit.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text);
                         dictionaryedit.Add("@Status", "True");
                         dictionaryedit.Add("@Modified_By", userid);
-                        dictionaryedit.Add("@Modified_Date", _inserteddate);
-
+                      
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dictionaryedit), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())

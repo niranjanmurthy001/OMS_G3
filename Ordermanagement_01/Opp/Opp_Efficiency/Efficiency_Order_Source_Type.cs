@@ -22,17 +22,17 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     {
         int User_Id;
         int User_Role;
-        public Efficiency_Order_Source_Type(int User_Role)
+        public Efficiency_Order_Source_Type(int User_ID)
         {
             InitializeComponent();
-            User_Id = User_Role;
+            User_Id = User_ID;
         }
 
         private void Efficiency_Order_Source_Type_Load(object sender, EventArgs e)
         {
             BindGrid();
             btn_Delete_Multiple.Visible = false;
-            User_Id = User_Role;           
+                     
         }
         public async void BindGrid()
         {
@@ -103,7 +103,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     { "@Project_Type_Id", ProjectID },
                     { "@Employee_Source_id", SourceId },
                     { "@State_ID", StateId },
-                    { "@County_ID", CountyId }
+                    { "@County_ID", CountyId },
+                    {"@Modified_By" ,User_Id}
                 };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
@@ -158,7 +159,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void btn_Add_New_Click(object sender, EventArgs e)
         {
             this.Enabled = false;             
-            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Order_Source_Type_Entry Efficiency = new Efficiency_Order_Source_Type_Entry(User_Role, this);
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Order_Source_Type_Entry Efficiency = new Efficiency_Order_Source_Type_Entry(User_Id, this);
             Efficiency.Show();         
         }
 

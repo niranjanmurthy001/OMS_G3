@@ -255,6 +255,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 { "@Trans", "DELETE" },
                                 { "@Project_Type_Id",_ProjectId},
                                 { "@Client_Id",client_id },
+                                {"@Modified_By",_userid }
                             };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())

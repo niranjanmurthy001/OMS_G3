@@ -147,7 +147,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var dictionary = new Dictionary<string, object>()
                                 {
                                       { "@Trans", "DELETE_TYPE" },
-                                      { "@Order_Type_ID", OrderTypeId }
+                                      { "@Order_Type_ID", OrderTypeId },
+                                      { "@Modified_By", _UserId }
                                 };
                                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                                 using (var httpClient = new HttpClient())
@@ -204,7 +205,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var dictionary = new Dictionary<string, object>()
                                 {
                                       { "@Trans", "DELETE_ABS" },
-                                      { "@OrderType_ABS_Id", OrderTypeAbsId }
+                                      { "@OrderType_ABS_Id", OrderTypeAbsId },
+                                      {"@Modified_by",_UserId }
                                 };
                                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                                 using (var httpClient = new HttpClient())
@@ -221,6 +223,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             }
                             SplashScreenManager.CloseForm(false);
                             XtraMessageBox.Show("Record Deleted Successfully");
+                            btn_Delete_Multiple.Visible = false;
                             BindGridAbs();
                         }
                         catch (Exception ex)
@@ -236,6 +239,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
                 else
                 {
+                    btn_Delete_Multiple.Visible = false;
                     SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Please Select Any Record To Delete");
                 }

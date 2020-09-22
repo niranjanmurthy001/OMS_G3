@@ -325,7 +325,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             dictinsert.Add("@OrderType_ABS_Id", ddl_Type_Abs.EditValue);
                             dictinsert.Add("@Status", _status);
                             dictinsert.Add("@Inserted_By", userid);
-                            dictinsert.Add("@Instered_Date", _insertedby);
+                           
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dictinsert), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -361,7 +361,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             dictionaryedit.Add("@OrderType_ABS_Id", ddl_Type_Abs.EditValue);
                             dictionaryedit.Add("@Status", _status);
                             dictionaryedit.Add("@Modified_By", userid);
-                            dictionaryedit.Add("@Modified_Date", _insertedby);
+                           
 
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dictionaryedit), Encoding.UTF8, "application/json");
@@ -418,7 +418,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             dictinsert.Add("@ProductType_Id", ddl_Product_Type_Abs.EditValue);
                             dictinsert.Add("@Status", _status);
                             dictinsert.Add("@Inserted_by", userid);
-                            dictinsert.Add("@Inserted_Date", _inserteddate);
+                           
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dictinsert), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
@@ -451,7 +451,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             dictionaryedit.Add("@ProductType_Id", ddl_Product_Type_Abs.EditValue);
                             dictionaryedit.Add("@Status", _status);
                             dictionaryedit.Add("@Modified_by", userid);
-                            dictionaryedit.Add("@Modified_Date", _inserteddate);
+                           
 
                         }
                         var data = new StringContent(JsonConvert.SerializeObject(dictionaryedit), Encoding.UTF8, "application/json");

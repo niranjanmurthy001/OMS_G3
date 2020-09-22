@@ -29,10 +29,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
         
         string Operation_Type;
 
-        public Order_SourceType_View(int User_Role)
+        public Order_SourceType_View(int User_ID)
         {
             InitializeComponent();
-            User_Id = User_Role;
+            User_Id = User_ID;
         }
 
         private void gridViewSource_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -115,12 +115,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             int Pd_ID = int.Parse(row["ProductType_Id"].ToString());
                             string Src_Type = row["Employee_source"].ToString();
                             var dictionary = new Dictionary<string, object>()
-                {
-                    { "@Trans", "DELETE" },
-                    { "@Project_Type_Id", Pt_ID },
-                     { "@ProductType_Id", Pd_ID },
-                      { "@Employee_source", Src_Type }
-                };
+                    {
+                      { "@Trans", "DELETE" },
+                      { "@Project_Type_Id", Pt_ID },
+                      { "@ProductType_Id", Pd_ID },
+                      { "@Employee_source", Src_Type },
+                      {"@Modified_by",User_Id }
+                    };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
                             {
@@ -202,7 +203,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     { "@Trans", "DELETE" },
                     { "@Project_Type_Id", Pt_ID },
                      { "@ProductType_Id", Pd_ID },
-                      { "@Employee_source", Src_Type }
+                      { "@Employee_source", Src_Type },
+                      {"@Modified_by",User_Id }
                 };
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())

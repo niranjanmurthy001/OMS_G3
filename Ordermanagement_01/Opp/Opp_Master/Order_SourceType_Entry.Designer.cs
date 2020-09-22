@@ -155,6 +155,7 @@
             // 
             // checkbox_Product_Type
             // 
+            this.checkbox_Product_Type.CheckOnClick = true;
             this.checkbox_Product_Type.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkbox_Product_Type.Location = new System.Drawing.Point(136, 75);
             this.checkbox_Product_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
