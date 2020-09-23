@@ -31914,7 +31914,7 @@ namespace Ordermanagement_01
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
             try
             {
-                Ordermanagement_01.Opp.Opp_Master.Project_Type_Order_Task pt = new Opp.Opp_Master.Project_Type_Order_Task();
+                Ordermanagement_01.Opp.Opp_Master.Project_Type_Order_Task pt = new Opp.Opp_Master.Project_Type_Order_Task(userid);
                 pt.Show();
             }
             catch (Exception ex)
@@ -32214,7 +32214,7 @@ namespace Ordermanagement_01
 
         private void Efficiency_Salary_Bracket_Click(object sender, EventArgs e)
         {
-            Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise salary = new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise();
+            Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise salary = new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise(userid);
             salary.Show();
         }
 

@@ -32,7 +32,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txt_Errorfield = new DevExpress.XtraEditors.TextEdit();
             this.checkedListBoxControl_Errortab = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -44,23 +43,24 @@
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Errorfield.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl_Errortab)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.ddl_ProductType);
             this.panelControl1.Controls.Add(this.txt_Errorfield);
             this.panelControl1.Controls.Add(this.checkedListBoxControl_Errortab);
-            this.panelControl1.Controls.Add(this.ddl_ProductType);
             this.panelControl1.Controls.Add(this.ddl_ProjectType);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -74,10 +74,10 @@
             // 
             // txt_Errorfield
             // 
-            this.txt_Errorfield.Location = new System.Drawing.Point(136, 250);
+            this.txt_Errorfield.Location = new System.Drawing.Point(124, 250);
             this.txt_Errorfield.Name = "txt_Errorfield";
             this.txt_Errorfield.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Errorfield.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.txt_Errorfield.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txt_Errorfield.Properties.Appearance.Options.UseFont = true;
             this.txt_Errorfield.Properties.Appearance.Options.UseForeColor = true;
             this.txt_Errorfield.Size = new System.Drawing.Size(243, 24);
@@ -86,35 +86,22 @@
             // checkedListBoxControl_Errortab
             // 
             this.checkedListBoxControl_Errortab.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBoxControl_Errortab.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.checkedListBoxControl_Errortab.Appearance.ForeColor = System.Drawing.Color.Black;
             this.checkedListBoxControl_Errortab.Appearance.Options.UseFont = true;
             this.checkedListBoxControl_Errortab.Appearance.Options.UseForeColor = true;
+            this.checkedListBoxControl_Errortab.CheckOnClick = true;
             this.checkedListBoxControl_Errortab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedListBoxControl_Errortab.Location = new System.Drawing.Point(136, 117);
+            this.checkedListBoxControl_Errortab.Location = new System.Drawing.Point(124, 117);
             this.checkedListBoxControl_Errortab.Name = "checkedListBoxControl_Errortab";
             this.checkedListBoxControl_Errortab.Size = new System.Drawing.Size(243, 105);
             this.checkedListBoxControl_Errortab.TabIndex = 3;
             // 
-            // ddl_ProductType
-            // 
-            this.ddl_ProductType.Location = new System.Drawing.Point(136, 68);
-            this.ddl_ProductType.Name = "ddl_ProductType";
-            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_ProductType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
-            this.ddl_ProductType.Properties.Appearance.Options.UseForeColor = true;
-            this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProductType.Properties.NullText = "Select";
-            this.ddl_ProductType.Size = new System.Drawing.Size(243, 24);
-            this.ddl_ProductType.TabIndex = 2;
-            // 
             // ddl_ProjectType
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(136, 20);
+            this.ddl_ProjectType.Location = new System.Drawing.Point(124, 20);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
             this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProjectType.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -127,10 +114,10 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(24, 250);
+            this.labelControl4.Location = new System.Drawing.Point(43, 253);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(68, 17);
             this.labelControl4.TabIndex = 3;
@@ -139,10 +126,10 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(24, 136);
+            this.labelControl3.Location = new System.Drawing.Point(48, 119);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(63, 17);
             this.labelControl3.TabIndex = 2;
@@ -151,10 +138,10 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(24, 68);
+            this.labelControl2.Location = new System.Drawing.Point(27, 71);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(84, 17);
             this.labelControl2.TabIndex = 1;
@@ -163,10 +150,10 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(24, 20);
+            this.labelControl1.Location = new System.Drawing.Point(32, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -218,6 +205,7 @@
             this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
+            this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Clear.Location = new System.Drawing.Point(323, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 37);
@@ -231,6 +219,7 @@
             this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Save.Appearance.Options.UseFont = true;
             this.btn_Save.Appearance.Options.UseForeColor = true;
+            this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Save.Location = new System.Drawing.Point(237, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(80, 37);
@@ -241,6 +230,20 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
+            // ddl_ProductType
+            // 
+            this.ddl_ProductType.Location = new System.Drawing.Point(124, 71);
+            this.ddl_ProductType.Name = "ddl_ProductType";
+            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.25F);
+            this.ddl_ProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
+            this.ddl_ProductType.Properties.Appearance.Options.UseForeColor = true;
+            this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_ProductType.Properties.NullText = "Select";
+            this.ddl_ProductType.Size = new System.Drawing.Size(243, 20);
+            this.ddl_ProductType.TabIndex = 5;
             // 
             // Error_Field
             // 
@@ -261,12 +264,12 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Errorfield.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl_Errortab)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -276,7 +279,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.TextEdit txt_Errorfield;
         private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl_Errortab;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProductType;
         private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -288,5 +290,6 @@
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraEditors.LookUpEdit ddl_ProductType;
     }
 }

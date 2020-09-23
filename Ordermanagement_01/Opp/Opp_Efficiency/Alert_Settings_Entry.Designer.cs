@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -38,7 +39,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Submit = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -51,8 +52,8 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 10.25F, System.Drawing.FontStyle.Bold);
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.Controls.Add(this.tableLayoutPanel1);
@@ -70,12 +71,12 @@
             this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 22);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(395, 333);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(395, 334);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -87,7 +88,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(389, 283);
+            this.panelControl1.Size = new System.Drawing.Size(389, 284);
             this.panelControl1.TabIndex = 0;
             // 
             // chk_Alert_Type
@@ -98,14 +99,14 @@
             this.chk_Alert_Type.Appearance.Options.UseForeColor = true;
             this.chk_Alert_Type.CheckOnClick = true;
             this.chk_Alert_Type.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_Alert_Type.Location = new System.Drawing.Point(138, 72);
+            this.chk_Alert_Type.Location = new System.Drawing.Point(113, 72);
             this.chk_Alert_Type.Name = "chk_Alert_Type";
             this.chk_Alert_Type.Size = new System.Drawing.Size(231, 126);
             this.chk_Alert_Type.TabIndex = 3;
             // 
             // ddl_user_role
             // 
-            this.ddl_user_role.Location = new System.Drawing.Point(138, 32);
+            this.ddl_user_role.Location = new System.Drawing.Point(113, 32);
             this.ddl_user_role.Name = "ddl_user_role";
             this.ddl_user_role.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_user_role.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -120,25 +121,25 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(29, 100);
+            this.labelControl2.Location = new System.Drawing.Point(37, 70);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(75, 20);
+            this.labelControl2.Size = new System.Drawing.Size(60, 15);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Alert Type :";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(29, 30);
+            this.labelControl1.Location = new System.Drawing.Point(42, 31);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(70, 20);
+            this.labelControl1.Size = new System.Drawing.Size(55, 15);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "User Role :";
             // 
@@ -148,7 +149,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Submit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 292);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 293);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(389, 38);
             this.flowLayoutPanel1.TabIndex = 1;

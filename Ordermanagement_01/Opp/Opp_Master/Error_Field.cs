@@ -25,9 +25,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
         string errortext;
         int checkederror;
         string Operation_Type;
-        int userid;
+        int userid,err_des_id;
         private Error_Settings Mainform = null;
-        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror,Form Callingform, int User_ID)
+        public Error_Field(string _operationType,string btnname,int _pro,int _prd,string _text,int _Cerror,Form Callingform, int Err_Desc_Id,int User_ID)
         {
             InitializeComponent();
             _btnname = btnname;
@@ -38,6 +38,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Operation_Type = _operationType;
             Mainform = Callingform as Error_Settings;
             userid = User_ID;
+            err_des_id = Err_Desc_Id;
         }
 
         private void Error_Field_Load(object sender, EventArgs e)
@@ -46,11 +47,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
             BindProjectType();
             if (Operation_Type == "Error Field")
             {
-                
+                ddl_ProductType.ItemIndex = 0;
             }
             else
             {
-                
+                //ddl_ProductType.Enabled = false;
+                //ddl_ProjectType.Enabled = false;
+                //checkedListBoxControl_Errortab.Enabled = false;
                 btn_Save.Text = _btnname;
                 ddl_ProjectType.EditValue = _Projectid;
                 BindProdctType(_Projectid);
@@ -133,8 +136,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     int _Task = Convert.ToInt32(r1["Error_Type_Id"]);
 
                     DataTable _dtmulti1 = new DataTable();
-                    _dtmulti1.Columns.AddRange(new DataColumn[7]
+                    _dtmulti1.Columns.AddRange(new DataColumn[8]
                     {
+                        new DataColumn("Error_description_Id",typeof(int)),
                        new DataColumn("Project_Type_Id",typeof(int)),
                         new DataColumn("Product_Type_Id",typeof(int)),
                         new  DataColumn("Error_Type_Id",typeof(string)),
@@ -154,7 +158,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int _status = 1;
                         int _Modifiedby = userid;
                         DateTime _modifydate = DateTime.Now;
-                        _dtmulti1.Rows.Add(_ProjectID, _ProductType, Error_description, _Error, _status, _Modifiedby, _modifydate);
+                        _dtmulti1.Rows.Add(err_des_id,_ProjectID, _ProductType, Error_description, _Error, _status, _Modifiedby, _modifydate);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(_dtmulti1), Encoding.UTF8, "application/json");

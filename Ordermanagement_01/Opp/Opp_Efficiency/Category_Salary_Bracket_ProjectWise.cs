@@ -24,15 +24,18 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     {
         DataTable _dtUpdate = new DataTable();
         DataTable _dtUpdatecell = new DataTable();
+        int userid;
          
-        public Category_Salary_Bracket_ProjectWise()
+        public Category_Salary_Bracket_ProjectWise(int User_Id)
         {
             InitializeComponent();
+            userid = User_Id;
         }
 
         private void btn_addnew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Efficiency.Category_Salary_Bracket_EntryForm EF = new Category_Salary_Bracket_EntryForm(this);
+            Ordermanagement_01.Opp.Opp_Efficiency.Category_Salary_Bracket_EntryForm EF = new Category_Salary_Bracket_EntryForm(this, userid);
+            this.Enabled = false;
             EF.Show();
         }
 
@@ -135,7 +138,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         var dictionary = new Dictionary<string, object>()
                         {
                             { "@Trans", "DELETE" },
-                            { "@Category_ID", Category_Id }
+                            { "@Category_ID", Category_Id },
+                            {"@Modified_By",userid }
                         };
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())

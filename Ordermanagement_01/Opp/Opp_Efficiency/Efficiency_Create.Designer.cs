@@ -147,7 +147,7 @@
             this.chk_OrderSourceType.Location = new System.Drawing.Point(138, 125);
             this.chk_OrderSourceType.Name = "chk_OrderSourceType";
             this.chk_OrderSourceType.Size = new System.Drawing.Size(203, 85);
-            this.chk_OrderSourceType.TabIndex = 5;
+            this.chk_OrderSourceType.TabIndex = 1;
             // 
             // chk_Ordertype
             // 
@@ -156,7 +156,7 @@
             this.chk_Ordertype.Location = new System.Drawing.Point(138, 20);
             this.chk_Ordertype.Name = "chk_Ordertype";
             this.chk_Ordertype.Size = new System.Drawing.Size(203, 85);
-            this.chk_Ordertype.TabIndex = 4;
+            this.chk_Ordertype.TabIndex = 0;
             // 
             // labelControl5
             // 
@@ -208,7 +208,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Order_task.Properties.NullText = "Select";
             this.ddl_Order_task.Size = new System.Drawing.Size(223, 20);
-            this.ddl_Order_task.TabIndex = 3;
+            this.ddl_Order_task.TabIndex = 2;
             // 
             // ddl_Client_Name
             // 
@@ -222,7 +222,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Client_Name.Properties.NullText = "Select";
             this.ddl_Client_Name.Size = new System.Drawing.Size(223, 20);
-            this.ddl_Client_Name.TabIndex = 2;
+            this.ddl_Client_Name.TabIndex = 1;
             this.ddl_Client_Name.EditValueChanged += new System.EventHandler(this.ddl_Client_Name_EditValueChanged);
             // 
             // ddl_Project_Type
@@ -237,7 +237,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Project_Type.Properties.NullText = "Select";
             this.ddl_Project_Type.Size = new System.Drawing.Size(223, 20);
-            this.ddl_Project_Type.TabIndex = 1;
+            this.ddl_Project_Type.TabIndex = 0;
             this.ddl_Project_Type.EditValueChanged += new System.EventHandler(this.ddl_Project_Type_EditValueChanged);
             // 
             // labelControl3
@@ -320,7 +320,7 @@
             this.btn_Clear.Location = new System.Drawing.Point(691, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 33);
-            this.btn_Clear.TabIndex = 7;
+            this.btn_Clear.TabIndex = 1;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
@@ -334,7 +334,7 @@
             this.btn_Submit.Location = new System.Drawing.Point(605, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(80, 33);
-            this.btn_Submit.TabIndex = 6;
+            this.btn_Submit.TabIndex = 0;
             this.btn_Submit.Text = "Submit";
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 

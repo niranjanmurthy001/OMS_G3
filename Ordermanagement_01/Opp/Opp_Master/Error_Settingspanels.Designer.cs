@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.txtErrorTab = new DevExpress.XtraEditors.TextEdit();
             this.chkProductType = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
@@ -58,10 +59,10 @@
             // 
             // txtErrorTab
             // 
-            this.txtErrorTab.Location = new System.Drawing.Point(136, 194);
+            this.txtErrorTab.Location = new System.Drawing.Point(136, 190);
             this.txtErrorTab.Name = "txtErrorTab";
             this.txtErrorTab.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtErrorTab.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.txtErrorTab.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txtErrorTab.Properties.Appearance.Options.UseFont = true;
             this.txtErrorTab.Properties.Appearance.Options.UseForeColor = true;
             this.txtErrorTab.Size = new System.Drawing.Size(243, 24);
@@ -70,7 +71,7 @@
             // chkProductType
             // 
             this.chkProductType.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkProductType.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.chkProductType.Appearance.ForeColor = System.Drawing.Color.Black;
             this.chkProductType.Appearance.Options.UseFont = true;
             this.chkProductType.Appearance.Options.UseForeColor = true;
             this.chkProductType.Cursor = System.Windows.Forms.Cursors.Default;
@@ -84,7 +85,7 @@
             this.ddlProjectType.Location = new System.Drawing.Point(136, 20);
             this.ddlProjectType.Name = "ddlProjectType";
             this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.ddlProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddlProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddlProjectType.Properties.Appearance.Options.UseForeColor = true;
             this.ddlProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -97,22 +98,22 @@
             // Error_label
             // 
             this.Error_label.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Error_label.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.Error_label.Appearance.ForeColor = System.Drawing.Color.Black;
             this.Error_label.Appearance.Options.UseFont = true;
             this.Error_label.Appearance.Options.UseForeColor = true;
-            this.Error_label.Location = new System.Drawing.Point(24, 194);
+            this.Error_label.Location = new System.Drawing.Point(54, 193);
             this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(37, 17);
+            this.Error_label.Size = new System.Drawing.Size(41, 17);
             this.Error_label.TabIndex = 3;
-            this.Error_label.Text = "Error :";
+            this.Error_label.Text = "Error  :";
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(24, 90);
+            this.labelControl2.Location = new System.Drawing.Point(39, 69);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(84, 17);
             this.labelControl2.TabIndex = 1;
@@ -124,6 +125,7 @@
             this.Clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.Clear.Appearance.Options.UseFont = true;
             this.Clear.Appearance.Options.UseForeColor = true;
+            this.Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.Clear.Location = new System.Drawing.Point(323, 3);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(80, 38);
@@ -134,10 +136,10 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(24, 20);
+            this.labelControl1.Location = new System.Drawing.Point(44, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -189,6 +191,7 @@
             this.btnSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnSubmit.Appearance.Options.UseFont = true;
             this.btnSubmit.Appearance.Options.UseForeColor = true;
+            this.btnSubmit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnSubmit.Location = new System.Drawing.Point(237, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 38);

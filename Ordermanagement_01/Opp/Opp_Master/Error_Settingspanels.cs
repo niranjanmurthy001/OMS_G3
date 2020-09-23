@@ -125,6 +125,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     Error_Type_Id = 0;
                                     this.Mainform.BindErrorDetails();
                                     this.Mainform.Bind_Error_Tab_Grid();
+                                    this.Close();
+                                    this.Mainform.Enabled = true;
 
                                 }
                             }
@@ -355,7 +357,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             if (chkProductType.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Please select ProductType", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Check ProductType", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtErrorTab.Text))
@@ -370,6 +372,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (ddlProjectType.ItemIndex > 0)
             {
+                chkProductType.DataSource = null;
                 ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
                 BindProdctType(ProjectId);
 

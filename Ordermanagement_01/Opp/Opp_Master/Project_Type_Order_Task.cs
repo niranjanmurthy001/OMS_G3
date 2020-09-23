@@ -23,10 +23,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Project_type, Task;
         DataTable _dtLoad = new DataTable();
         int _Inserted_By;
-        DateTime _Inserted_Date;    
-        public Project_Type_Order_Task()
+        DateTime _Inserted_Date;
+        int userid;  
+        public Project_Type_Order_Task(int User_Id)
         {
             InitializeComponent();
+            userid = User_Id;
         }
 
 
@@ -124,7 +126,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int status = 1;
                         int _Inserted_By = 1;
                         DateTime date = DateTime.Now;
-                        dtmulti.Rows.Add(projecttype, Task, status, _Inserted_By, date);
+                        dtmulti.Rows.Add(projecttype, Task, status, userid, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
@@ -188,7 +190,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         DateTime _Inerted_date = _Inserted_Date;
                         DateTime date = DateTime.Now;
                         int _Modified_By = 0;
-                        dtmulti1.Rows.Add(projecttype, Task,_status, User_Id,_Inerted_date, _Modified_By, date);
+                        dtmulti1.Rows.Add(projecttype, Task,_status, User_Id,_Inerted_date, userid, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti1), Encoding.UTF8, "application/json");

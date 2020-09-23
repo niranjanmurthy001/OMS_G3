@@ -30,6 +30,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -48,9 +49,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -70,7 +71,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             // groupControl1
             // 
-            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
@@ -124,6 +125,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridView1.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView1.Appearance.HeaderPanel.Options.UseForeColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.Order_Task,
@@ -199,6 +204,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.checkedListBoxControl_Task.Appearance.ForeColor = System.Drawing.Color.Black;
             this.checkedListBoxControl_Task.Appearance.Options.UseFont = true;
             this.checkedListBoxControl_Task.Appearance.Options.UseForeColor = true;
+            this.checkedListBoxControl_Task.CheckOnClick = true;
             this.checkedListBoxControl_Task.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedListBoxControl_Task.Location = new System.Drawing.Point(156, 73);
             this.checkedListBoxControl_Task.Name = "checkedListBoxControl_Task";
@@ -222,25 +228,25 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             // labelControl2
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(55, 73);
+            this.labelControl2.Location = new System.Drawing.Point(76, 73);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(78, 20);
+            this.labelControl2.Size = new System.Drawing.Size(63, 15);
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Order Task :";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.25F);
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(44, 30);
+            this.labelControl1.Location = new System.Drawing.Point(65, 30);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(89, 20);
+            this.labelControl1.Size = new System.Drawing.Size(72, 15);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Project Type :";
             // 
@@ -287,23 +293,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save.ToolTip = "Submit/Update";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
-            this.label1.Location = new System.Drawing.Point(233, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 30);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Project Type Order Task Settings";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.label1);
@@ -312,6 +301,22 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(692, 46);
             this.panelControl2.TabIndex = 4;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(688, 42);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Project Type Order Task Settings";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Project_Type_Order_Task
             // 
@@ -341,7 +346,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -352,7 +356,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraGrid.GridControl grd_projectType;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
@@ -370,5 +373,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private DevExpress.XtraEditors.SimpleButton btn_Clear;
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.Label label1;
     }
 }

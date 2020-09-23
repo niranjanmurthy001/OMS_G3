@@ -27,7 +27,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int _productid;
         string errortext;
         int checkederror;
-        int Errortypeid;
+        int Errortypeid,err_desc_id;
         Classes.Load_Progres form_loader = new Classes.Load_Progres();
 
         public Error_Settings(int User_ID)
@@ -46,8 +46,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Tile_Item_ErrorType.Checked = true;
             navigationFrame1.SelectedPage = navigationPage1;
             BindErrorDetails();
-            BindErrorGrid();
-            Bind_Error_Tab_Grid();
+            //BindErrorGrid();
+            //Bind_Error_Tab_Grid();
         }
         private void Tile_Item_ErrorType_ItemClick(object sender, TileItemEventArgs e)
         {
@@ -113,12 +113,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 errortext = null;
                 Errortypeid = 0;
                 Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorType = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid, userid);
+                this.Enabled = false;
                 ErrorType.Show();
             }
             else if (Tile_Item_ErrorField.Checked == true)
             {
                 OperationType = "Error Field";
-                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, userid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, err_desc_id, userid);
                 this.Enabled = false;
                 ErrorField.Show();
             }
@@ -284,7 +285,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                      {
                         {"@Trans","DELETE_Error_description" },
 
-                        {"@Error_description_Id",_error_D_id }
+                        {"@Error_description_Id",_error_D_id },
+                        {"@Modified_By",userid }
 
                     };
                     var op = XtraMessageBox.Show("Do You Want to Delete", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -299,7 +301,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
-
+                                    SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Deleted Successfully");
                                     BindErrorGrid();
 
@@ -326,6 +328,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 _productid = int.Parse(row["Product_Type_Id"].ToString());
                 errortext = row["Error_description"].ToString();
                 checkederror = int.Parse(row["Error_Type_Id"].ToString());
+                int err_des_id = int.Parse(row["Error_description_Id"].ToString());
                 //GridView view = Grd_ErrorDes.MainView as GridView;
                 //var index = view.GetDataRow(view.GetSelectedRows()[0]);
                 ////e.Column.ColumnEdit.NullText = "Edit";
@@ -336,7 +339,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 //_productid = Convert.ToInt32(index.ItemArray[8]);
                 //errortext = index.ItemArray[0].ToString();
                 //checkederror = Convert.ToInt32(index.ItemArray[3]);
-                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, userid);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, err_des_id, userid);
                 this.Enabled = false;
                 _Efield.Show();
 
@@ -413,7 +416,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             var dictionary = new Dictionary<string, object>()
                         {
                             { "@Trans", "DELETE" },
-                            { "@New_Error_Type_Id", Error_Id }
+                            { "@New_Error_Type_Id", Error_Id },
+                             {"@Modified_By",userid }
                         };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                             using (var httpClient = new HttpClient())
@@ -496,7 +500,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                          {
                         {"@Trans","DELETE_Error_description" },
 
-                        {"@Error_description_Id",_error_D_id }
+                        {"@Error_description_Id",_error_D_id },
+                         {"@Modified_By",userid }
 
                          };
                             var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -661,7 +666,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         var dictionary = new Dictionary<string, object>()
                 {
                    { "@Trans", "DELETE" },
-                    { "@New_Error_Type_Id", Error_Id }
+                    { "@New_Error_Type_Id", Error_Id },
+                     {"@Modified_By",userid }
                 };
                         var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())

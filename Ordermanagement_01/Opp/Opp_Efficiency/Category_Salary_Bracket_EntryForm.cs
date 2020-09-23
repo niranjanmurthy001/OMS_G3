@@ -20,13 +20,16 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     public partial class Category_Salary_Bracket_EntryForm : DevExpress.XtraEditors.XtraForm
     {
         int User_Id, Project_Type_Id, _projectid;
-        double _Category,_SalaryFrom,_SalaryTo;
+        double _SalaryFrom,_SalaryTo;
+        string _Category;
+        int userid;
         private Category_Salary_Bracket_ProjectWise Mainform = null;
 
-        public Category_Salary_Bracket_EntryForm(Form CallingForm)
+        public Category_Salary_Bracket_EntryForm(Form CallingForm,int User_Id)
         {
             Mainform = CallingForm as Category_Salary_Bracket_ProjectWise;
             InitializeComponent();
+            userid = User_Id;
         }
 
         private void Category_Salary_Bracket_EntryForm_Load(object sender, EventArgs e)
@@ -91,7 +94,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 if (btn_Submit.Text == "Submit" && Validation() == true  && (await BindCategorySalaryBracketProjectwise()) != false)
                 {
-                    User_Id = 1;
+                    //User_Id = 1;
                     Project_Type_Id = Convert.ToInt32(ddl_Project_Type.EditValue);
 
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
@@ -101,7 +104,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         dictionary.Add("@Category_Name", txt_Category.Text);
                         dictionary.Add("@Salary_From", txt_salryfrom.Text);
                         dictionary.Add("@Salary_To", txt_SalaryTo.Text);
-                        dictionary.Add("@Inserted_By", User_Id);
+                        dictionary.Add("@Inserted_By", userid);
                         dictionary.Add("@Project_Type_Id", Project_Type_Id);
 
                     };
@@ -118,6 +121,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 XtraMessageBox.Show("Submitted Successfully");
                                 btn_Clear_Click(sender, e);
                                 this.Mainform.BindCategorySalaryBracket();
+                                this.Mainform.Enabled = true;
                                 this.Close();
                             }
                         }
@@ -133,6 +137,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 SplashScreenManager.CloseForm(false);
             }
+        }
+
+        private void Category_Salary_Bracket_EntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Mainform.Enabled = true;
         }
 
         private void btn_Clear_Click(object sender, EventArgs e)
@@ -199,7 +208,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             {
                                 
                                  _projectid = Convert.ToInt32(_dt.Rows[i]["Project_Type_Id"]);
-                                _Category = Convert.ToDouble(_dt.Rows[i]["Category_Name"]);
+                                _Category = Convert.ToString(_dt.Rows[i]["Category_Name"]);
                                 _SalaryFrom=Convert.ToDouble(_dt.Rows[i]["Salary_From"]);
                                 _SalaryTo = Convert.ToInt32(_dt.Rows[i]["Salary_To"]);
                                 if(txt_Category.Text==_Category.ToString() && Convert.ToInt32(ddl_Project_Type.EditValue)==_projectid )

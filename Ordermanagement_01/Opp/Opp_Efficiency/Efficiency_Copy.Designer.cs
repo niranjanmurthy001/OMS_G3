@@ -100,7 +100,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_client_from.Properties.NullText = "Select";
             this.ddl_client_from.Size = new System.Drawing.Size(231, 22);
-            this.ddl_client_from.TabIndex = 8;
+            this.ddl_client_from.TabIndex = 0;
             // 
             // Chk_Targetclient
             // 
@@ -108,7 +108,7 @@
             this.Chk_Targetclient.Location = new System.Drawing.Point(144, 91);
             this.Chk_Targetclient.Name = "Chk_Targetclient";
             this.Chk_Targetclient.Size = new System.Drawing.Size(231, 95);
-            this.Chk_Targetclient.TabIndex = 7;
+            this.Chk_Targetclient.TabIndex = 1;
             // 
             // labelControl2
             // 
