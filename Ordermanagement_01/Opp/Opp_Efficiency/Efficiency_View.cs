@@ -353,6 +353,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         }
 
                     }
+                    SplashScreenManager.CloseForm(false);
                     XtraMessageBox.Show("Record Deleted Successfully");
                     BindCategorySalaryBracket();
                     btn_delete.Visible = false;

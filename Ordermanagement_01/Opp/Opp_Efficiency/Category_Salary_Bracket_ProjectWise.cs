@@ -152,8 +152,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
                                     
-                                    BindCategorySalaryBracket();
-                                    btn_Delete.Visible = false;
+                                 
 
                                 }
                             }
@@ -166,6 +165,8 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
                     }
                     XtraMessageBox.Show("Record Deleted Successfully");
+                    BindCategorySalaryBracket();
+                    btn_Delete.Visible = false;
                 }
                 catch (Exception ex)
                 {
