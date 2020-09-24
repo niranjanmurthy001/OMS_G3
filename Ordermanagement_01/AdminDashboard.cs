@@ -32262,7 +32262,7 @@ namespace Ordermanagement_01
 
         private void Checklist_Settings_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_View settingsview = new Opp.Opp_CheckList.Checklist_Settings_View();
+            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_View settingsview = new Opp.Opp_CheckList.Checklist_Settings_View(userid);
             settingsview.Show();
         }
 

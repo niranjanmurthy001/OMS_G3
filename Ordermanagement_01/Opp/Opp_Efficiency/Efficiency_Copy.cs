@@ -23,7 +23,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         string _clientname;
         int _Targetclientid, Targetclientid,_clientid;
         string Order_type;
-        int order_type;
+        int order_type, userid;
         private Efficiency_View Mainform = null;
         public Efficiency_Copy(int projectid, string Cname,int clientid,Form callinfrom)
         {
@@ -31,6 +31,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             Pid = projectid;
             _clientname = Cname;
             _clientid = clientid;
+           
             Mainform = callinfrom as Efficiency_View;
         }
 
@@ -187,6 +188,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     clear();
                                     XtraMessageBox.Show("Submitted Successfully");
                                     this.Mainform.BindCategorySalaryBracket();
+                                    this.Mainform.Enabled = true;
                                     this.Close();
 
                                 }
@@ -211,7 +213,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             Chk_Targetclient.SelectedIndex = 0;
             Chk_Targetclient.UnCheckAll();
         }
-         private bool Validation()
+
+        private void Efficiency_Copy_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
+
+        private bool Validation()
         {
             if(Convert.ToInt32(ddl_client_from.EditValue)==0)
             {

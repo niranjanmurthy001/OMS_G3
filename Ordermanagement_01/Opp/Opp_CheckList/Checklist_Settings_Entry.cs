@@ -28,12 +28,14 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         GridControl grid = new GridControl();
         DataTable dt1, dt_user, dtcopy, _dt, dt3, dtsubclients;
         int order_task, subclient;
+        int userid;
         private bool IsButton { get; set; }
         private Checklist_Settings_View Mainform = null;
-        public Checklist_Settings_Entry(Form CallingForm)
+        public Checklist_Settings_Entry(Form CallingForm,int User_ID)
         {
             Mainform = CallingForm as Checklist_Settings_View;
             InitializeComponent();
+            userid = User_ID;
         }
 
         private void Checklist_Settings_Load(object sender, EventArgs e)
@@ -768,7 +770,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
                         int client = Convert.ToInt32(ddl_Client.EditValue);
                         int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                        int userid = 1;
+                       /// int userid = 1;
                         int _status = 1;
                         DateTime _inserdate = DateTime.Now;
                         dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
@@ -1161,7 +1163,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
                         int client = Convert.ToInt32(ddl_Client.EditValue);
                         int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                        int userid = 1;
+                       // int userid = 1;
                         int _status = 1;
                         DateTime _inserdate = DateTime.Now;
                         dtmulti.Rows.Add(tabid, _ProjectID, client, subclient, ordertask, ordertype, userid, _status, _inserdate);
@@ -1260,7 +1262,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 int _otask = Convert.ToInt32(castedItems["Order_Status_ID"]);
                                 int _ProjectID = Convert.ToInt32(ddl_Project_Type.EditValue);
                                 int ordertype = Convert.ToInt32(ddl_OrderType.EditValue);
-                                int userid = 1;
+                               // int userid = 1;
                                 int _status = 1;
                                 DateTime _inserdate = DateTime.Now;
                                 _dtmulti.Rows.Add(tabid, _ProjectID, _Client_Id, _sub, _otask, ordertype, userid, _status, _inserdate);

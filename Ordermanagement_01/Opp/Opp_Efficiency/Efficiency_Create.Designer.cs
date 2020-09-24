@@ -350,6 +350,7 @@
             this.Name = "Efficiency_Create";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Create";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Efficiency_Create_FormClosing);
             this.Load += new System.EventHandler(this.Import_Category_Salary_Entry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

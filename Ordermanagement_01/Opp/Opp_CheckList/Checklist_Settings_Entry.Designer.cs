@@ -155,7 +155,7 @@
             this.Chk_Clients.Appearance.Options.UseForeColor = true;
             this.Chk_Clients.CheckOnClick = true;
             this.Chk_Clients.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Chk_Clients.Location = new System.Drawing.Point(156, 12);
+            this.Chk_Clients.Location = new System.Drawing.Point(154, 12);
             this.Chk_Clients.Name = "Chk_Clients";
             this.Chk_Clients.Size = new System.Drawing.Size(215, 76);
             this.Chk_Clients.TabIndex = 13;
@@ -167,7 +167,7 @@
             this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(21, 31);
+            this.labelControl7.Location = new System.Drawing.Point(45, 15);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(92, 17);
             this.labelControl7.TabIndex = 12;
@@ -181,7 +181,7 @@
             this.chk_SubClient.Appearance.Options.UseForeColor = true;
             this.chk_SubClient.CheckOnClick = true;
             this.chk_SubClient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_SubClient.Location = new System.Drawing.Point(156, 98);
+            this.chk_SubClient.Location = new System.Drawing.Point(154, 98);
             this.chk_SubClient.Name = "chk_SubClient";
             this.chk_SubClient.Size = new System.Drawing.Size(215, 76);
             this.chk_SubClient.TabIndex = 11;
@@ -194,7 +194,7 @@
             this.chk_OrderTask.Appearance.Options.UseForeColor = true;
             this.chk_OrderTask.CheckOnClick = true;
             this.chk_OrderTask.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderTask.Location = new System.Drawing.Point(156, 186);
+            this.chk_OrderTask.Location = new System.Drawing.Point(154, 186);
             this.chk_OrderTask.Name = "chk_OrderTask";
             this.chk_OrderTask.Size = new System.Drawing.Size(215, 76);
             this.chk_OrderTask.TabIndex = 6;
@@ -206,7 +206,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(21, 117);
+            this.labelControl3.Location = new System.Drawing.Point(19, 98);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(118, 17);
             this.labelControl3.TabIndex = 8;
@@ -218,7 +218,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(21, 202);
+            this.labelControl4.Location = new System.Drawing.Point(12, 186);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(125, 17);
             this.labelControl4.TabIndex = 4;
@@ -278,7 +278,7 @@
             this.labelControltask.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControltask.Appearance.Options.UseFont = true;
             this.labelControltask.Appearance.Options.UseForeColor = true;
-            this.labelControltask.Location = new System.Drawing.Point(19, 198);
+            this.labelControltask.Location = new System.Drawing.Point(29, 198);
             this.labelControltask.Name = "labelControltask";
             this.labelControltask.Size = new System.Drawing.Size(66, 17);
             this.labelControltask.TabIndex = 12;
@@ -290,7 +290,7 @@
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(19, 153);
+            this.labelControl6.Location = new System.Drawing.Point(30, 153);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(65, 17);
             this.labelControl6.TabIndex = 11;
@@ -347,7 +347,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(19, 106);
+            this.labelControl2.Location = new System.Drawing.Point(56, 106);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(39, 17);
             this.labelControl2.TabIndex = 7;
@@ -359,7 +359,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(19, 58);
+            this.labelControl5.Location = new System.Drawing.Point(21, 58);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(74, 17);
             this.labelControl5.TabIndex = 5;
@@ -371,7 +371,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(19, 15);
+            this.labelControl1.Location = new System.Drawing.Point(16, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 6;

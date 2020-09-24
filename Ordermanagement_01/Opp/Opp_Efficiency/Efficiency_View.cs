@@ -97,6 +97,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         private void btn_Addnew_Click(object sender, EventArgs e)
         {
             Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Create Efficiency_Entry = new Efficiency_Create(this,user_id,_UserRole);
+            this.Enabled = false;
             Efficiency_Entry.Show();
         }
         //public async void BindColumnstogrid()
@@ -398,6 +399,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             //_dtcopy.Columns.Remove("Order_Source_Type");
             //_dtcopy.Columns.Remove("Client_Id");
             Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Copy Efficiecnycopy = new Efficiency_Copy(_ProjectId, Client_Name, client_id,this);
+            this.Enabled = false;
             Efficiecnycopy.Show();
         }
 

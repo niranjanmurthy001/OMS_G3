@@ -90,7 +90,7 @@
             // 
             // ddl_client_from
             // 
-            this.ddl_client_from.Location = new System.Drawing.Point(144, 31);
+            this.ddl_client_from.Location = new System.Drawing.Point(127, 31);
             this.ddl_client_from.Name = "ddl_client_from";
             this.ddl_client_from.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_client_from.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -105,7 +105,7 @@
             // Chk_Targetclient
             // 
             this.Chk_Targetclient.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Chk_Targetclient.Location = new System.Drawing.Point(144, 91);
+            this.Chk_Targetclient.Location = new System.Drawing.Point(129, 91);
             this.Chk_Targetclient.Name = "Chk_Targetclient";
             this.Chk_Targetclient.Size = new System.Drawing.Size(231, 95);
             this.Chk_Targetclient.TabIndex = 1;
@@ -117,9 +117,9 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Location = new System.Drawing.Point(10, 114);
+            this.labelControl2.Location = new System.Drawing.Point(24, 91);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(98, 17);
+            this.labelControl2.Size = new System.Drawing.Size(88, 17);
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Target Client :";
             // 
@@ -129,7 +129,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(10, 31);
+            this.labelControl1.Location = new System.Drawing.Point(36, 32);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(73, 17);
             this.labelControl1.TabIndex = 4;
@@ -172,6 +172,7 @@
             this.Name = "Efficiency_Copy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Efficiency_Copy";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Efficiency_Copy_FormClosing);
             this.Load += new System.EventHandler(this.Efficiency_Copy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

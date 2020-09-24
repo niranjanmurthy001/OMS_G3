@@ -22,7 +22,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
     {
         DataTable _dtcol;
         int _ProjectId;
-        double Col_Name;
+        string Col_Name;
         string _clodata;
         int _ordertype, _ordersourcetype, _ClientName, _ordertask, order_type, _categoryid;
         DataTable dt = new DataTable();
@@ -355,7 +355,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             dt = JsonConvert.DeserializeObject<DataTable>(result);
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                Col_Name = Convert.ToDouble(dt.Rows[i]["Category_Name"]);
+                                Col_Name = Convert.ToString(dt.Rows[i]["Category_Name"]);
                                 _dtcol.Columns.Add(Col_Name.ToString());
                             }
                             grd_CategorySalaryEntry.DataSource = _dtcol;
@@ -414,7 +414,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
 
         }
 
-       
+        private void Efficiency_Create_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Mainform.Enabled = true;
+        }
 
         private void ddl_Project_Type_EditValueChanged(object sender, EventArgs e)
         {
@@ -493,7 +496,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                                 for (int i = 0; i < dt1.Rows.Count; i++)
                                 {
-                                    Col_Name = Convert.ToDouble(dt1.Rows[i]["Category_Name"]);
+                                    Col_Name = Convert.ToString(dt1.Rows[i]["Category_Name"]);
                                     _categoryid = Convert.ToInt32(dt1.Rows[i]["Category_ID"]);
                                     if (IsMatch(Col_Name.ToString()))
                                     {
@@ -516,7 +519,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                          new DataColumn("OrderType_ABS_Id",typeof(int)),
                                          new DataColumn("Order_Source_Type_ID",typeof(int)),
                                          new DataColumn("Category_ID",typeof(int)),
-                                         new DataColumn("Allocated_Time",typeof(double)),
+                                         new DataColumn("Allocated_Time",typeof(string)),
                                          new DataColumn("Status",typeof(int)),
                                          new DataColumn("Inserted_By",typeof(int)),
                                          new DataColumn("Inserted_Date",typeof(DateTime))
@@ -561,6 +564,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                             XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
                                             btn_Clear_Click(sender, e);
                                             this.Mainform.BindCategorySalaryBracket();
+                                            this.Mainform.Enabled = true;
                                             this.Close();
                                         }
                                     }

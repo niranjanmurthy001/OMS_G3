@@ -22,9 +22,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
     public partial class Checklist_Settings_View : DevExpress.XtraEditors.XtraForm
     {
         DataTable _dtUpdatecell;
-        public Checklist_Settings_View()
+        int userid;
+        public Checklist_Settings_View(int User_Id)
         {
             InitializeComponent();
+            userid = User_Id;
         }
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
@@ -86,7 +88,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void brn_AddNew_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_Entry chk_Entry = new Checklist_Settings_Entry(this);
+            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_Entry chk_Entry = new Checklist_Settings_Entry(this, userid);
             this.Enabled = false;
             chk_Entry.Show();
         }
