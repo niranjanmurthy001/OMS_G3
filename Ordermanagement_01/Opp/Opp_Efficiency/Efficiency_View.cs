@@ -216,7 +216,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             var result = await response.Content.ReadAsStringAsync();
                             _dt = JsonConvert.DeserializeObject<DataTable>(result);
                            
-                            if (_dt.Rows.Count >= 0)
+                            if (_dt.Rows.Count > 0)
                             {
                                 grd_Efficiency_Form.DataSource = _dt;
                                 gridView1.Columns[8].Visible = false;

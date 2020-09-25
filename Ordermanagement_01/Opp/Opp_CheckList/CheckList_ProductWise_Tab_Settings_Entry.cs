@@ -61,7 +61,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
                                 col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Project_Type");
                                 ddl_ProjectType.Properties.Columns.Add(col);
-                               
+
                             }
                         }
                     }
@@ -99,7 +99,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                           
+
                             if (dt != null && dt.Rows.Count > 0)
                             {
                                 DataRow dr = dt.NewRow();
@@ -155,12 +155,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 int ProjId = Convert.ToInt32(ddl_ProjectType.EditValue);
                 int prodid = Convert.ToInt32(ddl_ProductType.EditValue);
-               // chk_CheckListTab.DataSource = null;
-                BindCheckListTabName(ProjId,prodid);
+                // chk_CheckListTab.DataSource = null;
+                BindCheckListTabName(ProjId, prodid);
             }
         }
 
-        private async void BindCheckListTabName(int projectType_id,int ProductType_Id)
+        private async void BindCheckListTabName(int projectType_id, int ProductType_Id)
         {
             try
             {
@@ -192,7 +192,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
 
                             }
-                           
+
 
 
                         }
@@ -200,7 +200,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     else
                     {
                         SplashScreenManager.CloseForm(false);
-                        XtraMessageBox.Show("We Already Added Tabs For These Product Type ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        XtraMessageBox.Show("We Already Added Tabs For These Particular ProjectType and ProductType ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
 
@@ -208,7 +208,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Something Went Wrong ! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -288,12 +288,12 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void Clear()
         {
-            
-                chk_CheckListTab.DataSource = null;
-           
 
-                ddl_ProductType.ItemIndex = 0;
-                ddl_ProjectType.ItemIndex = 0;
+            chk_CheckListTab.DataSource = null;
+
+
+            ddl_ProductType.ItemIndex = 0;
+            ddl_ProjectType.ItemIndex = 0;
 
         }
 
@@ -328,11 +328,11 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
 
         private void chk_AllTabs_CheckedChanged(object sender, EventArgs e)
         {
-            if(chk_AllTabs.Checked==true)
+            if (chk_AllTabs.Checked == true)
             {
                 chk_CheckListTab.CheckAll();
             }
-           else  if(chk_AllTabs.Checked==false)
+            else if (chk_AllTabs.Checked == false)
             {
                 chk_CheckListTab.UnCheckAll();
             }

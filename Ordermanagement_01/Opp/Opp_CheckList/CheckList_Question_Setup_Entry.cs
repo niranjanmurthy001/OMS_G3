@@ -261,7 +261,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Project_Type_Id",typeof(int)),
                         //new DataColumn("Product_Type_Abbr_Id",typeof(int)) ,
 
-                        new DataColumn("Is_Active",typeof(bool))
+                        new DataColumn("Is_Active",typeof(bool)),
+                        new DataColumn("Status",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_TabNamesQs.CheckedItems)
@@ -269,7 +270,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         DataRowView castedItem = itemChecked as DataRowView;
                         string TabName = castedItem["Checklist_Master_Type"].ToString();
                         int CheckListId = Convert.ToInt32(castedItem["ChecklistType_Id"]);
-                        dtInsert.Rows.Add(CheckListId, QuestionEnterValue, ProjectValue,  true);
+                        dtInsert.Rows.Add(CheckListId, QuestionEnterValue, ProjectValue,  true,true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtInsert), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
@@ -314,14 +315,15 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         new DataColumn("Question", typeof(string)) ,
                         new DataColumn("Project_Type_Id", typeof(int)),
                        // new DataColumn("Product_Type_Abbr_Id",typeof(int)),
-                        new DataColumn("Is_Active",typeof(bool))
+                        new DataColumn("Is_Active",typeof(bool)),
+                        new DataColumn("Status",typeof(bool))
 
                     });
                     foreach (object itemChecked in chk_TabNamesQs.CheckedItems)
                     {
                         DataRowView castedItem = itemChecked as DataRowView;
                         int ChecklistType_IdValue = Convert.ToInt32(castedItem["ChecklistType_Id"].ToString());
-                        dtupdate.Rows.Add( MasterChklistIdValue,ChecklistType_IdValue, QuestionEnterValue, ProjectValue,  true);
+                        dtupdate.Rows.Add( MasterChklistIdValue,ChecklistType_IdValue, QuestionEnterValue, ProjectValue,  true,true);
                     }
                     var data = new StringContent(JsonConvert.SerializeObject(dtupdate), Encoding.UTF8, "application/json");
                     using (var httpclient = new HttpClient())

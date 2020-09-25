@@ -224,6 +224,8 @@
             // 
             // CheckList_ProductWise_Tab_Settings_Entry
             // 
+            this.Appearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 376);

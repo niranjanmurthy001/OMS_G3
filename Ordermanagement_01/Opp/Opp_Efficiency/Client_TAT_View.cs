@@ -126,7 +126,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                             var result = await response.Content.ReadAsStringAsync();
                             _dt = JsonConvert.DeserializeObject<DataTable>(result);
 
-                            if (_dt.Rows.Count >= 0)
+                            if (_dt.Rows.Count > 0)
                             {
                                 grd_ClientTAT.DataSource = _dt;
                                 gridView_ClientTAT.Columns[1].Visible = false;
