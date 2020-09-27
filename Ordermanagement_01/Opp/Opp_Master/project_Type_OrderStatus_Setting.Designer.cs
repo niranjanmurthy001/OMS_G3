@@ -28,40 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbl_header = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.chkOrderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
+            this.ddlProductType = new DevExpress.XtraEditors.LookUpEdit();
+            this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
-            this.ddl_ProductType = new DevExpress.XtraEditors.LookUpEdit();
-            this.chk_OrderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.lbl_header = new DevExpress.XtraEditors.LabelControl();
+            this.grdOrderStatus = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOrderStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chk_OrderStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -101,7 +104,7 @@
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Location = new System.Drawing.Point(3, 49);
             this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.grdOrderStatus);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
@@ -125,27 +128,11 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(387, 352);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(203, 352);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.chk_OrderStatus);
-            this.panelControl1.Controls.Add(this.ddl_ProductType);
-            this.panelControl1.Controls.Add(this.ddl_ProjectType);
+            this.panelControl1.Controls.Add(this.chkOrderStatus);
+            this.panelControl1.Controls.Add(this.ddlProductType);
+            this.panelControl1.Controls.Add(this.ddlProjectType);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -155,16 +142,142 @@
             this.panelControl1.Size = new System.Drawing.Size(381, 298);
             this.panelControl1.TabIndex = 0;
             // 
+            // chkOrderStatus
+            // 
+            this.chkOrderStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOrderStatus.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.chkOrderStatus.Appearance.Options.UseFont = true;
+            this.chkOrderStatus.Appearance.Options.UseForeColor = true;
+            this.chkOrderStatus.CheckOnClick = true;
+            this.chkOrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
+            this.chkOrderStatus.Location = new System.Drawing.Point(131, 127);
+            this.chkOrderStatus.Name = "chkOrderStatus";
+            this.chkOrderStatus.Size = new System.Drawing.Size(221, 135);
+            this.chkOrderStatus.TabIndex = 7;
+            this.chkOrderStatus.Validating += new System.ComponentModel.CancelEventHandler(this.chkOrderStatus_Validating);
+            // 
+            // ddlProductType
+            // 
+            this.ddlProductType.Location = new System.Drawing.Point(131, 83);
+            this.ddlProductType.Name = "ddlProductType";
+            this.ddlProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ddlProductType.Properties.Appearance.Options.UseFont = true;
+            this.ddlProductType.Properties.Appearance.Options.UseForeColor = true;
+            this.ddlProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlProductType.Properties.NullText = "Select";
+            this.ddlProductType.Size = new System.Drawing.Size(221, 22);
+            this.ddlProductType.TabIndex = 6;
+            this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating);
+            // 
+            // ddlProjectType
+            // 
+            this.ddlProjectType.Location = new System.Drawing.Point(131, 38);
+            this.ddlProjectType.Name = "ddlProjectType";
+            this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ddlProjectType.Properties.Appearance.Options.UseFont = true;
+            this.ddlProjectType.Properties.Appearance.Options.UseForeColor = true;
+            this.ddlProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddlProjectType.Properties.NullText = "Select";
+            this.ddlProjectType.Size = new System.Drawing.Size(221, 22);
+            this.ddlProjectType.TabIndex = 5;
+            this.ddlProjectType.EditValueChanged += new System.EventHandler(this.ddlProjectType_EditValueChanged);
+            this.ddlProjectType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProjectType_Validating);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(50, 127);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(74, 15);
+            this.labelControl4.TabIndex = 4;
+            this.labelControl4.Text = "Order Status  :";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
+            this.labelControl3.Location = new System.Drawing.Point(47, 85);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(80, 15);
+            this.labelControl3.TabIndex = 3;
+            this.labelControl3.Text = "Product Type  :";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(50, 40);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(75, 15);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Project Type  :";
+            // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton1);
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton2);
-            this.flowLayoutPanel1.Controls.Add(this.simpleButton3);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Save);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(134, 307);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(250, 42);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Save.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Save.Appearance.Options.UseFont = true;
+            this.btn_Save.Appearance.Options.UseForeColor = true;
+            this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Save.Location = new System.Drawing.Point(3, 3);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(75, 36);
+            this.btn_Save.TabIndex = 0;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.ToolTip = "Save";
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Clear
+            // 
+            this.btn_Clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Clear.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Clear.Appearance.Options.UseFont = true;
+            this.btn_Clear.Appearance.Options.UseForeColor = true;
+            this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Clear.Location = new System.Drawing.Point(84, 3);
+            this.btn_Clear.Name = "btn_Clear";
+            this.btn_Clear.Size = new System.Drawing.Size(75, 36);
+            this.btn_Clear.TabIndex = 1;
+            this.btn_Clear.Text = "Clear";
+            this.btn_Clear.ToolTip = "Clear";
+            this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Delete.Appearance.Options.UseFont = true;
+            this.btn_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Delete.Location = new System.Drawing.Point(165, 3);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 36);
+            this.btn_Delete.TabIndex = 2;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.ToolTip = "Delete";
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // lbl_header
             // 
@@ -179,105 +292,59 @@
             this.lbl_header.TabIndex = 1;
             this.lbl_header.Text = "Order Status Settings";
             // 
-            // labelControl2
+            // grdOrderStatus
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(50, 40);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(75, 15);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Project Type  :";
+            this.grdOrderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
+            this.grdOrderStatus.MainView = this.gridView1;
+            this.grdOrderStatus.Name = "grdOrderStatus";
+            this.grdOrderStatus.Size = new System.Drawing.Size(203, 352);
+            this.grdOrderStatus.TabIndex = 1;
+            this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
             // 
-            // labelControl3
+            // gridView1
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(47, 85);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(80, 15);
-            this.labelControl3.TabIndex = 3;
-            this.labelControl3.Text = "Product Type  :";
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.gridView1.GridControl = this.grdOrderStatus;
+            this.gridView1.GroupCount = 1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
-            // labelControl4
+            // gridColumn1
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(50, 127);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(74, 15);
-            this.labelControl4.TabIndex = 4;
-            this.labelControl4.Text = "Order Status  :";
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn1.Caption = "ProjectType";
+            this.gridColumn1.FieldName = "Project_Type";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
-            // ddl_ProjectType
+            // gridColumn2
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(131, 38);
-            this.ddl_ProjectType.Name = "ddl_ProjectType";
-            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
-            this.ddl_ProjectType.Properties.Appearance.Options.UseForeColor = true;
-            this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(221, 22);
-            this.ddl_ProjectType.TabIndex = 5;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn2.Caption = "ProductType";
+            this.gridColumn2.FieldName = "Product_Type";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             // 
-            // ddl_ProductType
+            // dxErrorProvider1
             // 
-            this.ddl_ProductType.Location = new System.Drawing.Point(131, 83);
-            this.ddl_ProductType.Name = "ddl_ProductType";
-            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddl_ProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
-            this.ddl_ProductType.Properties.Appearance.Options.UseForeColor = true;
-            this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_ProductType.Properties.NullText = "Select";
-            this.ddl_ProductType.Size = new System.Drawing.Size(221, 22);
-            this.ddl_ProductType.TabIndex = 6;
-            // 
-            // chk_OrderStatus
-            // 
-            this.chk_OrderStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_OrderStatus.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.chk_OrderStatus.Appearance.Options.UseFont = true;
-            this.chk_OrderStatus.Appearance.Options.UseForeColor = true;
-            this.chk_OrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chk_OrderStatus.Location = new System.Drawing.Point(131, 127);
-            this.chk_OrderStatus.Name = "chk_OrderStatus";
-            this.chk_OrderStatus.Size = new System.Drawing.Size(221, 135);
-            this.chk_OrderStatus.TabIndex = 7;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(3, 3);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 36);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "simpleButton1";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(84, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 36);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "simpleButton2";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Location = new System.Drawing.Point(165, 3);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 36);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "simpleButton3";
+            this.dxErrorProvider1.ContainerControl = this;
             // 
             // project_Type_OrderStatus_Setting
             // 
@@ -295,15 +362,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOrderStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_ProductType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chk_OrderStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,8 +382,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -323,11 +389,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevExpress.XtraEditors.LabelControl lbl_header;
-        private DevExpress.XtraEditors.CheckedListBoxControl chk_OrderStatus;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProductType;
-        private DevExpress.XtraEditors.LookUpEdit ddl_ProjectType;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.CheckedListBoxControl chkOrderStatus;
+        private DevExpress.XtraEditors.LookUpEdit ddlProductType;
+        private DevExpress.XtraEditors.LookUpEdit ddlProjectType;
+        private DevExpress.XtraEditors.SimpleButton btn_Save;
+        private DevExpress.XtraEditors.SimpleButton btn_Clear;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
+        private DevExpress.XtraGrid.GridControl grdOrderStatus;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }
