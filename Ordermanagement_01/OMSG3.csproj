@@ -2202,6 +2202,12 @@
     <Compile Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.Designer.cs">
       <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.Designer.cs">
+      <DependentUpon>project_Type_OrderStatus_Setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4189,6 +4195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.resx">
       <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.resx">
+      <DependentUpon>project_Type_OrderStatus_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx" />
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">

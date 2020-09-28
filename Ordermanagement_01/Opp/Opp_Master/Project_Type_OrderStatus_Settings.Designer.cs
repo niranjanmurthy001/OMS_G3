@@ -279,6 +279,7 @@
             this.btnadd.Appearance.Options.UseFont = true;
             this.btnadd.Appearance.Options.UseForeColor = true;
             this.btnadd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnadd.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnadd.Location = new System.Drawing.Point(3, 3);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(97, 33);
@@ -293,6 +294,7 @@
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnClear.Location = new System.Drawing.Point(106, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 33);
@@ -307,6 +309,7 @@
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Delete.Enabled = false;
             this.btn_Delete.Location = new System.Drawing.Point(209, 3);
             this.btn_Delete.Name = "btn_Delete";

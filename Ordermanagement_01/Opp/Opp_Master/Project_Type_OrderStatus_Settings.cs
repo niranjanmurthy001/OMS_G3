@@ -42,6 +42,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             btn_Delete.Enabled = false;
             BindOrderStatusGrid();
+            ddlProjectType.Properties.Columns.Clear();
             BindProjectType();
             BindOrderStatus();
 
@@ -110,7 +111,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Project_Type_Id",Project_Id }
                 };
                 //ddlProductType.Properties.DataSource = null;
-                ddlProductType.Properties.Columns.Clear();
+               
 
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
@@ -130,21 +131,28 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 dr[1] = 0;
                                 dr[0] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
+
+
+                                ddlProductType.Properties.DataSource = dt;
+                                ddlProductType.Properties.DisplayMember = "Product_Type";
+                                ddlProductType.Properties.ValueMember = "ProductType_Id";
+                                // ddlProductType.Properties.KeyMember = "Product_Type_Id";
+                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                                ddlProductType.Properties.Columns.Add(col);
+
+
+
                             }
-
-                            ddlProductType.Properties.DataSource = dt;
-                            ddlProductType.Properties.DisplayMember = "Product_Type";
-                            ddlProductType.Properties.ValueMember = "ProductType_Id";
-                            // ddlProductType.Properties.KeyMember = "Product_Type_Id";
-                            DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                            ddlProductType.Properties.Columns.Add(col);
-
-
-
+                            
                         }
 
                     }
+                    else
+                    {
+                        ddlProductType.Properties.DataSource = null;
+                    }
+                    
                 }
 
 
@@ -210,6 +218,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (ddlProjectType.ItemIndex > 0)
             {
                 int ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
+                ddlProductType.Properties.Columns.Clear();
                 BindProdctType(ProjectId);
                 BindOrderStatus();
             }
