@@ -293,21 +293,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
             }
         }
-        private bool validate()
+        private bool validate_Controls()
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
-                XtraMessageBox.Show("Please Select ProjectType");
+                XtraMessageBox.Show("Please Select ProjectType","warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return false;
             }
             if (Convert.ToInt32(ddlProductType.ItemIndex) == 0)
             {
-                XtraMessageBox.Show("Please Select ProductType");
+                XtraMessageBox.Show("Please Select ProductType", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (chkOrderStatus.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Please Select Type of OrderStatus");
+                XtraMessageBox.Show("Please Select Type of OrderStatus", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -322,6 +322,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             //chkOrderStatus.DataSource = null;
             btn_Save.Text = "Save";
             btn_Delete.Enabled = false;
+            ddlProjectType.Enabled = true;
+            ddlProductType.Enabled = true;
         }
 
         private async void btn_Save_Click(object sender, EventArgs e)
@@ -330,7 +332,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Productvalue = Convert.ToInt32(ddlProductType.EditValue);
             int StatusId;
 
-            if (btn_Save.Text == "Save" && validate() != false)
+            if (btn_Save.Text == "Save" && validate_Controls() != false)
             {
                 try
                 {
@@ -368,8 +370,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show(" Saved Successfully", "Success", MessageBoxButtons.OK);
+                                XtraMessageBox.Show("Submitted Successfully", "Success", MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
+                                
                                 Clear();
                             }
                         }
@@ -385,7 +388,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btn_Save.Text == "Edit" && Validate() != false)
+            else if (btn_Save.Text == "Edit" && validate_Controls() != false)
             {
                 //    int projectId = Convert.ToInt32(ddlProjectType.EditValue);
                 try
@@ -429,6 +432,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 SplashScreenManager.CloseForm(false);
                                 XtraMessageBox.Show(" Updated Successfully", "Success", MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
+                                ddlProjectType.Enabled = true;
+                                ddlProductType.Enabled = true;
                                 Clear();
                             }
                         }
@@ -461,17 +466,20 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             try
             {
-                chkOrderStatus.UnCheckAll();
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+               
+               
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    chkOrderStatus.UnCheckAll();
                     btn_Delete.Enabled = true;
                     btn_Save.Text = "Edit";
-
+                    ddlProjectType.Enabled = false;
+                    ddlProductType.Enabled = false;
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
                     var index = row.FirstOrDefault();
                     ddlProjectType.EditValue = index.ItemArray[5];
                     ddlProductType.EditValue = index.ItemArray[3];
+                    
                     int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
                     GetcheckedOrderStatusData(Project_Id);
                     product_id = Convert.ToInt32(ddlProductType.EditValue);

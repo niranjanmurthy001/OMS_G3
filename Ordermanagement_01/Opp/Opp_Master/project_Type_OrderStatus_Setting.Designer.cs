@@ -28,10 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.grdOrderStatus = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.chkOrderStatus = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -45,16 +50,15 @@
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.lbl_header = new DevExpress.XtraEditors.LabelControl();
-            this.grdOrderStatus = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -62,9 +66,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -89,7 +93,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.splitContainerControl1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_header, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelControl2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -112,6 +116,56 @@
             this.splitContainerControl1.SplitterPosition = 203;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // grdOrderStatus
+            // 
+            this.grdOrderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
+            this.grdOrderStatus.MainView = this.gridView1;
+            this.grdOrderStatus.Name = "grdOrderStatus";
+            this.grdOrderStatus.Size = new System.Drawing.Size(203, 352);
+            this.grdOrderStatus.TabIndex = 1;
+            this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2});
+            this.gridView1.GridControl = this.grdOrderStatus;
+            this.gridView1.GroupCount = 1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn1.Caption = "ProjectType";
+            this.gridColumn1.FieldName = "Project_Type";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn2.Caption = "ProductType";
+            this.gridColumn2.FieldName = "Product_Type";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -150,7 +204,7 @@
             this.chkOrderStatus.Appearance.Options.UseForeColor = true;
             this.chkOrderStatus.CheckOnClick = true;
             this.chkOrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chkOrderStatus.Location = new System.Drawing.Point(131, 127);
+            this.chkOrderStatus.Location = new System.Drawing.Point(131, 126);
             this.chkOrderStatus.Name = "chkOrderStatus";
             this.chkOrderStatus.Size = new System.Drawing.Size(221, 135);
             this.chkOrderStatus.TabIndex = 7;
@@ -158,7 +212,7 @@
             // 
             // ddlProductType
             // 
-            this.ddlProductType.Location = new System.Drawing.Point(131, 83);
+            this.ddlProductType.Location = new System.Drawing.Point(131, 82);
             this.ddlProductType.Name = "ddlProductType";
             this.ddlProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -193,7 +247,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(50, 127);
+            this.labelControl4.Location = new System.Drawing.Point(50, 126);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(74, 15);
             this.labelControl4.TabIndex = 4;
@@ -205,7 +259,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(47, 85);
+            this.labelControl3.Location = new System.Drawing.Point(44, 83);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(80, 15);
             this.labelControl3.TabIndex = 3;
@@ -217,7 +271,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(50, 40);
+            this.labelControl2.Location = new System.Drawing.Point(49, 40);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 15);
             this.labelControl2.TabIndex = 2;
@@ -286,65 +340,24 @@
             this.lbl_header.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lbl_header.Appearance.Options.UseFont = true;
             this.lbl_header.Appearance.Options.UseForeColor = true;
-            this.lbl_header.Location = new System.Drawing.Point(199, 3);
+            this.lbl_header.Location = new System.Drawing.Point(215, 0);
             this.lbl_header.Name = "lbl_header";
             this.lbl_header.Size = new System.Drawing.Size(209, 30);
             this.lbl_header.TabIndex = 1;
             this.lbl_header.Text = "Order Status Settings";
             // 
-            // grdOrderStatus
-            // 
-            this.grdOrderStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
-            this.grdOrderStatus.MainView = this.gridView1;
-            this.grdOrderStatus.Name = "grdOrderStatus";
-            this.grdOrderStatus.Size = new System.Drawing.Size(203, 352);
-            this.grdOrderStatus.TabIndex = 1;
-            this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2});
-            this.gridView1.GridControl = this.grdOrderStatus;
-            this.gridView1.GroupCount = 1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn1.Caption = "ProjectType";
-            this.gridColumn1.FieldName = "Project_Type";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn2.Caption = "ProductType";
-            this.gridColumn2.FieldName = "Product_Type";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.lbl_header);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(3, 3);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(602, 40);
+            this.panelControl2.TabIndex = 1;
             // 
             // project_Type_OrderStatus_Setting
             // 
@@ -353,14 +366,16 @@
             this.ClientSize = new System.Drawing.Size(612, 447);
             this.Controls.Add(this.groupControl1);
             this.Name = "project_Type_OrderStatus_Setting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "project_Type_OrderStatus_Setting";
             this.Load += new System.EventHandler(this.project_Type_OrderStatus_Setting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -369,9 +384,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdOrderStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -400,5 +416,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }
