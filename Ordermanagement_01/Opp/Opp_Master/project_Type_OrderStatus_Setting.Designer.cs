@@ -84,7 +84,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(612, 447);
+            this.groupControl1.Size = new System.Drawing.Size(603, 430);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Order Status";
             // 
@@ -100,19 +100,19 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.38614F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.61386F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(608, 404);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(599, 387);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(3, 49);
+            this.splitContainerControl1.Location = new System.Drawing.Point(3, 47);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.grdOrderStatus);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(602, 352);
+            this.splitContainerControl1.Size = new System.Drawing.Size(593, 337);
             this.splitContainerControl1.SplitterPosition = 203;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -123,7 +123,7 @@
             this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
             this.grdOrderStatus.MainView = this.gridView1;
             this.grdOrderStatus.Name = "grdOrderStatus";
-            this.grdOrderStatus.Size = new System.Drawing.Size(203, 352);
+            this.grdOrderStatus.Size = new System.Drawing.Size(203, 337);
             this.grdOrderStatus.TabIndex = 1;
             this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -179,7 +179,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.36364F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.63636F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(387, 352);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(378, 337);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panelControl1
@@ -193,7 +193,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(381, 298);
+            this.panelControl1.Size = new System.Drawing.Size(372, 285);
             this.panelControl1.TabIndex = 0;
             // 
             // chkOrderStatus
@@ -204,7 +204,7 @@
             this.chkOrderStatus.Appearance.Options.UseForeColor = true;
             this.chkOrderStatus.CheckOnClick = true;
             this.chkOrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.chkOrderStatus.Location = new System.Drawing.Point(131, 126);
+            this.chkOrderStatus.Location = new System.Drawing.Point(122, 126);
             this.chkOrderStatus.Name = "chkOrderStatus";
             this.chkOrderStatus.Size = new System.Drawing.Size(221, 135);
             this.chkOrderStatus.TabIndex = 7;
@@ -212,7 +212,7 @@
             // 
             // ddlProductType
             // 
-            this.ddlProductType.Location = new System.Drawing.Point(131, 82);
+            this.ddlProductType.Location = new System.Drawing.Point(122, 82);
             this.ddlProductType.Name = "ddlProductType";
             this.ddlProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -223,11 +223,12 @@
             this.ddlProductType.Properties.NullText = "Select";
             this.ddlProductType.Size = new System.Drawing.Size(221, 22);
             this.ddlProductType.TabIndex = 6;
+            this.ddlProductType.EditValueChanged += new System.EventHandler(this.ddlProductType_EditValueChanged);
             this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating);
             // 
             // ddlProjectType
             // 
-            this.ddlProjectType.Location = new System.Drawing.Point(131, 38);
+            this.ddlProjectType.Location = new System.Drawing.Point(122, 38);
             this.ddlProjectType.Name = "ddlProjectType";
             this.ddlProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -247,7 +248,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(50, 126);
+            this.labelControl4.Location = new System.Drawing.Point(41, 126);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(74, 15);
             this.labelControl4.TabIndex = 4;
@@ -259,7 +260,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(44, 83);
+            this.labelControl3.Location = new System.Drawing.Point(35, 83);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(80, 15);
             this.labelControl3.TabIndex = 3;
@@ -271,7 +272,7 @@
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(49, 40);
+            this.labelControl2.Location = new System.Drawing.Point(40, 40);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 15);
             this.labelControl2.TabIndex = 2;
@@ -283,9 +284,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
             this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(134, 307);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(122, 294);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(250, 42);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(253, 40);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Save
@@ -297,7 +298,7 @@
             this.btn_Save.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Save.Location = new System.Drawing.Point(3, 3);
             this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(75, 36);
+            this.btn_Save.Size = new System.Drawing.Size(75, 34);
             this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Save";
             this.btn_Save.ToolTip = "Save";
@@ -312,7 +313,7 @@
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Clear.Location = new System.Drawing.Point(84, 3);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 36);
+            this.btn_Clear.Size = new System.Drawing.Size(75, 34);
             this.btn_Clear.TabIndex = 1;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.ToolTip = "Clear";
@@ -327,7 +328,7 @@
             this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_Delete.Location = new System.Drawing.Point(165, 3);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(75, 36);
+            this.btn_Delete.Size = new System.Drawing.Size(75, 34);
             this.btn_Delete.TabIndex = 2;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.ToolTip = "Delete";
@@ -340,7 +341,7 @@
             this.lbl_header.Appearance.ForeColor = System.Drawing.Color.Black;
             this.lbl_header.Appearance.Options.UseFont = true;
             this.lbl_header.Appearance.Options.UseForeColor = true;
-            this.lbl_header.Location = new System.Drawing.Point(215, 0);
+            this.lbl_header.Location = new System.Drawing.Point(210, 0);
             this.lbl_header.Name = "lbl_header";
             this.lbl_header.Size = new System.Drawing.Size(209, 30);
             this.lbl_header.TabIndex = 1;
@@ -356,15 +357,16 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(602, 40);
+            this.panelControl2.Size = new System.Drawing.Size(593, 38);
             this.panelControl2.TabIndex = 1;
             // 
             // project_Type_OrderStatus_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 447);
+            this.ClientSize = new System.Drawing.Size(603, 430);
             this.Controls.Add(this.groupControl1);
+            this.MinimumSize = new System.Drawing.Size(619, 468);
             this.Name = "project_Type_OrderStatus_Setting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "project_Type_OrderStatus_Setting";

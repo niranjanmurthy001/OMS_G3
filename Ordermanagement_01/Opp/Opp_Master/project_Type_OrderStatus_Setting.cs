@@ -481,8 +481,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddlProductType.EditValue = index.ItemArray[3];
                     
                     int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
-                    GetcheckedOrderStatusData(Project_Id);
                     product_id = Convert.ToInt32(ddlProductType.EditValue);
+                    GetcheckedOrderStatusData(Project_Id, product_id);
+                    
                     int OrderChk = Convert.ToInt32(index.ItemArray[4]);
                     Statusid = Convert.ToInt32(index.ItemArray[6]);
                     chkOrderStatus.SelectedValue = OrderChk;
@@ -530,7 +531,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("OrderStatus Deleted Successfully");
+                                XtraMessageBox.Show("Deleted Successfully");
                                 BindOrderStatusGrid();
                                 btn_Delete.Enabled = false;
                                 Clear();
@@ -555,7 +556,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void GetcheckedOrderStatusData(int projecttype_Id)
+        private async void GetcheckedOrderStatusData(int projecttype_Id,int prodtype_id)
         {
 
             try
@@ -564,7 +565,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 var dictionary = new Dictionary<string, object>()
                     {
                         { "@Trans", "GetStatusItems"},
-                        {"@Project_Type_Id",projecttype_Id }
+                        {"@Project_Type_Id",projecttype_Id },
+                        { "@Product_Type_Id",prodtype_id}
                     };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                 using (var httpClient = new HttpClient())
@@ -612,5 +614,16 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 dxErrorProvider1.SetError(ddlProductType, "");
             }
         }
+
+        private void ddlProductType_EditValueChanged(object sender, EventArgs e)
+        {
+           
+            int projval = Convert.ToInt32(ddlProjectType.EditValue);
+            int prodval = Convert.ToInt32(ddlProductType.EditValue);
+            GetcheckedOrderStatusData(projval, prodval);
+            chkOrderStatus.UnCheckAll();
+        }
+
+       
     }
 }

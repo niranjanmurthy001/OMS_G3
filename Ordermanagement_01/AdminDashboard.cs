@@ -32167,7 +32167,7 @@ namespace Ordermanagement_01
         private void orderTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
+            Ordermanagement_01.Opp.Opp_Master.project_Type_OrderStatus_Setting os = new Opp.Opp_Master.project_Type_OrderStatus_Setting(userid, Convert.ToInt32(User_Role_Id));
             os.Show();
 
         }
