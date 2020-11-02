@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gridControl_client_details = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,8 +56,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Submit = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_client_details)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -90,7 +91,7 @@
             this.gridControl_client_details.Location = new System.Drawing.Point(0, 0);
             this.gridControl_client_details.MainView = this.gridView1;
             this.gridControl_client_details.Name = "gridControl_client_details";
-            this.gridControl_client_details.Size = new System.Drawing.Size(246, 503);
+            this.gridControl_client_details.Size = new System.Drawing.Size(262, 526);
             this.gridControl_client_details.TabIndex = 0;
             this.gridControl_client_details.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -157,14 +158,14 @@
             // groupControl1
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Black;
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
             this.groupControl1.Controls.Add(this.splitContainerControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(662, 526);
+            this.groupControl1.Size = new System.Drawing.Size(698, 549);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Process Settings";
             // 
@@ -177,8 +178,8 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(658, 503);
-            this.splitContainerControl1.SplitterPosition = 246;
+            this.splitContainerControl1.Size = new System.Drawing.Size(694, 526);
+            this.splitContainerControl1.SplitterPosition = 262;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -197,12 +198,12 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.14741F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.554672F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.44135F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.46521F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.07356F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.935361F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.85551F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.12967F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.50295F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.055119F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 503);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 526);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -211,13 +212,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(394, 60);
+            this.panelControl1.Size = new System.Drawing.Size(414, 63);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Appearance.Options.UseTextOptions = true;
@@ -226,7 +227,7 @@
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl1.Location = new System.Drawing.Point(2, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(390, 56);
+            this.labelControl1.Size = new System.Drawing.Size(410, 59);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Process Settings";
             // 
@@ -235,22 +236,24 @@
             this.panelControl2.Controls.Add(this.ddl_Client_Names);
             this.panelControl2.Controls.Add(this.labelControl2);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 69);
+            this.panelControl2.Location = new System.Drawing.Point(3, 72);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(394, 32);
+            this.panelControl2.Size = new System.Drawing.Size(414, 41);
             this.panelControl2.TabIndex = 1;
             // 
             // ddl_Client_Names
             // 
-            this.ddl_Client_Names.Location = new System.Drawing.Point(168, 7);
+            this.ddl_Client_Names.Location = new System.Drawing.Point(168, 9);
             this.ddl_Client_Names.Name = "ddl_Client_Names";
             this.ddl_Client_Names.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_Client_Names.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_Client_Names.Properties.Appearance.Options.UseFont = true;
+            this.ddl_Client_Names.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_Client_Names.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Client_Names.Properties.DropDownRows = 15;
             this.ddl_Client_Names.Properties.NullText = "Select Client";
-            this.ddl_Client_Names.Size = new System.Drawing.Size(176, 20);
+            this.ddl_Client_Names.Size = new System.Drawing.Size(208, 20);
             this.ddl_Client_Names.TabIndex = 1;
             this.ddl_Client_Names.EditValueChanged += new System.EventHandler(this.ddl_Client_Names_EditValueChanged);
             this.ddl_Client_Names.Validating += new System.ComponentModel.CancelEventHandler(this.ddl_Client_Names_Validating);
@@ -260,10 +263,10 @@
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(11, 6);
+            this.labelControl2.Location = new System.Drawing.Point(57, 11);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 15);
             this.labelControl2.TabIndex = 0;
@@ -274,23 +277,23 @@
             this.panelControl3.Controls.Add(this.checkedListBox_Subclients);
             this.panelControl3.Controls.Add(this.labelControl3);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 107);
+            this.panelControl3.Location = new System.Drawing.Point(3, 119);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(394, 127);
+            this.panelControl3.Size = new System.Drawing.Size(414, 130);
             this.panelControl3.TabIndex = 2;
             // 
             // checkedListBox_Subclients
             // 
             this.checkedListBox_Subclients.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox_Subclients.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.checkedListBox_Subclients.Appearance.ForeColor = System.Drawing.Color.Black;
             this.checkedListBox_Subclients.Appearance.Options.UseFont = true;
             this.checkedListBox_Subclients.Appearance.Options.UseForeColor = true;
             this.checkedListBox_Subclients.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
             this.checkedListBox_Subclients.CheckOnClick = true;
             this.checkedListBox_Subclients.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedListBox_Subclients.Location = new System.Drawing.Point(168, 0);
+            this.checkedListBox_Subclients.Location = new System.Drawing.Point(168, 6);
             this.checkedListBox_Subclients.Name = "checkedListBox_Subclients";
-            this.checkedListBox_Subclients.Size = new System.Drawing.Size(176, 127);
+            this.checkedListBox_Subclients.Size = new System.Drawing.Size(208, 116);
             this.checkedListBox_Subclients.TabIndex = 2;
             // 
             // labelControl3
@@ -298,10 +301,10 @@
             this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(11, 48);
+            this.labelControl3.Location = new System.Drawing.Point(57, 8);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 15);
             this.labelControl3.TabIndex = 0;
@@ -312,9 +315,9 @@
             this.panelControl4.Controls.Add(this.labelControl4);
             this.panelControl4.Controls.Add(this.checkedListBox_ProjectType);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(3, 240);
+            this.panelControl4.Location = new System.Drawing.Point(3, 255);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(394, 107);
+            this.panelControl4.Size = new System.Drawing.Size(414, 131);
             this.panelControl4.TabIndex = 3;
             // 
             // labelControl4
@@ -322,10 +325,10 @@
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(11, 38);
+            this.labelControl4.Location = new System.Drawing.Point(57, 4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(72, 15);
             this.labelControl4.TabIndex = 3;
@@ -336,15 +339,15 @@
             this.checkedListBox_ProjectType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkedListBox_ProjectType.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox_ProjectType.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.checkedListBox_ProjectType.Appearance.ForeColor = System.Drawing.Color.Black;
             this.checkedListBox_ProjectType.Appearance.Options.UseFont = true;
             this.checkedListBox_ProjectType.Appearance.Options.UseForeColor = true;
             this.checkedListBox_ProjectType.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
             this.checkedListBox_ProjectType.CheckOnClick = true;
             this.checkedListBox_ProjectType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedListBox_ProjectType.Location = new System.Drawing.Point(168, 0);
+            this.checkedListBox_ProjectType.Location = new System.Drawing.Point(168, 2);
             this.checkedListBox_ProjectType.Name = "checkedListBox_ProjectType";
-            this.checkedListBox_ProjectType.Size = new System.Drawing.Size(176, 107);
+            this.checkedListBox_ProjectType.Size = new System.Drawing.Size(208, 126);
             this.checkedListBox_ProjectType.TabIndex = 3;
             this.checkedListBox_ProjectType.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedListBox_ProjectType_ItemCheck);
             // 
@@ -353,9 +356,9 @@
             this.panelControl5.Controls.Add(this.checkedListBox_DeptType);
             this.panelControl5.Controls.Add(this.labelControl5);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(3, 353);
+            this.panelControl5.Location = new System.Drawing.Point(3, 392);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(394, 100);
+            this.panelControl5.Size = new System.Drawing.Size(414, 81);
             this.panelControl5.TabIndex = 4;
             // 
             // checkedListBox_DeptType
@@ -363,15 +366,15 @@
             this.checkedListBox_DeptType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkedListBox_DeptType.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox_DeptType.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.checkedListBox_DeptType.Appearance.ForeColor = System.Drawing.Color.Black;
             this.checkedListBox_DeptType.Appearance.Options.UseFont = true;
             this.checkedListBox_DeptType.Appearance.Options.UseForeColor = true;
             this.checkedListBox_DeptType.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
             this.checkedListBox_DeptType.CheckOnClick = true;
             this.checkedListBox_DeptType.Cursor = System.Windows.Forms.Cursors.Default;
-            this.checkedListBox_DeptType.Location = new System.Drawing.Point(168, 1);
+            this.checkedListBox_DeptType.Location = new System.Drawing.Point(168, 5);
             this.checkedListBox_DeptType.Name = "checkedListBox_DeptType";
-            this.checkedListBox_DeptType.Size = new System.Drawing.Size(176, 99);
+            this.checkedListBox_DeptType.Size = new System.Drawing.Size(208, 71);
             this.checkedListBox_DeptType.TabIndex = 4;
             this.checkedListBox_DeptType.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedListBox_DeptType_ItemCheck);
             // 
@@ -380,10 +383,10 @@
             this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(11, 40);
+            this.labelControl5.Location = new System.Drawing.Point(57, 4);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(98, 15);
             this.labelControl5.TabIndex = 0;
@@ -393,9 +396,9 @@
             // 
             this.panelControl6.Controls.Add(this.flowLayoutPanel1);
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl6.Location = new System.Drawing.Point(3, 459);
+            this.panelControl6.Location = new System.Drawing.Point(3, 479);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(394, 41);
+            this.panelControl6.Size = new System.Drawing.Size(414, 44);
             this.panelControl6.TabIndex = 5;
             // 
             // flowLayoutPanel1
@@ -406,16 +409,17 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(390, 37);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 40);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btn_clear
             // 
-            this.btn_clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_clear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_clear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_clear.Appearance.Options.UseFont = true;
             this.btn_clear.Appearance.Options.UseForeColor = true;
-            this.btn_clear.Location = new System.Drawing.Point(309, 3);
+            this.btn_clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_clear.Location = new System.Drawing.Point(329, 3);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(78, 31);
             this.btn_clear.TabIndex = 6;
@@ -424,11 +428,12 @@
             // 
             // btn_Submit
             // 
-            this.btn_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Submit.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_Submit.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Submit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
-            this.btn_Submit.Location = new System.Drawing.Point(225, 3);
+            this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Submit.Location = new System.Drawing.Point(245, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(78, 31);
             this.btn_Submit.TabIndex = 5;
@@ -445,9 +450,11 @@
             // 
             // Process_Settings
             // 
+            this.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 526);
+            this.ClientSize = new System.Drawing.Size(698, 549);
             this.Controls.Add(this.groupControl1);
             this.MinimumSize = new System.Drawing.Size(678, 564);
             this.Name = "Process_Settings";

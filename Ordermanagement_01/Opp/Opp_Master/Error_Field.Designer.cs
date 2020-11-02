@@ -81,7 +81,7 @@
             this.txt_Errorfield.Properties.Appearance.Options.UseFont = true;
             this.txt_Errorfield.Properties.Appearance.Options.UseForeColor = true;
             this.txt_Errorfield.Size = new System.Drawing.Size(243, 24);
-            this.txt_Errorfield.TabIndex = 4;
+            this.txt_Errorfield.TabIndex = 3;
             // 
             // checkedListBoxControl_Errortab
             // 
@@ -94,7 +94,7 @@
             this.checkedListBoxControl_Errortab.Location = new System.Drawing.Point(124, 117);
             this.checkedListBoxControl_Errortab.Name = "checkedListBoxControl_Errortab";
             this.checkedListBoxControl_Errortab.Size = new System.Drawing.Size(243, 105);
-            this.checkedListBoxControl_Errortab.TabIndex = 3;
+            this.checkedListBoxControl_Errortab.TabIndex = 2;
             // 
             // ddl_ProjectType
             // 
@@ -108,7 +108,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
             this.ddl_ProjectType.Size = new System.Drawing.Size(243, 24);
-            this.ddl_ProjectType.TabIndex = 1;
+            this.ddl_ProjectType.TabIndex = 0;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
             // labelControl4
@@ -209,7 +209,7 @@
             this.btn_Clear.Location = new System.Drawing.Point(323, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(80, 37);
-            this.btn_Clear.TabIndex = 6;
+            this.btn_Clear.TabIndex = 1;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
@@ -223,7 +223,7 @@
             this.btn_Save.Location = new System.Drawing.Point(237, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(80, 37);
-            this.btn_Save.TabIndex = 5;
+            this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Save";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
@@ -233,17 +233,17 @@
             // 
             // ddl_ProductType
             // 
-            this.ddl_ProductType.Location = new System.Drawing.Point(124, 71);
+            this.ddl_ProductType.Location = new System.Drawing.Point(124, 68);
             this.ddl_ProductType.Name = "ddl_ProductType";
-            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.25F);
+            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_ProductType.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProductType.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProductType.Properties.NullText = "Select";
-            this.ddl_ProductType.Size = new System.Drawing.Size(243, 20);
-            this.ddl_ProductType.TabIndex = 5;
+            this.ddl_ProductType.Size = new System.Drawing.Size(243, 24);
+            this.ddl_ProductType.TabIndex = 4;
             // 
             // Error_Field
             // 
@@ -252,7 +252,9 @@
             this.ClientSize = new System.Drawing.Size(416, 364);
             this.Controls.Add(this.groupControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(432, 402);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(432, 402);
             this.Name = "Error_Field";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

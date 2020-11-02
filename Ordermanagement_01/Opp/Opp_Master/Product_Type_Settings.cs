@@ -182,7 +182,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 //ProductId = Convert.ToInt32(dt.Rows[0]["ProductType_Id"].ToString());
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Submitted SuccessFully","Success",MessageBoxButtons.OK);
+                                XtraMessageBox.Show("Submitted Successfully","Success",MessageBoxButtons.OK);
                                 BindProductTypeGrid();
                                 Clear();
 
@@ -256,6 +256,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             txtProductType.Text = "";
             btnSubmit.Text = "Submit";
             btnDelete.Enabled = false;
+            ddlProjectType.Enabled = true;
         }
 
 
@@ -272,6 +273,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
                     var index = row.FirstOrDefault();
                     ddlProjectType.EditValue = index.ItemArray[3];
+                    ddlProjectType.Enabled = false;
                     txtProductType.Text = index.ItemArray[0].ToString();
                     productid = Convert.ToInt32(index.ItemArray[2]);
                 }
@@ -290,6 +292,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private void btnClear_Click(object sender, EventArgs e)
         {
             Clear();
+            
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)

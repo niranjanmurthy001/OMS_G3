@@ -102,8 +102,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             DataRowView CastedItems = itemchecked as DataRowView;
                             Productvalue = Convert.ToInt32(CastedItems["ProductType_Id"]);
+                            dtinsert.Rows.Add(ProjectValue, Productvalue, ErrorTypeTxt, userid, DateTime.Now, "True");
                         }
-                        dtinsert.Rows.Add(ProjectValue, Productvalue, ErrorTypeTxt, userid, DateTime.Now, "True");
+                      
                         var data = new StringContent(JsonConvert.SerializeObject(dtinsert), Encoding.UTF8, "application/json");
                         using (var httpClient = new HttpClient())
                         {

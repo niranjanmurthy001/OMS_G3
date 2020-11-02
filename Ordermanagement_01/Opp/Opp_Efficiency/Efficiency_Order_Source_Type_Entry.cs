@@ -334,6 +334,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
         {
             ddl_ProjectType.EditValue = null;
             ddl_Source_Type.EditValue = null;
+            ddl_Source_Type.Properties.DataSource = null;
             ddl_State.EditValue = null;
             chk_County.UnCheckAll();
             chk_County.DataSource = null;
@@ -493,7 +494,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 State_Id = Convert.ToInt32(ddl_State.EditValue);
                 chk_County.DataSource = null;
+
                 BindCounty(State_Id);               
+            }
+            else
+            {
+                chk_County.DataSource = null;
             }
         }
 
@@ -516,7 +522,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 Project_Id = Convert.ToInt32(ddl_ProjectType.EditValue);
                 ddl_Source_Type.EditValue = null;
+                ddl_Source_Type.Properties.DataSource = null;
+                ddl_Source_Type.Properties.Columns.Clear();
                 BindSourceType(Project_Id);               
+            }
+            else
+            {
+                ddl_Source_Type.Properties.DataSource = null;
             }
         }
 

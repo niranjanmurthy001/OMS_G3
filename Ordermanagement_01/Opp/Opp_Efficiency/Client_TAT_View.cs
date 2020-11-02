@@ -131,6 +131,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 grd_ClientTAT.DataSource = _dt;
                                 gridView_ClientTAT.Columns[1].Visible = false;
                                 gridView_ClientTAT.Columns[4].Visible = false;
+                                gridView_ClientTAT.Columns[6].Visible = false;
                                 if (_UserRole=="1")
                                 {
                                     gridView_ClientTAT.Columns[0].Visible = true;
@@ -153,7 +154,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                     gridView_ClientTAT.Columns[i].AppearanceHeader.ForeColor = Color.FromArgb(30, 57, 81);
                                     gridView_ClientTAT.Columns[i].AppearanceCell.ForeColor = Color.FromArgb(30, 57, 81);
                                     gridView_ClientTAT.Columns[i].OptionsColumn.AllowEdit = false;                                   
-                                    if (i > 5)
+                                    if (i > 6)
                                     {
                                         gridView_ClientTAT.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                                         gridView_ClientTAT.Columns[i].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -249,12 +250,11 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         for (int i = 0; i < gridViewSelectedRows.Count; i++)
                         {
                             DataRow row = gridView_ClientTAT.GetDataRow(gridViewSelectedRows[i]);
-                            int client_id = int.Parse(row["Client_Id"].ToString());
+                            int Client_Matrix_Id = int.Parse(row["Client_Matrix_Id"].ToString());
                             var dictionary = new Dictionary<string, object>()
                             {
                                 { "@Trans", "DELETE" },
-                                { "@Project_Type_Id",_ProjectId},
-                                { "@Client_Id",client_id },
+                                { "@Client_Matrix_Id",Client_Matrix_Id },
                                 {"@Modified_By",_userid }
                             };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");

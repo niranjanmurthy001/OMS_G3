@@ -59,6 +59,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddl_Product_Type.EditValue = ProductId;
                     txt_Type.Text = SubproductType;
                     ddl_Type_Abs.EditValue = SubproductTypeAbsId;
+                    ddl_ProjectType_Type.Enabled = false;
+                    ddl_Product_Type.Enabled = false;
+
                    // txt_Type.Focus();
                 }
             }
@@ -72,6 +75,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddl_ProjectType_Abs.EditValue = ProjectId;
                     ddl_Product_Type_Abs.EditValue = ProductId;
                     txt_Abs.Text = SubproductType;
+                    ddl_ProjectType_Abs.Enabled = false;
+                    ddl_Product_Type_Abs.Enabled = false;
                    // txt_Abs.Focus();
                 }
             }                      
@@ -141,8 +146,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if (ddl_ProjectType_Type.ItemIndex > 0)
                 {
                     ProjectId_ = Convert.ToInt32(ddl_ProjectType_Type.EditValue);
+                    ddl_Product_Type.Properties.DataSource = null;
                     ddl_Product_Type.Properties.Columns.Clear();
                     ddl_Type_Abs.Properties.Columns.Clear();
+                    ddl_Type_Abs.Properties.DataSource = null;
                     BindProdctType(ProjectId_);
                     BindTypeAbs(ProjectId_);
                 }
@@ -494,6 +501,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 {
                     ProjectId_ = Convert.ToInt32(ddl_ProjectType_Abs.EditValue);
                     ddl_Product_Type_Abs.Properties.Columns.Clear();
+                    ddl_Product_Type_Abs.Properties.DataSource = null;
                     BindProdctType(ProjectId_);
                 }
             }
@@ -669,6 +677,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddl_Product_Type.ItemIndex = 0;
             ddl_Product_Type.EditValue = null;
             txt_Type.Text = null;
+            ddl_Product_Type.Properties.DataSource = null;
+            ddl_Type_Abs.Properties.DataSource = null;
+
         }
         private void ClearAbs()
         {
@@ -677,6 +688,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddl_Product_Type_Abs.ItemIndex = 0;
             ddl_Product_Type_Abs.EditValue = null;
             txt_Abs.Text = null;
+            ddl_Product_Type_Abs.Properties.DataSource = null;
+          
         }
       
       

@@ -520,6 +520,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     else
                     {
                         SplashScreenManager.CloseForm(false);
+                        btn_multiselect.Visible = false;
                         XtraMessageBox.Show("Please Select Any Record To Delete");
                     }
 
@@ -1432,6 +1433,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                         catch (Exception ex)
                         {
                             SplashScreenManager.CloseForm(false);
+                            btn_multiselect.Visible = false;
                             XtraMessageBox.Show("Something Went Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             //throw ex;
                         }
@@ -1443,6 +1445,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                     else
                     {
                         SplashScreenManager.CloseForm(false);
+                        btn_multiselect.Visible = false;
                         XtraMessageBox.Show("Please Select Any Record To Delete");
                     }
 

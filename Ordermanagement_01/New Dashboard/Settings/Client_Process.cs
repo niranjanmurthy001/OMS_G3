@@ -248,7 +248,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Client is Submitted","Record Submit",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Submitted Successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
                                 grid_Client_Details();
                                 Clear();
                             }
@@ -293,7 +293,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);                               
-                                XtraMessageBox.Show("Client Updated Successfully","Update Record",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                XtraMessageBox.Show("Updated Successfully","Success",MessageBoxButtons.OK,MessageBoxIcon.None);
                                 grid_Client_Details();
                                 Clear();
                             }
@@ -401,22 +401,22 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         {
             if (Convert.ToInt32(ddl_Client_Names.EditValue) == 0)
             {
-                XtraMessageBox.Show("Select Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBox_Subclients.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Sub-Clients", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Sub-Clients", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBox_ProjectType.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Project_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Project_Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBox_DeptType.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Department Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("Please Select Department Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;

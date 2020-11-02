@@ -50,8 +50,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -119,7 +119,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.grd_projectType.MainView = this.gridView1;
             this.grd_projectType.Name = "grd_projectType";
             this.grd_projectType.Size = new System.Drawing.Size(221, 419);
-            this.grd_projectType.TabIndex = 1;
+            this.grd_projectType.TabIndex = 0;
             this.grd_projectType.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -209,7 +209,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.checkedListBoxControl_Task.Location = new System.Drawing.Point(156, 73);
             this.checkedListBoxControl_Task.Name = "checkedListBoxControl_Task";
             this.checkedListBoxControl_Task.Size = new System.Drawing.Size(243, 137);
-            this.checkedListBoxControl_Task.TabIndex = 3;
+            this.checkedListBoxControl_Task.TabIndex = 1;
             // 
             // ddl_Project_Type
             // 
@@ -223,7 +223,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_Project_Type.Properties.NullText = "Select";
             this.ddl_Project_Type.Size = new System.Drawing.Size(243, 20);
-            this.ddl_Project_Type.TabIndex = 2;
+            this.ddl_Project_Type.TabIndex = 0;
             this.ddl_Project_Type.EditValueChanged += new System.EventHandler(this.ddl_Project_Type_EditValueChanged);
             // 
             // labelControl2
@@ -272,7 +272,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Clear.Location = new System.Drawing.Point(375, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(75, 38);
-            this.btn_Clear.TabIndex = 0;
+            this.btn_Clear.TabIndex = 1;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.ToolTip = "Clear";
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
@@ -288,7 +288,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save.Location = new System.Drawing.Point(294, 3);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 38);
-            this.btn_Save.TabIndex = 1;
+            this.btn_Save.TabIndex = 0;
             this.btn_Save.Text = "Submit";
             this.btn_Save.ToolTip = "Submit/Update";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
@@ -302,10 +302,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.panelControl2.Size = new System.Drawing.Size(692, 46);
             this.panelControl2.TabIndex = 4;
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -317,6 +313,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.label1.TabIndex = 2;
             this.label1.Text = "Project Type Order Task Settings";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
             // Project_Type_Order_Task
             // 

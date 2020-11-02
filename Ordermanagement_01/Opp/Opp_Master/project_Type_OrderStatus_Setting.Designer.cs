@@ -49,9 +49,9 @@
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.lbl_header = new DevExpress.XtraEditors.LabelControl();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -66,9 +66,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -124,7 +124,7 @@
             this.grdOrderStatus.MainView = this.gridView1;
             this.grdOrderStatus.Name = "grdOrderStatus";
             this.grdOrderStatus.Size = new System.Drawing.Size(203, 337);
-            this.grdOrderStatus.TabIndex = 1;
+            this.grdOrderStatus.TabIndex = 0;
             this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
@@ -207,7 +207,7 @@
             this.chkOrderStatus.Location = new System.Drawing.Point(122, 126);
             this.chkOrderStatus.Name = "chkOrderStatus";
             this.chkOrderStatus.Size = new System.Drawing.Size(221, 135);
-            this.chkOrderStatus.TabIndex = 7;
+            this.chkOrderStatus.TabIndex = 2;
             this.chkOrderStatus.Validating += new System.ComponentModel.CancelEventHandler(this.chkOrderStatus_Validating);
             // 
             // ddlProductType
@@ -222,7 +222,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProductType.Properties.NullText = "Select";
             this.ddlProductType.Size = new System.Drawing.Size(221, 22);
-            this.ddlProductType.TabIndex = 6;
+            this.ddlProductType.TabIndex = 1;
             this.ddlProductType.EditValueChanged += new System.EventHandler(this.ddlProductType_EditValueChanged);
             this.ddlProductType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProductType_Validating);
             // 
@@ -238,7 +238,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddlProjectType.Properties.NullText = "Select";
             this.ddlProjectType.Size = new System.Drawing.Size(221, 22);
-            this.ddlProjectType.TabIndex = 5;
+            this.ddlProjectType.TabIndex = 0;
             this.ddlProjectType.EditValueChanged += new System.EventHandler(this.ddlProjectType_EditValueChanged);
             this.ddlProjectType.Validating += new System.ComponentModel.CancelEventHandler(this.ddlProjectType_Validating);
             // 
@@ -334,6 +334,15 @@
             this.btn_Delete.ToolTip = "Delete";
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.lbl_header);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(3, 3);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(593, 38);
+            this.panelControl2.TabIndex = 1;
+            // 
             // lbl_header
             // 
             this.lbl_header.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -350,15 +359,6 @@
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.lbl_header);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 3);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(593, 38);
-            this.panelControl2.TabIndex = 1;
             // 
             // project_Type_OrderStatus_Setting
             // 
@@ -386,10 +386,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -197,6 +197,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             ddl_ProductType.ItemIndex = 0;
             ddl_ProjectType.ItemIndex = 0;
+            ddl_ProductType.Properties.DataSource = null;
             checkedListBoxControl_Errortab.UnCheckAll();
             checkedListBoxControl_Errortab.SelectedIndex = 0;
             txt_Errorfield.Text = "";
@@ -443,6 +444,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (ddl_ProjectType.ItemIndex > 0)
             {
                 int ProjectId = Convert.ToInt32(ddl_ProjectType.EditValue);
+                ddl_ProductType.Properties.DataSource = null;
+                ddl_ProductType.Properties.Columns.Clear();
                 BindProdctType(ProjectId);
 
             }
