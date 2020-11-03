@@ -2966,6 +2966,12 @@
     <Compile Include="Test\Clarification_Type_Check.Designer.cs">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
     </Compile>
+    <Compile Include="Test\Compress_Pdf_File.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\Compress_Pdf_File.Designer.cs">
+      <DependentUpon>Compress_Pdf_File.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\Folder_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4609,6 +4615,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Clarification_Type_Check.resx">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\Compress_Pdf_File.resx">
+      <DependentUpon>Compress_Pdf_File.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Folder_View.resx">
       <DependentUpon>Folder_View.cs</DependentUpon>

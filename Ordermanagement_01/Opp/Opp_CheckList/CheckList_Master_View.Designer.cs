@@ -965,7 +965,7 @@
             // 
             this.rb_CheckListQuesSetting.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_CheckListQuesSetting.EditValue = "<Null>";
-            this.rb_CheckListQuesSetting.Location = new System.Drawing.Point(531, 5);
+            this.rb_CheckListQuesSetting.Location = new System.Drawing.Point(558, 5);
             this.rb_CheckListQuesSetting.Name = "rb_CheckListQuesSetting";
             this.rb_CheckListQuesSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_CheckListQuesSetting.Properties.Appearance.Options.UseFont = true;
@@ -981,7 +981,7 @@
             // 
             this.rb_CheckListTabSetting.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_CheckListTabSetting.EditValue = "<Null>";
-            this.rb_CheckListTabSetting.Location = new System.Drawing.Point(355, 4);
+            this.rb_CheckListTabSetting.Location = new System.Drawing.Point(382, 4);
             this.rb_CheckListTabSetting.Name = "rb_CheckListTabSetting";
             this.rb_CheckListTabSetting.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_CheckListTabSetting.Properties.Appearance.Options.UseFont = true;
@@ -996,24 +996,28 @@
             // ddl_ProductType
             // 
             this.ddl_ProductType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ddl_ProductType.Location = new System.Drawing.Point(613, 37);
+            this.ddl_ProductType.Location = new System.Drawing.Point(623, 37);
             this.ddl_ProductType.Name = "ddl_ProductType";
+            this.ddl_ProductType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProductType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProductType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProductType.Properties.NullText = "SELECT";
-            this.ddl_ProductType.Size = new System.Drawing.Size(166, 20);
+            this.ddl_ProductType.Size = new System.Drawing.Size(217, 22);
             this.ddl_ProductType.TabIndex = 5;
             this.ddl_ProductType.EditValueChanged += new System.EventHandler(this.ddl_ProductType_EditValueChanged);
             // 
             // ddl_ProjectType
             // 
             this.ddl_ProjectType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ddl_ProjectType.Location = new System.Drawing.Point(341, 37);
+            this.ddl_ProjectType.Location = new System.Drawing.Point(308, 37);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
+            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "SELECT";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(166, 20);
+            this.ddl_ProjectType.Size = new System.Drawing.Size(214, 22);
             this.ddl_ProjectType.TabIndex = 4;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
@@ -1022,7 +1026,7 @@
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(518, 37);
+            this.labelControl2.Location = new System.Drawing.Point(528, 37);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(84, 17);
             this.labelControl2.TabIndex = 1;
@@ -1033,7 +1037,7 @@
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(251, 37);
+            this.labelControl1.Location = new System.Drawing.Point(218, 37);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -1134,6 +1138,10 @@
             // 
             // gridColumn19
             // 
+            this.gridColumn19.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn19.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn19.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn19.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn19.Caption = "Delete";
             this.gridColumn19.ColumnEdit = this.repositoryItemHyperLinkForDelete;
             this.gridColumn19.Name = "gridColumn19";
@@ -1305,7 +1313,7 @@
             // 
             this.rb_QuessetForQuesSort.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rb_QuessetForQuesSort.EditValue = "<Null>";
-            this.rb_QuessetForQuesSort.Location = new System.Drawing.Point(514, 4);
+            this.rb_QuessetForQuesSort.Location = new System.Drawing.Point(567, 4);
             this.rb_QuessetForQuesSort.Name = "rb_QuessetForQuesSort";
             this.rb_QuessetForQuesSort.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_QuessetForQuesSort.Properties.Appearance.Options.UseFont = true;
@@ -1321,7 +1329,7 @@
             // 
             this.rd_TabSettingFor_QuesSetup.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rd_TabSettingFor_QuesSetup.EditValue = "<Null>";
-            this.rd_TabSettingFor_QuesSetup.Location = new System.Drawing.Point(337, 2);
+            this.rd_TabSettingFor_QuesSetup.Location = new System.Drawing.Point(390, 2);
             this.rd_TabSettingFor_QuesSetup.Name = "rd_TabSettingFor_QuesSetup";
             this.rd_TabSettingFor_QuesSetup.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rd_TabSettingFor_QuesSetup.Properties.Appearance.Options.UseFont = true;
@@ -1336,12 +1344,14 @@
             // lookUpEditCheckListTab
             // 
             this.lookUpEditCheckListTab.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lookUpEditCheckListTab.Location = new System.Drawing.Point(607, 33);
+            this.lookUpEditCheckListTab.Location = new System.Drawing.Point(661, 33);
             this.lookUpEditCheckListTab.Name = "lookUpEditCheckListTab";
+            this.lookUpEditCheckListTab.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditCheckListTab.Properties.Appearance.Options.UseFont = true;
             this.lookUpEditCheckListTab.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCheckListTab.Properties.NullText = "Select";
-            this.lookUpEditCheckListTab.Size = new System.Drawing.Size(166, 20);
+            this.lookUpEditCheckListTab.Properties.NullText = "SELECT";
+            this.lookUpEditCheckListTab.Size = new System.Drawing.Size(228, 22);
             this.lookUpEditCheckListTab.TabIndex = 15;
             this.lookUpEditCheckListTab.EditValueChanged += new System.EventHandler(this.lookUpEditCheckListTab_EditValueChanged);
             // 
@@ -1350,7 +1360,7 @@
             this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(513, 36);
+            this.labelControl3.Location = new System.Drawing.Point(570, 36);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(83, 15);
             this.labelControl3.TabIndex = 14;
@@ -1361,10 +1371,12 @@
             this.lookUpedit_ProjectType.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lookUpedit_ProjectType.Location = new System.Drawing.Point(335, 33);
             this.lookUpedit_ProjectType.Name = "lookUpedit_ProjectType";
+            this.lookUpedit_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpedit_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.lookUpedit_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpedit_ProjectType.Properties.NullText = "SELECT";
-            this.lookUpedit_ProjectType.Size = new System.Drawing.Size(166, 20);
+            this.lookUpedit_ProjectType.Size = new System.Drawing.Size(229, 22);
             this.lookUpedit_ProjectType.TabIndex = 12;
             this.lookUpedit_ProjectType.EditValueChanged += new System.EventHandler(this.lookUpedit_ProjectType_EditValueChanged);
             // 

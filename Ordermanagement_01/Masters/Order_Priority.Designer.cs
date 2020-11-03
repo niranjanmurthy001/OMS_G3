@@ -74,7 +74,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(524, 424);
+            this.groupControl1.Size = new System.Drawing.Size(766, 472);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Order Priority";
             // 
@@ -92,7 +92,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 401);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(762, 449);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -104,41 +104,44 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(514, 100);
+            this.panelControl1.Size = new System.Drawing.Size(756, 100);
             this.panelControl1.TabIndex = 0;
             // 
             // ddl_ProjectType
             // 
-            this.ddl_ProjectType.Location = new System.Drawing.Point(166, 16);
+            this.ddl_ProjectType.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ddl_ProjectType.Location = new System.Drawing.Point(305, 16);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
-            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddl_ProjectType.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProjectType.Properties.Appearance.Options.UseForeColor = true;
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(218, 22);
+            this.ddl_ProjectType.Size = new System.Drawing.Size(236, 24);
             this.ddl_ProjectType.TabIndex = 1;
             // 
             // txt_Priority
             // 
-            this.txt_Priority.Location = new System.Drawing.Point(166, 57);
+            this.txt_Priority.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_Priority.Location = new System.Drawing.Point(305, 57);
             this.txt_Priority.Name = "txt_Priority";
-            this.txt_Priority.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Priority.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Priority.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.txt_Priority.Properties.Appearance.Options.UseFont = true;
             this.txt_Priority.Properties.Appearance.Options.UseForeColor = true;
-            this.txt_Priority.Size = new System.Drawing.Size(218, 22);
+            this.txt_Priority.Size = new System.Drawing.Size(236, 24);
             this.txt_Priority.TabIndex = 2;
             // 
             // labelControl2
             // 
+            this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Location = new System.Drawing.Point(109, 58);
+            this.labelControl2.Location = new System.Drawing.Point(248, 58);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 17);
             this.labelControl2.TabIndex = 1;
@@ -146,11 +149,12 @@
             // 
             // labelControl1
             // 
+            this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(78, 18);
+            this.labelControl1.Location = new System.Drawing.Point(217, 18);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(79, 17);
             this.labelControl1.TabIndex = 0;
@@ -164,7 +168,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 109);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(514, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(756, 33);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // btn_Clear
@@ -174,7 +178,7 @@
             this.btn_Clear.Appearance.Options.UseFont = true;
             this.btn_Clear.Appearance.Options.UseForeColor = true;
             this.btn_Clear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Clear.Location = new System.Drawing.Point(427, 3);
+            this.btn_Clear.Location = new System.Drawing.Point(669, 3);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(84, 30);
             this.btn_Clear.TabIndex = 4;
@@ -189,7 +193,7 @@
             this.btn_Submit.Appearance.Options.UseFont = true;
             this.btn_Submit.Appearance.Options.UseForeColor = true;
             this.btn_Submit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btn_Submit.Location = new System.Drawing.Point(337, 3);
+            this.btn_Submit.Location = new System.Drawing.Point(579, 3);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(84, 30);
             this.btn_Submit.TabIndex = 3;
@@ -206,7 +210,7 @@
             this.grd_Priority.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2});
-            this.grd_Priority.Size = new System.Drawing.Size(514, 250);
+            this.grd_Priority.Size = new System.Drawing.Size(756, 298);
             this.grd_Priority.TabIndex = 2;
             this.grd_Priority.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -334,10 +338,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 424);
+            this.ClientSize = new System.Drawing.Size(766, 472);
             this.Controls.Add(this.groupControl1);
-            this.MaximumSize = new System.Drawing.Size(640, 800);
-            this.MinimumSize = new System.Drawing.Size(540, 450);
+            this.MinimumSize = new System.Drawing.Size(782, 510);
             this.Name = "Order_Priority";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order_Priority";

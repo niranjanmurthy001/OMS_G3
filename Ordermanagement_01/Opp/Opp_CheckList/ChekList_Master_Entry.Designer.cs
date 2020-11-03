@@ -62,7 +62,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(380, 303);
+            this.groupControl1.Size = new System.Drawing.Size(438, 303);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Master Entry";
             // 
@@ -78,7 +78,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.07885F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.92115F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 279);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(434, 279);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -90,7 +90,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(370, 222);
+            this.panelControl1.Size = new System.Drawing.Size(428, 222);
             this.panelControl1.TabIndex = 0;
             // 
             // txtTabName
@@ -98,9 +98,9 @@
             this.txtTabName.EditValue = "Enter TabName...";
             this.txtTabName.Location = new System.Drawing.Point(112, 76);
             this.txtTabName.Name = "txtTabName";
-            this.txtTabName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTabName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTabName.Properties.Appearance.Options.UseFont = true;
-            this.txtTabName.Size = new System.Drawing.Size(196, 20);
+            this.txtTabName.Size = new System.Drawing.Size(232, 22);
             this.txtTabName.TabIndex = 11;
             this.txtTabName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtTabName_MouseClick);
             this.txtTabName.MouseEnter += new System.EventHandler(this.txtTabName_MouseEnter);
@@ -109,10 +109,12 @@
             // 
             this.ddl_ProjectType.Location = new System.Drawing.Point(114, 24);
             this.ddl_ProjectType.Name = "ddl_ProjectType";
+            this.ddl_ProjectType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_ProjectType.Properties.Appearance.Options.UseFont = true;
             this.ddl_ProjectType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_ProjectType.Properties.NullText = "Select";
-            this.ddl_ProjectType.Size = new System.Drawing.Size(196, 20);
+            this.ddl_ProjectType.Size = new System.Drawing.Size(230, 22);
             this.ddl_ProjectType.TabIndex = 9;
             this.ddl_ProjectType.EditValueChanged += new System.EventHandler(this.ddl_ProjectType_EditValueChanged);
             // 
@@ -143,7 +145,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(211, 231);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(269, 231);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 45);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -182,8 +184,9 @@
             this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 303);
+            this.ClientSize = new System.Drawing.Size(438, 303);
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.Name = "ChekList_Master_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChekList_Master_Entry";

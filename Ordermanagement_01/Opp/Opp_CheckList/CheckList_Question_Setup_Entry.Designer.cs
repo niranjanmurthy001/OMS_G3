@@ -59,7 +59,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(434, 388);
+            this.groupControl1.Size = new System.Drawing.Size(499, 388);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "CheckList Question SetUp ";
             // 
@@ -75,7 +75,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.66666F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 360);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(495, 360);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -89,7 +89,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 306);
+            this.panelControl1.Size = new System.Drawing.Size(489, 306);
             this.panelControl1.TabIndex = 0;
             // 
             // txtQuestionQs
@@ -97,7 +97,7 @@
             this.txtQuestionQs.EditValue = "Enter Question...";
             this.txtQuestionQs.Location = new System.Drawing.Point(123, 221);
             this.txtQuestionQs.Name = "txtQuestionQs";
-            this.txtQuestionQs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuestionQs.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuestionQs.Properties.Appearance.Options.UseFont = true;
             this.txtQuestionQs.Size = new System.Drawing.Size(295, 62);
             this.txtQuestionQs.TabIndex = 7;
@@ -106,21 +106,25 @@
             // 
             // chk_TabNamesQs
             // 
+            this.chk_TabNamesQs.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_TabNamesQs.Appearance.Options.UseFont = true;
             this.chk_TabNamesQs.CheckOnClick = true;
             this.chk_TabNamesQs.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_TabNamesQs.Location = new System.Drawing.Point(123, 81);
             this.chk_TabNamesQs.Name = "chk_TabNamesQs";
-            this.chk_TabNamesQs.Size = new System.Drawing.Size(206, 114);
+            this.chk_TabNamesQs.Size = new System.Drawing.Size(252, 121);
             this.chk_TabNamesQs.TabIndex = 6;
             // 
             // ddl_projectTypeQuesSetup
             // 
             this.ddl_projectTypeQuesSetup.Location = new System.Drawing.Point(123, 32);
             this.ddl_projectTypeQuesSetup.Name = "ddl_projectTypeQuesSetup";
+            this.ddl_projectTypeQuesSetup.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddl_projectTypeQuesSetup.Properties.Appearance.Options.UseFont = true;
             this.ddl_projectTypeQuesSetup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ddl_projectTypeQuesSetup.Properties.NullText = "Select";
-            this.ddl_projectTypeQuesSetup.Size = new System.Drawing.Size(206, 20);
+            this.ddl_projectTypeQuesSetup.Size = new System.Drawing.Size(252, 22);
             this.ddl_projectTypeQuesSetup.TabIndex = 4;
             this.ddl_projectTypeQuesSetup.EditValueChanged += new System.EventHandler(this.ddl_projectTypeQuesSetup_EditValueChanged);
             // 
@@ -169,7 +173,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btn_SaveQs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(264, 315);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(329, 315);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 42);
             this.flowLayoutPanel1.TabIndex = 1;
@@ -210,8 +214,9 @@
             this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 388);
+            this.ClientSize = new System.Drawing.Size(499, 388);
             this.Controls.Add(this.groupControl1);
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 426);
             this.Name = "CheckList_Question_Setup_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
