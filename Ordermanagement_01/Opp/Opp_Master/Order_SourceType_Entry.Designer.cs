@@ -150,6 +150,8 @@
             this.txt_Source_Type.Location = new System.Drawing.Point(136, 189);
             this.txt_Source_Type.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_Source_Type.Name = "txt_Source_Type";
+            this.txt_Source_Type.Properties.NullText = "Enter Source Type..";
+            this.txt_Source_Type.Properties.ShowNullValuePromptWhenFocused = true;
             this.txt_Source_Type.Size = new System.Drawing.Size(184, 71);
             this.txt_Source_Type.TabIndex = 2;
             // 

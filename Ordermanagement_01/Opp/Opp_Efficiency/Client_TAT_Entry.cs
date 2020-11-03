@@ -553,12 +553,21 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ddl_Project_Type.Focus();
                 return false;
             }
             if (chk_Client.CheckedItems.Count == 0)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Check Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                chk_Client.Focus();
+                return false;
+            }
+            if (chk_SubClient.CheckedItems.Count == 0)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Please Check Sub Client", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                chk_SubClient.Focus();
                 return false;
             }
             for (int i = 0; i < gridView_ClientTAT.Columns.Count; i++)

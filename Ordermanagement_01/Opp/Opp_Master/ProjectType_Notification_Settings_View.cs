@@ -287,6 +287,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                     SplashScreenManager.CloseForm(false);
                                     XtraMessageBox.Show("Record Deleted Successfully");
                                     BindGrid();
+                                    btnMultiselectDelete.Visible = false;
 
                                 }
                             }

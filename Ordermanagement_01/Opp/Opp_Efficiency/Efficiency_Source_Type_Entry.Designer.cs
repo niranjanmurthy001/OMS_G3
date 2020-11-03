@@ -152,6 +152,7 @@
             this.txt_Efficiency_Source.Location = new System.Drawing.Point(159, 106);
             this.txt_Efficiency_Source.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_Efficiency_Source.Name = "txt_Efficiency_Source";
+            this.txt_Efficiency_Source.Properties.NullText = "Enter Source Type...";
             this.txt_Efficiency_Source.Size = new System.Drawing.Size(184, 71);
             this.txt_Efficiency_Source.TabIndex = 1;
             // 

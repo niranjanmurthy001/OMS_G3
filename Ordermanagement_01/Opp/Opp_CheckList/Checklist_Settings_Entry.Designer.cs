@@ -523,6 +523,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 525);
             this.Controls.Add(this.groupControl1);
+            this.MinimizeBox = false;
             this.Name = "Checklist_Settings_Entry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checklist_Settings";
