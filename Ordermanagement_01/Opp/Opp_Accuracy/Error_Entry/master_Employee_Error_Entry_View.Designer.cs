@@ -76,6 +76,8 @@
             this.grdCol_TaskId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lbl_Header = new DevExpress.XtraEditors.LabelControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.grd_Entered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdentered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -280,9 +282,11 @@
             this.grdIntCol_ErrorInfo_id,
             this.grdIntCol_,
             this.grdIntCol_Updated_By,
+            this.grd_Entered_Date,
             this.grdIntCol_New_Error_Type_id,
             this.grdIntCol_Remove});
             this.gridView_Internal_Error.GridControl = this.grdCtrl_Internal_Error;
+            this.gridView_Internal_Error.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView_Internal_Error.IndicatorWidth = 50;
             this.gridView_Internal_Error.Name = "gridView_Internal_Error";
             this.gridView_Internal_Error.OptionsFind.AlwaysVisible = true;
@@ -302,6 +306,7 @@
             this.grdIntCol_Error_Type.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Type.Visible = true;
             this.grdIntCol_Error_Type.VisibleIndex = 0;
+            this.grdIntCol_Error_Type.Width = 93;
             // 
             // grdIntCol_Error_Tab
             // 
@@ -315,6 +320,7 @@
             this.grdIntCol_Error_Tab.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Tab.Visible = true;
             this.grdIntCol_Error_Tab.VisibleIndex = 1;
+            this.grdIntCol_Error_Tab.Width = 93;
             // 
             // grdIntCol_Error_Field
             // 
@@ -328,6 +334,7 @@
             this.grdIntCol_Error_Field.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Error_Field.Visible = true;
             this.grdIntCol_Error_Field.VisibleIndex = 2;
+            this.grdIntCol_Error_Field.Width = 93;
             // 
             // grdIntCol_Comments
             // 
@@ -341,6 +348,7 @@
             this.grdIntCol_Comments.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Comments.Visible = true;
             this.grdIntCol_Comments.VisibleIndex = 3;
+            this.grdIntCol_Comments.Width = 93;
             // 
             // grdIntCol_Task
             // 
@@ -352,6 +360,7 @@
             this.grdIntCol_Task.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Task.Visible = true;
             this.grdIntCol_Task.VisibleIndex = 4;
+            this.grdIntCol_Task.Width = 98;
             // 
             // grdIntCol_User_Name
             // 
@@ -365,6 +374,7 @@
             this.grdIntCol_User_Name.OptionsColumn.AllowEdit = false;
             this.grdIntCol_User_Name.Visible = true;
             this.grdIntCol_User_Name.VisibleIndex = 5;
+            this.grdIntCol_User_Name.Width = 81;
             // 
             // gdIntCol_User_Id
             // 
@@ -399,6 +409,7 @@
             this.grdIntCol_.OptionsColumn.AllowEdit = false;
             this.grdIntCol_.Visible = true;
             this.grdIntCol_.VisibleIndex = 6;
+            this.grdIntCol_.Width = 77;
             // 
             // grdIntCol_Updated_By
             // 
@@ -412,6 +423,7 @@
             this.grdIntCol_Updated_By.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Updated_By.Visible = true;
             this.grdIntCol_Updated_By.VisibleIndex = 7;
+            this.grdIntCol_Updated_By.Width = 82;
             // 
             // grdIntCol_New_Error_Type_id
             // 
@@ -430,7 +442,8 @@
             this.grdIntCol_Remove.Name = "grdIntCol_Remove";
             this.grdIntCol_Remove.OptionsColumn.AllowEdit = false;
             this.grdIntCol_Remove.Visible = true;
-            this.grdIntCol_Remove.VisibleIndex = 8;
+            this.grdIntCol_Remove.VisibleIndex = 9;
+            this.grdIntCol_Remove.Width = 119;
             // 
             // rpHypEditInt_Remove
             // 
@@ -470,10 +483,11 @@
             this.grdCol_User_Id,
             this.grdColError_Task,
             this.grdColUpdated_By,
+            this.grdentered_Date,
+            this.grdCol_Remove,
             this.gridCol_Task_Id,
             this.grdCol_ErrorInfo_Id,
             this.grdCol_New_Error_Type_Id,
-            this.grdCol_Remove,
             this.grdCol_TaskId});
             this.gridView_External_Error.GridControl = this.grdCtrl_External_Error;
             this.gridView_External_Error.IndicatorWidth = 50;
@@ -641,7 +655,7 @@
             this.grdCol_Remove.Name = "grdCol_Remove";
             this.grdCol_Remove.OptionsColumn.AllowEdit = false;
             this.grdCol_Remove.Visible = true;
-            this.grdCol_Remove.VisibleIndex = 8;
+            this.grdCol_Remove.VisibleIndex = 9;
             // 
             // repHypLnk_Remove
             // 
@@ -676,6 +690,33 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            // 
+            // grd_Entered_Date
+            // 
+            this.grd_Entered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grd_Entered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.grd_Entered_Date.AppearanceHeader.Options.UseFont = true;
+            this.grd_Entered_Date.AppearanceHeader.Options.UseForeColor = true;
+            this.grd_Entered_Date.Caption = "Entered Date";
+            this.grd_Entered_Date.FieldName = "Entered_Date";
+            this.grd_Entered_Date.Name = "grd_Entered_Date";
+            this.grd_Entered_Date.OptionsColumn.AllowEdit = false;
+            this.grd_Entered_Date.Visible = true;
+            this.grd_Entered_Date.VisibleIndex = 8;
+            this.grd_Entered_Date.Width = 56;
+            // 
+            // grdentered_Date
+            // 
+            this.grdentered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdentered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.grdentered_Date.AppearanceHeader.Options.UseFont = true;
+            this.grdentered_Date.AppearanceHeader.Options.UseForeColor = true;
+            this.grdentered_Date.Caption = "Entered Date";
+            this.grdentered_Date.FieldName = "Entered_Date";
+            this.grdentered_Date.Name = "grdentered_Date";
+            this.grdentered_Date.OptionsColumn.AllowEdit = false;
+            this.grdentered_Date.Visible = true;
+            this.grdentered_Date.VisibleIndex = 8;
             // 
             // master_Employee_Error_Entry_View
             // 
@@ -762,5 +803,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdIntCol_New_Error_Type_id;
         private DevExpress.XtraGrid.Columns.GridColumn grdIntCol_Remove;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit rpHypEditInt_Remove;
+        private DevExpress.XtraGrid.Columns.GridColumn grd_Entered_Date;
+        private DevExpress.XtraGrid.Columns.GridColumn grdentered_Date;
     }
 }

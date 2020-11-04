@@ -271,20 +271,21 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 SplashScreenManager.CloseForm(false);
             }
         }
-        private async void BindClientNameToCheckist(int _Proc)
+        private async void BindClientNameToCheckist(int _Proc,int _clientid)
         {
             try
             {
-                ddl_Client.Properties.DataSource = null;
+                //ddl_Client.Properties.DataSource = null;
 
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","SELECT_CLIENT_NAMES_BASEDON_PROJECTID" },
-                    {"@Project_Type_Id",_Proc }
+                    {"@Project_Type_Id",_Proc },
+                    {"@Client_Id",_clientid }
 
                 };
-                ddl_Client.Properties.Columns.Clear();
+                //ddl_Client.Properties.Columns.Clear();
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                 using (var httpclient = new HttpClient())
                 {
@@ -501,7 +502,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 // BindOrderTask(projectid);
                 BindOrderTasks(projectid);
                 BindOrderType(projectid);
-                BindClientNameToCheckist(projectid);
+               // BindClientNameToCheckist(projectid);
                 chk_SubClient.DataSource = null;
 
 
@@ -515,6 +516,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
             {
                 // Bind_Sub_Clients(clientid);
                 Bind_Sub_Client(clientid);
+                BindClientNameToCheckist(projectid, clientid);
             }
         }
 
@@ -809,7 +811,10 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     SplashScreenManager.CloseForm(false);
-                                    Copy_Data();
+                                    if (chk_SubClient.CheckedItemsCount > 0 && Chk_Clients.CheckedItemsCount > 0 && chk_OrderTask.CheckedItemsCount > 0)
+                                    { 
+                                        Copy_Data();
+                                    }
                                     this.Mainform.BindDataToGrid();
 
                                     tabPane1.SelectedPageIndex += 1;
@@ -1004,20 +1009,32 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                 XtraMessageBox.Show("Please Select Subclient ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if(Chk_Clients.CheckedItemsCount==0)
+            //if(Chk_Clients.CheckedItemsCount==0)
+            //{
+            //    XtraMessageBox.Show("Please Check Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
+            if(Chk_Clients.CheckedItemsCount>0)
             {
-                XtraMessageBox.Show("Please Check Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                if (chk_SubClient.CheckedItemsCount == 0)
+                {
+                    XtraMessageBox.Show("Please Check Sub-Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
-            if (chk_SubClient.CheckedItemsCount == 0)
+
+            //if (chk_SubClient.CheckedItemsCount == 0)
+            //{
+            //    XtraMessageBox.Show("Please Check Sub-Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return false;
+            //}
+            if (chk_SubClient.CheckedItemsCount > 0)
             {
-                XtraMessageBox.Show("Please Check Sub-Client ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            if (chk_OrderTask.CheckedItemsCount == 0)
-            {
-                XtraMessageBox.Show("Please Check Order Task ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                if (chk_OrderTask.CheckedItemsCount == 0)
+                {
+                    XtraMessageBox.Show("Please Check Order Task ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
             return true;
         }

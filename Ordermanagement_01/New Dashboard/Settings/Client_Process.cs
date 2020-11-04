@@ -24,12 +24,15 @@ namespace Ordermanagement_01.New_Dashboard.Settings
         int _subclient;
         int _Projecttype;
         int _departmenttype;
+        int subClientValue;
+        
         public Process_Settings()
         {
             InitializeComponent();
         }
         private void Client_Process_Load(object sender, EventArgs e)
         {
+            btn_Delete.Enabled = false;
             Bindclients();
             BindProjectType();
             BindDepartmentType();
@@ -221,12 +224,13 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     DataRowView r2 = checkedListBox_DeptType.GetItem(checkedListBox_DeptType.SelectedIndex) as DataRowView;
                     Department_Type = Convert.ToInt32(r2["Order_Department_Id"]);
                     DataTable dtmulti = new DataTable();
-                    dtmulti.Columns.AddRange(new DataColumn[4]
+                    dtmulti.Columns.AddRange(new DataColumn[5]
                     {
                         new DataColumn("Client",typeof(int)),
                         new DataColumn("Sub_Client",typeof(int)),
                         new DataColumn("Project_Type",typeof(int)),
-                        new DataColumn("Department_Type",typeof(int))
+                        new DataColumn("Department_Type",typeof(int)),
+                        new DataColumn("Status",typeof(bool))
                     });
                     foreach (object itemChecked in checkedListBox_Subclients.CheckedItems)
                     {
@@ -235,7 +239,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                         int subclient = Convert.ToInt32(castedItem["Subprocess_Id"]);
                         int projecttype = Project_Type;
                         int departmenttype = Department_Type;
-                        dtmulti.Rows.Add(Client, subclient, projecttype, departmenttype);
+                        dtmulti.Rows.Add(Client, subclient, projecttype, departmenttype,true);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
@@ -323,6 +327,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             ddl_Client_Names.Enabled = true;
             checkedListBox_Subclients.Enabled = true;
             btn_Submit.Text = "Submit";
+            btn_Delete.Enabled = false;
         }
         private async void grid_Client_Details()
         {
@@ -428,6 +433,7 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Sub_ProcessName")
                 {
+                    btn_Delete.Enabled = true;
                     btn_Submit.Text = "Update";
                     ddl_Client_Names.Enabled = false;
                     checkedListBox_Subclients.Enabled = false;
@@ -442,6 +448,8 @@ namespace Ordermanagement_01.New_Dashboard.Settings
                     checkedListBox_Subclients.SelectedValue = Selected_Sub_Client;
                     checkedListBox_ProjectType.SelectedValue = PT;
                     checkedListBox_DeptType.SelectedValue = DT;
+                    subClientValue = Convert.ToInt32(checkedListBox_Subclients.SelectedValue);
+
                 }
                 _subclient = checkedListBox_Subclients.SelectedIndex;
                 _Projecttype = checkedListBox_ProjectType.SelectedIndex;
@@ -478,5 +486,58 @@ namespace Ordermanagement_01.New_Dashboard.Settings
             ValidateList();
         }
 
+        private async void btn_Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+                    //int ProductType = Convert.ToInt32(ddlProductType.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                    var dictionary = new Dictionary<string, object>
+                {
+                    { "@Trans", "DELETE" },
+                    { "@Sub_Client",subClientValue }
+
+                };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
+                    {
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/Master/Delete", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Deleted Successfully");
+                                grid_Client_Details();
+                                Clear();
+                                btn_Delete.Enabled = false;
+                               
+                            }
+
+
+                        }
+
+                    }
+                }
+                else if (show == DialogResult.No)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
     }
 }

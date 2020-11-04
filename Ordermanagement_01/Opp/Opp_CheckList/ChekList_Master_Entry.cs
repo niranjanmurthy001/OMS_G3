@@ -24,6 +24,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         int ProdTypeAbbrValue;
         string chkListTypeVaue;
         private CheckList_Master_View mainform = null;
+        string oper = "";
 
         public ChekList_Master_Entry(string OperType, string BtnName, int ProjectId, int ChkListId,  string chkListType, Form CallingFrom)
         {
@@ -191,6 +192,8 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
         {
             string TabName = txtTabName.Text;
             int ProjectValue = Convert.ToInt32(ddl_ProjectType.EditValue);
+
+            
             if (btn_Save.Text == "Save" && validate() != false && (await CheckCheckListType()) != false)
             {
                 try
@@ -355,13 +358,28 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt1.Rows.Count > 0)
+                                {
                                     int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                    if (count > 0)
+                                    string mstrtype = dt1.Rows[0]["Checklist_Master_Type"].ToString();
+                                    int projtype = Convert.ToInt32(dt1.Rows[0]["Project_Type_Id"].ToString());
+                                    if (mstrtype == txtTabName.Text && projtype == Convert.ToInt32(ddl_ProjectType.EditValue )&& btn_Save.Text=="Edit")
                                     {
-                                        SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("CheckList Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        return false;
+                                        return true;
                                     }
+                                    else
+                                    {
+
+
+                                        if (count > 0)
+                                        {
+                                            SplashScreenManager.CloseForm(false);
+                                            XtraMessageBox.Show("CheckList Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            return false;
+                                        }
+                                    }
+                                }
+                                
                                 }
                             }
                         }
