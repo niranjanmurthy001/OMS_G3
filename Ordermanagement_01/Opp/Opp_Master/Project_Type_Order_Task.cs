@@ -81,6 +81,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Project_Type_Order_Task_Load(object sender, EventArgs e)
         {
+            btn_Delete.Visible = false;
             BindProjecttype();
             BindDepartmentType();
             grid_Project_Type_Details();
@@ -272,6 +273,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if (e.Column.FieldName == "Project_Type")
                 {
                     btn_Save.Text = "Update";
+                    btn_Delete.Visible = true;
                     ddl_Project_Type.Enabled = false;
                     // GridView view = grd_projectType.MainView as GridView;
                     //var index = view.GetDataRow(view.GetSelectedRows()[0]);
@@ -282,6 +284,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     int Task = Convert.ToInt32(index.ItemArray[3]);
                     checkedListBoxControl_Task.SelectedValue = Task;
                 }
+
                 int _task = checkedListBoxControl_Task.SelectedIndex;
                 checkedListBoxControl_Task.SetItemChecked(_task, true);
             }
@@ -296,6 +299,54 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+        private async void btn_Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+                    int projectId = Convert.ToInt32(ddl_Project_Type.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                    var dictionary = new Dictionary<string, object>
+                    {
+                    { "@Trans", "Delete" },
+                    { "@Project_Type_Id", projectId},
+                    {"@Modified_By",userid }
+                    };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
+                    {
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/Projecttypeordertask/Delete", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Deleted Successfully");
+                                grid_Project_Type_Details();
+                                btn_Delete.Visible = false;
+                                btn_Clear_Click(sender, e);
+                            }
+                        }
+                    }
+                }              
+            }
+
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             ddl_Project_Type.ItemIndex = 0;
@@ -303,6 +354,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBoxControl_Task.SelectedIndex = 0;
             btn_Save.Text = "Submit";
             ddl_Project_Type.Enabled = true;
+            btn_Delete.Visible = false;
         }
 
         private async void grid_Project_Type_Details()
@@ -362,6 +414,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBoxControl_Task.UnCheckAll();
             //btn_Clear_Click(sender, e);
         }
+
+     
 
         private async void Getdata()
         {

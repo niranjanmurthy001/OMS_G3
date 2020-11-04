@@ -30,7 +30,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -49,9 +48,10 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -254,6 +254,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Clear);
             this.flowLayoutPanel1.Controls.Add(this.btn_Save);
+            this.flowLayoutPanel1.Controls.Add(this.btn_Delete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 372);
@@ -292,6 +293,22 @@ namespace Ordermanagement_01.Opp.Opp_Master
             this.btn_Save.Text = "Submit";
             this.btn_Save.ToolTip = "Submit/Update";
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btn_Delete.Appearance.Options.UseFont = true;
+            this.btn_Delete.Appearance.Options.UseForeColor = true;
+            this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_Delete.Location = new System.Drawing.Point(213, 3);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 38);
+            this.btn_Delete.TabIndex = 2;
+            this.btn_Delete.Text = "Delete";
+            this.btn_Delete.ToolTip = "Delete";
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // panelControl2
             // 
@@ -374,5 +391,6 @@ namespace Ordermanagement_01.Opp.Opp_Master
         private DevExpress.XtraEditors.SimpleButton btn_Save;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton btn_Delete;
     }
 }

@@ -392,7 +392,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 DataRow row = gridView1.GetDataRow(gridViewSelectedRows[i]);
                 //int Category_Id = int.Parse(row["Category_ID"].ToString());
                 Client_Name = row.ItemArray[0].ToString();
-                client_id = Convert.ToInt32(row.ItemArray[4]);
+                client_id = Convert.ToInt32(row.ItemArray[5]);
             }
             //_dtcopy.Columns.Remove("Client_Name");
             //_dtcopy.Columns.Remove("Order_Task");

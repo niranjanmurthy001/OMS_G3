@@ -114,6 +114,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Enter Efficiency Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_Efficiency_Source.Text = "";
                 return false;
             }
             return true;
@@ -142,13 +143,21 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt1.Rows.Count > 0)
+                                {
                                     int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                    if (count > 0)
+                                    string Efficiency_Source=dt1.Rows[0]["Order_Source_Type_Name"].ToString();
+                                    if(Efficiency_Source== _SourceType && btn_Save_EffSource.Text == "Edit")
+                                    {
+                                        return true;
+                                    }
+                                    else if (count > 0)
                                     {
                                         SplashScreenManager.CloseForm(false);
                                         XtraMessageBox.Show("Efficiency Source Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         return false;
                                     }
+                                }
                                 }
                             }
                         }
@@ -177,7 +186,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                     {
                         dictinsert.Add("@Trans", "INSERT");
                         dictinsert.Add("@Project_Type_Id", ddl_Project_Type.EditValue);
-                        dictinsert.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text);                       
+                        dictinsert.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text.Trim());                       
                         dictinsert.Add("@Status", "True");
                         dictinsert.Add("@Inserted_By", userid);
                       
@@ -209,7 +218,7 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         dictionaryedit.Add("@Trans", "UPDATE");
                         dictionaryedit.Add("@Order_Source_Type_ID", ID);
                         dictionaryedit.Add("@Project_Type_Id", ddl_Project_Type.EditValue);
-                        dictionaryedit.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text);
+                        dictionaryedit.Add("@Order_Source_Type_Name", txt_Efficiency_Source.Text.Trim());
                         dictionaryedit.Add("@Status", "True");
                         dictionaryedit.Add("@Modified_By", userid);
                       

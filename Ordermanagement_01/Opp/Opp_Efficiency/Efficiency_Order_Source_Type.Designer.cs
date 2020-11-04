@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +47,7 @@
             this.btn_Export = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Add_New = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Delete_Multiple = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -165,7 +164,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Employee_Source_id";
-            this.gridColumn4.FieldName = "Employee_Source_id";
+            this.gridColumn4.FieldName = "Order_Source_Type_ID";
             this.gridColumn4.Name = "gridColumn4";
             // 
             // gridColumn5
@@ -175,7 +174,7 @@
             this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn5.Caption = "Employee Source";
-            this.gridColumn5.FieldName = "Employee_source";
+            this.gridColumn5.FieldName = "Order_Source_Type_Name";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;

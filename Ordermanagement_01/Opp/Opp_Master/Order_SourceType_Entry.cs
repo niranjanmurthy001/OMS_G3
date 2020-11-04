@@ -206,6 +206,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Please Enter Source Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_Source_Type.Text="";
                 return false;
             }
             return true;
@@ -240,13 +241,23 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                    if (count > 0)
+                                  
+                                    if (dt1.Rows.Count > 0)
                                     {
-                                        SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("Source Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        return false;
+                                        int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                        string Order_Source = dt1.Rows[0]["Employee_source"].ToString();
+                                        if (Order_Source == _SourceType && btn_SaveSource.Text == "Edit")
+                                        {
+                                            return true;
+                                        }
+                                        else if(count>0)
+                                        {
+                                            SplashScreenManager.CloseForm(false);
+                                            XtraMessageBox.Show("Source Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            return false;
+                                        }
                                     }
+                                   
                                 }
                             }
                         }
@@ -267,7 +278,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         public async void btn_SaveSource_Click(object sender, EventArgs e)
         {
            
-            SourceTypeTxt = txt_Source_Type.Text;
+            SourceTypeTxt = txt_Source_Type.Text.Trim();
             ProjectValue = Convert.ToInt32(lookUpEdit_Project_Type.EditValue);
             if (btn_SaveSource.Text == "Save" && Validate() != false && (await CheckSourcre()) != false)
             {

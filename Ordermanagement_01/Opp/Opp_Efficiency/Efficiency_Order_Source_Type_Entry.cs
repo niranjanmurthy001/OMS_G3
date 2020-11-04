@@ -129,10 +129,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 dr[0] = 0;
                                 dt.Rows.InsertAt(dr, 0);
                                 ddl_Source_Type.Properties.DataSource = dt;
-                                ddl_Source_Type.Properties.DisplayMember = "Employee_source";
-                                ddl_Source_Type.Properties.ValueMember = "Employee_Source_id";
+                                ddl_Source_Type.Properties.DisplayMember = "Order_Source_Type_Name";
+                                ddl_Source_Type.Properties.ValueMember = "Order_Source_Type_ID";
                                 DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee_source");
+                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Source_Type_Name");
                                 ddl_Source_Type.Properties.Columns.Add(col);
                             }
                             else

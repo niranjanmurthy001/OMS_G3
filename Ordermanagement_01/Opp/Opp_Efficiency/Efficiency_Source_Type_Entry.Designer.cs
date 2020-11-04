@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -149,10 +148,13 @@
             // 
             // txt_Efficiency_Source
             // 
+            this.txt_Efficiency_Source.EditValue = "";
             this.txt_Efficiency_Source.Location = new System.Drawing.Point(159, 106);
             this.txt_Efficiency_Source.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txt_Efficiency_Source.Name = "txt_Efficiency_Source";
-            this.txt_Efficiency_Source.Properties.NullText = "Enter Source Type...";
+            this.txt_Efficiency_Source.Properties.NullValuePrompt = "Enter Source Type...";
+            this.txt_Efficiency_Source.Properties.NullValuePromptShowForEmptyValue = true;
+            this.txt_Efficiency_Source.Properties.ShowNullValuePromptWhenFocused = true;
             this.txt_Efficiency_Source.Size = new System.Drawing.Size(184, 71);
             this.txt_Efficiency_Source.TabIndex = 1;
             // 

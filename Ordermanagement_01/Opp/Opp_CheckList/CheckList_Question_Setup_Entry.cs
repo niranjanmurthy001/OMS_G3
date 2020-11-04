@@ -397,12 +397,21 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
                                     DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                    if (count > 0)
+                                    if (dt1.Rows.Count > 0)
                                     {
-                                        SplashScreenManager.CloseForm(false);
-                                        XtraMessageBox.Show("CheckList Type Question  Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        return false;
+                                        int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                        int Ref_Checklist_Master_Type_Id = Convert.ToInt32(dt1.Rows[0]["Ref_Checklist_Master_Type_Id"].ToString());
+                                        string Question = dt1.Rows[0]["Question"].ToString(); 
+                                        if (Question== QuestionValue && Ref_Checklist_Master_Type_Id== checklistValue && btn_SaveQs.Text== "Edit")
+                                        {
+                                            return true;
+                                        }
+                                        if (count > 0)
+                                        {
+                                            SplashScreenManager.CloseForm(false);
+                                            XtraMessageBox.Show("CheckList Type Question  Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            return false;
+                                        }
                                     }
                                 }
                             }

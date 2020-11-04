@@ -134,7 +134,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -236,7 +236,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show("Error", "Please Contact Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show( "Please Contact Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -325,7 +325,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         var dictinsert = new Dictionary<string, object>();
                         {
                             dictinsert.Add("@Trans", "INSERT_TYPE");
-                            dictinsert.Add("@Order_Type", txt_Type.Text);
+                            dictinsert.Add("@Order_Type", txt_Type.Text.Trim());
                             dictinsert.Add("@Order_Type_Abrivation", _abbrivation);
                             dictinsert.Add("@Project_Type_Id", ddl_ProjectType_Type.EditValue);
                             dictinsert.Add("@ProductType_Id", ddl_Product_Type.EditValue);
@@ -361,7 +361,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             dictionaryedit.Add("@Trans", "UPDATE_TYPE");
                             dictionaryedit.Add("@Order_Type_ID", ID);
-                            dictionaryedit.Add("@Order_Type", txt_Type.Text);
+                            dictionaryedit.Add("@Order_Type", txt_Type.Text.Trim());
                             dictionaryedit.Add("@Order_Type_Abrivation", _abbrivation);
                             dictionaryedit.Add("@Project_Type_Id", ddl_ProjectType_Type.EditValue);
                             dictionaryedit.Add("@ProductType_Id", ddl_Product_Type.EditValue);
@@ -420,7 +420,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         var dictinsert = new Dictionary<string, object>();
                         {
                             dictinsert.Add("@Trans", "INSERT_ABS");
-                            dictinsert.Add("@Order_Type_Abbreviation", txt_Abs.Text);
+                            dictinsert.Add("@Order_Type_Abbreviation", txt_Abs.Text.Trim());
                             dictinsert.Add("@Project_Type_Id", ddl_ProjectType_Abs.EditValue);
                             dictinsert.Add("@ProductType_Id", ddl_Product_Type_Abs.EditValue);
                             dictinsert.Add("@Status", _status);
@@ -453,7 +453,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         {
                             dictionaryedit.Add("@Trans", "UPDATE_ABS");
                             dictionaryedit.Add("@OrderType_ABS_Id", ID);
-                            dictionaryedit.Add("@Order_Type_Abbreviation", txt_Abs.Text);
+                            dictionaryedit.Add("@Order_Type_Abbreviation", txt_Abs.Text.Trim());
                             dictionaryedit.Add("@Project_Type_Id", ddl_ProjectType_Abs.EditValue);
                             dictionaryedit.Add("@ProductType_Id", ddl_Product_Type_Abs.EditValue);
                             dictionaryedit.Add("@Status", _status);
@@ -546,6 +546,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 XtraMessageBox.Show("Please Enter Sub Product Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Type.Focus();
+                txt_Type.Text = "";
                 return false;
             }          
             return true;
@@ -569,6 +570,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 XtraMessageBox.Show("Please Enter Sub Product Type Abs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_Abs.Focus();
+                txt_Abs.Text = "";
                 return false;
             }
             return true;
@@ -598,12 +600,21 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                if (count > 0)
+                                if (dt1.Rows.Count > 0)
                                 {
-                                    SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Sub Product Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    return false;
+                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                    string Order_Type = dt1.Rows[0]["Order_Type"].ToString();
+                                    int OrderType_ABS_Id= Convert.ToInt32(dt1.Rows[0]["OrderType_ABS_Id"].ToString());
+                                    if (Order_Type == SubproductType && OrderType_ABS_Id== SubproductTypeAbsId && btn_Save_Type.Text == "Edit") 
+                                    {
+                                        return true;
+                                    }
+                                    else if (count > 0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("Sub Product Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        return false;
+                                    }
                                 }
                             }
                         }
@@ -645,12 +656,20 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
-                                int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
-                                if (count > 0)
+                                if (dt1.Rows.Count > 0)
                                 {
-                                    SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Sub Product Type Abs Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    return false;
+                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                    string Order_Type_Abbreviation = dt1.Rows[0]["Order_Type_Abbreviation"].ToString();
+                                    if (Order_Type_Abbreviation== SubproductType && btn_Save_Abs.Text == "Edit")
+                                    {
+                                        return true;
+                                    }
+                                    if (count > 0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("Sub Product Type Abs Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        return false;
+                                    }
                                 }
                             }
                         }

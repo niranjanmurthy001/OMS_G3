@@ -92,18 +92,16 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         for (int i = 0; i < gridViewSelectedRows.Count; i++)
                         {
                             DataRow row = gridView_Efficiency_Src.GetDataRow(gridViewSelectedRows[i]);
-                            //int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
-                            int ProjectID = int.Parse(row["Project_Type_Id"].ToString());
-                            int SourceId = int.Parse(row["Employee_Source_id"].ToString());
-                            int StateId = int.Parse(row["State_ID"].ToString());
-                            int CountyId = int.Parse(row["County_ID"].ToString());
+                            int Source_Id = int.Parse(row["EmpEff_OrderSourceType_Id"].ToString());
+                            //int ProjectID = int.Parse(row["Project_Type_Id"].ToString());
+                            //int SourceId = int.Parse(row["Employee_Source_id"].ToString());
+                            //int StateId = int.Parse(row["State_ID"].ToString());
+                            //int CountyId = int.Parse(row["County_ID"].ToString());
+
                             var dictionary = new Dictionary<string, object>()
                 {
                     { "@Trans", "DELETE" },
-                    { "@Project_Type_Id", ProjectID },
-                    { "@Employee_Source_id", SourceId },
-                    { "@State_ID", StateId },
-                    { "@County_ID", CountyId },
+                    { "@Employee_Source_id", Source_Id },
                     {"@Modified_By" ,User_Id}
                 };
                             var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");

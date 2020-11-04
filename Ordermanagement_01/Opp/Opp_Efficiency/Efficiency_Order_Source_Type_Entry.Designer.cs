@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Clear = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Save = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ddl_Source_Type = new DevExpress.XtraEditors.LookUpEdit();
             this.ddl_ProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.chk_All = new DevExpress.XtraEditors.CheckEdit();
             this.chk_County = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -43,19 +43,18 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.ddl_Source_Type = new DevExpress.XtraEditors.LookUpEdit();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Source_Type.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_All.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_County)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_State.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Source_Type.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -157,6 +156,16 @@
             this.panelControl1.Size = new System.Drawing.Size(382, 308);
             this.panelControl1.TabIndex = 1;
             // 
+            // ddl_Source_Type
+            // 
+            this.ddl_Source_Type.Location = new System.Drawing.Point(128, 87);
+            this.ddl_Source_Type.Name = "ddl_Source_Type";
+            this.ddl_Source_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ddl_Source_Type.Properties.NullText = "SELECT";
+            this.ddl_Source_Type.Size = new System.Drawing.Size(207, 20);
+            this.ddl_Source_Type.TabIndex = 6;
+            // 
             // ddl_ProjectType
             // 
             this.ddl_ProjectType.Location = new System.Drawing.Point(128, 33);
@@ -179,6 +188,7 @@
             // 
             // chk_County
             // 
+            this.chk_County.CheckOnClick = true;
             this.chk_County.Cursor = System.Windows.Forms.Cursors.Default;
             this.chk_County.Location = new System.Drawing.Point(128, 188);
             this.chk_County.Name = "chk_County";
@@ -248,16 +258,6 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
             // 
-            // ddl_Source_Type
-            // 
-            this.ddl_Source_Type.Location = new System.Drawing.Point(128, 87);
-            this.ddl_Source_Type.Name = "ddl_Source_Type";
-            this.ddl_Source_Type.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ddl_Source_Type.Properties.NullText = "SELECT";
-            this.ddl_Source_Type.Size = new System.Drawing.Size(207, 20);
-            this.ddl_Source_Type.TabIndex = 6;
-            // 
             // Efficiency_Order_Source_Type_Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,11 +280,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddl_Source_Type.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_ProjectType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_All.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chk_County)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddl_State.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddl_Source_Type.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

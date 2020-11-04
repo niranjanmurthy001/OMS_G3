@@ -204,10 +204,10 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 dt1.Rows.InsertAt(dr, 0);
                             }
                             ddl_Order_task.Properties.DataSource = dt1;
-                            ddl_Order_task.Properties.DisplayMember = "Progress_Status";
-                            ddl_Order_task.Properties.ValueMember = "Order_Progress_Id";
+                            ddl_Order_task.Properties.DisplayMember = "Order_Status";
+                            ddl_Order_task.Properties.ValueMember = "Order_Status_ID";
                             DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Progress_Status");
+                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Order_Status");
                             ddl_Order_task.Properties.Columns.Add(col);
 
                         }

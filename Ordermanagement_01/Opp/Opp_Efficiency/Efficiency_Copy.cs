@@ -160,12 +160,12 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                 try
                 {
                     DataRowView r1 = Chk_Targetclient.GetItem(Chk_Targetclient.SelectedIndex) as DataRowView;
-                    _Targetclientid = Convert.ToInt32(r1["Client_Id"]);
+                   // _Targetclientid = Convert.ToInt32(r1["Client_Id"]);
                     foreach (object itemChecked in Chk_Targetclient.CheckedItems)
                     {
                         DataRowView _castedItem = itemChecked as DataRowView;
                         string Order_type = _castedItem["Client_Name"].ToString();
-                        Targetclientid = Convert.ToInt32(_castedItem["Client_Id"]);
+                        Targetclientid = Convert.ToInt32(_castedItem["Client"]);
                         SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                         var dictonary = new Dictionary<string, object>()
                     {

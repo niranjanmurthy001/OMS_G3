@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.pannelControl_Type = new DevExpress.XtraEditors.PanelControl();
             this.panelControl_Abs = new DevExpress.XtraEditors.PanelControl();
             this.groupControl_Abs = new DevExpress.XtraEditors.GroupControl();
