@@ -18,6 +18,7 @@ namespace Ordermanagement_01.Masters
     {
         int Project_Type_Id, priority_Id;
         int User_Id=1;
+        string priority;
         DataTable _dt = new DataTable();
         public Order_Priority()
         {
@@ -281,7 +282,7 @@ namespace Ordermanagement_01.Masters
             {
                 System.Data.DataRow rows = gridView1.GetDataRow(gridView1.FocusedRowHandle);
                 Project_Type_Id = Convert.ToInt32(rows["Project_Type_Id"].ToString());
-                string priority = rows["Order_Priority"].ToString();
+                priority = rows["Order_Priority"].ToString();
                 btn_Submit.Text = "Edit";
                 //var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Project_Type") == e.CellValue.ToString());
                 //var index = row.FirstOrDefault();
@@ -303,7 +304,9 @@ namespace Ordermanagement_01.Masters
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 var dictonary = new Dictionary<string, object>()
                 {
-                    {"@Trans","BIND_DATA_TO_GRID" }
+                    {"@Trans","CheckOrderPriority" },
+                    {"@Project_Type_Id",ddl_ProjectType.EditValue },
+                    { "@Order_Priority",txt_Priority.Text }
                 };
 
                 var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
@@ -316,20 +319,51 @@ namespace Ordermanagement_01.Masters
                         {
                             var result = await response.Content.ReadAsStringAsync();
                             DataTable dtmatch = JsonConvert.DeserializeObject<DataTable>(result);
-                            for (int i = 0; i < dtmatch.Rows.Count; i++)
+                            if(dtmatch.Rows.Count>0)
                             {
-                                string priorty = dtmatch.Rows[i]["Order_Priority"].ToString();
-                                int _projectid = Convert.ToInt32(dtmatch.Rows[i]["Project_Type_Id"]);
-                                int pro = Convert.ToInt32(ddl_ProjectType.EditValue);
-                                string prio = txt_Priority.Text;
-                                if (_projectid == pro && priorty == prio)
+                                int count = Convert.ToInt32(dtmatch.Rows[0]["count"].ToString());
+                                string priorty = dtmatch.Rows[0]["Order_Priority"].ToString();
+                                int _projectid = Convert.ToInt32(dtmatch.Rows[0]["Project_Type_Id"]);
+
+                                if(_projectid == Project_Type_Id && priorty == priority && btn_Submit.Text == "Edit")
                                 {
-                                    SplashScreenManager.CloseForm(false);
-                                    XtraMessageBox.Show("Project_Type and Priority Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    return false;
+                                    return true;
+                                }
+                                else
+                                {
+                                    if(count>0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("Project_Type and Priority Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                          return false;
+                                    }
                                 }
 
+
                             }
+
+
+
+                            //for (int i = 0; i < dtmatch.Rows.Count; i++)
+                            //{
+
+
+                            //    //string priorty = dtmatch.Rows[i]["Order_Priority"].ToString();
+                            //    //int _projectid = Convert.ToInt32(dtmatch.Rows[i]["Project_Type_Id"]);
+                            //    //int pro = Convert.ToInt32(ddl_ProjectType.EditValue);
+                            //    //string prio = txt_Priority.Text;
+                            //    //if (pro == Project_Type_Id && prio == priority && btn_Submit.Text == "Edit" )
+                            //    //{
+                            //    //    return true;
+                            //    //}
+                            //    //else if(pro == Project_Type_Id && prio == priority)
+                            //    //{
+                            //    //    SplashScreenManager.CloseForm(false);
+                            //    //    XtraMessageBox.Show("Project_Type and Priority Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            //    //    return false;
+                            //    //}
+
+                            //}
                         }
                     }
                 }

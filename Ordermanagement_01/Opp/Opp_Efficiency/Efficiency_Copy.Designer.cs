@@ -104,6 +104,8 @@
             // 
             // Chk_Targetclient
             // 
+            this.Chk_Targetclient.CheckMode = DevExpress.XtraEditors.CheckMode.Single;
+            this.Chk_Targetclient.CheckOnClick = true;
             this.Chk_Targetclient.Cursor = System.Windows.Forms.Cursors.Default;
             this.Chk_Targetclient.Location = new System.Drawing.Point(129, 91);
             this.Chk_Targetclient.Name = "Chk_Targetclient";

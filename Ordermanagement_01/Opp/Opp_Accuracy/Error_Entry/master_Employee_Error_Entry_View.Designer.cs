@@ -53,6 +53,7 @@
             this.grdIntCol_ErrorInfo_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdIntCol_ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdIntCol_Updated_By = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grd_Entered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdIntCol_New_Error_Type_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdIntCol_Remove = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpHypEditInt_Remove = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
@@ -68,16 +69,15 @@
             this.grdCol_User_Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdColError_Task = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdColUpdated_By = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdentered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdCol_Remove = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repHypLnk_Remove = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridCol_Task_Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdCol_ErrorInfo_Id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdCol_New_Error_Type_Id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grdCol_Remove = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repHypLnk_Remove = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.grdCol_TaskId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lbl_Header = new DevExpress.XtraEditors.LabelControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.grd_Entered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grdentered_Date = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -425,6 +425,20 @@
             this.grdIntCol_Updated_By.VisibleIndex = 7;
             this.grdIntCol_Updated_By.Width = 82;
             // 
+            // grd_Entered_Date
+            // 
+            this.grd_Entered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grd_Entered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.grd_Entered_Date.AppearanceHeader.Options.UseFont = true;
+            this.grd_Entered_Date.AppearanceHeader.Options.UseForeColor = true;
+            this.grd_Entered_Date.Caption = "Entered Date";
+            this.grd_Entered_Date.FieldName = "Entered_Date";
+            this.grd_Entered_Date.Name = "grd_Entered_Date";
+            this.grd_Entered_Date.OptionsColumn.AllowEdit = false;
+            this.grd_Entered_Date.Visible = true;
+            this.grd_Entered_Date.VisibleIndex = 8;
+            this.grd_Entered_Date.Width = 56;
+            // 
             // grdIntCol_New_Error_Type_id
             // 
             this.grdIntCol_New_Error_Type_id.Caption = "New_Error_Type_Id";
@@ -612,6 +626,39 @@
             this.grdColUpdated_By.Visible = true;
             this.grdColUpdated_By.VisibleIndex = 7;
             // 
+            // grdentered_Date
+            // 
+            this.grdentered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdentered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.grdentered_Date.AppearanceHeader.Options.UseFont = true;
+            this.grdentered_Date.AppearanceHeader.Options.UseForeColor = true;
+            this.grdentered_Date.Caption = "Entered Date";
+            this.grdentered_Date.FieldName = "Entered_Date";
+            this.grdentered_Date.Name = "grdentered_Date";
+            this.grdentered_Date.OptionsColumn.AllowEdit = false;
+            this.grdentered_Date.Visible = true;
+            this.grdentered_Date.VisibleIndex = 8;
+            // 
+            // grdCol_Remove
+            // 
+            this.grdCol_Remove.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdCol_Remove.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.grdCol_Remove.AppearanceHeader.Options.UseFont = true;
+            this.grdCol_Remove.AppearanceHeader.Options.UseForeColor = true;
+            this.grdCol_Remove.Caption = "Remove";
+            this.grdCol_Remove.ColumnEdit = this.repHypLnk_Remove;
+            this.grdCol_Remove.Name = "grdCol_Remove";
+            this.grdCol_Remove.OptionsColumn.AllowEdit = false;
+            this.grdCol_Remove.Visible = true;
+            this.grdCol_Remove.VisibleIndex = 9;
+            // 
+            // repHypLnk_Remove
+            // 
+            this.repHypLnk_Remove.AutoHeight = false;
+            this.repHypLnk_Remove.Caption = "Remove";
+            this.repHypLnk_Remove.Name = "repHypLnk_Remove";
+            this.repHypLnk_Remove.NullText = "Remove";
+            // 
             // gridCol_Task_Id
             // 
             this.gridCol_Task_Id.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -644,26 +691,6 @@
             this.grdCol_New_Error_Type_Id.Name = "grdCol_New_Error_Type_Id";
             this.grdCol_New_Error_Type_Id.OptionsColumn.AllowEdit = false;
             // 
-            // grdCol_Remove
-            // 
-            this.grdCol_Remove.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdCol_Remove.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.grdCol_Remove.AppearanceHeader.Options.UseFont = true;
-            this.grdCol_Remove.AppearanceHeader.Options.UseForeColor = true;
-            this.grdCol_Remove.Caption = "Remove";
-            this.grdCol_Remove.ColumnEdit = this.repHypLnk_Remove;
-            this.grdCol_Remove.Name = "grdCol_Remove";
-            this.grdCol_Remove.OptionsColumn.AllowEdit = false;
-            this.grdCol_Remove.Visible = true;
-            this.grdCol_Remove.VisibleIndex = 9;
-            // 
-            // repHypLnk_Remove
-            // 
-            this.repHypLnk_Remove.AutoHeight = false;
-            this.repHypLnk_Remove.Caption = "Remove";
-            this.repHypLnk_Remove.Name = "repHypLnk_Remove";
-            this.repHypLnk_Remove.NullText = "Remove";
-            // 
             // grdCol_TaskId
             // 
             this.grdCol_TaskId.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -690,33 +717,6 @@
             // defaultLookAndFeel1
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
-            // 
-            // grd_Entered_Date
-            // 
-            this.grd_Entered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grd_Entered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.grd_Entered_Date.AppearanceHeader.Options.UseFont = true;
-            this.grd_Entered_Date.AppearanceHeader.Options.UseForeColor = true;
-            this.grd_Entered_Date.Caption = "Entered Date";
-            this.grd_Entered_Date.FieldName = "Entered_Date";
-            this.grd_Entered_Date.Name = "grd_Entered_Date";
-            this.grd_Entered_Date.OptionsColumn.AllowEdit = false;
-            this.grd_Entered_Date.Visible = true;
-            this.grd_Entered_Date.VisibleIndex = 8;
-            this.grd_Entered_Date.Width = 56;
-            // 
-            // grdentered_Date
-            // 
-            this.grdentered_Date.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdentered_Date.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
-            this.grdentered_Date.AppearanceHeader.Options.UseFont = true;
-            this.grdentered_Date.AppearanceHeader.Options.UseForeColor = true;
-            this.grdentered_Date.Caption = "Entered Date";
-            this.grdentered_Date.FieldName = "Entered_Date";
-            this.grdentered_Date.Name = "grdentered_Date";
-            this.grdentered_Date.OptionsColumn.AllowEdit = false;
-            this.grdentered_Date.Visible = true;
-            this.grdentered_Date.VisibleIndex = 8;
             // 
             // master_Employee_Error_Entry_View
             // 

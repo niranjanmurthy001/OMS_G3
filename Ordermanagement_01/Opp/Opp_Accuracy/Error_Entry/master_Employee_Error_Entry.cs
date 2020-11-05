@@ -1167,6 +1167,7 @@ namespace Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry
                                 var result = await response.Content.ReadAsStringAsync();
                                 DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
                                 int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                               
                                 if (count > 0)
                                 {
                                     SplashScreenManager.CloseForm(false);

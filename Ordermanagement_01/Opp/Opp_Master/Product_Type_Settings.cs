@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -21,6 +22,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int projectId;
 
         int productid;
+
+        int projIdvalue;
+        string prodTypeValue;
 
 
         public object ProductValue { get; private set; }
@@ -156,7 +160,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ProjectValue = Convert.ToInt32(ddlProjectType.EditValue);
             ProductValue = txtProductType.Text;
 
-            if (btnSubmit.Text == "Submit" && validate() != false)
+            if (btnSubmit.Text == "Submit" && validate() != false && (await MatchData()) != false)
             {
                 try
                 {
@@ -201,7 +205,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 }
 
             }
-            else if (btnSubmit.Text == "Edit" && Validate() != false)
+            else if (btnSubmit.Text == "Edit" && Validate() != false && (await MatchData()) != false)
             {
                 try
                 {
@@ -276,6 +280,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddlProjectType.Enabled = false;
                     txtProductType.Text = index.ItemArray[0].ToString();
                     productid = Convert.ToInt32(index.ItemArray[2]);
+                    projIdvalue = Convert.ToInt32(ddlProjectType.EditValue);
+                    prodTypeValue = txtProductType.Text;
+
                 }
             }
             catch (Exception ex)
@@ -350,6 +357,70 @@ namespace Ordermanagement_01.Opp.Opp_Master
             finally
             {
                 SplashScreenManager.CloseForm(false);
+            }
+        }
+        private async Task<bool> MatchData()
+        {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","CheckProductType" },
+                    {"@ProjectType_Id",ddlProjectType.EditValue },
+                    { "@Product_Type",txtProductType.Text }
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ProdutTypeSettings/Check", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dtmatch = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dtmatch.Rows.Count > 0)
+                            {
+                                int count = Convert.ToInt32(dtmatch.Rows[0]["count"].ToString());
+                                string priorty = dtmatch.Rows[0]["Product_Type"].ToString();
+                                int _projectid = Convert.ToInt32(dtmatch.Rows[0]["Project_Type_Id"]);
+
+                                if (_projectid == projIdvalue && priorty == prodTypeValue && btnSubmit.Text == "Edit")
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    if (count > 0)
+                                    {
+                                        SplashScreenManager.CloseForm(false);
+                                        XtraMessageBox.Show("Product Type Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        return false;
+                                    }
+                                }
+
+
+                            }
+
+
+
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+
             }
         }
     }

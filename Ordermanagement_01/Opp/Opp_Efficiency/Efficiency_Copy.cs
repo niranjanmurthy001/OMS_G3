@@ -168,13 +168,13 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                         Targetclientid = Convert.ToInt32(_castedItem["Client"]);
                         SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                         var dictonary = new Dictionary<string, object>()
-                    {
+                       {
                         {"@Trans","INSERT" },
                         {"@from_Client",ddl_client_from.EditValue },
                         {"@Targett_Client",Targetclientid }
 
 
-                    };
+                        };
                         var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
                         using (var httpclient = new HttpClient())
                         {
@@ -184,23 +184,27 @@ namespace Ordermanagement_01.Opp.Opp_Efficiency
                                 if (response.StatusCode == HttpStatusCode.OK)
                                 {
                                     var result = await response.Content.ReadAsStringAsync();
-                                    SplashScreenManager.CloseForm(false);
-                                    clear();
-                                    XtraMessageBox.Show("Submitted Successfully");
-                                    this.Mainform.BindCategorySalaryBracket();
-                                    this.Mainform.Enabled = true;
-                                    this.Close();
+                                   
 
                                 }
                             }
 
                         }
                     }
+                    
+                    clear();
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Submitted Successfully");
+                    this.Mainform.BindCategorySalaryBracket();
+                    this.Mainform.Enabled = true;
+                    this.Close();
+
 
                 }
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("An Error Occured ! Please Contact Admin","Error");
                 }
                 finally
                 {
