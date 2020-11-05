@@ -363,7 +363,7 @@ namespace Ordermanagement_01.Opp.Opp_CheckList
                                     int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
                                     string mstrtype = dt1.Rows[0]["Checklist_Master_Type"].ToString();
                                     int projtype = Convert.ToInt32(dt1.Rows[0]["Project_Type_Id"].ToString());
-                                    if (mstrtype == chkListTypeVaue && btn_Save.Text=="Edit")
+                                    if (mstrtype == chkListTypeVaue && ProjectType_IdValue== projtype && btn_Save.Text=="Edit")
                                     {
                                         return true;
                                     }

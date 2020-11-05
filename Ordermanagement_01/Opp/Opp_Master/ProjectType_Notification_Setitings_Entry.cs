@@ -9,6 +9,7 @@ using System.Data;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
@@ -49,9 +50,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     btnSave.Text = Editbtn_name;
                     txtMessage.Text = ViewMsgtext;
                 }
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Something Went Wrong");
@@ -121,7 +122,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtMessage.Text) )
+            if (string.IsNullOrWhiteSpace(txtMessage.Text))
             {
                 XtraMessageBox.Show("Please Enter Message", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -133,7 +134,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             projectvalue = Convert.ToInt32(ddlProjectType.EditValue);
             Messagetext = txtMessage.Text;
-            if (btnSave.Text == "Save" && validation() != false)
+            if (btnSave.Text == "Save" && validation() != false && (await CheckMessage()) != false)
             {
                 try
                 {
@@ -182,7 +183,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     SplashScreenManager.CloseForm(false);
                 }
             }
-            else if (btnSave.Text == "Edit" && validation() != false && Upload_Id != 0)
+            else if (btnSave.Text == "Edit" && validation() != false && Upload_Id != 0 && (await CheckMessage()) != false)
             {
                 try
                 {
@@ -211,7 +212,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 Clear();
                                 XtraMessageBox.Show("Updated Successfully");
                                 this.mainform.BindGrid();
-                               
+
                                 Upload_Id = 0;
                                 btnSave.Text = "Save";
                                 Operation_Type = "Insert";
@@ -260,12 +261,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void txtMessage_MouseClick(object sender, MouseEventArgs e)
         {
-            if(txtMessage.Text== "Enter Message....")
+            if (txtMessage.Text == "Enter Message....")
             {
                 txtMessage.Text = "";
                 txtMessage.ForeColor = System.Drawing.Color.Black;
             }
-           
+
         }
 
         private void txtMessage_MouseEnter(object sender, EventArgs e)
@@ -274,6 +275,70 @@ namespace Ordermanagement_01.Opp.Opp_Master
             {
                 txtMessage.Text = "";
                 txtMessage.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+        private async Task<bool> CheckMessage()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (validation() != false)
+                {
+                    var dictionary = new Dictionary<string, object>()
+                     {
+                        { "@Trans", "CheckMessage" },
+                        { "@Project_Type_Id",ddlProjectType.EditValue },
+
+                        { "@Message",txtMessage.Text } ,
+
+                     };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpClient = new HttpClient())
+                    {
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ProjectTypeNotificationSetting/Check", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                DataTable dt1 = JsonConvert.DeserializeObject<DataTable>(result);
+                                if (dt1.Rows.Count > 0)
+                                {
+                                    int count = Convert.ToInt32(dt1.Rows[0]["count"].ToString());
+                                    string msg = dt1.Rows[0]["Message"].ToString();
+                                    int projtypeId = Convert.ToInt32(dt1.Rows[0]["Project_Type_Id"].ToString());
+                                    if (msg == ViewMsgtext && ProjectTypeId == projtypeId && btnSave.Text == "Edit")
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+
+
+                                        if (count > 0)
+                                        {
+                                            SplashScreenManager.CloseForm(false);
+                                            XtraMessageBox.Show("Message Already Exists", "Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            return false;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    //}
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
             }
         }
     }
