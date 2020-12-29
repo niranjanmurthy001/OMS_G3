@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using DevExpress.XtraBars.Alerter;
 using DevExpress.XtraSplashScreen;
 using Microsoft.Office.Interop.Excel;
 using Newtonsoft.Json;
@@ -110,8 +111,9 @@ namespace Ordermanagement_01
         decimal e2;
         TimeSpan prod_t, Ideal_t, Break_t, Total_t;
         int Production_Time, Ideal_Time, Break_Time, Total_Time;
-
+        int Application_Login_Type;
         Thread syncThread = null;
+        string User_namefornotify;
         System.Timers.Timer timer_Dash;
 
         //----------------------Background Work Thread --------------------
@@ -119,7 +121,7 @@ namespace Ordermanagement_01
         private BackgroundWorker Dash_Board_Worker = new BackgroundWorker();
 
 
-        public AdminDashboard(string User_Role, string user_id, string User_name, string Password)
+        public AdminDashboard(string User_Role, string user_id, string User_name, string Password, int Login_Type)
         {
 
             SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
@@ -134,10 +136,10 @@ namespace Ordermanagement_01
 
                 lbl_username.Text = User_name;
                 ToolStripButton12.Text = User_name + " Profile";
-
+                this.User_namefornotify = User_name;
                 Load_AutomaticEmails();
                 this.Password = Password;
-
+                this.Application_Login_Type = Login_Type;
 
                 Dash_Board_Worker.DoWork += new DoWorkEventHandler(Dash_Board_Worker_DoWork);
                 Dash_Board_Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Dash_Board_Worker_RunWorkerCompleted);
@@ -1084,8 +1086,8 @@ namespace Ordermanagement_01
 
 
                 // popup style notification
-                Ordermanagement_01.Gen_Forms.Popup_ToastStyle pop_Style = new Ordermanagement_01.Gen_Forms.Popup_ToastStyle();
-                pop_Style.Show();
+                //Ordermanagement_01.Gen_Forms.Popup_ToastStyle pop_Style = new Ordermanagement_01.Gen_Forms.Popup_ToastStyle();
+                //pop_Style.Show();
 
 
                 tabControl1.TabPages.Remove(tabPage2);
@@ -1095,7 +1097,12 @@ namespace Ordermanagement_01
                 // notification icon
 
                 // notifyIcon1.ShowBalloonTip(1000, "Important Notice :", "Logged In successfully", ToolTipIcon.Info);
+                //Opp.Opp_Master.PopUp_Message_Style pop = new Opp.Opp_Master.PopUp_Message_Style();
+                //pop.Show();
+                AlertInfo info = new AlertInfo("Login Successfully", User_namefornotify, true);
 
+                info.Image = Properties.Resources.ok_Icon;
+                alertControl2.Show(this, info);
             }
             catch (Exception ex)
             {
@@ -7437,7 +7444,7 @@ namespace Ordermanagement_01
         {
             if (Validate_User_Access(34) != false)
             {
-                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password);
+                User_Access_Control user_Access_Control = new User_Access_Control(User_Role_Id, userid.ToString(), lbl_username.Text, Password, Application_Login_Type);
                 user_Access_Control.Show();
             }
         }
@@ -31902,16 +31909,27 @@ namespace Ordermanagement_01
             }
         }
 
-        private void orderEntryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Ordermanagement_01.New_Dashboard.Orders.OrderEntry orderentry = new New_Dashboard.Orders.OrderEntry();
-            orderentry.Show();
-        }
-
         private void processSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.New_Dashboard.Settings.Process_Settings processsettings = new New_Dashboard.Settings.Process_Settings();
-            processsettings.Show();
+            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
+            try
+            {
+                Ordermanagement_01.Opp.Opp_Master.Project_Type_Order_Task pt = new Opp.Opp_Master.Project_Type_Order_Task(userid);
+                pt.Show();
+            }
+            catch (Exception ex)
+            {
+
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+
+                MessageBox.Show("Error Occured Please Check With Administrator");
+            }
+            finally
+            {
+                //Close Wait Form
+                SplashScreenManager.CloseForm(false);
+            }
         }
 
         private void btn_Image_req_Allocation_Click(object sender, EventArgs e)
@@ -32075,7 +32093,7 @@ namespace Ordermanagement_01
 
         private void notificationToolStripbtn_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid);
+            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userid, Application_Login_Type);
             note.Show();
         }
 
@@ -32148,63 +32166,137 @@ namespace Ordermanagement_01
 
         private void orderTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
-            try
-            {
-                Ordermanagement_01.Opp.Opp_Master.Project_Type_Order_Task pt = new Opp.Opp_Master.Project_Type_Order_Task();
-                pt.Show();
-            }
-            catch (Exception ex)
-            {
 
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-
-                MessageBox.Show("Error Occured Please Check With Administrator");
-            }
-            finally
-            {
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-            }
+            Ordermanagement_01.Opp.Opp_Master.project_Type_OrderStatus_Setting os = new Opp.Opp_Master.project_Type_OrderStatus_Setting(userid, Convert.ToInt32(User_Role_Id));
+            os.Show();
 
         }
 
-        private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SplashScreenManager.ShowForm(this, typeof(Ordermanagement_01.Masters.WaitForm1), true, true, false);
-            try
-            {
-                Ordermanagement_01.Opp.Opp_Master.Project_Type_OrderStatus_Settings os = new Opp.Opp_Master.Project_Type_OrderStatus_Settings(userid, Convert.ToInt32(User_Role_Id));
+        //private void orderStatusToolStripMenuItem1_Click(object sender, EventArgs e)
+        //{
 
-                os.Show();
-            }
-            catch (Exception ex)
-            {
-
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-
-                MessageBox.Show("Error Occured Please Check With Administrator");
-            }
-            finally
-            {
-                //Close Wait Form
-                SplashScreenManager.CloseForm(false);
-            }
-        }
+        //    Ordermanagement_01.Opp.Opp_Master.Error_Setting _errorsetting = new Opp.Opp_Master.Error_Setting(userid, int.Parse(User_Role_Id.ToString()));
+        //    _errorsetting.Show();
+        //}
 
         private void projectTypeSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
-            pr.Show();
+
+            Ordermanagement_01.New_Dashboard.Settings.Process_Settings processsettings = new New_Dashboard.Settings.Process_Settings();
+            processsettings.Show();
         }
 
         private void errorTabSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Master.Error_Setting _errorsetting = new Opp.Opp_Master.Error_Setting(userid, int.Parse(User_Role_Id.ToString()));
-            _errorsetting.Show();
+            Opp.Opp_Master.Order_SourceType_View sourcetype = new Opp.Opp_Master.Order_SourceType_View(Convert.ToInt32(User_Role_Id));
+            sourcetype.Show();
+
         }
+
+        private void effiecincyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Opp.Opp_Efficiency.Efficiency_View eff = new Opp.Opp_Efficiency.Efficiency_View(userid, Convert.ToInt32(User_Role_Id));
+            eff.Show();
+        }
+
+        private void orderEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Ordermanagement_01.Opp.Opp_Master.Product_Type_Settings pr = new Opp.Opp_Master.Product_Type_Settings();
+            pr.Show();
+        }
+
+        private void Error_Settings_Click(object sender, EventArgs e)
+        {
+            Opp.Opp_Master.Error_Settings errorsettings = new Opp.Opp_Master.Error_Settings(userid);
+            errorsettings.Show();
+        }
+
+        private void Efficiency_Salary_Bracket_Click(object sender, EventArgs e)
+        {
+            Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise salary = new Opp.Opp_Efficiency.Category_Salary_Bracket_ProjectWise(userid);
+            salary.Show();
+        }
+
+        private void Efficiecy_Source_Type_and_Project_Type_Click(object sender, EventArgs e)
+        {
+            Opp.Opp_Efficiency.Efficiency_Order_Source_Type effview = new Opp.Opp_Efficiency.Efficiency_Order_Source_Type(Convert.ToInt32(User_Role_Id));
+            effview.Show();
+        }
+
+        private void Order_Imports_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.New_Dashboard.Orders.ImportOrders importorder = new New_Dashboard.Orders.ImportOrders();
+            importorder.Show();
+        }
+
+        private void OrderEntrytoolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Ordermanagement_01.New_Dashboard.Orders.OrderEntry orderentry = new New_Dashboard.Orders.OrderEntry();
+            orderentry.Show();
+        }
+
+        private void Sub_Product_Type_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.Sub_Product_Type_View sub = new Opp.Opp_Master.Sub_Product_Type_View(userid);
+            sub.Show();
+        }
+
+        private void Client_Tat_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Efficiency.Client_TAT_View entry = new Opp.Opp_Efficiency.Client_TAT_View(userid, User_Role_Id);
+            entry.Show();
+        }
+
+        private void Checklist_Question_Entry_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_CheckList.CheckLists Q_Entry = new Opp.Opp_CheckList.CheckLists(1, 1, 1, 200226, 4, 24, 3, 1);
+            Q_Entry.Show();
+        }
+
+        private void Checklist_Master_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_CheckList.CheckList_Master_View view = new Opp.Opp_CheckList.CheckList_Master_View();
+            view.Show();
+        }
+
+        private void Checklist_Settings_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_CheckList.Checklist_Settings_View settingsview = new Opp.Opp_CheckList.Checklist_Settings_View(userid);
+            settingsview.Show();
+        }
+
+        private void Alert_Settings_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Efficiency.Alert_Setings alert = new Opp.Opp_Efficiency.Alert_Setings(userid);
+            alert.Show();
+        }
+
+        private void Project_Type_Notificationsettings_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Master.ProjectType_Notification_Settings_View notify = new Opp.Opp_Master.ProjectType_Notification_Settings_View(userid);
+            notify.Show();
+        }
+
+        private void errorEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View eee = new Opp.Opp_Accuracy.Error_Entry.master_Employee_Error_Entry_View(1, 1, 197, 1, 1, 25, "", "1", 10, 99870, "", "4");
+            eee.Show();
+        }
+
+        private void orderPriorityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Masters.Order_Priority op = new Masters.Order_Priority();
+            op.Show();
+        }
+
+        private void efficiencySourceTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ordermanagement_01.Opp.Opp_Efficiency.Efficiency_Source_Type est = new Opp.Opp_Efficiency.Efficiency_Source_Type(1);
+            est.Show();
+        }
+
+
 
         private void btn_Internal_Tax_Allocation_Click(object sender, EventArgs e)
         {

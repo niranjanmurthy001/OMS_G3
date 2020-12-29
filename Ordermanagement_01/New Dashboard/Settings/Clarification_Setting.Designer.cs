@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clarification_Setting));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
@@ -138,10 +139,10 @@
             this.btn_ClientEmailSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.label4 = new System.Windows.Forms.Label();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Ordermanagement_01.Masters.WaitForm1), true, true);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
@@ -337,6 +338,10 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn5.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn5.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn5.Caption = "S.No";
             this.gridColumn5.FieldName = "S_No";
             this.gridColumn5.Name = "gridColumn5";
@@ -354,6 +359,10 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn2.Caption = "Clarification Type";
             this.gridColumn2.FieldName = "Clarification_Category_Type";
             this.gridColumn2.Name = "gridColumn2";
@@ -364,6 +373,11 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn4.Caption = "Edit";
             this.gridColumn4.ColumnEdit = this.repositoryItemHyperLinkEdit2;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -379,6 +393,11 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn3.Caption = "Delete";
             this.gridColumn3.ColumnEdit = this.repositoryItemHyperLinkEdit1;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -428,35 +447,41 @@
             // 
             this.panel3.Controls.Add(this.btn_ClarificationClear);
             this.panel3.Controls.Add(this.btn_ClarificationSubmit);
-            this.panel3.Location = new System.Drawing.Point(190, 3);
+            this.panel3.Location = new System.Drawing.Point(202, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(168, 39);
+            this.panel3.Size = new System.Drawing.Size(156, 39);
             this.panel3.TabIndex = 0;
             // 
             // btn_ClarificationClear
             // 
-            this.btn_ClarificationClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_ClarificationClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ClarificationClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClarificationClear.Appearance.Options.UseFont = true;
             this.btn_ClarificationClear.Appearance.Options.UseForeColor = true;
-            this.btn_ClarificationClear.Location = new System.Drawing.Point(88, 5);
+            this.btn_ClarificationClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ClarificationClear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ClarificationClear.Location = new System.Drawing.Point(81, 0);
             this.btn_ClarificationClear.Name = "btn_ClarificationClear";
-            this.btn_ClarificationClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationClear.Size = new System.Drawing.Size(75, 39);
             this.btn_ClarificationClear.TabIndex = 1;
             this.btn_ClarificationClear.Text = "Clear";
+            this.btn_ClarificationClear.ToolTip = "Clear";
             this.btn_ClarificationClear.Click += new System.EventHandler(this.btn_Clear_Click_1);
             // 
             // btn_ClarificationSubmit
             // 
-            this.btn_ClarificationSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_ClarificationSubmit.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ClarificationSubmit.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClarificationSubmit.Appearance.Options.UseFont = true;
             this.btn_ClarificationSubmit.Appearance.Options.UseForeColor = true;
-            this.btn_ClarificationSubmit.Location = new System.Drawing.Point(7, 5);
+            this.btn_ClarificationSubmit.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ClarificationSubmit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ClarificationSubmit.Location = new System.Drawing.Point(0, 0);
             this.btn_ClarificationSubmit.Name = "btn_ClarificationSubmit";
-            this.btn_ClarificationSubmit.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClarificationSubmit.Size = new System.Drawing.Size(75, 39);
             this.btn_ClarificationSubmit.TabIndex = 0;
             this.btn_ClarificationSubmit.Text = "Save";
+            this.btn_ClarificationSubmit.ToolTip = "Save";
             this.btn_ClarificationSubmit.Click += new System.EventHandler(this.btn_Submit_Click_1);
             // 
             // panelControl2
@@ -615,8 +640,10 @@
             // 
             this.From_Email.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.From_Email.AppearanceCell.Options.UseFont = true;
-            this.From_Email.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.From_Email.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.From_Email.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.From_Email.AppearanceHeader.Options.UseFont = true;
+            this.From_Email.AppearanceHeader.Options.UseForeColor = true;
             this.From_Email.Caption = "Email_Id";
             this.From_Email.FieldName = "From_Email_Id";
             this.From_Email.Name = "From_Email";
@@ -701,10 +728,11 @@
             // 
             // btn_FromEmailDelete
             // 
-            this.btn_FromEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_FromEmailDelete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_FromEmailDelete.Appearance.Options.UseFont = true;
             this.btn_FromEmailDelete.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_FromEmailDelete.Location = new System.Drawing.Point(165, 3);
             this.btn_FromEmailDelete.Name = "btn_FromEmailDelete";
             this.btn_FromEmailDelete.Size = new System.Drawing.Size(75, 31);
@@ -716,10 +744,11 @@
             // 
             // btn_FromEmailCLear
             // 
-            this.btn_FromEmailCLear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailCLear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_FromEmailCLear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_FromEmailCLear.Appearance.Options.UseFont = true;
             this.btn_FromEmailCLear.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailCLear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_FromEmailCLear.Location = new System.Drawing.Point(84, 3);
             this.btn_FromEmailCLear.Name = "btn_FromEmailCLear";
             this.btn_FromEmailCLear.Size = new System.Drawing.Size(75, 31);
@@ -731,10 +760,11 @@
             // 
             // btn_FromEmailSave
             // 
-            this.btn_FromEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FromEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_FromEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_FromEmailSave.Appearance.Options.UseFont = true;
             this.btn_FromEmailSave.Appearance.Options.UseForeColor = true;
+            this.btn_FromEmailSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btn_FromEmailSave.Location = new System.Drawing.Point(3, 3);
             this.btn_FromEmailSave.Name = "btn_FromEmailSave";
             this.btn_FromEmailSave.Size = new System.Drawing.Size(75, 31);
@@ -1052,7 +1082,7 @@
             this.tabNavigationPage3.Controls.Add(this.panelControl6);
             this.tabNavigationPage3.MinimumSize = new System.Drawing.Size(400, 400);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(660, 505);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(660, 511);
             // 
             // panelControl6
             // 
@@ -1060,7 +1090,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(660, 505);
+            this.panelControl6.Size = new System.Drawing.Size(660, 511);
             this.panelControl6.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -1077,7 +1107,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.784736F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.21526F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 501);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 507);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // splitContainer2
@@ -1097,7 +1127,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.txt_ToEmailId);
             this.splitContainer2.Panel2.Controls.Add(this.labelControl16);
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(650, 446);
+            this.splitContainer2.Size = new System.Drawing.Size(650, 452);
             this.splitContainer2.SplitterDistance = 240;
             this.splitContainer2.TabIndex = 3;
             // 
@@ -1107,7 +1137,7 @@
             this.gridControl1_To_Email.Location = new System.Drawing.Point(0, 0);
             this.gridControl1_To_Email.MainView = this.gridView3;
             this.gridControl1_To_Email.Name = "gridControl1_To_Email";
-            this.gridControl1_To_Email.Size = new System.Drawing.Size(236, 442);
+            this.gridControl1_To_Email.Size = new System.Drawing.Size(236, 448);
             this.gridControl1_To_Email.TabIndex = 0;
             this.gridControl1_To_Email.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1127,8 +1157,10 @@
             // 
             this.gridColumn6.AppearanceCell.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridColumn6.AppearanceCell.Options.UseFont = true;
-            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
             this.gridColumn6.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn6.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumn6.Caption = "To EmailId";
             this.gridColumn6.FieldName = "To_Email_Id";
             this.gridColumn6.Name = "gridColumn6";
@@ -1162,7 +1194,7 @@
             this.flowLayoutPanel3.Controls.Add(this.panel4);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 400);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 406);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(402, 42);
             this.flowLayoutPanel3.TabIndex = 41;
@@ -1171,20 +1203,22 @@
             // 
             this.panel4.Controls.Add(this.btn_ToEmailClear);
             this.panel4.Controls.Add(this.btn_ToEmailSave);
-            this.panel4.Location = new System.Drawing.Point(230, 3);
+            this.panel4.Location = new System.Drawing.Point(243, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(169, 39);
+            this.panel4.Size = new System.Drawing.Size(156, 39);
             this.panel4.TabIndex = 0;
             // 
             // btn_ToEmailClear
             // 
-            this.btn_ToEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToEmailClear.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_ToEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToEmailClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ToEmailClear.Appearance.Options.UseFont = true;
             this.btn_ToEmailClear.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailClear.Location = new System.Drawing.Point(87, 3);
+            this.btn_ToEmailClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ToEmailClear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ToEmailClear.Location = new System.Drawing.Point(81, 0);
             this.btn_ToEmailClear.Name = "btn_ToEmailClear";
-            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailClear.Size = new System.Drawing.Size(75, 39);
             this.btn_ToEmailClear.TabIndex = 1;
             this.btn_ToEmailClear.Text = "Clear";
             this.btn_ToEmailClear.ToolTip = "Clear";
@@ -1193,13 +1227,15 @@
             // 
             // btn_ToEmailSave
             // 
-            this.btn_ToEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ToEmailSave.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
+            this.btn_ToEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ToEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ToEmailSave.Appearance.Options.UseFont = true;
             this.btn_ToEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_ToEmailSave.Location = new System.Drawing.Point(5, 3);
+            this.btn_ToEmailSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ToEmailSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ToEmailSave.Location = new System.Drawing.Point(0, 0);
             this.btn_ToEmailSave.Name = "btn_ToEmailSave";
-            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ToEmailSave.Size = new System.Drawing.Size(75, 39);
             this.btn_ToEmailSave.TabIndex = 0;
             this.btn_ToEmailSave.Text = "Save";
             this.btn_ToEmailSave.ToolTip = "Save";
@@ -1232,7 +1268,7 @@
             this.tabNavigationPage4.Caption = "Client Email Setting";
             this.tabNavigationPage4.Controls.Add(this.panelControl3);
             this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(660, 505);
+            this.tabNavigationPage4.Size = new System.Drawing.Size(660, 511);
             // 
             // panelControl3
             // 
@@ -1240,7 +1276,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(660, 505);
+            this.panelControl3.Size = new System.Drawing.Size(660, 511);
             this.panelControl3.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -1259,14 +1295,14 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.70297F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(656, 501);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(656, 507);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // splitContainer3
             // 
             this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 54);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 55);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -1284,7 +1320,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.labelControl14);
             this.splitContainer3.Panel2.Controls.Add(this.flowLayoutPanel5);
             this.splitContainer3.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel2_Paint);
-            this.splitContainer3.Size = new System.Drawing.Size(650, 444);
+            this.splitContainer3.Size = new System.Drawing.Size(650, 449);
             this.splitContainer3.SplitterDistance = 266;
             this.splitContainer3.TabIndex = 3;
             // 
@@ -1294,7 +1330,7 @@
             this.gridControl_Client.Location = new System.Drawing.Point(0, 0);
             this.gridControl_Client.MainView = this.gridView4;
             this.gridControl_Client.Name = "gridControl_Client";
-            this.gridControl_Client.Size = new System.Drawing.Size(262, 440);
+            this.gridControl_Client.Size = new System.Drawing.Size(262, 445);
             this.gridControl_Client.TabIndex = 0;
             this.gridControl_Client.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1319,6 +1355,10 @@
             // 
             // Client_Id
             // 
+            this.Client_Id.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.Client_Id.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.Client_Id.AppearanceHeader.Options.UseFont = true;
+            this.Client_Id.AppearanceHeader.Options.UseForeColor = true;
             this.Client_Id.Caption = "Client_Id";
             this.Client_Id.FieldName = "Client_Id";
             this.Client_Id.Name = "Client_Id";
@@ -1327,12 +1367,20 @@
             // 
             // Client_Number
             // 
+            this.Client_Number.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.Client_Number.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.Client_Number.AppearanceHeader.Options.UseFont = true;
+            this.Client_Number.AppearanceHeader.Options.UseForeColor = true;
             this.Client_Number.Caption = "Client_Number";
             this.Client_Number.FieldName = "Client_Number";
             this.Client_Number.Name = "Client_Number";
             // 
             // Client_Name
             // 
+            this.Client_Name.AppearanceHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.Client_Name.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(81)))));
+            this.Client_Name.AppearanceHeader.Options.UseFont = true;
+            this.Client_Name.AppearanceHeader.Options.UseForeColor = true;
             this.Client_Name.Caption = "Client_Name";
             this.Client_Name.FieldName = "Client_Name";
             this.Client_Name.Name = "Client_Name";
@@ -1350,7 +1398,7 @@
             this.lookupedit_Client_ToEmail.Properties.NullText = "Select";
             this.lookupedit_Client_ToEmail.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookupedit_Client_ToEmail.Size = new System.Drawing.Size(218, 20);
-            this.lookupedit_Client_ToEmail.TabIndex = 94;
+            this.lookupedit_Client_ToEmail.TabIndex = 2;
             // 
             // lookupedit_Client_FromId
             // 
@@ -1363,7 +1411,7 @@
             this.lookupedit_Client_FromId.Properties.NullText = "Select";
             this.lookupedit_Client_FromId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookupedit_Client_FromId.Size = new System.Drawing.Size(218, 20);
-            this.lookupedit_Client_FromId.TabIndex = 93;
+            this.lookupedit_Client_FromId.TabIndex = 1;
             // 
             // label5
             // 
@@ -1379,11 +1427,13 @@
             // 
             this.checkedboxlist_Client.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.checkedboxlist_Client.Appearance.Options.UseFont = true;
+            this.checkedboxlist_Client.CheckOnClick = true;
             this.checkedboxlist_Client.Cursor = System.Windows.Forms.Cursors.Default;
             this.checkedboxlist_Client.Location = new System.Drawing.Point(109, 38);
             this.checkedboxlist_Client.Name = "checkedboxlist_Client";
             this.checkedboxlist_Client.Size = new System.Drawing.Size(218, 95);
-            this.checkedboxlist_Client.TabIndex = 46;
+            this.checkedboxlist_Client.TabIndex = 0;
+            this.checkedboxlist_Client.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedboxlist_Client_ItemCheck);
             // 
             // labelControl15
             // 
@@ -1414,7 +1464,7 @@
             this.flowLayoutPanel5.Controls.Add(this.panel5);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 396);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 401);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(376, 44);
             this.flowLayoutPanel5.TabIndex = 41;
@@ -1424,20 +1474,22 @@
             this.panel5.Controls.Add(this.btn_ClientEmailDelete);
             this.panel5.Controls.Add(this.btn_ClientEmailClear);
             this.panel5.Controls.Add(this.btn_ClientEmailSave);
-            this.panel5.Location = new System.Drawing.Point(131, 3);
+            this.panel5.Location = new System.Drawing.Point(139, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(242, 39);
+            this.panel5.Size = new System.Drawing.Size(234, 39);
             this.panel5.TabIndex = 0;
             // 
             // btn_ClientEmailDelete
             // 
-            this.btn_ClientEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailDelete.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ClientEmailDelete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailDelete.Appearance.Options.UseFont = true;
             this.btn_ClientEmailDelete.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailDelete.Location = new System.Drawing.Point(165, 3);
+            this.btn_ClientEmailDelete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ClientEmailDelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_ClientEmailDelete.Location = new System.Drawing.Point(159, 0);
             this.btn_ClientEmailDelete.Name = "btn_ClientEmailDelete";
-            this.btn_ClientEmailDelete.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailDelete.Size = new System.Drawing.Size(75, 39);
             this.btn_ClientEmailDelete.TabIndex = 2;
             this.btn_ClientEmailDelete.Text = "Delete";
             this.btn_ClientEmailDelete.ToolTip = "Delete";
@@ -1446,13 +1498,14 @@
             // 
             // btn_ClientEmailClear
             // 
-            this.btn_ClientEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ClientEmailClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailClear.Appearance.Options.UseFont = true;
             this.btn_ClientEmailClear.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailClear.Location = new System.Drawing.Point(84, 3);
+            this.btn_ClientEmailClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ClientEmailClear.Location = new System.Drawing.Point(80, 0);
             this.btn_ClientEmailClear.Name = "btn_ClientEmailClear";
-            this.btn_ClientEmailClear.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailClear.Size = new System.Drawing.Size(75, 38);
             this.btn_ClientEmailClear.TabIndex = 1;
             this.btn_ClientEmailClear.Text = "Clear";
             this.btn_ClientEmailClear.ToolTip = "Clear";
@@ -1461,13 +1514,15 @@
             // 
             // btn_ClientEmailSave
             // 
-            this.btn_ClientEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ClientEmailSave.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ClientEmailSave.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_ClientEmailSave.Appearance.Options.UseFont = true;
             this.btn_ClientEmailSave.Appearance.Options.UseForeColor = true;
-            this.btn_ClientEmailSave.Location = new System.Drawing.Point(3, 3);
+            this.btn_ClientEmailSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_ClientEmailSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_ClientEmailSave.Location = new System.Drawing.Point(0, 0);
             this.btn_ClientEmailSave.Name = "btn_ClientEmailSave";
-            this.btn_ClientEmailSave.Size = new System.Drawing.Size(75, 31);
+            this.btn_ClientEmailSave.Size = new System.Drawing.Size(75, 39);
             this.btn_ClientEmailSave.TabIndex = 0;
             this.btn_ClientEmailSave.Text = "Save";
             this.btn_ClientEmailSave.ToolTip = "Save";
@@ -1480,7 +1535,7 @@
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl8.Location = new System.Drawing.Point(3, 3);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(650, 45);
+            this.panelControl8.Size = new System.Drawing.Size(650, 46);
             this.panelControl8.TabIndex = 4;
             // 
             // label4
@@ -1490,7 +1545,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(2, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(646, 41);
+            this.label4.Size = new System.Drawing.Size(646, 42);
             this.label4.TabIndex = 2;
             this.label4.Text = "Client E-mail Settings";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1520,6 +1575,7 @@
             this.Controls.Add(this.groupControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(698, 623);
             this.Name = "Clarification_Setting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clarification_Setting";

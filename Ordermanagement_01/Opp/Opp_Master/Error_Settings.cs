@@ -1,0 +1,790 @@
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraSplashScreen;
+using Newtonsoft.Json;
+using Ordermanagement_01.Masters;
+using Ordermanagement_01.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Windows.Forms;
+
+
+namespace Ordermanagement_01.Opp.Opp_Master
+{
+    public partial class Error_Settings : DevExpress.XtraEditors.XtraForm
+    {
+        string OperationType;
+        int userid;
+        string _btnname;
+        int _Projectid;
+        int _productid;
+        string errortext;
+        int checkederror;
+        int Errortypeid,err_desc_id;
+        Classes.Load_Progres form_loader = new Classes.Load_Progres();
+
+        public Error_Settings(int User_ID)
+        {
+            InitializeComponent();
+            userid = User_ID;
+        }
+
+
+
+
+        private void Error_Settings_Load(object sender, EventArgs e)
+        {
+
+            btn_delete_multiple.Visible = false;
+            Tile_Item_ErrorType.Checked = true;
+            navigationFrame1.SelectedPage = navigationPage1;
+            BindErrorDetails();
+            //BindErrorGrid();
+            //Bind_Error_Tab_Grid();
+        }
+        private void Tile_Item_ErrorType_ItemClick(object sender, TileItemEventArgs e)
+        {
+            btn_delete_multiple.Visible = false;
+            Tile_Item_ErrorType.Checked = true;
+            Tile_Item_ErrorTab.Checked = false;
+            Tile_Item_ErrorField.Checked = false;
+            navigationFrame1.SelectedPage = navigationPage1;
+            BindErrorDetails();
+
+        }
+
+        private void Tile_Item_ErrorTab_ItemClick(object sender, TileItemEventArgs e)
+        {
+            btn_delete_multiple.Visible = false;
+            Tile_Item_ErrorType.Checked = false;
+            Tile_Item_ErrorTab.Checked = true;
+            Tile_Item_ErrorField.Checked = false;
+            navigationFrame1.SelectedPage = navigationPage2;
+            Bind_Error_Tab_Grid();
+
+        }
+
+        private void Tile_Item_ErrorField_ItemClick(object sender, TileItemEventArgs e)
+        {
+            btn_delete_multiple.Visible = false;
+            Tile_Item_ErrorType.Checked = false;
+            Tile_Item_ErrorTab.Checked = false;
+            Tile_Item_ErrorField.Checked = true;
+            navigationFrame1.SelectedPage = navigationPage3;
+            BindErrorGrid();
+
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_AddError_Click(object sender, EventArgs e)
+        {
+            if (Tile_Item_ErrorType.Checked == true)
+            {
+                OperationType = "Error Type";
+                string Boxname = "Error Type";
+                _btnname = "Submit";
+                _Projectid = 0;
+                _productid = 0;
+                errortext = null;
+                Errortypeid = 0;
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorTypes = new Error_Settingspanels(OperationType, Boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid, userid);
+                this.Enabled = false;
+                ErrorTypes.Show();
+
+            }
+            else if (Tile_Item_ErrorTab.Checked == true)
+            {
+                OperationType = "Error Tab";
+                string _boxname = "Error Tab";
+                _btnname = "Submit";
+                _Projectid = 0;
+                _productid = 0;
+                errortext = null;
+                Errortypeid = 0;
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels ErrorType = new Error_Settingspanels(OperationType, _boxname, _Projectid, _productid, errortext, _btnname, this, Errortypeid, userid);
+                this.Enabled = false;
+                ErrorType.Show();
+            }
+            else if (Tile_Item_ErrorField.Checked == true)
+            {
+                OperationType = "Error Field";
+                Ordermanagement_01.Opp.Opp_Master.Error_Field ErrorField = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, err_desc_id, userid);
+                this.Enabled = false;
+                ErrorField.Show();
+            }
+        }
+
+        public async void BindErrorDetails()
+        {
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictionary = new Dictionary<string, object>()
+                    {
+                        { "@Trans", "SELECT"}
+                    };
+                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/BindErrorDetails", data);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable _dtError = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (_dtError.Rows.Count > 0)
+                            {
+                                grd_Error_Type.DataSource = _dtError;
+                                // _Inserted_By = Convert.ToInt32(_dtError.Rows[0]["Inserted_By"].ToString());
+                                // _Inserted_Date = Convert.ToDateTime(_dtError.Rows[0]["Inserted_Date"].ToString());
+
+                            }
+                            else
+                            {
+                                grd_Error_Type.DataSource = null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
+        public async void BindErrorGrid()
+        {
+            try
+            {
+
+                //SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","SELECT_Error_description_grd" }
+
+
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTab/BindErrors", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (_dt.Rows.Count > 0)
+                            {
+
+                                Grd_ErrorDes.DataSource = _dt;
+
+                            }
+                            else
+                            {
+                                Grd_ErrorDes.DataSource = null;
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+
+            }
+        }
+
+        public async void Bind_Error_Tab_Grid()
+        {
+            try
+            {
+
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                var dictonary = new Dictionary<string, object>()
+                {
+                    {"@Trans","BindErrorDetails" }
+
+
+                };
+
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                using (var httpclient = new HttpClient())
+                {
+                    var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTabSettings/GridErrorTabDetails", data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable _dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (_dt.Rows.Count > 0)
+                            {
+                                grdErrorTab.DataSource = _dt.DefaultView.ToTable(true, _dt.Columns[3].ColumnName, _dt.Columns[1].ColumnName, _dt.Columns[0].ColumnName, _dt.Columns[2].ColumnName, _dt.Columns[5].ColumnName, _dt.Columns[6].ColumnName);
+                                gridView1.BestFitColumns();
+                            }
+                            else
+                            {
+                                grdErrorTab.DataSource = null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                throw ex;
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+
+            }
+        }
+
+        private async void gridView5_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+
+            if (e.Column.Caption == "Delete")
+            {
+                try
+                {
+                    //GridView view = Grd_ErrorDes.MainView as GridView;
+                    //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                    System.Data.DataRow row = gridView5.GetDataRow(gridView5.FocusedRowHandle);
+                    //_pid = Convert.ToInt32(index.ItemArray[5]);
+                    int _error_D_id = int.Parse(row["Error_description_Id"].ToString());
+
+                    var dictonary = new Dictionary<string, object>()
+                     {
+                        {"@Trans","DELETE_Error_description" },
+
+                        {"@Error_description_Id",_error_D_id },
+                        {"@Modified_By",userid }
+
+                    };
+                    var op = XtraMessageBox.Show("Do You Want to Delete", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (op == DialogResult.Yes)
+                    {
+                        var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                        using (var httpclient = new HttpClient())
+                        {
+                            var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTab/Delete", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Deleted Successfully");
+                                    BindErrorGrid();
+
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        BindErrorGrid();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            if (e.Column.Caption == "View")
+            {
+                System.Data.DataRow row = gridView5.GetDataRow(gridView5.FocusedRowHandle);
+                _Projectid = int.Parse(row["Project_Type_Id"].ToString());
+                _productid = int.Parse(row["Product_Type_Id"].ToString());
+                errortext = row["Error_description"].ToString();
+                checkederror = int.Parse(row["Error_Type_Id"].ToString());
+                int err_des_id = int.Parse(row["Error_description_Id"].ToString());
+                //GridView view = Grd_ErrorDes.MainView as GridView;
+                //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                ////e.Column.ColumnEdit.NullText = "Edit";
+                _btnname = "Edit";
+                OperationType = "";
+                //_Projectid = Convert.ToInt32(index.ItemArray[7]);
+
+                //_productid = Convert.ToInt32(index.ItemArray[8]);
+                //errortext = index.ItemArray[0].ToString();
+                //checkederror = Convert.ToInt32(index.ItemArray[3]);
+                Ordermanagement_01.Opp.Opp_Master.Error_Field _Efield = new Error_Field(OperationType, _btnname, _Projectid, _productid, errortext, checkederror, this, err_des_id, userid);
+                this.Enabled = false;
+                _Efield.Show();
+
+            }
+        }
+
+
+        private void Tile_Item_ErrorType_CheckedChanged(object sender, TileItemEventArgs e)
+        {
+            Tile_Item_ErrorField.AppearanceItem.Selected.BackColor = Color.Blue;
+        }
+
+        private void repositoryItemHyperLinkEdit9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private  void repositoryItemHyperLinkEdit10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private  void repositoryItemHyperLinkEdit8_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void repositoryItemHyperLinkEdit7_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+
+        private void gridView1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private void gridView5_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+
+        }
+
+        private void gridView3_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+        }
+
+        private async void btn_delete_multiple_Click(object sender, EventArgs e)
+        {
+            DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (show == DialogResult.Yes)
+            {
+
+                try
+                {
+
+                    if (Tile_Item_ErrorType.Checked == true)
+                    {
+
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        List<int> gridViewSelectedRows = gridView1.GetSelectedRows().ToList();
+                        for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                        {
+                            DataRow row = gridView1.GetDataRow(gridViewSelectedRows[i]);
+                            int Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
+                            var dictionary = new Dictionary<string, object>()
+                        {
+                            { "@Trans", "DELETE" },
+                            { "@New_Error_Type_Id", Error_Id },
+                             {"@Modified_By",userid }
+                        };
+                            var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/Delete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+
+                                    }
+                                }
+                                else
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Please Select Client To Delete", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    btn_delete_multiple.Visible = false;
+                                }
+                            }
+                        }
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Record Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        BindErrorDetails();
+                        btn_delete_multiple.Visible = false;
+                    }
+                    else if (Tile_Item_ErrorTab.Checked == true)
+                    {
+
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        List<int> gridViewSelectedRows = gridView3.GetSelectedRows().ToList();
+                        for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                        {
+                            DataRow row = gridView3.GetDataRow(gridViewSelectedRows[i]);
+                            int ID = int.Parse(row["Error_Type_Id"].ToString());
+                            var dictionarydelete = new Dictionary<string, object>();
+                            {
+                                dictionarydelete.Add("@Trans", "DELETE_Error_Type");
+                                dictionarydelete.Add("@Error_Type_Id", ID);
+                                dictionarydelete.Add("@Modified_By", userid);
+                            }
+                            var data = new StringContent(JsonConvert.SerializeObject(dictionarydelete), Encoding.UTF8, "application/json");
+                            using (var httpClient = new HttpClient())
+                            {
+                                var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTabSettings/Delete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+
+                                    }
+                                }
+                                else
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Please Select Record To Delete", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    btn_delete_multiple.Visible = false;
+                                }
+                            }
+                        }
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Record Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        Bind_Error_Tab_Grid();
+                        btn_delete_multiple.Visible = false;
+                    }
+                    else if (Tile_Item_ErrorField.Checked == true)
+                    {
+
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        List<int> gridViewSelectedRows = gridView5.GetSelectedRows().ToList();
+                        for (int i = 0; i < gridViewSelectedRows.Count; i++)
+                        {
+                            DataRow row = gridView5.GetDataRow(gridViewSelectedRows[i]);
+                            GridView view = Grd_ErrorDes.MainView as GridView;
+                            var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                            int _error_D_id = Convert.ToInt32(index.ItemArray[1]);
+
+                            var dictonary = new Dictionary<string, object>()
+                         {
+                        {"@Trans","DELETE_Error_description" },
+
+                        {"@Error_description_Id",_error_D_id },
+                         {"@Modified_By",userid }
+
+                         };
+                            var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                            using (var httpclient = new HttpClient())
+                            {
+                                var response = await httpclient.PostAsync(Base_Url.Url + "/ErrorTab/Delete", data);
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    if (response.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                    }
+                                }
+                                else
+                                {
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Please Select Client To Delete", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    btn_delete_multiple.Visible = false;
+                                }
+                            }
+                        }
+                        SplashScreenManager.CloseForm(false);
+                        XtraMessageBox.Show("Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        BindErrorGrid();
+                        btn_delete_multiple.Visible = false;
+                    }
+                }
+
+
+                catch (Exception ex)
+                {
+                    SplashScreenManager.CloseForm(false);
+                    throw ex;
+                }
+                finally
+                {
+                    SplashScreenManager.CloseForm(false);
+                }
+            }
+            else if (show == DialogResult.No)
+            {
+
+            }
+
+
+        }
+
+        private void gridView3_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if (gridView3.SelectedRowsCount != 0 && Tile_Item_ErrorTab.Checked == true)
+            {
+                btn_delete_multiple.Visible = true;
+            }
+            else
+            {
+                btn_delete_multiple.Visible = false;
+            }
+        }
+
+        private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if (gridView1.SelectedRowsCount != 0 && Tile_Item_ErrorType.Checked == true)
+            {
+                btn_delete_multiple.Visible = true;
+            }
+            else
+            {
+                btn_delete_multiple.Visible = false;
+            }
+        }
+
+        private void gridView5_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            if (gridView5.SelectedRowsCount != 0 && Tile_Item_ErrorField.Checked == true)
+            {
+                btn_delete_multiple.Visible = true;
+            }
+            else
+            {
+                btn_delete_multiple.Visible = false;
+            }
+        }
+
+        private void btn_Export_Click_1(object sender, EventArgs e)
+        {
+            if (Tile_Item_ErrorType.Checked == true)
+            {
+                string filePath = @"C:\ Export Error Type\";
+                string fileName = filePath + "Export Error Type-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                gridView1.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+            else if (Tile_Item_ErrorTab.Checked == true)
+            {
+                string filePath = @"C:\Export Error Tab\";
+                string fileName = filePath + "Export Error Tab-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                gridView3.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+            else if (Tile_Item_ErrorField.Checked == true)
+            {
+                string filePath = @"C:\Export Error Field\";
+                string fileName = filePath + "Export Error Field-" + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss") + ".xlsx";
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                gridView3.ExportToXlsx(fileName);
+                System.Diagnostics.Process.Start(fileName);
+            }
+
+
+        }
+
+        private void btn_Import_Click(object sender, EventArgs e)
+        {
+            if (Tile_Item_ErrorType.Checked == true)
+            {
+                OperationType = "Error Type";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
+                Import.Show();
+            }
+            else if (Tile_Item_ErrorTab.Checked == true)
+            {
+                OperationType = "Error Tab";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
+                Import.Show();
+            }
+            else if (Tile_Item_ErrorField.Checked == true)
+            {
+                OperationType = "Error Field";
+                Ordermanagement_01.Opp.Opp_Master.ImportErrorInfo Import = new ImportErrorInfo(OperationType, this);
+                Import.Show();
+            }
+
+        }
+
+        private async void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (e.Column.Caption == "Delete")
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                        System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+                        int Error_Id = int.Parse(row["New_Error_Type_Id"].ToString());
+                        var dictionary = new Dictionary<string, object>()
+                {
+                   { "@Trans", "DELETE" },
+                    { "@New_Error_Type_Id", Error_Id },
+                     {"@Modified_By",userid }
+                };
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/Delete", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                    BindErrorDetails();
+
+                                }
+                            }
+                            else
+                            {
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Please Select Client To Delete");
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        throw ex;
+                    }
+                }
+            }
+            else if (e.Column.Caption == "View")
+            {
+                System.Data.DataRow row = gridView1.GetDataRow(gridView1.FocusedRowHandle);
+                _Projectid = int.Parse(row["Project_Type_Id"].ToString());
+                //_productid = int.Parse(row["Product_Type_Id"].ToString());
+                errortext = row["New_Error_Type"].ToString();
+                checkederror = int.Parse(row["Product_Type_Id"].ToString());
+                OperationType = "Error Type";
+                _btnname = "Edit";
+                //_Projectid = Convert.ToInt32(index.ItemArray[1]);
+                //errortext = index.ItemArray[3].ToString();
+                //checkederror = Convert.ToInt32(index.ItemArray[2]);
+                Errortypeid = int.Parse(row["New_Error_Type_Id"].ToString());
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _Espanels = new Error_Settingspanels(OperationType, "Error Type", _Projectid, checkederror, errortext, _btnname, this, Errortypeid,userid);
+                this.Enabled = false;
+                _Espanels.Show();
+            }
+        }
+
+        private async void gridView3_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (e.Column.Caption == "View")
+            {
+                System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
+                int _projectId = int.Parse(row["Project_Type_Id"].ToString());
+                //GridView view = grdErrorTab.MainView as GridView;
+                //var index = view.GetDataRow(view.GetSelectedRows()[0]);
+                //_Projectid = Convert.ToInt32(index.ItemArray[4]);
+                //errortext = index.ItemArray[3].ToString();
+                //checkederror = Convert.ToInt32(index.ItemArray[5]);
+                errortext = row["Error_Type"].ToString();
+                checkederror = int.Parse(row["Product_Type_Id"].ToString());
+                 Errortypeid = int.Parse(row["Error_Type_Id"].ToString());
+                _btnname = "Edit";
+                OperationType = "Error Tab";
+
+
+                Ordermanagement_01.Opp.Opp_Master.Error_Settingspanels _etab = new Error_Settingspanels(OperationType, "Error Tab", _projectId, checkederror, errortext, _btnname, this, Errortypeid,userid);
+                this.Enabled = false;
+                _etab.Show();
+                //chkProductType.SelectedValue = ProductChk;
+                //int _task = chkProductType.SelectedIndex;
+                //chkProductType.SetItemChecked(_task, true);
+            }
+            else if (e.Column.Caption == "Delete")
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+
+                    try
+                    {
+                        System.Data.DataRow row = gridView3.GetDataRow(gridView3.FocusedRowHandle);
+                        int ID = int.Parse(row["Error_Type_Id"].ToString());
+                        var dictionarydelete = new Dictionary<string, object>();
+                        {
+                            dictionarydelete.Add("@Trans", "DELETE_Error_Type");
+                            dictionarydelete.Add("@Error_Type_Id", ID);
+                            dictionarydelete.Add("@Modified_By", userid);
+                        }
+                        var data = new StringContent(JsonConvert.SerializeObject(dictionarydelete), Encoding.UTF8, "application/json");
+                        using (var httpClient = new HttpClient())
+                        {
+                            var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTabSettings/Delete", data);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                if (response.StatusCode == HttpStatusCode.OK)
+                                {
+                                    var result = await response.Content.ReadAsStringAsync();
+                                    SplashScreenManager.CloseForm(false);
+                                    XtraMessageBox.Show("Record Deleted Successfully");
+                                    Bind_Error_Tab_Grid();
+
+
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SplashScreenManager.CloseForm(false);
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
+            }
+        }
+    }
+}

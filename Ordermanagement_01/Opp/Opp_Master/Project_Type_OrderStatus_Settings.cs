@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Ordermanagement_01.Opp.Opp_Master
 {
@@ -23,11 +24,13 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Role_Id;
         int OrderChk;
         int _OrderStatus;
+        int Statusid;
 
+        int product_id;
 
         DateTime date = DateTime.Now;
         DataTable _dt = new DataTable();
-        public Project_Type_OrderStatus_Settings(int user_id,int roleid)
+        public Project_Type_OrderStatus_Settings(int user_id, int roleid)
         {
             User_Id = user_id;
             Role_Id = roleid;
@@ -37,7 +40,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void OrderStatus_Load(object sender, EventArgs e)
         {
+            btn_Delete.Enabled = false;
             BindOrderStatusGrid();
+            ddlProjectType.Properties.Columns.Clear();
             BindProjectType();
             BindOrderStatus();
 
@@ -86,7 +91,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -105,7 +111,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     {"@Project_Type_Id",Project_Id }
                 };
                 //ddlProductType.Properties.DataSource = null;
-                ddlProductType.Properties.Columns.Clear();
+               
 
                 var data = new StringContent(JsonConvert.SerializeObject(dict), Encoding.UTF8, "application/Json");
                 using (var httpclient = new HttpClient())
@@ -125,28 +131,36 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 dr[1] = 0;
                                 dr[0] = "Select";
                                 dt.Rows.InsertAt(dr, 0);
+
+
+                                ddlProductType.Properties.DataSource = dt;
+                                ddlProductType.Properties.DisplayMember = "Product_Type";
+                                ddlProductType.Properties.ValueMember = "ProductType_Id";
+                                // ddlProductType.Properties.KeyMember = "Product_Type_Id";
+                                DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
+                                col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
+                                ddlProductType.Properties.Columns.Add(col);
+
+
+
                             }
-
-                            ddlProductType.Properties.DataSource = dt;
-                            ddlProductType.Properties.DisplayMember = "Product_Type";
-                            ddlProductType.Properties.ValueMember = "ProductType_Id";
-                            // ddlProductType.Properties.KeyMember = "Product_Type_Id";
-                            DevExpress.XtraEditors.Controls.LookUpColumnInfo col;
-                            col = new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Product_Type");
-                            ddlProductType.Properties.Columns.Add(col);
-
-
-
+                            
                         }
 
                     }
+                    else
+                    {
+                        ddlProductType.Properties.DataSource = null;
+                    }
+                    
                 }
 
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -190,7 +204,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -203,6 +218,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             if (ddlProjectType.ItemIndex > 0)
             {
                 int ProjectId = Convert.ToInt32(ddlProjectType.EditValue);
+                ddlProductType.Properties.Columns.Clear();
                 BindProdctType(ProjectId);
                 BindOrderStatus();
             }
@@ -234,7 +250,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-        private bool Validate()
+        private bool validate()
         {
             if (Convert.ToInt32(ddlProjectType.EditValue) == 0)
             {
@@ -262,7 +278,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             Productvalue = Convert.ToInt32(ddlProductType.EditValue);
             int StatusId;
 
-            if (btnadd.Text == "Submit" && Validate() != false)
+            if (btnadd.Text == "Submit" && validate() != false)
             {
                 try
                 {
@@ -300,7 +316,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Status is Submitted");
+                                XtraMessageBox.Show(" Submitted Successfully","Success",MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
                                 Clear();
                             }
@@ -310,7 +326,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 catch (Exception ex)
                 {
                     SplashScreenManager.CloseForm(false);
-                    throw ex;
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
@@ -359,7 +375,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                                 var result = await response.Content.ReadAsStringAsync();
 
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("OrderStatus Updated Successfully");
+                                XtraMessageBox.Show(" Updated Successfully","Success",MessageBoxButtons.OK);
                                 BindOrderStatusGrid();
                                 Clear();
                             }
@@ -374,7 +390,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
                 catch (Exception ex)
                 {
-                    throw ex;
+                    SplashScreenManager.CloseForm(false);
+                    XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 finally
                 {
@@ -421,7 +438,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
@@ -436,6 +454,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             ddlProjectType.ItemIndex = 0;
             //chkOrderStatus.DataSource = null;
             btnadd.Text = "Submit";
+            btn_Delete.Enabled = false;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -451,6 +470,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                 if (e.Column.FieldName == "Product_Type")
                 {
+                    btn_Delete.Enabled = true;
                     btnadd.Text = "Edit";
 
                     var row = _dt.AsEnumerable().Where(dr => dr.Field<string>("Product_Type") == e.CellValue.ToString());
@@ -459,8 +479,9 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     ddlProductType.EditValue = index.ItemArray[3];
                     int Project_Id = Convert.ToInt32(ddlProjectType.EditValue);
                     GetcheckedOrderStatusData(Project_Id);
-
+                    product_id=Convert.ToInt32(ddlProductType.EditValue);
                     int OrderChk = Convert.ToInt32(index.ItemArray[4]);
+                    Statusid = Convert.ToInt32(index.ItemArray[6]);
                     chkOrderStatus.SelectedValue = OrderChk;
                 }
                 int _task = chkOrderStatus.SelectedIndex;
@@ -469,7 +490,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
             catch (Exception ex)
             {
-                throw ex;
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             finally
@@ -483,33 +505,42 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             try
             {
-                int ProductType = Convert.ToInt32(ddlProductType.EditValue);
-                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+                    //int ProductType = Convert.ToInt32(ddlProductType.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
 
-                var dictionary = new Dictionary<string, object>
+                    var dictionary = new Dictionary<string, object>
                 {
                     { "@Trans", "Delete" },
-                    { "@Product_Type_Id", ProductType}
+                    { "@Product_Type_Id", product_id}
 
                 };
-                var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                using (var httpclient = new HttpClient())
-                {
-                    var response = await httpclient.PostAsync(Base_Url.Url + "/OrderStatus/Delete", data);
-                    if (response.IsSuccessStatusCode)
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/OrderStatus/Delete", data);
+                        if (response.IsSuccessStatusCode)
                         {
-                            var result = await response.Content.ReadAsStringAsync();
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
 
-                            SplashScreenManager.CloseForm(false);
-                            XtraMessageBox.Show("OrderStatus Deleted Successfully");
-                            BindOrderStatusGrid();
-                            Clear();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("OrderStatus Deleted Successfully");
+                                BindOrderStatusGrid();
+                                btn_Delete.Enabled = false;
+                                Clear();
+                            }
+
+
                         }
 
-
                     }
+                }
+                else if (show == DialogResult.No)
+                {
 
                 }
             }

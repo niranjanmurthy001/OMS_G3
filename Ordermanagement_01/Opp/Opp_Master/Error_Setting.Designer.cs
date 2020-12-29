@@ -1044,6 +1044,7 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.Caption = "Edit";
             this.gridColumn4.ColumnEdit = this.repositoryItemHyperLinkEdit3;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -1059,6 +1060,7 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.Caption = "Delete";
             this.gridColumn5.ColumnEdit = this.repositoryItemHyperLinkEdit4;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;

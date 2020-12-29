@@ -23,7 +23,9 @@ namespace Ordermanagement_01
         int Cbo_Value = 0;
         int i = 0;
         string Password;
-        public User_Access_Control(string User_Role, string user_id, string User_name,string Password)
+        int Application_Login_Type;
+            
+        public User_Access_Control(string User_Role, string user_id, string User_name,string Password,int Login_Type)
         {
             InitializeComponent();
             Cbo_Value = 0;
@@ -32,6 +34,7 @@ namespace Ordermanagement_01
             User_Role_Id = User_Role;
             username = User_name;
             this.Password = Password;
+            this.Application_Login_Type = Login_Type;
           
         }
 
@@ -39,7 +42,7 @@ namespace Ordermanagement_01
         {
             grd_UserAccess.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DarkCyan;
             grd_UserAccess.EnableHeadersVisualStyles = false;
-            AdminDashboard mainmenu = new AdminDashboard(User_Role_Id, userid.ToString(), username,Password);
+            AdminDashboard mainmenu = new AdminDashboard(User_Role_Id, userid.ToString(), username,Password, Application_Login_Type);
            
             AddParent();
             foreach (ToolStripMenuItem mnu in mainmenu.MenuStrip.Items)

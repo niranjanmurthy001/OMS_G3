@@ -53,7 +53,7 @@ namespace Ordermanagement_01.New_Dashboard.Employee
         private int ShiftType;
         private byte[] image;
         private string Password;
-     
+        public int Application_Login_Type;
 
         /// <summary>
         /// Employee Dashboard
@@ -61,14 +61,14 @@ namespace Ordermanagement_01.New_Dashboard.Employee
         /// <param name="userId"></param>
         /// <param name="userRoleId"></param>
         /// <param name="productionDate"></param>
-        public Dashboard(int userId, int userRoleId,string password, int BranchId, int ShiftType)
+        public Dashboard(int userId, int userRoleId,string password, int BranchId, int ShiftType,int Login_Type)
         {
             DevExpress.UserSkins.BonusSkins.Register();
             this.userId = userId;
             this.userRoleId = userRoleId;
             this.Password = password;          
             this.BranchId = BranchId;
-         
+            this.Application_Login_Type = Login_Type;
             this.ShiftType = ShiftType;
             dataaccess = new DataAccess();
             InitializeComponent();
@@ -1700,7 +1700,7 @@ namespace Ordermanagement_01.New_Dashboard.Employee
         private void btn_notification_Click(object sender, EventArgs e)
         {
 
-            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userId);
+            Ordermanagement_01.New_Dashboard.Employee.General_Notification note = new General_Notification(userId,Application_Login_Type);
             note.Show();
 
         }

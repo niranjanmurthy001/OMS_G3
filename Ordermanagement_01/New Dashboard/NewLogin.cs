@@ -129,7 +129,7 @@ namespace Ordermanagement_01.New_Dashboard
                                 if (ApiToken.access_token != null)
                                 {
 
-                                    Employee.Dashboard dashboard = new Employee.Dashboard(_User_Id, _User_Role_Id, _Password, _Branch_Id, _ShiftType);
+                                    Employee.Dashboard dashboard = new Employee.Dashboard(_User_Id, _User_Role_Id, _Password, _Branch_Id, _ShiftType,_Application_Login_Type);
                                     Invoke(new MethodInvoker(delegate { dashboard.Show(); }));
                                 }
                                 else
@@ -140,7 +140,7 @@ namespace Ordermanagement_01.New_Dashboard
                             }
                             else
                             {
-                                AdminDashboard mainmenu = new AdminDashboard(_User_Role_Id.ToString(), _User_Id.ToString(), _User_Name, _Password);
+                                AdminDashboard mainmenu = new AdminDashboard(_User_Role_Id.ToString(), _User_Id.ToString(), _User_Name, _Password,_Application_Login_Type);
                                 mainmenu.Show();
                             }
                         }

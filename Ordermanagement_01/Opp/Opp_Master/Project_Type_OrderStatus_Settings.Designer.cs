@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.grdOrderStatus = new DevExpress.XtraGrid.GridControl();
@@ -51,7 +52,7 @@
             this.btn_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -78,24 +79,27 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.CaptionImageOptions.Image = global::Ordermanagement_01.Properties.Resources.OrderhistoryIcon;
             this.groupControl1.Controls.Add(this.splitContainerControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(591, 433);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "OrderStatus";
+            this.groupControl1.Text = "Order Status";
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(2, 21);
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 31);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.grdOrderStatus);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(587, 410);
+            this.splitContainerControl1.Size = new System.Drawing.Size(587, 400);
             this.splitContainerControl1.SplitterPosition = 231;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -106,7 +110,7 @@
             this.grdOrderStatus.Location = new System.Drawing.Point(0, 0);
             this.grdOrderStatus.MainView = this.gridView1;
             this.grdOrderStatus.Name = "grdOrderStatus";
-            this.grdOrderStatus.Size = new System.Drawing.Size(231, 410);
+            this.grdOrderStatus.Size = new System.Drawing.Size(231, 400);
             this.grdOrderStatus.TabIndex = 7;
             this.grdOrderStatus.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -120,6 +124,7 @@
             this.gridView1.GridControl = this.grdOrderStatus;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn1, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
@@ -130,8 +135,6 @@
             this.gridColumn1.FieldName = "Project_Type";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
@@ -162,7 +165,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.48864F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.51136F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 410);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(344, 400);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panelControl1
@@ -175,9 +178,9 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(3, 55);
+            this.panelControl1.Location = new System.Drawing.Point(3, 53);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(338, 301);
+            this.panelControl1.Size = new System.Drawing.Size(338, 293);
             this.panelControl1.TabIndex = 0;
             // 
             // ddlProductType
@@ -209,7 +212,7 @@
             this.chkOrderStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.chkOrderStatus.Location = new System.Drawing.Point(142, 118);
             this.chkOrderStatus.Name = "chkOrderStatus";
-            this.chkOrderStatus.Size = new System.Drawing.Size(168, 166);
+            this.chkOrderStatus.Size = new System.Drawing.Size(168, 170);
             this.chkOrderStatus.TabIndex = 3;
             this.chkOrderStatus.Validating += new System.ComponentModel.CancelEventHandler(this.chkOrderStatus_Validating);
             // 
@@ -243,7 +246,7 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(35, 36);
+            this.labelControl1.Location = new System.Drawing.Point(33, 36);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(85, 13);
             this.labelControl1.TabIndex = 0;
@@ -253,7 +256,7 @@
             // 
             this.panelControl2.Controls.Add(this.flowLayoutPanel1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(3, 362);
+            this.panelControl2.Location = new System.Drawing.Point(3, 352);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(338, 45);
             this.panelControl2.TabIndex = 1;
@@ -271,11 +274,12 @@
             // 
             // btnadd
             // 
-            this.btnadd.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnadd.Appearance.Options.UseFont = true;
             this.btnadd.Appearance.Options.UseForeColor = true;
             this.btnadd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnadd.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnadd.Location = new System.Drawing.Point(3, 3);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(97, 33);
@@ -285,11 +289,12 @@
             // 
             // btnClear
             // 
-            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Appearance.Options.UseFont = true;
             this.btnClear.Appearance.Options.UseForeColor = true;
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.btnClear.Location = new System.Drawing.Point(106, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(97, 33);
@@ -299,11 +304,13 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Delete.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btn_Delete.Appearance.Options.UseFont = true;
             this.btn_Delete.Appearance.Options.UseForeColor = true;
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Delete.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.btn_Delete.Enabled = false;
             this.btn_Delete.Location = new System.Drawing.Point(209, 3);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(97, 33);
@@ -317,21 +324,21 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(3, 3);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(338, 46);
+            this.panelControl3.Size = new System.Drawing.Size(338, 44);
             this.panelControl3.TabIndex = 2;
             // 
             // lblHeader
             // 
             this.lblHeader.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeader.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.Appearance.ForeColor = System.Drawing.Color.Navy;
             this.lblHeader.Appearance.Options.UseFont = true;
             this.lblHeader.Appearance.Options.UseForeColor = true;
-            this.lblHeader.Location = new System.Drawing.Point(89, 11);
+            this.lblHeader.Location = new System.Drawing.Point(86, 8);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(200, 23);
+            this.lblHeader.Size = new System.Drawing.Size(209, 30);
             this.lblHeader.TabIndex = 0;
-            this.lblHeader.Text = "OrderStatus Settings";
+            this.lblHeader.Text = "Order Status Settings";
             // 
             // dxErrorProvider1
             // 
@@ -348,7 +355,6 @@
             this.Name = "Project_Type_OrderStatus_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderStatus";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.OrderStatus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

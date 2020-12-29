@@ -28,7 +28,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Error_Id = 0;
         DateTime date = DateTime.Now;
         DataTable _dtError = new DataTable();
-        public Error_Setting(int user_id,int roleid)
+        public Error_Setting(int user_id, int roleid)
         {
             User_Id = user_id;
             Role_Id = roleid;
@@ -43,8 +43,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             BindErrorDetails();
 
         }
-      
-      
+
+
 
         private void tileItem1_ErrorType_ItemClick(object sender, TileItemEventArgs e)
         {
@@ -61,7 +61,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             navigationFrame1.SelectedPage = navigationPage3_Field;
         }
 
-        private async void  Bind_ProjectType()
+        private async void Bind_ProjectType()
         {
             try
             {
@@ -69,11 +69,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 var dictonary = new Dictionary<string, object>()
                 {
                     {"@Trans","Bind_Project_Type" }
+
                 };
-                var data = new StringContent(JsonConvert.SerializeObject(dictonary), Encoding.UTF8, "Application/Json");
+                var data = new StringContent(JsonConvert.SerializeObject(dictonary),Encoding.UTF8,"Application/Json");
                 using (var httpclient = new HttpClient())
                 {
-                    var response = await httpclient.PostAsync(Base_Url.Url +"/ErrorSetting/BindProjectType", data);
+                    var response = await httpclient.PostAsync(Base_Url.Url+ "/ErrorTypeSettings/BindProjectType", data);
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -91,10 +92,11 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     }
                 }
             }
-            catch(Exception ex)
+  
+            catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
-                XtraMessageBox.Show(ex.Message.ToString());
+                throw ex;
             }
             finally
             {
@@ -104,37 +106,37 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private async void Bind_ProductType()
         {
-                try
+            try
+            {
+                SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+                IDictionary<string, object> dict_bind = new Dictionary<string, object>();
                 {
-                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
-                    IDictionary<string, object> dict_bind = new Dictionary<string, object>();
-                    {
                     dict_bind.Add("@Trans", "Bind_Product_Type");
-                    }
-                    var data = new StringContent(JsonConvert.SerializeObject(dict_bind), Encoding.UTF8, "application/json");
-                    using (var httpClient = new HttpClient())
+                }
+                var data = new StringContent(JsonConvert.SerializeObject(dict_bind), Encoding.UTF8, "application/json");
+                using (var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/BindProductType", data);
+                    if (response.IsSuccessStatusCode)
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/BindProductType", data);
-                        if (response.IsSuccessStatusCode)
+                        if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            if (response.StatusCode == HttpStatusCode.OK)
+                            var result = await response.Content.ReadAsStringAsync();
+                            DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
+                            if (dt != null && dt.Rows.Count > 0)
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-                                DataTable dt = JsonConvert.DeserializeObject<DataTable>(result);
-                                if (dt != null && dt.Rows.Count > 0)
-                                    {
-                                      for (int i = 0; i < dt.Rows.Count; i++)
-                                       {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
                                     checkedListBox_ProductType.DataSource = dt;
                                     checkedListBox_ProductType.DisplayMember = "Product_Type";
                                     checkedListBox_ProductType.ValueMember = "ProductType_Id";
-                                       }
-                                    }
+                                }
                             }
                         }
                     }
                 }
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show(ex.Message.ToString());
@@ -156,21 +158,22 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         { "@Trans", "SELECT"}
                     };
                 var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
-                using (var httpClient = new HttpClient())
+                using (var httpClient = new HttpClient()) 
                 {
-                    var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/BindErrorDetails", data);
+                    var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/BindErrorDetails", data);
+
                     if (response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = await response.Content.ReadAsStringAsync();
-                            _dtError = JsonConvert.DeserializeObject<DataTable>(result);                          
+                            _dtError = JsonConvert.DeserializeObject<DataTable>(result);
                             if (_dtError.Rows.Count > 0)
                             {
                                 grd_Error_Type.DataSource = _dtError;
-                               // _Inserted_By = Convert.ToInt32(_dtError.Rows[0]["Inserted_By"].ToString());
-                               // _Inserted_Date = Convert.ToDateTime(_dtError.Rows[0]["Inserted_Date"].ToString());
-                                
+                                // _Inserted_By = Convert.ToInt32(_dtError.Rows[0]["Inserted_By"].ToString());
+                                // _Inserted_Date = Convert.ToDateTime(_dtError.Rows[0]["Inserted_Date"].ToString());
+
                             }
                             else
                             {
@@ -198,14 +201,14 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Tile_Error_Tab_ItemClick(object sender, TileItemEventArgs e)
         {
-            Ordermanagement_01.Opp.Opp_Master.ErrorTabSetting _Error_tab = new ErrorTabSetting();
-            _Error_tab.Show();
+            //Ordermanagement_01.Opp.Opp_Master.ErrorTabSetting _Error_tab = new ErrorTabSetting();
+            //_Error_tab.Show();
         }
 
         private void Tile_Error_Field_ItemClick(object sender, TileItemEventArgs e)
         {
-            Ordermanagement_01.Masters.Error_Field _errorfield = new Error_Field();
-            _errorfield.Show();
+            //Ordermanagement_01.Masters.Error_Field _errorfield = new Error_Field();
+            //_errorfield.Show();
         }
         private void Clear()
         {
@@ -215,7 +218,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBox_ProductType.SelectedIndex = 0;
             btn_SubmitType.Text = "Submit";
             txt_ErrorType.Text = "";
-        } 
+        }
 
         private bool Validate()
         {
@@ -231,7 +234,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 XtraMessageBox.Show("Select Project Type");
                 return false;
             }
-            if (txt_ErrorType.Text=="")
+            if (txt_ErrorType.Text == "")
             {
                 SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Enter Error Type");
@@ -280,7 +283,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var data = new StringContent(JsonConvert.SerializeObject(dtproducttype), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/InsertType", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/InsertType", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -341,7 +344,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var data = new StringContent(JsonConvert.SerializeObject(dt_error_update), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/UpdateErrorType", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/UpdateErrorType", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)
@@ -368,12 +371,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
-       
+
 
         private void repositoryItemHyperLinkEdit3_Click(object sender, EventArgs e)
         {
 
-          //  checkedListBox_ProductType.Sele
+            //  checkedListBox_ProductType.Sele
             GridView view = grd_Error_Type.MainView as GridView;
             var index = view.GetDataRow(view.GetSelectedRows()[0]);
             btn_SubmitType.Text = "Edit";
@@ -410,7 +413,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
                     using (var httpClient = new HttpClient())
                     {
-                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorSetting/Delete", data);
+                        var response = await httpClient.PostAsync(Base_Url.Url + "/ErrorTypeSettings/Delete", data);
                         if (response.IsSuccessStatusCode)
                         {
                             if (response.StatusCode == HttpStatusCode.OK)

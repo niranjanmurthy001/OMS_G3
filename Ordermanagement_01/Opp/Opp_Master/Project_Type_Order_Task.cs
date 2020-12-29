@@ -23,10 +23,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         int Project_type, Task;
         DataTable _dtLoad = new DataTable();
         int _Inserted_By;
-        DateTime _Inserted_Date;    
-        public Project_Type_Order_Task()
+        DateTime _Inserted_Date;
+        int userid;  
+        public Project_Type_Order_Task(int User_Id)
         {
             InitializeComponent();
+            userid = User_Id;
         }
 
 
@@ -79,6 +81,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
 
         private void Project_Type_Order_Task_Load(object sender, EventArgs e)
         {
+            btn_Delete.Visible = false;
             BindProjecttype();
             BindDepartmentType();
             grid_Project_Type_Details();
@@ -87,12 +90,12 @@ namespace Ordermanagement_01.Opp.Opp_Master
         {
             if (Convert.ToInt32(ddl_Project_Type.EditValue) == 0)
             {
-                XtraMessageBox.Show("Select Project_Type");
+                XtraMessageBox.Show("Please Select Project Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (checkedListBoxControl_Task.CheckedItems.Count == 0)
             {
-                XtraMessageBox.Show("Select Task Type");
+                XtraMessageBox.Show("Please Select Task Type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -124,7 +127,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         int status = 1;
                         int _Inserted_By = 1;
                         DateTime date = DateTime.Now;
-                        dtmulti.Rows.Add(projecttype, Task, status, _Inserted_By, date);
+                        dtmulti.Rows.Add(projecttype, Task, status, userid, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti), Encoding.UTF8, "application/json");
@@ -137,7 +140,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Task is Submitted");
+                                XtraMessageBox.Show("Submitted Sucessfully");
                                 grid_Project_Type_Details();
                                 btn_Clear_Click(sender, e);
                             }
@@ -188,7 +191,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                         DateTime _Inerted_date = _Inserted_Date;
                         DateTime date = DateTime.Now;
                         int _Modified_By = 0;
-                        dtmulti1.Rows.Add(projecttype, Task,_status, User_Id,_Inerted_date, _Modified_By, date);
+                        dtmulti1.Rows.Add(projecttype, Task,_status, User_Id,_Inerted_date, userid, date);
                     }
                     SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
                     var data = new StringContent(JsonConvert.SerializeObject(dtmulti1), Encoding.UTF8, "application/json");
@@ -201,7 +204,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                             {
                                 var result = await response.Content.ReadAsStringAsync();
                                 SplashScreenManager.CloseForm(false);
-                                XtraMessageBox.Show("Order Task is Updated");
+                                XtraMessageBox.Show("Updated Sucessfully");
                                 grid_Project_Type_Details();
                                 btn_Clear_Click(sender, e);
                             }
@@ -270,6 +273,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                 if (e.Column.FieldName == "Project_Type")
                 {
                     btn_Save.Text = "Update";
+                    btn_Delete.Visible = true;
                     ddl_Project_Type.Enabled = false;
                     // GridView view = grd_projectType.MainView as GridView;
                     //var index = view.GetDataRow(view.GetSelectedRows()[0]);
@@ -280,6 +284,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
                     int Task = Convert.ToInt32(index.ItemArray[3]);
                     checkedListBoxControl_Task.SelectedValue = Task;
                 }
+
                 int _task = checkedListBoxControl_Task.SelectedIndex;
                 checkedListBoxControl_Task.SetItemChecked(_task, true);
             }
@@ -294,6 +299,54 @@ namespace Ordermanagement_01.Opp.Opp_Master
             }
         }
 
+        private async void btn_Delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult show = XtraMessageBox.Show("Do you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (show == DialogResult.Yes)
+                {
+
+                    int projectId = Convert.ToInt32(ddl_Project_Type.EditValue);
+                    SplashScreenManager.ShowForm(this, typeof(WaitForm1), true, true, false);
+
+                    var dictionary = new Dictionary<string, object>
+                    {
+                    { "@Trans", "Delete" },
+                    { "@Project_Type_Id", projectId},
+                    {"@Modified_By",userid }
+                    };
+                    var data = new StringContent(JsonConvert.SerializeObject(dictionary), Encoding.UTF8, "application/json");
+                    using (var httpclient = new HttpClient())
+                    {
+                        var response = await httpclient.PostAsync(Base_Url.Url + "/Projecttypeordertask/Delete", data);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                SplashScreenManager.CloseForm(false);
+                                XtraMessageBox.Show("Deleted Successfully");
+                                grid_Project_Type_Details();
+                                btn_Delete.Visible = false;
+                                btn_Clear_Click(sender, e);
+                            }
+                        }
+                    }
+                }              
+            }
+
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm(false);
+                XtraMessageBox.Show("Something Went Wrong! Please Contact Admin ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                SplashScreenManager.CloseForm(false);
+            }
+        }
+
         private void btn_Clear_Click(object sender, EventArgs e)
         {
             ddl_Project_Type.ItemIndex = 0;
@@ -301,6 +354,7 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBoxControl_Task.SelectedIndex = 0;
             btn_Save.Text = "Submit";
             ddl_Project_Type.Enabled = true;
+            btn_Delete.Visible = false;
         }
 
         private async void grid_Project_Type_Details()
@@ -360,6 +414,8 @@ namespace Ordermanagement_01.Opp.Opp_Master
             checkedListBoxControl_Task.UnCheckAll();
             //btn_Clear_Click(sender, e);
         }
+
+     
 
         private async void Getdata()
         {

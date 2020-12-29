@@ -154,6 +154,10 @@
     <Reference Include="ClosedXML">
       <HintPath>..\..\..\Third Part Software\Excel Exporting Dll Software for Windows\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="Control.Draggable, Version=1.0.5049.269, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Control.Draggable.1.0.5049.269\lib\net35-Client\Control.Draggable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -361,6 +365,38 @@
     <Reference Include="Spire.Pdf">
       <HintPath>..\..\..\..\Program Files (x86)\e-iceblue\Spire.Pdf-Fe\Bin\NET4.0\Spire.Pdf.dll</HintPath>
     </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Database, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Design, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Viewer.SL, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Report.Viewer.SL.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AddIn.Contract" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -393,6 +429,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.37.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.37\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -747,25 +787,25 @@
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Public_Variable.cs" />
-    <Compile Include="Classes\RTF\IRTFCell.cs" />
-    <Compile Include="Classes\RTF\IRtfProcessor.cs" />
-    <Compile Include="Classes\RTF\IRTFRow.cs" />
-    <Compile Include="Classes\RTF\RTFAlignment.cs" />
-    <Compile Include="Classes\RTF\RTFBorderSide.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFFonts.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFFormatWrap.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.RTFParaWrap.cs" />
-    <Compile Include="Classes\RTF\RTFBuilder.UnWrapped.cs" />
-    <Compile Include="Classes\RTF\RTFBuilderbase.cs" />
-    <Compile Include="Classes\RTF\RTFCell.cs" />
-    <Compile Include="Classes\RTF\RTFCellDefinition.cs" />
-    <Compile Include="Classes\RTF\RTFCellDefinitionBuilder.cs" />
-    <Compile Include="Classes\RTF\RTFFont.cs" />
-    <Compile Include="Classes\RTF\RTFImage.cs" />
-    <Compile Include="Classes\RTF\RTFRow.cs" />
-    <Compile Include="Classes\RTF\RTFRowDefinition.cs" />
-    <Compile Include="Classes\RTF\RTFUtil.cs" />
+    <Compile Include="bin\RTF\IRTFCell.cs" />
+    <Compile Include="bin\RTF\IRtfProcessor.cs" />
+    <Compile Include="bin\RTF\IRTFRow.cs" />
+    <Compile Include="bin\RTF\RTFAlignment.cs" />
+    <Compile Include="bin\RTF\RTFBorderSide.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFFonts.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFFormatWrap.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.RTFParaWrap.cs" />
+    <Compile Include="bin\RTF\RTFBuilder.UnWrapped.cs" />
+    <Compile Include="bin\RTF\RTFBuilderbase.cs" />
+    <Compile Include="bin\RTF\RTFCell.cs" />
+    <Compile Include="bin\RTF\RTFCellDefinition.cs" />
+    <Compile Include="bin\RTF\RTFCellDefinitionBuilder.cs" />
+    <Compile Include="bin\RTF\RTFFont.cs" />
+    <Compile Include="bin\RTF\RTFImage.cs" />
+    <Compile Include="bin\RTF\RTFRow.cs" />
+    <Compile Include="bin\RTF\RTFRowDefinition.cs" />
+    <Compile Include="bin\RTF\RTFUtil.cs" />
     <Compile Include="Classes\TaxClass.cs" />
     <Compile Include="Classes\TransDialog.cs">
       <SubType>Form</SubType>
@@ -860,6 +900,7 @@
     <Compile Include="Deed\Deed.Designer.cs">
       <DependentUpon>Deed.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevExpress\Utils\DragDrop\DragEventArgs.cs" />
     <Compile Include="Email_Send.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1210,6 +1251,12 @@
     </Compile>
     <Compile Include="Gen_Forms\notification_2.Designer.cs">
       <DependentUpon>notification_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gen_Forms\PopUp_Notify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gen_Forms\PopUp_Notify.Designer.cs">
+      <DependentUpon>PopUp_Notify.cs</DependentUpon>
     </Compile>
     <Compile Include="Gen_Forms\Popup_ToastStyle.cs">
       <SubType>Form</SubType>
@@ -1633,6 +1680,12 @@
     <Compile Include="Masters\Order_Document_List.designer.cs">
       <DependentUpon>Order_Document_List.cs</DependentUpon>
     </Compile>
+    <Compile Include="Masters\Order_Priority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Masters\Order_Priority.Designer.cs">
+      <DependentUpon>Order_Priority.cs</DependentUpon>
+    </Compile>
     <Compile Include="Masters\Task_Confirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1937,17 +1990,199 @@
     <Compile Include="New Dashboard\Orders\OrderHistory.designer.cs">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\ButtonReorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\ButtonReorder.Designer.cs">
+      <DependentUpon>ButtonReorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\ColumnData.cs" />
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.Designer.cs">
+      <DependentUpon>master_Employee_Error_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.Designer.cs">
+      <DependentUpon>master_Employee_Error_Entry_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckLists.Designer.cs">
+      <DependentUpon>CheckLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Master_View.Designer.cs">
+      <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.Designer.cs">
+      <DependentUpon>CheckList_ProductWise_Tab_Settings_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.Designer.cs">
+      <DependentUpon>CheckList_Question_Setup_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Checklist_Settings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Checklist_Settings_Entry.Designer.cs">
+      <DependentUpon>Checklist_Settings_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Checklist_Settings_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Checklist_Settings_View.Designer.cs">
+      <DependentUpon>Checklist_Settings_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\ChekList_Master_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\ChekList_Master_Entry.Designer.cs">
+      <DependentUpon>ChekList_Master_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_CheckList\Public.cs" />
+    <Compile Include="Opp\Opp_Efficiency\Alert_Setings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Setings.Designer.cs">
+      <DependentUpon>Alert_Setings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Settings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Alert_Settings_Entry.Designer.cs">
+      <DependentUpon>Alert_Settings_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.Designer.cs">
+      <DependentUpon>Category_Salary_Bracket_EntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.Designer.cs">
+      <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Client_TAT_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Client_TAT_Entry.Designer.cs">
+      <DependentUpon>Client_TAT_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Client_TAT_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Client_TAT_View.Designer.cs">
+      <DependentUpon>Client_TAT_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Copy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Copy.Designer.cs">
+      <DependentUpon>Efficiency_Copy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.Designer.cs">
+      <DependentUpon>Efficiency_Order_Source_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.Designer.cs">
+      <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.Designer.cs">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_View.Designer.cs">
+      <DependentUpon>Efficiency_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Import_Category_Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Import_Category_Salary.Designer.cs">
+      <DependentUpon>Import_Category_Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Create.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Efficiency\Efficiency_Create.Designer.cs">
+      <DependentUpon>Efficiency_Create.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\ErrorTabSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Opp\Opp_Master\ErrorTabSetting.Designer.cs">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Opp\Opp_Master\Error_Setting.cs">
+    <Compile Include="Opp\Opp_Master\Error_Field.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Opp\Opp_Master\Error_Setting.Designer.cs">
-      <DependentUpon>Error_Setting.cs</DependentUpon>
+    <Compile Include="Opp\Opp_Master\Error_Field.Designer.cs">
+      <DependentUpon>Error_Field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settings.Designer.cs">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settingspanels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Error_Settingspanels.Designer.cs">
+      <DependentUpon>Error_Settingspanels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ImportErrorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ImportErrorInfo.Designer.cs">
+      <DependentUpon>ImportErrorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_Entry.Designer.cs">
+      <DependentUpon>Order_SourceType_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Order_SourceType_View.Designer.cs">
+      <DependentUpon>Order_SourceType_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\PopUp_Message_Style.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\PopUp_Message_Style.Designer.cs">
+      <DependentUpon>PopUp_Message_Style.cs</DependentUpon>
     </Compile>
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.cs">
       <SubType>Form</SubType>
@@ -1955,17 +2190,57 @@
     <Compile Include="Opp\Opp_Master\Product_Type_Settings.Designer.cs">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.Designer.cs">
+      <DependentUpon>ProjectType_Notification_Setitings_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.Designer.cs">
+      <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.Designer.cs">
+      <DependentUpon>project_Type_OrderStatus_Setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.Designer.cs">
-      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.Designer.cs" />
     <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Opp\Opp_Master\Project_Type_Order_Task.Designer.cs">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Sub_Product_Type_Entry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Sub_Product_Type_Entry.Designer.cs">
+      <DependentUpon>Sub_Product_Type_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Sub_Product_Type_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Opp_Master\Sub_Product_Type_View.Designer.cs">
+      <DependentUpon>Sub_Product_Type_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\stimultest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\stimultest.Designer.cs">
+      <DependentUpon>stimultest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Opp\Stm_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opp\Stm_Form.Designer.cs">
+      <DependentUpon>Stm_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Order_Check_List.cs">
       <SubType>Form</SubType>
@@ -2690,6 +2965,12 @@
     </Compile>
     <Compile Include="Test\Clarification_Type_Check.Designer.cs">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Compress_Pdf_File.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test\Compress_Pdf_File.Designer.cs">
+      <DependentUpon>Compress_Pdf_File.cs</DependentUpon>
     </Compile>
     <Compile Include="Test\Folder_View.cs">
       <SubType>Form</SubType>
@@ -3453,6 +3734,9 @@
     <EmbeddedResource Include="Gen_Forms\notification_2.resx">
       <DependentUpon>notification_2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gen_Forms\PopUp_Notify.resx">
+      <DependentUpon>PopUp_Notify.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gen_Forms\Popup_ToastStyle.resx">
       <DependentUpon>Popup_ToastStyle.cs</DependentUpon>
     </EmbeddedResource>
@@ -3674,6 +3958,9 @@
     <EmbeddedResource Include="Masters\Order_Document_List.resx">
       <DependentUpon>Order_Document_List.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Masters\Order_Priority.resx">
+      <DependentUpon>Order_Priority.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Masters\Task_Confirmation.resx">
       <DependentUpon>Task_Confirmation.cs</DependentUpon>
     </EmbeddedResource>
@@ -3809,20 +4096,130 @@
     <EmbeddedResource Include="New Dashboard\Orders\OrderHistory.resx">
       <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\ButtonReorder.resx">
+      <DependentUpon>ButtonReorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry.resx">
+      <DependentUpon>master_Employee_Error_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Accuracy\Error_Entry\master_Employee_Error_Entry_View.resx">
+      <DependentUpon>master_Employee_Error_Entry_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckLists.resx">
+      <DependentUpon>CheckLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Master_View.resx">
+      <DependentUpon>CheckList_Master_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_ProductWise_Tab_Settings_Entry.resx">
+      <DependentUpon>CheckList_ProductWise_Tab_Settings_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\CheckList_Question_Setup_Entry.resx">
+      <DependentUpon>CheckList_Question_Setup_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\Checklist_Settings_Entry.resx">
+      <DependentUpon>Checklist_Settings_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\Checklist_Settings_View.resx">
+      <DependentUpon>Checklist_Settings_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_CheckList\ChekList_Master_Entry.resx">
+      <DependentUpon>ChekList_Master_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Alert_Setings.resx">
+      <DependentUpon>Alert_Setings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Alert_Settings_Entry.resx">
+      <DependentUpon>Alert_Settings_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_EntryForm.resx">
+      <DependentUpon>Category_Salary_Bracket_EntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Category_Salary_Bracket_ProjectWise.resx">
+      <DependentUpon>Category_Salary_Bracket_ProjectWise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Client_TAT_Entry.resx">
+      <DependentUpon>Client_TAT_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Client_TAT_View.resx">
+      <DependentUpon>Client_TAT_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Copy.resx">
+      <DependentUpon>Efficiency_Copy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_SourceType_Entry.resx" />
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type.resx">
+      <DependentUpon>Efficiency_Order_Source_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Order_Source_Type_Entry.resx">
+      <DependentUpon>Efficiency_Order_Source_Type_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type.resx">
+      <DependentUpon>Efficiency_Source_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Source_Type_Entry.resx">
+      <DependentUpon>Efficiency_Source_Type_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_View.resx">
+      <DependentUpon>Efficiency_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Import_Category_Salary.resx">
+      <DependentUpon>Import_Category_Salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Efficiency\Efficiency_Create.resx">
+      <DependentUpon>Efficiency_Create.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\ErrorTabSetting.resx">
       <DependentUpon>ErrorTabSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\Error_Setting.resx">
-      <DependentUpon>Error_Setting.cs</DependentUpon>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Field.resx">
+      <DependentUpon>Error_Field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Settings.resx">
+      <DependentUpon>Error_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Error_Settingspanels.resx">
+      <DependentUpon>Error_Settingspanels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\ImportErrorInfo.resx">
+      <DependentUpon>ImportErrorInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Order_SourceType_Entry.resx">
+      <DependentUpon>Order_SourceType_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Order_SourceType_View.resx">
+      <DependentUpon>Order_SourceType_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\PopUp_Message_Style.resx">
+      <DependentUpon>PopUp_Message_Style.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Opp\Opp_Master\Product_Type_Settings.resx">
       <DependentUpon>Product_Type_Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx">
-      <DependentUpon>Project_Type_OrderStatus_Settings.cs</DependentUpon>
+    <EmbeddedResource Include="Opp\Opp_Master\ProjectType_Notification_Setitings_Entry.resx">
+      <DependentUpon>ProjectType_Notification_Setitings_Entry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\ProjectType_Notification_Settings_View.resx">
+      <DependentUpon>ProjectType_Notification_Settings_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\project_Type_OrderStatus_Setting.resx">
+      <DependentUpon>project_Type_OrderStatus_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Project_Type_OrderStatus_Settings.resx" />
     <EmbeddedResource Include="Opp\Opp_Master\Project_Type_Order_Task.resx">
       <DependentUpon>Project_Type_Order_Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Sub_Product_Type_Entry.resx">
+      <DependentUpon>Sub_Product_Type_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Opp_Master\Sub_Product_Type_View.resx">
+      <DependentUpon>Sub_Product_Type_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\stimultest.resx">
+      <DependentUpon>stimultest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opp\Stm_Form.resx">
+      <DependentUpon>Stm_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order_Check_List.resx">
       <DependentUpon>Order_Check_List.cs</DependentUpon>
@@ -4219,6 +4616,9 @@
     <EmbeddedResource Include="Test\Clarification_Type_Check.resx">
       <DependentUpon>Clarification_Type_Check.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Test\Compress_Pdf_File.resx">
+      <DependentUpon>Compress_Pdf_File.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test\Folder_View.resx">
       <DependentUpon>Folder_View.cs</DependentUpon>
     </EmbeddedResource>
@@ -4423,7 +4823,9 @@
     <EmbeddedResource Include="fonts\Roboto-Light.ttf" />
     <None Include="ClassDiagram5.cd" />
     <None Include="Order_Type.xlsx" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -4558,16 +4960,32 @@
     <None Include="Resources\buttonLogout.ImageOptions.Image.png" />
     <None Include="Resources\checklist.png" />
     <Content Include="Ordermanagement_01.exe" />
+    <None Include="Resources\check.ico" />
+    <None Include="Resources\Close %282%29.png" />
+    <None Include="Resources\alert %281%29.png" />
+    <None Include="Resources\Alert2.png" />
+    <None Include="Resources\AlertRed.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\Alertico.png" />
+    <None Include="Resources\cheklist1.png" />
     <Content Include="Resources\close.bmp" />
     <None Include="Resources\dashboard_1_32.png" />
     <None Include="Resources\dashboard_1_64.png" />
     <None Include="Resources\comment.png" />
     <None Include="Resources\comment %284%29.png" />
     <None Include="Resources\comment %283%29.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\closeing.png" />
+    <None Include="Resources\Delete3.png" />
+    <None Include="Resources\deletepng.png" />
+    <None Include="Resources\deleteico.png" />
+    <None Include="Resources\deleteico1.png" />
+    <None Include="Resources\deletei.png" />
     <Content Include="Resources\DRN-Logo.png" />
     <None Include="Resources\Final_Qc_32.png" />
     <None Include="Resources\Exception_32.png" />
     <None Include="Resources\Employee.png" />
+    <None Include="Resources\error_Settings_24.png" />
     <Content Include="Resources\groupControlAccuracy.CaptionImageOptions.Image.png" />
     <None Include="Resources\groupControlAccuracy.CaptionImageOptions.Image1.png" />
     <Content Include="Resources\iconfinder_Windows_View_Detail_52792.png" />
@@ -4605,6 +5023,7 @@
     <None Include="Resources\ic_comments.png" />
     <None Include="Resources\ic_refresh.png" />
     <None Include="Resources\icons8-synchronize-64.png" />
+    <None Include="Resources\Info_png.png" />
     <Content Include="Resources\list.png" />
     <None Include="Resources\list1.png" />
     <None Include="Resources\New_Refresh.png" />
@@ -4647,6 +5066,16 @@
     <None Include="Resources\Notificationorange.png" />
     <None Include="Resources\Notification%28w%29.png" />
     <None Include="Resources\orderStatus.png" />
+    <None Include="Resources\productSetting.png" />
+    <None Include="Resources\notification.png" />
+    <None Include="Resources\notification Settings.png" />
+    <None Include="Resources\notification Alert.png" />
+    <None Include="Resources\Status.png" />
+    <None Include="Resources\Status2.png" />
+    <None Include="Resources\StatusSuccess.png" />
+    <None Include="Resources\status3.png" />
+    <None Include="Resources\Warningpng.png" />
+    <None Include="Resources\ok_Icon.png" />
     <Content Include="Resources\windowsUIButtonImageOptions1.Image.png" />
     <None Include="Resources\windowsUIButtonImageOptions1.Image1.png" />
     <Content Include="Resources\windowsUIButtonImageOptions2.Image.png" />
@@ -4855,6 +5284,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Access.Dao">
       <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
       <VersionMajor>12</VersionMajor>
@@ -4873,6 +5311,15 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
@@ -4881,6 +5328,7 @@
     <Folder Include="Abstractor\Abstractor_Reports\Payment Report\" />
     <Folder Include="bin\Debug\fr\" />
     <Folder Include="bin\Debug\ru\" />
+    <Folder Include="Ordermanagement_01\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
