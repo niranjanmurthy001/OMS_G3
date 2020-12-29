@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.components = new System.ComponentModel.Container();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -43,13 +44,13 @@
             this.ddlProjectType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSubmit = new DevExpress.XtraEditors.SimpleButton();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,11 +64,11 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -91,18 +92,18 @@
             this.tableLayoutPanel1.Controls.Add(this.splitContainerControl1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panelControl1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 20);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.39892F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.60108F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 372);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(603, 371);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl1.Location = new System.Drawing.Point(3, 49);
+            this.splitContainerControl1.Location = new System.Drawing.Point(3, 48);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.tableLayoutPanel2);
             this.splitContainerControl1.Panel1.Text = "Panel1";
@@ -179,7 +180,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.41033F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.58967F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(361, 320);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(354, 320);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panelControl2
@@ -191,7 +192,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(3, 3);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(355, 267);
+            this.panelControl2.Size = new System.Drawing.Size(348, 267);
             this.panelControl2.TabIndex = 2;
             // 
             // txtProductType
@@ -235,13 +236,22 @@
             this.labelControl2.TabIndex = 1;
             this.labelControl2.Text = "Project Type  :";
             // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.flowLayoutPanel1);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl3.Location = new System.Drawing.Point(3, 276);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(348, 41);
+            this.panelControl3.TabIndex = 3;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnSubmit);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnDelete);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(108, 2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(101, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(245, 37);
             this.flowLayoutPanel1.TabIndex = 3;
@@ -288,7 +298,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(597, 40);
+            this.panelControl1.Size = new System.Drawing.Size(597, 39);
             this.panelControl1.TabIndex = 1;
             // 
             // labelControl1
@@ -303,15 +313,6 @@
             this.labelControl1.Size = new System.Drawing.Size(217, 30);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Product Type Settings";
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.flowLayoutPanel1);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(3, 276);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(355, 41);
-            this.panelControl3.TabIndex = 3;
             // 
             // Product_Type_Settings
             // 
@@ -339,12 +340,12 @@
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlProjectType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
